@@ -1,0 +1,95 @@
+<div class="row" ng-controller="WindowcashierCtrl as ctrl">
+
+    <div class="col-md-12">
+
+        <md-content layout="column" flex class="custom__md-content__categ">
+
+            <md-card>
+
+
+
+                <md-toolbar class="md-table-toolbar md-default">
+                    <div class="md-toolbar-tools">
+
+
+
+
+                        <button class="btn btn-primary" ng-click="ctrl.addBtn()">Добавить запись</button>
+
+
+
+                        <button class="btn btn-primary" ng-click="ctrl.addBtn()">Удалить все</button>
+
+
+
+
+
+                        <h1><span class="custom__title__sum" id="totalsum">{{ctrl.total}}</span></h1>
+
+
+
+
+
+
+
+
+
+                    </div>
+                </md-toolbar>
+
+                <!-- exact table from live demo -->
+                <md-table-container class="custom__fix__freez__head">
+                    <table md-table ng-model="ctrl.selected">
+                        <thead md-head fix-head>
+                        <tr md-row>
+                            <th md-column></th>
+                            <th md-column>Наименование</th>
+                            <th md-column>Количество</th>
+                            <th md-column>Цена</th>
+                            <th md-column>Сумма</th>
+
+                        </tr>
+                        </thead>
+                        <tbody md-body>
+
+
+
+
+
+                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in ctrl.data" class="hide__checkbox">
+
+                            <td md-cell class="custom__delete"><i class="material-icons" ng-click="ctrl.delete(data._id, data.title)">delete</i></td>
+
+                            <td md-cell><input type="text" value="{{data.name}}" ng-model="data.name" ng-blur="ctrl.onBlur(data._id, data.title)"></td>
+
+                            <td md-cell><input type="text" value="{{data.count}}" ng-model="data.count" ng-blur="ctrl.onBlur(data._id, data.title)"></td>
+
+
+
+                            <td md-cell><input type="text" value="{{data.price}}" ng-model="data.price" ng-blur="ctrl.onBlur(data._id, data.title)"></td>
+
+
+                            <td md-cell><input type="text" value="{{data.sum}}" ng-model="data.sum" ng-blur="ctrl.onBlur(data._id, data.title)"></td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+
+
+
+
+
+            </md-card>
+
+
+        </md-content>
+
+
+
+
+
+    </div>
+
+
+</div>

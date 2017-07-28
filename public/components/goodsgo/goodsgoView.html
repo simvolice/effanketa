@@ -1,0 +1,165 @@
+<div class="row" ng-controller="GoodsgoCtrl as ctrl">
+
+    <div class="col-md-12">
+
+
+
+
+        <md-content layout="column" flex class="custom__md-content__categ">
+
+
+
+            <div class="row">
+                <div class="col-md-1">
+
+                    <md-button class="md-raised md-primary custom__btn__goodsgo" ng-click="ctrl.openDlg()">
+
+                        <div class="row">
+
+                            <i class="material-icons">add_box</i>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <span class="custom__title__btn__goodsgo">Создать расходную накладную.</span>
+                            </div>
+
+
+                        </div>
+
+
+                    </md-button>
+                </div>
+
+
+                <div class="col-md-1">
+                    <md-button class="md-raised md-primary custom__btn__goodsgo">
+
+                        <div class="row">
+
+                            <i class="material-icons">add_box</i>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <span class="custom__title__btn__goodsgo">Создать приходную накладную.</span>
+                            </div>
+
+
+                        </div>
+
+
+                    </md-button>
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+            <md-card>
+
+
+
+                <md-toolbar class="md-table-toolbar md-default">
+                    <div class="md-toolbar-tools">
+
+
+
+
+
+                        <input type="text" ng-model="searchText" placeholder="Поиск..." class="custom__search__input">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </md-toolbar>
+
+                <!-- exact table from live demo -->
+                <md-table-container class="custom__fix__freez__head">
+                    <table md-row-select md-table ng-model="ctrl.selected" >
+                        <thead md-head fix-head >
+                        <tr md-row>
+
+                            <th md-column md-order-by="nameToLower">Название</th>
+                            <th md-column>Дата создания</th>
+
+                        </tr>
+                        </thead>
+                        <tbody md-body class="hide__checkbox">
+
+
+
+
+
+                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in ctrl.data | filter: searchText" >
+
+
+
+
+
+                            <td md-cell ng-click="ctrl.openDlg($event)"><i class="material-icons">insert_drive_file</i>{{data.title}}</td>
+                            <td md-cell>{{data.createAt}}</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+
+
+
+
+
+
+
+
+            </md-card>
+
+
+</md-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>
