@@ -6,7 +6,8 @@ const dbConnect = require('../utils/dbConnect');
 
 const ObjectId = require('mongodb').ObjectId;
 
-
+const config = require('../utils/devConfig');
+const MongoClient = require('mongodb').MongoClient;
 
 
 
@@ -132,7 +133,7 @@ module.exports = {
 
 
 
-    login: async (email) => {
+    login: async (login) => {
 
     try {
 
@@ -144,7 +145,7 @@ module.exports = {
 
 
 
-      const result = await col.findOne({email: email});
+      const result = await col.findOne({login: login});
 
 
 
@@ -164,7 +165,47 @@ module.exports = {
     }
 
 
-  }
+  },
+
+
+
+    createUserSuperRoot: async (hash) => {
+
+
+        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
+        try {
+
+
+
+
+            const col = db.collection('users');
+
+
+
+
+            const result = await col.insertOne({login: "admin", pass: hash});
+
+
+
+
+            db.close();
+
+            return result;
+
+
+        }catch(err) {
+
+
+            db.close();
+
+            return err;
+
+
+        }
+
+
+    }
 
 
 

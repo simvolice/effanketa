@@ -83,6 +83,7 @@ router.get("/gettokencsrf", async (req, res, next) => {
 
 
 
+
   let result = await AuthService.saveCsrfToken(uuidV4());
 
 
@@ -101,7 +102,7 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
-    let result = await AuthService.login(req.body.email);
+    let result = await AuthService.login(req.body.login);
 
 
 

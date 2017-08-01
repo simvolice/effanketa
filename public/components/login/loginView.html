@@ -3,386 +3,61 @@
 <div class="col-md-6 col-md-offset-3">
     <md-content class="card">
 
-
-        <!-- Slider main container -->
-        <div class="swiper-container">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide">
-
-                    <md-content class="md-padding custom__md-content__login">
+        <md-content class="md-padding custom__md-content__login">
 
 
-                        <div class="card-signup">
-                            <form class="form" method="" action="">
+            <div class="card-signup">
+                <form class="form" method="" action="">
 
-                                <div class="content">
-                                    <div class="input-group custom__enter__title">
+                    <div class="content">
+                        <div class="input-group custom__enter__title">
 
-                                        <div class="form-group is-empty"><h3>Войти</h3></div>
-                                    </div>
+                            <div class="form-group is-empty"><h3>Войти</h3></div>
+                        </div>
 
 
-                                    <div class="input-group">
+                        <div class="input-group">
                                              <span class="input-group-addon">
-                                                 <i class="material-icons">email</i>
+                                                 <i class="material-icons">account_circle</i>
                                              </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Email..."><span class="material-input"></span></div>
-                                    </div>
+                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Email..." ng-model="ctrl.login"><span class="material-input"></span></div>
+                        </div>
 
-                                    <div class="input-group">
+                        <div class="input-group">
                                              <span class="input-group-addon">
                                                  <i class="material-icons">lock_outline</i>
                                              </span>
-                                        <div class="form-group is-empty"><input type="password" placeholder="Пароль..." class="form-control"><span class="material-input"></span></div>
-                                    </div>
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons" style="color: transparent">lock_outline</i>
-                                             </span>
-                                        <div class="form-group is-empty"><a href="" ng-click="ctrl.resetPassClk()">Восстановить пароль</a><span class="material-input"></span></div>
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-                                </div>
-                                <div class="footer text-center">
-                                    <button class="btn btn-primary">Войти</button>
-                                </div>
-
-                                <div class="footer text-center md-padding">
-                                    <span class="label label-primary">ИЛИ</span>
-                                </div>
-
-
-                                <div class="footer text-center">
-                                   <a href="" ng-click="ctrl.toRegisterClk()">Зарегистрируйтесь</a>
-                                </div>
-
-
-
-
-
-                            </form>
+                            <div class="form-group is-empty"><input type="password" placeholder="Пароль..." class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
                         </div>
 
-                    </md-content>
 
 
 
-                </div>
-                <div class="swiper-slide">
 
-                    <md-content class="md-padding custom__md-content__login">
 
-                        <div class="card-signup">
-                            <form>
 
-                                <div class="content">
 
 
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">email</i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Email..."><span class="material-input"></span></div>
-                                        </div>
 
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">lock_outline</i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="password" placeholder="Пароль..." class="form-control"><span class="material-input"></span></div>
-                                        </div>
 
 
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">lock_outline</i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="password" placeholder="Пароль еще раз..." class="form-control"><span class="material-input"></span></div>
-                                        </div>
 
 
+                    </div>
+                    <div class="footer text-center">
+                        <button class="btn btn-primary" ng-click="ctrl.loginClk()">Войти</button>
+                    </div>
 
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">business</i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Название компании..."><span class="material-input"></span></div>
-                                        </div>
 
 
 
-                                        <div class="input-group">
 
 
-                                            <div class="form-group is-empty">
 
-                                                <md-radio-group ng-model="data.group1">
-
-                                                    <div class="col-md-1">
-
-                                                        <md-radio-button value="TOO" class="md-primary">TOO</md-radio-button>
-
-                                                    </div>
-
-                                                    <div class="col-md-1 col-md-offset-7">
-
-                                                        <md-radio-button value="ИП" class="md-primary"> ИП </md-radio-button>
-
-
-                                                    </div>
-
-                                                </md-radio-group>
-
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                    </div>
-
-
-                                    <div class="col-md-6">
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="ИИН..."><span class="material-input"></span></div>
-                                        </div>
-
-
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="БИН..."><span class="material-input"></span></div>
-                                        </div>
-
-
-
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">location_on</i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Адрес..."><span class="material-input"></span></div>
-                                        </div>
-
-
-                                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">phone</i>
-                                             </span>
-                                            <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Телефон..."><span class="material-input"></span></div>
-                                        </div>
-
-
-
-
-
-                                            <button class="btn btn-primary btn-sm btn-reg" ng-click="ctrl.registerClk()">Регистрация</button>
-
-
-
-
-
-
-
-
-
-
-
-
-                                    </div>
-
-
-
-
-
-
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </md-content>
-
-
-                </div>
-                <div class="swiper-slide">
-
-                    <md-content class="md-padding custom__md-content__login">
-
-                        <div class="card-signup">
-                            <form class="form" method="" action="">
-
-                                <div class="content">
-
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">email</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Email..."><span class="material-input"></span></div>
-                                    </div>
-
-
-
-<div class="footer text-center">
-
-    <button class="btn btn-primary" ng-click="ctrl.resetPassClkOK()">Восстановить пароль</button>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </md-content>
-
-
-                </div>
-                <div class="swiper-slide">
-                    <md-content class="md-padding custom__md-content__login">
-
-                        <div class="card-signup">
-                            <form class="form" method="" action="">
-
-                                <div class="content">
-                                    <div class="text-center">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 264 264" style="enable-background:new 0 0 264 264;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#0f9d58;stroke-width:4;stroke-miterlimit:10;}
-</style>
-<path id="pathdone" class="st0" d="M78.9,107.4l-18.1,18.1l58.3,58.3L248.5,54.3l-18.1-18.1L119,147.5L78.9,107.4z M235.6,132
-	c0,57-46.6,103.6-103.6,103.6S28.4,189,28.4,132S75,28.4,132,28.4c10.4,0,19.4,1.3,28.5,3.9l20.7-20.7c-15.5-5.2-32.4-9.1-49.2-9.1
-	C60.8,2.5,2.5,60.8,2.5,132S60.8,261.5,132,261.5S261.5,203.2,261.5,132H235.6z"/>
-</svg>
-                                    </div>
-
-
-                                    <div class="text-center">
-
-                                        <h3>Пожалуйста, проверьте Ваш почтовый ящик чтобы активировать Ваш аккаунт.</h3>
-
-
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </md-content>
-
-
-                </div>
-                <div class="swiper-slide">
-                    <md-content class="md-padding custom__md-content__login">
-
-                        <div class="card-signup">
-                            <form class="form" method="" action="">
-
-                                <div class="content">
-
-
-                                    <div class="text-center">
-                                        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 264 264" style="enable-background:new 0 0 264 264;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#0f9d58;stroke-width:4;stroke-miterlimit:10;}
-</style>
-<path id="pathdone" class="st0" d="M78.9,107.4l-18.1,18.1l58.3,58.3L248.5,54.3l-18.1-18.1L119,147.5L78.9,107.4z M235.6,132
-	c0,57-46.6,103.6-103.6,103.6S28.4,189,28.4,132S75,28.4,132,28.4c10.4,0,19.4,1.3,28.5,3.9l20.7-20.7c-15.5-5.2-32.4-9.1-49.2-9.1
-	C60.8,2.5,2.5,60.8,2.5,132S60.8,261.5,132,261.5S261.5,203.2,261.5,132H235.6z"/>
-</svg>
-                                    </div>
-
-                                    <div class="text-center">
-
-
-
-
-
-
-
-                                        <h3>Пожалуйста, проверьте Ваш почтовый ящик чтобы восстановить пароль.</h3>
-
-
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                </div>
-
-                            </form>
-                        </div>
-
-                    </md-content>
-
-
-                </div>
-
+                </form>
             </div>
 
-
-
-        </div>
+        </md-content>
 
 
 

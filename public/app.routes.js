@@ -6,7 +6,7 @@
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/login');
 
   $stateProvider
 
@@ -28,50 +28,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
-      .state('addcashier', {
-        url: '/addcashier',
-        templateUrl: 'components/addcashier/addcashierView.html'
+      .state('main', {
+          url: '/main',
+          templateUrl: 'components/main/mainView.html',
+
+
       })
 
-
-      .state('catcateg', {
-        url: '/catcateg',
-        templateUrl: 'components/catalogcateg/catCategView.html'
-      })
-
-
-      .state('subcatcateg', {
-        url: '/subcatcateg',
-        templateUrl: 'components/subcatalogcateg/subcatCategView.html'
-      })
-
-
-      .state('units', {
-        url: '/units',
-        templateUrl: 'components/units/unitsView.html'
-      })
-
-
-
-      .state('goodscatalog', {
-        url: '/goodscatalog',
-        templateUrl: 'components/goodscatalog/goodsView.html'
-      })
-
-
-      .state('reports', {
-        url: '/reports',
-        templateUrl: 'components/reports/reportsView.html'
-      })
-
-      .state('windowcashier', {
-        url: '/windowcashier',
-        templateUrl: 'components/windowcashier/windowcashierView.html'
-      })
-
-      .state('goodsgo', {
-        url: '/goodsgo',
-        templateUrl: 'components/goodsgo/goodsgoView.html'
-      })
 
 });

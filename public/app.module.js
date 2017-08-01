@@ -38,9 +38,14 @@ app.directive('ngFiles', ['$parse', function ($parse) {
 } ]);
 
 
-app.controller('MainCtrl', function ($scope, $location) {
+app.controller('MainCtrl', function ($state, $cookies) {
 
 
+  this.exitClk = function () {
+    $cookies.remove('sessionToken');
+    $cookies.remove('tokenCSRF');
+    $state.go('login');
+  };
 
 
 

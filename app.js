@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
 const dbConnect = require('./utils/dbConnect');
+const config = require('./utils/devConfig');
+const AuthService = require('./services/Auth');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -18,12 +20,7 @@ app.set('trust proxy', 'loopback');
 app.use(helmet());
 app.use(helmet.noCache());
 app.use(helmet.referrerPolicy());
-/*app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    styleSrc: ["'self'"]
-  }
-}));*/
+
 
 
 
@@ -53,6 +50,24 @@ require('./routes')(app);
 
 
 dbConnect.connect();
+
+
+
+if (config.firstStart) {
+
+
+   AuthService.createUserSuperRoot(config.hashAdmin);
+
+
+
+
+}
+
+
+
+
+
+
 
 
 
