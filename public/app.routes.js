@@ -35,5 +35,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+      .state('adminedit', {
+          url: '/adminedit',
+          templateUrl: 'components/adminedit/adminView.html',
+
+
+      })
+
 
 });

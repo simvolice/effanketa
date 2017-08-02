@@ -8,7 +8,7 @@
 
 
 angular.module('app').factory("SendAuth", function($resource) {
-  return $resource("/auth", {tokenCSRF: "@tokenCSRF", login: "@login", pass: "@pass"});
+  return $resource("/auth", {tokenCSRF: "@tokenCSRF", email: "@email", pass: "@pass"});
 });
 
 

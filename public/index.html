@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ru" ng-app="app">
 <head>
+
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
 	<link rel="icon" type="image/png" href="assets/img/favicon.png" />
@@ -48,19 +49,33 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/">EFFORM<div class="ripple-container"></div></a>
+					<a class="navbar-brand" ui-sref="main">EFFORM<div class="ripple-container"></div></a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="example-navbar-primary">
 					<ul class="nav navbar-nav navbar-right">
 
+						<li ng-click="ctrl.changeLanguage('ru')">
+							<a>
+								Русский
+							</a>
+						</li>
+
+						<li ng-click="ctrl.changeLanguage('en')">
+							<a>
+								English
+							</a>
+						</li>
+
 
 
 
 						<li ng-click="ctrl.exitClk()">
+
+
 							<a>
 								<i class="material-icons">exit_to_app</i>
-								Выйти
+								{{ 'EXIT' | translate }}
 							</a>
 						</li>
 
@@ -131,6 +146,13 @@
 <script src="assets/js/angular-resource.min.js"></script>
 <script src="assets/js/angular-sanitize.min.js"></script>
 
+<script src="assets/js/angular-translate.min.js"></script>
+<script src="assets/js/angular-translate-loader-static-files.min.js"></script>
+
+
+
+
+
 <script src="assets/js/angular-animate.min.js"></script>
 <script src="assets/js/angular-aria.min.js"></script>
 <script src="assets/js/angular-messages.min.js"></script>
@@ -154,6 +176,8 @@
 <script src="components/login/loginController.js"></script>
 <script src="components/main/mainController.js"></script>
 <script src="components/main/mainService.js"></script>
+<script src="components/adminedit/adminController.js"></script>
+<script src="components/adminedit/adminService.js"></script>
 
 
 

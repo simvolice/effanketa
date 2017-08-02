@@ -8,6 +8,7 @@ const validator = require('../utils/validator');
 const checkSeesionToken = require('../utils/checkSeesionToken');
 
 const AuthService = require('../services/Auth');
+const MenuService = require('../services/MenuService');
 
 
 const uuidV4 = require('uuid/v4');
@@ -102,7 +103,8 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
-    let result = await AuthService.login(req.body.login);
+
+    let result = await AuthService.login(req.body.email);
 
 
 
@@ -110,7 +112,10 @@ router.post('/auth', async (req, res, next) =>{
     if (validator.checkProps(result) && bcrypt.compareSync(req.body.pass, result.pass)) {
 
 
-      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN)});
+
+      let menuItems = await MenuService.getMenuByRole(result.role);
+
+      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "menuItems": menuItems.mainPageHtml});
 
 
     }else {

@@ -39,14 +39,14 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
   this.loginClk = function () {
 
 
-      SendAuth.save({tokenCSRF: $cookies.get('tokenCSRF'), login: this.login, pass: this.pass}, function (result) {
+      SendAuth.save({tokenCSRF: $cookies.get('tokenCSRF'), email: this.email, pass: this.pass}, function (result) {
 
         if (result.code === 1) {
 
             $mdToast.show(
                 $mdToast.simple()
                     .textContent('Не удается войти.\n' +
-                        'Пожалуйста, проверьте правильность написания логина и пароля.')
+                        'Пожалуйста, проверьте правильность написания email и пароля.')
                     .position('bottom left')
                     .hideDelay(3000)
             );
@@ -58,6 +58,9 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
 
 
             $cookies.put("sessionToken", result.sessionToken, {expires: dateForCookies});
+            $cookies.put("menuItems", result.menuItems, {expires: dateForCookies});
+
+
 
             $state.go('main');
 

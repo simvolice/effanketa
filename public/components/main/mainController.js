@@ -7,6 +7,17 @@
 angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state) {
 
 
-    $('.collapsible').collapsible();
+
+       this.myHTML = $cookies.get("menuItems");
+
+
+       setTimeout(function () {
+           $('.collapsible').collapsible();
+       }, 500);
+
+
+
+
+
 });
 

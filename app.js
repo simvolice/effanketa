@@ -9,6 +9,7 @@ const helmet = require('helmet');
 const dbConnect = require('./utils/dbConnect');
 const config = require('./utils/devConfig');
 const AuthService = require('./services/Auth');
+const MenuService = require('./services/MenuService');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -19,7 +20,7 @@ const app = express();
 app.set('trust proxy', 'loopback');
 app.use(helmet());
 app.use(helmet.noCache());
-app.use(helmet.referrerPolicy());
+
 
 
 
@@ -52,17 +53,14 @@ require('./routes')(app);
 dbConnect.connect();
 
 
-
 if (config.firstStart) {
 
-
-   AuthService.createUserSuperRoot(config.hashAdmin);
-
+    AuthService.createUserSuperRoot(config.hashAdmin);
+    MenuService.createAllMenuItem();
 
 
 
 }
-
 
 
 

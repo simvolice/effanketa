@@ -133,7 +133,7 @@ module.exports = {
 
 
 
-    login: async (login) => {
+    login: async (email) => {
 
     try {
 
@@ -145,7 +145,7 @@ module.exports = {
 
 
 
-      const result = await col.findOne({login: login});
+      const result = await col.findOne({email: email});
 
 
 
@@ -184,7 +184,7 @@ module.exports = {
 
 
 
-            const result = await col.insertOne({login: "admin", pass: hash});
+            const result = await col.insertOne({pass: hash, email: "simvolice@gmail.com", role: "root", fio: "Ирина Бубенко Иванова"});
 
 
 

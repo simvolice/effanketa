@@ -4,23 +4,27 @@
 
 
 
-var app = angular.module('app', ['ngMaterial', "fixed.table.header", 'ui.router', 'md.data.table', 'ngMessages', 'ngResource', 'ngCookies', 'ngSanitize' ]).config(function($mdDateLocaleProvider) {
-
-
-
-  $mdDateLocaleProvider.months = ['Январь', 'Февраль', 'Март', "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
-  $mdDateLocaleProvider.shortMonths = ['Янв', 'Фев', 'Мрт', "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Нбр", "Дек"];
-  $mdDateLocaleProvider.days = ['Понедельник', 'Вторник', 'Среда', "Четверг", "Пятница", "Суббота", "Воскресенье"];
-  $mdDateLocaleProvider.shortDays = ['Пн', 'Вт', 'Ср', "Чт", "Пт", "Сб", "Вс"];
-
-  // Can change week display to start on Monday.
-  $mdDateLocaleProvider.firstDayOfWeek = 0;
+var app = angular.module('app', ['ngMaterial', "fixed.table.header", 'ui.router', 'md.data.table', 'ngMessages', 'ngResource', 'ngCookies', 'ngSanitize', 'pascalprecht.translate' ]);
 
 
 
 
+
+
+app.config(function ($locationProvider, $translateProvider) {
+
+
+    $translateProvider.useStaticFilesLoader({
+        prefix: 'i18n/locale-',
+        suffix: '.json'
+    });
+    $translateProvider.preferredLanguage('ru');
+    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 
 });
+
+
+
 
 
 app.directive('ngFiles', ['$parse', function ($parse) {
@@ -38,15 +42,23 @@ app.directive('ngFiles', ['$parse', function ($parse) {
 } ]);
 
 
-app.controller('MainCtrl', function ($state, $cookies) {
+app.controller('MainCtrl', function ($state, $cookies, $translate) {
 
 
   this.exitClk = function () {
     $cookies.remove('sessionToken');
     $cookies.remove('tokenCSRF');
+    $cookies.remove('menuItems');
     $state.go('login');
   };
 
+
+    this.changeLanguage = function (langKey) {
+        $translate.use(langKey);
+        setTimeout(function () {
+            $('.collapsible').collapsible();
+        }, 500);
+    };
 
 
 
