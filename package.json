@@ -1,10 +1,10 @@
 {
-  "name": "retail",
+  "name": "efform",
   "version": "1.0.4",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/simvolice/retail.git"
+    "url": "https://github.com/simvolice/effanketa.git"
   },
   "scripts": {
     "start": "node ./bin/www",
