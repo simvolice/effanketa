@@ -7,14 +7,6 @@
 angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state) {
 
 
-    var dateForCookies = new Date();
-    dateForCookies.setDate(dateForCookies.getDate() + 365);
-
-    if ($cookies.get("sessionToken")) {
-
-        $state.go('main');
-
-    }
 
 
 
