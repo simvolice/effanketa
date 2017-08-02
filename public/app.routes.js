@@ -30,7 +30,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       .state('main', {
           url: '/main',
-          templateUrl: 'components/main/mainView.html',
+          templateUrl: 'components/main/mainView.html'
+
 
 
       })

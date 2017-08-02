@@ -115,7 +115,7 @@ router.post('/auth', async (req, res, next) =>{
 
       let menuItems = await MenuService.getMenuByRole(result.role);
 
-      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "menuItems": menuItems.mainPageHtml});
+      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "menuItems": menuItems.mainPageHtml, "fio": result.fio});
 
 
     }else {

@@ -32,17 +32,17 @@ module.exports = {
                 mainPageHtml: "<ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
                 "                <li id=\"admins\">\n" +
                 "                    <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>{{ 'ADMINS' | translate }}</div>\n" +
-                "                    <div class=\"collapsible-body\"><a ui-sref=\"adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
+                "                    <div class=\"collapsible-body\"><a href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
                 "                </li>\n" +
                 "                <li>\n" +
                 "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
                 "                    <div class=\"collapsible-body\"><ul>\n" +
-                "                        <li><a ui-sref=\"grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
-                "                        <li><a ui-sref=\"credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
-                "                        <li><a ui-sref=\"grm\">{{ 'GRM' | translate }}</a></li>\n" +
-                "                        <li><a ui-sref=\"finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
-                "                        <li><a ui-sref=\"main_score_program\">{{ 'MAIN_SCORE_PROGRAM' | translate }}</a></li>\n" +
-                "                        <li><a ui-sref=\"strategic_communications\">{{ 'STRATEGIC_COMMUNICATIONS' | translate }}</a></li>\n" +
+                "                        <li><a href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
+                "                        <li><a href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
+                "                        <li><a href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
+                "                        <li><a href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
+                "                        <li><a href=\"?#!/main_score_program\">{{ 'MAIN_SCORE_PROGRAM' | translate }}</a></li>\n" +
+                "                        <li><a href=\"?#!/strategic_communications\">{{ 'STRATEGIC_COMMUNICATIONS' | translate }}</a></li>\n" +
                 "\n" +
                 "\n" +
                 "                    </ul></div>\n" +
@@ -53,11 +53,11 @@ module.exports = {
                 "                        <ul>\n" +
                 "\n" +
                 "\n" +
-                "                            <li><a ui-sref=\"build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
+                "                            <li><a href=\"?#!/build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
                 "\n" +
-                "                            <li><a ui-sref=\"report_by_main_score\">{{ 'REPORT_BY_MAIN_SCORE' | translate }}</a></li>\n" +
-                "                            <li><a ui-sref=\"report_by_criteriy\">{{ 'REPORT_BY_CRITERIY' | translate }}</a></li>\n" +
-                "                            <li><a ui-sref=\"data_intermediate_index\">{{ 'DATA_INTERMEDIATE_INDEX' | translate }}</a></li>\n" +
+                "                            <li><a href=\"?#!/report_by_main_score\">{{ 'REPORT_BY_MAIN_SCORE' | translate }}</a></li>\n" +
+                "                            <li><a href=\"?#!/report_by_criteriy\">{{ 'REPORT_BY_CRITERIY' | translate }}</a></li>\n" +
+                "                            <li><a href=\"?#!/data_intermediate_index\">{{ 'DATA_INTERMEDIATE_INDEX' | translate }}</a></li>\n" +
                 "\n" +
                 "                        </ul></div>\n" +
                 "                </li>\n" +
@@ -65,15 +65,15 @@ module.exports = {
             }, {role: "admin2", mainPageHtml: "  <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
             "                <li id=\"admins\">\n" +
             "                    <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>{{ 'ADMINS' | translate }}</div>\n" +
-            "                    <div class=\"collapsible-body\"><a ui-sref=\"adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
+            "                    <div class=\"collapsible-body\"><a href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
             "                </li>\n" +
             "                <li>\n" +
             "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
             "                    <div class=\"collapsible-body\"><ul>\n" +
-            "                        <li><a ui-sref=\"grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
-            "                        <li><a ui-sref=\"credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
-            "                        <li><a ui-sref=\"grm\">{{ 'GRM' | translate }}</a></li>\n" +
-            "                        <li><a ui-sref=\"finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
+            "                        <li><a href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
+            "                        <li><a href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
+            "                        <li><a href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
+            "                        <li><a href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
             "                        \n" +
             "\n" +
             "\n" +
@@ -85,11 +85,11 @@ module.exports = {
             "                        <ul>\n" +
             "\n" +
             "\n" +
-            "                            <li><a ui-sref=\"build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
+            "                            <li><a href=\"?#!/build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
             "\n" +
-            "                            <li><a ui-sref=\"report_by_main_score\">{{ 'REPORT_BY_MAIN_SCORE' | translate }}</a></li>\n" +
-            "                            <li><a ui-sref=\"report_by_criteriy\">{{ 'REPORT_BY_CRITERIY' | translate }}</a></li>\n" +
-            "                            <li><a ui-sref=\"data_intermediate_index\">{{ 'DATA_INTERMEDIATE_INDEX' | translate }}</a></li>\n" +
+            "                            <li><a href=\"?#!/report_by_main_score\">{{ 'REPORT_BY_MAIN_SCORE' | translate }}</a></li>\n" +
+            "                            <li><a href=\"?#!/report_by_criteriy\">{{ 'REPORT_BY_CRITERIY' | translate }}</a></li>\n" +
+            "                            <li><a href=\"?#!/data_intermediate_index\">{{ 'DATA_INTERMEDIATE_INDEX' | translate }}</a></li>\n" +
             "\n" +
             "                        </ul></div>\n" +
             "                </li>\n" +
@@ -98,7 +98,7 @@ module.exports = {
             "                <li>\n" +
             "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
             "                    <div class=\"collapsible-body\"><ul>\n" +
-            "                        <li><a ui-sref=\"grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
+            "                        <li><a href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
             "\n" +
             "\n" +
             "\n" +

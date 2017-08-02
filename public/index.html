@@ -33,7 +33,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
 </head>
 
-<body ng-controller="MainCtrl as ctrl">
+<body ng-controller="MainCtrl as ctrl" ng-cloak>
 
 	<div class="wrapper">
 
@@ -66,7 +66,12 @@
 								English
 							</a>
 						</li>
-
+						<li ng-show="fio">
+							<a>
+								<i class="material-icons">account_circle</i>
+								<span ng-bind="fio"></span>
+							</a>
+						</li>
 
 
 

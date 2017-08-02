@@ -42,20 +42,25 @@ app.directive('ngFiles', ['$parse', function ($parse) {
 } ]);
 
 
-app.controller('MainCtrl', function ($state, $cookies, $translate) {
 
 
-  this.exitClk = function () {
-    $cookies.remove('sessionToken');
-    $cookies.remove('tokenCSRF');
-    $cookies.remove('menuItems');
-    $state.go('login');
+app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
+
+
+
+
+
+
+    this.exitClk = function () {
+        localStorage.removeItem('commonInfo');
+        $rootScope.fio = false;
+        $state.go('login');
   };
 
 
     this.changeLanguage = function (langKey) {
         $translate.use(langKey);
-        setTimeout(function () {
+        $timeout(function () {
             $('.collapsible').collapsible();
         }, 500);
     };

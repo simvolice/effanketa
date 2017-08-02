@@ -22,7 +22,8 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
 
 
 
-     $cookies.put("tokenCSRF", result.tokenCSRF, {expires: dateForCookies});
+
+       localStorage.setItem("commonInfo", JSON.stringify({"tokenCSRF": result.tokenCSRF}));
 
 
 
@@ -39,7 +40,9 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
   this.loginClk = function () {
 
 
-      SendAuth.save({tokenCSRF: $cookies.get('tokenCSRF'), email: this.email, pass: this.pass}, function (result) {
+      var commonInfo = JSON.parse(localStorage.getItem('commonInfo'));
+
+      SendAuth.save({tokenCSRF: commonInfo.tokenCSRF, email: this.email, pass: this.pass}, function (result) {
 
         if (result.code === 1) {
 
@@ -57,14 +60,18 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
 
 
 
-            $cookies.put("sessionToken", result.sessionToken, {expires: dateForCookies});
-            $cookies.put("menuItems", result.menuItems, {expires: dateForCookies});
+
+            commonInfo.sessionToken = result.sessionToken;
+            commonInfo.menuItems = result.menuItems;
+            commonInfo.fio = result.fio;
 
 
 
-            $state.go('main');
+
+            localStorage.setItem("commonInfo", JSON.stringify(commonInfo));
 
 
+            $state.go("main");
 
 
         }

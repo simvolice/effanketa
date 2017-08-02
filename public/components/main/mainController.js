@@ -4,11 +4,18 @@
 
 
 
-angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state) {
+angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope) {
 
 
 
-       this.myHTML = $cookies.get("menuItems");
+
+
+    var commonInfo = JSON.parse(localStorage.getItem('commonInfo'));
+
+       this.myHTML = commonInfo.menuItems;
+
+    $rootScope.fio = commonInfo.fio;
+
 
 
        setTimeout(function () {
