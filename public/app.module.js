@@ -54,7 +54,7 @@ app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
     this.exitClk = function () {
         localStorage.removeItem('commonInfo');
         $rootScope.fio = false;
-        $state.go('login');
+        $state.go('login', {}, {reload: true});
   };
 
 
