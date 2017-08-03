@@ -50,12 +50,13 @@ app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
 
 
 
-
     this.exitClk = function () {
-        localStorage.removeItem('commonInfo');
+        localStorage.removeItem('menuItems');
+        localStorage.removeItem('sessionToken');
+        localStorage.removeItem('fio');
         $rootScope.fio = false;
         $state.go('login', {}, {reload: true});
-  };
+    };
 
 
     this.changeLanguage = function (langKey) {

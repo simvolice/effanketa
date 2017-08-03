@@ -9,18 +9,27 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
 
 
 
+    if(localStorage.getItem('tokenCSRF') === null){
 
-   GetToken.get(function (result) {
-
-
-
-
-       localStorage.setItem("commonInfo", JSON.stringify({"tokenCSRF": result.tokenCSRF}));
+        GetToken.get(function (result) {
 
 
 
 
-    });
+            localStorage.setItem("tokenCSRF", result.tokenCSRF);
+
+
+
+        });
+
+
+    } else if(localStorage.getItem('sessionToken') !== null){
+
+        $state.go("main");
+
+        }
+
+
 
 
 
@@ -32,9 +41,9 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
   this.loginClk = function () {
 
 
-      var commonInfo = JSON.parse(localStorage.getItem('commonInfo'));
 
-      SendAuth.save({tokenCSRF: commonInfo.tokenCSRF, email: this.email, pass: this.pass}, function (result) {
+
+      SendAuth.save({tokenCSRF: localStorage.getItem('tokenCSRF'), email: this.email, pass: this.pass}, function (result) {
 
         if (result.code === 1) {
 
@@ -53,14 +62,12 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
 
 
 
-            commonInfo.sessionToken = result.sessionToken;
-            commonInfo.menuItems = result.menuItems;
-            commonInfo.fio = result.fio;
 
 
 
-
-            localStorage.setItem("commonInfo", JSON.stringify(commonInfo));
+            localStorage.setItem("menuItems", result.menuItems);
+            localStorage.setItem("sessionToken", result.sessionToken);
+            localStorage.setItem("fio", result.fio);
 
 
             $state.go("main");

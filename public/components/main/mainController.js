@@ -4,24 +4,35 @@
 
 
 
-angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope) {
+angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope, $timeout) {
 
 
 
 
 
-    var commonInfo = JSON.parse(localStorage.getItem('commonInfo'));
-
-       this.myHTML = commonInfo.menuItems;
-
-    $rootScope.fio = commonInfo.fio;
+    if(localStorage.getItem('sessionToken') === null){
 
 
 
-       setTimeout(function () {
+
+
+        this.err = "<h5 class='text-center'>Вы не авторизованы, пройдите пожалуйста на страницу <a href='/?#!/login'>входа</a></h5>";
+
+    }
+
+
+
+
+
+       this.myHTML = localStorage.getItem('menuItems');
+
+    $rootScope.fio = localStorage.getItem('fio');
+
+
+
+    $timeout(function () {
            $('.collapsible').collapsible();
        }, 500);
-
 
 
 
