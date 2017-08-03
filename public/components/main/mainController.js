@@ -13,9 +13,6 @@ angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetT
     if(localStorage.getItem('sessionToken') === null){
 
 
-
-
-
         this.err = "<h5 class='text-center'>Вы не авторизованы, пройдите пожалуйста на страницу <a href='/?#!/login'>входа</a></h5>";
 
     }
@@ -26,7 +23,7 @@ angular.module('app').controller('MainAppCtrl', function ($scope, $cookies, GetT
 
        this.myHTML = localStorage.getItem('menuItems');
 
-    $rootScope.fio = localStorage.getItem('fio');
+
 
 
 
