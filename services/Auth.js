@@ -7,9 +7,9 @@ const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
 
 const config = require('../utils/devConfig');
+const CounterService = require('../services/CounterService');
+
 const MongoClient = require('mongodb').MongoClient;
-
-
 
 
 
@@ -182,9 +182,9 @@ module.exports = {
             const col = db.collection('users');
 
 
+            let seq = await CounterService.getNextSequence("userid");
 
-
-            const result = await col.insertOne({pass: hash, email: "simvolice@gmail.com", role: "root", fio: "Ирина Бубенко Иванова"});
+            const result = await col.insertOne({pass: hash, email: "simvolice@gmail.com", role: "root", fio: "Супер Рут Иванович", id: seq});
 
 
 

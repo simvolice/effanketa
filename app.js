@@ -10,6 +10,7 @@ const dbConnect = require('./utils/dbConnect');
 const config = require('./utils/devConfig');
 const AuthService = require('./services/Auth');
 const MenuService = require('./services/MenuService');
+const CounterService = require('./services/CounterService');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -54,9 +55,10 @@ dbConnect.connect();
 
 
 if (config.firstStart) {
-
+    CounterService.initialCounter();
     AuthService.createUserSuperRoot(config.hashAdmin);
     MenuService.createAllMenuItem();
+
 
 
 
