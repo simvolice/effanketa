@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state) {
+angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope) {
 
 
 
@@ -68,7 +68,7 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
             localStorage.setItem("menuItems", result.menuItems);
             localStorage.setItem("sessionToken", result.sessionToken);
             localStorage.setItem("fio", result.fio);
-
+            $rootScope.fio = localStorage.getItem('fio');
 
             $state.go("main");
 
