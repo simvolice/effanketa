@@ -8,7 +8,7 @@ const validator = require('../utils/validator');
 const checkSeesionToken = require('../utils/checkSeesionToken');
 
 const AuthService = require('../services/Auth');
-const MenuService = require('../services/MenuService');
+const RoleService = require('../services/RoleService');
 
 
 const uuidV4 = require('uuid/v4');
@@ -113,7 +113,7 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
-      let menuItems = await MenuService.getMenuByRole(result.role);
+      let menuItems = await RoleService.getRoleByRole(result.role);
 
       res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "menuItems": menuItems.mainPageHtml, "fio": result.fio});
 
@@ -144,9 +144,48 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
+router.post('/register', checkSeesionToken, async (req, res, next) =>{
+
+  const hash = bcrypt.hashSync(req.body.pass, 10);
+
+  let objParams = {
+
+
+    email: req.body.email,
+    pass: hash,
+    country: req.body.country,
+    role: req.body.role,
+    fio: req.body.fio,
 
 
 
+  };
+
+
+
+
+
+await AuthService.register(objParams);
+
+
+res.json({"code": 0});
+
+
+
+
+
+});
+
+
+
+
+router.get('/getallusers', async (req, res, next) =>{
+
+  let result = await AuthService.getAllUsers();
+
+  res.json({"code": 0, "resultFromDb": result});
+
+});
 
 
 module.exports = router;

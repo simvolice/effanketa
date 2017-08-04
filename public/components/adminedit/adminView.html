@@ -1,4 +1,4 @@
-<div class="row" ng-controller="AdminCtrl as ctrl">
+<div class="row" ng-controller="AdminCtrl">
 
     <div class="col-md-12">
 
@@ -63,33 +63,33 @@
 
 
 
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in ctrl.data | filter:search">
+                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
 
 
 
                             <td md-cell style="visibility: collapse">{{data._id}}</td>
 
-                            <td md-cell>{{data._id}}</td>
+                            <td md-cell>{{data.id}}</td>
 
-                            <td md-cell><input type="text" value="{{data.fio}}" ng-model="data.fio" ng-blur="ctrl.onBlur(data._id, data.fio)"></td>
+                            <td md-cell><input type="text" value="{{data.fio}}" ng-model="data.fio"></td>
 
                             <td md-cell>
 
-                                <select ng-model="data.selectedRole" ng-options="x for x in data.role">
+                                <select ng-model="data.role" ng-options="x.role for x in data.allRoles">
                                 </select>
 
                             </td>
 
                             <td md-cell>
 
-                                <select ng-model="data.selectedCountry" ng-options="y for y in data.country">
+                                <select ng-model="data.country" ng-options="y.name for y in data.allCountrys">
                                 </select>
 
                             </td>
 
                             <td md-cell><input type="text" value="{{data.email}}" ng-model="data.email"></td>
 
-                            <td md-cell>{{data.createAt}}</td>
+                            <td md-cell>{{data.createAt | date : "dd.MM.y"}}</td>
 
 
                             <td md-cell><i class="material-icons" ng-click="ctrl.saveBtn(data)">done_all</i></td>

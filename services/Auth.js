@@ -8,6 +8,8 @@ const ObjectId = require('mongodb').ObjectId;
 
 const config = require('../utils/devConfig');
 const CounterService = require('../services/CounterService');
+const RoleService = require('../services/RoleService');
+const CountryService = require('../services/CountryService');
 
 const MongoClient = require('mongodb').MongoClient;
 
@@ -168,6 +170,87 @@ module.exports = {
   },
 
 
+    register: async (objParam) => {
+
+        try {
+
+
+
+            const col = dbConnect.getConnect().collection('users');
+            col.createIndex({ email : 1 }, {unique: true});
+
+
+
+            let seq = await CounterService.getNextSequence("userid");
+
+            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: objParam.role, fio: objParam.fio, country: objParam.country , id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )});
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+    },
+
+    getAllUsers: async () => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+
+
+
+
+            const result = await col.aggregate([
+                { $match : { } },
+                { $skip: 0},
+                {$project: {pass: 0}},
+                { $addFields: {
+                    allRoles : await RoleService.getAllRoles(),
+                    allCountrys: await CountryService.getAllCountrys()
+                }}
+
+
+
+
+
+            ]).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
 
     createUserSuperRoot: async (hash) => {
 
@@ -184,7 +267,7 @@ module.exports = {
 
             let seq = await CounterService.getNextSequence("userid");
 
-            const result = await col.insertOne({pass: hash, email: "simvolice@gmail.com", role: "root", fio: "Супер Рут Иванович", id: seq});
+            const result = await col.insertOne({pass: hash, email: "simvolice@gmail.com", role: "root", fio: "Супер Рут Иванович", id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ), country: "Казахстан"});
 
 
 
