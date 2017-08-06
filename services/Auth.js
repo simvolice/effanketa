@@ -378,9 +378,9 @@ module.exports = {
 
 
                 pass: hash,
-                email: "admin@gmail.com",
+                email: "simvolice@gmail.com",
                 role: ObjectId(rootRole[0]._id),
-                fio: "Админ второй",
+                fio: "Админ первый",
                 id: seq,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ),
                 country: ObjectId(countryForRoot[0]._id)
