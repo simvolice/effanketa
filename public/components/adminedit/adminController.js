@@ -4,37 +4,272 @@
 
 
 
-angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http, $mdToast) {
+angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http, $mdToast, GetAllUsers, GetAllRoles, GetAllCoutrys, Register, UpdRegister, DelUser, RecoverUser) {
+
+    $scope.data = [];
+
+    GetAllUsers.get({}, function(entry) {
+
+
+
+        $scope.data=entry.resultFromDb;
+    });
 
 
 
 
 
 
-  this.saveBtn = function (data) {
-    console.log(data);
-  };
-
-  this.delete = function (id) {
-    console.log(id);
-  };
+    $scope.saveBtn = function (data) {
 
 
 
-
-  this.addBtn = function () {
-    this.data.push({"_id":289,"title": null,"createAt": new Date()});
-  };
+        if (data.id === 0) {
 
 
-  this.data = [
+
+            Register.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
 
 
-      {"_id":1,"fio":"Flossie","role": ["Admin1", "Admin2"], "selectedRole": "Admin1",  "country": ["Узбекистан", "Таджикистан"], "selectedCountry": "Таджикистан", "email": "admin@admin.kz", "createAt":"9/9/2016"},
-      {"_id":2,"fio":"sdsd","role": ["Admin1", "Admin2"], "selectedRole": "Admin2",  "country": ["Узбекистан", "Таджикистан"], "selectedCountry": "Узбекистан", "email": "admin@admin.kz", "createAt":"9/9/2016"},
-      {"_id":3,"fio":"fdfsdfsdfggg","role": ["Admin1", "Admin2"], "selectedRole": "Admin1",  "country": ["Узбекистан", "Таджикистан"], "selectedCountry": "Таджикистан", "email": "admin@admin.kz", "createAt":"9/9/2016"},
 
-    ];
+                if (result.code === 0) {
+
+
+                    $scope.data[$scope.data.length - 1]._id = result.resultFromDb._id;
+                    $scope.data[$scope.data.length - 1].id = result.resultFromDb.id;
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        } else {
+
+
+
+            UpdRegister.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+
+    $scope.delete = function (id, index) {
+
+
+
+            if (id === undefined){
+
+                $scope.data.pop();
+
+
+            }else {
+
+                DelUser.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
+
+
+
+                    if (result.code === 0) {
+
+
+
+                        $scope.data.splice(index, 1);
+
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('Операция закончилась УСПЕШНО.')
+                                .position('bottom left')
+                                .hideDelay(3000)
+                        );
+
+
+                    } else {
+
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                                .position('bottom left')
+                                .hideDelay(6000)
+                        );
+
+
+                    }
+
+
+
+
+                });
+
+
+            }
+    };
+
+
+
+
+
+
+    $scope.recoverpass = function (id) {
+        if (id !== undefined){
+
+
+            RecoverUser.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        }
+    };
+
+
+
+    $scope.addBtn = function () {
+
+       let tempObj = {
+
+
+
+            id: 0,
+            email : "",
+            role : "",
+            fio : "",
+
+            createAt : new Date(),
+            country: ""
+
+
+
+        };
+
+        GetAllCoutrys.get({}, function(entry) {
+
+
+            tempObj.allCountrys = entry.resultFromDb;
+
+
+        });
+
+        GetAllRoles.get({}, function(entry) {
+
+
+
+            tempObj.allRoles = entry.resultFromDb;
+
+
+
+
+        });
+
+
+
+
+
+
+
+
+      $scope.data.push(tempObj);
+
+
+    };
+
+
+
 
 
 

@@ -39,7 +39,7 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('tokencsrf');
 
-              col.createIndex({ createAt : 1 }, {expireAfterSeconds: 86400});
+              col.createIndex({ createAt : 1 }, {expireAfterSeconds: 3.154e+7});
               col.createIndex({ tokencsrf : 1 }, {unique: true});
 
 
@@ -183,7 +183,7 @@ module.exports = {
 
             let seq = await CounterService.getNextSequence("userid");
 
-            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: objParam.role, fio: objParam.fio, country: objParam.country , id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )});
+            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )});
 
 
 
@@ -205,6 +205,110 @@ module.exports = {
 
     },
 
+
+
+    updUser: async (objParam) => {
+
+        try {
+
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+
+
+            const result = await col.updateOne({_id: ObjectId(objParam._id)} ,{ $set: {email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), updateAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )}});
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+    },
+
+
+    delUser: async (objParam) => {
+
+        try {
+
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+
+
+
+            const result = await col.deleteOne({_id: ObjectId(objParam._id)});
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+    },
+
+
+
+    recoveryUser: async (objParam) => {
+
+        try {
+
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+
+
+            const result = await col.updateOne({_id: ObjectId(objParam._id)}, { $set: {pass: objParam.pass, updateAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )}});
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+    },
+
+
+
     getAllUsers: async () => {
 
         try {
@@ -218,7 +322,7 @@ module.exports = {
 
             const result = await col.aggregate([
                 { $match : { } },
-                { $skip: 0},
+
                 {$project: {pass: 0}},
                 { $addFields: {
                     allRoles : await RoleService.getAllRoles(),
@@ -265,9 +369,24 @@ module.exports = {
             const col = db.collection('users');
 
 
+            let rootRole = await RoleService.getAllRoles();
+            let countryForRoot = await CountryService.getAllCountrys();
+
             let seq = await CounterService.getNextSequence("userid");
 
-            const result = await col.insertOne({pass: hash, email: "simvolice@gmail.com", role: "root", fio: "Супер Рут Иванович", id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ), country: "Казахстан"});
+            const result = await col.insertOne({
+
+
+                pass: hash,
+                email: "admin@gmail.com",
+                role: ObjectId(rootRole[0]._id),
+                fio: "Админ второй",
+                id: seq,
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ),
+                country: ObjectId(countryForRoot[0]._id)
+
+
+            });
 
 
 

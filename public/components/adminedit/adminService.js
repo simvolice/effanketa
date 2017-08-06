@@ -18,5 +18,20 @@ angular.module('app').factory("GetAllCoutrys", function($resource) {
 });
 
 angular.module('app').factory("Register", function($resource) {
-    return $resource("/register");
+    return $resource("/register", {tokenCSRF: "@tokenCSRF", sessionToken: "@sessionToken", data: "@data"});
+});
+
+
+angular.module('app').factory("UpdRegister", function($resource) {
+    return $resource("/updregister", {tokenCSRF: "@tokenCSRF", sessionToken: "@sessionToken", data: "@data"});
+});
+
+
+angular.module('app').factory("DelUser", function($resource) {
+    return $resource("/deleteuser", {tokenCSRF: "@tokenCSRF", sessionToken: "@sessionToken", data: "@data"});
+});
+
+
+angular.module('app').factory("RecoverUser", function($resource) {
+    return $resource("/recoverypass", {tokenCSRF: "@tokenCSRF", sessionToken: "@sessionToken", data: "@data"});
 });

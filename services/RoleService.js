@@ -7,6 +7,7 @@
 const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
 const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId;
 
 
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
 
             const result = await col.insertMany([
 
-                { role: "root", name: "Администратор 1 уровня",
+                { name: "Администратор 1 уровня",
 
                     mainPageHtml: "<ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
                     "                <li id=\"admins\">\n" +
@@ -63,7 +64,7 @@ module.exports = {
                     "            </ul>"
                 },
 
-                {role: "admin2", name: "Администратор 2 уровня", mainPageHtml: "  <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
+                {name: "Администратор 2 уровня", mainPageHtml: "  <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
                 "                <li id=\"admins\">\n" +
                 "                    <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>{{ 'ADMINS' | translate }}</div>\n" +
                 "                    <div class=\"collapsible-body\"><a href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
@@ -97,7 +98,7 @@ module.exports = {
                 "            </ul>"},
 
 
-                {role: "admin3", name: "Администратор 3 уровня", mainPageHtml: " <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
+                { name: "Администратор 3 уровня", mainPageHtml: " <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
                 "\n" +
                 "                <li>\n" +
                 "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
@@ -139,7 +140,7 @@ module.exports = {
     },
 
 
-    getRoleByRole: async (role) => {
+    getRoleByRole: async (roleId) => {
 
         try {
 
@@ -150,7 +151,7 @@ module.exports = {
 
 
 
-            const result = await col.findOne({role: role});
+            const result = await col.findOne({_id: ObjectId(roleId)});
 
 
 
@@ -184,7 +185,7 @@ module.exports = {
 
 
 
-            const result = await col.find({}).skip(1).project({mainPageHtml: 0}).toArray();
+            const result = await col.find({}).project({mainPageHtml: 0}).toArray();
 
 
 

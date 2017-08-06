@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const generator = require('generate-password');
+const nodemailer = require('nodemailer');
 const jsonwebtoken = require('jsonwebtoken');
 const url = require('url');
 const config = require('../utils/devConfig');
@@ -13,7 +15,7 @@ const RoleService = require('../services/RoleService');
 
 const uuidV4 = require('uuid/v4');
 
-
+let transporter = nodemailer.createTransport(config.smtpServer);
 
 
 
@@ -146,16 +148,30 @@ router.post('/auth', async (req, res, next) =>{
 
 router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
-  const hash = bcrypt.hashSync(req.body.pass, 10);
 
-  let objParams = {
+  let pass = generator.generate({numbers: true, symbols: true});
+  const hash = bcrypt.hashSync(pass, 10);
+  let mail = {
+        from: "simvolice@gmail.com",
+        to: req.body.data.email, //TODO после тестирования надо поменять на переменную
+        subject: "Ваш логин и пароль для входа в систему EFFORM",
+
+        html: '<h4>Логин: '+ req.body.data.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
+    };
+
+    transporter.sendMail(mail);
 
 
-    email: req.body.email,
+
+
+    let objParams = {
+
+
+    email: req.body.data.email,
     pass: hash,
-    country: req.body.country,
-    role: req.body.role,
-    fio: req.body.fio,
+    country: req.body.data.country,
+    role: req.body.data.role,
+    fio: req.body.data.fio
 
 
 
@@ -165,10 +181,61 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
 
 
-await AuthService.register(objParams);
+let result =  await AuthService.register(objParams);
 
 
-res.json({"code": 0});
+if (result.hasOwnProperty("result")) {
+
+    res.json({"code": 0, "resultFromDb": result.ops[0]});
+
+} else {
+
+    res.json({"code": 1});
+
+}
+
+
+
+
+
+
+
+
+
+});
+
+router.post('/updregister', async (req, res, next) =>{
+
+    let objParams = {
+
+        _id: req.body.data._id,
+        email: req.body.data.email,
+
+        country: req.body.data.country,
+        role: req.body.data.role,
+        fio: req.body.data.fio
+
+
+
+    };
+
+
+
+
+
+    let result =  await AuthService.updUser(objParams);
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
 
 
 
@@ -178,6 +245,111 @@ res.json({"code": 0});
 
 
 
+router.post('/deleteuser', async (req, res, next) =>{
+
+
+
+
+
+
+    let objParams = {
+
+        _id: req.body.data,
+
+
+    };
+
+
+
+
+
+    let result =  await AuthService.delUser(objParams);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+
+
+
+
+});
+
+
+router.post('/recoverypass', async (req, res, next) =>{
+
+    let objParams = {
+
+        _id: req.body.data,
+
+
+    };
+
+
+
+
+
+    let result =  await AuthService.checkUserById(objParams._id);
+
+
+
+
+
+
+
+    if (validator.checkProps(result)) {
+
+
+        let pass = generator.generate({numbers: true, symbols: true});
+        const hash = bcrypt.hashSync(pass, 10);
+        let mail = {
+            from: "simvolice@gmail.com",
+            to: result.email, //TODO после тестирования надо поменять на переменную
+            subject: "Ваш новый логин и пароль для входа в систему EFFORM",
+
+            html: '<h4>Логин: '+ result.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
+        };
+
+        transporter.sendMail(mail);
+
+        objParams.pass = hash;
+
+        await AuthService.recoveryUser(objParams);
+
+
+
+
+
+
+        res.json({"code": 0});
+
+
+    } else {
+
+
+        res.json({"code": 1});
+
+
+    }
+
+
+
+
+
+
+
+
+});
 
 router.get('/getallusers', async (req, res, next) =>{
 

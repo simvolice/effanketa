@@ -26,11 +26,17 @@ module.exports = {
 
           const result = await col.insertMany([{
 
-              name: "Узбекистан"
+              name: "Казахстан"
           }, {
 
                   name: "Таджикистан"
-              }]
+              },
+
+              {
+
+                  name: "Узбекистан"
+              }
+              ]
 
           );
 

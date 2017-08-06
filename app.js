@@ -59,17 +59,25 @@ require('./routes')(app);
 dbConnect.connect();
 
 
+
+
+async function initApp() {
+
+    await CounterService.initialCounter();
+
+
+    await CountryService.initialCountry();
+    await RoleService.initialRoles();
+
+
+    await AuthService.createUserSuperRoot(config.hashAdmin);
+
+
+}
+
 if (config.firstStart) {
-    CounterService.initialCounter();
-    AuthService.createUserSuperRoot(config.hashAdmin);
 
-
-    CountryService.initialCountry();
-    RoleService.initialRoles();
-
-
-
-
+        initApp();
 
 
 }
