@@ -44,4 +44,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+      .state('grow_potencial', {
+          url: '/grow_potencial',
+          templateUrl: 'components/grow_potencial/grow_potencialView.html',
+
+
+      })
+
+
 });

@@ -1,4 +1,4 @@
-<div class="row" ng-controller="AdminCtrl">
+<div class="row" ng-controller="Grow_potencialCtrl">
 
     <div class="col-md-12">
 
@@ -17,7 +17,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Список администраторов</h3>
+                        <h3>Наращивание потенциала</h3>
 
 
                     </div>
@@ -26,7 +26,7 @@
                     <div class="md-toolbar-tools">
 
 
-                                <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
 
 
                     </div>
@@ -47,15 +47,21 @@
                         <thead md-head fix-head>
                         <tr md-row>
 
+
+
+                            <th md-column></th>
                             <th md-column>№</th>
-                            <th md-column>ФИО</th>
-                            <th md-column>Роль</th>
-                            <th md-column>Страна</th>
-                            <th md-column>Email</th>
-                            <th md-column>Дата создания</th>
+                            <th md-column>Название мероприятия</th>
+
+                            <th md-column>Место мероприятия</th>
+                            <th md-column>Тип мероприятия</th>
+                            <th md-column>Дата проведения</th>
+
+
+
                             <th md-column>Обновить</th>
                             <th md-column>Удалить</th>
-                            <th md-column>Напомнить пароль</th>
+
                         </tr>
                         </thead>
                         <tbody md-body>
@@ -68,36 +74,25 @@
 
 
 
-
+                            <td md-cell><i class="material-icons" ng-click="plusRow($index, $event, data.id)">{{data.icon}}</i></td>
 
                             <td md-cell>{{data.id}}</td>
+                            <td md-cell>{{data.name}}</td>
+                            <td md-cell>{{data.place}}</td>
+                            <td md-cell>{{data.type}}</td>
+                            <td md-cell>{{data.dateOfEvent | date : "dd.MM.y"}}</td>
 
-                            <td md-cell><input type="text" value="{{data.fio}}" ng-model="data.fio"></td>
 
-                            <td md-cell>
 
-                                <select ng-model="data.role" ng-options="x._id as x.name for x in data.allRoles">
-                                </select>
 
-                            </td>
 
-                            <td md-cell>
-
-                                <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                </select>
-
-                            </td>
-
-                            <td md-cell><input type="text" value="{{data.email}}" ng-model="data.email"></td>
-
-                            <td md-cell>{{data.createAt | date : "dd.MM.y"}}</td>
 
 
                             <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
 
                             <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
 
-                            <td md-cell><i class="material-icons" ng-click="recoverpass(data._id)">lock_open</i></td>
+
 
                         </tr>
                         </tbody>
@@ -111,7 +106,7 @@
             </md-card>
 
 
-</md-content>
+        </md-content>
 
 
 
@@ -131,6 +126,9 @@
 
 
     </div>
+
+
+
 
 
 </div>
