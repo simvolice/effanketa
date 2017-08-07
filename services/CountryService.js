@@ -7,6 +7,7 @@
 const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
 const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId;
 
 
 module.exports = {
@@ -99,7 +100,41 @@ module.exports = {
 
 
 
-  }
+  },
+
+  getCountryById: async (id) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('countrys');
+
+
+
+
+
+            const result = await col.findOne({_id: ObjectId(id)});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    }
 
 
 

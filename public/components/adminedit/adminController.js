@@ -6,15 +6,40 @@
 
 angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http, $mdToast, GetAllUsers, GetAllRoles, GetAllCoutrys, Register, UpdRegister, DelUser, RecoverUser) {
 
+
+
+
     $scope.data = [];
 
-    GetAllUsers.get({}, function(entry) {
+
+
+    GetAllUsers.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
 
 
 
-        $scope.data=entry.resultFromDb;
+        if (result.code === 0) {
+
+
+
+            $scope.data = result.resultFromDb;
+
+
+        } else {
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .position('bottom left')
+                    .hideDelay(6000)
+            );
+
+
+        }
+
+
+
+
     });
-
 
 
 
@@ -237,19 +262,21 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
         };
 
-        GetAllCoutrys.get({}, function(entry) {
+        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
             tempObj.allCountrys = entry.resultFromDb;
+            tempObj.country = entry.resultFromDb[0]._id;
 
 
         });
 
-        GetAllRoles.get({}, function(entry) {
+        GetAllRoles.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
 
             tempObj.allRoles = entry.resultFromDb;
+            tempObj.role = entry.resultFromDb[0]._id;
 
 
 
@@ -260,7 +287,7 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
 
 
-
+        console.log(tempObj);
 
 
       $scope.data.push(tempObj);

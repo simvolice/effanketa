@@ -4,10 +4,11 @@ const bcrypt = require('bcryptjs');
 const generator = require('generate-password');
 const nodemailer = require('nodemailer');
 const jsonwebtoken = require('jsonwebtoken');
-const url = require('url');
+
 const config = require('../utils/devConfig');
 const validator = require('../utils/validator');
 const checkSeesionToken = require('../utils/checkSeesionToken');
+const checkRole = require('../utils/checkRole');
 
 const AuthService = require('../services/Auth');
 const RoleService = require('../services/RoleService');
@@ -204,7 +205,7 @@ if (result.hasOwnProperty("result")) {
 
 });
 
-router.post('/updregister', async (req, res, next) =>{
+router.post('/updregister', checkSeesionToken, async (req, res, next) =>{
 
     let objParams = {
 
@@ -245,7 +246,7 @@ router.post('/updregister', async (req, res, next) =>{
 
 
 
-router.post('/deleteuser', async (req, res, next) =>{
+router.post('/deleteuser', checkSeesionToken, async (req, res, next) =>{
 
 
 
@@ -286,7 +287,7 @@ router.post('/deleteuser', async (req, res, next) =>{
 });
 
 
-router.post('/recoverypass', async (req, res, next) =>{
+router.post('/recoverypass', checkSeesionToken, async (req, res, next) =>{
 
     let objParams = {
 
@@ -351,11 +352,26 @@ router.post('/recoverypass', async (req, res, next) =>{
 
 });
 
-router.get('/getallusers', async (req, res, next) =>{
+router.post('/getallusers', checkSeesionToken, async (req, res, next) =>{
 
-  let result = await AuthService.getAllUsers();
 
-  res.json({"code": 0, "resultFromDb": result});
+
+
+  let result = await checkRole.forUsers(req.body.sessionToken);
+
+
+  if (result === false){
+
+    res.json({"code": 1});
+
+  } else {
+
+
+    res.json({"code": 0, "resultFromDb": result});
+
+  }
+
+
 
 });
 

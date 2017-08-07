@@ -7,15 +7,27 @@
 const express = require('express');
 const router = express.Router();
 
-const CountryService = require('../services/CountryService');
+const checkRole = require('../utils/checkRole');
 
 
 
 
-router.get('/getcountry', async (req, res, next) =>{
 
-res.json({"code": 0, "resultFromDb": await CountryService.getAllCountrys()});
+router.post('/getcountry', async (req, res, next) =>{
 
+    let result = await checkRole.forCountrys(req.body.sessionToken);
+
+
+    if (result === false){
+
+        res.json({"code": 1});
+
+    } else {
+
+
+        res.json({"code": 0, "resultFromDb": result});
+
+    }
 });
 
 

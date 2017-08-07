@@ -356,6 +356,61 @@ module.exports = {
 
     },
 
+
+    getUsersForAdmin2: async (idCountry) => {
+
+        try {
+
+
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+            let allRoles = await RoleService.getAllRoles();
+            let oneCoutry = await CountryService.getCountryById(idCountry);
+            let arrCoutry = [];
+            arrCoutry.push(oneCoutry);
+
+
+
+
+
+
+            const result = await col.aggregate([
+                { $match : {role: ObjectId(allRoles[2]._id),  country: ObjectId(idCountry)} },
+
+                {$project: {pass: 0}},
+                { $addFields: {
+                    allRoles : allRoles.slice(2, 3),
+                    allCountrys: arrCoutry
+                }}
+
+
+
+
+            ]).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
     createUserSuperRoot: async (hash) => {
 
 

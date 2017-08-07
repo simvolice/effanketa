@@ -9,14 +9,26 @@
 const express = require('express');
 const router = express.Router();
 
-const RoleService = require('../services/RoleService');
+const checkRole = require('../utils/checkRole');
 
 
 
 
-router.get('/getroles', async (req, res, next) =>{
+router.post('/getroles', async (req, res, next) =>{
 
-    res.json({"code": 0, "resultFromDb": await RoleService.getAllRoles()});
+    let result = await checkRole.forRoles(req.body.sessionToken);
+
+
+    if (result === false){
+
+        res.json({"code": 1});
+
+    } else {
+
+
+        res.json({"code": 0, "resultFromDb": result});
+
+    }
 
 });
 
