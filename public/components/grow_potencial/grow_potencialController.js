@@ -4,25 +4,22 @@
 
 
 
-angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope, $timeout, $mdDialog) {
+angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog) {
 
 
 
 
 
-    $scope.data = [];
+    $rootScope.data = [];
     $scope.arrForInsert = [];
 
-    $scope.data = [{"icon": "add", "id":1,"name":"Gisella","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017"},
-        {"icon": "add", "id":2,"name":"Leesa","place":"Indonesia","type":"jcb","dateOfEvent":"6/11/2017"},
-        {"icon": "add", "id":3,"name":"Ruggiero","place":"Sweden","type":"jcb","dateOfEvent":"7/9/2017"},
-        {"icon": "add", "id":4,"name":"Penny","place":"Mongolia","type":"china-unionpay","dateOfEvent":"9/12/2016"},
-        {"icon": "add", "id":5,"name":"Torry","place":"Ireland","type":"diners-club-carte-blanche","dateOfEvent":"10/16/2016"},
-        {"icon": "add", "id":6,"name":"Gaylene","place":"Philippines","type":"bankcard","dateOfEvent":"11/22/2016"},
-        {"icon": "add", "id":7,"name":"Ilyse","place":"Peru","type":"laser","dateOfEvent":"1/31/2017"},
-        {"icon": "add", "id":8,"name":"Elsinore","place":"Russia","type":"instapayment","dateOfEvent":"2/19/2017"},
-        {"icon": "add", "id":9,"name":"Olga","place":"Cuba","type":"bankcard","dateOfEvent":"9/29/2016"},
-        {"icon": "add", "id":10,"name":"Kalinda","place":"China","type":"mastercard","dateOfEvent":"3/28/2017"}];
+    GetEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+        $rootScope.data = result.resultFromDb;
+
+
+    });
 
     $scope.arrForInsert = [ {"icon": "subdirectory_arrow_right" ,"name":"Test1","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017", "childId": 1}, {"icon": "subdirectory_arrow_right" ,"name":"Test2","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017", "childId": 1}, {"icon": "subdirectory_arrow_right" ,"name":"Test3","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017", "childId": 1}, {"icon": "subdirectory_arrow_right" ,"name":"Test4","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017", "childId": 1}];
 
@@ -74,7 +71,44 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
 
     };
 
+    $scope.delete = function (id, index) {
 
+        DelEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
+
+
+
+            if (result.code === 0) {
+
+
+
+                $scope.data.splice(index, 1);
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+
+
+
+
+        });
+
+    };
 
 
 
@@ -92,9 +126,87 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
             });
         };
 
-function DialogController($scope, data) {
+function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast) {
 
-       $scope.data = data;
+
+
+    $scope.data = {
+
+        allCountrys: [],
+        country: "",
+        myDate: new Date(),
+
+        nameEvent: "",
+        typeEvent: "",
+        subTypeEvent: "",
+        countPeopleEventCommon: 0,
+        countWomanEventCommon: 0,
+
+        countFacilatatorEventCommon: 0,
+        countFacilatatorWomanEventCommon: 0,
+
+        countSpeakerEventCommon: 0,
+        countSpeakerWomanEventCommon: 0
+
+
+
+
+
+
+
+
+    };
+    GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+        $scope.data.allCountrys = entry.resultFromDb;
+        $scope.data.country = entry.resultFromDb[0]._id;
+
+    });
+
+
+
+
+
+    $scope.addEvent = function () {
+
+
+        AddEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
+
+
+            if (result.code === 0) {
+
+
+
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+
+
+
+        });
+
+
+    };
+
 
 
 
@@ -104,12 +216,16 @@ function DialogController($scope, data) {
 
     $scope.closeDialog = function () {
 
+        GetEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+            $rootScope.data = result.resultFromDb;
+
+
+        });
 
 
         $mdDialog.hide();
-
-
-
 
 
 

@@ -36,12 +36,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">place</i>
                                              </span>
-                                        <div class="form-group is-empty"><select name="" id="">
-                                            <option value="">testddddddddddddddddd</option>
-                                            <option value="">test</option>
-
-
-
+                                        <div class="form-group is-empty">  <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
                                         </select><span class="material-input"></span></div>
                                     </div>
 
@@ -53,7 +48,7 @@
 
                                         <div class="form-group is-empty"><div flex-gt-xs>
 
-                                            <md-datepicker ng-model="ctrl.myDate" md-placeholder="Выберите дату" md-open-on-focus></md-datepicker>
+                                            <md-datepicker ng-model="data.myDate" md-placeholder="Выберите дату" md-open-on-focus></md-datepicker>
                                         </div><span class="material-input"></span></div>
                                     </div>
 
@@ -64,7 +59,7 @@
                                              <span class="input-group-addon">
                                              <i class="material-icons">event_available</i>
                                              </span>
-                                        <div class="form-group is-empty"><input type="email" class="form-control" placeholder="Название мероприятия" ng-model="ctrl.email"><span class="material-input"></span></div>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Название мероприятия" ng-model="data.nameEvent"><span class="material-input"></span></div>
                                     </div>
 
 
@@ -73,7 +68,7 @@
                                              <span class="input-group-addon">
                                               <i class="material-icons">event_available</i>
                                              </span>
-                                        <div class="form-group is-empty"><input type="email" class="form-control" placeholder="Тип мероприятия" ng-model="ctrl.email"><span class="material-input"></span></div>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Тип мероприятия" ng-model="data.typeEvent"><span class="material-input"></span></div>
                                     </div>
 
 
@@ -81,7 +76,7 @@
                                              <span class="input-group-addon">
                                                <i class="material-icons">event_available</i>
                                              </span>
-                                        <div class="form-group is-empty"><input type="email" class="form-control" placeholder="Подтип мероприятия" ng-model="ctrl.email"><span class="material-input"></span></div>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Подтип мероприятия" ng-model="data.subTypeEvent"><span class="material-input"></span></div>
                                     </div>
 
 
@@ -94,14 +89,14 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">people</i>
                                              </span>
-                            <div class="form-group is-empty"><input type="email" class="form-control" placeholder="Количество участников, общее" ng-model="ctrl.email"><span class="material-input"></span></div>
+                            <div class="form-group is-empty"><input type="number" class="form-control" placeholder="Количество участников, общее" ng-model="data.countPeopleEventCommon"><span class="material-input"></span></div>
                         </div>
 
                         <div class="input-group">
                                              <span class="input-group-addon">
                                                 <i class="material-icons">pregnant_woman</i>
                                              </span>
-                            <div class="form-group is-empty"><input type="password" placeholder="Из них женщин" class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
+                            <div class="form-group is-empty"><input type="number" placeholder="Из них женщин" class="form-control" ng-model="data.countWomanEventCommon"><span class="material-input"></span></div>
                         </div>
 
 
@@ -110,14 +105,14 @@
                                              <span class="input-group-addon">
                                                  <i class="material-icons">people</i>
                                              </span>
-                            <div class="form-group is-empty"><input type="password" placeholder="Количество фасилитаторов, общее" class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
+                            <div class="form-group is-empty"><input type="number" placeholder="Количество фасилитаторов, общее" class="form-control" ng-model="data.countFacilatatorEventCommon"><span class="material-input"></span></div>
                         </div>
 
                         <div class="input-group">
                                              <span class="input-group-addon">
                                                  <i class="material-icons">pregnant_woman</i>
                                              </span>
-                            <div class="form-group is-empty"><input type="password" placeholder="Из них женщин" class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
+                            <div class="form-group is-empty"><input type="number" placeholder="Из них женщин" class="form-control" ng-model="data.countFacilatatorWomanEventCommon"><span class="material-input"></span></div>
                         </div>
 
 
@@ -125,7 +120,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">people</i>
                                              </span>
-                            <div class="form-group is-empty"><input type="password" placeholder="Количество спикеров, общее" class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
+                            <div class="form-group is-empty"><input type="number" placeholder="Количество спикеров, общее" class="form-control" ng-model="data.countSpeakerEventCommon"><span class="material-input"></span></div>
                         </div>
 
 
@@ -133,7 +128,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">pregnant_woman</i>
                                              </span>
-                            <div class="form-group is-empty"><input type="password" placeholder="Из них женщин" class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
+                            <div class="form-group is-empty"><input type="number" placeholder="Из них женщин" class="form-control" ng-model="data.countSpeakerWomanEventCommon"><span class="material-input"></span></div>
                         </div>
 
                     </div>
@@ -185,7 +180,7 @@
     <md-dialog-actions layout="row">
 
         <span flex></span>
-        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+        <md-button class="md-raised md-primary" ng-click="addEvent()">
             Сохранить
         </md-button>
 

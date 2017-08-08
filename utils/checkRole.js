@@ -8,6 +8,10 @@ const validator = require('../utils/validator');
 const AuthService = require('../services/Auth');
 const RoleService = require('../services/RoleService');
 const CountryService = require('../services/CountryService');
+const EventService = require('../services/EventService');
+
+
+
 const jsonwebtoken = require('jsonwebtoken');
 
 
@@ -236,6 +240,82 @@ module.exports = {
 
 
     },
+
+
+
+
+    forEvents: async (SeesionToken) => {
+
+
+
+
+        let AdminRole = await RoleService.getAllRoles();
+
+
+
+
+
+
+
+
+        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+
+
+        let result = await AuthService.checkUserById(userId);
+
+
+
+
+        if (validator.checkProps(result)) {
+
+            //Здесь ловим рута
+            if(result.role.toString() === AdminRole[0]._id.toString()){
+
+
+                return await EventService.getEvent();
+
+                //Здесь ловим 2 Админа
+            } else if (result.role.toString() === AdminRole[1]._id.toString()) {
+
+                let allEvents = await EventService.getEventByCountryId(result.country.toString());
+
+
+                return allEvents;
+
+
+            } else {
+
+                return false;
+
+
+            }
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 
 };
 

@@ -85,10 +85,10 @@
                                 </td>
 
                             <td md-cell>{{data.id}}</td>
-                            <td md-cell>{{data.name}}</td>
-                            <td md-cell>{{data.place}}</td>
-                            <td md-cell>{{data.type}}</td>
-                            <td md-cell>{{data.dateOfEvent | date : "dd.MM.y"}}</td>
+                            <td md-cell>{{data.nameEvent}}</td>
+                            <td md-cell>{{data.nameCountry}}</td>
+                            <td md-cell>{{data.typeEvent}}</td>
+                            <td md-cell>{{data.myDate | date : "dd.MM.y"}}</td>
 
 
 
@@ -106,7 +106,7 @@
 
 
                             <td md-cell> <md-button class="md-icon-button" aria-label="More">
-                                <i class="material-icons" ng-click="addForm(data._id, $index, $event)">attach_file</i>
+                                <i class="material-icons" ng-click="addForm(data._id, $index, $event)">{{data.formIcon}}</i>
                             </md-button></td>
 
 

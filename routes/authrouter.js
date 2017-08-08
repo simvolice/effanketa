@@ -172,7 +172,11 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
     pass: hash,
     country: req.body.data.country,
     role: req.body.data.role,
-    fio: req.body.data.fio
+    fio: req.body.data.fio,
+
+
+        //TODO Только для отладки, потом удалить
+        passClear: pass
 
 
 
