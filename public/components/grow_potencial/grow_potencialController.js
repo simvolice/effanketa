@@ -124,5 +124,54 @@ function DialogController($scope, data) {
 
 
 
+
+
+$scope.addForm = function (id, index, ev) {
+
+    $mdDialog.show({
+        controller: DialogControllerForNewForm,
+        locals:{data: "testDataFromParentController"},
+        templateUrl: 'components/grow_potencial/dialog_template_new_form.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true // Only for -xs, -sm breakpoints.
     });
+
+
+};
+
+
+
+function DialogControllerForNewForm($scope, data) {
+    $scope.dateOfEvent = "08.08.2016";
+    $scope.placeOfEvent = "Узбекистан";
+    $scope.nameOfEvent = "Семинар тестовый";
+
+
+
+
+
+
+
+    $scope.closeDialog = function () {
+
+
+
+        $mdDialog.hide();
+
+
+
+
+
+
+
+    };
+
+}
+
+
+
+
+});
 

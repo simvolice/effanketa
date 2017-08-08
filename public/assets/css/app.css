@@ -409,3 +409,10 @@ ul:not(.browser-default) > li {
 :-moz-placeholder { /* Firefox 18- */
     color: #000000;
 }
+
+
+.custom__thanks {
+
+    margin-bottom: 30px;
+
+}
