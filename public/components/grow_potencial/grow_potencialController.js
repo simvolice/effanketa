@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope, $timeout) {
+angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope, $timeout, $mdDialog) {
 
 
 
@@ -13,9 +13,7 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
     $scope.data = [];
     $scope.arrForInsert = [];
 
-    $scope.data =
-
-        [{"icon": "add", "id":1,"name":"Gisella","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017"},
+    $scope.data = [{"icon": "add", "id":1,"name":"Gisella","place":"Egypt","type":"instapayment","dateOfEvent":"6/15/2017"},
         {"icon": "add", "id":2,"name":"Leesa","place":"Indonesia","type":"jcb","dateOfEvent":"6/11/2017"},
         {"icon": "add", "id":3,"name":"Ruggiero","place":"Sweden","type":"jcb","dateOfEvent":"7/9/2017"},
         {"icon": "add", "id":4,"name":"Penny","place":"Mongolia","type":"china-unionpay","dateOfEvent":"9/12/2016"},
@@ -77,5 +75,54 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
     };
 
 
-});
+
+
+
+
+
+        $scope.showModalWnd = function(ev) {
+            $mdDialog.show({
+                controller: DialogController,
+                locals:{data: "testDataFromParentController"},
+                templateUrl: 'components/grow_potencial/dialog_template.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
+        };
+
+function DialogController($scope, data) {
+
+       $scope.data = data;
+
+
+
+
+
+
+
+    $scope.closeDialog = function () {
+
+
+
+        $mdDialog.hide();
+
+
+
+
+
+
+
+    };
+
+
+
+
+
+    }
+
+
+
+    });
 

@@ -391,3 +391,21 @@ ul:not(.browser-default) > li {
 }
 
 /*Конец Аккордеон из материала*/
+
+
+
+
+
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #000000;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: #000000;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: #000000;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: #000000;
+}

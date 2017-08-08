@@ -34,7 +34,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="showModalWnd($event)">Добавить запись</button>
 
 
                     </div>
@@ -61,6 +61,7 @@
 
                             <th md-column>Обновить</th>
                             <th md-column>Удалить</th>
+                            <th md-column>Добавить анкету</th>
 
                         </tr>
                         </thead>
@@ -74,7 +75,14 @@
 
 
 
-                            <td md-cell><i class="material-icons" ng-click="plusRow($index, $event, data.id)">{{data.icon}}</i></td>
+                            <td md-cell>
+
+                                <md-button class="md-icon-button" aria-label="More">
+                                    <i class="material-icons" ng-click="plusRow($index, $event, data.id)">{{data.icon}}</i>
+                                </md-button>
+
+
+                                </td>
 
                             <td md-cell>{{data.id}}</td>
                             <td md-cell>{{data.name}}</td>
@@ -88,9 +96,19 @@
 
 
 
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
+                            <td md-cell><md-button class="md-icon-button" aria-label="More">
+                                <i class="material-icons" ng-click="saveBtn(data)">done_all</i>
+                            </md-button></td>
 
-                            <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+                            <td md-cell> <md-button class="md-icon-button" aria-label="More">
+                                <i class="material-icons" ng-click="delete(data._id, $index)">delete</i>
+                            </md-button></td>
+
+
+                            <td md-cell> <md-button class="md-icon-button" aria-label="More">
+                                <i class="material-icons" ng-click="addForm(data._id, $index)">attach_file</i>
+                            </md-button></td>
+
 
 
 
