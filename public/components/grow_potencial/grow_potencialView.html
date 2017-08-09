@@ -78,7 +78,7 @@
                             <td md-cell>
 
                                 <md-button class="md-icon-button" aria-label="More">
-                                    <i class="material-icons" ng-click="plusRow($index, $event, data.id)">{{data.icon}}</i>
+                                    <i class="material-icons" ng-click="plusRow($index, $event, data._id)">{{data.icon}}</i>
                                 </md-button>
 
 
@@ -101,12 +101,12 @@
                             </md-button></td>
 
                             <td md-cell> <md-button class="md-icon-button" aria-label="More">
-                                <i class="material-icons" ng-click="delete(data._id, $index)">delete</i>
+                                <i class="material-icons" ng-click="delete(data, $index)">delete</i>
                             </md-button></td>
 
 
                             <td md-cell> <md-button class="md-icon-button" aria-label="More">
-                                <i class="material-icons" ng-click="addForm(data._id, $index, $event)">{{data.formIcon}}</i>
+                                <i class="material-icons" ng-click="addForm(data, $event)">{{data.formIcon}}</i>
                             </md-button></td>
 
 

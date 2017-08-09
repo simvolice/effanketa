@@ -82,6 +82,14 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('events');
 
+            const colForms = dbConnect.getConnect().collection('forms');
+
+
+
+
+
+            await colForms.deleteMany({parentId: ObjectId(id)});
+
 
 
 

@@ -29,3 +29,20 @@ angular.module('app').factory("GetEvent", function($resource) {
 angular.module('app').factory("UpdEvent", function($resource) {
     return $resource("/updevent");
 });
+
+
+
+
+angular.module('app').factory("AddForm", function($resource) {
+    return $resource("/addform");
+});
+
+
+angular.module('app').factory("GetForm", function($resource) {
+    return $resource("/getform");
+});
+
+
+angular.module('app').factory("DelForm", function($resource) {
+    return $resource("/delform");
+});

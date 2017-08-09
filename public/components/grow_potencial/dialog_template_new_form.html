@@ -44,7 +44,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">event</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Дата проведения: <strong>{{dateOfEvent}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>Дата проведения: <strong>{{data.myDate | date : "dd.MM.y"}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -56,7 +56,7 @@
                                              <span class="input-group-addon">
                                               <i class="material-icons">location_on</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Место проведения: <strong>{{placeOfEvent}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>Место проведения: <strong>{{data.nameCountry}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -66,7 +66,7 @@
                                              <span class="input-group-addon">
                                             <i class="material-icons">event_available</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Название мероприятия: <strong>{{nameOfEvent}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>Название мероприятия: <strong>{{data.nameEvent}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -77,8 +77,8 @@
 
                                     <div class="row">
 
-                                        <p class="text-center">Уважаемый участник,
-                                            Любезно просим Вас, ответить на вопросы анкеты, которая поможет улучшить содержательную и организационную части последующих мероприятий, организуемых в рамках проекта CAMP4ASB. Информация будет использована в обобщенном виде, и Вы можете заполнить анкету без указания персональных данных.</p>
+                                        <p class="text-center"><strong>Уважаемый участник,
+                                            Любезно просим Вас, ответить на вопросы анкеты, которая поможет улучшить содержательную и организационную части последующих мероприятий, организуемых в рамках проекта CAMP4ASB. Информация будет использована в обобщенном виде, и Вы можете заполнить анкету без указания персональных данных.</strong></p>
 
 
 
@@ -94,7 +94,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">email</i>
                                              </span>
-                                            <div class="form-group is-empty"><input type="email" placeholder="Электронный адрес" class="form-control" ng-model="ctrl.pass"><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><input type="email" placeholder="Электронный адрес" class="form-control" ng-model="data.email"><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -145,7 +145,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques1" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -216,7 +216,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques2" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -286,7 +286,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques3" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -358,7 +358,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques4" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -431,7 +431,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques5" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -503,7 +503,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques6" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -579,7 +579,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques7" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -653,7 +653,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques8" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -724,7 +724,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques9" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -795,7 +795,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques10" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -868,7 +868,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques11" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -929,7 +929,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques12" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -980,7 +980,7 @@
 
                                                         <md-input-container class="md-block">
                                                             <label>Текст</label>
-                                                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                            <textarea ng-model="data.ques13" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
 
@@ -1022,7 +1022,7 @@
 
                                                         <md-input-container class="md-block">
                                                             <label>Текст</label>
-                                                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                            <textarea ng-model="data.ques14" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
 
@@ -1064,7 +1064,7 @@
 
                                                         <md-input-container class="md-block">
                                                             <label>Текст</label>
-                                                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                            <textarea ng-model="data.ques15" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
 
@@ -1106,7 +1106,7 @@
 
                                                         <md-input-container class="md-block">
                                                             <label>Текст</label>
-                                                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                            <textarea ng-model="data.ques16" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
 
@@ -1157,7 +1157,7 @@
                                                     <div class="row">
 
 
-                                                        <md-radio-group ng-model="data.group1" layout="row">
+                                                        <md-radio-group ng-model="data.ques17" layout="row">
 
                                                             <md-radio-button value="1">1</md-radio-button>
                                                             <md-radio-button value="2"> 2 </md-radio-button>
@@ -1221,7 +1221,7 @@
 
                                                         <md-input-container class="md-block">
                                                             <label>Текст</label>
-                                                            <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                            <textarea ng-model="data.ques18" md-maxlength="150" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
 
@@ -1275,20 +1275,20 @@
 
 
 
-                                                            <md-radio-group ng-model="data.group1">
+                                                            <md-radio-group ng-model="data.ques19">
 
-                                                                <md-radio-button>Государственное учреждение
+                                                                <md-radio-button value="Государственное учреждение">Государственное учреждение
                                                                 </md-radio-button>
-                                                                <md-radio-button>Региональную организацию</md-radio-button>
-                                                                <md-radio-button>НПО</md-radio-button>
-                                                                <md-radio-button>Академическое сообщество</md-radio-button>
-                                                                <md-radio-button>Ассоциацию фермеров</md-radio-button>
-                                                                <md-radio-button>Ассоциацию малого и среднего бизнеса
+                                                                <md-radio-button value="Региональную организацию">Региональную организацию</md-radio-button>
+                                                                <md-radio-button value="НПО">НПО</md-radio-button>
+                                                                <md-radio-button value="Академическое сообщество">Академическое сообщество</md-radio-button>
+                                                                <md-radio-button value="Ассоциацию фермеров">Ассоциацию фермеров</md-radio-button>
+                                                                <md-radio-button value="Ассоциацию малого и среднего бизнеса">Ассоциацию малого и среднего бизнеса
                                                                 </md-radio-button>
-                                                                <md-radio-button>Международную организацию
+                                                                <md-radio-button value="Международную организацию">Международную организацию
                                                                 </md-radio-button>
-                                                                <md-radio-button>СМИ</md-radio-button>
-                                                                <md-radio-button>Другое</md-radio-button>
+                                                                <md-radio-button value="СМИ">СМИ</md-radio-button>
+                                                                <md-radio-button value="Другое">Другое</md-radio-button>
 
                                                             </md-radio-group>
 
@@ -1321,11 +1321,11 @@
 
 
 
-                                                            <md-radio-group ng-model="data.group1">
+                                                            <md-radio-group ng-model="data.ques20">
 
-                                                                <md-radio-button>Мужской
+                                                                <md-radio-button value="Мужской">Мужской
                                                                 </md-radio-button>
-                                                                <md-radio-button>Женский</md-radio-button>
+                                                                <md-radio-button value="Женский">Женский</md-radio-button>
 
 
                                                             </md-radio-group>
@@ -1359,14 +1359,14 @@
 
 
 
-                                                            <md-radio-group ng-model="data.group1">
+                                                            <md-radio-group ng-model="data.ques21">
 
-                                                                <md-radio-button>25-29</md-radio-button>
-                                                                <md-radio-button>30-34</md-radio-button>
-                                                                <md-radio-button>35-39</md-radio-button>
-                                                                <md-radio-button>40-44</md-radio-button>
-                                                                <md-radio-button>45-49</md-radio-button>
-                                                                <md-radio-button>50-и старше</md-radio-button>
+                                                                <md-radio-button value="25-29">25-29</md-radio-button>
+                                                                <md-radio-button value="30-34">30-34</md-radio-button>
+                                                                <md-radio-button value="35-39">35-39</md-radio-button>
+                                                                <md-radio-button value="40-44">40-44</md-radio-button>
+                                                                <md-radio-button value="45-49">45-49</md-radio-button>
+                                                                <md-radio-button value="50-и старше">50-и старше</md-radio-button>
 
 
                                                             </md-radio-group>
@@ -1452,13 +1452,11 @@
     <md-dialog-actions layout="row">
 
 
-        <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Создать еще одну анкету
-        </md-button>
 
 
-        <span flex></span>
-        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+
+
+        <md-button class="md-raised md-primary" ng-click="save()">
             Сохранить
         </md-button>
 
