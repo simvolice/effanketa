@@ -25,3 +25,7 @@ angular.module('app').factory("DelEvent", function($resource) {
 angular.module('app').factory("GetEvent", function($resource) {
     return $resource("/getevent");
 });
+
+angular.module('app').factory("UpdEvent", function($resource) {
+    return $resource("/updevent");
+});

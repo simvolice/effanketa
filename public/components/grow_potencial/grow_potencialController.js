@@ -111,10 +111,123 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
     };
 
 
+    $scope.updateEvent = function(data, ev) {
+        $mdDialog.show({
+            controller: DialogControllerUpdateEvent,
+            locals:{data: data},
+            templateUrl: 'components/grow_potencial/dialog_template_upd_event.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: true // Only for -xs, -sm breakpoints.
+        });
+    };
 
 
 
-        $scope.showModalWnd = function(ev) {
+
+
+function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdEvent) {
+
+
+
+    $scope.data = {
+        _id: data._id,
+
+        allCountrys: [],
+
+
+        country: data.country,
+        myDate: new Date(data.myDate),
+
+        nameEvent: data.nameEvent,
+        typeEvent: data.typeEvent,
+        subTypeEvent: data.subTypeEvent,
+        countPeopleEventCommon: data.countPeopleEventCommon,
+        countWomanEventCommon: data.countWomanEventCommon,
+
+        countFacilatatorEventCommon: data.countFacilatatorEventCommon,
+        countFacilatatorWomanEventCommon: data.countFacilatatorWomanEventCommon,
+
+        countSpeakerEventCommon: data.countSpeakerEventCommon,
+        countSpeakerWomanEventCommon: data.countSpeakerWomanEventCommon
+
+
+    };
+
+    GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+        $scope.data.allCountrys = entry.resultFromDb;
+
+
+    });
+
+
+    $scope.save = function () {
+
+
+        UpdEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
+
+
+            if (result.code === 0) {
+
+
+
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+
+
+
+        });
+
+
+    };
+
+
+
+    $scope.closeDialog = function () {
+        GetEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+            $rootScope.data = result.resultFromDb;
+
+
+        });
+
+
+        $mdDialog.hide();
+    };
+
+
+
+
+}
+
+
+
+
+
+$scope.showModalWnd = function(ev) {
             $mdDialog.show({
                 controller: DialogController,
                 locals:{data: "testDataFromParentController"},
@@ -149,13 +262,9 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast) {
         countSpeakerWomanEventCommon: 0
 
 
-
-
-
-
-
-
     };
+
+
     GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 

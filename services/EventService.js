@@ -182,7 +182,65 @@ module.exports = {
 
 
 
-    }
+    },
+
+
+
+
+    updEvent: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('events');
+
+            let nameCountry = await CountryService.getCountryById(objParams.country);
+
+
+
+            const result = await col.updateOne({ _id: ObjectId(objParams._id) },
+                {
+                    $currentDate: {
+                        lastModified: true
+                    },
+                    $set: {
+                        country: ObjectId(objParams.country),
+                        myDate: new Date( new Date(objParams.myDate).getTime() -  ( new Date(objParams.myDate).getTimezoneOffset() * 60000 ) ),
+                        nameCountry: nameCountry.name,
+
+
+                        nameEvent: objParams.nameEvent,
+                        typeEvent: objParams.typeEvent,
+                        subTypeEvent: objParams.subTypeEvent,
+                        countPeopleEventCommon: objParams.countPeopleEventCommon,
+                        countWomanEventCommon: objParams.countWomanEventCommon,
+                        countFacilatatorEventCommon: objParams.countFacilatatorEventCommon,
+                        countFacilatatorWomanEventCommon: objParams.countFacilatatorWomanEventCommon,
+                        countSpeakerEventCommon: objParams.countSpeakerEventCommon,
+                        countSpeakerWomanEventCommon: objParams.countSpeakerWomanEventCommon,
+                    }
+                });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
 
 
 

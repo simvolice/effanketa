@@ -81,4 +81,28 @@ router.post('/getevent', async (req, res, next) =>{
 
 });
 
+
+
+
+router.post('/updevent', checkSeesionToken, async (req, res, next) =>{
+
+    let result =  await EventService.updEvent(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+
+});
+
 module.exports = router;
