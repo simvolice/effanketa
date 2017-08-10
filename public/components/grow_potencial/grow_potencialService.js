@@ -46,3 +46,12 @@ angular.module('app').factory("GetForm", function($resource) {
 angular.module('app').factory("DelForm", function($resource) {
     return $resource("/delform");
 });
+
+angular.module('app').factory("UpdForm", function($resource) {
+    return $resource("/updform");
+});
+
+
+angular.module('app').factory("GetOneForm", function($resource) {
+    return $resource("/getoneform");
+});

@@ -209,17 +209,235 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
 
 
 
-    $scope.updateEvent = function(data, ev) {
-        $mdDialog.show({
-            controller: DialogControllerUpdateEvent,
-            locals:{data: data},
-            templateUrl: 'components/grow_potencial/dialog_template_upd_event.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: true // Only for -xs, -sm breakpoints.
-        });
+    $scope.updateEvent = function(data, ev, index) {
+
+
+        if (data.hasOwnProperty('parentId')) {
+
+            $mdDialog.show({
+                controller: DialogControllerUpdateForm,
+                locals:{data: data, index: index},
+                templateUrl: 'components/grow_potencial/dialog_template_upd_form.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
+
+
+        } else {
+
+
+            $mdDialog.show({
+                controller: DialogControllerUpdateEvent,
+                locals:{data: data},
+                templateUrl: 'components/grow_potencial/dialog_template_upd_event.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
+
+        }
+
+
+
+
+
+
+
     };
+
+
+function DialogControllerUpdateForm($scope, data, UpdForm, index, GetOneForm) {
+
+
+
+    $scope.data = {
+
+        id: data._id,
+        myDate: data.dateOfEvent,
+        nameCountry: data.nameOfCountry,
+        nameEvent: data.nameEvent,
+        email: data.email,
+        question1: 'Цели данного мероприятия были четко определены',
+        ques1: data.ques1,
+
+        question2: 'Взаимодействие между участниками поощрялось',
+        ques2: data.ques2,
+
+        question3: 'Темы имели отношение к тому, чем я занимаюсь',
+        ques3: data.ques3,
+
+        question4: 'Содержание было хорошо структурировано и понятно',
+        ques4: data.ques4,
+
+        question5: 'Раздаточные материалы были полезны',
+        ques5: data.ques5,
+
+        question6: 'Полученная информация/знания и навыки будут полезны мне в работе',
+        ques6: data.ques6,
+
+
+        question7: 'Тренер/модератор хорошо знал тему',
+        ques7: data.ques7,
+
+
+        question8: 'Тренер/модератор был хорошо подготовлен',
+        ques8: data.ques8,
+
+
+        question9: 'Цели мероприятия были достигнуты',
+        ques9: data.ques9,
+
+        question10: 'Время выделенное для мероприятия было достаточным',
+        ques10: data.ques10,
+
+        question11: 'Помещения для проведения мероприятия и используемая участниками инфраструктура были удобными',
+        ques11: data.ques11,
+
+        question12: 'Оцените свою общую удовлетворенность проведенным мероприятием используя 5-бальную шкалу',
+        ques12: data.ques12,
+
+
+
+        question13: 'Что вам понравилось больше всего?',
+        ques13: data.ques13,
+
+
+        question14: 'Что можно было бы улучшить?',
+        ques14: data.ques14,
+
+
+        question15: 'Как вы планируете использовать полученные знания/информацию?',
+        ques15: data.ques15,
+
+
+        question16: 'В каких темах вы заинтересованы и хотели бы пройти обучение/получать информацию в дальнейшем?',
+        ques16: data.ques16,
+
+
+
+        question17: 'Как вы оцениваете организацию мероприятия?',
+        ques17: data.ques17,
+
+
+        question18: 'Пожалуйста, отметьте, есть ли у Вас замечания или пожелания в целом по организации мероприятия?',
+        ques18: data.ques18,
+
+
+        question19: 'Вы представляете',
+        ques19: data.ques19,
+
+
+
+        question20: 'Пол',
+        ques20: data.ques20,
+
+
+
+        question21: 'Возрастная группа',
+        ques21: data.ques21
+
+
+
+
+
+
+
+
+
+
+
+    };
+
+
+
+    $scope.save = function () {
+        UpdForm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
+
+
+            if (result.code === 0) {
+
+
+
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+
+
+
+        });
+
+    };
+
+
+    $scope.closeDialog = function () {
+
+
+
+
+        GetOneForm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.id}, function(result) {
+
+
+            if (result.code === 0) {
+
+
+                $rootScope.data.splice(index, 1);
+                $rootScope.data.splice(index, 0, result.resultFromDb);
+
+
+
+
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+
+
+
+        });
+
+
+        $mdDialog.hide();
+
+
+
+
+
+
+
+    };
+
+
+}
 
 
 

@@ -1,0 +1,1473 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать анкету</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+
+                        <md-card>
+
+                            <div class="content">
+
+
+                                <div class="col-md-12">
+                                    <div class="row">
+
+                                        <h4 class="text-center"><strong>Анкета-опрос о проведенном мероприятии</strong></h4>
+
+                                    </div>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Дата проведения: <strong>{{data.myDate | date : "dd.MM.y"}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                              <i class="material-icons">location_on</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Место проведения: <strong>{{data.nameCountry}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                            <i class="material-icons">event_available</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Название мероприятия: <strong>{{data.nameEvent}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <p class="text-center"><strong>Уважаемый участник,
+                                            Любезно просим Вас, ответить на вопросы анкеты, которая поможет улучшить содержательную и организационную части последующих мероприятий, организуемых в рамках проекта CAMP4ASB. Информация будет использована в обобщенном виде, и Вы можете заполнить анкету без указания персональных данных.</strong></p>
+
+
+
+                                    </div>
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">email</i>
+                                             </span>
+                                            <div class="form-group is-empty"><input type="email" placeholder="Электронный адрес" class="form-control" ng-model="data.email"><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h5><strong>На сколько Вы согласны со следующими
+                                                    утверждениями:</strong></h5>
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>1) Цели данного мероприятия были четко определены</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques1" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>2) Взаимодействие между участниками поощрялось</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques2" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>3) Темы имели отношение к тому, чем я занимаюсь</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques3" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>4) Содержание было хорошо структурировано и понятно</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques4" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>5) Раздаточные материалы были полезны</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques5" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>6) Полученная информация/знания и навыки будут полезны мне в работе</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques6" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>7) Тренер/модератор хорошо знал тему</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques7" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>8) Тренер/модератор был хорошо подготовлен</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques8" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>9) Цели мероприятия были достигнуты</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques9" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>10) Время выделенное для мероприятия было достаточным</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques10" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>11) Помещения для проведения мероприятия и используемая участниками инфраструктура были удобными</h6>
+
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью не согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques11" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Полностью согласен</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>12) Оцените свою общую удовлетворенность проведенным мероприятием используя 5-бальную шкалу</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques12" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>13) Что вам понравилось больше всего?</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Текст</label>
+                                                            <textarea ng-model="data.ques13" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>14) Что можно было бы улучшить?</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Текст</label>
+                                                            <textarea ng-model="data.ques14" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>15) Как вы планируете использовать полученные знания/информацию?</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Текст</label>
+                                                            <textarea ng-model="data.ques15" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>16)  В каких темах вы заинтересованы и хотели бы пройти обучение/получать информацию в дальнейшем?</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Текст</label>
+                                                            <textarea ng-model="data.ques16" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>17) Как вы оцениваете организацию мероприятия?</h6>
+
+
+                                                <div class="col-md-1">
+                                                    <div class="row">
+
+
+                                                        <p>Плохо</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-radio-group ng-model="data.ques17" layout="row">
+
+                                                            <md-radio-button value="1">1</md-radio-button>
+                                                            <md-radio-button value="2"> 2 </md-radio-button>
+                                                            <md-radio-button value="3">3</md-radio-button>
+
+                                                            <md-radio-button value="4">4</md-radio-button>
+
+                                                            <md-radio-button value="5">5</md-radio-button>
+
+                                                        </md-radio-group>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row">
+
+
+                                                        <p>Очень хорошо</p>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>18) Пожалуйста, отметьте, есть ли у Вас замечания или пожелания в целом по организации мероприятия?</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Текст</label>
+                                                            <textarea ng-model="data.ques18" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h5><strong>Информация об участнике:</strong></h5>
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-4">
+
+                                            <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                                <div class="form-group is-empty">
+
+                                                    <h6>Вы представляете</h6>
+
+
+
+
+
+
+                                                            <md-radio-group ng-model="data.ques19">
+
+                                                                <md-radio-button value="Государственное учреждение">Государственное учреждение
+                                                                </md-radio-button>
+                                                                <md-radio-button value="Региональную организацию">Региональную организацию</md-radio-button>
+                                                                <md-radio-button value="НПО">НПО</md-radio-button>
+                                                                <md-radio-button value="Академическое сообщество">Академическое сообщество</md-radio-button>
+                                                                <md-radio-button value="Ассоциацию фермеров">Ассоциацию фермеров</md-radio-button>
+                                                                <md-radio-button value="Ассоциацию малого и среднего бизнеса">Ассоциацию малого и среднего бизнеса
+                                                                </md-radio-button>
+                                                                <md-radio-button value="Международную организацию">Международную организацию
+                                                                </md-radio-button>
+                                                                <md-radio-button value="СМИ">СМИ</md-radio-button>
+                                                                <md-radio-button value="Другое">Другое</md-radio-button>
+
+                                                            </md-radio-group>
+
+
+
+
+
+
+
+
+
+
+                                                    <span class="material-input"></span></div>
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                                <div class="form-group is-empty">
+
+                                                    <h6>Пол</h6>
+
+
+
+
+
+
+                                                            <md-radio-group ng-model="data.ques20">
+
+                                                                <md-radio-button value="Мужской">Мужской
+                                                                </md-radio-button>
+                                                                <md-radio-button value="Женский">Женский</md-radio-button>
+
+
+                                                            </md-radio-group>
+
+
+
+
+
+
+
+
+
+                                                    <span class="material-input"></span></div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="col-md-4">
+
+                                            <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                                <div class="form-group is-empty">
+
+                                                    <h6>Возрастная группа</h6>
+
+
+
+
+
+
+                                                            <md-radio-group ng-model="data.ques21">
+
+                                                                <md-radio-button value="25-29">25-29</md-radio-button>
+                                                                <md-radio-button value="30-34">30-34</md-radio-button>
+                                                                <md-radio-button value="35-39">35-39</md-radio-button>
+                                                                <md-radio-button value="40-44">40-44</md-radio-button>
+                                                                <md-radio-button value="45-49">45-49</md-radio-button>
+                                                                <md-radio-button value="50-и старше">50-и старше</md-radio-button>
+
+
+                                                            </md-radio-group>
+
+
+
+
+
+
+
+
+
+
+                                                    <span class="material-input"></span></div>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <hr>
+
+
+                                    <div class="row">
+
+                                        <h4 class="text-center custom__thanks"><strong>Спасибо большое за участие!</strong></h4>
+
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+
+
+
+
+
+        <md-button class="md-raised md-primary" ng-click="save()">
+            Сохранить
+        </md-button>
+
+
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

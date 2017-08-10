@@ -70,4 +70,38 @@ router.post('/delform', checkSeesionToken, async (req, res, next) =>{
 });
 
 
+
+
+router.post('/updform', async (req, res, next) =>{
+
+    let result =  await FormService.updForm(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+});
+
+
+
+router.post('/getoneform', async (req, res, next) =>{
+
+    let result =  await FormService.getFormById(req.body.data);
+
+
+
+
+    res.json({"code": 0, "resultFromDb": result});
+
+});
+
 module.exports = router;
