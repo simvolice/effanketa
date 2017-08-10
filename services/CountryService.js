@@ -27,15 +27,18 @@ module.exports = {
 
           const result = await col.insertMany([{
 
-              name: "Казахстан"
+              name: "Казахстан",
+              flag: "assets/img/Flag_of_Kazakhstan.svg"
           }, {
 
-                  name: "Таджикистан"
+                  name: "Таджикистан",
+              flag: "assets/img/Flag_of_Tajikistan.svg"
               },
 
               {
 
-                  name: "Узбекистан"
+                  name: "Узбекистан",
+                  flag: "assets/img/Flag_of_Uzbekistan.svg"
               }
               ]
 

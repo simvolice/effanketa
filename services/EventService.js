@@ -252,5 +252,64 @@ module.exports = {
 
 
 
+    getPublicEvent: async () => {
+
+    try {
+
+
+        const col = dbConnect.getConnect().collection('events');
+
+
+
+
+
+        const result = await col.aggregate([
+            { $match : {} },
+
+            { $project : { country : 1 , myDate: 1, nameEvent: 1 } },
+            {
+                $lookup:
+                    {
+                        from: "countrys",
+                        localField: "country",
+                        foreignField: "_id",
+                        as: "country_docs"
+                    }
+            },
+
+            { $unwind : "$country_docs" },
+
+            { $project : { country : 0 , "country_docs._id": 0} }
+
+
+
+
+
+
+        ]).toArray();
+
+
+
+
+
+        return result;
+
+    } catch (err){
+
+
+        return err;
+
+    }
+
+
+
+
+
+
+
+},
+
+
+
 
 };

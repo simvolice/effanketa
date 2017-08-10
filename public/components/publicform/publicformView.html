@@ -1,0 +1,41 @@
+<div class="row" ng-controller="PublicFormCtrl">
+
+<div class="col-md-6 col-md-offset-3">
+    <md-content class="card">
+        <md-toolbar layout="row" class="md-hue-3">
+            <div class="md-toolbar-tools">
+                <span>Заполнить анкету-опросник</span>
+            </div>
+        </md-toolbar>
+        <md-content class="md-padding">
+
+
+            <md-list-item class="md-3-line" ng-repeat="item in allevent" ng-click="null">
+                <img ng-src="{{item.country_docs.flag}}?{{$index}}" class="md-avatar" alt="{{item.country_docs.name}}" />
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ item.nameEvent }}</h3>
+                    <h4>{{ item.myDate | date : "dd.MM.y" }}</h4>
+                    <p>{{ item.country_docs.name }}</p>
+                </div>
+
+
+                <md-button class="md-secondary" ng-click="addForm(item, $event)">
+                    <h6><strong>Начать заполнять анкету</strong></h6>
+                </md-button>
+            </md-list-item>
+
+
+        </md-content>
+
+
+
+
+
+    </md-content>
+</div>
+
+
+
+
+
+</div>

@@ -72,7 +72,7 @@ router.post('/delform', checkSeesionToken, async (req, res, next) =>{
 
 
 
-router.post('/updform', async (req, res, next) =>{
+router.post('/updform', checkSeesionToken, async (req, res, next) =>{
 
     let result =  await FormService.updForm(req.body.data);
 
@@ -93,7 +93,7 @@ router.post('/updform', async (req, res, next) =>{
 
 
 
-router.post('/getoneform', async (req, res, next) =>{
+router.post('/getoneform', checkSeesionToken, async (req, res, next) =>{
 
     let result =  await FormService.getFormById(req.body.data);
 
@@ -103,5 +103,28 @@ router.post('/getoneform', async (req, res, next) =>{
     res.json({"code": 0, "resultFromDb": result});
 
 });
+
+
+
+router.post('/addpublicform', async (req, res, next) =>{
+
+    let result =  await FormService.addForm(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+});
+
+
 
 module.exports = router;

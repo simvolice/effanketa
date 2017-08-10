@@ -52,4 +52,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+      .state('publicform', {
+          url: '/publicform',
+          templateUrl: 'components/publicform/publicformView.html',
+
+
+      })
+
+
 });
