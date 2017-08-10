@@ -45,7 +45,7 @@ if (process.env.DEPLOY === 'dev') {
         SECRETJSONWEBTOKEN: "5df9ed11-2bc3-4a2e-a4fc-780c271b25ac",
 
 
-        firstStart: true,
+        firstStart: false,
 
         hashAdmin: "$2a$10$/btJrdH5SXPxIuII9jiUg.JpgRkmJa2Y4A8TbX/X1KRciTVkx4waG"
 
