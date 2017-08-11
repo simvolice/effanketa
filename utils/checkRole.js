@@ -283,6 +283,14 @@ module.exports = {
 
                 return allEvents;
 
+//Здесь ловим 3 Админа
+            } else if(result.role.toString() === AdminRole[2]._id.toString()) {
+
+                let allEvents = await EventService.getEventByCountryId(result.country.toString());
+
+
+                return allEvents;
+
 
             } else {
 
