@@ -60,4 +60,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+      .state('credits', {
+          url: '/credits',
+          templateUrl: 'components/credits/creditsView.html',
+
+
+      })
+
+
 });

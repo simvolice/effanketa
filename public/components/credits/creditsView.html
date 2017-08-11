@@ -1,0 +1,148 @@
+<div class="row" ng-controller="CreditsCtrl">
+
+    <div class="col-md-12">
+
+
+
+
+        <md-content layout="column" flex class="custom__md-content__categ">
+
+            <md-card>
+
+
+
+                <md-toolbar class="md-table-toolbar md-default">
+
+
+                    <div class="md-toolbar-tools">
+
+
+                        <h3>Список администраторов</h3>
+
+
+                    </div>
+
+
+                    <div class="md-toolbar-tools">
+
+
+                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+
+
+                    </div>
+
+                    <div class="md-toolbar-tools">
+
+
+                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+
+
+                    </div>
+
+                </md-toolbar>
+
+                <!-- exact table from live demo -->
+                <md-table-container class="custom__fix__freez__head">
+
+                    <colgroup span="3"></colgroup>
+                    <colgroup span="2"></colgroup>
+                    <table md-table ng-model="ctrl.selected">
+                        <thead md-head fix-head>
+                        <tr md-row>
+
+                            <th md-column colspan="3" scope="colgroup"></th>
+
+                            <th class="right" md-column colspan="2" scope="colgroup">Страна</th>
+
+                        </tr>
+
+
+                        <tr md-row>
+
+                            <th md-column>№</th>
+                            <th md-column>ФИО</th>
+                            <th md-column>Роль</th>
+                            <th md-column>Валюта</th>
+                            <th md-column>Местное время</th>
+
+                            <th md-column>ФИО</th>
+                            <th md-column>Роль</th>
+
+                            <th md-column>ФИО</th>
+                            <th md-column>Роль</th>
+
+                        </tr>
+
+
+
+
+
+                        </thead>
+                        <tbody md-body>
+
+
+
+
+
+                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+
+
+
+
+
+                            <td md-cell>{{data.id}}</td>
+
+                            <td md-cell>{{data.first_name}}</td>
+                            <td md-cell>{{data.role}}</td>
+                            <td md-cell>{{data.currency}}</td>
+                            <td md-cell>{{data.date}}</td>
+
+
+
+
+
+
+
+
+
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </md-table-container>
+
+
+
+
+
+            </md-card>
+
+
+        </md-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
