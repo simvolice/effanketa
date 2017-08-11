@@ -34,7 +34,7 @@ module.exports = {
                 seq: 1
             }, {
                     _id: "eventid",
-                    seq: 0
+                    seq: 1
                 }]
 
             );

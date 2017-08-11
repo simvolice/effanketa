@@ -568,14 +568,14 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast) {
         nameEvent: "",
         typeEvent: "",
         subTypeEvent: "",
-        countPeopleEventCommon: 0,
-        countWomanEventCommon: 0,
+        countPeopleEventCommon: "",
+        countWomanEventCommon: "",
 
-        countFacilatatorEventCommon: 0,
-        countFacilatatorWomanEventCommon: 0,
+        countFacilatatorEventCommon: "",
+        countFacilatatorWomanEventCommon: "",
 
-        countSpeakerEventCommon: 0,
-        countSpeakerWomanEventCommon: 0
+        countSpeakerEventCommon: "",
+        countSpeakerWomanEventCommon: ""
 
 
     };
