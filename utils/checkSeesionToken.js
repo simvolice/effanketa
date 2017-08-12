@@ -23,29 +23,43 @@ module.exports = async (req, res, next) => {
 
   if (validator.checkProps(SeesionToken)) {
 
-    let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+    try {
+
+        let userId= jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+        let result = await AuthService.checkUserById(userId);
+
+        if (validator.checkProps(result)) {
+
+            next();
+
+        } else {
+
+            res.json({"code": 1});
 
 
+        }
 
-    let result = await AuthService.checkUserById(userId);
+    } catch (err) {
 
-    if (validator.checkProps(result)) {
-
-      next();
-
-    } else {
-
-      res.json({"code": "userNotFound"});
+        res.json({"code": 1});
 
 
     }
+
+
+
+
+
+
+
 
 
   } else {
 
 
 
-    res.json({"code": "sessionNot"});
+    res.json({"code": 1});
 
 
 

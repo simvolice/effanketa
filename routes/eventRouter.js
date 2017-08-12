@@ -60,7 +60,7 @@ router.post('/delevent', checkSeesionToken, async (req, res, next) =>{
 
 });
 
-router.post('/getevent', async (req, res, next) =>{
+router.post('/getevent', checkSeesionToken, async (req, res, next) =>{
 
 
     let result = await checkRole.forEvents(req.body.sessionToken);

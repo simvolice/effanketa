@@ -116,9 +116,9 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
-      let menuItems = await RoleService.getRoleByRole(result.role);
 
-      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "menuItems": menuItems.mainPageHtml, "fio": result.fio});
+
+      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "fio": result.fio});
 
 
     }else {
@@ -379,5 +379,26 @@ router.post('/getallusers', checkSeesionToken, async (req, res, next) =>{
 
 });
 
+
+
+router.post('/getmainpage', checkSeesionToken, async (req, res, next) =>{
+
+    let result = await checkRole.forMainPage(req.body.sessionToken);
+
+
+    if (result === false){
+
+        res.json({"code": 1});
+
+    } else {
+
+
+        res.json({"code": 0, "resultFromDb": result});
+
+    }
+
+
+
+});
 
 module.exports = router;

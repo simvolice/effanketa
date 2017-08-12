@@ -15,3 +15,8 @@ angular.module('app').factory("SendAuth", function($resource) {
 angular.module('app').factory("GetToken", function($resource) {
   return $resource("/gettokencsrf");
 });
+
+
+angular.module('app').factory("GetMainPage", function($resource) {
+    return $resource("/getmainpage");
+});

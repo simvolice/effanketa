@@ -4,8 +4,20 @@
 
 
 
-angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, GetPublicEvent, $mdToast, $mdDialog, $rootScope, $timeout) {
+angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, GetPublicEvent, $mdToast, $mdDialog, GetToken, $timeout) {
 
+    if (localStorage.getItem('tokenCSRF') === null) {
+
+        GetToken.get(function (result) {
+
+
+            localStorage.setItem("tokenCSRF", result.tokenCSRF);
+
+
+        });
+
+
+    }
 
 
     $scope.allevent = [];

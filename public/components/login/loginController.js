@@ -4,30 +4,57 @@
 
 
 
-angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope) {
+angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
 
 
-
-
-    if(localStorage.getItem('tokenCSRF') === null){
+    if (localStorage.getItem('tokenCSRF') === null) {
 
         GetToken.get(function (result) {
 
 
-
-
             localStorage.setItem("tokenCSRF", result.tokenCSRF);
+
+
+        });
+
+
+    } else if (localStorage.getItem('sessionToken') !== null) {
+
+        GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+            if (result.code === 0) {
+
+
+                $state.go("main");
+
+
+
+            } else {
+
+
+                localStorage.removeItem('sessionToken');
+                localStorage.removeItem('fio');
+                $rootScope.fio = false;
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Не удается войти.\n' +
+                            'Пожалуйста, проверьте правильность написания email и пароля.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+
+            }
 
 
 
         });
 
 
-    } else if(localStorage.getItem('sessionToken') !== null){
 
-        $state.go("main");
-
-        }
+    }
 
 
 
@@ -65,7 +92,7 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
 
 
 
-            localStorage.setItem("menuItems", result.menuItems);
+
             localStorage.setItem("sessionToken", result.sessionToken);
             localStorage.setItem("fio", result.fio);
             $rootScope.fio = localStorage.getItem('fio');

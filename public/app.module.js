@@ -56,7 +56,7 @@ app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
 
 
     this.exitClk = function () {
-        localStorage.removeItem('menuItems');
+
         localStorage.removeItem('sessionToken');
         localStorage.removeItem('fio');
         $rootScope.fio = false;

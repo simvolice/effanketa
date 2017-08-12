@@ -185,7 +185,7 @@ module.exports = {
 
 
 
-            const result = await col.find({}).project({mainPageHtml: 0}).toArray();
+            const result = await col.find({}).toArray();
 
 
 
