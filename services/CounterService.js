@@ -32,10 +32,26 @@ module.exports = {
             const result = await col.insertMany([{
                 _id: "userid",
                 seq: 1
-            }, {
+            },
+
+                {
                     _id: "eventid",
                     seq: 1
-                }]
+                },
+
+                {
+                    _id: "creditid",
+                    seq: 1
+                },
+
+
+                {
+                    _id: "table5id",
+                    seq: 1
+                }
+
+
+                ]
 
             );
 

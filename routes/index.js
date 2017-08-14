@@ -8,6 +8,7 @@ module.exports = function (app) {
     app.use('/', require('./roleRouter'));
     app.use('/', require('./formRouter'));
     app.use('/', require('./eventRouter'));
+    app.use('/', require('./creditsRouter'));
 
 
 };

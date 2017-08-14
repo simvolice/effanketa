@@ -9,6 +9,7 @@ const AuthService = require('../services/Auth');
 const RoleService = require('../services/RoleService');
 const CountryService = require('../services/CountryService');
 const EventService = require('../services/EventService');
+const CreditsService = require('../services/CreditsService');
 
 
 
@@ -371,6 +372,158 @@ module.exports = {
 
 
                 return AdminRole[2].mainPageHtml;
+
+
+            } else {
+
+                return false;
+
+
+            }
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+
+
+
+
+    forCredits: async (SeesionToken) => {
+
+
+
+
+        let AdminRole = await RoleService.getAllRoles();
+
+
+
+
+
+
+
+
+        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+
+
+        let result = await AuthService.checkUserById(userId);
+
+
+
+
+        if (validator.checkProps(result)) {
+
+            //Здесь ловим рута
+            if(result.role.toString() === AdminRole[0]._id.toString()){
+
+
+                return await CreditsService.getAllCredits();
+
+                //Здесь ловим 2 Админа
+            } else if (result.role.toString() === AdminRole[1]._id.toString()) {
+
+
+
+                return await CreditsService.getCreditsByIdCountry(result.country.toString());
+
+
+            } else {
+
+                return false;
+
+
+            }
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+
+
+
+
+
+
+    forTable5: async (SeesionToken) => {
+
+
+
+
+        let AdminRole = await RoleService.getAllRoles();
+
+
+
+
+
+
+
+
+        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+
+
+        let result = await AuthService.checkUserById(userId);
+
+
+
+
+        if (validator.checkProps(result)) {
+
+            //Здесь ловим рута
+            if(result.role.toString() === AdminRole[0]._id.toString()){
+
+
+                return await CreditsService.getAllTable5();
+
+                //Здесь ловим 2 Админа
+            } else if (result.role.toString() === AdminRole[1]._id.toString()) {
+
+
+
+                return await CreditsService.getTable5ByIdCountry(result.country.toString());
 
 
             } else {

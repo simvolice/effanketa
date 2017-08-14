@@ -416,3 +416,10 @@ ul:not(.browser-default) > li {
     margin-bottom: 30px;
 
 }
+
+
+.custom__thead__color {
+
+    background-color: #F1C232;
+
+}

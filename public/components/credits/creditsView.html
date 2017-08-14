@@ -1,121 +1,620 @@
 <div class="row" ng-controller="CreditsCtrl">
 
     <div class="col-md-12">
-
-
-
-
         <md-content layout="column" flex class="custom__md-content__categ">
 
-            <md-card>
+
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Таблица 1.3">
+                <md-content class="md-padding">
+                    <md-toolbar class="md-table-toolbar md-default">
 
 
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools">
+                        <div class="md-toolbar-tools">
 
 
-                        <h3>Список администраторов</h3>
+                            <h3>Таблица 1.3</h3>
 
 
-                    </div>
+                        </div>
 
 
-                    <div class="md-toolbar-tools">
+                        <div class="md-toolbar-tools">
 
 
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                            <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
 
 
-                    </div>
+                        </div>
 
-                    <div class="md-toolbar-tools">
-
-
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <div class="md-toolbar-tools">
 
 
-                    </div>
-
-                </md-toolbar>
-
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="2"></colgroup>
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
-
-                            <th md-column colspan="3" scope="colgroup"></th>
-
-                            <th class="right" md-column colspan="2" scope="colgroup">Страна</th>
-
-                        </tr>
+                            <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
 
 
-                        <tr md-row>
+                        </div>
 
-                            <th md-column>№</th>
-                            <th md-column>ФИО</th>
-                            <th md-column>Роль</th>
-                            <th md-column>Валюта</th>
-                            <th md-column>Местное время</th>
-
-                            <th md-column>ФИО</th>
-                            <th md-column>Роль</th>
-
-                            <th md-column>ФИО</th>
-                            <th md-column>Роль</th>
-
-                        </tr>
+                    </md-toolbar>
 
 
+                    <md-table-container class="custom__fix__freez__head">
+
+                        <colgroup span="4"></colgroup>
+                        <colgroup span="2"></colgroup>
+                        <colgroup span="3"></colgroup>
+                        <colgroup span="3"></colgroup>
+                        <colgroup span="3"></colgroup>
+                        <colgroup span="2"></colgroup>
+                        <table md-table ng-model="ctrl.selected">
+                            <thead md-head fix-head>
+                            <tr md-row>
+
+                                <th md-column colspan="4" scope="colgroup"></th>
+
+                                <th md-column colspan="2" scope="colgroup">Общий объем</th>
+                                <th md-column colspan="3" scope="colgroup">Прямые бенефециары (заемщики+члены семьи+наёмные работники)</th>
+                                <th md-column colspan="3" scope="colgroup">Непрямые бенефециары (члены семей)</th>
+                                <th md-column colspan="3" scope="colgroup">Непрямые бенефециары (наемные работники)</th>
+                                <th md-column colspan="2" scope="colgroup">Создаваемые мощности/Ожидаемый эффект</th>
+
+                            </tr>
 
 
+                            <tr md-row>
 
-                        </thead>
-                        <tbody md-body>
+                                <th md-column>№</th>
+                                <th md-column>Категория кредитов</th>
+                                <th md-column>Кол-во субпроектов</th>
+                                <th md-column>Страна</th>
 
 
 
 
-
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
+                                <th md-column>В долларах</th>
+                                <th md-column>Нац. валюта</th>
 
 
 
-                            <td md-cell>{{data.id}}</td>
-
-                            <td md-cell>{{data.first_name}}</td>
-                            <td md-cell>{{data.role}}</td>
-                            <td md-cell>{{data.currency}}</td>
-                            <td md-cell>{{data.date}}</td>
+                                <th md-column>Всего</th>
+                                <th md-column>Муж.</th>
+                                <th md-column>Жен.</th>
 
 
 
+                                <th md-column>Всего</th>
+                                <th md-column>Муж.</th>
+                                <th md-column>Жен.</th>
 
 
+                                <th md-column>Всего</th>
+                                <th md-column>Муж.</th>
+                                <th md-column>Жен.</th>
 
 
+                                <th md-column>План $</th>
+                                <th md-column>Факт $</th>
+                                <th md-column>Сохранить</th>
+                                <th md-column>Удалить</th>
 
 
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
+                            </tr>
 
 
 
 
 
-            </md-card>
+                            </thead>
+                            <tbody md-body>
+
+
+
+
+
+                            <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                <td md-cell>{{data.id}}</td>
+
+
+                                <td md-cell><input type="text" value="{{data.categcredits}}" ng-model="data.categcredits"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.countsubproject}}" ng-model="data.countsubproject"></td>
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                    </select>
+
+                                </td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.commonAmountInDollors}}" ng-model="data.commonAmountInDollors"></td>
+
+
+                                <td md-cell><input type="text" value="{{data.commonAmountInNatCurrency}}" ng-model="data.commonAmountInNatCurrency"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.DirectBeneficiariesAll}}" ng-model="data.DirectBeneficiariesAll"></td>
+
+
+                                <td md-cell><input type="text" value="{{data.DirectBeneficiariesMale}}" ng-model="data.DirectBeneficiariesMale"></td>
+
+
+                                <td md-cell><input type="text" value="{{data.DirectBeneficiariesFemale}}" ng-model="data.DirectBeneficiariesFemale"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesMemberFamilyAll}}" ng-model="data.NonDirectBeneficiariesMemberFamilyAll"></td>
+
+
+                                <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesMemberFamilyMale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyMale"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesMemberFamilyFemale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyFemale"></td>
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesHiredAll}}" ng-model="data.NonDirectBeneficiariesHiredAll"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesHiredMale}}" ng-model="data.NonDirectBeneficiariesHiredMale"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesHiredFemale}}" ng-model="data.NonDirectBeneficiariesHiredFemale"></td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.CreatePowerPlan}}" ng-model="data.CreatePowerPlan"></td>
+
+
+                                <td md-cell><input type="text" value="{{data.CreatePowerFact}}" ng-model="data.CreatePowerFact"></td>
+
+
+                                <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
+
+
+
+                                <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+
+                </md-content>
+            </md-tab>
+            <md-tab label="Таблица 5">
+                <md-content class="md-padding">
+                    <md-toolbar class="md-table-toolbar md-default">
+
+
+                        <div class="md-toolbar-tools">
+
+
+                            <h3>Таблица 5</h3>
+
+
+                        </div>
+
+
+                        <div class="md-toolbar-tools">
+
+
+                            <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+
+
+                        </div>
+
+                        <div class="md-toolbar-tools">
+
+
+                            <button class="btn btn-primary" ng-click="addBtnTable5()">Добавить запись</button>
+
+
+                        </div>
+
+                    </md-toolbar>
+
+
+                    <md-table-container class="custom__fix__freez__head">
+                        <colgroup span="1"></colgroup>
+                        <colgroup span="1"></colgroup>
+                        <colgroup span="6"></colgroup>
+                        <colgroup span="6"></colgroup>
+                        <colgroup span="8"></colgroup>
+                        <colgroup span="6"></colgroup>
+                        <colgroup span="4"></colgroup>
+
+                        <table md-table ng-model="ctrl.selected">
+                            <thead md-head fix-head>
+                            <tr md-row>
+
+                                <th md-column colspan="1" scope="colgroup"></th>
+                                <th md-column colspan="1" scope="colgroup"></th>
+
+                                <th md-column colspan="6" scope="colgroup">Ирригация/дренаж каналы</th>
+                                <th md-column colspan="6" scope="colgroup">Водосберегающие технологии</th>
+                                <th md-column colspan="8" scope="colgroup">Садоводство, виноградство</th>
+                                <th md-column colspan="6" scope="colgroup">Семеноводство</th>
+                                <th md-column colspan="4" scope="colgroup">Животноводство/племеноводство</th>
+
+
+                            </tr>
+
+
+                            <tr md-row>
+
+                                <th md-column>№</th>
+                                <th md-column>Страна</th>
+
+                                <th md-column>Площадь, га</th>
+                                <th md-column>Источник информации</th>
+
+                                <th md-column>Повышение урожайности</th>
+                                <th md-column>Источник информации</th>
+
+                                <th md-column>Снижение степени засолённости/ деградации земель</th>
+                                <th md-column>Источник информации</th>
+
+
+
+                                <th md-column>Площадь, га</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Повышение урожайности</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Водосбережение</th>
+                                <th md-column>Источник информации</th>
+
+
+                                <th md-column>Площадь, га</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Повышение урожайности</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Повышение устойчивости/ выносливости</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Снижение степени деградации земель</th>
+                                <th md-column>Источник информации</th>
+
+
+
+                                <th md-column>Площадь, га</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Повышение урожайности</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Повышение устойчивости</th>
+                                <th md-column>Источник информации</th>
+
+
+
+
+                                <th md-column>Повышение продуктивности и устойчивости и поголовья</th>
+                                <th md-column>Источник информации</th>
+                                <th md-column>Использование пастбищ</th>
+                                <th md-column>Источник информации</th>
+
+
+                                <th md-column>Сохранить</th>
+                                <th md-column>Удалить</th>
+
+
+
+
+                            </tr>
+
+
+
+
+
+                            </thead>
+                            <tbody md-body>
+
+
+
+
+
+                            <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in dataTable5 | filter:search">
+
+
+
+
+
+                                <td md-cell>{{data.id}}</td>
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                    </select>
+
+                                </td>
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.IriggSquareGA}}" ng-model="data.IriggSquareGA"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.IriggSquareGASource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.IriggYieldIncrease}}" ng-model="data.IriggYieldIncrease"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.IriggYieldIncreaseSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.IriggSalDecrease}}" ng-model="data.IriggSalDecrease"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.IriggSalDecreaseSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.WaterSquareGA}}" ng-model="data.WaterSquareGA"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.WaterSquareGASource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.WaterYieldIncrease}}" ng-model="data.WaterYieldIncrease"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.WaterYieldIncreaseSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.WaterWaterSaver}}" ng-model="data.WaterWaterSaver"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.WaterWaterSaverSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.GardeningSquareGA}}" ng-model="data.GardeningSquareGA"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.GardeningSquareGASource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.GardeningYieldIncrease}}" ng-model="data.GardeningYieldIncrease"></td>
+
+
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.GardeningYieldIncreaseSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.GardeningIncreasingSustainability}}" ng-model="data.GardeningIncreasingSustainability"></td>
+
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.GardeningIncreasingSustainabilitySource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.GardeningDecreaseEarth}}" ng-model="data.GardeningDecreaseEarth"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.GardeningDecreaseEarthSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.SeedSquareGA}}" ng-model="data.SeedSquareGA"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.SeedSquareGASource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.SeedYieldIncrease}}" ng-model="data.SeedYieldIncrease"></td>
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.SeedYieldIncreaseSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.SeedIncreasingSustainability}}" ng-model="data.SeedIncreasingSustainability"></td>
+
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.SeedIncreasingSustainabilitySource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+
+
+                                <td md-cell><input type="text" value="{{data.AnimalIncreaseProductivity}}" ng-model="data.AnimalIncreaseProductivity"></td>
+
+
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.AnimalIncreaseProductivitySource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+                                <td md-cell><input type="text" value="{{data.AnimalUsePasture}}" ng-model="data.AnimalUsePasture"></td>
+
+
+
+
+                                <td md-cell>
+
+                                    <select ng-model="data.AnimalUsePastureSource" ng-options="c._id as c.name for c in data.allsourceInfo">
+                                    </select>
+
+                                </td>
+
+
+
+
+                                <td md-cell><i class="material-icons" ng-click="saveBtnTable5(data)">done_all</i></td>
+
+
+
+                                <td md-cell><i class="material-icons" ng-click="deleteTable5(data._id, $index)">delete</i></td>
+
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+
+                </md-content>
+            </md-tab>
+
+        </md-tabs>
+
+
+
 
 
         </md-content>

@@ -4,216 +4,537 @@
 
 
 
-angular.module('app').controller('CreditsCtrl', function ($scope, $cookies, GetToken, SendAuth, $mdToast, $state, $rootScope, $timeout) {
+angular.module('app').controller('CreditsCtrl', function ($scope, $cookies, Addcredit, GetAllCoutrys, $mdToast, DelCredits, GetAllCredits, UpdCredits, GetSourceInfo, Addtable5, DelTable5, Getalltable5, UpdTable5) {
 
 
 $scope.data = [];
-$scope.data = [{"id":1,"first_name":"Deni","role":"Ornate rock dragon","currency":"Peso","date":"5/28/2017"},
-    {"id":2,"first_name":"Kirby","role":"Greater roadrunner","currency":"Afghani","date":"11/23/2016"},
-    {"id":3,"first_name":"Leigha","role":"Black-fronted bulbul","currency":"Peso","date":"11/6/2016"},
-    {"id":4,"first_name":"Morgen","role":"Red-headed woodpecker","currency":"Rupiah","date":"10/11/2016"},
-    {"id":5,"first_name":"Samantha","role":"Southern elephant seal","currency":"Dinar","date":"5/31/2017"},
-    {"id":6,"first_name":"Kleon","role":"African porcupine","currency":"Ruble","date":"9/8/2016"},
-    {"id":7,"first_name":"Amalle","role":"White-throated monitor","currency":"Euro","date":"7/21/2017"},
-    {"id":8,"first_name":"Elsinore","role":"Openbill stork","currency":"Euro","date":"2/5/2017"},
-    {"id":9,"first_name":"Jodi","role":"Raccoon, common","currency":"Euro","date":"3/1/2017"},
-    {"id":10,"first_name":"Josepha","role":"Gaur","currency":"Franc","date":"4/10/2017"},
-    {"id":11,"first_name":"Denni","role":"Asian foreset tortoise","currency":"Rupiah","date":"12/2/2016"},
-    {"id":12,"first_name":"Cassie","role":"Salmon, sockeye","currency":"Rupiah","date":"5/6/2017"},
-    {"id":13,"first_name":"Mona","role":"Amazon parrot (unidentified)","currency":"Rupiah","date":"4/14/2017"},
-    {"id":14,"first_name":"Bertram","role":"Sifaka, verreaux's","currency":"Real","date":"3/27/2017"},
-    {"id":15,"first_name":"Neila","role":"Steller sea lion","currency":"Dirham","date":"12/11/2016"},
-    {"id":16,"first_name":"Sula","role":"Flicker, field","currency":"Shekel","date":"5/22/2017"},
-    {"id":17,"first_name":"Tabbie","role":"Long-tailed spotted cat","currency":"Euro","date":"9/23/2016"},
-    {"id":18,"first_name":"Masha","role":"Tasmanian devil","currency":"Tenge","date":"7/30/2017"},
-    {"id":19,"first_name":"Ario","role":"Ring-tailed lemur","currency":"Yuan Renminbi","date":"9/26/2016"},
-    {"id":20,"first_name":"Joyann","role":"Red deer","currency":"Rial","date":"2/25/2017"},
-    {"id":21,"first_name":"Gaven","role":"Ibis, glossy","currency":"Dollar","date":"10/18/2016"},
-    {"id":22,"first_name":"Axel","role":"Sugar glider","currency":"Rupiah","date":"8/24/2016"},
-    {"id":23,"first_name":"Freddi","role":"Fox, asian red","currency":"Yen","date":"7/16/2017"},
-    {"id":24,"first_name":"Hayward","role":"Dragon, netted rock","currency":"Yuan Renminbi","date":"5/7/2017"},
-    {"id":25,"first_name":"Lynsey","role":"Campo flicker","currency":"Real","date":"3/25/2017"},
-    {"id":26,"first_name":"Osmond","role":"Small Indian mongoose","currency":"Yuan Renminbi","date":"11/8/2016"},
-    {"id":27,"first_name":"Putnam","role":"Heron, yellow-crowned night","currency":"Rupiah","date":"7/12/2017"},
-    {"id":28,"first_name":"Dory","role":"Blue crane","currency":"Rupiah","date":"9/2/2016"},
-    {"id":29,"first_name":"Joeann","role":"Greater sage grouse","currency":"Peso","date":"3/9/2017"},
-    {"id":30,"first_name":"Eula","role":"Hoffman's sloth","currency":"Real","date":"11/24/2016"},
-    {"id":31,"first_name":"Lanita","role":"American badger","currency":"Yuan Renminbi","date":"4/2/2017"},
-    {"id":32,"first_name":"Vikki","role":"Spotted wood sandpiper","currency":"Won","date":"1/26/2017"},
-    {"id":33,"first_name":"Engelbert","role":"Dragonfly, russian","currency":"Ariary","date":"12/21/2016"},
-    {"id":34,"first_name":"Trace","role":"Dolphin, striped","currency":"Yuan Renminbi","date":"10/1/2016"},
-    {"id":35,"first_name":"Natty","role":"Green-backed heron","currency":"Cordoba","date":"3/27/2017"},
-    {"id":36,"first_name":"Pietra","role":"Vulture, black","currency":"Hryvnia","date":"12/9/2016"},
-    {"id":37,"first_name":"Vasily","role":"Ibex","currency":"Yuan Renminbi","date":"3/23/2017"},
-    {"id":38,"first_name":"Andy","role":"Egret, cattle","currency":"Krona","date":"11/20/2016"},
-    {"id":39,"first_name":"Karen","role":"Goose, cereopsis","currency":"Peso","date":"8/8/2017"},
-    {"id":40,"first_name":"Isidore","role":"Giant girdled lizard","currency":"Real","date":"3/2/2017"},
-    {"id":41,"first_name":"Mary","role":"Oriental short-clawed otter","currency":"Rupiah","date":"11/1/2016"},
-    {"id":42,"first_name":"Orrin","role":"Fox, grey","currency":"Euro","date":"6/13/2017"},
-    {"id":43,"first_name":"Lemmie","role":"Eastern white pelican","currency":"Yen","date":"1/28/2017"},
-    {"id":44,"first_name":"Sasha","role":"Mongoose, banded","currency":"Yuan Renminbi","date":"9/23/2016"},
-    {"id":45,"first_name":"Briney","role":"Indian porcupine","currency":"Ruble","date":"10/18/2016"},
-    {"id":46,"first_name":"Ainslie","role":"Peregrine falcon","currency":"Shekel","date":"2/24/2017"},
-    {"id":47,"first_name":"Josey","role":"Kudu, greater","currency":"Franc","date":"3/9/2017"},
-    {"id":48,"first_name":"Barney","role":"Monster, gila","currency":"Rupee","date":"5/14/2017"},
-    {"id":49,"first_name":"Kristo","role":"Eagle, african fish","currency":"Ruble","date":"4/25/2017"},
-    {"id":50,"first_name":"Annabella","role":"Heron, striated","currency":"Rial","date":"3/30/2017"},
-    {"id":51,"first_name":"Bunnie","role":"Raven, cape","currency":"Peso","date":"10/26/2016"},
-    {"id":52,"first_name":"Andreana","role":"White-fronted capuchin","currency":"Rupiah","date":"8/28/2016"},
-    {"id":53,"first_name":"Alvina","role":"Cormorant, large","currency":"Dollar","date":"12/22/2016"},
-    {"id":54,"first_name":"Fayina","role":"Giant anteater","currency":"Nakfa","date":"3/1/2017"},
-    {"id":55,"first_name":"Del","role":"Viper, egyptian","currency":"Rupee","date":"5/13/2017"},
-    {"id":56,"first_name":"Poppy","role":"Kangaroo, eastern grey","currency":"Real","date":"5/20/2017"},
-    {"id":57,"first_name":"Ruggiero","role":"Blue-tongued lizard","currency":"Dirham","date":"12/15/2016"},
-    {"id":58,"first_name":"Isidore","role":"Vulture, oriental white-backed","currency":"Yuan Renminbi","date":"12/12/2016"},
-    {"id":59,"first_name":"Jewell","role":"Brazilian otter","currency":"Dinar","date":"3/13/2017"},
-    {"id":60,"first_name":"Jacqui","role":"Vulture, egyptian","currency":"Yuan Renminbi","date":"2/26/2017"},
-    {"id":61,"first_name":"Sherye","role":"Crane, stanley","currency":"Ruble","date":"8/3/2017"},
-    {"id":62,"first_name":"Bess","role":"Manatee","currency":"Balboa","date":"8/1/2017"},
-    {"id":63,"first_name":"Lilli","role":"Little brown dove","currency":"Yuan Renminbi","date":"3/1/2017"},
-    {"id":64,"first_name":"Lanie","role":"Neotropic cormorant","currency":"Yuan Renminbi","date":"10/14/2016"},
-    {"id":65,"first_name":"Gill","role":"Dog, black-tailed prairie","currency":"Franc","date":"1/6/2017"},
-    {"id":66,"first_name":"Willey","role":"Crane, sarus","currency":"Rial","date":"8/26/2016"},
-    {"id":67,"first_name":"Emilio","role":"Crow, pied","currency":"Euro","date":"4/23/2017"},
-    {"id":68,"first_name":"Talbot","role":"Kite, black","currency":"Rupiah","date":"3/18/2017"},
-    {"id":69,"first_name":"Orazio","role":"Herring gull","currency":"Yuan Renminbi","date":"4/17/2017"},
-    {"id":70,"first_name":"Saunders","role":"Fox, crab-eating","currency":"Dollar","date":"1/7/2017"},
-    {"id":71,"first_name":"Clemmy","role":"Hyrax","currency":"Koruna","date":"8/13/2016"},
-    {"id":72,"first_name":"Fabiano","role":"Wallaby, whip-tailed","currency":"Zloty","date":"3/28/2017"},
-    {"id":73,"first_name":"Giacinta","role":"Squirrel, uinta ground","currency":"Yuan Renminbi","date":"8/8/2017"},
-    {"id":74,"first_name":"Sibilla","role":"Fox, silver-backed","currency":"Peso","date":"1/26/2017"},
-    {"id":75,"first_name":"Livvie","role":"Kite, black","currency":"Dinar","date":"11/9/2016"},
-    {"id":76,"first_name":"Pren","role":"Kangaroo, black-faced","currency":"Naira","date":"3/1/2017"},
-    {"id":77,"first_name":"Alyssa","role":"Weeper capuchin","currency":"Yuan Renminbi","date":"11/2/2016"},
-    {"id":78,"first_name":"Con","role":"Savannah deer (unidentified)","currency":"Yuan Renminbi","date":"2/21/2017"},
-    {"id":79,"first_name":"Goldy","role":"Large cormorant","currency":"Rupiah","date":"8/3/2017"},
-    {"id":80,"first_name":"Francine","role":"Lemur, ring-tailed","currency":"Yuan Renminbi","date":"11/21/2016"},
-    {"id":81,"first_name":"Grissel","role":"Long-finned pilot whale","currency":"Euro","date":"5/30/2017"},
-    {"id":82,"first_name":"Babb","role":"Lion, african","currency":"Peso","date":"8/3/2017"},
-    {"id":83,"first_name":"Winston","role":"Lava gull","currency":"Baht","date":"7/23/2017"},
-    {"id":84,"first_name":"Gregorius","role":"Manatee","currency":"Euro","date":"6/18/2017"},
-    {"id":85,"first_name":"Fonz","role":"Glossy ibis","currency":"Franc","date":"8/23/2016"},
-    {"id":86,"first_name":"Redd","role":"Moorhen, purple","currency":"Ruble","date":"12/3/2016"},
-    {"id":87,"first_name":"Gran","role":"Common long-nosed armadillo","currency":"Real","date":"11/23/2016"},
-    {"id":88,"first_name":"Solly","role":"Dragon, frilled","currency":"Peso","date":"8/5/2017"},
-    {"id":89,"first_name":"Bryn","role":"Gila monster","currency":"Ruble","date":"11/20/2016"},
-    {"id":90,"first_name":"Marcello","role":"Pied crow","currency":"Baht","date":"10/10/2016"},
-    {"id":91,"first_name":"Anette","role":"Two-toed sloth","currency":"Lek","date":"5/29/2017"},
-    {"id":92,"first_name":"May","role":"Red kangaroo","currency":"Rand","date":"9/2/2016"},
-    {"id":93,"first_name":"Glennis","role":"Turkey, wild","currency":"Franc","date":"8/28/2016"},
-    {"id":94,"first_name":"Adrea","role":"Cat, kaffir","currency":"Yuan Renminbi","date":"10/30/2016"},
-    {"id":95,"first_name":"Alfie","role":"Nyala","currency":"Peso","date":"7/22/2017"},
-    {"id":96,"first_name":"Barbabas","role":"Gelada baboon","currency":"Ruble","date":"6/9/2017"},
-    {"id":97,"first_name":"Farleigh","role":"Anaconda (unidentified)","currency":"Afghani","date":"8/26/2016"},
-    {"id":98,"first_name":"Friedrick","role":"Brolga crane","currency":"Dollar","date":"2/3/2017"},
-    {"id":99,"first_name":"Isadora","role":"Hyena, striped","currency":"Yuan Renminbi","date":"8/25/2016"},
-    {"id":100,"first_name":"Fawne","role":"Steller's sea lion","currency":"Tugrik","date":"8/26/2016"},
-    {"id":101,"first_name":"Itch","role":"Oribi","currency":"Yuan Renminbi","date":"4/7/2017"},
-    {"id":102,"first_name":"Estevan","role":"Red-necked phalarope","currency":"Real","date":"8/9/2017"},
-    {"id":103,"first_name":"Thorpe","role":"African black crake","currency":"Rupiah","date":"10/20/2016"},
-    {"id":104,"first_name":"Noella","role":"Brown pelican","currency":"Peso","date":"8/15/2016"},
-    {"id":105,"first_name":"Mary","role":"Ox, musk","currency":"Quetzal","date":"2/21/2017"},
-    {"id":106,"first_name":"Skylar","role":"White-browed sparrow weaver","currency":"Euro","date":"7/27/2017"},
-    {"id":107,"first_name":"Norine","role":"White-throated robin","currency":"Zloty","date":"9/23/2016"},
-    {"id":108,"first_name":"Gothart","role":"Dunnart, fat-tailed","currency":"Yuan Renminbi","date":"3/6/2017"},
-    {"id":109,"first_name":"Binky","role":"Rhesus macaque","currency":"Krone","date":"2/10/2017"},
-    {"id":110,"first_name":"Roosevelt","role":"Cockatoo, sulfur-crested","currency":"Yuan Renminbi","date":"8/11/2016"},
-    {"id":111,"first_name":"Sybil","role":"Raccoon, crab-eating","currency":"Zloty","date":"8/1/2017"},
-    {"id":112,"first_name":"Maximilien","role":"Bird (unidentified)","currency":"Real","date":"6/29/2017"},
-    {"id":113,"first_name":"Rock","role":"Curve-billed thrasher","currency":"Peso","date":"1/15/2017"},
-    {"id":114,"first_name":"Jeni","role":"Savannah deer","currency":"Euro","date":"7/10/2017"},
-    {"id":115,"first_name":"Belinda","role":"Jackal, black-backed","currency":"Rupiah","date":"1/25/2017"},
-    {"id":116,"first_name":"Israel","role":"Fisher","currency":"Zloty","date":"8/13/2016"},
-    {"id":117,"first_name":"Di","role":"Golden brush-tailed possum","currency":"Rupiah","date":"11/17/2016"},
-    {"id":118,"first_name":"Lucila","role":"Black kite","currency":"Rupiah","date":"11/28/2016"},
-    {"id":119,"first_name":"Ruperta","role":"Fox, asian red","currency":"Euro","date":"8/7/2017"},
-    {"id":120,"first_name":"Nissy","role":"Cat, long-tailed spotted","currency":"Peso","date":"3/15/2017"},
-    {"id":121,"first_name":"Daphne","role":"Lemming, collared","currency":"Peso","date":"10/23/2016"},
-    {"id":122,"first_name":"Giacinta","role":"Monitor lizard (unidentified)","currency":"Dong","date":"9/16/2016"},
-    {"id":123,"first_name":"Ted","role":"Oribi","currency":"Ruble","date":"7/10/2017"},
-    {"id":124,"first_name":"Roi","role":"Flamingo, greater","currency":"Rupiah","date":"7/13/2017"},
-    {"id":125,"first_name":"Carmelle","role":"Field flicker","currency":"Zloty","date":"4/30/2017"},
-    {"id":126,"first_name":"Jeramie","role":"Golden eagle","currency":"Shekel","date":"10/13/2016"},
-    {"id":127,"first_name":"Cosmo","role":"Common palm civet","currency":"Rupiah","date":"8/20/2016"},
-    {"id":128,"first_name":"Rhianna","role":"Barasingha deer","currency":"Litas","date":"12/3/2016"},
-    {"id":129,"first_name":"Albina","role":"Marmot, hoary","currency":"Ruble","date":"8/11/2016"},
-    {"id":130,"first_name":"Hilda","role":"Monitor, water","currency":"Yuan Renminbi","date":"9/12/2016"},
-    {"id":131,"first_name":"Jeth","role":"Heron, giant","currency":"Lek","date":"7/27/2017"},
-    {"id":132,"first_name":"Kitty","role":"Sage hen","currency":"Yuan Renminbi","date":"5/7/2017"},
-    {"id":133,"first_name":"Lexine","role":"Blue peacock","currency":"Ruble","date":"1/8/2017"},
-    {"id":134,"first_name":"Corey","role":"Reindeer","currency":"Rupiah","date":"8/31/2016"},
-    {"id":135,"first_name":"Aleen","role":"Giraffe","currency":"Peso","date":"6/16/2017"},
-    {"id":136,"first_name":"Winona","role":"Buffalo, wild water","currency":"Dollar","date":"5/26/2017"},
-    {"id":137,"first_name":"Myles","role":"Galapagos penguin","currency":"Kyat","date":"12/21/2016"},
-    {"id":138,"first_name":"Connie","role":"Ornate rock dragon","currency":"Peso","date":"10/18/2016"},
-    {"id":139,"first_name":"Prisca","role":"Ibis, puna","currency":"Krone","date":"1/1/2017"},
-    {"id":140,"first_name":"Doreen","role":"Grey fox","currency":"Yuan Renminbi","date":"1/12/2017"},
-    {"id":141,"first_name":"Tiffany","role":"Secretary bird","currency":"Krona","date":"3/30/2017"},
-    {"id":142,"first_name":"Thomasina","role":"Gila monster","currency":"Peso","date":"6/5/2017"},
-    {"id":143,"first_name":"Granthem","role":"Hartebeest, coke's","currency":"Rupiah","date":"8/23/2016"},
-    {"id":144,"first_name":"Angelita","role":"Dragon, western bearded","currency":"Peso","date":"1/16/2017"},
-    {"id":145,"first_name":"Agatha","role":"Helmeted guinea fowl","currency":"Euro","date":"7/28/2017"},
-    {"id":146,"first_name":"Lianne","role":"Dusky gull","currency":"Peso","date":"1/15/2017"},
-    {"id":147,"first_name":"Clemmy","role":"Tokay gecko","currency":"Zloty","date":"1/5/2017"},
-    {"id":148,"first_name":"Stormie","role":"Elk, Wapiti","currency":"Euro","date":"8/27/2016"},
-    {"id":149,"first_name":"Darcie","role":"Black-backed jackal","currency":"Hryvnia","date":"6/20/2017"},
-    {"id":150,"first_name":"Shurlock","role":"Reedbuck, bohor","currency":"Real","date":"4/16/2017"},
-    {"id":151,"first_name":"Austina","role":"Cottonmouth","currency":"Ruble","date":"1/2/2017"},
-    {"id":152,"first_name":"Annabal","role":"Macaw, green-winged","currency":"Yuan Renminbi","date":"3/23/2017"},
-    {"id":153,"first_name":"Vidovik","role":"Long-tailed jaeger","currency":"Yuan Renminbi","date":"9/4/2016"},
-    {"id":154,"first_name":"Corena","role":"Snowy sheathbill","currency":"Peso","date":"6/14/2017"},
-    {"id":155,"first_name":"Del","role":"Red-billed tropic bird","currency":"Yuan Renminbi","date":"2/21/2017"},
-    {"id":156,"first_name":"Sayers","role":"Wolf spider","currency":"Peso","date":"1/1/2017"},
-    {"id":157,"first_name":"Mirabelle","role":"White-nosed coatimundi","currency":"Yuan Renminbi","date":"3/16/2017"},
-    {"id":158,"first_name":"Gareth","role":"Pelican, great white","currency":"Hryvnia","date":"3/28/2017"},
-    {"id":159,"first_name":"Constantin","role":"Wild boar","currency":"Euro","date":"6/20/2017"},
-    {"id":160,"first_name":"Gardner","role":"Python (unidentified)","currency":"Krona","date":"11/24/2016"},
-    {"id":161,"first_name":"Cate","role":"Pie, rufous tree","currency":"Euro","date":"8/29/2016"},
-    {"id":162,"first_name":"Pru","role":"Toucan, red-billed","currency":"Euro","date":"11/1/2016"},
-    {"id":163,"first_name":"Elsie","role":"Black and white colobus","currency":"Yuan Renminbi","date":"4/1/2017"},
-    {"id":164,"first_name":"Erasmus","role":"Long-billed corella","currency":"Rupiah","date":"1/4/2017"},
-    {"id":165,"first_name":"Sarge","role":"Turaco, violet-crested","currency":"Yuan Renminbi","date":"4/18/2017"},
-    {"id":166,"first_name":"Arabelle","role":"Snake, green vine","currency":"Real","date":"4/12/2017"},
-    {"id":167,"first_name":"De witt","role":"Laughing kookaburra","currency":"Rupiah","date":"6/14/2017"},
-    {"id":168,"first_name":"Suzann","role":"Small-toothed palm civet","currency":"Euro","date":"5/24/2017"},
-    {"id":169,"first_name":"Valli","role":"Monkey, black spider","currency":"Rupiah","date":"2/6/2017"},
-    {"id":170,"first_name":"Galen","role":"Lynx, african","currency":"Rupiah","date":"10/25/2016"},
-    {"id":171,"first_name":"Caril","role":"Monitor lizard (unidentified)","currency":"Yuan Renminbi","date":"2/24/2017"},
-    {"id":172,"first_name":"Laurence","role":"Savannah deer","currency":"Euro","date":"2/25/2017"},
-    {"id":173,"first_name":"Latia","role":"Magistrate black colobus","currency":"Yuan Renminbi","date":"3/19/2017"},
-    {"id":174,"first_name":"Kayle","role":"Buffalo, asian water","currency":"Real","date":"11/26/2016"},
-    {"id":175,"first_name":"Gaspard","role":"Greater blue-eared starling","currency":"Shekel","date":"6/4/2017"},
-    {"id":176,"first_name":"Benedikta","role":"Raccoon, crab-eating","currency":"Dollar","date":"10/16/2016"},
-    {"id":177,"first_name":"Murray","role":"Prairie falcon","currency":"Kip","date":"4/18/2017"},
-    {"id":178,"first_name":"Madelaine","role":"Wallaby, euro","currency":"Euro","date":"5/17/2017"},
-    {"id":179,"first_name":"Dawna","role":"Pelican, australian","currency":"Real","date":"4/1/2017"},
-    {"id":180,"first_name":"Donnajean","role":"Pintail, bahama","currency":"Rupiah","date":"4/10/2017"},
-    {"id":181,"first_name":"Auguste","role":"South American meadowlark (unidentified)","currency":"Real","date":"1/31/2017"},
-    {"id":182,"first_name":"Ulrick","role":"Buttermilk snake","currency":"Euro","date":"12/30/2016"},
-    {"id":183,"first_name":"Shandee","role":"Puna ibis","currency":"Yuan Renminbi","date":"11/17/2016"},
-    {"id":184,"first_name":"Gabey","role":"Francolin, swainson's","currency":"Peso","date":"4/25/2017"},
-    {"id":185,"first_name":"Crissie","role":"Rhea, common","currency":"Tugrik","date":"6/28/2017"},
-    {"id":186,"first_name":"Janeta","role":"Southern elephant seal","currency":"Quetzal","date":"11/28/2016"},
-    {"id":187,"first_name":"Skylar","role":"Eastern grey kangaroo","currency":"Sol","date":"6/4/2017"},
-    {"id":188,"first_name":"Raquela","role":"Asian elephant","currency":"Rupiah","date":"8/22/2016"},
-    {"id":189,"first_name":"Liesa","role":"Richardson's ground squirrel","currency":"Dollar","date":"10/9/2016"},
-    {"id":190,"first_name":"Madonna","role":"Gerenuk","currency":"Dollar","date":"7/27/2017"},
-    {"id":191,"first_name":"Ezekiel","role":"Great cormorant","currency":"Rupiah","date":"1/24/2017"},
-    {"id":192,"first_name":"Jemima","role":"Gull, swallow-tail","currency":"Peso","date":"2/10/2017"},
-    {"id":193,"first_name":"Mame","role":"Frilled dragon","currency":"Naira","date":"7/20/2017"},
-    {"id":194,"first_name":"Welch","role":"Mocking cliffchat","currency":"Rand","date":"8/1/2017"},
-    {"id":195,"first_name":"Cathleen","role":"Southern sea lion","currency":"Rand","date":"6/8/2017"},
-    {"id":196,"first_name":"Robinet","role":"Western palm tanager (unidentified)","currency":"Peso","date":"11/11/2016"},
-    {"id":197,"first_name":"Stearne","role":"Capuchin, brown","currency":"Yuan Renminbi","date":"5/3/2017"},
-    {"id":198,"first_name":"Roana","role":"Devil, tasmanian","currency":"Afghani","date":"5/1/2017"},
-    {"id":199,"first_name":"Clementia","role":"American Virginia opossum","currency":"Rupiah","date":"3/9/2017"},
-    {"id":200,"first_name":"Leilah","role":"White-throated kingfisher","currency":"Balboa","date":"12/9/2016"}];
+
+
+
+
+
+    GetAllCredits.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
+
+
+
+        if (result.code === 0) {
+
+
+
+            $scope.data = result.resultFromDb;
+
+
+        } else {
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .position('bottom left')
+                    .hideDelay(6000)
+            );
+
+
+        }
+
+
+
+
+    });
+
+
+    $scope.addBtn = function () {
+
+        let tempObj = {
+
+
+
+            id: 0,
+            country: "",
+
+
+
+            categcredits: "",
+            countsubproject: "",
+            commonAmountInDollors: "",
+            commonAmountInNatCurrency: "",
+            DirectBeneficiariesAll: "",
+            DirectBeneficiariesMale: "",
+            DirectBeneficiariesFemale: "",
+            NonDirectBeneficiariesMemberFamilyAll: "",
+            NonDirectBeneficiariesMemberFamilyMale: "",
+            NonDirectBeneficiariesMemberFamilyFemale: "",
+            NonDirectBeneficiariesHiredAll: "",
+            NonDirectBeneficiariesHiredMale: "",
+            NonDirectBeneficiariesHiredFemale: "",
+            CreatePowerPlan: "",
+            CreatePowerFact: "",
+
+
+
+        };
+
+        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+            tempObj.allCountrys = entry.resultFromDb;
+            tempObj.country = entry.resultFromDb[0]._id;
+
+
+        });
 
 
 
 
 
 
+
+
+        $scope.data.push(tempObj);
+
+
+    };
+
+
+
+
+    $scope.saveBtn = function (data) {
+
+
+
+        if (data.id === 0) {
+
+
+
+            Addcredit.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+                    $scope.data[$scope.data.length - 1]._id = result.resultFromDb._id;
+                    $scope.data[$scope.data.length - 1].id = result.resultFromDb.id;
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        } else {
+
+
+
+            UpdCredits.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+    };
+
+
+
+    $scope.delete = function (id, index) {
+
+
+
+        if (id === undefined){
+
+            $scope.data.pop();
+
+
+        }else {
+
+            DelCredits.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $scope.data.splice(index, 1);
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        }
+    };
+
+
+
+
+
+
+
+/////////////////////////Table5///////////////////////////
+
+
+
+    $scope.dataTable5 = [];
+
+
+
+    Getalltable5.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
+
+
+
+        if (result.code === 0) {
+
+
+
+            $scope.dataTable5 = result.resultFromDb;
+
+
+        } else {
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .position('bottom left')
+                    .hideDelay(6000)
+            );
+
+
+        }
+
+
+
+
+    });
+
+
+
+
+
+    $scope.addBtnTable5 = function () {
+
+        let tempObj = {
+
+
+
+            id: 0,
+            country: "",
+
+
+
+            IriggSquareGA: "",
+            IriggSquareGASource: "",
+            IriggYieldIncrease: "",
+            IriggYieldIncreaseSource: "",
+            IriggSalDecrease: "",
+            IriggSalDecreaseSource: "",
+            WaterSquareGA: "",
+            WaterSquareGASource: "",
+            WaterYieldIncrease: "",
+            WaterYieldIncreaseSource: "",
+            WaterWaterSaver: "",
+            WaterWaterSaverSource: "",
+            GardeningSquareGA: "",
+            GardeningSquareGASource: "",
+            GardeningYieldIncrease: "",
+            GardeningYieldIncreaseSource: "",
+            GardeningIncreasingSustainability: "",
+            GardeningIncreasingSustainabilitySource: "",
+            GardeningDecreaseEarth: "",
+            GardeningDecreaseEarthSource: "",
+            SeedSquareGA: "",
+            SeedSquareGASource: "",
+            SeedYieldIncrease: "",
+            SeedYieldIncreaseSource: "",
+            SeedIncreasingSustainability: "",
+            SeedIncreasingSustainabilitySource: "",
+            AnimalIncreaseProductivity: "",
+            AnimalIncreaseProductivitySource: "",
+            AnimalUsePasture: "",
+            AnimalUsePastureSource: "",
+
+
+        };
+
+        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+            tempObj.allCountrys = entry.resultFromDb;
+            tempObj.country = entry.resultFromDb[0]._id;
+
+
+        });
+
+
+        GetSourceInfo.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+            tempObj.allsourceInfo = entry.resultFromDb;
+
+
+            tempObj.IriggSquareGASource  = entry.resultFromDb[0]._id;
+            tempObj.IriggYieldIncreaseSource  = entry.resultFromDb[0]._id;
+            tempObj.IriggSalDecreaseSource  = entry.resultFromDb[0]._id;
+            tempObj.WaterSquareGASource  = entry.resultFromDb[0]._id;
+            tempObj.WaterYieldIncreaseSource  = entry.resultFromDb[0]._id;
+            tempObj.WaterWaterSaverSource  = entry.resultFromDb[0]._id;
+            tempObj.GardeningSquareGASource  = entry.resultFromDb[0]._id;
+            tempObj.GardeningYieldIncreaseSource  = entry.resultFromDb[0]._id;
+            tempObj.GardeningIncreasingSustainabilitySource  = entry.resultFromDb[0]._id;
+            tempObj.GardeningDecreaseEarthSource  = entry.resultFromDb[0]._id;
+            tempObj.SeedSquareGASource  = entry.resultFromDb[0]._id;
+            tempObj.SeedYieldIncreaseSource  = entry.resultFromDb[0]._id;
+            tempObj.SeedIncreasingSustainabilitySource  = entry.resultFromDb[0]._id;
+            tempObj.AnimalIncreaseProductivitySource  = entry.resultFromDb[0]._id;
+            tempObj.AnimalUsePastureSource  = entry.resultFromDb[0]._id;
+
+
+        });
+
+
+
+
+
+
+
+
+        $scope.dataTable5.push(tempObj);
+
+
+    };
+
+
+
+    $scope.saveBtnTable5 = function (data) {
+
+
+
+        if (data.id === 0) {
+
+
+
+            Addtable5.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+                    $scope.dataTable5[$scope.data.length - 1]._id = result.resultFromDb._id;
+                    $scope.dataTable5[$scope.data.length - 1].id = result.resultFromDb.id;
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        } else {
+
+
+
+            UpdTable5.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+    $scope.deleteTable5 = function (id, index) {
+
+
+
+        if (id === undefined){
+
+            $scope.dataTable5.pop();
+
+
+        }else {
+
+            DelTable5.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $scope.dataTable5.splice(index, 1);
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        }
+    };
+
+
+
+/////////////////////////END Table5///////////////////////////
 
 });
 

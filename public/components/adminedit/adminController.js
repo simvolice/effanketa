@@ -287,7 +287,6 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
 
 
-        console.log(tempObj);
 
 
       $scope.data.push(tempObj);

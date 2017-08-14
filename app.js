@@ -16,6 +16,7 @@ const AuthService = require('./services/Auth');
 const CounterService = require('./services/CounterService');
 const CountryService = require('./services/CountryService');
 const RoleService = require('./services/RoleService');
+const SourceInfoService = require('./services/SourceInfoService');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -65,6 +66,8 @@ async function initApp() {
 
     await CounterService.initialCounter();
 
+
+    await SourceInfoService.initialSourceInfo();
 
     await CountryService.initialCountry();
     await RoleService.initialRoles();
