@@ -10,6 +10,7 @@ const RoleService = require('../services/RoleService');
 const CountryService = require('../services/CountryService');
 const EventService = require('../services/EventService');
 const CreditsService = require('../services/CreditsService');
+const GrmService = require('../services/GrmService');
 
 
 
@@ -558,6 +559,100 @@ module.exports = {
 
 
     },
+
+
+
+    forGrm: async (SeesionToken, statusId) => {
+
+
+
+
+        let AdminRole = await RoleService.getAllRoles();
+
+
+
+
+
+
+
+
+        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+
+
+        let result = await AuthService.checkUserById(userId);
+
+
+
+
+        if (validator.checkProps(result)) {
+
+            //Здесь ловим рута
+            if(result.role.toString() === AdminRole[0]._id.toString()){
+
+
+                let resultObject = {
+
+                    statusAdm: true,
+                    Arr: []
+
+
+                };
+                resultObject.Arr = await GrmService.getByStatusId(statusId);
+
+                return resultObject;
+
+                //Здесь ловим 2 Админа
+            } else if (result.role.toString() === AdminRole[1]._id.toString()) {
+
+
+
+                let resultObject = {
+
+                    statusAdm: false,
+                    Arr: []
+
+
+                };
+
+
+                resultObject.Arr = await GrmService.getByStatusIdAndCountryId(result.country.toString(), statusId);
+
+                return resultObject;
+
+
+            } else {
+
+                return false;
+
+
+            }
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 
 };
 

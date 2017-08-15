@@ -17,6 +17,7 @@ const CounterService = require('./services/CounterService');
 const CountryService = require('./services/CountryService');
 const RoleService = require('./services/RoleService');
 const SourceInfoService = require('./services/SourceInfoService');
+const GrmStatusService = require('./services/GrmStatusService');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -66,6 +67,7 @@ async function initApp() {
 
     await CounterService.initialCounter();
 
+    await GrmStatusService.initialGrmStatus();
 
     await SourceInfoService.initialSourceInfo();
 

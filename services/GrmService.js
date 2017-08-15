@@ -1,0 +1,188 @@
+/**
+ * Created by simvolice on 16.08.2017 0:41
+ */
+
+
+
+
+
+
+const dbConnect = require('../utils/dbConnect');
+const config = require('../utils/devConfig');
+const MongoClient = require('mongodb').MongoClient;
+const ObjectId = require('mongodb').ObjectId;
+
+const CounterService = require('../services/CounterService');
+const GrmStatusService = require('../services/GrmStatusService');
+const CountryService = require('../services/CountryService');
+
+module.exports = {
+
+
+
+
+    addGrm: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+            let nameCountry = await CountryService.getCountryById(objParams.country);
+
+            let seq = await CounterService.getNextSequence("grmid");
+
+            let statusAll = await GrmStatusService.getAllStatus();
+
+
+            const result = await col.insertOne({
+
+                //По умолчанию будет всегда статус "Принят"
+                statusId: statusAll[0]._id,
+
+                dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
+                sourceTake: objParams.sourceTake,
+                declarerFIO: objParams.declarerFIO,
+                country: ObjectId(objParams.country),
+                nameCountry: nameCountry.name,
+                phoneDeclarer: objParams.phoneDeclarer,
+                categComplaint: objParams.categComplaint,
+                raisedQuestion: objParams.raisedQuestion,
+                responsibleConsideration: objParams.responsibleConsideration,
+                reviewStatus: objParams.reviewStatus,
+                takeAction: objParams.takeAction,
+                lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
+                dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
+                timeToCheckComplaint: objParams.timeToCheckComplaint,
+
+
+                id: seq,
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
+    getByStatusId: async (statusId) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+            let statusAll = await GrmStatusService.getAllStatus();
+
+
+            const result = await col.aggregate([
+                { $match : {statusId: ObjectId(statusId)} },
+
+
+                { $addFields: {
+
+                    allStatus: statusAll
+                }}
+
+
+
+
+
+            ]).toArray();
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
+
+    getByStatusIdAndCountryId: async (countryId, statusId) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+
+
+            const result = await col.aggregate([{
+
+
+                 $match: {country: ObjectId(countryId), statusId: ObjectId(statusId)}
+
+
+
+
+
+
+
+
+        }]).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+};

@@ -25,13 +25,7 @@ html,
 
 
 
-md-tab-item:nth-child(3) {
-    display: none;
-}
 
-md-tab-item:nth-child(4) {
-    display: none;
-}
 
 table.md-table td.md-cell, table.md-table th.md-column {
 

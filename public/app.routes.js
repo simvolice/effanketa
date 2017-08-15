@@ -68,4 +68,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+
+      .state('grm', {
+          url: '/grm',
+          templateUrl: 'components/grm/grmView.html',
+
+
+      })
+
+
 });

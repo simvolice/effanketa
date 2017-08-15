@@ -1,0 +1,248 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать жалобу</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <md-card>
+
+                            <div class="content">
+
+                                <div class="col-md-6">
+
+
+
+
+
+
+                                    <div class="input-group">
+
+                                        <div class="form-group is-empty"><div flex-gt-xs>
+
+                                            <md-datepicker ng-model="data.dateInGo" md-placeholder="Дата поступления" md-open-on-focus></md-datepicker>
+                                        </div><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">feedback</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Канал получения" ng-model="data.sourceTake"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">account_circle</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Заявитель ФИО" ng-model="data.declarerFIO"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">place</i>
+                                             </span>
+                                        <div class="form-group is-empty">  <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                        </select><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">phone</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Телефон заявителя" ng-model="data.phoneDeclarer"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">subject</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Категория жалобы" ng-model="data.categComplaint"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+
+                                </div>
+
+
+                    <div class="col-md-6">
+
+                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">thumbs_up_down</i>
+                                             </span>
+                            <div class="form-group is-empty"> <md-input-container class="md-block">
+                                <label>Поднятый вопрос</label>
+                                <textarea ng-model="data.raisedQuestion" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                            </md-input-container>
+
+
+                                <span class="material-input"></span></div>
+                        </div>
+
+                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">account_circle</i>
+                                             </span>
+                            <div class="form-group is-empty"><input type="number" placeholder="Отвественный за рассмотрение" class="form-control" ng-model="data.responsibleConsideration"><span class="material-input"></span></div>
+                        </div>
+
+
+
+                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">poll</i>
+                                             </span>
+                            <div class="form-group is-empty"><input type="number" placeholder="Статус рассмотрения" class="form-control" ng-model="data.reviewStatus"><span class="material-input"></span></div>
+                        </div>
+
+
+
+
+                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                 <i class="material-icons">assignment_late</i>
+                                             </span>
+                            <div class="form-group is-empty"><input type="number" placeholder="Предпринятие меры" class="form-control" ng-model="data.takeAction"><span class="material-input"></span></div>
+                        </div>
+
+
+
+
+
+
+                        <div class="input-group">
+
+                            <div class="form-group is-empty"><div flex-gt-xs>
+
+                                <md-datepicker ng-model="data.lastDateAnswer" md-placeholder="Крайний срок ответа" md-open-on-focus></md-datepicker>
+                            </div><span class="material-input"></span></div>
+                        </div>
+
+
+
+
+                        <div class="input-group">
+
+                            <div class="form-group is-empty"><div flex-gt-xs>
+
+                                <md-datepicker ng-model="data.dateNotifDeclarer" md-placeholder="Дата уведомления заявителя" md-open-on-focus></md-datepicker>
+                            </div><span class="material-input"></span></div>
+                        </div>
+
+
+
+
+
+
+                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">alarm</i>
+                                             </span>
+                            <div class="form-group is-empty"><input type="number" placeholder="Время на обработку жалобы" class="form-control" ng-model="data.timeToCheckComplaint"><span class="material-input"></span></div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="addComplaint()">
+            Сохранить
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>
