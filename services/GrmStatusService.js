@@ -121,6 +121,42 @@ module.exports = {
 
 
 
+    },
+
+
+
+
+    getStatusById: async (id) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grmstatus');
+
+
+
+
+            const result = await col.findOne({_id: ObjectId(id)});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
     }
 
 

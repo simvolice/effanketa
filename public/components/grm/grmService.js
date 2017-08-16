@@ -20,3 +20,20 @@ angular.module('app').factory("GetAllStatus", function($resource) {
 angular.module('app').factory("GetAllGrm", function($resource) {
     return $resource("/getallgrm");
 });
+
+
+
+angular.module('app').factory("ChangeStatus", function($resource) {
+    return $resource("/changestatus");
+});
+
+
+
+angular.module('app').factory("DeleteGrm", function($resource) {
+    return $resource("/deletegrm");
+});
+
+
+angular.module('app').factory("UpdateGrm", function($resource) {
+    return $resource("/updategrm");
+});

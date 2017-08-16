@@ -44,7 +44,7 @@ module.exports = {
                 sourceTake: objParams.sourceTake,
                 declarerFIO: objParams.declarerFIO,
                 country: ObjectId(objParams.country),
-                nameCountry: nameCountry.name,
+
                 phoneDeclarer: objParams.phoneDeclarer,
                 categComplaint: objParams.categComplaint,
                 raisedQuestion: objParams.raisedQuestion,
@@ -95,6 +95,20 @@ module.exports = {
             const col = dbConnect.getConnect().collection('grm');
 
             let statusAll = await GrmStatusService.getAllStatus();
+            let statusOne = await GrmStatusService.getStatusById(statusId);
+
+
+            if (statusOne.name !== "Просрочено") {
+
+
+                statusAll = statusAll.filter(function (value, index, array) {
+                    return (value.name !== "Просрочено");
+                });
+
+            }
+
+
+
 
 
             const result = await col.aggregate([
@@ -103,8 +117,21 @@ module.exports = {
 
                 { $addFields: {
 
-                    allStatus: statusAll
-                }}
+                    allStatus: statusAll,
+                    nameStatus: statusOne.name
+
+                }},
+
+                { $lookup:
+                    {
+                        from: "countrys",
+                        localField: "country",
+                        foreignField: "_id",
+                        as: "countryName"
+                    }},
+
+
+                { $unwind : "$countryName" }
 
 
 
@@ -141,22 +168,31 @@ module.exports = {
 
 
             const col = dbConnect.getConnect().collection('grm');
+            let statusOne = await GrmStatusService.getStatusById(statusId);
 
 
 
-            const result = await col.aggregate([{
-
-
-                 $match: {country: ObjectId(countryId), statusId: ObjectId(statusId)}
-
-
+            const result = await col.aggregate([
 
 
 
 
+                { $match: {country: ObjectId(countryId), statusId: ObjectId(statusId)}},
+
+                { $addFields: {
 
 
-        }]).toArray();
+                    nameStatus: statusOne.name
+                }}
+
+
+
+
+
+
+
+
+        ]).toArray();
 
 
 
@@ -177,9 +213,175 @@ module.exports = {
 
 
 
+    },
+
+
+
+
+
+
+
+
+    changeSatatus: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+
+
+            const result = await col.updateOne({ _id: ObjectId(objParams.id) },
+                {
+                    $currentDate: {
+                        lastModified: true
+                    },
+                    $set: {
+                        statusId: ObjectId(objParams.statusId)
+                    }
+                });
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
+
+    delGrm: async (id) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+
+
+            const result = await col.deleteOne({ _id: ObjectId(id) });
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+    updateGrm: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+
+
+            const result = await col.updateOne({ _id: ObjectId(objParams._id) },
+                {
+                    $currentDate: {
+                        lastModified: true
+                    },
+                    $set: {
+
+                        dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
+                        sourceTake: objParams.sourceTake,
+                        declarerFIO: objParams.declarerFIO,
+                        country: ObjectId(objParams.country),
+
+                        phoneDeclarer: objParams.phoneDeclarer,
+                        categComplaint: objParams.categComplaint,
+                        raisedQuestion: objParams.raisedQuestion,
+                        responsibleConsideration: objParams.responsibleConsideration,
+                        reviewStatus: objParams.reviewStatus,
+                        takeAction: objParams.takeAction,
+                        lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
+                        dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
+                        timeToCheckComplaint: objParams.timeToCheckComplaint,
+
+                    }
+                });
+
+
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
+
+    checkLastDateAnswer: async (date) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+
+            const result = await col.find({lastDateAnswer: {$lt: date}}).toArray();
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
     }
-
-
 
 
 

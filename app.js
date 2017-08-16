@@ -8,6 +8,7 @@ const helmet = require('helmet');
 
 const dbConnect = require('./utils/dbConnect');
 const config = require('./utils/devConfig');
+const scheduler = require('./utils/agenda');
 
 
 
@@ -58,9 +59,15 @@ require('./routes')(app);
 
 
 
-dbConnect.connect();
+
+async function initDB() {
+   await dbConnect.connect();
+   await scheduler.changeStatusOnComplaint();
+}
 
 
+
+initDB();
 
 
 async function initApp() {

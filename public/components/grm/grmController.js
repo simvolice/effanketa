@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('GrmCtrl', function ($scope, $cookies, GetAllGrm, GetAllStatus, $mdToast, $mdDialog, $rootScope, $timeout) {
+angular.module('app').controller('GrmCtrl', function ($scope, $cookies, GetAllGrm, GetAllStatus, $mdToast, $mdDialog, $rootScope, $timeout, ChangeStatus, DeleteGrm) {
 
 
     $scope.grmStatus = [];
@@ -23,7 +23,6 @@ angular.module('app').controller('GrmCtrl', function ($scope, $cookies, GetAllGr
             $scope.statusAdm = entry.resultFromDb.statusAdm;
 
             $scope.data = entry.resultFromDb.Arr;
-
 
 
         });
@@ -45,19 +44,17 @@ function getGrmForTable(statusTab) {
 
         if (obj.name === statusTab) {
 
+
             GetAllGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), statusId: obj._id}, function(entry) {
 
 
-                $scope.data = entry.resultFromDb;
+                $scope.statusAdm = entry.resultFromDb.statusAdm;
 
+                $scope.data = entry.resultFromDb.Arr;
 
 
             });
 
-
-        } else {
-
-          return false;
 
         }
 
@@ -72,6 +69,7 @@ function getGrmForTable(statusTab) {
 
     $scope.tabClk = function (statusTab) {
 
+
         getGrmForTable(statusTab);
 
 
@@ -79,13 +77,86 @@ function getGrmForTable(statusTab) {
 
 
 
+$scope.selectChange = function (id, statusId, index) {
+
+
+    ChangeStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: {id: id, statusId: statusId}}, function(result) {
+
+
+        if (result.code === 0) {
+
+            $scope.data.splice(index, 1);
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась УСПЕШНО.')
+                    .position('bottom left')
+                    .hideDelay(3000)
+            );
+
+
+        } else {
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .position('bottom left')
+                    .hideDelay(6000)
+            );
+
+
+        }
+
+    });
+
+
+
+
+
+
+
+};
+
+
+$scope.delete = function (id, index) {
+    DeleteGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function(result) {
+
+
+        if (result.code === 0) {
+
+            $scope.data.splice(index, 1);
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась УСПЕШНО.')
+                    .position('bottom left')
+                    .hideDelay(3000)
+            );
+
+
+        } else {
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .position('bottom left')
+                    .hideDelay(6000)
+            );
+
+
+        }
+
+    });
+
+
+};
 
 
 
 $scope.addBtn = function (ev) {
     $mdDialog.show({
         controller: DialogController,
-        locals:{data: "testDataFromParentController"},
+        locals:{statusAdm: $scope.statusAdm},
         templateUrl: 'components/grm/dialog_template.html',
         parent: angular.element(document.body),
         targetEvent: ev,
@@ -96,7 +167,14 @@ $scope.addBtn = function (ev) {
 
 
 
-function DialogController($scope, data, GetAllCoutrys, AddGrm) {
+
+
+
+
+
+function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm) {
+
+
 
     $scope.data = {
 
@@ -114,6 +192,7 @@ function DialogController($scope, data, GetAllCoutrys, AddGrm) {
         lastDateAnswer: "",
         dateNotifDeclarer: "",
         timeToCheckComplaint: "",
+        statusAdm: statusAdm
 
     };
 
@@ -171,12 +250,129 @@ function DialogController($scope, data, GetAllCoutrys, AddGrm) {
 
 
     $scope.closeDialog = function () {
+
+
+
         $mdDialog.hide();
+
+        getGrmForTable("Принято");
+
     };
 
 
 
 }
+
+
+
+
+$scope.saveBtn = function (data, ev) {
+    $mdDialog.show({
+        controller: DialogControllerUpdate,
+        locals:{statusAdm: $scope.statusAdm, data: data},
+        templateUrl: 'components/grm/dialog_template.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true // Only for -xs, -sm breakpoints.
+    });
+};
+
+
+
+
+function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGrm) {
+
+
+
+
+        $scope.data = {
+
+            _id: data._id,
+            dateInGo: new Date(data.dateInGo),
+            sourceTake: data.sourceTake,
+            declarerFIO: data.declarerFIO,
+            country: data.country,
+            phoneDeclarer: data.phoneDeclarer,
+            categComplaint: data.categComplaint,
+            raisedQuestion: data.raisedQuestion,
+            responsibleConsideration: data.responsibleConsideration,
+            reviewStatus: data.reviewStatus,
+            takeAction: data.takeAction,
+            lastDateAnswer: new Date(data.lastDateAnswer),
+            dateNotifDeclarer: new Date(data.dateNotifDeclarer),
+            timeToCheckComplaint: data.timeToCheckComplaint,
+            statusAdm: statusAdm
+
+        };
+
+
+
+        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+            $scope.data.allCountrys = entry.resultFromDb;
+
+
+        });
+
+
+        $scope.addComplaint = function () {
+
+
+            UpdateGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+
+        };
+
+
+        $scope.closeDialog = function () {
+
+
+
+            $mdDialog.hide();
+
+            getGrmForTable(data.nameStatus);
+
+        };
+
+
+
+    }
+
+
 
 
 

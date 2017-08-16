@@ -56,6 +56,7 @@ router.post('/getallgrm', checkSeesionToken, async (req, res, next) =>{
     let result = await checkRole.forGrm(req.body.sessionToken, req.body.statusId);
 
 
+
     if (result === false){
 
         res.json({"code": 1});
@@ -71,6 +72,68 @@ router.post('/getallgrm', checkSeesionToken, async (req, res, next) =>{
 
 
 
+
+router.post('/changestatus', checkSeesionToken, async (req, res, next) =>{
+
+    let result =  await GrmService.changeSatatus(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+});
+
+
+router.post('/deletegrm', checkSeesionToken, async (req, res, next) =>{
+
+    let result =  await GrmService.delGrm(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+});
+
+router.post('/updategrm', checkSeesionToken, async (req, res, next) =>{
+
+    let result =  await GrmService.updateGrm(req.body.data);
+
+
+    console.log("\x1b[42m", result);
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+});
 
 
 module.exports = router;
