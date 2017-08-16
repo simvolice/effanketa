@@ -88,80 +88,36 @@ module.exports = {
 
 
     getByStatusId: async (statusId) => {
+        const col = dbConnect.getConnect().collection('grm');
+        let statusAll = await GrmStatusService.getAllStatus();
+        let statusOne = await GrmStatusService.getStatusById(statusId);
+        if (statusOne.name !== "Просрочено") {
+            statusAll = statusAll.filter(function (value, index, array) {
+                return (value.name !== "Просрочено");
+            });
+        }
 
-        try {
-
-
-            const col = dbConnect.getConnect().collection('grm');
-
-            let statusAll = await GrmStatusService.getAllStatus();
-            let statusOne = await GrmStatusService.getStatusById(statusId);
-
-
-            if (statusOne.name !== "Просрочено") {
-
-
-                statusAll = statusAll.filter(function (value, index, array) {
-                    return (value.name !== "Просрочено");
-                });
-
-            }
-
-
-
-
-
-            const result = await col.aggregate([
-                { $match : {statusId: ObjectId(statusId)} },
-
-
-                { $addFields: {
-
+        const result = await col.aggregate([
+            {$match: {statusId: ObjectId(statusId)}},
+            {
+                $addFields: {
                     allStatus: statusAll,
                     nameStatus: statusOne.name
-
-                }},
-
-                { $lookup:
+                }
+            },
+            {
+                $lookup:
                     {
                         from: "countrys",
                         localField: "country",
                         foreignField: "_id",
                         as: "countryName"
-                    }},
-
-
-                { $unwind : "$countryName" }
-
-
-
-
-
-            ]).toArray();
-
-
-
-
-            return result;
-
-        } catch (err){
-
-
-            return err;
-
-        }
-
-
-
-
-
-
-
+                    }
+            },
+            {$unwind: "$countryName"}
+        ]).toArray();
+        return result;
     },
-
-
-
-
     getByStatusIdAndCountryId: async (countryId, statusId) => {
 
         try {
