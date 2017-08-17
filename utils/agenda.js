@@ -26,6 +26,7 @@ module.exports = {
           let allStatus = await GrmStatusService.getAllStatus();
 
           let statusDeadLine = allStatus[3]._id;
+          let statusFinishComplain = allStatus[4]._id;
 
           let dateNow = new Date( new Date().getTime() - ( new Date().getTimezoneOffset() * 60000 ) );
 
@@ -44,8 +45,14 @@ module.exports = {
 
 
               for (let obj of result) {
-                  objParams.id = obj._id;
-                  await GrmService.changeSatatus(objParams);
+
+                  if (obj.statusId !== statusFinishComplain) {
+
+                      objParams.id = obj._id;
+                      await GrmService.changeSatatus(objParams);
+
+                  }
+
               }
 
               done();
