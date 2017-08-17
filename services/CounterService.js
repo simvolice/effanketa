@@ -53,7 +53,13 @@ module.exports = {
                     {
                         _id: "grmid",
                         seq: 1
-                    }
+                    },
+
+
+                {
+                    _id: "finansial_statusid",
+                    seq: 1
+                }
 
 
 

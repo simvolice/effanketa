@@ -422,6 +422,7 @@ module.exports = {
 
 
             const col = db.collection('users');
+            col.createIndex({ email : 1 }, {unique: true});
 
 
             let rootRole = await RoleService.getAllRoles();

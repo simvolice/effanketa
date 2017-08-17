@@ -21,6 +21,7 @@ module.exports = {
 
 
           const col = db.collection('sourceinfos');
+          col.createIndex({ name : 1 }, {unique: true});
 
 
           const result = await col.insertMany([

@@ -10,6 +10,7 @@ module.exports = function (app) {
     app.use('/', require('./eventRouter'));
     app.use('/', require('./creditsRouter'));
     app.use('/', require('./grmRouter'));
+    app.use('/', require('./finansialstatusRouter'));
 
 
 };

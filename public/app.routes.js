@@ -77,4 +77,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+      .state('finansial_status', {
+          url: '/finansial_status',
+          templateUrl: 'components/finansial_status/finansial_statusView.html',
+
+
+      })
+
+
+
 });
