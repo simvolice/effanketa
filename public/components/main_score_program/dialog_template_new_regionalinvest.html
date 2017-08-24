@@ -1,0 +1,178 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать региональную инвестицию</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <md-card>
+
+                            <div class="content">
+
+                                <div class="col-md-12">
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">place</i>
+                                             </span>
+                                        <div class="form-group is-empty"> <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                        </select><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Тип инвестиций" ng-model="data.typeInvest"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                              <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Размер инвестиций" ng-model="data.sizeInvest"><span class="material-input"></span></div>
+                                    </div>
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Инвестор" ng-model="data.investor"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Сотрудничающие страны" ng-model="data.coloborationCountry"><span class="material-input"></span></div>
+                                    </div>
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Исполнительный деятель с контактами" ng-model="data.executorWithContact"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><md-input-container class="md-block">
+                                            <label>Краткое описание совместной деятельности, приведшей к инвестициям.</label>
+                                            <textarea ng-model="data.descriptionInvest" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                        </md-input-container>
+                                            <span class="material-input"></span></div>
+                                    </div>
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="addPlatform()">
+            Сохранить
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

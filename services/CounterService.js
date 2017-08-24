@@ -59,8 +59,31 @@ module.exports = {
                 {
                     _id: "finansial_statusid",
                     seq: 1
-                }
+                },
 
+
+
+                    {
+                        _id: "platform_network_id",
+                        seq: 1
+                    },
+
+
+                {
+                    _id: "project_id",
+                    seq: 1
+                },
+
+                {
+                    _id: "regional_invest_id",
+                    seq: 1
+                },
+
+
+                {
+                    _id: "mobile_resurse_id",
+                    seq: 1
+                },
 
 
                 ]

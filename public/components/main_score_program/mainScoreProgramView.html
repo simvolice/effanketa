@@ -1,0 +1,394 @@
+<div class="row" ng-controller="MainScoreProgramCtrl">
+
+
+    <div class="col-md-12">
+        <md-content layout="column" flex class="custom__md-content__categ">
+            <md-card>
+
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab ng-click="tabClk('Platform')" label="Платформы и сети">
+                        <md-content class="md-padding">
+                            <md-toolbar class="md-table-toolbar md-default">
+
+
+
+
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+
+
+                                </div>
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <button class="btn btn-primary" ng-click="addBtn($event, 'Platform')">Добавить запись</button>
+
+
+                                </div>
+
+                            </md-toolbar>
+
+                            <!-- exact table from live demo -->
+                            <md-table-container class="custom__fix__freez__head">
+                                <table md-table ng-model="ctrl.selected">
+                                    <thead md-head fix-head>
+                                    <tr md-row>
+
+                                        <th md-column>№</th>
+                                        <th md-column>Проект/инициатива</th>
+                                        <th md-column>Объем финансирования</th>
+                                        <th md-column>Страна</th>
+                                        <th md-column>Источник финансирования</th>
+                                        <th md-column>Исполнитель проекта</th>
+                                        <th md-column>Контакты исполнителя</th>
+
+                                        <th md-column>Обновить</th>
+                                        <th md-column>Удалить</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody md-body>
+
+
+
+
+
+                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                        <td md-cell>{{data.id}}</td>
+                                        <td md-cell>{{data.projectIniciativ}}</td>
+
+                                        <td md-cell>{{data.amountFinance}}</td>
+
+
+
+                                        <td md-cell>{{data.nameCountry}}</td>
+
+
+
+                                        <td md-cell>{{data.sourceFinance}}</td>
+                                        <td md-cell>{{data.executorProject}}</td>
+                                        <td md-cell>{{data.contactExecutor}}</td>
+
+
+
+
+                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'Platform')">done_all</i></td>
+
+                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'Platform')">delete</i></td>
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-table-container>
+
+
+                        </md-content>
+                    </md-tab>
+
+                    <md-tab ng-click="tabClk('Projects')" label="Проекты и программы стран участниц РЭЦЦА">
+                        <md-content class="md-padding">
+                            <md-toolbar class="md-table-toolbar md-default">
+
+
+
+
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+
+
+                                </div>
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <button class="btn btn-primary" ng-click="addBtn($event, 'Projects')">Добавить запись</button>
+
+
+                                </div>
+
+                            </md-toolbar>
+
+                            <!-- exact table from live demo -->
+                            <md-table-container class="custom__fix__freez__head">
+                                <table md-table ng-model="ctrl.selected">
+                                    <thead md-head fix-head>
+                                    <tr md-row>
+
+                                        <th md-column>№</th>
+                                        <th md-column>Программа</th>
+                                        <th md-column>Сфера/сектор</th>
+                                        <th md-column>Страна</th>
+                                        <th md-column>Разработчики</th>
+                                        <th md-column>Реализующее агенство</th>
+
+                                        <th md-column>Обновить</th>
+                                        <th md-column>Удалить</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody md-body>
+
+
+
+
+
+                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                        <td md-cell>{{data.id}}</td>
+                                        <td md-cell>{{data.programm}}</td>
+
+                                        <td md-cell>{{data.sector}}</td>
+
+
+
+                                        <td md-cell>{{data.nameCountry}}</td>
+
+
+
+                                        <td md-cell>{{data.developers}}</td>
+                                        <td md-cell>{{data.executorAgents}}</td>
+
+
+
+
+                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'Projects')">done_all</i></td>
+
+                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'Projects')">delete</i></td>
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-table-container>
+
+                        </md-content>
+                    </md-tab>
+
+
+                    <md-tab ng-click="tabClk('RegionalInvest')" label="Региональные инвестиции">
+                        <md-content class="md-padding">
+                            <md-toolbar class="md-table-toolbar md-default">
+
+
+
+
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+
+
+                                </div>
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <button class="btn btn-primary" ng-click="addBtn($event, 'RegionalInvest')">Добавить запись</button>
+
+
+                                </div>
+
+                            </md-toolbar>
+
+                            <!-- exact table from live demo -->
+                            <md-table-container class="custom__fix__freez__head">
+                                <table md-table ng-model="ctrl.selected">
+                                    <thead md-head fix-head>
+                                    <tr md-row>
+
+                                        <th md-column>№</th>
+                                        <th md-column>Тип инвестиций</th>
+                                        <th md-column>Размер инвестиций</th>
+                                        <th md-column>Страна</th>
+                                        <th md-column>Инвестор</th>
+                                        <th md-column>Сотрудничающие страны</th>
+
+                                        <th md-column>Обновить</th>
+                                        <th md-column>Удалить</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody md-body>
+
+
+
+
+
+                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                        <td md-cell>{{data.id}}</td>
+                                        <td md-cell>{{data.typeInvest}}</td>
+
+                                        <td md-cell>{{data.sizeInvest}}</td>
+
+
+
+                                        <td md-cell>{{data.nameCountry}}</td>
+
+
+
+                                        <td md-cell>{{data.investor}}</td>
+                                        <td md-cell>{{data.coloborationCountry}}</td>
+
+
+
+
+                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'RegionalInvest')">done_all</i></td>
+
+                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'RegionalInvest')">delete</i></td>
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-table-container>
+
+                        </md-content>
+                    </md-tab>
+
+
+                    <md-tab ng-click="tabClk('MobileResurs')" label="Дополнительно мобилизованные ресурсы для финансирования знаний/потенциала и климатических инвестиций ">
+                        <md-content class="md-padding">
+                            <md-toolbar class="md-table-toolbar md-default">
+
+
+
+
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+
+
+                                </div>
+
+                                <div class="md-toolbar-tools">
+
+
+                                    <button class="btn btn-primary" ng-click="addBtn($event, 'MobileResurs')">Добавить запись</button>
+
+
+                                </div>
+
+                            </md-toolbar>
+
+                            <!-- exact table from live demo -->
+                            <md-table-container class="custom__fix__freez__head">
+                                <table md-table ng-model="ctrl.selected">
+                                    <thead md-head fix-head>
+                                    <tr md-row>
+
+                                        <th md-column>№</th>
+                                        <th md-column>Проект/инициатива</th>
+                                        <th md-column>Объем финансирования</th>
+                                        <th md-column>Страна</th>
+                                        <th md-column>Источник финансирования</th>
+                                        <th md-column>Исполнитель проекта</th>
+                                        <th md-column>Контакты исполнителя</th>
+
+                                        <th md-column>Обновить</th>
+                                        <th md-column>Удалить</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody md-body>
+
+
+
+
+
+                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+
+
+
+
+
+
+                                        <td md-cell>{{data.id}}</td>
+                                        <td md-cell>{{data.projectIniciativ}}</td>
+
+                                        <td md-cell>{{data.amountFinance}}</td>
+
+
+
+                                        <td md-cell>{{data.nameCountry}}</td>
+
+
+
+                                        <td md-cell>{{data.sourceFinance}}</td>
+                                        <td md-cell>{{data.executorProject}}</td>
+                                        <td md-cell>{{data.contactExecutor}}</td>
+
+
+
+
+                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'MobileResurs')">done_all</i></td>
+
+                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'MobileResurs')">delete</i></td>
+
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </md-table-container>
+
+                        </md-content>
+                    </md-tab>
+
+                </md-tabs>
+
+
+
+            </md-card>
+
+        </md-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>

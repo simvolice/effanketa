@@ -9,61 +9,40 @@ const Logger = require('mongodb').Logger;
 Logger.setLevel('debug');
 
 
-
-
-
-
 let state = {
-  db: null
+    db: null
 };
 
 
 module.exports = {
 
 
+    connect: async () => {
 
 
+        try {
 
 
+            state.db = await MongoClient.connect(config.urlToMongoDBLocalhost);
 
 
-  connect: async () =>{
+        } catch (err) {
+
+            state.db = err;
 
 
+        }
 
 
-  try {
+    },
 
 
+    getConnect: () => {
 
-    state.db = await MongoClient.connect(config.urlToMongoDBLocalhost);
-
-
-
-
-  }catch (err){
-
-    state.db = err;
+        return state.db;
 
 
-  }
-
-
-
-
-
-},
-
-
-
-
-  getConnect: () =>{
-
-   return state.db;
-
-
-  }
-
+    }
 
 
 };

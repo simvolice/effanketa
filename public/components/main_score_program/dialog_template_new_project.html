@@ -1,0 +1,161 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать проект</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <md-card>
+
+                            <div class="content">
+
+                                <div class="col-md-12">
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">place</i>
+                                             </span>
+                                        <div class="form-group is-empty"> <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                        </select><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Программа" ng-model="data.programm"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                              <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Сфера/сектор" ng-model="data.sector"><span class="material-input"></span></div>
+                                    </div>
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Разработчики" ng-model="data.developers"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+                                    <div class="input-group">
+                                             <span class="input-group-addon">
+                                               <i class="material-icons">event_available</i>
+                                             </span>
+                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Реализующее агенство" ng-model="data.executorAgents"><span class="material-input"></span></div>
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="addPlatform()">
+            Сохранить
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

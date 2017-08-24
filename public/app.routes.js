@@ -86,4 +86,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 
 
+      .state('main_score_program', {
+          url: '/main_score_program',
+          templateUrl: 'components/main_score_program/mainScoreProgramView.html',
+
+
+      })
+
+
+
 });
