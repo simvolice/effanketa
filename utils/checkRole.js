@@ -13,6 +13,7 @@ const CreditsService = require('../services/CreditsService');
 const GrmService = require('../services/GrmService');
 const FinansialStatusService = require('../services/FinansialStatusService');
 const MainScoreProgramService = require('../services/MainScoreProgramService');
+const StrategicService = require('../services/StrategicService');
 
 
 
@@ -1022,6 +1023,79 @@ module.exports = {
 
 
     },
+
+
+
+
+    forStrategic: async (SeesionToken) => {
+
+
+
+
+        let AdminRole = await RoleService.getAllRoles();
+
+
+
+
+
+
+
+
+        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+
+
+        let result = await AuthService.checkUserById(userId);
+
+
+
+
+        if (validator.checkProps(result)) {
+
+            //Здесь ловим рута
+            if(result.role.toString() === AdminRole[0]._id.toString()){
+
+
+
+                return await StrategicService.getAll();
+
+
+
+
+            }  else {
+
+                return false;
+
+
+            }
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+
+
 
 
 };

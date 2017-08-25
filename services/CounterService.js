@@ -86,6 +86,12 @@ module.exports = {
                 },
 
 
+                {
+                    _id: "strategic_id",
+                    seq: 1
+                },
+
+
                 ]
 
             );

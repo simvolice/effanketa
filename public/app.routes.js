@@ -94,5 +94,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+      .state('strategic_communications', {
+          url: '/strategic_communications',
+          templateUrl: 'components/strategic_communications/strategic_communicationsView.html',
+
+
+      })
+
+
+
 
 });

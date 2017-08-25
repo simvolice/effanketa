@@ -12,6 +12,7 @@ module.exports = function (app) {
     app.use('/', require('./grmRouter'));
     app.use('/', require('./finansialstatusRouter'));
     app.use('/', require('./mainScoreProgrammRouter'));
+    app.use('/', require('./strategicRouter'));
 
 
 };
