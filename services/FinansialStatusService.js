@@ -8,6 +8,7 @@ const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
 
 const ObjectId = require('mongodb').ObjectId;
+const Int32 = require('mongodb').Int32;
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
 
@@ -33,17 +34,23 @@ module.exports = {
 
 
                 id: seq,
-                BudgetBisbursementPlan: objParams.BudgetBisbursementPlan,
-                BudgetBisbursementFact: objParams.BudgetBisbursementFact,
+                categFinStatusBudgetBisbursement: "BudgetBisbursement",
+                categFinStatusServices: "Services",
+                categFinStatusCreditLine: "CreditLine",
+                categFinStatusOperatingExpenses: "OperatingExpenses",
+
+
+                BudgetBisbursementPlan: Int32(objParams.BudgetBisbursementPlan),
+                BudgetBisbursementFact: Int32(objParams.BudgetBisbursementFact),
                 BudgetBisbursementComment: objParams.BudgetBisbursementComment,
-                ServicesPlan: objParams.ServicesPlan,
-                ServicesFact: objParams.ServicesFact,
+                ServicesPlan: Int32(objParams.ServicesPlan),
+                ServicesFact: Int32(objParams.ServicesFact),
                 ServicesComment: objParams.ServicesComment,
-                CreditLinePlan: objParams.CreditLinePlan,
-                CreditLineFact: objParams.CreditLineFact,
+                CreditLinePlan: Int32(objParams.CreditLinePlan),
+                CreditLineFact: Int32(objParams.CreditLineFact),
                 CreditLineComment: objParams.CreditLineComment,
-                OperatingExpensesPlan: objParams.OperatingExpensesPlan,
-                OperatingExpensesFact: objParams.OperatingExpensesFact,
+                OperatingExpensesPlan: Int32(objParams.OperatingExpensesPlan),
+                OperatingExpensesFact: Int32(objParams.OperatingExpensesFact),
                 OperatingExpensesComment: objParams.OperatingExpensesComment,
                 country: ObjectId(objParams.country),
 
@@ -213,17 +220,17 @@ module.exports = {
                 $set: {
 
 
-                    BudgetBisbursementPlan: objParams.BudgetBisbursementPlan,
-                    BudgetBisbursementFact: objParams.BudgetBisbursementFact,
+                    BudgetBisbursementPlan: Int32(objParams.BudgetBisbursementPlan),
+                    BudgetBisbursementFact: Int32(objParams.BudgetBisbursementFact),
                     BudgetBisbursementComment: objParams.BudgetBisbursementComment,
-                    ServicesPlan: objParams.ServicesPlan,
-                    ServicesFact: objParams.ServicesFact,
+                    ServicesPlan: Int32(objParams.ServicesPlan),
+                    ServicesFact: Int32(objParams.ServicesFact),
                     ServicesComment: objParams.ServicesComment,
-                    CreditLinePlan: objParams.CreditLinePlan,
-                    CreditLineFact: objParams.CreditLineFact,
+                    CreditLinePlan: Int32(objParams.CreditLinePlan),
+                    CreditLineFact: Int32(objParams.CreditLineFact),
                     CreditLineComment: objParams.CreditLineComment,
-                    OperatingExpensesPlan: objParams.OperatingExpensesPlan,
-                    OperatingExpensesFact: objParams.OperatingExpensesFact,
+                    OperatingExpensesPlan: Int32(objParams.OperatingExpensesPlan),
+                    OperatingExpensesFact: Int32(objParams.OperatingExpensesFact),
                     OperatingExpensesComment: objParams.OperatingExpensesComment,
                     country: ObjectId(objParams.country),
 

@@ -14,6 +14,7 @@ const GrmService = require('../services/GrmService');
 const FinansialStatusService = require('../services/FinansialStatusService');
 const MainScoreProgramService = require('../services/MainScoreProgramService');
 const StrategicService = require('../services/StrategicService');
+const BuildReportService = require('../services/BuildReportService');
 
 
 
@@ -1063,6 +1064,88 @@ module.exports = {
 
 
             }  else {
+
+                return false;
+
+
+            }
+
+
+        } else {
+
+            return false;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
+
+
+
+
+    forBuildReport: async (SeesionToken) => {
+
+
+
+
+        let AdminRole = await RoleService.getAllRoles();
+
+
+
+
+
+
+
+
+        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+
+
+
+        let result = await AuthService.checkUserById(userId);
+
+
+
+
+        if (validator.checkProps(result)) {
+
+            //Здесь ловим рута
+            if(result.role.toString() === AdminRole[0]._id.toString()){
+
+
+
+                return await BuildReportService.getAll();
+
+
+
+                //Здесь ловим 2 Админа
+            } else if (result.role.toString() === AdminRole[1]._id.toString()) {
+
+
+
+
+
+                return await BuildReportService.getByCountryId(result.country.toString());
+
+
+
+
+            } else {
 
                 return false;
 

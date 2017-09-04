@@ -1,0 +1,986 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать отчет</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+
+                        <md-card>
+
+                            <div class="content" id="printableArea">
+
+
+                                <div class="col-md-12">
+                                    <div class="row">
+
+                                        <h4 class="text-center"><strong>Climate Adaptation and Mitigation Program for Aral Sea Basin (CAMP4ASB)</strong></h4>
+
+                                    </div>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Период отчета: <strong>{{data.typePeriod}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Год: <strong>{{data.year}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Страна: <strong>{{data.country}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Background</h5>
+
+                                                <p>Climate change is recognized as a tremendous challenge towards sustainable economic, human and environmental development worldwide. The five Central Asian countries are among the ECA’s region most vulnerable to climate change and building resilience to climate change impacts   is a priority for poverty reduction and shared prosperity in Central Asia.
+
+                                                    Recognizing the importance of climate actions, Central Asian countries acknowledged that climate risks transcend borders between them and emphasized the importance in establishing a regular platform to collaborate in effective and scaled-up resilience. All five countries of Central Asia agreed that a regional program for climate adaptation and mitigation is a priority and can build on, and strengthen existing experience and initiatives in the region.
+
+                                                    Echoing the request of the Central Asian countries, the World Bank Group in collaboration with national counterparts, developed the Climate Adaptation and Mitigation Program for Aral Sea Basin (CAMP4ASB), which aims to enhance regionally coordinated access to improved climate change knowledge services for key stakeholders (e.g., policy makers, communities, and civil society) in participating Central Asian countries as well as to increased investments and capacity building that, combined, will address climate challenges common to these countries.
+
+                                                    On November 3, 2015, the World Bank Board of Executive Directors approved an allocation of US$38 million from the International Development Association (IDA) to finance the first phase of the CAMP4ASB regional program. This approved financing includes US$9 million for Tajikistan, US$14 million for Uzbekistan, and US$15 million for regional activities to be implemented by the Executive Committee of the International Fund for Saving the Aral Sea (EC-IFAS) with support from the Regional Environmental Center for Central Asia (CAREC) for day-to-day regional coordination and implementation.
+
+                                                    CAMP4ASB project is well accommodated within existing and planned regional initiatives on climate change and sustainable development, and addresses the needs, which have been commonly prioritized by the countries of Central Asia, on accessing to climate investments and technologies, new methodologies, capacity building and information exchange.
+                                                </p>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Project objective</h5>
+
+                                                <p>CAMP4ASB aims to enhance regionally coordinated access to improved climate change knowledge services for key stakeholders (e.g., policy makers, communities, and civil society) in participating Central Asian countries as well as to increased investments and capacity building that, combined, will address climate challenges common to these countries.
+                                                    CAMP4ASB is comprised of regional and national components. CAREC is responsible to implement the Component 1, which aims to strengthen the knowledge and capacity base for climate action and facilitate regional dialogue and multi-stakeholder engagement for an effective climate response at scale, and Subcomponent 3.1, which is to oversight, coordination, and implementation support at the regional level.
+                                                </p>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <hr>
+
+
+
+                                    <div class="row page-break-after">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>National Coordination Unit Quarterly Progress Report</h5>
+
+                                                <p>Notes
+                                                    The Quarterly Progress Report (QPR) for the project will be used as both a stand-alone document that demonstrates the progress of the project for the quarter and will also be used to compile information for the Annual Progress Report (APR).
+
+                                                    To ensure consistency between all reports, please follow the guidance provided in text under each main section.
+
+                                                    Please be as direct and concise as possible.
+                                                </p>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>Table of contents:</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Описание (необязательно)</label>
+                                                            <textarea ng-model="data.tableContentsDescription" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>1. Project Performance</h5>
+
+                                                <ul>
+                                                    <li>1.1.	Overall Narrative Progress for the reporting period</li>
+                                                    <li>1.2. Capacity Building</li>
+                                                    <li>1.3. Credits</li>
+                                                    <li>1.4. Grievance Redress Mechanism</li>
+                                                    <li>1.5. Financial management</li>
+                                                    <li>1.6. Project risks and issues</li>
+                                                </ul>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>1. Project performance</h5>
+
+                                                <p>Regional Climate Investment Facility (Component 2)
+                                                </p>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>1.1 Overall Narrative Progress for the reporting period</h6>
+
+
+
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Please, describe the quarterly progress, overview of activities and main outcomes for the reporting period.
+                                                            </label>
+                                                            <textarea ng-model="data.overallNarrative" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <hr>
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>1.2 Capacity Building</h5>
+
+
+                                                <div id="capacityBuilding">
+
+
+
+
+
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Event title and theme</th>
+                                                        <th>Date</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="x in data.categorizedByDatePeriodCountry">
+                                                        <td>{{ x.nameEvent }}</td>
+                                                        <td>{{ x.myDate | date: "dd.MM.y" }}</td>
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                                <colgroup span="2"></colgroup>
+                                                <colgroup span="2"></colgroup>
+                                                <colgroup span="2"></colgroup>
+
+                                                <table class="table table-bordered custom__table_margin">
+                                                    <thead>
+                                                    <tr>
+                                                        <th colspan="2" scope="colgroup">Participants</th>
+                                                        <th colspan="2" scope="colgroup">Facilitators</th>
+                                                        <th colspan="2" scope="colgroup">Speakers</th>
+
+                                                    </tr>
+
+                                                    <tr>
+
+                                                        <th>Total number</th>
+                                                        <th># of women</th>
+
+                                                        <th>Total number</th>
+                                                        <th># of women</th>
+
+                                                        <th>Total number</th>
+                                                        <th># of women</th>
+
+
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="x in data.categorizedBySum">
+                                                        <td contenteditable="true">{{ x.countPeopleEventCommon }}</td>
+                                                        <td contenteditable="true">{{ x.countWomanEventCommon }}</td>
+
+
+                                                        <td contenteditable="true">{{ x.countFacilatatorEventCommon }}</td>
+                                                        <td contenteditable="true">{{ x.countFacilatatorWomanEventCommon }}</td>
+
+
+
+                                                        <td contenteditable="true">{{ x.countSpeakerEventCommon }}</td>
+                                                        <td contenteditable="true">{{ x.countSpeakerWomanEventCommon }}</td>
+
+
+
+
+
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+
+
+
+                                                <colgroup span="2"></colgroup>
+
+
+                                                <table class="table table-bordered custom__table_margin">
+                                                    <thead>
+                                                    <tr>
+                                                        <th colspan="2" scope="colgroup">Evaluation of the effectiveness of the event</th>
+
+                                                    </tr>
+
+                                                    <tr>
+
+                                                        <th>Overall level of satisfaction with the activities carried out</th>
+                                                        <th>The level of satisfaction among women</th>
+
+
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td ng-repeat="x in data.countSatisfaction" contenteditable="true">{{ x.average }}</td>
+                                                        <td ng-repeat="y in data.countSatisfactionWomen" contenteditable="true">{{ y.average }}</td>
+
+
+
+
+
+
+
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                                </div>
+                                                <div class="row">
+
+                                                    <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                                        <div class="form-group is-empty">
+
+                                                            <h6>Participants stated their interest in the following topics for training/activities:</h6>
+
+
+
+
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+
+
+                                                                    <md-radio-group ng-model="data.participantsStated" layout="row">
+
+                                                                        <md-radio-button value="1) To use video-clips of previous experience of new technologies;">1) To use video-clips of previous experience of new technologies;</md-radio-button>
+                                                                        <md-radio-button value="2) Training sessions should be in same languages;"> 2) Training sessions should be in same languages; </md-radio-button>
+                                                                        <md-radio-button value="3) to have more such trainings">3) to have more such trainings</md-radio-button>
+
+                                                                    </md-radio-group>
+
+
+
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+
+
+                                                            <span class="material-input"></span></div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row page-break-after">
+
+                                                    <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                                        <div class="form-group is-empty">
+
+                                                            <h6>Comments:</h6>
+
+
+
+
+                                                            <div class="col-md-12">
+                                                                <div class="row">
+
+
+                                                                    <md-radio-group ng-model="data.comments" layout="row">
+
+                                                                        <md-radio-button value="1) to conduct such trainigs for community level;">1) to conduct such trainigs for community level;</md-radio-button>
+                                                                        <md-radio-button value="2) it would be better to reduce the list of submitted program documents to the PIU MF; "> 2) it would be better to reduce the list of submitted program documents to the PIU MF;  </md-radio-button>
+                                                                        <md-radio-button value="3) to reduce the interest rate of the banks;">3) to reduce the interest rate of the banks;</md-radio-button>
+
+                                                                    </md-radio-group>
+
+
+
+
+                                                                </div>
+
+                                                            </div>
+
+
+
+
+
+                                                            <span class="material-input"></span></div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>1.3 Credits</h5>
+
+
+                                                <div id="credits">
+
+
+
+
+
+
+
+
+                                                <colgroup span="1"></colgroup>
+                                                <colgroup span="1"></colgroup>
+                                                <colgroup span="2"></colgroup>
+
+                                                <colgroup span="3"></colgroup>
+                                                <colgroup span="3"></colgroup>
+                                                <colgroup span="3"></colgroup>
+                                                <colgroup span="2"></colgroup>
+
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                    <tr>
+
+                                                        <th colspan="1" scope="colgroup"></th>
+                                                        <th colspan="1" scope="colgroup"></th>
+
+                                                        <th colspan="2" scope="colgroup">Общий объем</th>
+
+                                                        <th colspan="3" scope="colgroup">Прямые бенефециары (заемщики+члены семьи+наёмные работники)</th>
+                                                        <th colspan="3" scope="colgroup">Непрямые бенефециары (члены семей)</th>
+                                                        <th colspan="3" scope="colgroup">Непрямые бенефециары (наемные работники)</th>
+                                                        <th colspan="2" scope="colgroup">Создаваемые мощности/
+                                                            Ожидаемый эффект</th>
+
+                                                    </tr>
+
+                                                    <tr>
+
+
+                                                        <th>Категория кредитов</th>
+                                                        <th>Кол-во субпроектов</th>
+
+                                                        <th>$</th>
+                                                        <th>нац.валюта</th>
+
+
+
+
+                                                        <th>Всего</th>
+                                                        <th>Муж.</th>
+                                                        <th>Жен.</th>
+
+                                                        <th>Всего</th>
+                                                        <th>Муж.</th>
+                                                        <th>Жен.</th>
+
+                                                        <th>Всего</th>
+                                                        <th>Муж.</th>
+                                                        <th>Жен.</th>
+
+                                                        <th>План</th>
+                                                        <th>Факт</th>
+
+
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="x in data.creditsTable">
+                                                        <td contenteditable="true">{{ x._id }}</td>
+                                                        <td contenteditable="true">{{ x.countsubproject }}</td>
+                                                        <td contenteditable="true">{{ x.commonAmountInDollors }}</td>
+                                                        <td contenteditable="true">{{ x.commonAmountInNatCurrency }}</td>
+
+                                                        <td contenteditable="true">{{ x.DirectBeneficiariesAll }}</td>
+                                                        <td contenteditable="true">{{ x.DirectBeneficiariesMale }}</td>
+                                                        <td contenteditable="true">{{ x.DirectBeneficiariesFemale }}</td>
+
+
+
+                                                        <td contenteditable="true">{{ x.NonDirectBeneficiariesMemberFamilyAll }}</td>
+                                                        <td contenteditable="true">{{ x.NonDirectBeneficiariesMemberFamilyMale }}</td>
+                                                        <td contenteditable="true">{{ x.NonDirectBeneficiariesMemberFamilyFemale }}</td>
+
+
+
+                                                        <td contenteditable="true">{{ x.NonDirectBeneficiariesHiredAll }}</td>
+                                                        <td contenteditable="true">{{ x.NonDirectBeneficiariesHiredMale }}</td>
+                                                        <td contenteditable="true">{{ x.NonDirectBeneficiariesHiredFemale }}</td>
+
+
+
+                                                        <td contenteditable="true">{{ x.CreatePowerPlan }}</td>
+                                                        <td contenteditable="true">{{ x.CreatePowerFact }}</td>
+
+
+
+
+
+
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Описание (Не обязательно)
+                                                            </label>
+                                                            <textarea ng-model="data.creditsDescription" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                    <hr>
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>1.4 Grievance Redress Mechanism</h6>
+
+
+                                                <div id="grm">
+
+
+
+
+
+
+
+                                                <h6>A. Quantitative data on the offers received, the number that were relevant, and the number resolved</h6>
+                                                <ul>
+                                                    <li>1) Number of offers complaints in the reporting period: <strong contenteditable="true">{{data.categorizedByAllComplaints}}</strong> </li>
+                                                    <li>2) Number of grievances resolved at the lowest level: <strong contenteditable="true">{{data.categorizedByLowLevel}}</strong> </li>
+                                                    <li>3) Number of investigations started: <strong contenteditable="true">{{data.categorizedByAccept}}</strong> </li>
+                                                    <li>4) Number of investigations completed in the reporting period: <strong contenteditable="true">{{data.categorizedByComplete}}</strong></li>
+
+
+
+                                                </ul>
+
+
+                                                <h6>В. Qualitative data on the type of complaints and solution result, issues that are unresolved</h6>
+                                                <table class="table table-bordered">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Sorting/categorization of complaints (types of grievances)</th>
+                                                        <th>Solution result and time taken to resolve complaints</th>
+                                                        <th>Unresolved complaints (the current and in the process)</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                    <tr ng-repeat="x in data.categorizedByType">
+                                                        <td contenteditable="true">{{ x._id }}</td>
+                                                        <td contenteditable="true">{{ x.takeAction.join() }} / {{ x.totalTakeTime }}</td>
+
+
+                                                        <td contenteditable="true">{{ x.count }}</td>
+
+
+
+
+                                                    </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                                <h6>D. Publishing responses to complaints
+                                                </h6>
+
+                                                <div class="col-md-3">
+                                                    <div class="row">
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label> Please, provide the sources used to disclose information on resolved complaints and actions taken
+
+                                                            </label>
+                                                            <textarea ng-model="data.grmSourceInformation" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>1.5 Financial status</h6>
+
+                                                <div id="finstatus">
+
+
+
+
+
+                                                <colgroup span="2"></colgroup>
+                                                <colgroup span="2"></colgroup>
+                                                <colgroup span="2"></colgroup>
+                                                <colgroup span="2"></colgroup>
+
+                                                <table class="table table-bordered page-break-after">
+                                                    <thead>
+                                                    <tr>
+                                                        <th colspan="2" scope="colgroup">Budget disbursement $</th>
+                                                        <th colspan="2" scope="colgroup">Services $</th>
+                                                        <th colspan="2" scope="colgroup">Credit line $</th>
+                                                        <th colspan="2" scope="colgroup">OperatingExpenses $</th>
+
+                                                    </tr>
+
+                                                    <tr>
+
+                                                        <th>planned</th>
+                                                        <th>in fact</th>
+
+                                                        <th>planned</th>
+                                                        <th>in fact</th>
+
+                                                        <th>planned</th>
+                                                        <th>in fact</th>
+
+                                                        <th>planned</th>
+                                                        <th>in fact</th>
+
+
+
+
+
+                                                    </tr>
+
+                                                    </thead>
+                                                    <tbody>
+
+
+                                                    <tr>
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByBudgetBisbursement">{{ x.totalPlan }}</td>
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByBudgetBisbursement">{{ x.totalFact }}</td>
+
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByServices">{{ x.totalPlan }}</td>
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByServices">{{ x.totalFact }}</td>
+
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByCreditLine">{{ x.totalPlan }}</td>
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByCreditLine">{{ x.totalFact }}</td>
+
+
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByOperatingExpenses">{{ x.totalPlan }}</td>
+                                                        <td contenteditable="true" ng-repeat="x in data.categorizedByOperatingExpenses">{{ x.totalFact }}</td>
+
+
+
+
+
+                                                    </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>1.6 Project risks and issues</h6>
+
+                                                <p>Please specify the risks & issues that manifested themselves or newly appeared during the reporting period. Describe the steps taken for mitigation of the risks (Management response). Please provide clear recommendations for the future approach to addressing the main risks and issues that could jeopardize the success of the project.</p>
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Question
+                                                            </label>
+                                                            <textarea ng-model="data.projectRisksIssuesQuestion" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+
+                                                <p>Please identify potential risks and issues (if any) you anticipate for the next quarters. Describe the steps could be taken for mitigation of the risks and issues (Management response)</p>
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Question
+                                                            </label>
+                                                            <textarea ng-model="data.projectRisksPotentialRisksQuestion" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+
+        <md-button class="md-raised md-primary" ng-click="print()">
+            Печать
+        </md-button>
+        <span flex></span>
+
+
+
+        <md-button class="md-raised md-primary" ng-click="save()">
+            Сохранить
+        </md-button>
+
+
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

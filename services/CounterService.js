@@ -91,6 +91,11 @@ module.exports = {
                     seq: 1
                 },
 
+                {
+                    _id: "build_report_id",
+                    seq: 1
+                },
+
 
                 ]
 

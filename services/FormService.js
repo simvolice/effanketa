@@ -4,6 +4,7 @@
 
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
+const Int32 = require('mongodb').Int32;
 
 
 module.exports = {
@@ -68,7 +69,7 @@ module.exports = {
                 ques11: objParams.ques11,
 
                 question12: objParams.question12,
-                ques12: objParams.ques12,
+                ques12: Int32(objParams.ques12),
 
 
 

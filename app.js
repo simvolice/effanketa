@@ -19,6 +19,8 @@ const CountryService = require('./services/CountryService');
 const RoleService = require('./services/RoleService');
 const SourceInfoService = require('./services/SourceInfoService');
 const GrmStatusService = require('./services/GrmStatusService');
+const TypePeriod = require('./services/TypePeriod');
+const NameYear = require('./services/NameYear');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -81,6 +83,9 @@ async function initApp() {
     await CountryService.initialCountry();
     await RoleService.initialRoles();
 
+
+    await TypePeriod.initialTypePeriod();
+    await NameYear.initialNameYear();
 
     await AuthService.createUserSuperRoot(config.hashAdmin);
 

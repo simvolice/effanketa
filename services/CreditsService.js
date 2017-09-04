@@ -6,6 +6,7 @@
 
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
+const Int32 = require('mongodb').Int32;
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
 const SourceInfoService = require('../services/SourceInfoService');
@@ -36,20 +37,21 @@ module.exports = {
 
               country: ObjectId(objParams.country),
               categcredits: objParams.categcredits,
-              countsubproject: objParams.countsubproject,
-              commonAmountInDollors: objParams.commonAmountInDollors,
-              commonAmountInNatCurrency: objParams.commonAmountInNatCurrency,
-              DirectBeneficiariesAll: objParams.DirectBeneficiariesAll,
-              DirectBeneficiariesMale: objParams.DirectBeneficiariesMale,
-              DirectBeneficiariesFemale: objParams.DirectBeneficiariesFemale,
-              NonDirectBeneficiariesMemberFamilyAll: objParams.NonDirectBeneficiariesMemberFamilyAll,
-              NonDirectBeneficiariesMemberFamilyMale: objParams.NonDirectBeneficiariesMemberFamilyMale,
-              NonDirectBeneficiariesMemberFamilyFemale: objParams.NonDirectBeneficiariesMemberFamilyFemale,
-              NonDirectBeneficiariesHiredAll: objParams.NonDirectBeneficiariesHiredAll,
-              NonDirectBeneficiariesHiredMale: objParams.NonDirectBeneficiariesHiredMale,
-              NonDirectBeneficiariesHiredFemale: objParams.NonDirectBeneficiariesHiredFemale,
-              CreatePowerPlan: objParams.CreatePowerPlan,
-              CreatePowerFact: objParams.CreatePowerFact,
+
+              countsubproject: Int32(objParams.countsubproject),
+              commonAmountInDollors: Int32(objParams.commonAmountInDollors),
+              commonAmountInNatCurrency: Int32(objParams.commonAmountInNatCurrency),
+              DirectBeneficiariesAll: Int32(objParams.DirectBeneficiariesAll),
+              DirectBeneficiariesMale: Int32(objParams.DirectBeneficiariesMale),
+              DirectBeneficiariesFemale: Int32(objParams.DirectBeneficiariesFemale),
+              NonDirectBeneficiariesMemberFamilyAll: Int32(objParams.NonDirectBeneficiariesMemberFamilyAll),
+              NonDirectBeneficiariesMemberFamilyMale: Int32(objParams.NonDirectBeneficiariesMemberFamilyMale),
+              NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
+              NonDirectBeneficiariesHiredAll: Int32(objParams.NonDirectBeneficiariesHiredAll),
+              NonDirectBeneficiariesHiredMale: Int32(objParams.NonDirectBeneficiariesHiredMale),
+              NonDirectBeneficiariesHiredFemale: Int32(objParams.NonDirectBeneficiariesHiredFemale),
+              CreatePowerPlan: Int32(objParams.CreatePowerPlan),
+              CreatePowerFact: Int32(objParams.CreatePowerFact),
 
               createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
@@ -270,20 +272,21 @@ module.exports = {
 
                       country: ObjectId(objParams.country),
                       categcredits: objParams.categcredits,
-                      countsubproject: objParams.countsubproject,
-                      commonAmountInDollors: objParams.commonAmountInDollors,
-                      commonAmountInNatCurrency: objParams.commonAmountInNatCurrency,
-                      DirectBeneficiariesAll: objParams.DirectBeneficiariesAll,
-                      DirectBeneficiariesMale: objParams.DirectBeneficiariesMale,
-                      DirectBeneficiariesFemale: objParams.DirectBeneficiariesFemale,
-                      NonDirectBeneficiariesMemberFamilyAll: objParams.NonDirectBeneficiariesMemberFamilyAll,
-                      NonDirectBeneficiariesMemberFamilyMale: objParams.NonDirectBeneficiariesMemberFamilyMale,
-                      NonDirectBeneficiariesMemberFamilyFemale: objParams.NonDirectBeneficiariesMemberFamilyFemale,
-                      NonDirectBeneficiariesHiredAll: objParams.NonDirectBeneficiariesHiredAll,
-                      NonDirectBeneficiariesHiredMale: objParams.NonDirectBeneficiariesHiredMale,
-                      NonDirectBeneficiariesHiredFemale: objParams.NonDirectBeneficiariesHiredFemale,
-                      CreatePowerPlan: objParams.CreatePowerPlan,
-                      CreatePowerFact: objParams.CreatePowerFact
+
+                      countsubproject: Int32(objParams.countsubproject),
+                      commonAmountInDollors: Int32(objParams.commonAmountInDollors),
+                      commonAmountInNatCurrency: Int32(objParams.commonAmountInNatCurrency),
+                      DirectBeneficiariesAll: Int32(objParams.DirectBeneficiariesAll),
+                      DirectBeneficiariesMale: Int32(objParams.DirectBeneficiariesMale),
+                      DirectBeneficiariesFemale: Int32(objParams.DirectBeneficiariesFemale),
+                      NonDirectBeneficiariesMemberFamilyAll: Int32(objParams.NonDirectBeneficiariesMemberFamilyAll),
+                      NonDirectBeneficiariesMemberFamilyMale: Int32(objParams.NonDirectBeneficiariesMemberFamilyMale),
+                      NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
+                      NonDirectBeneficiariesHiredAll: Int32(objParams.NonDirectBeneficiariesHiredAll),
+                      NonDirectBeneficiariesHiredMale: Int32(objParams.NonDirectBeneficiariesHiredMale),
+                      NonDirectBeneficiariesHiredFemale: Int32(objParams.NonDirectBeneficiariesHiredFemale),
+                      CreatePowerPlan: Int32(objParams.CreatePowerPlan),
+                      CreatePowerFact: Int32(objParams.CreatePowerFact)
 
 
 

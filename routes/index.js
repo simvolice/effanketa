@@ -13,6 +13,7 @@ module.exports = function (app) {
     app.use('/', require('./finansialstatusRouter'));
     app.use('/', require('./mainScoreProgrammRouter'));
     app.use('/', require('./strategicRouter'));
+    app.use('/', require('./buildReportRouter'));
 
 
 };

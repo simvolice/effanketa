@@ -101,6 +101,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+      .state('build_report', {
+          url: '/build_report',
+          templateUrl: 'components/build_report/build_reportView.html',
+
+
+      })
 
 
 

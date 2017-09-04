@@ -11,6 +11,7 @@ const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
+const Int32 = require('mongodb').Int32;
 
 const CounterService = require('../services/CounterService');
 const GrmStatusService = require('../services/GrmStatusService');
@@ -53,7 +54,7 @@ module.exports = {
                 takeAction: objParams.takeAction,
                 lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
                 dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
-                timeToCheckComplaint: objParams.timeToCheckComplaint,
+                timeToCheckComplaint: Int32(objParams.timeToCheckComplaint),
 
 
                 id: seq,
@@ -279,7 +280,7 @@ module.exports = {
                         takeAction: objParams.takeAction,
                         lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
                         dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
-                        timeToCheckComplaint: objParams.timeToCheckComplaint,
+                        timeToCheckComplaint: Int32(objParams.timeToCheckComplaint),
 
                     }
                 });
