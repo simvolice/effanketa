@@ -1,0 +1,145 @@
+<div class="row" ng-controller="Report_by_criteriyAppCtrl">
+
+    <div class="col-md-12">
+
+
+
+
+        <md-content layout="column" flex class="custom__md-content__categ">
+
+            <md-card>
+
+
+
+                <md-toolbar class="md-table-toolbar md-default">
+
+
+                    <div class="md-toolbar-tools">
+
+
+                        <h3>Отчёт по заданным критериям</h3>
+
+
+                    </div>
+
+
+
+
+                    <div class="md-toolbar-tools">
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-md-3">
+
+                                <select ng-model="country" ng-options="y._id as y.name for y in allCountrys">
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-3">
+
+                                <select ng-model="period" ng-options="y._id as y.name for y in allperiod">
+                                </select>
+
+                            </div>
+                            <div class="col-md-3">
+
+                                <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
+                                </select>
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <div class="col-md-3">
+                                <button class="btn btn-sm btn-primary" ng-click="createReport()" style="margin-top: 0">Сформировать отчет</button>
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                </md-toolbar>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Общее количество мероприятий: <strong>{{allCount}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Общее количество анкет: <strong>{{allForm}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div id="chart"></div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div id="chartAverage"></div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </md-card>
+
+
+        </md-content>
+
+
+
+
+
+
+
+
+    </div>
+
+
+</div>

@@ -115,6 +115,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+      .state('report_by_criteriy', {
+          url: '/report_by_criteriy',
+          templateUrl: 'components/report_by_criteriy/report_by_criteriyView.html',
 
+
+      })
 
 });

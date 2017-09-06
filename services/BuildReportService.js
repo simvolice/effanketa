@@ -28,6 +28,8 @@ module.exports = {
 
 
 
+
+
         try {
 
 
@@ -212,7 +214,60 @@ module.exports = {
                                 }
                             }
 
-                        ]
+                        ],
+
+
+
+                        "countForms": [ {
+
+                            $match: {country: ObjectId(objParams.country)}
+
+                        },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+
+
+                            {
+                                $count : "all_form"
+                            }
+
+
+                        ],
+
+
+
+
+
                     }
                 },
 
