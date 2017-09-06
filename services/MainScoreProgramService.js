@@ -39,7 +39,9 @@ module.exports = {
                   sourceFinance: objParams.sourceFinance,
                   mainDestination: objParams.mainDestination,
                   executorProject: objParams.executorProject,
-                  contactExecutor: objParams.contactExecutor
+                  contactExecutor: objParams.contactExecutor,
+                  createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
 
 
               });
@@ -235,6 +237,8 @@ module.exports = {
                 sector: objParams.sector,
                 developers: objParams.developers,
                 executorAgents: objParams.executorAgents,
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
 
 
 
@@ -433,7 +437,9 @@ module.exports = {
                 investor: objParams.investor,
                 coloborationCountry: objParams.coloborationCountry,
                 executorWithContact: objParams.executorWithContact,
-                descriptionInvest: objParams.descriptionInvest
+                descriptionInvest: objParams.descriptionInvest,
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
 
             });
 
@@ -627,7 +633,9 @@ module.exports = {
                 sourceFinance: objParams.sourceFinance,
                 mainDestination: objParams.mainDestination,
                 executorProject: objParams.executorProject,
-                contactExecutor: objParams.contactExecutor
+                contactExecutor: objParams.contactExecutor,
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
 
 
             });

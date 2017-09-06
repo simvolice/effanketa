@@ -108,6 +108,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+      .state('report_by_main_score', {
+          url: '/report_by_main_score',
+          templateUrl: 'components/report_by_main_score/report_by_main_scoreView.html',
+
+
+      })
+
 
 
 });
