@@ -122,4 +122,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+
+
+      .state('data_intermediate_index', {
+          url: '/data_intermediate_index',
+          templateUrl: 'components/data_intermediate_index/data_intermediate_indexView.html',
+
+
+      })
+
 });

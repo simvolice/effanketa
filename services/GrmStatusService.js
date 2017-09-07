@@ -157,7 +157,43 @@ module.exports = {
 
 
 
-    }
+    },
+
+
+
+    getStatusByName: async (name) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grmstatus');
+
+
+
+
+            const result = await col.findOne({name: name});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
 
 
 

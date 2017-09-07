@@ -399,8 +399,14 @@ $scope.data = [];
                 if (result.code === 0) {
 
 
-                    $scope.dataTable5[$scope.data.length - 1]._id = result.resultFromDb._id;
-                    $scope.dataTable5[$scope.data.length - 1].id = result.resultFromDb.id;
+                    Getalltable5.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
+
+
+                            $scope.dataTable5 = result.resultFromDb;
+
+
+                    });
+
 
                     $mdToast.show(
                         $mdToast.simple()

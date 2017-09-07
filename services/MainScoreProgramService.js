@@ -9,6 +9,7 @@ const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
 
 const ObjectId = require('mongodb').ObjectId;
+const Decimal128 = require('mongodb').Decimal128;
 
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
@@ -629,7 +630,7 @@ module.exports = {
                 country: ObjectId(objParams.country),
                 projectIniciativ: objParams.projectIniciativ,
                 nameCountry: nameCountry.name,
-                amountFinance: objParams.amountFinance,
+                amountFinance: Decimal128.fromString(objParams.amountFinance),
                 sourceFinance: objParams.sourceFinance,
                 mainDestination: objParams.mainDestination,
                 executorProject: objParams.executorProject,
@@ -728,7 +729,7 @@ module.exports = {
                     country: ObjectId(objParams.country),
                     projectIniciativ: objParams.projectIniciativ,
                     nameCountry: nameCountry.name,
-                    amountFinance: objParams.amountFinance,
+                    amountFinance: Decimal128.fromString(objParams.amountFinance),
                     sourceFinance: objParams.sourceFinance,
                     mainDestination: objParams.mainDestination,
                     executorProject: objParams.executorProject,

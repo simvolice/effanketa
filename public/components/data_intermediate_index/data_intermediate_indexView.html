@@ -1,0 +1,646 @@
+<div class="row" ng-controller="DataIntermediateIndexCtrl">
+
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <md-toolbar class="md-table-toolbar md-default">
+
+
+                <div class="md-toolbar-tools">
+
+
+                    <h3>Данные по промежуточным показателям</h3>
+
+
+                </div>
+
+
+
+
+                <div class="md-toolbar-tools">
+
+
+
+                    <div class="row">
+
+
+
+
+
+
+                        <div class="col-md-6">
+
+                            <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
+                            </select>
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="col-md-6">
+                            <button class="btn btn-sm btn-primary" ng-click="generateReport()" style="margin-top: 0">Сформировать отчет</button>
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+            </md-toolbar>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <md-card>
+            <md-card-header>
+
+                <md-card-header-text>
+                    <span class="md-title">Процент пользователей, удовлетворенных услугами программы по предоставлению знаний области изменения климата</span>
+
+                </md-card-header-text>
+            </md-card-header>
+
+
+            <md-card-content>
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Целевой показатель: к 3-4 годам <span class="badge">30%</span></h6>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Целевой показатель: к 5 годам <span class="badge">60%</span></h6>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Текущий показатель: <span class="badge">{{data.persentUsersSatisfied}}%</span></h6>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+            </md-card-content>
+        </md-card>
+
+    </div>
+
+
+    <div class="col-md-4">
+        <md-card>
+            <md-card-header>
+
+                <md-card-header-text>
+                    <span class="md-title">Количество планов и
+программ, которые разработаны
+самими странами с учетом знаний и
+уроков, предоставленных
+программой</span>
+
+                </md-card-header-text>
+            </md-card-header>
+
+
+            <md-card-content>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Целевой показатель: к 4 году <span class="badge">1</span></h6>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Целевой показатель: к 5 годам <span class="badge">3</span></h6>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Текущий показатель: <span class="badge">{{data.countProgramm}}</span></h6>
+
+                    </div>
+
+                </div>
+            </md-card-content>
+        </md-card>
+
+    </div>
+
+
+
+    <div class="col-md-4">
+        <md-card>
+            <md-card-header>
+
+                <md-card-header-text>
+                    <span class="md-title">Примеры совместной
+деятельности, которые привели к
+финансированию инвестиций,
+требующих сотрудничества стран</span>
+
+                </md-card-header-text>
+            </md-card-header>
+
+
+            <md-card-content>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Целевой показатель: к 4 году <span class="badge">1</span></h6>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Целевой показатель: к 5 годам <span class="badge">2</span></h6>
+
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h6>Текущий показатель: <span class="badge">{{data.finInvest}}</span></h6>
+
+                    </div>
+
+                </div>
+            </md-card-content>
+        </md-card>
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+<div class="row">
+        <div class="col-md-4">
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                        <span class="md-title">Объем дополнительно
+мобилизованных ресурсов для
+финансирования знаний, поднятия
+потенциала и инвестиций в
+региональное сотрудничество в
+области изменения климата/
+«зеленой» деятельности как
+результат улучшенного уровня
+программной координации между
+странами ЦА и м/н сообществом
+развития</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 3 годам <span class="badge">20 млн.</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 4 годам <span class="badge">30 млн.</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 5 годам <span class="badge">40 млн.</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.mobileResurs.$numberDecimal || 0}}</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+
+        <div class="col-md-4">
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                    <span class="md-title">Восприятие
+пользователей
+услуг,
+предоставляемых в
+том числе с
+использованием ИТ</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 3-4 году <span class="badge">42%</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 4-5 году <span class="badge">75%</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.countFormIT}}%</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+
+
+        <div class="col-md-4">
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                    <span class="md-title">Общее
+число операций со
+стороны
+государственных
+служб,
+поддержанных
+проектом</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 3-4 годам <span class="badge">4000</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 5 годам <span class="badge">9000</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.countCivilService}}</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+<div class="row">
+        <div class="col-md-4">
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                        <span class="md-title">Число
+поддержанных
+проектом сетей/
+платформ по
+координации в
+области климата,
+объединяющих
+несколько стран и
+предоставляющих
+возможности меж-
+правительственного,
+меж-секторного
+сотрудничества,
+сотрудничество с НПО
+и пр.</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 2-3 году <span class="badge">1</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 4 годам <span class="badge">2</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 5 годам <span class="badge">10</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.countPlatform}}</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+
+        <div class="col-md-4">
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                    <span class="md-title">Число
+бенефициаров проекта,
+включая женщин</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 3-4 году <span class="badge">144,000 (25%)</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 5 годам <span class="badge">240,000 (35%)</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.countBenificiarProject}}</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+
+
+        <div class="col-md-4">
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                    <span class="md-title">Охват проектом территорий (га), на которых
+осуществляются
+эффективные с/х,
+земельные и водные
+управленческие
+мероприятия по борьбе с
+изменением климата,
+учитывающие местные
+агро-экологические условия</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 3-4 году <span class="badge">26,800</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 5 годам <span class="badge">40,000</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.areaGAProject}}</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+<div class="row">
+        <div class="col-md-4">
+
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <md-card>
+                <md-card-header>
+
+                    <md-card-header-text>
+                        <span class="md-title">Обратная связь/ жалобы,
+удовлетворенные в срок и в
+соответствие с заданным
+стандартом услуг</span>
+
+                    </md-card-header-text>
+                </md-card-header>
+
+
+                <md-card-content>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 2-3 году <span class="badge">70%</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 4 годам <span class="badge">80%</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Целевой показатель: к 5 годам <span class="badge">100%</span></h6>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h6>Текущий показатель: <span class="badge">{{data.countGRM}}</span></h6>
+
+                        </div>
+
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+
+
+
+        <div class="col-md-4">
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</div>
