@@ -7,6 +7,16 @@
 angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
 
 
+    GetToken.get(function (result) {
+
+
+        localStorage.setItem("tokenCSRF", result.tokenCSRF);
+
+
+    });
+
+
+
     if (localStorage.getItem('tokenCSRF') === null) {
 
         GetToken.get(function (result) {
