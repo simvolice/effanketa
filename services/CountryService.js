@@ -25,20 +25,36 @@ module.exports = {
           col.createIndex({ name : 1 }, {unique: true});
 
 
-          const result = await col.insertMany([{
+          const result = await col.insertMany([
 
-              name: "Казахстан",
-              flag: "assets/img/Flag_of_Kazakhstan.svg"
-          }, {
 
-                  name: "Таджикистан",
-              flag: "assets/img/Flag_of_Tajikistan.svg"
+              {
+
+              name: "Казахстан"
+
+
               },
 
               {
 
-                  name: "Узбекистан",
-                  flag: "assets/img/Flag_of_Uzbekistan.svg"
+                  name: "Таджикистан"
+
+              },
+
+              {
+
+                  name: "Узбекистан"
+
+              },
+
+              {
+
+                  name: "Кыргызстан"
+              },
+              {
+
+                  name: "Туркменистан"
+
               }
               ]
 
