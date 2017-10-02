@@ -55,3 +55,8 @@ angular.module('app').factory("UpdForm", function($resource) {
 angular.module('app').factory("GetOneForm", function($resource) {
     return $resource("/getoneform");
 });
+
+
+angular.module('app').factory("SendFormForEmail", function($resource) {
+    return $resource("/sendformforemail");
+});

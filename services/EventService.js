@@ -31,6 +31,7 @@ module.exports = {
                 id: seq,
                 icon: "add",
                 formIcon: "attach_file",
+                iconSend: "send",
 
                 country: ObjectId(objParams.country),
                 nameCountry: nameCountry.name,

@@ -4,7 +4,11 @@
 
 
 
-angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, GetPublicEvent, $mdToast, $mdDialog, GetToken, $timeout) {
+angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, $mdToast, $mdDialog, GetToken, $location) {
+
+    //Убираем весь UI
+    jQuery( "nav" ).remove();
+
 
     if (localStorage.getItem('tokenCSRF') === null) {
 
@@ -20,56 +24,18 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, G
     }
 
 
-    $scope.allevent = [];
 
 
-    GetPublicEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF')}, function(result) {
-
-
-        if (result.code === 0) {
-
-
-            $scope.allevent = result.resultFromDb;
-
-
-
-
-        } else {
-
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                    .position('bottom left')
-                    .hideDelay(6000)
-            );
-
-
-        }
-
-
-
+    $mdDialog.show({
+        controller: DialogControllerForNewForm,
+        locals:{data: $location.search()},
+        templateUrl: 'components/grow_potencial/dialog_template_new_form.html',
+        parent: angular.element(document.body),
+        //targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true // Only for -xs, -sm breakpoints.
     });
 
-
-
-
-
-
-
-    $scope.addForm = function (data, ev) {
-
-        $mdDialog.show({
-            controller: DialogControllerForNewForm,
-            locals:{data: data},
-            templateUrl: 'components/grow_potencial/dialog_template_new_form.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: true // Only for -xs, -sm breakpoints.
-        });
-
-
-    };
 
 
 
@@ -78,9 +44,9 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, G
 
         $scope.data = {
 
-            parentId: data._id,
-            myDate: data.myDate,
-            nameCountry: data.country_docs.name,
+            parentId: data.parentId,
+            myDate: data.dateOfEvent,
+            nameCountry: data.nameCountry,
             nameEvent: data.nameEvent,
             email: "",
             question1: 'Цели данного мероприятия были четко определены',
@@ -182,7 +148,7 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, G
                 if (result.code === 0) {
 
 
-                    $mdDialog.hide();
+
 
 
                     $mdToast.show(
@@ -215,31 +181,7 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, G
 
 
 
-
-        $scope.closeDialog = function () {
-
-
-
-            $mdDialog.hide();
-
-
-
-
-
-
-
-        };
-
-
-
-
-
-
-
-
-
     }
-
 
 
 

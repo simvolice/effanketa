@@ -1,0 +1,88 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Заполните email адреса, чтобы добавить еще один адрес, нажмите Enter</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <md-card>
+
+                            <div class="content">
+
+                                <md-chips ng-model="data.emails" readonly="data.readonly" md-removable="data.removable">
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="sendForm()">
+            Сохранить
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

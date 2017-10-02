@@ -107,17 +107,7 @@ router.post('/updevent', checkSeesionToken, async (req, res, next) =>{
 
 
 
-router.post('/getpublicevent', async (req, res, next) =>{
 
-    let result =  await EventService.getPublicEvent();
-
-
-
-
-    res.json({"code": 0, "resultFromDb": result});
-
-
-});
 
 
 

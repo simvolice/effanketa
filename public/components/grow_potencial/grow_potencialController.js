@@ -22,6 +22,89 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
     });
 
 
+    $scope.sendForm = function (data, ev) {
+
+
+
+        $mdDialog.show({
+            controller: DialogControllerSendFormToEmail,
+            locals:{data: data},
+            templateUrl: 'components/grow_potencial/dialog_template_send_form_to_email.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: true // Only for -xs, -sm breakpoints.
+        });
+    };
+
+
+
+    function DialogControllerSendFormToEmail($scope, data, SendFormForEmail) {
+
+
+        $scope.data = {
+
+            emails: [],
+            readonly: false,
+            removable: true,
+            parentId: data._id,
+            country: data.country,
+            dateOfEvent: data.myDate,
+            nameEvent: data.nameEvent,
+            nameCountry: data.nameCountry
+
+
+
+
+        };
+
+
+
+
+
+
+        $scope.sendForm = function () {
+
+
+            SendFormForEmail.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
+
+
+                if (result.code === 0) {
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+            });
+
+        };
+
+
+        $scope.closeDialog = function () {
+            $mdDialog.hide();
+        };
+
+    }
+
+
 
     $scope.plusRow = function (index, event, id) {
 

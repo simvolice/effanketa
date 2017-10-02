@@ -7,9 +7,6 @@
 
 
 
-angular.module('app').factory("GetPublicEvent", function($resource) {
-    return $resource("/getpublicevent");
-});
 
 
 

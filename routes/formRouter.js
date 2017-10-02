@@ -4,10 +4,12 @@
 
 const express = require('express');
 const router = express.Router();
-
+const config = require('../utils/devConfig');
 const checkSeesionToken = require('../utils/checkSeesionToken');
-
+const querystring = require('querystring');
 const FormService = require('../services/FormService');
+const nodemailer = require('nodemailer');
+let transporter = nodemailer.createTransport(config.smtpServer);
 
 
 
@@ -101,6 +103,39 @@ router.post('/getoneform', checkSeesionToken, async (req, res, next) =>{
 
 
     res.json({"code": 0, "resultFromDb": result});
+
+});
+
+
+
+
+
+router.post('/sendformforemail', checkSeesionToken, async (req, res, next) =>{
+
+
+
+
+   let urlToPublicForm = querystring.stringify({ parentId: req.body.data.parentId, country: req.body.data.country, dateOfEvent: req.body.data.dateOfEvent, nameEvent: req.body.data.nameEvent,
+   nameCountry: req.body.data.nameCountry});
+
+
+
+    for (let item of req.body.data.emails) {
+        let mail = {
+            from: "simvolice@gmail.com",
+            to: item,
+            subject: "Добрый день, просим Вас заполнить анкету",
+
+            html: '<a href="'+ req.get("origin") + '/?#!/publicform?' + urlToPublicForm +'">Перейдите по этой ссылке, чтобы заполнить анкету</a>'
+        };
+
+        transporter.sendMail(mail);
+    }
+
+
+
+
+    res.json({"code": 0});
 
 });
 
