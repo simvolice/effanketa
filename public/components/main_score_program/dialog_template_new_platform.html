@@ -32,13 +32,16 @@
 
                                 <div class="col-md-12">
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">place</i>
-                                             </span>
-                                        <div class="form-group is-empty"> <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                        </select><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите страну</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="data.country">
+
+                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
 
 
@@ -49,29 +52,50 @@
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Проект/инициатива" ng-model="data.projectIniciativ"><span class="material-input"></span></div>
-                                    </div>
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                              <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Объем финансирования" ng-model="data.amountFinance"><span class="material-input"></span></div>
-                                    </div>
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Источник финансирования" ng-model="data.sourceFinance"><span class="material-input"></span></div>
-                                    </div>
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Проект/инициатива</label>
+                                        <md-icon class="material-icons">feedback</md-icon>
+
+                                        <input ng-model="data.projectIniciativ">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Объем финансирования</label>
+                                        <md-icon class="material-icons">attach_money</md-icon>
+
+                                        <input ng-model="data.amountFinance">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Источник финансирования</label>
+                                        <md-icon class="material-icons">work</md-icon>
+
+                                        <input ng-model="data.sourceFinance">
+                                    </md-input-container>
+
+
 
 
 
@@ -114,20 +138,28 @@
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Исполнитель проекта" ng-model="data.executorProject"><span class="material-input"></span></div>
-                                    </div>
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Контакты исполнителя" ng-model="data.contactExecutor"><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Исполнитель проекта</label>
+                                        <md-icon class="material-icons">account_circle</md-icon>
+
+                                        <input ng-model="data.executorProject">
+                                    </md-input-container>
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Контакты исполнителя</label>
+                                        <md-icon class="material-icons">contact_phone</md-icon>
+
+                                        <input ng-model="data.contactExecutor">
+                                    </md-input-container>
+
+
 
 
 

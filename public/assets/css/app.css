@@ -438,3 +438,23 @@ ul:not(.browser-default) > li {
     }
 
 }
+
+
+.custom__date__margin {
+    margin-top: 40px;
+    margin-left: 50px;
+
+}
+
+
+.custom__select__margin {
+    min-width: 200px;
+
+}
+
+.custom__date__grm {
+
+    margin-left: -15px;
+
+}
+

@@ -6,100 +6,122 @@
 
 
 
-        <md-toolbar class="md-toolbar-tools">
+    <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать мобильный ресурс</h2>
-                <span flex></span>
-                <md-button class="md-icon-button" ng-click="closeDialog()">
-                    <i class="material-icons">close</i>
-                </md-button>
+        <h2>Создать мобильный ресурс</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="closeDialog()">
+            <i class="material-icons">close</i>
+        </md-button>
 
-        </md-toolbar>
-
-
-        <md-dialog-content>
-            <div class="md-dialog-content">
+    </md-toolbar>
 
 
+    <md-dialog-content>
+        <div class="md-dialog-content">
 
 
-                <div class="col-md-12">
 
-                    <div class="row">
-                        <md-card>
 
-                            <div class="content">
+            <div class="col-md-12">
 
-                                <div class="col-md-12">
+                <div class="row">
+                    <md-card>
 
-                                    <div class="input-group">
+                        <div class="content">
+
+                            <div class="col-md-12">
+
+                                <md-input-container class="custom__select__margin">
+                                    <label>Выберите страну</label>
+                                    <md-icon class="material-icons">place</md-icon>
+                                    <md-select ng-model="data.country">
+
+                                        <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                            {{y.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <md-input-container class="md-icon-float md-block">
+                                    <label>Проект/инициатива</label>
+                                    <md-icon class="material-icons">feedback</md-icon>
+
+                                    <input ng-model="data.projectIniciativ">
+                                </md-input-container>
+
+
+
+
+
+
+
+
+                                <md-input-container class="md-icon-float md-block">
+                                    <label>Объем финансирования</label>
+                                    <md-icon class="material-icons">attach_money</md-icon>
+
+                                    <input ng-model="data.amountFinance">
+                                </md-input-container>
+
+
+
+
+
+
+
+
+                                <md-input-container class="md-icon-float md-block">
+                                    <label>Источник финансирования</label>
+                                    <md-icon class="material-icons">work</md-icon>
+
+                                    <input ng-model="data.sourceFinance">
+                                </md-input-container>
+
+
+
+
+
+
+                                <div class="input-group">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">place</i>
-                                             </span>
-                                        <div class="form-group is-empty"> <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                        </select><span class="material-input"></span></div>
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Проект/инициатива" ng-model="data.projectIniciativ"><span class="material-input"></span></div>
-                                    </div>
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                              <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Объем финансирования" ng-model="data.amountFinance"><span class="material-input"></span></div>
-                                    </div>
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Источник финансирования" ng-model="data.sourceFinance"><span class="material-input"></span></div>
-                                    </div>
-
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
 
                                              </span>
-                                        <div class="form-group is-empty">
+                                    <div class="form-group is-empty">
 
-                                            <h6>Основное назначение</h6>
-
-
+                                        <h6>Основное назначение</h6>
 
 
 
 
-                                            <md-radio-group ng-model="data.mainDestination">
-
-                                                <md-radio-button value="Улучшение знаний">Улучшение знаний
-                                                </md-radio-button>
-                                                <md-radio-button value="Поднятие потенциала">Поднятие потенциала</md-radio-button>
-                                                <md-radio-button value="Инвестиции в региональное сотрудничество в области климата">Инвестиции в региональное сотрудничество в области климата</md-radio-button>
 
 
-                                            </md-radio-group>
+                                        <md-radio-group ng-model="data.mainDestination">
+
+                                            <md-radio-button value="Улучшение знаний">Улучшение знаний
+                                            </md-radio-button>
+                                            <md-radio-button value="Поднятие потенциала">Поднятие потенциала</md-radio-button>
+                                            <md-radio-button value="Инвестиции в региональное сотрудничество в области климата">Инвестиции в региональное сотрудничество в области климата</md-radio-button>
 
 
+                                        </md-radio-group>
 
 
 
@@ -107,33 +129,9 @@
 
 
 
-                                            <span class="material-input"></span></div>
-                                    </div>
 
 
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Исполнитель проекта" ng-model="data.executorProject"><span class="material-input"></span></div>
-                                    </div>
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Контакты исполнителя" ng-model="data.contactExecutor"><span class="material-input"></span></div>
-                                    </div>
-
-
-
-
-
-
+                                        <span class="material-input"></span></div>
                                 </div>
 
 
@@ -142,7 +140,24 @@
 
 
 
+                                <md-input-container class="md-icon-float md-block">
+                                    <label>Исполнитель проекта</label>
+                                    <md-icon class="material-icons">account_circle</md-icon>
 
+                                    <input ng-model="data.executorProject">
+                                </md-input-container>
+
+
+
+
+
+
+                                <md-input-container class="md-icon-float md-block">
+                                    <label>Контакты исполнителя</label>
+                                    <md-icon class="material-icons">contact_phone</md-icon>
+
+                                    <input ng-model="data.contactExecutor">
+                                </md-input-container>
 
 
 
@@ -154,10 +169,6 @@
                             </div>
 
 
-                        </md-card>
-
-
-                    </div>
 
 
 
@@ -170,15 +181,36 @@
 
 
 
-                </div>
 
 
+                        </div>
 
 
+                    </md-card>
 
 
                 </div>
-        </md-dialog-content>
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+        </div>
+    </md-dialog-content>
 
 
 

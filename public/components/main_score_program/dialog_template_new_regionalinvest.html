@@ -32,13 +32,16 @@
 
                                 <div class="col-md-12">
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">place</i>
-                                             </span>
-                                        <div class="form-group is-empty"> <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                        </select><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите страну</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="data.country">
+
+                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
 
 
@@ -49,29 +52,16 @@
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Тип инвестиций" ng-model="data.typeInvest"><span class="material-input"></span></div>
-                                    </div>
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                              <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Размер инвестиций" ng-model="data.sizeInvest"><span class="material-input"></span></div>
-                                    </div>
 
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Тип инвестиций</label>
+                                        <md-icon class="material-icons">attach_money</md-icon>
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Инвестор" ng-model="data.investor"><span class="material-input"></span></div>
-                                    </div>
+                                        <input ng-model="data.typeInvest">
+                                    </md-input-container>
 
 
 
@@ -80,35 +70,60 @@
 
 
 
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Размер инвестиций</label>
+                                        <md-icon class="material-icons">attach_money</md-icon>
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Сотрудничающие страны" ng-model="data.coloborationCountry"><span class="material-input"></span></div>
-                                    </div>
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Исполнительный деятель с контактами" ng-model="data.executorWithContact"><span class="material-input"></span></div>
-                                    </div>
+                                        <input ng-model="data.sizeInvest">
+                                    </md-input-container>
 
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><md-input-container class="md-block">
-                                            <label>Краткое описание совместной деятельности, приведшей к инвестициям.</label>
-                                            <textarea ng-model="data.descriptionInvest" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
-                                        </md-input-container>
-                                            <span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Инвестор</label>
+                                        <md-icon class="material-icons">work</md-icon>
+
+                                        <input ng-model="data.investor">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Сотрудничающие страны</label>
+                                        <md-icon class="material-icons">place</md-icon>
+
+                                        <input ng-model="data.coloborationCountry">
+                                    </md-input-container>
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Исполнительный деятель с контактами</label>
+                                        <md-icon class="material-icons">person_pin</md-icon>
+
+                                        <input ng-model="data.executorWithContact">
+                                    </md-input-container>
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Краткое описание совместной деятельности, приведшей к инвестициям.</label>
+                                        <md-icon class="material-icons">description</md-icon>
+                                        <textarea ng-model="data.descriptionInvest" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                    </md-input-container>
+
+
 
 
                                 </div>

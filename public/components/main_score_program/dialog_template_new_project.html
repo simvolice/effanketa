@@ -32,13 +32,16 @@
 
                                 <div class="col-md-12">
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">place</i>
-                                             </span>
-                                        <div class="form-group is-empty"> <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                        </select><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите страну</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="data.country">
+
+                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
 
 
@@ -49,29 +52,17 @@
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Программа" ng-model="data.programm"><span class="material-input"></span></div>
-                                    </div>
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                              <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Сфера/сектор" ng-model="data.sector"><span class="material-input"></span></div>
-                                    </div>
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Разработчики" ng-model="data.developers"><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Программа</label>
+                                        <md-icon class="material-icons">dashboard</md-icon>
+
+                                        <input ng-model="data.programm">
+                                    </md-input-container>
 
 
 
@@ -81,12 +72,50 @@
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Реализующее агенство" ng-model="data.executorAgents"><span class="material-input"></span></div>
-                                    </div>
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Сфера/сектор</label>
+                                        <md-icon class="material-icons">business</md-icon>
+
+                                        <input ng-model="data.sector">
+                                    </md-input-container>
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Разработчики</label>
+                                        <md-icon class="material-icons">group_work</md-icon>
+
+                                        <input ng-model="data.developers">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Реализующее агенство</label>
+                                        <md-icon class="material-icons">account_balance</md-icon>
+
+                                        <input ng-model="data.executorAgents">
+                                    </md-input-container>
+
+
 
 
 

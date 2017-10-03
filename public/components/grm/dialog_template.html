@@ -37,42 +37,12 @@
 
 
 
-                                    <div class="input-group">
-
-                                        <div class="form-group is-empty"><div flex-gt-xs>
-
-                                            <md-datepicker ng-model="data.dateInGo" md-placeholder="Дата поступления" md-open-on-focus></md-datepicker>
-                                        </div><span class="material-input"></span></div>
-                                    </div>
 
 
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">feedback</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Канал получения" ng-model="data.sourceTake"><span class="material-input"></span></div>
-                                    </div>
-
-
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">account_circle</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Заявитель ФИО" ng-model="data.declarerFIO"><span class="material-input"></span></div>
-                                    </div>
-
-
-
-                                    <div class="input-group" ng-show="data.statusAdm">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">place</i>
-                                             </span>
-                                        <div class="form-group is-empty">  <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                        </select><span class="material-input"></span></div>
-                                    </div>
+                                        <md-input-container class="custom__date__grm">
+                                            <label>Дата поступления</label>
+                                            <md-datepicker ng-model="data.dateInGo" md-open-on-focus></md-datepicker>
+                                        </md-input-container>
 
 
 
@@ -80,23 +50,93 @@
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">phone</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Телефон заявителя" ng-model="data.phoneDeclarer"><span class="material-input"></span></div>
-                                    </div>
 
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">subject</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Категория жалобы" ng-model="data.categComplaint"><span class="material-input"></span></div>
-                                    </div>
 
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Канал получения</label>
+                                        <md-icon class="material-icons">feedback</md-icon>
+
+                                        <input ng-model="data.sourceTake">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Заявитель ФИО</label>
+                                        <md-icon class="material-icons">account_circle</md-icon>
+
+                                        <input ng-model="data.declarerFIO">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите страну</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="data.country">
+
+                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Телефон заявителя</label>
+                                        <md-icon class="material-icons">phone</md-icon>
+
+                                        <input ng-model="data.phoneDeclarer">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Категория жалобы</label>
+                                        <md-icon class="material-icons">subject</md-icon>
+
+                                        <input ng-model="data.categComplaint">
+                                    </md-input-container>
+
+
+                                    <md-input-container class="md-block">
+                                        <label>Поднятый вопрос</label>
+                                        <md-icon class="material-icons">thumbs_up_down</md-icon>
+                                        <textarea ng-model="data.raisedQuestion" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                    </md-input-container>
 
 
 
@@ -109,80 +149,98 @@
 
                     <div class="col-md-6">
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">thumbs_up_down</i>
-                                             </span>
-                            <div class="form-group is-empty"> <md-input-container class="md-block">
-                                <label>Поднятый вопрос</label>
-                                <textarea ng-model="data.raisedQuestion" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
-                            </md-input-container>
-
-
-                                <span class="material-input"></span></div>
-                        </div>
-
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">account_circle</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="text" placeholder="Отвественный за рассмотрение" class="form-control" ng-model="data.responsibleConsideration"><span class="material-input"></span></div>
-                        </div>
-
-
-
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">poll</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="text" placeholder="Статус рассмотрения" class="form-control" ng-model="data.reviewStatus"><span class="material-input"></span></div>
-                        </div>
 
 
 
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">assignment_late</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="text" placeholder="Предпринятие меры" class="form-control" ng-model="data.takeAction"><span class="material-input"></span></div>
-                        </div>
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Отвественный за рассмотрение</label>
+                            <md-icon class="material-icons">account_circle</md-icon>
+
+                            <input ng-model="data.responsibleConsideration">
+                        </md-input-container>
 
 
 
 
 
 
-                        <div class="input-group">
-
-                            <div class="form-group is-empty"><div flex-gt-xs>
-
-                                <md-datepicker ng-model="data.lastDateAnswer" md-placeholder="Крайний срок ответа" md-open-on-focus></md-datepicker>
-                            </div><span class="material-input"></span></div>
-                        </div>
 
 
 
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Статус рассмотрения</label>
+                            <md-icon class="material-icons">poll</md-icon>
 
-                        <div class="input-group">
-
-                            <div class="form-group is-empty"><div flex-gt-xs>
-
-                                <md-datepicker ng-model="data.dateNotifDeclarer" md-placeholder="Дата уведомления заявителя" md-open-on-focus></md-datepicker>
-                            </div><span class="material-input"></span></div>
-                        </div>
+                            <input ng-model="data.reviewStatus">
+                        </md-input-container>
 
 
 
 
 
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">alarm</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="text" placeholder="Время на обработку жалобы" class="form-control" ng-model="data.timeToCheckComplaint"><span class="material-input"></span></div>
-                        </div>
+
+
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Предпринятие меры</label>
+                            <md-icon class="material-icons">assignment_late</md-icon>
+
+                            <input ng-model="data.takeAction">
+                        </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+                        <md-input-container class="custom__date__grm">
+                            <label>Крайний срок ответа</label>
+                            <md-datepicker ng-model="data.lastDateAnswer" md-open-on-focus></md-datepicker>
+                        </md-input-container>
+
+
+
+
+
+
+
+
+                        <md-input-container class="custom__date__grm">
+                            <label>Дата уведомления заявителя</label>
+                            <md-datepicker ng-model="data.dateNotifDeclarer" md-open-on-focus></md-datepicker>
+                        </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Время на обработку жалобы</label>
+                            <md-icon class="material-icons">alarm</md-icon>
+
+                            <input ng-model="data.timeToCheckComplaint">
+                        </md-input-container>
+
+
+
+
+
 
                     </div>
 

@@ -32,52 +32,64 @@
 
                                 <div class="col-md-6">
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">place</i>
-                                             </span>
-                                        <div class="form-group is-empty">  <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                        </select><span class="material-input"></span></div>
-                                    </div>
+
+
+
+
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите страну</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="data.country">
+
+                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
 
 
 
 
-                                    <div class="input-group">
-
-                                        <div class="form-group is-empty"><div flex-gt-xs>
-
-                                            <md-datepicker ng-model="data.myDate" md-placeholder="Выберите дату" md-open-on-focus></md-datepicker>
-                                        </div><span class="material-input"></span></div>
-                                    </div>
 
 
 
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                             <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Название мероприятия" ng-model="data.nameEvent"><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="custom__date__margin">
+                                        <label>Выберите дату</label>
+                                        <md-datepicker ng-model="data.myDate" md-open-on-focus></md-datepicker>
+                                    </md-input-container>
 
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                              <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Тип мероприятия" ng-model="data.typeEvent"><span class="material-input"></span></div>
-                                    </div>
 
 
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-                                               <i class="material-icons">event_available</i>
-                                             </span>
-                                        <div class="form-group is-empty"><input type="text" class="form-control" placeholder="Подтип мероприятия" ng-model="data.subTypeEvent"><span class="material-input"></span></div>
-                                    </div>
+                                    <md-input-container class="md-icon-float md-block">
+                                    <label>Название мероприятия</label>
+                                        <md-icon class="material-icons">event_available</md-icon>
+
+                                        <input ng-model="data.nameEvent">
+                                    </md-input-container>
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Тип мероприятия</label>
+                                        <md-icon class="material-icons">event_available</md-icon>
+
+                                        <input ng-model="data.typeEvent">
+                                    </md-input-container>
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Подтип мероприятия</label>
+                                        <md-icon class="material-icons">event_available</md-icon>
+
+                                        <input ng-model="data.subTypeEvent">
+                                    </md-input-container>
 
 
                                 </div>
@@ -85,51 +97,81 @@
 
                     <div class="col-md-6">
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">people</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="number" class="form-control" placeholder="Количество участников, общее" ng-model="data.countPeopleEventCommon"><span class="material-input"></span></div>
-                        </div>
-
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">pregnant_woman</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="number" placeholder="Из них женщин" class="form-control" ng-model="data.countWomanEventCommon"><span class="material-input"></span></div>
-                        </div>
 
 
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Количество участников, общее</label>
+                            <md-icon class="material-icons">people</md-icon>
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">people</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="number" placeholder="Количество фасилитаторов, общее" class="form-control" ng-model="data.countFacilatatorEventCommon"><span class="material-input"></span></div>
-                        </div>
-
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                 <i class="material-icons">pregnant_woman</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="number" placeholder="Из них женщин" class="form-control" ng-model="data.countFacilatatorWomanEventCommon"><span class="material-input"></span></div>
-                        </div>
+                            <input type="number" ng-model="data.countPeopleEventCommon">
+                        </md-input-container>
 
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">people</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="number" placeholder="Количество спикеров, общее" class="form-control" ng-model="data.countSpeakerEventCommon"><span class="material-input"></span></div>
-                        </div>
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Из них женщин</label>
+                            <md-icon class="material-icons">pregnant_woman</md-icon>
+
+                            <input type="number" ng-model="data.countWomanEventCommon">
+                        </md-input-container>
 
 
-                        <div class="input-group">
-                                             <span class="input-group-addon">
-                                                <i class="material-icons">pregnant_woman</i>
-                                             </span>
-                            <div class="form-group is-empty"><input type="number" placeholder="Из них женщин" class="form-control" ng-model="data.countSpeakerWomanEventCommon"><span class="material-input"></span></div>
-                        </div>
+
+
+
+
+
+
+
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Количество фасилитаторов, общее</label>
+                            <md-icon class="material-icons">people</md-icon>
+
+                            <input type="number" ng-model="data.countFacilatatorEventCommon">
+                        </md-input-container>
+
+
+
+
+
+
+
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Из них женщин</label>
+                            <md-icon class="material-icons">pregnant_woman</md-icon>
+
+                            <input type="number" ng-model="data.countFacilatatorWomanEventCommon">
+                        </md-input-container>
+
+
+
+
+
+
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Количество спикеров, общее</label>
+                            <md-icon class="material-icons">people</md-icon>
+
+                            <input type="number" ng-model="data.countSpeakerEventCommon">
+                        </md-input-container>
+
+
+
+
+
+
+                        <md-input-container class="md-icon-float md-block">
+                            <label>Из них женщин</label>
+                            <md-icon class="material-icons">pregnant_woman</md-icon>
+
+                            <input type="number" ng-model="data.countSpeakerWomanEventCommon">
+                        </md-input-container>
+
+
+
+
 
                     </div>
 

@@ -8,8 +8,6 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookie
 
 
 
-
-
     $rootScope.data = [];
     $scope.arrForInsert = [];
 
