@@ -23,13 +23,7 @@ app.config(function ($locationProvider, $translateProvider, $mdDateLocaleProvide
         "Пятница" ,
         "Суббота" ,
         "Воскресенье"];
-    $mdDateLocaleProvider.shortDays = ["Пн",
-        "Вт",
-            "Ср",
-            "Чт",
-       "Пт",
-        "Сб",
-       "Вс" ];
+    $mdDateLocaleProvider.shortDays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
     moment.locale("ru");
     $mdDateLocaleProvider.parseDate = function(dateString) {

@@ -179,7 +179,7 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalR
     $scope.data = {
 
 
-        dateInGo: "",
+        dateInGo: new Date(),
         sourceTake: "",
         declarerFIO: "",
         country: "",
@@ -189,8 +189,8 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalR
         responsibleConsideration: "",
         reviewStatus: "",
         takeAction: "",
-        lastDateAnswer: "",
-        dateNotifDeclarer: "",
+        lastDateAnswer: new Date(),
+        dateNotifDeclarer: new Date(),
         timeToCheckComplaint: "",
         statusAdm: statusAdm,
         newCanalRequest: ""

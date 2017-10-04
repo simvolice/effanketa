@@ -225,7 +225,7 @@
 
                         <md-input-container class="custom__date__grm">
                             <label>Крайний срок ответа</label>
-                            <md-datepicker ng-model="data.lastDateAnswer" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-model="data.lastDateAnswer" md-open-on-focus md-min-date="data.dateInGo"></md-datepicker>
                         </md-input-container>
 
 
@@ -237,7 +237,7 @@
 
                         <md-input-container class="custom__date__grm">
                             <label>Дата уведомления заявителя</label>
-                            <md-datepicker ng-model="data.dateNotifDeclarer" md-open-on-focus></md-datepicker>
+                            <md-datepicker ng-model="data.dateNotifDeclarer" md-open-on-focus md-min-date="data.dateInGo"></md-datepicker>
                         </md-input-container>
 
 
