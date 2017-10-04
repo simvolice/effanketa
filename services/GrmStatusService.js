@@ -84,6 +84,85 @@ module.exports = {
   },
 
 
+    initialGrmCanalsRequest: async () => {
+
+        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+        try {
+
+
+
+
+            const col = db.collection('grmstatus_canals_request');
+
+            col.createIndex({ name : 1 }, {unique: true});
+
+
+            const result = await col.insertMany([
+
+                {
+
+                    name: "Телефон"
+
+                },
+
+                {
+
+                    name: "Email"
+
+                },
+
+
+
+
+                {
+
+                    name: "Устно"
+
+                },
+
+
+                {
+
+                    name: "Бумажный носитель"
+
+                },
+
+
+                {
+
+                    name: "Интернет"
+
+                }
+
+
+
+            ]);
+
+
+
+            db.close();
+
+            return result;
+
+
+        }catch(err) {
+
+
+            db.close();
+
+            return err;
+
+
+        }
+
+
+
+
+
+
+    },
+
+
 
 
     getAllStatus: async () => {
@@ -192,6 +271,74 @@ module.exports = {
 
 
 
+
+
+    getAllCanalsRequest: async () => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grmstatus_canals_request');
+
+
+
+
+            const result = await col.find({}).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+    insertCanalsRequest: async (name) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grmstatus_canals_request');
+
+
+
+
+            const result = await col.insertOne({name: name});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
 
 
 

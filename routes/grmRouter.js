@@ -136,4 +136,24 @@ router.post('/updategrm', checkSeesionToken, async (req, res, next) =>{
 });
 
 
+
+router.get('/getallcanalrequest', async (req, res, next) =>{
+
+    let result = await GrmStatusService.getAllCanalsRequest();
+
+    res.json({"code": 0, "resultFromDb": result});
+
+
+});
+
+
+router.post('/insertnewcanalrequest', checkSeesionToken, async (req, res, next) =>{
+
+   await GrmStatusService.insertCanalsRequest(req.body.data);
+   let result = await GrmStatusService.getAllCanalsRequest();
+   res.json({"code": 0, "resultFromDb": result});
+
+
+});
+
 module.exports = router;

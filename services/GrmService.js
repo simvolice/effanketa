@@ -42,7 +42,7 @@ module.exports = {
                 statusId: statusAll[0]._id,
 
                 dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
-                sourceTake: objParams.sourceTake,
+                sourceTake: ObjectId(objParams.sourceTake),
                 declarerFIO: objParams.declarerFIO,
                 country: ObjectId(objParams.country),
 
@@ -268,7 +268,7 @@ module.exports = {
                     $set: {
 
                         dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
-                        sourceTake: objParams.sourceTake,
+                        sourceTake: ObjectId(objParams.sourceTake),
                         declarerFIO: objParams.declarerFIO,
                         country: ObjectId(objParams.country),
 

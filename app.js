@@ -77,6 +77,7 @@ async function initApp() {
     await CounterService.initialCounter();
 
     await GrmStatusService.initialGrmStatus();
+    await GrmStatusService.initialGrmCanalsRequest();
 
     await ItemForFactInCredits.initialItemFactForCredits();
 

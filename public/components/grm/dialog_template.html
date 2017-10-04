@@ -64,7 +64,29 @@
                                         <label>Канал получения</label>
                                         <md-icon class="material-icons">feedback</md-icon>
 
-                                        <input ng-model="data.sourceTake">
+
+
+
+                                        <md-select ng-model="data.sourceTake"
+                                                   md-on-close="clearSearchTerm()"
+                                                   data-md-container-class="selectdemoSelectHeader"
+                                        >
+                                            <md-select-header class="demo-select-header">
+                                                <input ng-model="data.newCanalRequest"
+                                                       ng-keyup='createNewCanalRequest($event)'
+                                                       ng-keydown="$event.stopPropagation($event)"
+                                                       type="text"
+                                                       placeholder="Напечатайте здесь и нажмите Enter"
+                                                       class="demo-header-searchbox md-text">
+                                            </md-select-header>
+                                            <md-optgroup>
+                                                <md-option ng-value="canal._id" ng-repeat="canal in data.allCanalRequest">{{canal.name}}</md-option>
+                                            </md-optgroup>
+                                        </md-select>
+
+
+
+
                                     </md-input-container>
 
 

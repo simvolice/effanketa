@@ -37,3 +37,15 @@ angular.module('app').factory("DeleteGrm", function($resource) {
 angular.module('app').factory("UpdateGrm", function($resource) {
     return $resource("/updategrm");
 });
+
+
+
+angular.module('app').factory("GetAllCanalRequest", function($resource) {
+    return $resource("/getallcanalrequest");
+});
+
+
+
+angular.module('app').factory("InsertNewCanalRequest", function($resource) {
+    return $resource("/insertnewcanalrequest");
+});

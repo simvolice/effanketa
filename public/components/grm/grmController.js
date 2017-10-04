@@ -172,7 +172,7 @@ $scope.addBtn = function (ev) {
 
 
 
-function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm) {
+function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalRequest, InsertNewCanalRequest) {
 
 
 
@@ -192,7 +192,8 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm) {
         lastDateAnswer: "",
         dateNotifDeclarer: "",
         timeToCheckComplaint: "",
-        statusAdm: statusAdm
+        statusAdm: statusAdm,
+        newCanalRequest: ""
 
     };
 
@@ -206,6 +207,38 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm) {
 
 
     });
+
+
+    GetAllCanalRequest.get(function(entry) {
+
+
+        $scope.data.allCanalRequest = entry.resultFromDb;
+        $scope.data.sourceTake = entry.resultFromDb[0]._id;
+
+
+    });
+
+
+    $scope.clearSearchTerm = function() {
+        $scope.data.newCanalRequest = '';
+    };
+
+
+
+    $scope.createNewCanalRequest = function (event) {
+      if(event.keyCode === 13) {
+
+          InsertNewCanalRequest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCanalRequest}, function(entry) {
+
+
+              $scope.data.allCanalRequest = entry.resultFromDb;
+
+
+          });
+
+      }
+    };
+
 
 
     $scope.addComplaint = function () {
@@ -281,7 +314,7 @@ $scope.saveBtn = function (data, ev) {
 
 
 
-function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGrm) {
+function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGrm, GetAllCanalRequest, InsertNewCanalRequest) {
 
 
 
@@ -315,6 +348,37 @@ function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGr
 
 
         });
+
+
+    GetAllCanalRequest.get(function(entry) {
+
+
+        $scope.data.allCanalRequest = entry.resultFromDb;
+
+
+    });
+
+
+
+    $scope.clearSearchTerm = function() {
+        $scope.data.newCanalRequest = '';
+    };
+
+
+
+    $scope.createNewCanalRequest = function (event) {
+        if(event.keyCode === 13) {
+
+            InsertNewCanalRequest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCanalRequest}, function(entry) {
+
+
+                $scope.data.allCanalRequest = entry.resultFromDb;
+
+
+            });
+
+        }
+    };
 
 
         $scope.addComplaint = function () {
