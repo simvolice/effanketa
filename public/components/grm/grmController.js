@@ -199,6 +199,20 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalR
 
 
 
+
+    $scope.$watch("data.lastDateAnswer", function (newVal, oldVal) {
+
+
+        $scope.timeDiff = Math.abs(newVal.getTime() - $scope.data.dateInGo.getTime());
+
+        $scope.data.timeToCheckComplaint = Math.ceil($scope.timeDiff / (1000 * 3600 * 24));
+
+    });
+
+
+
+
+
     GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
@@ -339,6 +353,14 @@ function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGr
 
         };
 
+    $scope.$watch("data.lastDateAnswer", function (newVal, oldVal) {
+
+
+        $scope.timeDiff = Math.abs(newVal.getTime() - $scope.data.dateInGo.getTime());
+
+        $scope.data.timeToCheckComplaint = Math.ceil($scope.timeDiff / (1000 * 3600 * 24));
+
+    });
 
 
         GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
