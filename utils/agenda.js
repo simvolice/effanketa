@@ -25,8 +25,10 @@ module.exports = {
 
           let allStatus = await GrmStatusService.getAllStatus();
 
-          let statusDeadLine = allStatus[3]._id;
-          let statusFinishComplain = allStatus[4]._id;
+          let statusDeadLine = allStatus[2]._id;
+          let statusFinishComplain = allStatus[3]._id;
+
+
 
           let dateNow = new Date( new Date().getTime() - ( new Date().getTimezoneOffset() * 60000 ) );
 
