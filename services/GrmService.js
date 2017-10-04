@@ -55,6 +55,7 @@ module.exports = {
                 lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
                 dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
                 timeToCheckComplaint: Int32(objParams.timeToCheckComplaint),
+                satisfiedMeasuresTaken: objParams.satisfiedMeasuresTaken,
 
 
                 id: seq,
@@ -281,7 +282,7 @@ module.exports = {
                         lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
                         dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
                         timeToCheckComplaint: Int32(objParams.timeToCheckComplaint),
-
+                        satisfiedMeasuresTaken: objParams.satisfiedMeasuresTaken
                     }
                 });
 
