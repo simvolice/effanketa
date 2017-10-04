@@ -46,7 +46,7 @@ module.exports = {
                 declarerFIO: objParams.declarerFIO,
                 country: ObjectId(objParams.country),
 
-                phoneDeclarer: objParams.phoneDeclarer,
+                contacDeclarer: objParams.contacDeclarer,
                 categComplaint: objParams.categComplaint,
                 raisedQuestion: objParams.raisedQuestion,
                 responsibleConsideration: objParams.responsibleConsideration,
@@ -272,7 +272,7 @@ module.exports = {
                         declarerFIO: objParams.declarerFIO,
                         country: ObjectId(objParams.country),
 
-                        phoneDeclarer: objParams.phoneDeclarer,
+                        contacDeclarer: objParams.contacDeclarer,
                         categComplaint: objParams.categComplaint,
                         raisedQuestion: objParams.raisedQuestion,
                         responsibleConsideration: objParams.responsibleConsideration,
