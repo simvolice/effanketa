@@ -194,7 +194,8 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalR
         timeToCheckComplaint: "",
         statusAdm: statusAdm,
         newCanalRequest: "",
-        satisfiedMeasuresTaken: "Да"
+        satisfiedMeasuresTaken: "Да",
+        assessmentQualitySatisfactionComplaint: 5
 
     };
 
@@ -351,7 +352,8 @@ function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGr
             dateNotifDeclarer: new Date(data.dateNotifDeclarer),
             timeToCheckComplaint: data.timeToCheckComplaint,
             statusAdm: statusAdm,
-            satisfiedMeasuresTaken: data.satisfiedMeasuresTaken
+            satisfiedMeasuresTaken: data.satisfiedMeasuresTaken,
+            assessmentQualitySatisfactionComplaint: data. assessmentQualitySatisfactionComplaint
 
         };
 
