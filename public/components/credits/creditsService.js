@@ -29,28 +29,16 @@ angular.module('app').factory("UpdCredits", function($resource) {
 
 
 
-angular.module('app').factory("GetSourceInfo", function($resource) {
-    return $resource("/getsourceinfo");
+angular.module('app').factory("GetCreditsFact", function($resource) {
+    return $resource("/creditsfact");
+});
+
+
+
+angular.module('app').factory("SendNewCreditsFact", function($resource) {
+    return $resource("/newcreditsfact");
 });
 
 
 
 
-angular.module('app').factory("Addtable5", function($resource) {
-    return $resource("/addtable5");
-});
-
-
-angular.module('app').factory("DelTable5", function($resource) {
-    return $resource("/deltable5");
-});
-
-
-angular.module('app').factory("Getalltable5", function($resource) {
-    return $resource("/getalltable5");
-});
-
-
-angular.module('app').factory("UpdTable5", function($resource) {
-    return $resource("/updtable5");
-});

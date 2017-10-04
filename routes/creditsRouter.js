@@ -11,7 +11,7 @@ const checkSeesionToken = require('../utils/checkSeesionToken');
 const checkRole = require('../utils/checkRole');
 
 const CreditsService = require('../services/CreditsService');
-const SourceInfoService = require('../services/SourceInfoService');
+const ItemForFactInCredits = require('../services/ItemForFactInCredits');
 
 
 
@@ -116,62 +116,31 @@ router.post('/updcredits', checkSeesionToken, async (req, res, next) =>{
 });
 
 
+router.get('/creditsfact', async (req, res, next) =>{
 
-router.post('/getsourceinfo', checkSeesionToken, async (req, res, next) =>{
+    let result =  await ItemForFactInCredits.getAllCreditsFact();
 
-    let result = await SourceInfoService.getAllSourceInfo();
+
+
+
     res.json({"code": 0, "resultFromDb": result});
 
-});
-
-
-
-
-router.post('/addtable5', checkSeesionToken, async (req, res, next) =>{
-
-    let result =  await CreditsService.addCreditToTable5(req.body.data);
-
-
-    if (result.hasOwnProperty("result")) {
-
-        res.json({"code": 0, "resultFromDb": result.ops[0]});
-
-    } else {
-
-        res.json({"code": 1});
-
-    }
-
 
 });
 
 
 
-router.post('/deltable5', checkSeesionToken, async (req, res, next) =>{
+router.post('/newcreditsfact', checkSeesionToken, async (req, res, next) =>{
+
+   await ItemForFactInCredits.insertCreditsFact(req.body.data);
 
 
 
-
-
-    let result =  await CreditsService.delTable5(req.body.data);
-
+    let result =  await ItemForFactInCredits.getAllCreditsFact();
 
 
 
-    if (result.hasOwnProperty("result")) {
-
-        res.json({"code": 0});
-
-    } else {
-
-        res.json({"code": 1});
-
-    }
-
-
-
-
-
+    res.json({"code": 0, "resultFromDb": result});
 
 
 });
@@ -179,45 +148,6 @@ router.post('/deltable5', checkSeesionToken, async (req, res, next) =>{
 
 
 
-router.post('/getalltable5', checkSeesionToken, async (req, res, next) =>{
 
-
-    let result = await checkRole.forTable5(req.body.sessionToken);
-
-
-    if (result === false){
-
-        res.json({"code": 1});
-
-    } else {
-
-
-        res.json({"code": 0, "resultFromDb": result});
-
-    }
-
-
-
-
-});
-
-router.post('/updtable5', checkSeesionToken, async (req, res, next) =>{
-
-    let result =  await CreditsService.updTable5(req.body.data);
-
-
-
-
-    if (result.hasOwnProperty("result")) {
-
-        res.json({"code": 0});
-
-    } else {
-
-        res.json({"code": 1});
-
-    }
-
-});
 
 module.exports = router;

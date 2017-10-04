@@ -17,7 +17,7 @@ const AuthService = require('./services/Auth');
 const CounterService = require('./services/CounterService');
 const CountryService = require('./services/CountryService');
 const RoleService = require('./services/RoleService');
-const SourceInfoService = require('./services/SourceInfoService');
+const ItemForFactInCredits = require('./services/ItemForFactInCredits');
 const GrmStatusService = require('./services/GrmStatusService');
 const TypePeriod = require('./services/TypePeriod');
 const NameYear = require('./services/NameYear');
@@ -78,7 +78,7 @@ async function initApp() {
 
     await GrmStatusService.initialGrmStatus();
 
-    await SourceInfoService.initialSourceInfo();
+    await ItemForFactInCredits.initialItemFactForCredits();
 
     await CountryService.initialCountry();
     await RoleService.initialRoles();
