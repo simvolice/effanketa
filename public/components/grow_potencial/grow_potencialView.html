@@ -60,6 +60,7 @@
 
 
                             <th md-column>Отправить анкету на заполнение</th>
+                            <th md-column>Просмотреть</th>
                             <th md-column>Обновить</th>
                             <th md-column>Удалить</th>
                             <th md-column>Добавить анкету</th>
@@ -97,6 +98,11 @@
 
                             <td md-cell><md-button class="md-icon-button" aria-label="More">
                                 <i class="material-icons" ng-click="sendForm(data, $event)">{{data.iconSend}}</i>
+                            </md-button></td>
+
+
+                            <td md-cell><md-button class="md-icon-button" aria-label="More">
+                                <i class="material-icons" ng-click="updateEvent(data, $event, $index)">visibility</i>
                             </md-button></td>
 
                             <td md-cell><md-button class="md-icon-button" aria-label="More">
