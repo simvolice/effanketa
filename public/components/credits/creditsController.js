@@ -17,6 +17,25 @@ $scope.dataCtrl = {};
     };
 
 
+
+    $scope.sumMaleFemale = function (data, event) {
+
+
+        data.DirectBeneficiariesAll = Number.parseInt(data.DirectBeneficiariesMale) + Number.parseInt(data.DirectBeneficiariesFemale);
+        data.NonDirectBeneficiariesMemberFamilyAll = Number.parseInt(data.NonDirectBeneficiariesMemberFamilyFemale) + Number.parseInt(data.NonDirectBeneficiariesMemberFamilyMale);
+        data.NonDirectBeneficiariesHiredAll = Number.parseInt(data.NonDirectBeneficiariesHiredFemale) + Number.parseInt(data.NonDirectBeneficiariesHiredMale);
+
+
+
+    };
+
+
+
+
+
+
+
+
 $scope.createNewFact = function (event) {
 
     if (event.keyCode === 13) {
