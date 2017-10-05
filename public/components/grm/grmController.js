@@ -172,7 +172,7 @@ $scope.addBtn = function (ev) {
 
 
 
-function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalRequest, InsertNewCanalRequest) {
+function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalRequest, InsertNewCanalRequest, GetAllCategGRM, InsertNewCategGRM) {
 
 
 
@@ -235,8 +235,21 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalR
     });
 
 
+
+    GetAllCategGRM.get(function(entry) {
+
+
+        $scope.data.allCategGRM = entry.resultFromDb;
+        $scope.data.categComplaint = entry.resultFromDb[0]._id;
+
+
+    });
+
+
+
     $scope.clearSearchTerm = function() {
         $scope.data.newCanalRequest = '';
+        $scope.data.newCategGRM = '';
     };
 
 
@@ -254,6 +267,22 @@ function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalR
 
       }
     };
+
+
+    $scope.createNewCategGRM = function (event) {
+        if(event.keyCode === 13) {
+
+            InsertNewCategGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCategGRM}, function(entry) {
+
+
+                $scope.data.allCategGRM = entry.resultFromDb;
+
+
+            });
+
+        }
+    };
+
 
 
 
@@ -330,7 +359,7 @@ $scope.saveBtn = function (data, ev) {
 
 
 
-function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGrm, GetAllCanalRequest, InsertNewCanalRequest) {
+function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGrm, GetAllCanalRequest, InsertNewCanalRequest, GetAllCategGRM, InsertNewCategGRM) {
 
 
 
@@ -385,10 +414,22 @@ function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGr
     });
 
 
+    GetAllCategGRM.get(function(entry) {
+
+
+        $scope.data.allCategGRM = entry.resultFromDb;
+        $scope.data.categComplaint = entry.resultFromDb[0]._id;
+
+
+    });
+
+
 
     $scope.clearSearchTerm = function() {
         $scope.data.newCanalRequest = '';
+        $scope.data.newCategGRM = '';
     };
+
 
 
 
@@ -399,6 +440,20 @@ function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGr
 
 
                 $scope.data.allCanalRequest = entry.resultFromDb;
+
+
+            });
+
+        }
+    };
+
+    $scope.createNewCategGRM = function (event) {
+        if(event.keyCode === 13) {
+
+            InsertNewCategGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCategGRM}, function(entry) {
+
+
+                $scope.data.allCategGRM = entry.resultFromDb;
 
 
             });

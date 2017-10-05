@@ -47,7 +47,7 @@ module.exports = {
                 country: ObjectId(objParams.country),
 
                 contacDeclarer: objParams.contacDeclarer,
-                categComplaint: objParams.categComplaint,
+                categComplaint: ObjectId(objParams.categComplaint),
                 raisedQuestion: objParams.raisedQuestion,
                 responsibleConsideration: objParams.responsibleConsideration,
                 reviewStatus: objParams.reviewStatus,
@@ -275,7 +275,7 @@ module.exports = {
                         country: ObjectId(objParams.country),
 
                         contacDeclarer: objParams.contacDeclarer,
-                        categComplaint: objParams.categComplaint,
+                        categComplaint: ObjectId(objParams.categComplaint),
                         raisedQuestion: objParams.raisedQuestion,
                         responsibleConsideration: objParams.responsibleConsideration,
                         reviewStatus: objParams.reviewStatus,

@@ -49,3 +49,14 @@ angular.module('app').factory("GetAllCanalRequest", function($resource) {
 angular.module('app').factory("InsertNewCanalRequest", function($resource) {
     return $resource("/insertnewcanalrequest");
 });
+
+
+
+angular.module('app').factory("GetAllCategGRM", function($resource) {
+    return $resource("/getallcateggrm");
+});
+
+
+angular.module('app').factory("InsertNewCategGRM", function($resource) {
+    return $resource("/insertnewcateggrm");
+});

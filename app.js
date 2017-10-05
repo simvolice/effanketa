@@ -79,6 +79,7 @@ async function initApp() {
 
     await GrmStatusService.initialGrmStatus();
     await GrmStatusService.initialGrmCanalsRequest();
+    await GrmStatusService.initialGrmCategGRM();
 
     await ItemForFactInCredits.initialItemFactForCredits();
 

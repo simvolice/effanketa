@@ -156,4 +156,26 @@ router.post('/insertnewcanalrequest', checkSeesionToken, async (req, res, next) 
 
 });
 
+
+
+router.get('/getallcateggrm', async (req, res, next) =>{
+
+    let result = await GrmStatusService.getAllCategGRM();
+
+    res.json({"code": 0, "resultFromDb": result});
+
+
+});
+
+
+
+router.post('/insertnewcateggrm', checkSeesionToken, async (req, res, next) =>{
+
+    await GrmStatusService.insertCategGRM(req.body.data);
+    let result = await GrmStatusService.getAllCategGRM();
+    res.json({"code": 0, "resultFromDb": result});
+
+
+});
+
 module.exports = router;

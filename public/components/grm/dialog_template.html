@@ -146,12 +146,41 @@
 
 
 
+
+
+
+
                                     <md-input-container class="md-icon-float md-block">
                                         <label>Категория жалобы</label>
                                         <md-icon class="material-icons">subject</md-icon>
 
-                                        <input ng-model="data.categComplaint">
+
+
+
+                                        <md-select ng-model="data.categComplaint"
+                                                   md-on-close="clearSearchTerm()"
+                                                   data-md-container-class="selectdemoSelectHeader"
+                                        >
+                                            <md-select-header class="demo-select-header">
+                                                <input ng-model="data.newCategGRM"
+                                                       ng-keyup='createNewCategGRM($event)'
+                                                       ng-keydown="$event.stopPropagation($event)"
+                                                       type="text"
+                                                       placeholder="Напечатайте здесь и нажмите Enter"
+                                                       class="demo-header-searchbox md-text">
+                                            </md-select-header>
+                                            <md-optgroup>
+                                                <md-option ng-value="categ._id" ng-repeat="categ in data.allCategGRM">{{categ.name}}</md-option>
+                                            </md-optgroup>
+                                        </md-select>
+
+
+
+
                                     </md-input-container>
+
+
+
 
 
                                     <md-input-container class="md-block">
