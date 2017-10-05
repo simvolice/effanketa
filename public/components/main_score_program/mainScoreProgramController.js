@@ -451,7 +451,8 @@ function DialogControllerUpdRegionalInvest($scope, data, GetAllCoutrys, UpdRegio
             investor: data.investor,
             coloborationCountry: data.coloborationCountry,
             executorWithContact: data.executorWithContact,
-            descriptionInvest: data.descriptionInvest
+            descriptionInvest: data.descriptionInvest,
+            executorAgentsContacts: data.executorAgentsContacts
 
 
 
@@ -906,7 +907,8 @@ function DialogControllerNewRegionalInvest($scope, GetAllCoutrys, AddRegionalInv
             investor: "",
             coloborationCountry: "",
             executorWithContact: "",
-            descriptionInvest: ""
+            descriptionInvest: "",
+            executorAgentsContacts: ""
 
 
         };

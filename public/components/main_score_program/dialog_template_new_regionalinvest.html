@@ -118,6 +118,15 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
+                                        <label>Контактные данные реализующего агенства</label>
+                                        <md-icon class="material-icons">phone</md-icon>
+
+                                        <input ng-model="data.executorAgentsContacts">
+                                    </md-input-container>
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
                                         <label>Краткое описание совместной деятельности, приведшей к инвестициям.</label>
                                         <md-icon class="material-icons">description</md-icon>
                                         <textarea ng-model="data.descriptionInvest" md-maxlength="1000" rows="5" md-select-on-focus></textarea>

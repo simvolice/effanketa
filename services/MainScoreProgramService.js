@@ -441,6 +441,7 @@ module.exports = {
                 coloborationCountry: objParams.coloborationCountry,
                 executorWithContact: objParams.executorWithContact,
                 descriptionInvest: objParams.descriptionInvest,
+                executorAgentsContacts: objParams.executorAgentsContacts,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
@@ -539,7 +540,8 @@ module.exports = {
                     investor: objParams.investor,
                     coloborationCountry: objParams.coloborationCountry,
                     executorWithContact: objParams.executorWithContact,
-                    descriptionInvest: objParams.descriptionInvest
+                    descriptionInvest: objParams.descriptionInvest,
+                    executorAgentsContacts: objParams.executorAgentsContacts
 
 
                 }
