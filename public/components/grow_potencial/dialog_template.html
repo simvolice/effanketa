@@ -72,11 +72,17 @@
 
 
 
-                                    <md-input-container class="md-icon-float md-block">
+
+
+                                    <md-input-container class="custom__select__margin" style="margin-right: 250px;">
                                         <label>Тип мероприятия</label>
                                         <md-icon class="material-icons">event_available</md-icon>
+                                        <md-select ng-model="data.typeEvent">
 
-                                        <input ng-model="data.typeEvent">
+                                            <md-option ng-repeat="y in data.allEventStatuses" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
                                     </md-input-container>
 
 
@@ -84,12 +90,25 @@
 
 
 
-                                    <md-input-container class="md-icon-float md-block">
+
+
+
+
+
+
+
+                                    <md-input-container class="custom__select__margin">
                                         <label>Подтип мероприятия</label>
                                         <md-icon class="material-icons">event_available</md-icon>
+                                        <md-select ng-model="data.subTypeEvent">
 
-                                        <input ng-model="data.subTypeEvent">
+                                            <md-option ng-repeat="y in data.allEventStatuses" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
                                     </md-input-container>
+
+
 
 
                                 </div>

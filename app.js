@@ -21,6 +21,7 @@ const ItemForFactInCredits = require('./services/ItemForFactInCredits');
 const GrmStatusService = require('./services/GrmStatusService');
 const TypePeriod = require('./services/TypePeriod');
 const NameYear = require('./services/NameYear');
+const EventService = require('./services/EventService');
 
 const cors = require('cors');//TODO В продакте обязательно удалить
 const fsExtra = require('fs-extra');
@@ -87,6 +88,8 @@ async function initApp() {
 
     await TypePeriod.initialTypePeriod();
     await NameYear.initialNameYear();
+
+    await EventService.initialStatus();
 
     await AuthService.createUserSuperRoot(config.hashAdmin);
 

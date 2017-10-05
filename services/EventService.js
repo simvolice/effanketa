@@ -7,9 +7,95 @@ const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
+const MongoClient = require('mongodb').MongoClient;
+const config = require('../utils/devConfig');
+
 
 module.exports = {
 
+    initialStatus: async () => {
+
+        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+        try {
+
+
+
+
+            const col = db.collection('event_statuses');
+            col.createIndex({ name : 1 }, {unique: true});
+
+
+
+
+            const result = await col.insertMany([
+
+                {
+                    name: "Обучающий"
+                },
+
+                {
+                    name: "Другое"
+                }
+
+                ]
+
+            );
+
+
+
+            db.close();
+
+            return result;
+
+
+        }catch(err) {
+
+
+            db.close();
+
+            return err;
+
+
+        }
+
+
+
+
+
+    },
+
+
+    getAllEventStatuses: async () => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('event_statuses');
+
+
+
+            const result = await col.find({}).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
 
 
     addEvent: async (objParams) => {
@@ -38,8 +124,8 @@ module.exports = {
                 myDate: new Date( new Date(objParams.myDate).getTime() -  ( new Date(objParams.myDate).getTimezoneOffset() * 60000 ) ),
 
                 nameEvent: objParams.nameEvent,
-                typeEvent: objParams.typeEvent,
-                subTypeEvent: objParams.subTypeEvent,
+                typeEvent: ObjectId(objParams.typeEvent),
+                subTypeEvent: ObjectId(objParams.subTypeEvent),
                 countPeopleEventCommon: objParams.countPeopleEventCommon,
                 countWomanEventCommon: objParams.countWomanEventCommon,
 
@@ -219,8 +305,8 @@ module.exports = {
 
 
                         nameEvent: objParams.nameEvent,
-                        typeEvent: objParams.typeEvent,
-                        subTypeEvent: objParams.subTypeEvent,
+                        typeEvent: ObjectId(objParams.typeEvent),
+                        subTypeEvent: (objParams.subTypeEvent),
                         countPeopleEventCommon: objParams.countPeopleEventCommon,
                         countWomanEventCommon: objParams.countWomanEventCommon,
                         countFacilatatorEventCommon: objParams.countFacilatatorEventCommon,

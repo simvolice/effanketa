@@ -107,7 +107,16 @@ router.post('/updevent', checkSeesionToken, async (req, res, next) =>{
 
 
 
+router.get('/getalleventstatuses', async (req, res, next) =>{
 
+    let result =  await EventService.getAllEventStatuses();
+
+
+
+
+    res.json({"code": 0, "resultFromDb": result});
+
+});
 
 
 

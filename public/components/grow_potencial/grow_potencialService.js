@@ -60,3 +60,9 @@ angular.module('app').factory("GetOneForm", function($resource) {
 angular.module('app').factory("SendFormForEmail", function($resource) {
     return $resource("/sendformforemail");
 });
+
+
+
+angular.module('app').factory("GetAllEventStatuses", function($resource) {
+    return $resource("/getalleventstatuses");
+});

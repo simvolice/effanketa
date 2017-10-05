@@ -524,7 +524,7 @@ function DialogControllerUpdateForm($scope, data, UpdForm, index, GetOneForm) {
 
 
 
-function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdEvent) {
+function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdEvent, GetAllEventStatuses) {
 
 
 
@@ -556,6 +556,15 @@ function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdE
 
 
         $scope.data.allCountrys = entry.resultFromDb;
+
+
+    });
+
+
+    GetAllEventStatuses.get(function(entry) {
+
+
+        $scope.data.allEventStatuses = entry.resultFromDb;
 
 
     });
@@ -636,7 +645,7 @@ $scope.showModalWnd = function(ev) {
             });
         };
 
-function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast) {
+function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEventStatuses) {
 
 
 
@@ -670,6 +679,14 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast) {
 
     });
 
+    GetAllEventStatuses.get(function(entry) {
+
+
+        $scope.data.allEventStatuses = entry.resultFromDb;
+        $scope.data.typeEvent = entry.resultFromDb[0]._id;
+        $scope.data.subTypeEvent = entry.resultFromDb[0]._id;
+
+    });
 
 
 
