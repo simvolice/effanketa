@@ -629,7 +629,8 @@ function DialogControllerUpdProject($scope, data, GetAllCoutrys, UpdProject) {
             programm: data.programm,
             sector: data.sector,
             developers: data.developers,
-            executorAgents: data.executorAgents
+            executorAgents: data.executorAgents,
+            executorAgentsContacts: data.executorAgentsContacts
 
 
 
@@ -993,7 +994,8 @@ function DialogControllerNewProject($scope, GetAllCoutrys, AddProject) {
         programm: "",
         sector: "",
         developers: "",
-        executorAgents: ""
+        executorAgents: "",
+        executorAgentsContacts: ""
 
 
     };

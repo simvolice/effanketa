@@ -238,6 +238,7 @@ module.exports = {
                 sector: objParams.sector,
                 developers: objParams.developers,
                 executorAgents: objParams.executorAgents,
+                executorAgentsContacts: objParams.executorAgentsContacts,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
@@ -337,6 +338,7 @@ module.exports = {
                     sector: objParams.sector,
                     developers: objParams.developers,
                     executorAgents: objParams.executorAgents,
+                    executorAgentsContacts: objParams.executorAgentsContacts,
 
 
 
