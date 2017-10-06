@@ -11,6 +11,10 @@ angular.module('app').controller('StrategicCommunicationsCtrl', function ($scope
 
 
 
+
+
+
+
     GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
 
 
@@ -228,7 +232,7 @@ angular.module('app').controller('StrategicCommunicationsCtrl', function ($scope
 
     };
 
-$scope.delete = function (id, index) {
+    $scope.delete = function (id, index) {
     DelStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function(result) {
 
 
