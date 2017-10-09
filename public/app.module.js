@@ -13,28 +13,26 @@ var app = angular.module('app', ['ngMaterial', "fixed.table.header", 'ui.router'
 
 app.config(function ($locationProvider, $translateProvider, $mdDateLocaleProvider) {
 
-
-    $mdDateLocaleProvider.months = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
-    $mdDateLocaleProvider.shortMonths = ['Янв', 'Фев', 'Мрт', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Нбр', 'Дек'];
-    $mdDateLocaleProvider.days = ["Понедельник",
-        "Вторник" ,
-            "Среда" ,
-            "Чеверг",
-        "Пятница" ,
-        "Суббота" ,
-        "Воскресенье"];
-    $mdDateLocaleProvider.shortDays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
-
     moment.locale("ru");
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-        var m = moment(dateString, 'L', true);
-        return m.isValid() ? m.toDate() : new Date(NaN);
-    };
-    $mdDateLocaleProvider.formatDate = function(date) {
-        var m = moment(date);
-        return m.isValid() ? m.format('L') : '';
-    };
+    var localeDate = moment.localeData();
 
+     $mdDateLocaleProvider.months = localeDate.months();
+     $mdDateLocaleProvider.shortMonths = localeDate.monthsShort();
+     $mdDateLocaleProvider.days = localeDate.weekdays();
+     $mdDateLocaleProvider.shortDays = localeDate.weekdaysMin();
+
+
+
+
+
+     $mdDateLocaleProvider.formatDate = function(date) {
+         var m = moment(date);
+         return m.format('L');
+     };
+
+
+
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
 
 
 

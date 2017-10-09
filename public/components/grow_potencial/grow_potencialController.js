@@ -702,6 +702,8 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
     };
 
 
+
+
     GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
