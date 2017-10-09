@@ -6,6 +6,7 @@
 
 angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
 
+    $rootScope.err = false;
 
     GetToken.get(function (result) {
 
@@ -36,7 +37,7 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
             if (result.code === 0) {
 
 
-                $state.go("main");
+                $state.go("grow_potencial");
 
 
 
@@ -107,7 +108,7 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
             localStorage.setItem("fio", result.fio);
             $rootScope.fio = localStorage.getItem('fio');
 
-            $state.go("main");
+            $state.go("grow_potencial");
 
 
         }

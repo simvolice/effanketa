@@ -4,7 +4,38 @@
 
 
 
-angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm) {
+angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce) {
+
+    GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+        if (result.code === 0) {
+
+
+            $rootScope.myHTML = result.resultFromDb;
+
+
+        } else {
+
+            localStorage.removeItem('sessionToken');
+            localStorage.removeItem('fio');
+
+            $rootScope.err = "Вы не авторизованы, для повторной авторизации, нажмите на эту ";
+
+
+        }
+
+
+
+    });
+
+
+    $rootScope.deliberatelyTrustDangerousSnippet = function() {
+        return $sce.trustAsHtml($rootScope.myHTML);
+    };
+
+
+
 
 
 

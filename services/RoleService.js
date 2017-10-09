@@ -29,89 +29,111 @@ module.exports = {
 
                 { name: "Администратор 1 уровня",
 
-                    mainPageHtml: "<ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
-                    "                <li id=\"admins\">\n" +
-                    "                    <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>{{ 'ADMINS' | translate }}</div>\n" +
-                    "                    <div class=\"collapsible-body\"><a href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
-                    "                </li>\n" +
-                    "                <li>\n" +
-                    "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
-                    "                    <div class=\"collapsible-body\"><ul>\n" +
-                    "                        <li><a href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
-                    "                        <li><a href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
-                    "                        <li><a href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
-                    "                        <li><a href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
-                    "                        <li><a href=\"?#!/main_score_program\">{{ 'MAIN_SCORE_PROGRAM' | translate }}</a></li>\n" +
-                    "                        <li><a href=\"?#!/strategic_communications\">{{ 'STRATEGIC_COMMUNICATIONS' | translate }}</a></li>\n" +
+                    mainPageHtml: "<div class=\"menu-list\">\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul id=\"menu-content\" class=\"menu-content\">\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#products\" class=\"collapsed\">\n" +
+                    "\t\t\t\t\t\t\t<a><i class=\"material-icons\">filter_drama</i> Администраторы <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                    "\t\t\t\t\t\t</li>\n" +
+                    "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"products\">\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
+                    "\t\t\t\t\t\t</ul>\n" +
                     "\n" +
                     "\n" +
-                    "                    </ul></div>\n" +
-                    "                </li>\n" +
-                    "                <li>\n" +
-                    "                    <div class=\"collapsible-header\"><i class=\"material-icons\">whatshot</i>{{ 'ANALYS_DATA' | translate }}</div>\n" +
-                    "                    <div class=\"collapsible-body\">\n" +
-                    "                        <ul>\n" +
+                    "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#service\" class=\"collapsed\">\n" +
+                    "\t\t\t\t\t\t\t<a><i class=\"material-icons\">place</i> Ввод данных <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                    "\t\t\t\t\t\t</li>\n" +
+                    "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/credits\">Кредиты</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">GRM</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/main_score_program\">Главные и промежуточные цели программы</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/strategic_communications\">Стратегия коммуникаций</a></li>\n" +
+                    "\t\t\t\t\t\t</ul>\n" +
                     "\n" +
                     "\n" +
-                    "                            <li><a href=\"?#!/build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#new\" class=\"collapsed\">\n" +
+                    "\t\t\t\t\t\t\t<a><i class=\"material-icons\">whatshot</i>Анализ данных<i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                    "\t\t\t\t\t\t</li>\n" +
+                    "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"new\">\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
                     "\n" +
-                    "                            <li><a href=\"?#!/report_by_main_score\">{{ 'REPORT_BY_MAIN_SCORE' | translate }}</a></li>\n" +
-                    "                            <li><a href=\"?#!/report_by_criteriy\">{{ 'REPORT_BY_CRITERIY' | translate }}</a></li>\n" +
-                    "                            <li><a href=\"?#!/data_intermediate_index\">{{ 'DATA_INTERMEDIATE_INDEX' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_criteriy\">Отчёт по заданным критериям</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
+                    "\t\t\t\t\t\t</ul>\n" +
                     "\n" +
-                    "                        </ul></div>\n" +
-                    "                </li>\n" +
-                    "            </ul>"
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\t\t\t\t</div>"
                 },
 
-                {name: "Администратор 2 уровня", mainPageHtml: "  <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
-                "                <li id=\"admins\">\n" +
-                "                    <div class=\"collapsible-header\"><i class=\"material-icons\">filter_drama</i>{{ 'ADMINS' | translate }}</div>\n" +
-                "                    <div class=\"collapsible-body\"><a href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></div>\n" +
-                "                </li>\n" +
-                "                <li>\n" +
-                "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
-                "                    <div class=\"collapsible-body\"><ul>\n" +
-                "                        <li><a href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
-                "                        <li><a href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
-                "                        <li><a href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
-                "                        <li><a href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
-                "                        \n" +
+                {name: "Администратор 2 уровня", mainPageHtml: "<div class=\"menu-list\">\n" +
+                "\n" +
+                "\t\t\t\t\t<ul id=\"menu-content\" class=\"menu-content\">\n" +
+                "\n" +
+                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#products\" class=\"collapsed\">\n" +
+                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">filter_drama</i> Администраторы <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                "\t\t\t\t\t\t</li>\n" +
+                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"products\">\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
+                "\t\t\t\t\t\t</ul>\n" +
                 "\n" +
                 "\n" +
-                "                    </ul></div>\n" +
-                "                </li>\n" +
-                "                <li>\n" +
-                "                    <div class=\"collapsible-header\"><i class=\"material-icons\">whatshot</i>{{ 'ANALYS_DATA' | translate }}</div>\n" +
-                "                    <div class=\"collapsible-body\">\n" +
-                "                        <ul>\n" +
+                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#service\" class=\"collapsed\">\n" +
+                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">place</i> Ввод данных <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                "\t\t\t\t\t\t</li>\n" +
+                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/credits\">Кредиты</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">GRM</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
+                "\t\t\t\t\t\t</ul>\n" +
                 "\n" +
                 "\n" +
-                "                            <li><a href=\"?#!/build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
+                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#new\" class=\"collapsed\">\n" +
+                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">whatshot</i>Анализ данных<i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                "\t\t\t\t\t\t</li>\n" +
+                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"new\">\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
                 "\n" +
-                "                            <li><a href=\"?#!/report_by_main_score\">{{ 'REPORT_BY_MAIN_SCORE' | translate }}</a></li>\n" +
-                "                            <li><a href=\"?#!/report_by_criteriy\">{{ 'REPORT_BY_CRITERIY' | translate }}</a></li>\n" +
-                "                            <li><a href=\"?#!/data_intermediate_index\">{{ 'DATA_INTERMEDIATE_INDEX' | translate }}</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_criteriy\">Отчёт по заданным критериям</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
+                "\t\t\t\t\t\t</ul>\n" +
                 "\n" +
-                "                        </ul></div>\n" +
-                "                </li>\n" +
-                "            </ul>"},
+                "\n" +
+                "\n" +
+                "\t\t\t\t\t</ul>\n" +
+                "\t\t\t\t</div>\n"},
 
 
-                { name: "Администратор 3 уровня", mainPageHtml: " <ul class=\"collapsible popout\" data-collapsible=\"accordion\">\n" +
+                { name: "Администратор 3 уровня", mainPageHtml: "<div class=\"menu-list\">\n" +
                 "\n" +
-                "                <li>\n" +
-                "                    <div class=\"collapsible-header\"><i class=\"material-icons\">place</i>{{ 'ENTER_DATA' | translate }}</div>\n" +
-                "                    <div class=\"collapsible-body\"><ul>\n" +
-                "                        <li><a href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
+                "\t\t\t\t\t<ul id=\"menu-content\" class=\"menu-content\">\n" +
+                "\n" +
+                "\t\t\t\t\t\t\n" +
+                "\n" +
+                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#service\" class=\"collapsed\">\n" +
+                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">place</i> Ввод данных <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
+                "\t\t\t\t\t\t</li>\n" +
+                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
                 "\n" +
                 "\n" +
                 "\n" +
+                "\t\t\t\t\t\t</ul>\n" +
                 "\n" +
-                "                    </ul></div>\n" +
-                "                </li>\n" +
                 "\n" +
-                "            </ul>"}]
+                "\t\t\t\t\t\t\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\t\t\t\t\t</ul>\n" +
+                "\t\t\t\t</div>"}]
 
             );
 

@@ -69,12 +69,21 @@ app.directive('ngFiles', ['$parse', function ($parse) {
 } ]);
 
 
+angular.module('app').factory("GetMainPage", function($resource) {
+    return $resource("/getmainpage");
+});
+
+app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $rootScope, $mdSidenav, $sce, GetMainPage, $location) {
 
 
-app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
 
+    this.toggleLeft = buildToggler('left');
 
-
+    function buildToggler(componentId) {
+        return function() {
+            $mdSidenav(componentId).toggle();
+        };
+    }
 
 
 
@@ -87,6 +96,7 @@ app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
         localStorage.removeItem('tokenCSRF');
         localStorage.removeItem('sessionToken');
         localStorage.removeItem('fio');
+        $rootScope.myHTML = null;
         $rootScope.fio = false;
         $state.go('login', {}, {reload: true});
     };
@@ -94,9 +104,7 @@ app.controller('MainCtrl', function ($state, $timeout, $translate, $rootScope) {
 
     this.changeLanguage = function (langKey) {
         $translate.use(langKey);
-        $timeout(function () {
-            $('.collapsible').collapsible();
-        }, 500);
+
     };
 
 

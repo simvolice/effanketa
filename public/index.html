@@ -38,9 +38,19 @@
 	<div class="wrapper">
 
 
+		<div ng-show="err" class="alert alert-danger" style="margin-bottom: 0;">
+			<div class="container-fluid">
+				<div class="alert-icon">
+					<i class="material-icons">error_outline</i>
+				</div>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true"><i class="material-icons">clear</i></span>
+				</button>
+				<b ng-bind="err"></b><b><a href='/?#!/login'>ссылку</a></b>
+			</div>
+		</div>
 
-
-		<nav class="navbar navbar-primary">
+		<nav class="navbar navbar-inverse">
 			<div class="container">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-primary">
@@ -49,7 +59,26 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" ui-sref="main">EFFORM<div class="ripple-container"></div></a>
+
+
+
+
+
+
+
+					<md-button class="md-icon-button navbar-brand" aria-label="Sidebar" ng-click="ctrl.toggleLeft()">
+						<md-icon class="material-icons custom__color__white">menu</md-icon>
+					</md-button>
+
+					<a class="navbar-brand" ui-sref="login">EFFORM<div class="ripple-container"></div></a>
+
+					<a class="navbar-brand" ui-sref="login"><img class="custom__img__adaptive" src="./assets/img/logo.svg" alt="Logo" width="150">
+					</a>
+
+
+
+
+
 				</div>
 
 				<div class="collapse navbar-collapse" id="example-navbar-primary">
@@ -94,11 +123,37 @@
 		</nav>
 
 
+		<md-sidenav class="md-sidenav-left" md-component-id="left"
+					 md-whiteframe="4">
+
+			<md-toolbar class="md-theme-indigo">
+				<h1 class="md-toolbar-tools">Меню</h1>
+			</md-toolbar>
+
+			<md-content layout-margin>
+
+
+
+
+
+
+
+	<div ng-bind-html="deliberatelyTrustDangerousSnippet()"></div>
+
+
+
+
+	</md-content>
+
+		</md-sidenav>
+
+
 		<div class="main-panel">
 
 
 			<div class="content">
 				<div class="container-fluid">
+
 
 
 
@@ -184,8 +239,7 @@
 
 <script src="components/login/loginService.js"></script>
 <script src="components/login/loginController.js"></script>
-<script src="components/main/mainController.js"></script>
-<script src="components/main/mainService.js"></script>
+
 <script src="components/adminedit/adminController.js"></script>
 <script src="components/adminedit/adminService.js"></script>
 
