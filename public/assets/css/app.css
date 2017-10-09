@@ -527,3 +527,8 @@ ul:not(.browser-default) > li {
 
     }
 }
+
+
+.custom__tab__label {
+    margin-top: -15px;
+}
