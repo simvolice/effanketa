@@ -164,7 +164,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 
 
-        tableContentsDescription: data.tableContentsDescription,
+
         overallNarrative: data.overallNarrative,
         participantsStated: data.participantsStated,
         comments: data.comments,
@@ -276,7 +276,7 @@ $scope.data = {
     country: data.nameCountry,
 
 
-    tableContentsDescription: "",
+
     overallNarrative: "",
     participantsStated: "",
     comments: "",

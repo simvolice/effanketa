@@ -1009,7 +1009,7 @@ module.exports = {
                 grm: objParams.grm,
                 finstatus: objParams.finstatus,
 
-                tableContentsDescription: objParams.tableContentsDescription,
+
                 overallNarrative: objParams.overallNarrative,
                 participantsStated: objParams.participantsStated,
                 comments: objParams.comments,
@@ -1141,7 +1141,7 @@ module.exports = {
                     grm: objParams.grm,
                     finstatus: objParams.finstatus,
 
-                    tableContentsDescription: objParams.tableContentsDescription,
+
                     overallNarrative: objParams.overallNarrative,
                     participantsStated: objParams.participantsStated,
                     comments: objParams.comments,
