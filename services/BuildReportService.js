@@ -1013,7 +1013,7 @@ module.exports = {
                 overallNarrative: objParams.overallNarrative,
                 participantsStated: objParams.participantsStated,
                 comments: objParams.comments,
-                creditsDescription: objParams.creditsDescription,
+
                 grmSourceInformation: objParams.grmSourceInformation,
                 projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                 projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
@@ -1145,7 +1145,7 @@ module.exports = {
                     overallNarrative: objParams.overallNarrative,
                     participantsStated: objParams.participantsStated,
                     comments: objParams.comments,
-                    creditsDescription: objParams.creditsDescription,
+
                     grmSourceInformation: objParams.grmSourceInformation,
                     projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                     projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
