@@ -396,85 +396,56 @@
                                                     </tbody>
                                                 </table>
 
+
+
+
+
                                                 </div>
                                                 <div class="row">
 
-                                                    <div class="input-group">
-                                             <span class="input-group-addon">
-
-                                             </span>
-                                                        <div class="form-group is-empty">
-
-                                                            <h6>Participants stated their interest in the following topics for training/activities:</h6>
 
 
 
-
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-
-
-                                                                    <md-radio-group ng-model="data.participantsStated" layout="row">
-
-                                                                        <md-radio-button value="1) To use video-clips of previous experience of new technologies;">1) To use video-clips of previous experience of new technologies;</md-radio-button>
-                                                                        <md-radio-button value="2) Training sessions should be in same languages;"> 2) Training sessions should be in same languages; </md-radio-button>
-                                                                        <md-radio-button value="3) to have more such trainings">3) to have more such trainings</md-radio-button>
-
-                                                                    </md-radio-group>
+                                                    <div class="col-md-11">
 
 
 
+                                                            <md-input-container class="md-block">
+                                                                <label> Participants stated their interest in the following topics for training/activities:
 
-                                                                </div>
-
-                                                            </div>
+                                                                </label>
+                                                                <textarea ng-model="data.participantsStated" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                            </md-input-container>
 
 
 
 
 
-                                                            <span class="material-input"></span></div>
+
                                                     </div>
+
+
+
                                                 </div>
 
 
                                                 <div class="row page-break-after">
 
-                                                    <div class="input-group">
-                                             <span class="input-group-addon">
-
-                                             </span>
-                                                        <div class="form-group is-empty">
-
-                                                            <h6>Comments:</h6>
+                                                    <div class="col-md-11">
 
 
 
 
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-
-
-                                                                    <md-radio-group ng-model="data.comments" layout="row">
-
-                                                                        <md-radio-button value="1) to conduct such trainigs for community level;">1) to conduct such trainigs for community level;</md-radio-button>
-                                                                        <md-radio-button value="2) it would be better to reduce the list of submitted program documents to the PIU MF; "> 2) it would be better to reduce the list of submitted program documents to the PIU MF;  </md-radio-button>
-                                                                        <md-radio-button value="3) to reduce the interest rate of the banks;">3) to reduce the interest rate of the banks;</md-radio-button>
-
-                                                                    </md-radio-group>
-
-
-
-
-                                                                </div>
-
-                                                            </div>
+                                                            <md-input-container class="md-block">
+                                                                <label>Comments:</label>
+                                                                <textarea ng-model="data.comments" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                            </md-input-container>
 
 
 
 
 
-                                                            <span class="material-input"></span></div>
+
                                                     </div>
                                                 </div>
 
