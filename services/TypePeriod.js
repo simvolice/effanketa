@@ -28,7 +28,7 @@ module.exports = {
 
             const result = await col.insertMany([{
 
-                name: "Квартал 1",
+                name: "Первый квартал (январь-февраль-март)",
                 codeName: [1,2,3]
 
                 },
@@ -36,41 +36,16 @@ module.exports = {
 
                 {
 
-                    name: "Квартал 2",
-                    codeName: [4,5,6]
-                },
-
-                {
-
-                    name: "Квартал 3",
-                    codeName: [7,8,9]
+                    name: "Первое полугодие (январь-июль)",
+                    codeName: [1,2,3,4,5,6,7]
 
                 },
 
-                {
 
-                    name: "Квартал 4",
-                    codeName: [10,11,12]
-
-                },
 
                 {
 
-                    name: "Полугодие 1",
-                    codeName: [1,2,3,4,5,6]
-
-                },
-
-                {
-
-                    name: "Полугодие 2",
-                    codeName: [7,8,9,10,11,12]
-
-                },
-
-                {
-
-                    name: "Год",
+                    name: "Годовой",
                     codeName: [1,2,3,4,5,6,7,8,9,10,11,12]
 
                 }

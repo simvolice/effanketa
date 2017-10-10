@@ -35,6 +35,10 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
         $scope.country = entry.resultFromDb[0]._id;
 
 
+        $scope.allCountrys.push({_id: 0, name: "Все"});
+
+
+
     });
 
 
@@ -130,11 +134,9 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
-
-
         $mdDialog.show({
             controller: DialogControllerNewReport,
-            locals:{data: {country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
+            locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
             templateUrl: 'components/build_report/dialog_template_new_report.html',
             parent: angular.element(document.body),
             targetEvent: ev,
@@ -310,6 +312,9 @@ $scope.data = {
 
 
 };
+
+
+
 
     GetGrowPotencial.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
 

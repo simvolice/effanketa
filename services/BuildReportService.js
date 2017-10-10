@@ -26,9 +26,22 @@ module.exports = {
 
     getgrowpotencial: async (objParams) => {
 
+          if (objParams.country === 0) {
+              objParams.allCountrys.pop();
+              objParams.country = [];
+              for (let item of objParams.allCountrys) {
+                  objParams.country.push(ObjectId(item._id));
+              }
 
 
 
+          } else {
+              let tempCountry = objParams.country;
+              objParams.country = [];
+              objParams.country.push(ObjectId(tempCountry));
+
+
+          }
 
         try {
 
@@ -41,13 +54,16 @@ module.exports = {
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
+
+
+
             const result = await col.aggregate([
 
                 {
                     $facet: {
                         "categorizedByDatePeriodCountry": [{
 
-                            $match: {country: ObjectId(objParams.country)}
+                            $match: {country: {$in: objParams.country}}
 
                         },
 
@@ -73,7 +89,7 @@ module.exports = {
 
                         "countSatisfaction": [ {
 
-                            $match: {country: ObjectId(objParams.country)}
+                            $match: {country: {$in: objParams.country}}
 
                         },
 
@@ -126,7 +142,7 @@ module.exports = {
 
                         "countSatisfactionWomen": [ {
 
-                            $match: {country: ObjectId(objParams.country)}
+                            $match: {country: {$in: objParams.country}}
 
                         },
 
@@ -182,7 +198,7 @@ module.exports = {
 
                         "categorizedBySum": [ {
 
-                            $match: {country: ObjectId(objParams.country)}
+                            $match: {country: {$in: objParams.country}}
 
                         },
 
@@ -220,7 +236,7 @@ module.exports = {
 
                         "countForms": [ {
 
-                            $match: {country: ObjectId(objParams.country)}
+                            $match: {country: {$in: objParams.country}}
 
                         },
 
@@ -281,6 +297,7 @@ module.exports = {
             ]).toArray();
 
 
+            console.log("\x1b[42m", result);
 
 
             return result;
@@ -311,6 +328,23 @@ module.exports = {
     getreportcredits: async (objParams) => {
 
 
+        if (objParams.country === 0) {
+            objParams.allCountrys.pop();
+            objParams.country = [];
+            for (let item of objParams.allCountrys) {
+                objParams.country.push(ObjectId(item._id));
+            }
+
+
+
+        } else {
+            let tempCountry = objParams.country;
+            objParams.country = [];
+            objParams.country.push(ObjectId(tempCountry));
+
+
+        }
+
 
         try {
 
@@ -328,7 +362,7 @@ module.exports = {
 
                         {
 
-                            $match: {country: ObjectId(objParams.country)}
+                            $match: {country: {$in: objParams.country}}
 
                         },
 
@@ -418,6 +452,23 @@ module.exports = {
     getreportgrm: async (objParams) => {
 
 
+        if (objParams.country === 0) {
+            objParams.allCountrys.pop();
+            objParams.country = [];
+            for (let item of objParams.allCountrys) {
+                objParams.country.push(ObjectId(item._id));
+            }
+
+
+
+        } else {
+            let tempCountry = objParams.country;
+            objParams.country = [];
+            objParams.country.push(ObjectId(tempCountry));
+
+
+        }
+
 
         try {
 
@@ -442,7 +493,7 @@ module.exports = {
 
                             {
 
-                            $match: {country: ObjectId(objParams.country)}
+                                $match: {country: {$in: objParams.country}}
 
                              },
 
@@ -476,7 +527,7 @@ module.exports = {
                         "categorizedByLowLevel": [
                             {
 
-                                $match: {country: ObjectId(objParams.country)}
+                                $match: {country: {$in: objParams.country}}
 
                             },
 
@@ -527,7 +578,7 @@ module.exports = {
                         "categorizedByAccept": [
                             {
 
-                                $match: {country: ObjectId(objParams.country)}
+                                $match: {country: {$in: objParams.country}}
 
                             },
 
@@ -579,7 +630,7 @@ module.exports = {
                         "categorizedByComplete": [
                             {
 
-                                $match: {country: ObjectId(objParams.country)}
+                                $match: {country: {$in: objParams.country}}
 
                             },
 
@@ -632,7 +683,7 @@ module.exports = {
                         "categorizedByType": [
                             {
 
-                                $match: {country: ObjectId(objParams.country)}
+                                $match: {country: {$in: objParams.country}}
 
                             },
 
@@ -745,6 +796,23 @@ module.exports = {
     getreportfinansialstatus: async (objParams) => {
 
 
+        if (objParams.country === 0) {
+            objParams.allCountrys.pop();
+            objParams.country = [];
+            for (let item of objParams.allCountrys) {
+                objParams.country.push(ObjectId(item._id));
+            }
+
+
+
+        } else {
+            let tempCountry = objParams.country;
+            objParams.country = [];
+            objParams.country.push(ObjectId(tempCountry));
+
+
+        }
+
 
         try {
 
@@ -762,7 +830,7 @@ module.exports = {
 
                 {
 
-                    $match: {country: ObjectId(objParams.country)}
+                    $match: {country: {$in: objParams.country}}
 
                 },
 

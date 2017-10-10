@@ -35,45 +35,57 @@
 
 
 
-                        <div class="row">
 
 
-                            <div class="col-md-3">
 
-                                <select ng-model="country" ng-options="y._id as y.name for y in allCountrys">
-                                </select>
+                                <md-input-container class="custom__select__margin">
+                                    <label>Выберите страну</label>
+                                    <md-icon class="material-icons">place</md-icon>
+                                    <md-select ng-model="country">
 
-                            </div>
-
-
-                            <div class="col-md-3">
-
-                                <select ng-model="period" ng-options="y._id as y.name for y in allperiod">
-                                </select>
-
-                            </div>
-                            <div class="col-md-3">
-
-                                <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
-                                </select>
-
-                            </div>
+                                        <md-option ng-repeat="y in allCountrys" ng-value="y._id">
+                                            {{y.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
 
 
 
 
+                                <md-input-container class="custom__select__margin">
+                                    <label>Выберите отчетный период</label>
+                                    <md-icon class="material-icons">date_range</md-icon>
+                                    <md-select ng-model="period">
+
+                                        <md-option ng-repeat="y in allperiod" ng-value="y._id">
+                                            {{y.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
+
+
+                                <md-input-container class="custom__margin__select__report">
+                                    <label>Выберите год</label>
+                                    <md-icon class="material-icons">date_range</md-icon>
+                                    <md-select ng-model="yearname">
+
+                                        <md-option ng-repeat="y in allyearname" ng-value="y._id">
+                                            {{y.name}}
+                                        </md-option>
+                                    </md-select>
+                                </md-input-container>
 
 
 
 
-                            <div class="col-md-3">
-                                <button class="btn btn-sm btn-primary" ng-click="showModalWnd($event)" style="margin-top: 0">Сформировать отчет</button>
 
 
 
-                            </div>
 
-                        </div>
+
+                                <button class="btn btn-sm btn-primary" ng-click="showModalWnd($event)">Сформировать отчет</button>
+
+
 
 
 

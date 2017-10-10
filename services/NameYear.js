@@ -32,7 +32,7 @@ module.exports = {
 
             const result = await col.insertMany([{
 
-                    name: "2017 год",
+                    name: "2017",
                 codeName: Int32(2017)
 
                 },
@@ -40,15 +40,11 @@ module.exports = {
 
                     {
 
-                        name: "2016 год",
+                        name: "2016",
                         codeName: Int32(2016)
-                    },
-
-                    {
-
-                        name: "2015 год",
-                        codeName: Int32(2015)
                     }
+
+
 
                 ]
 
