@@ -31,37 +31,33 @@
 
 
 
-                        <div class="row">
+                        <md-input-container class="custom__select__margin">
+                            <label>Выберите страну</label>
+                            <md-icon class="material-icons">place</md-icon>
+                            <md-select ng-model="country">
+
+                                <md-option ng-repeat="y in allCountrys" ng-value="y._id">
+                                    {{y.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
 
 
-                            <div class="col-md-4">
+                        <md-input-container class="custom__margin__select__report">
+                            <label>Выберите год</label>
+                            <md-icon class="material-icons">date_range</md-icon>
+                            <md-select ng-model="yearname">
 
-                                <select ng-model="country" ng-options="y._id as y.name for y in allCountrys">
-                                </select>
-
-                            </div>
-
-
-
-                            <div class="col-md-4">
-
-                                <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
-                                </select>
-
-                            </div>
+                                <md-option ng-repeat="y in allyearname" ng-value="y._id">
+                                    {{y.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
 
 
 
 
-                            <div class="col-md-4">
-                                <button class="btn btn-sm btn-primary" ng-click="createReport()" style="margin-top: 0">Сформировать отчет</button>
-
-
-
-                            </div>
-
-                        </div>
-
+                        <button class="btn btn-sm btn-primary" ng-click="createReport()">Сформировать отчет</button>
 
 
                     </div>
@@ -69,16 +65,9 @@
                 </md-toolbar>
 
 
-                <div class="row">
-                    <div class="col-md-12">
 
-                        <div id="chart"></div>
+                        <div id="chartMainScore"></div>
 
-
-                    </div>
-
-
-                </div>
 
 
 

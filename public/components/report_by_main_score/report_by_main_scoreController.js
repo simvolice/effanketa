@@ -46,31 +46,10 @@ angular.module('app').controller('ReportByMainScoreAppCtrl', function ($scope, G
 
 
 
-    var chart = c3.generate({
-        data: {
-            columns: [
-                ['Платформы и сети', 0],
-                ['Проекты и программы', 0],
-                ['Региональные инвестиции', 0],
-                ['Дополнительно мобилизованные ресурсы', 0]
-            ],
-            type: 'bar'
-        },
-        bar: {
-            width: {
-                ratio: 0.5 // this makes bar width 50% of length between ticks
-            }
-            // or
-            //width: 100 // this makes bar width 100px
-        },
 
-        grid: {
 
-            y: {
-                show: true
-            }
-        }
-    });
+
+
 
     $scope.createReport = function () {
 
@@ -143,13 +122,34 @@ angular.module('app').controller('ReportByMainScoreAppCtrl', function ($scope, G
             }
 
 
-            chart.load({
-                columns: [
-                    arrPlatformNetwork,
-                    arrMobileResurse,
-                    arrRegionalInvest,
-                    arrAllProject
-                ]
+
+
+
+            var chart = c3.generate({
+                bindto: "#chartMainScore",
+                data: {
+                    columns: [
+                        arrPlatformNetwork,
+                        arrMobileResurse,
+                        arrRegionalInvest,
+                        arrAllProject
+                    ],
+                    type: 'bar'
+                },
+                bar: {
+                    width: {
+                        ratio: 0.5 // this makes bar width 50% of length between ticks
+                    }
+                    // or
+                    //width: 100 // this makes bar width 100px
+                },
+
+                grid: {
+
+                    y: {
+                        show: true
+                    }
+                }
             });
 
 
