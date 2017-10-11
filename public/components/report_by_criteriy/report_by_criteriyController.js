@@ -56,8 +56,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
             columns: [
                 ['Общее количество участников', 0],
                 ['Общее количество участников, женщин', 0],
-                ['Общее количество фассилитаторов', 0],
-                ['Общее количество фассилитаторов, женщин', 0],
+                ['Общее количество фасилитаторов', 0],
+                ['Общее количество фасилитаторов, женщин', 0],
                 ['Общее количество спикеров', 0],
                 ['Общее количество спикеров, женщин', 0],
 
@@ -75,8 +75,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
         data: {
 
             columns: [
-                ['Среднее удоволетворительность участниками', 0],
-                ['Среднее удоволетворительность участниками, женщин', 0]
+                ['Средняя удоволетворительность участниками', 0],
+                ['Средняя удоволетворительность участниками, женщин', 0]
 
 
 
@@ -126,8 +126,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
                 columns: [
                     ['Общее количество участников', $scope.data.categorizedBySum[0].countPeopleEventCommon],
                     ['Общее количество участников, женщин', $scope.data.categorizedBySum[0].countWomanEventCommon],
-                    ['Общее количество фассилитаторов', $scope.data.categorizedBySum[0].countFacilatatorEventCommon],
-                    ['Общее количество фассилитаторов, женщин', $scope.data.categorizedBySum[0].countFacilatatorWomanEventCommon],
+                    ['Общее количество фасилитаторов', $scope.data.categorizedBySum[0].countFacilatatorEventCommon],
+                    ['Общее количество фасилитаторов, женщин', $scope.data.categorizedBySum[0].countFacilatatorWomanEventCommon],
                     ['Общее количество спикеров', $scope.data.categorizedBySum[0].countSpeakerEventCommon],
                     ['Общее количество спикеров, женщин', $scope.data.categorizedBySum[0].countSpeakerWomanEventCommon],
 
@@ -138,8 +138,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
 
             chartAverage.load({
                 columns: [
-                    ['Среднее удоволетворительность участниками', $scope.data.countSatisfaction[0].average],
-                    ['Среднее удоволетворительность участниками, женщин', $scope.data.countSatisfactionWomen[0].average]
+                    ['Средняя удоволетворительность участниками', $scope.data.countSatisfaction[0].average],
+                    ['Средняя удоволетворительность участниками, женщин', $scope.data.countSatisfactionWomen[0].average]
 
                 ]
             });
