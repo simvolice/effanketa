@@ -24,6 +24,12 @@ angular.module('app').factory("GetGrowPotencial", function($resource) {
 });
 
 
+angular.module('app').factory("GetGrowPotencialNewVersion", function($resource) {
+    return $resource("/getgrowpotencialnewver");
+});
+
+
+
 angular.module('app').factory("GetReportCredits", function($resource) {
     return $resource("/getreportcredits");
 });

@@ -111,6 +111,7 @@
 
 
 
+                            <th md-column>Просмотреть</th>
                             <th md-column>Обновить</th>
                             <th md-column>Удалить</th>
 
@@ -138,7 +139,9 @@
 
 
 
-
+                            <td md-cell><md-button class="md-icon-button" aria-label="More">
+                                <i class="material-icons" ng-click="updateEvent(data, $event, $index)">visibility</i>
+                            </md-button></td>
 
                             <td md-cell><md-button class="md-icon-button" aria-label="More">
                                 <i class="material-icons" ng-click="updateEvent(data, $event, $index)">done_all</i>

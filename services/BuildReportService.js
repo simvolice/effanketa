@@ -22,7 +22,171 @@ const CounterService = require('../services/CounterService');
 module.exports = {
 
 
+    getgrowpotencialNewVersion: async (objParams) => {
 
+        if (objParams.country === 0) {
+            objParams.allCountrys.pop();
+            objParams.country = [];
+            for (let item of objParams.allCountrys) {
+                objParams.country.push(ObjectId(item._id));
+            }
+
+
+
+        } else {
+            let tempCountry = objParams.country;
+            objParams.country = [];
+            objParams.country.push(ObjectId(tempCountry));
+
+
+        }
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('events');
+
+
+
+            let nameYear = await NameYear.getYearById(objParams.yearname);
+            let period = await TypePeriod.getTypePeriodById(objParams.period);
+
+
+
+
+
+            const result = await col.aggregate([
+
+                {
+                    $facet: {
+
+
+
+                        "categorizedByDatePeriodCountry": [ {
+
+                            $match: {country: {$in: objParams.country}}
+
+                        },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+
+
+
+                            {
+                                $project:
+                                    {
+
+
+                                        nameEvent: 1,
+                                        myDate: 1,
+                                        countPeopleEventCommon: 1,
+                                        countWomanEventCommon: 1,
+                                        countFacilatatorEventCommon: 1,
+                                        countFacilatatorWomanEventCommon: 1,
+                                        countSpeakerEventCommon: 1,
+                                        countSpeakerWomanEventCommon: 1,
+                                        average: { $avg: "$forms_docs.ques12" },
+
+                                        forms_docsWomen: {
+                                            $filter: {
+                                                input: "$forms_docs",
+                                                as: "forms_docs",
+                                                cond: { $eq: [ "$$forms_docs.ques20", "Женский" ] }
+                                            }
+                                        }
+
+                                    }
+                            },
+
+
+
+
+
+                            {
+                                $project:
+                                    {
+                                        nameEvent: 1,
+                                        myDate: 1,
+                                        countPeopleEventCommon: 1,
+                                        countWomanEventCommon: 1,
+                                        countFacilatatorEventCommon: 1,
+                                        countFacilatatorWomanEventCommon: 1,
+                                        countSpeakerEventCommon: 1,
+                                        countSpeakerWomanEventCommon: 1,
+                                        average: 1,
+                                        participantsStated: "",
+                                        comments: "",
+                                        averageWomen: { $avg: "$forms_docsWomen.ques12" }
+
+                                    }
+                            },
+
+                        ]
+
+
+
+                    }
+                },
+
+
+
+
+
+
+
+
+            ]).toArray();
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    },
 
     getgrowpotencial: async (objParams) => {
 
@@ -297,8 +461,6 @@ module.exports = {
             ]).toArray();
 
 
-            console.log("\x1b[42m", result);
-
 
             return result;
 
@@ -563,7 +725,7 @@ module.exports = {
 
                             {
 
-                                $match: {"status.name": "Отказано"}
+                                $match: {"status.name": "Не релевантно"}
 
                             },
 
@@ -720,7 +882,7 @@ module.exports = {
 
                             {
 
-                                $match: {"status.name": {$in: ["Принято", "Отказано", "Переделать", "Просрочено"]}}
+                                $match: {"status.name": {$in: ["Принято", "Не релевантно", "Завершен", "Просрочено"]}}
 
                             },
 
@@ -1011,8 +1173,6 @@ module.exports = {
 
 
                 overallNarrative: objParams.overallNarrative,
-                participantsStated: objParams.participantsStated,
-                comments: objParams.comments,
 
                 grmSourceInformation: objParams.grmSourceInformation,
                 projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,

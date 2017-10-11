@@ -33,7 +33,14 @@ router.post('/getyearname', checkSeesionToken, async (req, res, next) =>{
 
 
 
+router.post('/getgrowpotencialnewver', checkSeesionToken, async (req, res, next) =>{
 
+
+    let result = await BuildReportService.getgrowpotencialNewVersion(req.body.data);
+
+    res.json({"code": "ok", "resultFromDb": result});
+
+});
 
 
 router.post('/getgrowpotencial', checkSeesionToken, async (req, res, next) =>{

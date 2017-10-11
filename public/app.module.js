@@ -72,7 +72,33 @@ angular.module('app').factory("GetMainPage", function($resource) {
 });
 
 app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $rootScope, $mdSidenav, $sce, GetMainPage, $location) {
+    GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
 
+
+        if (result.code === 0) {
+
+
+            $rootScope.myHTML = result.resultFromDb;
+
+
+        } else {
+
+            localStorage.removeItem('sessionToken');
+            localStorage.removeItem('fio');
+
+            $rootScope.err = "Вы не авторизованы, для повторной авторизации, нажмите на эту ";
+
+
+        }
+
+
+
+    });
+
+
+    $rootScope.deliberatelyTrustDangerousSnippet = function() {
+        return $sce.trustAsHtml($rootScope.myHTML);
+    };
 
 
     this.toggleLeft = buildToggler('left');

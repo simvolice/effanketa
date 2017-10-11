@@ -539,3 +539,8 @@ ul:not(.browser-default) > li {
     margin-right: 20px;
     margin-top: 20px;
 }
+
+
+.custom__input__width {
+    width: 50px;
+}

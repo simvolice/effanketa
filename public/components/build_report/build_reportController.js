@@ -162,12 +162,26 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
         country: data.country,
 
+        categorizedByDatePeriodCountry: data.capacityBuilding,
+        creditsTable: data.credits,
+
+        categorizedByAllComplaints: data.grm.categorizedByAllComplaints,
+        categorizedByAccept: data.grm.categorizedByAccept,
+        categorizedByComplete: data.grm.categorizedByComplete,
+        categorizedByLowLevel: data.grm.categorizedByLowLevel,
+        categorizedByType: data.grm.categorizedByType,
+
+        categorizedByBudgetBisbursement: data.finstatus.categorizedByBudgetBisbursement,
+        categorizedByCreditLine: data.finstatus.categorizedByCreditLine,
+        categorizedByOperatingExpenses: data.finstatus.categorizedByOperatingExpenses,
+        categorizedByServices: data.finstatus.categorizedByServices,
+
+
+
 
 
 
         overallNarrative: data.overallNarrative,
-        participantsStated: data.participantsStated,
-        comments: data.comments,
 
         grmSourceInformation: data.grmSourceInformation,
         projectRisksIssuesQuestion: data.projectRisksIssuesQuestion,
@@ -178,17 +192,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
     };
 
-    setTimeout(function () {
-        $("#capacityBuilding").empty();
-        $("#credits").empty();
-        $("#grm").empty();
-        $("#finstatus").empty();
 
-        $("#capacityBuilding").append(data.capacityBuilding);
-        $("#credits").append(data.credits);
-        $("#grm").append(data.grm);
-        $("#finstatus").append(data.finstatus);
-    }, 1000);
 
 
     $scope.print = function () {
@@ -264,7 +268,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 }
 
 
-function DialogControllerNewReport($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport) {
+function DialogControllerNewReport($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
 
 
@@ -274,12 +278,11 @@ $scope.data = {
     year: data.year,
     idcountry: data.country,
     country: data.nameCountry,
-
+    grm: {},
+    finstatus: {},
 
 
     overallNarrative: "",
-    participantsStated: "",
-    comments: "",
 
     grmSourceInformation: "",
     projectRisksIssuesQuestion: "",
@@ -316,15 +319,15 @@ $scope.data = {
 
 
 
-    GetGrowPotencial.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+    GetGrowPotencialNewVersion.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+
 
 
 
         for (let obj of entry.resultFromDb) {
             $scope.data.categorizedByDatePeriodCountry = obj.categorizedByDatePeriodCountry;
-            $scope.data.categorizedBySum = obj.categorizedBySum;
-            $scope.data.countSatisfaction = obj.countSatisfaction;
-            $scope.data.countSatisfactionWomen = obj.countSatisfactionWomen;
 
 
         }
@@ -341,6 +344,9 @@ $scope.data = {
 
 
         $scope.data.creditsTable = entry.resultFromDb;
+
+
+
 
 
     });
@@ -419,10 +425,23 @@ $scope.data = {
 
 
 
-        $scope.data.capacityBuilding = document.getElementById('capacityBuilding').innerHTML;
-        $scope.data.credits = document.getElementById('credits').innerHTML;
-        $scope.data.grm = document.getElementById('grm').innerHTML;
-        $scope.data.finstatus = document.getElementById('finstatus').innerHTML;
+        $scope.data.capacityBuilding = $scope.data.categorizedByDatePeriodCountry;
+        $scope.data.credits = $scope.data.creditsTable;
+
+         $scope.data.grm.categorizedByAllComplaints = $scope.data.categorizedByAllComplaints;
+         $scope.data.grm.categorizedByAccept = $scope.data.categorizedByAccept;
+         $scope.data.grm.categorizedByComplete = $scope.data.categorizedByComplete;
+         $scope.data.grm.categorizedByLowLevel = $scope.data.categorizedByLowLevel;
+         $scope.data.grm.categorizedByType = $scope.data.categorizedByType;
+
+
+         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+         $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+         $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+
+
 
         AddNewReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
