@@ -66,7 +66,9 @@ require('./routes')(app);
 async function initDB() {
    await dbConnect.connect();
    await scheduler.changeStatusOnComplaint();
-   await scheduler.sendEmailNotificationOnWriteForm()
+
+   //TODO затестировать, потом в продакт
+   // await scheduler.sendEmailNotificationOnWriteForm()
 }
 
 
