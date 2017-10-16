@@ -38,15 +38,40 @@ $scope.data = {
 
         GetReportUsersSatisfied.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.persentUsersSatisfied = entry.resultFromDb[0].average;
-            $scope.data.countFormIT = entry.resultFromDb[0].average;
+
+            if (entry.resultFromDb.length !== 0) {
+
+                $scope.data.persentUsersSatisfied = entry.resultFromDb[0].average;
+                $scope.data.countFormIT = entry.resultFromDb[0].average;
+
+
+            } else {
+
+                $scope.data.persentUsersSatisfied = 0;
+                $scope.data.countFormIT = 0;
+
+            }
+
+
 
 
         });
 
         GetReportCountProgramm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.countProgramm = entry.resultFromDb[0].all_programm;
+
+            if (entry.resultFromDb.length !== 0) {
+
+
+                $scope.data.countProgramm = entry.resultFromDb[0].all_programm;
+
+
+            } else {
+
+                $scope.data.countProgramm = 0;
+
+            }
+
 
 
         });
@@ -55,7 +80,22 @@ $scope.data = {
 
         GetReportCountRegeonalInvest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.finInvest = entry.resultFromDb[0].all_invest;
+
+            if (entry.resultFromDb.length !== 0) {
+
+
+                $scope.data.finInvest = entry.resultFromDb[0].all_invest;
+
+
+
+            } else {
+
+                $scope.data.finInvest = 0;
+
+
+            }
+
+
 
 
         });
@@ -64,7 +104,20 @@ $scope.data = {
 
         GetReportSumMobileAmount.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.mobileResurs = entry.resultFromDb[0].all_mobileresurs;
+
+            if (entry.resultFromDb.length !== 0) {
+
+                $scope.data.mobileResurs = entry.resultFromDb[0].all_mobileresurs;
+
+
+
+            } else {
+
+                $scope.data.mobileResurs = 0;
+
+            }
+
+
 
 
         });
@@ -73,7 +126,19 @@ $scope.data = {
 
         GetReportCountPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.countPlatform = entry.resultFromDb[0].all_platform;
+            if (entry.resultFromDb.length !== 0) {
+
+
+                $scope.data.countPlatform = entry.resultFromDb[0].all_platform;
+
+
+            } else {
+
+                $scope.data.countPlatform = 0;
+
+            }
+
+
 
 
         });
@@ -81,7 +146,20 @@ $scope.data = {
 
         GetReportCountBenificiarProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.countBenificiarProject = entry.resultFromDb[0].all_benificiar;
+
+            if (entry.resultFromDb.length !== 0) {
+
+
+                $scope.data.countBenificiarProject = entry.resultFromDb[0].all_benificiar;
+
+
+            } else {
+
+                $scope.data.countBenificiarProject = 0;
+
+            }
+
+
 
 
         });
@@ -90,7 +168,18 @@ $scope.data = {
 
         GetReportSumGAProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.areaGAProject = entry.resultFromDb[0].all_gaproject;
+
+            if (entry.resultFromDb.length !== 0) {
+
+                $scope.data.areaGAProject = entry.resultFromDb[0].all_gaproject;
+
+
+            } else {
+
+                $scope.data.areaGAProject = 0;
+
+            }
+
 
 
         });
@@ -98,7 +187,19 @@ $scope.data = {
 
         GetReportCountCompleteGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
-            $scope.data.countGRM = entry.resultFromDb[0].all_completegrm;
+
+
+
+            if (entry.resultFromDb.length !== 0) {
+
+                $scope.data.countGRM = entry.resultFromDb[0].all_completegrm;
+
+
+            } else {
+
+                $scope.data.countGRM = 0;
+            }
+
 
 
         });

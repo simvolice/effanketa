@@ -39,7 +39,7 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, $
 
 
 
-    function DialogControllerForNewForm($scope, data, AddPublicForm) {
+    function DialogControllerForNewForm($scope, data, AddPublicForm, $mdDialog) {
 
 
         $scope.data = {
@@ -150,14 +150,7 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, $
 
 
 
-
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent('Операция закончилась УСПЕШНО.')
-                            .position('bottom left')
-                            .hideDelay(3000)
-                    );
-
+                    $mdDialog.hide();
 
                 } else {
 

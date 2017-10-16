@@ -391,5 +391,40 @@ module.exports = {
 
 
 
+    getFormByParentIdAndEmail: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('forms');
+
+
+
+
+
+            const result = await col.findOne({parentId: ObjectId(objParams.parentId), email: objParams.email});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+    }
+
+
+
 
 };
