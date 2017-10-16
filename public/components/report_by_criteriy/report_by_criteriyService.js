@@ -7,16 +7,8 @@
 
 
 
-angular.module('app').factory("SendAuth", function($resource) {
-  return $resource("/auth", {tokenCSRF: "@tokenCSRF", login: "@login", pass: "@pass"});
-});
 
 
-angular.module('app').factory("GetToken", function($resource) {
-  return $resource("/gettokencsrf");
-});
-
-
-angular.module('app').factory("GetMainPage", function($resource) {
-    return $resource("/getmainpage");
+angular.module('app').factory("GetReportForEvent", function($resource) {
+    return $resource("/getreportforevent");
 });

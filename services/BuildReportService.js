@@ -18,9 +18,344 @@ const CounterService = require('../services/CounterService');
 
 
 
-
 module.exports = {
 
+
+
+    getreportforevent: async (id) => {
+
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('events');
+
+            const result = await col.aggregate([
+
+                {
+                    $facet: {
+
+
+                        "getAnswerAndNotAnswer": [
+
+
+                            {
+
+                            $match: {_id: ObjectId(id)}
+
+                            },
+
+
+
+
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+
+
+
+
+                            {
+                                $project:
+                                    {
+                                        countAllAnswer: { $size: "$forms_docs" },
+                                        countAllNotAnswer: { $subtract: [ "$countPeopleEventCommon", { $size: "$forms_docs" } ] }
+
+                                    }
+                            },
+
+
+
+
+
+
+
+                        ],
+
+                        "allQues": [
+
+
+                            {
+
+                                $match: {_id: ObjectId(id)}
+
+                            },
+
+
+
+
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+
+
+
+
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+                                    email: {$push: "$email"},
+                                    ques1: {$push: "$ques1"},
+                                    ques2: {$push: "$ques2"},
+                                    ques3: {$push: "$ques3"},
+                                    ques4: {$push: "$ques4"},
+                                    ques5: {$push: "$ques5"},
+                                    ques6: {$push: "$ques6"},
+                                    ques7: {$push: "$ques7"},
+                                    ques8: {$push: "$ques8"},
+                                    ques9: {$push: "$ques9"},
+                                    ques10: {$push: "$ques10"},
+                                    ques11: {$push: "$ques11"},
+                                    ques12: {$push: "$ques12"},
+                                    ques13: {$push: "$ques13"},
+                                    ques14: {$push: "$ques14"},
+                                    ques15: {$push: "$ques15"},
+                                    ques16: {$push: "$ques16"},
+                                    ques17: {$push: "$ques17"},
+                                    ques18: {$push: "$ques18"},
+                                    ques19: {$push: "$ques19"},
+                                    ques20: {$push: "$ques20"},
+                                    ques21: {$push: "$ques21"}
+
+
+
+                                }
+
+
+
+                            },
+
+
+                            {
+                                $project: {
+
+
+                                    _id: 0,
+
+                                    ques1: 1,
+                                    ques2: 1,
+                                    ques3: 1,
+                                    ques4: 1,
+                                    ques5: 1,
+                                    ques6: 1,
+                                    ques7: 1,
+                                    ques8: 1,
+                                    ques9: 1,
+                                    ques10: 1,
+                                    ques11: 1,
+                                    ques12: 1,
+                                    ques17: 1,
+
+                                    ques19: 1,
+                                    ques20: 1,
+                                    ques21: 1,
+
+
+                                    transposed13: {
+                                        $zip: {
+                                            inputs: ["$ques13", "$email"]
+                                        }
+                                    },
+
+                                    transposed14: {
+                                        $zip: {
+                                            inputs: ["$ques14", "$email"]
+                                        }
+                                    },
+
+
+                                    transposed15: {
+                                        $zip: {
+                                            inputs: ["$ques15", "$email"]
+                                        }
+                                    },
+
+                                    transposed16: {
+                                        $zip: {
+                                            inputs: ["$ques16", "$email"]
+                                        }
+                                    },
+
+
+                                    transposed18: {
+                                        $zip: {
+                                            inputs: ["$ques18", "$email"]
+                                        }
+                                    },
+
+
+                                }
+                            },
+
+
+                            {
+                                $project: {
+
+
+                                    ques1: 1,
+                                    ques2: 1,
+                                    ques3: 1,
+                                    ques4: 1,
+                                    ques5: 1,
+                                    ques6: 1,
+                                    ques7: 1,
+                                    ques8: 1,
+                                    ques9: 1,
+                                    ques10: 1,
+                                    ques11: 1,
+                                    ques12: 1,
+                                    ques17: 1,
+                                    ques19: 1,
+                                    ques20: 1,
+                                    ques21: 1,
+
+                                    dimensions13: { $arrayToObject: "$transposed13" },
+                                    dimensions14: { $arrayToObject: "$transposed14" },
+                                    dimensions15: { $arrayToObject: "$transposed15" },
+                                    dimensions16: { $arrayToObject: "$transposed16" },
+                                    dimensions18: { $arrayToObject: "$transposed18" },
+                                }
+                            }
+
+
+
+
+
+                        ],
+
+
+
+
+                    }
+                },
+
+
+
+
+
+
+
+
+            ]).toArray();
+
+
+
+            /*
+            Введется подсчет количества ответов
+             */
+            let countedNames = [];
+            for (let item of result[0].allQues) {
+
+                for (let itemObj in item) {
+
+                    if (Array.isArray(item[itemObj])) {
+
+                       let countedNamesTempObj = item[itemObj].reduce(function (allNames, name) {
+
+                           if (name in allNames) {
+                                allNames[name]++;
+                            }
+                            else {
+                                allNames[name] = 1;
+                            }
+                            return allNames;
+                        }, {});
+                        countedNames.push(countedNamesTempObj);
+
+
+                    }
+                }
+
+
+
+            }
+
+            /*
+            Считаем сумму ответов на каждый вопрос
+             */
+            for (let item of countedNames) {
+
+
+                let allObjValue = Object.values(item);
+                const total = allObjValue.reduce((sum, value) => sum + value);
+                item["totalAnswer"] = total;
+
+
+            }
+
+           /*
+           Присваеваем результат на новый массив
+            */
+            for (let item of result[0].allQues) {
+
+                for (let itemObj in item) {
+
+                    if (Array.isArray(item[itemObj])) {
+
+
+                       item[itemObj] = countedNames.shift();
+
+                    }
+                }
+
+
+
+            }
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+            console.log("\x1b[42m", err);
+
+            return err;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    },
 
     getgrowpotencialNewVersion: async (objParams) => {
 
@@ -245,6 +580,12 @@ module.exports = {
 
                                 $match: {year: nameYear.codeName, month: {$in: period.codeName}}
 
+                            },
+
+
+
+                            {
+                                $count : "all_event"
                             }
 
 
@@ -429,6 +770,8 @@ module.exports = {
                                         as: "forms_docs"
                                     }
                             },
+
+
                             { $unwind : "$forms_docs" },
 
                             {
@@ -436,15 +779,35 @@ module.exports = {
                             },
 
 
-
                             {
                                 $count : "all_form"
                             }
 
-
                         ],
 
+                        "allEvents": [ {
 
+                            $match: {country: {$in: objParams.country}}
+
+                        },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            }
+
+                        ],
 
 
 

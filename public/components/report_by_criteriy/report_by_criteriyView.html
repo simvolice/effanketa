@@ -72,7 +72,6 @@
 
 
 
-
                         <button class="btn btn-sm btn-primary" ng-click="createReport()">Сформировать отчет</button>
 
 
@@ -85,7 +84,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество мероприятий: <strong>{{allCount}}</strong></h5>
+                        <h5>Общее количество мероприятий: <strong>{{data.categorizedByDatePeriodCountry[0].all_event || 0}}</strong></h5>
 
                     </div>
 
@@ -97,7 +96,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество анкет: <strong>{{allForm}}</strong></h5>
+                        <h5>Общее количество анкет: <strong>{{data.countForms[0].all_form || 0}}</strong></h5>
 
                     </div>
 
@@ -132,13 +131,415 @@
 
 
 
+
+
+
+
+
+
             </md-card>
 
 
         </md-content>
 
 
+        <md-content ng-show="eventShow" layout="column" flex class="custom__md-content__categ">
 
+            <md-card>
+
+
+
+                <md-toolbar class="md-table-toolbar md-default">
+
+
+                    <div class="md-toolbar-tools">
+
+
+                        <h3>Отчёт по мероприятию</h3>
+
+
+                    </div>
+
+
+
+                    <div class="md-toolbar-tools">
+
+
+
+                        <md-input-container class="custom__select__margin">
+                            <label>Выберите мероприятие</label>
+                            <md-icon class="material-icons">place</md-icon>
+                            <md-select ng-model="data.selectEvent">
+
+                                <md-option ng-repeat="z in data.allEvents" ng-value="z._id">
+                                    {{z.nameEvent}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+
+
+
+                        <button class="btn btn-sm btn-primary" ng-click="createReportForEvent()">Сформировать отчет</button>
+
+
+                    </div>
+
+                </md-toolbar>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Количество ответивших: <strong>{{data.countAllAnswer[0].countAllAnswer || 0}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Количество не ответивших: <strong>{{data.countAllNotAnswer[0].countAllNotAnswer || 0}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Цели данного мероприятия были четко определены</h4>
+                        <p>{{data.ques[0].ques1.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues1"></div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Взаимодействие между участниками поощрялось</h4>
+                        <p>{{data.ques[0].ques2.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues2"></div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Темы имели отношение к тому, чем я занимаюсь</h4>
+                        <p>{{data.ques[0].ques3.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues3"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Содержание было хорошо структурировано и понятно</h4>
+                        <p>{{data.ques[0].ques4.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues4"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Раздаточные материалы были полезны</h4>
+                        <p>{{data.ques[0].ques5.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues5"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Полученная информация/знания и навыки будут полезны мне в работе</h4>
+                        <p>{{data.ques[0].ques6.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues6"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Тренер/модератор хорошо знал тему</h4>
+                        <p>{{data.ques[0].ques7.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues7"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Тренер/модератор был хорошо подготовлен</h4>
+                        <p>{{data.ques[0].ques8.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues8"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Цели мероприятия были достигнуты</h4>
+                        <p>{{data.ques[0].ques9.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues9"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Время выделенное для мероприятия было достаточным</h4>
+                        <p>{{data.ques[0].ques10.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues10"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Помещения для проведения мероприятия и используемая участниками инфраструктура были удобными</h4>
+                        <p>{{data.ques[0].ques11.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues11"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Оцените свою общую удовлетворенность проведенным мероприятием используя 5-бальную шкалу</h4>
+                        <p>{{data.ques[0].ques12.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues12"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Что вам понравилось больше всего?</h4>
+                        <p>{{data.totalQues13 || 0}} ответов</p>
+                        <ul ng-repeat="(key, value) in data.ques[0].dimensions13">
+                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Что можно было бы улучшить?</h4>
+                        <p>{{data.totalQues14 || 0}} ответов</p>
+                        <ul ng-repeat="(key, value) in data.ques[0].dimensions14">
+                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Как вы планируете использовать полученные знания/информацию?</h4>
+                        <p>{{data.totalQues15 || 0}} ответов</p>
+                        <ul ng-repeat="(key, value) in data.ques[0].dimensions15">
+                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>В каких темах вы заинтересованы и хотели бы пройти обучение/получать информацию в дальнейшем?</h4>
+                        <p>{{data.totalQues16 || 0}} ответов</p>
+                        <ul ng-repeat="(key, value) in data.ques[0].dimensions16">
+                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Как вы оцениваете организацию мероприятия?</h4>
+                        <p>{{data.ques[0].ques17.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues17"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Пожалуйста, отметьте, есть ли у Вас замечания или пожелания в целом по организации мероприятия?</h4>
+                        <p>{{data.totalQues18 || 0}} ответов</p>
+                        <ul ng-repeat="(key, value) in data.ques[0].dimensions18">
+                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                        </ul>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Вы представляете</h4>
+                        <p>{{data.ques[0].ques19.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues19"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Пол</h4>
+                        <p>{{data.ques[0].ques20.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues20"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h4>Возрастная группа</h4>
+                        <p>{{data.ques[0].ques21.totalAnswer || 0}} ответов</p>
+                        <div id="chartQues21"></div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </md-card>
+
+
+        </md-content>
 
 
 

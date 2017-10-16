@@ -33,40 +33,40 @@ module.exports = {
 
                 email: objParams.email,
                 question1: objParams.question1,
-                ques1: objParams.ques1,
+                ques1: Int32(objParams.ques1),
 
                 question2: objParams.question2,
-                ques2: objParams.ques2,
+                ques2: Int32(objParams.ques2),
 
                 question3: objParams.question3,
-                ques3: objParams.ques3,
+                ques3: Int32(objParams.ques3),
 
                 question4: objParams.question4,
-                ques4: objParams.ques4,
+                ques4: Int32(objParams.ques4),
 
                 question5: objParams.question5,
-                ques5: objParams.ques5,
+                ques5: Int32(objParams.ques5),
 
                 question6: objParams.question6,
-                ques6: objParams.ques6,
+                ques6: Int32(objParams.ques6),
 
 
                 question7: objParams.question7,
-                ques7: objParams.ques7,
+                ques7: Int32(objParams.ques7),
 
 
                 question8: objParams.question8,
-                ques8: objParams.ques8,
+                ques8: Int32(objParams.ques8),
 
 
                 question9: objParams.question9,
-                ques9: objParams.ques9,
+                ques9: Int32(objParams.ques9),
 
                 question10: objParams.question10,
-                ques10: objParams.ques10,
+                ques10: Int32(objParams.ques10),
 
                 question11: objParams.question11,
-                ques11: objParams.ques11,
+                ques11: Int32(objParams.ques11),
 
                 question12: objParams.question12,
                 ques12: Int32(objParams.ques12),
@@ -91,7 +91,7 @@ module.exports = {
 
 
                 question17: objParams.question17,
-                ques17: objParams.ques17,
+                ques17: Int32(objParams.ques17),
 
 
                 question18: objParams.question18,

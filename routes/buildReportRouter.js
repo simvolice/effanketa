@@ -152,6 +152,25 @@ router.post('/delreport', checkSeesionToken, async (req, res, next) =>{
 
 });
 
+
+
+
+
+router.post('/getreportforevent', checkSeesionToken, async (req, res, next) =>{
+
+
+
+
+
+    let result = await BuildReportService.getreportforevent(req.body.data);
+
+    res.json({"code": "ok", "resultFromDb": result});
+
+});
+
+
+
+
 module.exports = router;
 
 
