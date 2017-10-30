@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('MainCtrl', function ($scope, $cookies, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
+angular.module('app').controller('HomePageCtrl', function ($scope, $cookies, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
 
 
 
