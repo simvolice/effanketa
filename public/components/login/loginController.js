@@ -37,7 +37,7 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
             if (result.code === 0) {
 
 
-                $state.go("grow_potencial");
+                $state.go("main");
 
 
 
@@ -108,7 +108,7 @@ angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetTok
             localStorage.setItem("fio", result.fio);
             $rootScope.fio = localStorage.getItem('fio');
 
-            $state.go("grow_potencial");
+            $state.go("main");
 
 
         }
