@@ -4,12 +4,12 @@
 
 
 
-angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http, $mdToast, GetAllUsers, GetAllRoles, GetAllCoutrys, Register, UpdRegister, DelUser, RecoverUser, $mdDialog) {
+angular.module('app').controller('AdminCtrl', function ($scope, $rootScope, $http, $mdToast, GetAllUsers, GetAllRoles, GetAllCoutrys, Register, UpdRegister, DelUser, RecoverUser, $mdDialog) {
 
 
 
 
-    $scope.data = [];
+    $rootScope.data = [];
 
 
 
@@ -21,7 +21,7 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
 
 
-            $scope.data = result.resultFromDb;
+            $rootScope.data = result.resultFromDb;
 
 
         } else {
@@ -269,12 +269,45 @@ function DialogController($scope, GetAllCoutrys, GetAllRoles, $http, $mdToast) {
                 formdata = new FormData();
                 document.getElementById("file").value = null;
 
+                $mdDialog.hide();
+
+
+
+
+                GetAllUsers.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
+
+
+
+                    if (result.code === 0) {
+
+
+
+                        $rootScope.data = result.resultFromDb;
+
+
+                    } else {
+
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                                .position('bottom left')
+                                .hideDelay(6000)
+                        );
+
+
+                    }
+
+
+
+
+                });
+
 
 
                 $mdToast.show(
                     $mdToast.simple()
                         .textContent('Вы успешно загрузили объект.')
-                        .position('right top')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
@@ -288,7 +321,7 @@ function DialogController($scope, GetAllCoutrys, GetAllRoles, $http, $mdToast) {
                 $mdToast.show(
                     $mdToast.simple()
                         .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
-                        .position('right top')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
             });
@@ -376,6 +409,42 @@ function DialogControllerUpd(data, $scope, GetAllCoutrys, GetAllRoles, $http, $m
                 .then(function successCallback(response) {
                     formdata = new FormData();
                     document.getElementById("file").value = null;
+
+
+
+
+                    $mdDialog.hide();
+
+
+
+
+                    GetAllUsers.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
+
+
+
+                        if (result.code === 0) {
+
+
+
+                            $rootScope.data = result.resultFromDb;
+
+
+                        } else {
+
+                            $mdToast.show(
+                                $mdToast.simple()
+                                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                                    .position('bottom left')
+                                    .hideDelay(6000)
+                            );
+
+
+                        }
+
+
+
+
+                    });
 
 
 
