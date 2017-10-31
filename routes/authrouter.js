@@ -4,6 +4,9 @@ const bcrypt = require('bcryptjs');
 const generator = require('generate-password');
 const nodemailer = require('nodemailer');
 const jsonwebtoken = require('jsonwebtoken');
+const Busboy = require('async-busboy');
+const fs = require('fs');
+const path = require('path');
 
 const config = require('../utils/devConfig');
 const validator = require('../utils/validator');
@@ -150,14 +153,31 @@ router.post('/auth', async (req, res, next) =>{
 router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
 
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+
+
+
+
+    files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
+
+
+    let urlImg = "uploads/" + path.basename(files[0].path);
+
+
+
+
+
+
   let pass = generator.generate({numbers: true, symbols: true});
   const hash = bcrypt.hashSync(pass, 10);
   let mail = {
         from: "simvolice@gmail.com",
-        to: req.body.data.email, //TODO после тестирования надо поменять на переменную
+        to: fields.email, //TODO после тестирования надо поменять на переменную
         subject: "Ваш логин и пароль для входа в систему EFFORM",
 
-        html: '<h4>Логин: '+ req.body.data.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
+        html: '<h4>Логин: '+ fields.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
     };
 
     transporter.sendMail(mail);
@@ -168,11 +188,12 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
     let objParams = {
 
 
-    email: req.body.data.email,
+    email: fields.email,
     pass: hash,
-    country: req.body.data.country,
-    role: req.body.data.role,
-    fio: req.body.data.fio,
+    country: fields.country,
+    role: fields.role,
+    fio: fields.fio,
+    urlImg: urlImg,
 
 
         //TODO Только для отладки, потом удалить
@@ -187,6 +208,7 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
 
 let result =  await AuthService.register(objParams);
+
 
 
 if (result.hasOwnProperty("result")) {
@@ -206,23 +228,48 @@ if (result.hasOwnProperty("result")) {
 
 
 
-
 });
 
 router.post('/updregister', checkSeesionToken, async (req, res, next) =>{
 
+
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+
+
+    console.log("\x1b[42m", fields);
+
     let objParams = {
 
-        _id: req.body.data._id,
-        email: req.body.data.email,
+        _id: fields._id,
+        email: fields.email,
 
-        country: req.body.data.country,
-        role: req.body.data.role,
-        fio: req.body.data.fio
+        country: fields.country,
+
+        role: fields.role,
+        fio: fields.fio,
+        urlImg: fields.urlImg
 
 
 
     };
+
+
+
+    if (files.length !== 0) {
+
+        files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
+
+
+        let urlImg = "uploads/" + path.basename(files[0].path);
+
+        objParams.urlImg = urlImg;
+
+    }
+
+
+
 
 
 

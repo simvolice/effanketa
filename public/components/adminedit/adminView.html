@@ -34,7 +34,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="addBtn($event)">Добавить запись</button>
 
 
                     </div>
@@ -52,6 +52,7 @@
                             <th md-column>Роль</th>
                             <th md-column>Страна</th>
                             <th md-column>Email</th>
+                            <th md-column>Фото</th>
                             <th md-column>Дата создания</th>
                             <th md-column>Обновить</th>
                             <th md-column>Удалить</th>
@@ -72,28 +73,33 @@
 
                             <td md-cell>{{data.id}}</td>
 
-                            <td md-cell><input type="text" value="{{data.fio}}" ng-model="data.fio"></td>
+                            <td md-cell>{{data.fio}}</td>
 
                             <td md-cell>
 
-                                <select ng-model="data.role" ng-options="x._id as x.name for x in data.allRoles">
+                                <select disabled ng-model="data.role" ng-options="x._id as x.name for x in data.allRoles">
                                 </select>
 
                             </td>
 
                             <td md-cell>
 
-                                <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                <select disabled ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
                                 </select>
 
                             </td>
 
-                            <td md-cell><input type="text" value="{{data.email}}" ng-model="data.email"></td>
+                            <td md-cell>{{data.email}}</td>
+                            <td md-cell><img ng-src="{{data.urlImg}}" height="100" width="100"></td>
+
+
+
+
 
                             <td md-cell>{{data.createAt | date : "dd.MM.y"}}</td>
 
 
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
+                            <td md-cell><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
 
                             <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
 

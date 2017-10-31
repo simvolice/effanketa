@@ -183,7 +183,7 @@ module.exports = {
 
             let seq = await CounterService.getNextSequence("userid");
 
-            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ), passClear: objParam.passClear});
+            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ), passClear: objParam.passClear, urlImg: objParam.urlImg});
 
 
 
@@ -217,7 +217,29 @@ module.exports = {
 
 
 
-            const result = await col.updateOne({_id: ObjectId(objParam._id)} ,{ $set: {email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), updateAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )}});
+
+            const result = await col.updateOne({_id: ObjectId(objParam._id)} ,{ $set: {
+
+
+                email: objParam.email,
+
+
+                role: ObjectId(objParam.role),
+
+                fio: objParam.fio,
+
+
+                country: ObjectId(objParam.country),
+
+                urlImg: objParam.urlImg,
+
+
+                updateAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )}
+
+
+
+
+            });
 
 
 
@@ -439,7 +461,8 @@ module.exports = {
                 fio: "Админ первый",
                 id: seq,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ),
-                country: ObjectId(countryForRoot[0]._id)
+                country: ObjectId(countryForRoot[0]._id),
+                urlImg: "assets/img/user.png"
 
 
             });

@@ -1,0 +1,171 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать администратора</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <md-card>
+
+                            <div class="content">
+
+                                <div class="col-md-12">
+
+
+
+
+
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите страну</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="data.country">
+
+                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+
+
+
+
+                                    <md-input-container class="custom__select__margin" style="margin-right: 250px;">
+                                        <label>Выберите роль</label>
+                                        <md-icon class="material-icons">event_available</md-icon>
+                                        <md-select ng-model="data.role">
+
+                                            <md-option ng-repeat="y in data.allRoles" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>ФИО</label>
+                                        <md-icon class="material-icons">people</md-icon>
+
+                                        <input type="text" ng-model="data.fio">
+                                    </md-input-container>
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Email</label>
+                                        <md-icon class="material-icons">people</md-icon>
+
+                                        <input type="email" ng-model="data.email">
+                                    </md-input-container>
+
+
+
+                                    <div class="input-group" ng-show="data.urlImg">
+										<span class="input-group-addon">
+											<i>Фотография администратора</i>
+										</span>
+                                        <img ng-src="{{data.urlImg}}" height="100" width="100">
+                                    </div>
+
+
+
+                                    <div class="input-group">
+										<span class="input-group-addon">
+											<i>Фотография администратора</i>
+										</span>
+                                        <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" accept="image/*"/>
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="uploadFiles()">
+            Сохранить
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

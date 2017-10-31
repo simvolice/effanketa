@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http, $mdToast, GetAllUsers, GetAllRoles, GetAllCoutrys, Register, UpdRegister, DelUser, RecoverUser) {
+angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http, $mdToast, GetAllUsers, GetAllRoles, GetAllCoutrys, Register, UpdRegister, DelUser, RecoverUser, $mdDialog) {
 
 
 
@@ -45,94 +45,19 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
 
 
-    $scope.saveBtn = function (data) {
+    $scope.saveBtn = function (data, ev) {
 
 
 
-        if (data.id === 0) {
-
-
-
-            Register.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
-
-
-
-                if (result.code === 0) {
-
-
-                    $scope.data[$scope.data.length - 1]._id = result.resultFromDb._id;
-                    $scope.data[$scope.data.length - 1].id = result.resultFromDb.id;
-
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent('Операция закончилась УСПЕШНО.')
-                            .position('bottom left')
-                            .hideDelay(3000)
-                    );
-
-
-                } else {
-
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                            .position('bottom left')
-                            .hideDelay(6000)
-                    );
-
-
-                }
-
-
-
-
-            });
-
-
-        } else {
-
-
-
-            UpdRegister.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
-
-
-
-                if (result.code === 0) {
-
-
-
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent('Операция закончилась УСПЕШНО.')
-                            .position('bottom left')
-                            .hideDelay(3000)
-                    );
-
-
-                } else {
-
-                    $mdToast.show(
-                        $mdToast.simple()
-                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                            .position('bottom left')
-                            .hideDelay(6000)
-                    );
-
-
-                }
-
-
-
-
-            });
-
-
-
-
-        }
-
-
-
+        $mdDialog.show({
+            controller: DialogControllerUpd,
+            locals:{data: data},
+            templateUrl: 'components/adminedit/dialog_template.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: true // Only for -xs, -sm breakpoints.
+        });
 
 
 
@@ -144,16 +69,10 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
 
 
-    $scope.delete = function (id, index) {
+$scope.delete = function (id, index) {
 
 
 
-            if (id === undefined){
-
-                $scope.data.pop();
-
-
-            }else {
 
                 DelUser.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
 
@@ -191,8 +110,8 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
                 });
 
 
-            }
-    };
+
+};
 
 
 
@@ -200,7 +119,7 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
 
 
     $scope.recoverpass = function (id) {
-        if (id !== undefined){
+
 
 
             RecoverUser.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
@@ -239,69 +158,256 @@ angular.module('app').controller('AdminCtrl', function ($scope, $cookies, $http,
             });
 
 
-        }
+
     };
 
 
 
-    $scope.addBtn = function () {
-
-       let tempObj = {
+    $scope.addBtn = function (ev) {
 
 
 
-            id: 0,
-            email : "",
-            role : "",
-            fio : "",
+        $mdDialog.show({
+            controller: DialogController,
+            locals:{data: null},
+            templateUrl: 'components/adminedit/dialog_template.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: true // Only for -xs, -sm breakpoints.
+        });
 
-            createAt : new Date(),
-            country: ""
+
+    };
+
+
+
+
+
+function DialogController($scope, GetAllCoutrys, GetAllRoles, $http, $mdToast) {
+
+
+
+    $scope.data = {
+
+
+
+    };
+
+
+
+
+
+    GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+        $scope.data.allCountrys = entry.resultFromDb;
+        $scope.data.country = entry.resultFromDb[0]._id;
+
+
+    });
+
+    GetAllRoles.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+
+        $scope.data.allRoles = entry.resultFromDb;
+        $scope.data.role = entry.resultFromDb[0]._id;
+
+
+
+
+    });
+
+
+
+
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+
+
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
+
+
+
+    $scope.uploadFiles = function () {
+
+        formdata.append('fio', $scope.data.fio);
+        formdata.append('email', $scope.data.email);
+        formdata.append('country', $scope.data.country);
+        formdata.append('role', $scope.data.role);
+
+
+        var request = {
+            method: 'POST',
+            url: '/register',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('right top')
+                        .hideDelay(3000)
+                );
+
+
+
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('right top')
+                        .hideDelay(3000)
+                );
+            });
+    }
+
+
+
+
+
+
+}
+
+
+
+function DialogControllerUpd(data, $scope, GetAllCoutrys, GetAllRoles, $http, $mdToast) {
+
+
+
+        $scope.data = {
+            _id: data._id,
+            country: data.country,
+            allCountrys: data.allCountrys,
+            role: data.role,
+            allRoles: data.allRoles,
+            fio: data.fio,
+            email: data.email,
+            urlImg: data.urlImg
+
+
+        };
+
+
+
+
+
+
+
+
+
+
+        $scope.closeDialog = function () {
+
+
+            $mdDialog.hide();
 
 
 
         };
 
-        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
-            tempObj.allCountrys = entry.resultFromDb;
-            tempObj.country = entry.resultFromDb[0]._id;
-
-
-        });
-
-        GetAllRoles.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-
-            tempObj.allRoles = entry.resultFromDb;
-            tempObj.role = entry.resultFromDb[0]._id;
+        var formdata = new FormData();
+        $scope.getTheFiles = function ($files) {
+            angular.forEach($files, function (value, key) {
+                formdata.append(key, value);
+            });
+        };
 
 
 
 
-        });
+        $scope.uploadFiles = function () {
+
+            formdata.append('fio', $scope.data.fio);
+            formdata.append('email', $scope.data.email);
+            formdata.append('country', $scope.data.country);
+            formdata.append('role', $scope.data.role);
+            formdata.append('_id', $scope.data._id);
+            formdata.append('urlImg', $scope.data.urlImg);
+
+
+            var request = {
+                method: 'POST',
+                url: '/updregister',
+                data: formdata,
+                headers: {
+                    'Content-Type': undefined,
+                    'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                    'sessionToken' : localStorage.getItem('sessionToken')
+                }
+            };
+
+            // SEND THE FILES.
+            $http(request)
+                .then(function successCallback(response) {
+                    formdata = new FormData();
+                    document.getElementById("file").value = null;
+
+
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Вы успешно загрузили объект.')
+                            .position('left bottom')
+                            .hideDelay(3000)
+                    );
+
+
+
+
+
+                }, function errorCallback(response) {
+                    formdata = new FormData();
+                    document.getElementById("file").value = null;
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                            .position('left bottom')
+                            .hideDelay(3000)
+                    );
+                });
+        }
 
 
 
 
 
 
-
-      $scope.data.push(tempObj);
-
-
-    };
-
-
-
-
-
-
-
-
-
+    }
 
 
 
