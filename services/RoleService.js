@@ -47,7 +47,7 @@ module.exports = {
                     "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
                     "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
                     "\t\t\t\t\t\t\t<li><a href=\"?#!/credits\">Кредиты</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">GRM</a></li>\n" +
+                    "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
                     "\t\t\t\t\t\t\t<li><a href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
                     "\t\t\t\t\t\t\t<li><a href=\"?#!/main_score_program\">Главные и промежуточные цели программы</a></li>\n" +
                     "\t\t\t\t\t\t\t<li><a href=\"?#!/strategic_communications\">Стратегия коммуникаций</a></li>\n" +
@@ -89,7 +89,7 @@ module.exports = {
                 "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
                 "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
                 "\t\t\t\t\t\t\t<li><a href=\"?#!/credits\">Кредиты</a></li>\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">GRM</a></li>\n" +
+                "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
                 "\t\t\t\t\t\t\t<li><a href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
                 "\t\t\t\t\t\t</ul>\n" +
                 "\n" +
