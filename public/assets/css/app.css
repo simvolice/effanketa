@@ -551,3 +551,39 @@ ul:not(.browser-default) > li {
     pointer-events: none;
     cursor: default;
 }
+
+
+
+
+
+
+.for__padding__sidebar {
+    padding-left: 200px;
+
+}
+
+
+@media only screen and (max-width : 992px) {
+    .for__padding__sidebar {
+        padding-left: 0;
+
+    }
+}
+
+
+
+
+
+.collapsible-body > ul > li> a {
+    text-decoration: none;
+}
+
+.collapsible > li > a {
+    text-decoration: none;
+}
+
+
+
+
+
+

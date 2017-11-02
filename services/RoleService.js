@@ -29,111 +29,165 @@ module.exports = {
 
                 { name: "Администратор 1 уровня",
 
-                    mainPageHtml: "<div class=\"menu-list\">\n" +
-                    "\n" +
-                    "\t\t\t\t\t<ul id=\"menu-content\" class=\"menu-content\">\n" +
-                    "\n" +
-                    "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#products\" class=\"collapsed\">\n" +
-                    "\t\t\t\t\t\t\t<a><i class=\"material-icons\">filter_drama</i> Администраторы <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                    "\t\t\t\t\t\t</li>\n" +
-                    "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"products\">\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
-                    "\t\t\t\t\t\t</ul>\n" +
+                    mainPageHtml: "<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Администраторы\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#service\" class=\"collapsed\">\n" +
-                    "\t\t\t\t\t\t\t<a><i class=\"material-icons\">place</i> Ввод данных <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                    "\t\t\t\t\t\t</li>\n" +
-                    "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/credits\">Кредиты</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/main_score_program\">Главные и промежуточные цели программы</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/strategic_communications\">Стратегия коммуникаций</a></li>\n" +
-                    "\t\t\t\t\t\t</ul>\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#new\" class=\"collapsed\">\n" +
-                    "\t\t\t\t\t\t\t<a><i class=\"material-icons\">whatshot</i>Анализ данных<i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                    "\t\t\t\t\t\t</li>\n" +
-                    "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"new\">\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_criteriy\">Отчёт по заданным критериям</a></li>\n" +
-                    "\t\t\t\t\t\t\t<li><a href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
-                    "\t\t\t\t\t\t</ul>\n" +
-                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
-                    "\t\t\t\t</div>"
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Ввод данных\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">Кредиты</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/main_score_program\">Главные и промежуточные цели программы</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/strategic_communications\">Стратегия коммуникаций</a></li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Анализ данных\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по заданным критериям</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n" +
+                    "\n"
                 },
 
-                {name: "Администратор 2 уровня", mainPageHtml: "<div class=\"menu-list\">\n" +
-                "\n" +
-                "\t\t\t\t\t<ul id=\"menu-content\" class=\"menu-content\">\n" +
-                "\n" +
-                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#products\" class=\"collapsed\">\n" +
-                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">filter_drama</i> Администраторы <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                "\t\t\t\t\t\t</li>\n" +
-                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"products\">\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
-                "\t\t\t\t\t\t</ul>\n" +
-                "\n" +
-                "\n" +
-                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#service\" class=\"collapsed\">\n" +
-                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">place</i> Ввод данных <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                "\t\t\t\t\t\t</li>\n" +
-                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/credits\">Кредиты</a></li>\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
-                "\t\t\t\t\t\t</ul>\n" +
-                "\n" +
-                "\n" +
-                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#new\" class=\"collapsed\">\n" +
-                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">whatshot</i>Анализ данных<i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                "\t\t\t\t\t\t</li>\n" +
-                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"new\">\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
-                "\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/report_by_criteriy\">Отчёт по заданным критериям</a></li>\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
-                "\t\t\t\t\t\t</ul>\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\t\t\t\t\t</ul>\n" +
-                "\t\t\t\t</div>\n"},
+                {name: "Администратор 2 уровня",
 
 
-                { name: "Администратор 3 уровня", mainPageHtml: "<div class=\"menu-list\">\n" +
-                "\n" +
-                "\t\t\t\t\t<ul id=\"menu-content\" class=\"menu-content\">\n" +
-                "\n" +
-                "\t\t\t\t\t\t\n" +
-                "\n" +
-                "\t\t\t\t\t\t<li data-toggle=\"collapse\" data-target=\"#service\" class=\"collapsed\">\n" +
-                "\t\t\t\t\t\t\t<a><i class=\"material-icons\">place</i> Ввод данных <i class=\"material-icons\">keyboard_arrow_down</i></a>\n" +
-                "\t\t\t\t\t\t</li>\n" +
-                "\t\t\t\t\t\t<ul class=\"sub-menu collapse\" id=\"service\">\n" +
-                "\t\t\t\t\t\t\t<li><a href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\t\t\t\t\t\t</ul>\n" +
-                "\n" +
-                "\n" +
-                "\t\t\t\t\t\t\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\t\t\t\t\t</ul>\n" +
-                "\t\t\t\t</div>"}]
+                    mainPageHtml: "<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Администраторы\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Ввод данных\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">Кредиты</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
+                    "\t\t\t\t\t\t\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Анализ данных\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по заданным критериям</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n"
+
+
+
+
+                },
+
+
+                { name: "Администратор 3 уровня",
+
+
+                    mainPageHtml: "<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Ввод данных\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
+                    "\t\t\t\t\t\t\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>"}]
 
             );
 

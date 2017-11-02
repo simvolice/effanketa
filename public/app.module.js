@@ -73,11 +73,24 @@ angular.module('app').factory("GetMainPage", function($resource) {
 
 app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $rootScope, $mdSidenav, $sce, GetMainPage, $location) {
 
+    $('.drawer').drawer({
+
+
+        showOverlay: false
+    });
+
 
 
     $timeout(function () {
-        $("body>.off-canvas-sidebar").remove();
-    }, 1000)
+
+
+    $('.drawer').drawer('open');
+
+
+    }, 100);
+
+
+
 
 
 
@@ -110,13 +123,6 @@ app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $root
     };
 
 
-    this.toggleLeft = buildToggler('left');
-
-    function buildToggler(componentId) {
-        return function() {
-            $mdSidenav(componentId).toggle();
-        };
-    }
 
 
 
