@@ -558,7 +558,7 @@ ul:not(.browser-default) > li {
 
 
 .for__padding__sidebar {
-    padding-left: 200px;
+    padding-left: 240px;
 
 }
 
@@ -574,16 +574,15 @@ ul:not(.browser-default) > li {
 
 
 
-.collapsible-body > ul > li> a {
-    text-decoration: none;
+
+.custom__sidebar__img {
+
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 200px;
+    margin-left: 15px;
+
 }
-
-.collapsible > li > a {
-    text-decoration: none;
-}
-
-
-
 
 
 

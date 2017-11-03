@@ -75,7 +75,13 @@ app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $root
 
     $('.drawer').drawer({
 
-
+        iscroll: {
+            // Configuring the iScroll
+            // https://github.com/cubiq/iscroll#configuring-the-iscroll
+            mouseWheel: true,
+            preventDefault: false,
+            scrollbars: true
+        },
         showOverlay: false
     });
 
@@ -90,7 +96,18 @@ app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $root
     }, 100);
 
 
+    $('.drawer').on('drawer.opened', function(){
 
+        $("#mainpanel").addClass("for__padding__sidebar");
+
+    });
+
+    $('.drawer').on('drawer.closed', function(){
+
+
+        $("#mainpanel").removeClass("for__padding__sidebar");
+
+    });
 
 
 

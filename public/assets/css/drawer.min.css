@@ -11,11 +11,12 @@
 }
 
 .drawer-nav {
-    position: fixed;
-    z-index: 2;
-    top: 0;
+    position: absolute;
+    z-index: 3;
+    top: 70px;
     overflow: hidden;
-    width: 16.25rem;
+    width: 232px;
+    /*width: 16.25rem;*/
     height: 100%;
     color: #222;
     background-color: #fff
@@ -39,6 +40,7 @@
 }
 
 .drawer-menu-item {
+    align-items: center;
     font-size: 1.5rem;
     display: block;
     padding: .75rem;
@@ -47,9 +49,9 @@
 }
 
 .drawer-menu-item:hover {
-    text-decoration: underline;
-    color: #555;
-    background-color: transparent
+    text-decoration: none;
+    color: #000;
+    background-color: #f2f2f2
 }
 
 .drawer-overlay {
@@ -86,17 +88,20 @@
 }
 
 .drawer--left .drawer-nav {
-    left: -16.25rem;
+    left:-232px;
+    /*left: -16.25rem;*/
     -webkit-transition: left .6s cubic-bezier(.19, 1, .22, 1);
     transition: left .6s cubic-bezier(.19, 1, .22, 1)
 }
 
 .drawer--left .drawer-hamburger, .drawer--left.drawer-open .drawer-nav, .drawer--left.drawer-open .drawer-navbar .drawer-hamburger {
-    left: 0
+    left: 0;
+
+
 }
 
 .drawer--left.drawer-open .drawer-hamburger {
-    left: 16.25rem
+    left: 0
 }
 
 .drawer--right .drawer-nav {
@@ -114,9 +119,9 @@
 }
 
 .drawer-hamburger {
-    position: fixed;
+    position: absolute;
     z-index: 4;
-    top: 0;
+    top: 3px;
     display: block;
     box-sizing: content-box;
     width: 2rem;
@@ -383,24 +388,28 @@
 }
 
 .drawer-dropdown-menu-item {
-    line-height: 3.75rem;
+    line-height: 2rem;
     display: block;
     padding: 0;
     padding-right: .75rem;
     padding-left: 1.5rem;
     text-decoration: none;
-    color: #222
+    color: #222;
+    font-size: .9em;
 }
 
 .drawer-dropdown-menu-item:hover {
-    text-decoration: underline;
-    color: #555;
-    background-color: transparent
+    text-decoration: none;
+    color: #000;
+    background-color: #f2f2f2;
 }
 
 .drawer-dropdown.open > .drawer-dropdown-menu {
     display: block
 }
+
+
+
 
 .drawer-dropdown .drawer-caret {
     display: inline-block;
