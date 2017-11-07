@@ -125,7 +125,7 @@ module.exports = {
 
                 nameEvent: objParams.nameEvent,
                 typeEvent: ObjectId(objParams.typeEvent),
-                subTypeEvent: ObjectId(objParams.subTypeEvent),
+
                 countPeopleEventCommon: objParams.countPeopleEventCommon,
                 countWomanEventCommon: objParams.countWomanEventCommon,
 
@@ -306,7 +306,7 @@ module.exports = {
 
                         nameEvent: objParams.nameEvent,
                         typeEvent: ObjectId(objParams.typeEvent),
-                        subTypeEvent: (objParams.subTypeEvent),
+
                         countPeopleEventCommon: objParams.countPeopleEventCommon,
                         countWomanEventCommon: objParams.countWomanEventCommon,
                         countFacilatatorEventCommon: objParams.countFacilatatorEventCommon,

@@ -570,7 +570,7 @@ function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdE
 
         nameEvent: data.nameEvent,
         typeEvent: data.typeEvent,
-        subTypeEvent: data.subTypeEvent,
+
         countPeopleEventCommon: data.countPeopleEventCommon,
         countWomanEventCommon: data.countWomanEventCommon,
 
@@ -688,7 +688,7 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
         nameEvent: "",
         typeEvent: "",
-        subTypeEvent: "",
+
         countPeopleEventCommon: "",
         countWomanEventCommon: "",
 
@@ -717,7 +717,7 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
         $scope.data.allEventStatuses = entry.resultFromDb;
         $scope.data.typeEvent = entry.resultFromDb[0]._id;
-        $scope.data.subTypeEvent = entry.resultFromDb[0]._id;
+
 
     });
 
