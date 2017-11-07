@@ -27,6 +27,8 @@ module.exports = {
 
 
           let seq = await CounterService.getNextSequence("creditid");
+          let nameCountry = await CountryService.getCountryById(objParams.country);
+          let nameFact = await ItemForFactInCredits.getNameById(objParams.creditsFactSelect);
 
 
           const result = await col.insertOne({
@@ -36,6 +38,7 @@ module.exports = {
 
 
               country: ObjectId(objParams.country),
+              nameCountry: nameCountry.name,
               categcredits: objParams.categcredits,
 
               countsubproject: Int32(objParams.countsubproject),
@@ -52,6 +55,7 @@ module.exports = {
               NonDirectBeneficiariesHiredFemale: Int32(objParams.NonDirectBeneficiariesHiredFemale),
               CreatePowerPlan: Double(objParams.CreatePowerPlan),
               creditsFactSelect: ObjectId(objParams.creditsFactSelect),
+              nameFact: nameFact.name,
 
               createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
@@ -257,6 +261,8 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('credits');
 
+            let nameCountry = await CountryService.getCountryById(objParams.country);
+            let nameFact = await ItemForFactInCredits.getNameById(objParams.creditsFactSelect);
 
 
 
@@ -273,7 +279,8 @@ module.exports = {
 
                       country: ObjectId(objParams.country),
                       categcredits: objParams.categcredits,
-
+                      nameFact: nameFact.name,
+                      nameCountry: nameCountry.name,
                       countsubproject: Int32(objParams.countsubproject),
                       commonAmountInDollors: Int32(objParams.commonAmountInDollors),
                       commonAmountInNatCurrency: Int32(objParams.commonAmountInNatCurrency),

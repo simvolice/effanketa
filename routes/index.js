@@ -16,6 +16,7 @@ module.exports = function (app) {
     app.use('/', require('./buildReportRouter'));
     app.use('/', require('./mainScoreReportRouter'));
     app.use('/', require('./dataIntermIndexRouter'));
+    app.use('/', require('./excelRouter'));
 
 
 };

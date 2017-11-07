@@ -66,3 +66,5 @@ angular.module('app').factory("SendFormForEmail", function($resource) {
 angular.module('app').factory("GetAllEventStatuses", function($resource) {
     return $resource("/getalleventstatuses");
 });
+
+
