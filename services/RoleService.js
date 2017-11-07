@@ -86,7 +86,7 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по мероприятиям</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по отдельному мероприятию</a></li>\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
                     "\n" +
                     "\n" +
@@ -155,7 +155,7 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_main_score\">Отчёт по главным целям программы</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по мероприятиям</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по отдельному мероприятию</a></li>\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">Данные по промежуточным показателям</a></li>\n" +
                     "\n" +
                     "\n" +
