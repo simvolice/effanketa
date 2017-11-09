@@ -8,7 +8,7 @@
 
 
 angular.module('app').factory("AddGrm", function($resource) {
-  return $resource("/addgrm", {tokenCSRF: "@tokenCSRF", login: "@login", pass: "@pass"});
+  return $resource("/addgrm");
 });
 
 

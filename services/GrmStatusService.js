@@ -29,13 +29,13 @@ module.exports = {
 
               {
 
-                  name: "Принято"
+                  name: "Не относится к действиям проекта"
 
               },
 
               {
 
-                  name: "Не релевантно"
+                  name: "На рассмотрении"
 
               },
 
@@ -44,14 +44,7 @@ module.exports = {
 
               {
 
-                  name: "Просрочено"
-
-              },
-
-
-              {
-
-                  name: "Завершен"
+                  name: "Закрыта"
 
               }
 
@@ -416,6 +409,41 @@ module.exports = {
     },
 
 
+
+    getCanalById: async (id) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grmstatus_canals_request');
+
+
+
+
+            const result = await col.findOne({_id: ObjectId(id)});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
     insertCanalsRequest: async (name) => {
 
         try {
@@ -462,6 +490,40 @@ module.exports = {
 
 
             const result = await col.find({}).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+    getCategById: async (id) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm_categ');
+
+
+
+
+            const result = await col.findOne({_id: ObjectId(id)});
 
 
 

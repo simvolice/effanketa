@@ -4,468 +4,184 @@
 
 
 
-angular.module('app').controller('GrmCtrl', function ($scope, $cookies, GetAllGrm, GetAllStatus, $mdToast, $mdDialog, $rootScope, $timeout, ChangeStatus, DeleteGrm) {
+angular.module('app').controller('GrmCtrl', function ($scope, $window, GetAllGrm, GetAllStatus, $mdToast, $mdDialog, UpdateGrm, GetAllCategGRM, GetAllCanalRequest, DeleteGrm, GetAllCoutrys, AddGrm) {
 
 
-    $scope.grmStatus = [];
+
     $scope.data = [];
 
+    GetAllGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
 
-
-    GetAllStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-        $scope.grmStatus = entry.resultFromDb;
-
-        GetAllGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), statusId: $scope.grmStatus[0]._id}, function(entry) {
-
-
-            $scope.statusAdm = entry.resultFromDb.statusAdm;
-
-            $scope.data = entry.resultFromDb.Arr;
-
-
-        });
-
-
-    });
-
-
-
-
-
-
-
-
-function getGrmForTable(statusTab) {
-
-
-    for (let obj of $scope.grmStatus) {
-
-        if (obj.name === statusTab) {
-
-
-            GetAllGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), statusId: obj._id}, function(entry) {
-
-
-                $scope.statusAdm = entry.resultFromDb.statusAdm;
-
-                $scope.data = entry.resultFromDb.Arr;
-
-
-            });
-
-
-        }
-
-
-    }
-
-
-
-}
-
-
-
-    $scope.tabClk = function (statusTab) {
-
-
-        getGrmForTable(statusTab);
-
-
-    };
-
-
-
-$scope.selectChange = function (id, statusId, index) {
-
-
-    ChangeStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: {id: id, statusId: statusId}}, function(result) {
 
 
         if (result.code === 0) {
 
-            $scope.data.splice(index, 1);
 
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Операция закончилась УСПЕШНО.')
-                    .position('bottom left')
-                    .hideDelay(3000)
-            );
-
-
-        } else {
-
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                    .position('bottom left')
-                    .hideDelay(6000)
-            );
-
-
-        }
-
-    });
-
-
-
-
-
-
-
-};
-
-
-$scope.delete = function (id, index) {
-    DeleteGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function(result) {
-
-
-        if (result.code === 0) {
-
-            $scope.data.splice(index, 1);
-
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Операция закончилась УСПЕШНО.')
-                    .position('bottom left')
-                    .hideDelay(3000)
-            );
-
-
-        } else {
-
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                    .position('bottom left')
-                    .hideDelay(6000)
-            );
-
-
-        }
-
-    });
-
-
-};
-
-
-
-$scope.addBtn = function (ev) {
-    $mdDialog.show({
-        controller: DialogController,
-        locals:{statusAdm: $scope.statusAdm},
-        templateUrl: 'components/grm/dialog_template.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        fullscreen: true // Only for -xs, -sm breakpoints.
-    });
-};
-
-
-
-
-
-
-
-
-function DialogController($scope, statusAdm, GetAllCoutrys, AddGrm, GetAllCanalRequest, InsertNewCanalRequest, GetAllCategGRM, InsertNewCategGRM) {
-
-
-
-    $scope.data = {
-
-
-        dateInGo: new Date(),
-        sourceTake: "",
-        declarerFIO: "",
-        country: "",
-        contacDeclarer: "",
-        categComplaint: "",
-        raisedQuestion: "",
-        responsibleConsideration: "",
-        reviewStatus: "",
-        takeAction: "",
-        lastDateAnswer: new Date(),
-        dateNotifDeclarer: new Date(),
-        timeToCheckComplaint: "",
-        statusAdm: statusAdm,
-        newCanalRequest: "",
-        satisfiedMeasuresTaken: "Да",
-        assessmentQualitySatisfactionComplaint: 5
-
-    };
-
-
-
-
-    $scope.$watch("data.lastDateAnswer", function (newVal, oldVal) {
-
-
-        $scope.timeDiff = Math.abs(newVal.getTime() - $scope.data.dateInGo.getTime());
-
-        $scope.data.timeToCheckComplaint = Math.ceil($scope.timeDiff / (1000 * 3600 * 24));
-
-    });
-
-
-
-
-
-    GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-        $scope.data.allCountrys = entry.resultFromDb;
-        $scope.data.country = entry.resultFromDb[0]._id;
-
-
-    });
-
-
-    GetAllCanalRequest.get(function(entry) {
-
-
-        $scope.data.allCanalRequest = entry.resultFromDb;
-        $scope.data.sourceTake = entry.resultFromDb[0]._id;
-
-
-    });
-
-
-
-    GetAllCategGRM.get(function(entry) {
-
-
-        $scope.data.allCategGRM = entry.resultFromDb;
-        $scope.data.categComplaint = entry.resultFromDb[0]._id;
-
-
-    });
-
-
-
-    $scope.clearSearchTerm = function() {
-        $scope.data.newCanalRequest = '';
-        $scope.data.newCategGRM = '';
-    };
-
-
-
-    $scope.createNewCanalRequest = function (event) {
-      if(event.keyCode === 13) {
-
-          InsertNewCanalRequest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCanalRequest}, function(entry) {
-
-
-              $scope.data.allCanalRequest = entry.resultFromDb;
-
-
-          });
-
-      }
-    };
-
-
-    $scope.createNewCategGRM = function (event) {
-        if(event.keyCode === 13) {
-
-            InsertNewCategGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCategGRM}, function(entry) {
-
-
-                $scope.data.allCategGRM = entry.resultFromDb;
-
-
-            });
-
-        }
-    };
-
-
-
-
-    $scope.addComplaint = function () {
-
-
-        AddGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function (result) {
-
-
-
-            if (result.code === 0) {
-
-
-
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
-                        .hideDelay(3000)
-                );
-
-
-            } else {
-
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
-                );
-
-
+            for (let itemResultFromDB of result.resultFromDb) {
+                itemResultFromDB.dateInGo = new Date(itemResultFromDB.dateInGo);
+                itemResultFromDB.lastDateAnswer = new Date(itemResultFromDB.lastDateAnswer);
+                itemResultFromDB.dateNotifDeclarer = new Date(itemResultFromDB.dateNotifDeclarer);
             }
 
 
 
-
-        });
-
-
-
-    };
-
-
-    $scope.closeDialog = function () {
-
-
-
-        $mdDialog.hide();
-
-        getGrmForTable("Принято");
-
-    };
-
-
-
-}
+            $scope.data = result.resultFromDb;
 
 
 
 
-$scope.saveBtn = function (data, ev) {
-    $mdDialog.show({
-        controller: DialogControllerUpdate,
-        locals:{statusAdm: $scope.statusAdm, data: data},
-        templateUrl: 'components/grm/dialog_template.html',
-        parent: angular.element(document.body),
-        targetEvent: ev,
-        clickOutsideToClose:true,
-        fullscreen: true // Only for -xs, -sm breakpoints.
+        } else {
+
+            $mdToast.show(
+                $mdToast.simple()
+                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .position('bottom left')
+                    .hideDelay(6000)
+            );
+
+
+        }
+
+
+
+
     });
-};
+
+
+    $scope.addBtn = function () {
+
+        let tempObj = {
 
 
 
+            id: 0,
+            country: "",
+            canalRequest: "",
+            categComplaint: "",
+            statusId: "",
 
-function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGrm, GetAllCanalRequest, InsertNewCanalRequest, GetAllCategGRM, InsertNewCategGRM) {
 
 
+            dateInGo: "",
+            declarerFIO: "",
+            raisedQuestion: "",
+            responsibleConsideration: "",
+            takeAction: "",
+            lastDateAnswer: "",
+            dateNotifDeclarer: "",
+            timeToCheckComplaint: ""
 
 
-        $scope.data = {
-
-            _id: data._id,
-            dateInGo: new Date(data.dateInGo),
-            sourceTake: data.sourceTake,
-            declarerFIO: data.declarerFIO,
-            country: data.country,
-            contacDeclarer: data.contacDeclarer,
-            categComplaint: data.categComplaint,
-            raisedQuestion: data.raisedQuestion,
-            responsibleConsideration: data.responsibleConsideration,
-            reviewStatus: data.reviewStatus,
-            takeAction: data.takeAction,
-            lastDateAnswer: new Date(data.lastDateAnswer),
-            dateNotifDeclarer: new Date(data.dateNotifDeclarer),
-            timeToCheckComplaint: data.timeToCheckComplaint,
-            statusAdm: statusAdm,
-            satisfiedMeasuresTaken: data.satisfiedMeasuresTaken,
-            assessmentQualitySatisfactionComplaint: data. assessmentQualitySatisfactionComplaint
 
         };
-
-    $scope.$watch("data.lastDateAnswer", function (newVal, oldVal) {
-
-
-        $scope.timeDiff = Math.abs(newVal.getTime() - $scope.data.dateInGo.getTime());
-
-        $scope.data.timeToCheckComplaint = Math.ceil($scope.timeDiff / (1000 * 3600 * 24));
-
-    });
-
 
         GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
-            $scope.data.allCountrys = entry.resultFromDb;
+            tempObj.allCountrys = entry.resultFromDb;
+            tempObj.country = entry.resultFromDb[0]._id;
 
 
         });
 
 
-    GetAllCanalRequest.get(function(entry) {
+        GetAllStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
-        $scope.data.allCanalRequest = entry.resultFromDb;
+            tempObj.allStatus = entry.resultFromDb;
+            tempObj.statusId = entry.resultFromDb[0]._id;
 
 
-    });
-
-
-    GetAllCategGRM.get(function(entry) {
-
-
-        $scope.data.allCategGRM = entry.resultFromDb;
-        $scope.data.categComplaint = entry.resultFromDb[0]._id;
-
-
-    });
+        });
 
 
 
-    $scope.clearSearchTerm = function() {
-        $scope.data.newCanalRequest = '';
-        $scope.data.newCategGRM = '';
+        GetAllCanalRequest.get({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+            tempObj.allCanalRequestStatus = entry.resultFromDb;
+            tempObj.canalRequest = entry.resultFromDb[0]._id;
+
+
+        });
+
+
+
+        GetAllCategGRM.get({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+            tempObj.allCategComplaint = entry.resultFromDb;
+            tempObj.categComplaint = entry.resultFromDb[0]._id;
+
+
+        });
+
+
+
+
+
+
+
+
+
+
+        $scope.data.push(tempObj);
+
+
     };
 
 
 
-
-    $scope.createNewCanalRequest = function (event) {
-        if(event.keyCode === 13) {
-
-            InsertNewCanalRequest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCanalRequest}, function(entry) {
+    $scope.saveBtn = function (data) {
 
 
-                $scope.data.allCanalRequest = entry.resultFromDb;
+
+        if (data.id === 0) {
+
+
+
+            AddGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $scope.data[$scope.data.length - 1]._id = result.resultFromDb._id;
+                    $scope.data[$scope.data.length - 1].id = result.resultFromDb.id;
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
 
 
             });
 
-        }
-    };
 
-    $scope.createNewCategGRM = function (event) {
-        if(event.keyCode === 13) {
-
-            InsertNewCategGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.newCategGRM}, function(entry) {
+        } else {
 
 
-                $scope.data.allCategGRM = entry.resultFromDb;
 
-
-            });
-
-        }
-    };
-
-
-        $scope.addComplaint = function () {
-
-
-            UpdateGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function (result) {
+            UpdateGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function (result) {
 
 
 
@@ -500,22 +216,90 @@ function DialogControllerUpdate($scope, data, statusAdm, GetAllCoutrys, UpdateGr
 
 
 
-        };
 
-
-        $scope.closeDialog = function () {
-
-
-
-            $mdDialog.hide();
-
-            getGrmForTable(data.nameStatus);
-
-        };
+        }
 
 
 
-    }
+
+
+
+
+
+    };
+
+
+
+
+    $scope.delete = function (id, index) {
+
+
+
+        if (id === undefined){
+
+            $scope.data.pop();
+
+
+        }else {
+
+            DeleteGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: id}, function (result) {
+
+
+
+                if (result.code === 0) {
+
+
+
+                    $scope.data.splice(index, 1);
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+            });
+
+
+        }
+    };
+
+
+
+
+    $scope.excel = function () {
+
+
+
+        $scope.tableID = "grm";
+        $scope.titleSheet = "Механизм рассмотрения жалоб и отзывов";
+
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+
+
+
+
+    };
+
+
+
 
 
 

@@ -33,35 +33,38 @@ module.exports = {
 
             let seq = await CounterService.getNextSequence("grmid");
 
-            let statusAll = await GrmStatusService.getAllStatus();
+
+
+            let categName = await GrmStatusService.getCategById(objParams.categComplaint);
+            let canalName = await GrmStatusService.getCanalById(objParams.canalRequest);
+            let statusName = await GrmStatusService.getStatusById(objParams.statusId);
+
 
 
             const result = await col.insertOne({
 
-                //По умолчанию будет всегда статус "Принят"
-                statusId: statusAll[0]._id,
-
-                dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
-                sourceTake: ObjectId(objParams.sourceTake),
-                declarerFIO: objParams.declarerFIO,
-                country: ObjectId(objParams.country),
-
-                contacDeclarer: objParams.contacDeclarer,
-                categComplaint: ObjectId(objParams.categComplaint),
-                raisedQuestion: objParams.raisedQuestion,
-                responsibleConsideration: objParams.responsibleConsideration,
-                reviewStatus: objParams.reviewStatus,
-                takeAction: objParams.takeAction,
-                lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
-                dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
-                timeToCheckComplaint: Int32(objParams.timeToCheckComplaint),
-                satisfiedMeasuresTaken: objParams.satisfiedMeasuresTaken,
-                assessmentQualitySatisfactionComplaint: Int32(objParams.assessmentQualitySatisfactionComplaint),
 
 
                 id: seq,
-                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ),
+                nameCountry: nameCountry.name,
+                categName: categName.name,
+                canalName: canalName.name,
+                statusName: statusName.name,
 
+
+                dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
+                canalRequest: ObjectId(objParams.canalRequest),
+                country: ObjectId(objParams.country),
+                declarerFIO: objParams.declarerFIO,
+                categComplaint: ObjectId(objParams.categComplaint),
+                raisedQuestion: objParams.raisedQuestion,
+                responsibleConsideration: objParams.responsibleConsideration,
+                statusId: ObjectId(objParams.statusId),
+                takeAction: objParams.takeAction,
+                lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
+                dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
+                timeToCheckComplaint: objParams.timeToCheckComplaint
 
 
 
@@ -90,70 +93,91 @@ module.exports = {
 
 
 
-    getByStatusId: async (statusId) => {
-        const col = dbConnect.getConnect().collection('grm');
-        let statusAll = await GrmStatusService.getAllStatus();
-        let statusOne = await GrmStatusService.getStatusById(statusId);
-        if (statusOne.name !== "Просрочено") {
-            statusAll = statusAll.filter(function (value, index, array) {
-                return (value.name !== "Просрочено");
-            });
-        }
-
-        const result = await col.aggregate([
-            {$match: {statusId: ObjectId(statusId)}},
-            {
-                $addFields: {
-                    allStatus: statusAll,
-                    nameStatus: statusOne.name
-                }
-            },
-            {
-                $lookup:
-                    {
-                        from: "countrys",
-                        localField: "country",
-                        foreignField: "_id",
-                        as: "countryName"
-                    }
-            },
-            {$unwind: "$countryName"}
-        ]).toArray();
-        return result;
-    },
-    getByStatusIdAndCountryId: async (countryId, statusId) => {
+    getAllGrm: async () => {
 
         try {
 
 
             const col = dbConnect.getConnect().collection('grm');
-            let statusOne = await GrmStatusService.getStatusById(statusId);
 
+            let allCountry = await CountryService.getAllCountrys();
+
+
+            let allCateg = await GrmStatusService.getAllCategGRM();
+            let allCanal = await GrmStatusService.getAllCanalsRequest();
+            let allStatus = await GrmStatusService.getAllStatus();
 
 
             const result = await col.aggregate([
+                {$match: {}},
+
+                {
+                    $addFields:
+                        {
+                            allCanalRequestStatus: allCanal,
+                            allCountrys: allCountry,
+                            allCategComplaint: allCateg,
+                            allStatus: allStatus,
+
+                        }
+                }
 
 
 
 
-                { $match: {country: ObjectId(countryId), statusId: ObjectId(statusId)}},
-
-                { $addFields: {
-
-
-                    nameStatus: statusOne.name
-                }}
+            ]).toArray();
 
 
 
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
 
 
 
 
 
-        ]).toArray();
 
 
+    },
+
+
+
+
+    getByCountryId: async (countryId) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+            let allCateg = await GrmStatusService.getAllCategGRM();
+            let allCanal = await GrmStatusService.getAllCanalsRequest();
+            let allStatus = await GrmStatusService.getAllStatus();
+
+
+            const result = await col.aggregate([
+                {$match: {country: ObjectId(countryId)}},
+
+                {
+                    $addFields:
+                        {
+                            allCanalRequestStatus: allCanal,
+
+                            allCategComplaint: allCateg,
+                            allStatus: allStatus,
+
+                        }
+                }
+
+
+
+
+            ]).toArray();
 
 
 
@@ -261,6 +285,13 @@ module.exports = {
             const col = dbConnect.getConnect().collection('grm');
 
 
+            let nameCountry = await CountryService.getCountryById(objParams.country);
+            let categName = await GrmStatusService.getCategById(objParams.categComplaint);
+            let canalName = await GrmStatusService.getCanalById(objParams.canalRequest);
+            let statusName = await GrmStatusService.getStatusById(objParams.statusId);
+
+
+
 
             const result = await col.updateOne({ _id: ObjectId(objParams._id) },
                 {
@@ -269,22 +300,24 @@ module.exports = {
                     },
                     $set: {
 
-                        dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
-                        sourceTake: ObjectId(objParams.sourceTake),
-                        declarerFIO: objParams.declarerFIO,
-                        country: ObjectId(objParams.country),
+                        nameCountry: nameCountry.name,
+                        categName: categName.name,
+                        canalName: canalName.name,
+                        statusName: statusName.name,
 
-                        contacDeclarer: objParams.contacDeclarer,
+
+                        dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
+                        canalRequest: ObjectId(objParams.canalRequest),
+                        country: ObjectId(objParams.country),
+                        declarerFIO: objParams.declarerFIO,
                         categComplaint: ObjectId(objParams.categComplaint),
                         raisedQuestion: objParams.raisedQuestion,
                         responsibleConsideration: objParams.responsibleConsideration,
-                        reviewStatus: objParams.reviewStatus,
+                        statusId: ObjectId(objParams.statusId),
                         takeAction: objParams.takeAction,
                         lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
                         dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
-                        timeToCheckComplaint: Int32(objParams.timeToCheckComplaint),
-                        satisfiedMeasuresTaken: objParams.satisfiedMeasuresTaken,
-                        assessmentQualitySatisfactionComplaint: Int32(objParams.assessmentQualitySatisfactionComplaint)
+                        timeToCheckComplaint: objParams.timeToCheckComplaint
 
                     }
                 });

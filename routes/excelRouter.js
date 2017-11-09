@@ -36,7 +36,7 @@ function make_book(data, titleSheet) {
    let dataAlreadyForWork = createDataForSheetJS(data);
     let ws = XLSX.utils.aoa_to_sheet(dataAlreadyForWork);
     let wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, titleSheet);
+    XLSX.utils.book_append_sheet(wb, ws, titleSheet.substring(0, 29));
     return wb;
 }
 

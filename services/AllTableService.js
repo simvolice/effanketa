@@ -270,10 +270,152 @@ module.exports = {
 
 
 
+            } else if (idTable === "grm") {
+
+
+
+
+                const col = dbConnect.getConnect().collection(idTable);
+
+
+                result = await col.find({}, {
+
+                    _id: 0,
+                    id: 1,
+                    nameCountry: 1,
+                    categName : 1,
+                    canalName : 1,
+                    statusName : 1,
+                    dateInGo : 1,
+
+                    declarerFIO : 1,
+
+                    raisedQuestion : 1,
+                    responsibleConsideration : 1,
+
+                    takeAction : 1,
+                    lastDateAnswer : 1,
+                    dateNotifDeclarer : 1,
+                    timeToCheckComplaint : 1
+
+
+
+
+                }).toArray();
+
+
+
+
+
+
+                Object.defineProperties(result[0], {
+                    'Номер отслеживания': {
+                        value: result[0].id,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Страна': {
+                        value: result[0].nameCountry,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Категория жалобы': {
+                        value: result[0].categName,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Канал получения жалобы': {
+                        value: result[0].canalName,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Статус жалобы': {
+                        value: result[0].statusName,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Дата получения': {
+                        value: result[0].dateInGo,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Заявитель': {
+                        value: result[0].declarerFIO,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Возникшие вопросы': {
+                        value: result[0].raisedQuestion,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Ответственный за рассмотрение жалобы': {
+                        value: result[0].responsibleConsideration,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Принятые меры ': {
+                        value: result[0].takeAction,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Крайний срок для ответа заявителю': {
+                        value: result[0].lastDateAnswer,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Дата уведомления заявителя': {
+                        value: result[0].dateNotifDeclarer,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Время затраченное на рассмотрение жалобы': {
+                        value: result[0].timeToCheckComplaint,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    }
+
+
+
+                });
+
+
+
+
+                    delete result[0].id;
+                    delete result[0].nameCountry;
+                    delete result[0].categName;
+                    delete result[0].canalName;
+                    delete result[0].statusName;
+                    delete result[0].dateInGo;
+                    delete result[0].declarerFIO;
+                    delete result[0].raisedQuestion;
+                    delete result[0].responsibleConsideration;
+                    delete result[0].takeAction;
+                    delete result[0].lastDateAnswer;
+                    delete result[0].dateNotifDeclarer;
+                    delete result[0].timeToCheckComplaint;
+
+
+
+
             }
 
 
-            console.log("\x1b[42m", result);
+
 
             return result;
 

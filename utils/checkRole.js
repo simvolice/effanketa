@@ -566,7 +566,7 @@ module.exports = {
 
 
 
-    forGrm: async (SeesionToken, statusId) => {
+    forGrm: async (SeesionToken) => {
 
 
 
@@ -595,34 +595,22 @@ module.exports = {
             if(result.role.toString() === AdminRole[0]._id.toString()){
 
 
-                let resultObject = {
-
-                    statusAdm: true,
-                    Arr: []
 
 
-                };
-                resultObject.Arr = await GrmService.getByStatusId(statusId);
 
-                return resultObject;
+                return await GrmService.getAllGrm();
 
                 //Здесь ловим 2 Админа
             } else if (result.role.toString() === AdminRole[1]._id.toString()) {
 
 
 
-                let resultObject = {
-
-                    statusAdm: false,
-                    Arr: []
 
 
-                };
+
+                 return await GrmService.getByCountryId(result.country.toString());
 
 
-                resultObject.Arr = await GrmService.getByStatusIdAndCountryId(result.country.toString(), statusId);
-
-                return resultObject;
 
 
             } else {

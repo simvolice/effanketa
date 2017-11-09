@@ -19,23 +19,6 @@
 
                     </div>
 
-
-
-
-                </md-toolbar>
-
-        <md-tabs md-dynamic-height md-border-bottom>
-        <md-tab label="Принято" ng-click="tabClk('Принято')">
-            <md-content class="md-padding">
-
-
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
                     <div class="md-toolbar-tools">
 
 
@@ -47,12 +30,15 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn($event)">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="excel()">Выгрузить в Excel</button>
 
 
                     </div>
 
+
                 </md-toolbar>
+
 
                 <!-- exact table from live demo -->
                 <md-table-container class="custom__fix__freez__head">
@@ -60,21 +46,29 @@
                         <thead md-head fix-head>
                         <tr md-row>
 
-                            <th md-column>№</th>
-                            <th md-column>Заявитель ФИО</th>
-                            <th md-column>Дата поступления</th>
-                            <th md-column ng-show="statusAdm">Страна</th>
-                            <th md-column ng-show="statusAdm">Статус жалобы</th>
+                            <th md-column>Номер <br> отслеживания</th>
+                            <th md-column>Дата получения</th>
+                            <th md-column>Канал получения <br> жалобы</th>
+                            <th md-column>Страна</th>
+                            <th md-column>Заявитель</th>
 
 
 
 
-                            <th md-column>Отвественный за рассмотрение</th>
-                            <th md-column>Крайний срок ответа</th>
+                            <th md-column>Категория жалобы</th>
 
 
-                            <th md-column>Обновить</th>
-                            <th md-column ng-show="statusAdm">Удалить</th>
+                            <th md-column>Возникшие вопросы</th>
+                            <th md-column>Ответственный за <br> рассмотрение жалобы</th>
+                            <th md-column>Статус жалобы</th>
+                            <th md-column>Принятые меры</th>
+                            <th md-column>Крайний срок <br> для ответа заявителю</th>
+                            <th md-column>Дата уведомления <br> заявителя</th>
+                            <th md-column>Время затраченное <br> на рассмотрение жалобы</th>
+
+
+                            <th md-column>Сохранить</th>
+                            <th md-column>Удалить</th>
 
                         </tr>
                         </thead>
@@ -92,42 +86,81 @@
 
                             <td md-cell>{{data.id}}</td>
 
-                            <td md-cell>{{data.declarerFIO}}</td>
+
+                            <td md-cell>
 
 
-                            <td md-cell>{{data.dateInGo | date : "dd.MM.y"}}</td>
+                                <input type="date" value="{{data.dateInGo}}" ng-model="data.dateInGo">
+                              </td>
 
+                            <td md-cell>
 
-
-
-                            <td md-cell ng-show="statusAdm">{{data.countryName.name}}</td>
-
-
-
-                            <td md-cell ng-show="statusAdm">
-
-                                <select ng-model="data.statusId" ng-options="x._id as x.name for x in data.allStatus" ng-change="selectChange(data._id ,data.statusId, $index)">
+                                <select ng-model="data.canalRequest" ng-options="x._id as x.name for x in data.allCanalRequestStatus">
                                 </select>
 
                             </td>
 
 
 
-                            <td md-cell>{{data.responsibleConsideration}}</td>
+                            <td md-cell>
+
+                                <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                </select>
+
+                            </td>
+
+
+
+
+                            <td md-cell><input type="text" value="{{data.declarerFIO}}" ng-model="data.declarerFIO"></td>
+
+
+                            <td md-cell>
+
+                                <select ng-model="data.categComplaint" ng-options="x._id as x.name for x in data.allCategComplaint" style="max-width: 200px;">
+                                </select>
+
+                            </td>
+
+
+
+                            <td md-cell><input type="text" value="{{data.raisedQuestion}}" ng-model="data.raisedQuestion"></td>
+
+
+
+
+                            <td md-cell><input type="text" value="{{data.responsibleConsideration}}" ng-model="data.responsibleConsideration"></td>
+
+
+                            <td md-cell>
+
+                                <select ng-model="data.statusId" ng-options="x._id as x.name for x in data.allStatus">
+                                </select>
+
+                            </td>
+
+
+                            <td md-cell><input type="text" value="{{data.takeAction}}" ng-model="data.takeAction"></td>
+
+
+
+                            <td md-cell><input type="date" value="{{data.lastDateAnswer}}" ng-model="data.lastDateAnswer"></td>
+
+
+
+
+                            <td md-cell><input type="date" value="{{data.dateNotifDeclarer}}" ng-model="data.dateNotifDeclarer"></td>
+
+
+                            <td md-cell><input type="text" value="{{data.timeToCheckComplaint}}" ng-model="data.timeToCheckComplaint"></td>
 
 
 
 
 
-                            <td md-cell>{{data.lastDateAnswer | date : "dd.MM.y"}}</td>
+                            <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
 
-
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
-
-                            <td md-cell ng-show="statusAdm"><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+                            <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
 
 
 
@@ -143,380 +176,7 @@
 
 
 
-
-
-
-
-            </md-content>
-        </md-tab>
-        <md-tab label="Не релевантно" ng-click="tabClk('Не релевантно')">
-            <md-content class="md-padding">
-
-
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                    </div>
-
-
-
-                </md-toolbar>
-
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
-
-                            <th md-column>№</th>
-                            <th md-column>Заявитель ФИО</th>
-                            <th md-column>Дата поступления</th>
-                            <th md-column ng-show="statusAdm">Страна</th>
-                            <th md-column ng-show="statusAdm">Статус жалобы</th>
-
-
-
-
-                            <th md-column>Отвественный за рассмотрение</th>
-                            <th md-column>Крайний срок ответа</th>
-
-
-                            <th md-column>Обновить</th>
-                            <th md-column ng-show="statusAdm">Удалить</th>
-
-                        </tr>
-                        </thead>
-                        <tbody md-body>
-
-
-
-
-
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                            <td md-cell>{{data.id}}</td>
-
-                            <td md-cell>{{data.declarerFIO}}</td>
-
-
-                            <td md-cell>{{data.dateInGo | date : "dd.MM.y"}}</td>
-
-
-
-
-                            <td md-cell ng-show="statusAdm">{{data.countryName.name}}</td>
-
-
-
-                            <td md-cell ng-show="statusAdm">
-
-                                <select ng-model="data.statusId" ng-options="x._id as x.name for x in data.allStatus" ng-change="selectChange(data._id ,data.statusId, $index)">
-                                </select>
-
-                            </td>
-
-
-
-                            <td md-cell>{{data.responsibleConsideration}}</td>
-
-
-
-
-
-                            <td md-cell>{{data.lastDateAnswer | date : "dd.MM.y"}}</td>
-
-
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
-
-                            <td md-cell ng-show="statusAdm"><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
-
-
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
-
-
-
-
-
-
-
-
-
-
-
-
-            </md-content>
-        </md-tab>
-
-
-
-
-        <md-tab label="Просрочено" ng-click="tabClk('Просрочено')">
-            <md-content class="md-padding">
-
-
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                    </div>
-
-
-
-                </md-toolbar>
-
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
-
-                            <th md-column>№</th>
-                            <th md-column>Заявитель ФИО</th>
-                            <th md-column>Дата поступления</th>
-                            <th md-column ng-show="statusAdm">Страна</th>
-                            <th md-column ng-show="statusAdm">Статус жалобы</th>
-
-
-
-
-                            <th md-column>Отвественный за рассмотрение</th>
-                            <th md-column>Крайний срок ответа</th>
-
-
-                            <th md-column>Обновить</th>
-                            <th md-column ng-show="statusAdm">Удалить</th>
-
-                        </tr>
-                        </thead>
-                        <tbody md-body>
-
-
-
-
-
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                            <td md-cell>{{data.id}}</td>
-
-                            <td md-cell>{{data.declarerFIO}}</td>
-
-
-                            <td md-cell>{{data.dateInGo | date : "dd.MM.y"}}</td>
-
-
-
-
-                            <td md-cell ng-show="statusAdm">{{data.countryName.name}}</td>
-
-
-
-                            <td md-cell ng-show="statusAdm">
-
-                                <select ng-model="data.statusId" ng-options="x._id as x.name for x in data.allStatus" ng-change="selectChange(data._id ,data.statusId, $index)">
-                                </select>
-
-                            </td>
-
-
-
-                            <td md-cell>{{data.responsibleConsideration}}</td>
-
-
-
-
-
-                            <td md-cell>{{data.lastDateAnswer | date : "dd.MM.y"}}</td>
-
-
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
-
-                            <td md-cell ng-show="statusAdm"><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
-
-
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
-
-
-
-
-
-
-
-
-
-
-
-
-            </md-content>
-        </md-tab>
-
-        <md-tab label="Завершен" ng-click="tabClk('Завершен')">
-            <md-content class="md-padding">
-
-
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                    </div>
-
-
-
-                </md-toolbar>
-
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
-
-                            <th md-column>№</th>
-                            <th md-column>Заявитель ФИО</th>
-                            <th md-column>Дата поступления</th>
-                            <th md-column ng-show="statusAdm">Страна</th>
-                            <th md-column ng-show="statusAdm">Статус жалобы</th>
-
-
-
-
-                            <th md-column>Отвественный за рассмотрение</th>
-                            <th md-column>Крайний срок ответа</th>
-
-
-                            <th md-column>Обновить</th>
-                            <th md-column ng-show="statusAdm">Удалить</th>
-
-                        </tr>
-                        </thead>
-                        <tbody md-body>
-
-
-
-
-
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                            <td md-cell>{{data.id}}</td>
-
-                            <td md-cell>{{data.declarerFIO}}</td>
-
-
-                            <td md-cell>{{data.dateInGo | date : "dd.MM.y"}}</td>
-
-
-
-
-                            <td md-cell ng-show="statusAdm">{{data.countryName.name}}</td>
-
-
-
-                            <td md-cell ng-show="statusAdm">
-
-                                <select ng-model="data.statusId" ng-options="x._id as x.name for x in data.allStatus" ng-change="selectChange(data._id ,data.statusId, $index)">
-                                </select>
-
-                            </td>
-
-
-
-                            <td md-cell>{{data.responsibleConsideration}}</td>
-
-
-
-
-
-                            <td md-cell>{{data.lastDateAnswer | date : "dd.MM.y"}}</td>
-
-
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
-
-                            <td md-cell ng-show="statusAdm"><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
-
-
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
-
-
-
-
-
-
-
-
-
-
-
-
-            </md-content>
-        </md-tab>
-
-
-
-
-    </md-tabs>
-
-
-
-</md-card>
+            </md-card>
 
 
 

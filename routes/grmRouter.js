@@ -35,9 +35,11 @@ router.post('/addgrm', checkSeesionToken, async (req, res, next) =>{
 
 
 
+
+
     if (result.hasOwnProperty("result")) {
 
-        res.json({"code": 0});
+        res.json({"code": 0, resultFromDb: result.ops[0]});
 
     } else {
 
@@ -53,7 +55,7 @@ router.post('/addgrm', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/getallgrm', checkSeesionToken, async (req, res, next) =>{
 
-    let result = await checkRole.forGrm(req.body.sessionToken, req.body.statusId);
+    let result = await checkRole.forGrm(req.body.sessionToken);
 
 
 
