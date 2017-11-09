@@ -1,12 +1,12 @@
 pipeline {
   agent {
     node {
-      label 'test'
+      label 'npm install'
     }
     
   }
   stages {
-    stage('test') {
+    stage('npm install') {
       steps {
         sh 'npm i'
       }
