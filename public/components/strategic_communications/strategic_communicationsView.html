@@ -12,7 +12,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Стратегия коммуникации.</h3>
+                        <h3 style="text-transform: uppercase">Стратегия коммуникации</h3>
 
 
                     </div>
@@ -29,8 +29,18 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="addBtn($event)">Добавить запись</button>
 
+                        <md-input-container>
+                            <label>Выберите год</label>
+                            <md-icon class="material-icons">date_range</md-icon>
+                            <md-select ng-model="yearname" md-on-close="selectClose()">
+
+                                <md-option ng-repeat="y in allyearname" ng-value="y._id">
+                                    {{y.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
 
                     </div>
 
@@ -45,83 +55,12 @@
 
                 <md-table-container class="custom__fix__freez__head">
 
-                    <colgroup span="2"></colgroup>
-
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-
-
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-
-
-
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-
-
-
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-
-
-                    <colgroup span="2"></colgroup>
 
 
 
                     <table md-table ng-model="ctrl.selected">
                         <thead md-head fix-head>
-                        <tr md-row>
 
-                            <th md-column colspan="2" scope="colgroup"></th>
-
-                            <th md-column colspan="3" scope="colgroup">Количество личных встреч</th>
-                            <th md-column colspan="3" scope="colgroup">Количество событий</th>
-                            <th md-column colspan="3" scope="colgroup">Количество запросов</th>
-                            <th md-column colspan="3" scope="colgroup">Количество объеденений/сетей</th>
-                            <th md-column colspan="3" scope="colgroup">Количество партнерских инициатив</th>
-                            <th md-column colspan="3" scope="colgroup">Количество вэб конференций</th>
-                            <th md-column colspan="3" scope="colgroup">Количество встреч в медия</th>
-
-
-
-                            <th md-column colspan="3" scope="colgroup">Количество печатной продукции</th>
-                            <th md-column colspan="3" scope="colgroup">Количество публикаций</th>
-                            <th md-column colspan="3" scope="colgroup">Количество читателей</th>
-
-
-
-
-                            <th md-column colspan="3" scope="colgroup">Количество онлайн каналов</th>
-                            <th md-column colspan="3" scope="colgroup">Информация на партнерских вэб страницах</th>
-                            <th md-column colspan="3" scope="colgroup">Количество онлайн посетителей</th>
-                            <th md-column colspan="3" scope="colgroup">Количество цифровых подписчиков</th>
-                            <th md-column colspan="3" scope="colgroup">Количество загрузок</th>
-                            <th md-column colspan="3" scope="colgroup">Количество посетителей CAMP4ASB портала</th>
-
-
-                            <th md-column colspan="3" scope="colgroup">Количество муж. и жен. участвующих в коммуникации</th>
-                            <th md-column colspan="3" scope="colgroup">Количество муж. и жен. достигших результатов</th>
-
-
-
-                            <th md-column colspan="2" scope="colgroup"></th>
-
-
-
-
-
-                        </tr>
 
 
                         <tr md-row>
@@ -135,86 +74,10 @@
 
 
 
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
 
 
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-                            <th md-column>План, за 1 год</th>
-                            <th md-column>Факт, за 1 год</th>
-                            <th md-column>Детали</th>
-
-
-
-                            <th md-column>Сохранить</th>
+                            <th md-column>Просмотреть</th>
+                            <th md-column>Обновить</th>
                             <th md-column>Удалить</th>
 
 
@@ -251,108 +114,10 @@
 
 
 
-                            <td md-cell><input type="text" value="{{data.NumberFaceFacePlan}}" ng-model="data.NumberFaceFacePlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberFaceFaceFact}}" ng-model="data.NumberFaceFaceFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberFaceFaceDetail}}" ng-model="data.NumberFaceFaceDetail"></td>
 
 
-
-
-                            <td md-cell><input type="text" value="{{data.NumberHighLevelPlan}}" ng-model="data.NumberHighLevelPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberHighLeveleFact}}" ng-model="data.NumberHighLeveleFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberHighLevelDetail}}" ng-model="data.NumberHighLevelDetail"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.NumberInformationPlan}}" ng-model="data.NumberInformationPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberInformationFact}}" ng-model="data.NumberInformationFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberInformationDetail}}" ng-model="data.NumberInformationDetail"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.NumberCoalitionsPlan}}" ng-model="data.NumberCoalitionsPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberCoalitionsFact}}" ng-model="data.NumberCoalitionsFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberCoalitionsDetail}}" ng-model="data.NumberCoalitionsDetail"></td>
-
-                            <td md-cell><input type="text" value="{{data.NumberJointPartnershipPlan}}" ng-model="data.NumberJointPartnershipPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberJointPartnershipFact}}" ng-model="data.NumberJointPartnershipFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberJointPartnershipDetail}}" ng-model="data.NumberJointPartnershipDetail"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.NumberWebConferencingPlan}}" ng-model="data.NumberWebConferencingPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberWebConferencingFact}}" ng-model="data.NumberWebConferencingFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberWebConferencingDetail}}" ng-model="data.NumberWebConferencingDetail"></td>
-
-                            <td md-cell><input type="text" value="{{data.NumberMeetingsMediaPlan}}" ng-model="data.NumberMeetingsMediaPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMeetingsMediaFact}}" ng-model="data.NumberMeetingsMediaFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMeetingsMediaDetail}}" ng-model="data.NumberMeetingsMediaDetail"></td>
-
-
-
-
-                            <td md-cell><input type="text" value="{{data.NumberPrintedDocumentsPlan}}" ng-model="data.NumberPrintedDocumentsPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberPrintedDocumentsFact}}" ng-model="data.NumberPrintedDocumentsFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberPrintedDocumentsDetail}}" ng-model="data.NumberPrintedDocumentsDetail"></td>
-
-
-
-                            <td md-cell><input type="text" value="{{data.NumberMediaPublicityPlan}}" ng-model="data.NumberMediaPublicityPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMediaPublicityFact}}" ng-model="data.NumberMediaPublicityFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMediaPublicityDetail}}" ng-model="data.NumberMediaPublicityDetail"></td>
-
-
-
-                            <td md-cell><input type="text" value="{{data.NumberReadersPlan}}" ng-model="data.NumberReadersPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberReadersFact}}" ng-model="data.NumberReadersFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberReadersDetail}}" ng-model="data.NumberReadersDetail"></td>
-
-
-
-
-                            <td md-cell><input type="text" value="{{data.NumberOnlineChannelsPlan}}" ng-model="data.NumberOnlineChannelsPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberOnlineChannelsFact}}" ng-model="data.NumberOnlineChannelsFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberOnlineChannelsDetail}}" ng-model="data.NumberOnlineChannelsDetail"></td>
-
-
-
-
-                            <td md-cell><input type="text" value="{{data.InformationPartnerPagesPlan}}" ng-model="data.InformationPartnerPagesPlan"></td>
-                            <td md-cell><input type="text" value="{{data.InformationPartnerPagesFact}}" ng-model="data.InformationPartnerPagesFact"></td>
-                            <td md-cell><input type="text" value="{{data.InformationPartnerPagesDetail}}" ng-model="data.InformationPartnerPagesDetail"></td>
-
-
-
-                            <td md-cell><input type="text" value="{{data.NumberOnlineVisitorsPlan}}" ng-model="data.NumberOnlineVisitorsPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberOnlineVisitorsFact}}" ng-model="data.NumberOnlineVisitorsFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberOnlineVisitorsDetail}}" ng-model="data.NumberOnlineVisitorsDetail"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.NumberDigitalSubscribersPlan}}" ng-model="data.NumberDigitalSubscribersPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberDigitalSubscribersFact}}" ng-model="data.NumberDigitalSubscribersFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberDigitalSubscribersDetail}}" ng-model="data.NumberDigitalSubscribersDetail"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.NumberDownloadsPlan}}" ng-model="data.NumberDownloadsPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberDownloadsFact}}" ng-model="data.NumberDownloadsFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberDownloadsDetail}}" ng-model="data.NumberDownloadsDetail"></td>
-
-
-
-                            <td md-cell><input type="text" value="{{data.NumberVisitorsCAMP4ASBPlan}}" ng-model="data.NumberVisitorsCAMP4ASBPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberVisitorsCAMP4ASBFact}}" ng-model="data.NumberVisitorsCAMP4ASBFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberVisitorsCAMP4ASBDetail}}" ng-model="data.NumberVisitorsCAMP4ASBDetail"></td>
-
-                            <td md-cell><input type="text" value="{{data.NumberMenWomenFeaturedPlan}}" ng-model="data.NumberMenWomenFeaturedPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMenWomenFeaturedFact}}" ng-model="data.NumberMenWomenFeaturedFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMenWomenFeaturedDetail}}" ng-model="data.NumberMenWomenFeaturedDetail"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.NumberMenWomenReachedPlan}}" ng-model="data.NumberMenWomenReachedPlan"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMenWomenReachedFact}}" ng-model="data.NumberMenWomenReachedFact"></td>
-                            <td md-cell><input type="text" value="{{data.NumberMenWomenReachedDetail}}" ng-model="data.NumberMenWomenReachedDetail"></td>
-
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
+                            <td md-cell><i class="material-icons" ng-click="updBtn(data, $event)">visibility</i></td>
+                            <td md-cell><i class="material-icons" ng-click="updBtn(data, $event)">done_all</i></td>
 
 
 

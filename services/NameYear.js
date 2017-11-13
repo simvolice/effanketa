@@ -30,7 +30,90 @@ module.exports = {
 
 
 
-            const result = await col.insertMany([{
+            const result = await col.insertMany([
+
+                {
+
+                    name: "2026",
+                    codeName: Int32(2026)
+
+                },
+
+
+
+                {
+
+                    name: "2025",
+                    codeName: Int32(2025)
+
+                },
+
+
+
+                {
+
+                    name: "2024",
+                    codeName: Int32(2024)
+
+                },
+
+
+
+
+                {
+
+                    name: "2023",
+                    codeName: Int32(2023)
+
+                },
+
+
+
+                {
+
+                    name: "2022",
+                    codeName: Int32(2022)
+
+                },
+
+
+                {
+
+                    name: "2021",
+                    codeName: Int32(2021)
+
+                },
+
+
+
+
+
+                {
+
+                    name: "2020",
+                    codeName: Int32(2020)
+
+                },
+
+
+                {
+
+                    name: "2019",
+                    codeName: Int32(2019)
+
+                },
+
+
+                {
+
+                    name: "2018",
+                    codeName: Int32(2018)
+
+                },
+
+
+
+                {
 
                     name: "2017",
                 codeName: Int32(2017)

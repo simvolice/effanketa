@@ -12,7 +12,7 @@ const ObjectId = require('mongodb').ObjectId;
 
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
-
+const NameYear = require('../services/NameYear');
 
 
 
@@ -30,68 +30,69 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('strategic');
             let seq = await CounterService.getNextSequence("strategic_id");
-
+            let nameCountry = await CountryService.getCountryById(objParams.country);
 
             const result = await col.insertOne({
 
                 id: seq,
                 country: ObjectId(objParams.country),
+                nameCountry: nameCountry.name,
 
-                NumberFaceFacePlan: objParams.NumberFaceFacePlan,
-                NumberFaceFaceFact: objParams.NumberFaceFaceFact,
-                NumberFaceFaceDetail: objParams.NumberFaceFaceDetail,
-                NumberHighLevelPlan: objParams.NumberHighLevelPlan,
-                NumberHighLeveleFact: objParams.NumberHighLeveleFact,
-                NumberHighLevelDetail: objParams.NumberHighLevelDetail,
-                NumberInformationPlan: objParams.NumberInformationPlan,
-                NumberInformationFact: objParams.NumberInformationFact,
-                NumberInformationDetail: objParams.NumberInformationDetail,
-                NumberCoalitionsPlan: objParams.NumberCoalitionsPlan,
-                NumberCoalitionsFact: objParams.NumberCoalitionsFact,
-                NumberCoalitionsDetail: objParams.NumberCoalitionsDetail,
-                NumberJointPartnershipPlan: objParams.NumberJointPartnershipPlan,
-                NumberJointPartnershipFact: objParams.NumberJointPartnershipFact,
-                NumberJointPartnershipDetail: objParams.NumberJointPartnershipDetail,
-                NumberWebConferencingPlan: objParams.NumberWebConferencingPlan,
-                NumberWebConferencingFact: objParams.NumberWebConferencingFact,
-                NumberWebConferencingDetail: objParams.NumberWebConferencingDetail,
-                NumberMeetingsMediaPlan: objParams.NumberMeetingsMediaPlan,
-                NumberMeetingsMediaFact: objParams.NumberMeetingsMediaFact,
-                NumberMeetingsMediaDetail: objParams.NumberMeetingsMediaDetail,
-                NumberPrintedDocumentsPlan: objParams.NumberPrintedDocumentsPlan,
-                NumberPrintedDocumentsFact: objParams.NumberPrintedDocumentsFact,
-                NumberPrintedDocumentsDetail: objParams.NumberPrintedDocumentsDetail,
-                NumberMediaPublicityPlan: objParams.NumberMediaPublicityPlan,
-                NumberMediaPublicityFact: objParams.NumberMediaPublicityFact,
-                NumberMediaPublicityDetail: objParams.NumberMediaPublicityDetail,
-                NumberReadersPlan: objParams.NumberReadersPlan,
-                NumberReadersFact: objParams.NumberReadersFact,
-                NumberReadersDetail: objParams.NumberReadersDetail,
-                NumberOnlineChannelsPlan: objParams.NumberOnlineChannelsPlan,
-                NumberOnlineChannelsFact: objParams.NumberOnlineChannelsFact,
-                NumberOnlineChannelsDetail: objParams.NumberOnlineChannelsDetail,
-                InformationPartnerPagesPlan: objParams.InformationPartnerPagesPlan,
-                InformationPartnerPagesFact: objParams.InformationPartnerPagesFact,
-                InformationPartnerPagesDetail: objParams.InformationPartnerPagesDetail,
-                NumberOnlineVisitorsPlan: objParams.NumberOnlineVisitorsPlan,
-                NumberOnlineVisitorsFact: objParams.NumberOnlineVisitorsFact,
-                NumberOnlineVisitorsDetail: objParams.NumberOnlineVisitorsDetail,
-                NumberDigitalSubscribersPlan: objParams.NumberDigitalSubscribersPlan,
-                NumberDigitalSubscribersFact: objParams.NumberDigitalSubscribersFact,
-                NumberDigitalSubscribersDetail: objParams.NumberDigitalSubscribersDetail,
-                NumberDownloadsPlan: objParams.NumberDownloadsPlan,
-                NumberDownloadsFact: objParams.NumberDownloadsFact,
-                NumberDownloadsDetail: objParams.NumberDownloadsDetail,
-                NumberVisitorsCAMP4ASBPlan: objParams.NumberVisitorsCAMP4ASBPlan,
-                NumberVisitorsCAMP4ASBFact: objParams.NumberVisitorsCAMP4ASBFact,
-                NumberVisitorsCAMP4ASBDetail: objParams.NumberVisitorsCAMP4ASBDetail,
-                NumberMenWomenFeaturedPlan: objParams.NumberMenWomenFeaturedPlan,
-                NumberMenWomenFeaturedFact: objParams.NumberMenWomenFeaturedFact,
-                NumberMenWomenFeaturedDetail: objParams.NumberMenWomenFeaturedDetail,
-                NumberMenWomenReachedPlan: objParams.NumberMenWomenReachedPlan,
-                NumberMenWomenReachedFact: objParams.NumberMenWomenReachedFact,
-                NumberMenWomenReachedDetail: objParams.NumberMenWomenReachedDetail
-
+               countMeetingPlanOnOneYear: objParams.countMeetingPlanOnOneYear,
+               countMeetingFinishOnOneYear: objParams.countMeetingFinishOnOneYear,
+               countMeetingDescription: objParams.countMeetingDescription,
+               countEventHighLevelPlanOnOneYear: objParams.countEventHighLevelPlanOnOneYear,
+               countEventHighLevelFinishOnOneYear: objParams.countEventHighLevelFinishOnOneYear,
+               countEventHighLevelDescription: objParams.countEventHighLevelDescription,
+               countInfoRequestPlanOnOneYear: objParams.countInfoRequestPlanOnOneYear,
+               countInfoRequestFinishOnOneYear: objParams.countInfoRequestFinishOnOneYear,
+               countInfoRequestDescription: objParams.countInfoRequestDescription,
+               countNetWorkPlanOnOneYear: objParams.countNetWorkPlanOnOneYear,
+               countNetWorkFinishOnOneYear: objParams.countNetWorkFinishOnOneYear,
+               countNetWorkDescription: objParams.countNetWorkDescription,
+               countStartPartnerPlanOnOneYear: objParams.countStartPartnerPlanOnOneYear,
+               countStartPartnerFinishOnOneYear: objParams.countStartPartnerFinishOnOneYear,
+               countStartPartnerDescription: objParams.countStartPartnerDescription,
+               countOnlineConferencePlanOnOneYear: objParams.countOnlineConferencePlanOnOneYear,
+               countOnlineConferenceFinishOnOneYear: objParams.countOnlineConferenceFinishOnOneYear,
+               countOnlineConferenceDescription: objParams.countOnlineConferenceDescription,
+               countMeetingPressPlanOnOneYear: objParams.countMeetingPressPlanOnOneYear,
+               countMeetingPressFinishOnOneYear: objParams.countMeetingPressFinishOnOneYear,
+               countMeetingPressDescription: objParams.countMeetingPressDescription,
+               countCreatePressDocPlanOnOneYear: objParams.countCreatePressDocPlanOnOneYear,
+               countCreatePressDocFinishOnOneYear: objParams.countCreatePressDocFinishOnOneYear,
+               countCreatePressDocDescription: objParams.countCreatePressDocDescription,
+               countPublishInPressPlanOnOneYear: objParams.countPublishInPressPlanOnOneYear,
+               countPublishInPressFinishOnOneYear: objParams.countPublishInPressFinishOnOneYear,
+               countPublishInPressDescription: objParams.countPublishInPressDescription,
+               countReadersPlanOnOneYear: objParams.countReadersPlanOnOneYear,
+               countReadersFinishOnOneYear: objParams.countReadersFinishOnOneYear,
+               countReadersDescription: objParams.countReadersDescription,
+               countOnlineChannelsPlanOnOneYear: objParams.countOnlineChannelsPlanOnOneYear,
+               countOnlineChannelsFinishOnOneYear: objParams.countOnlineChannelsFinishOnOneYear,
+               countOnlineChannelsDescription: objParams.countOnlineChannelsDescription,
+               countInfoAboutPartnersPagePlanOnOneYear: objParams.countInfoAboutPartnersPagePlanOnOneYear,
+               countInfoAboutPartnersPageFinishOnOneYear: objParams.countInfoAboutPartnersPageFinishOnOneYear,
+               countInfoAboutPartnersPageDescription: objParams.countInfoAboutPartnersPageDescription,
+               countPeopleOnSitePlanOnOneYear: objParams.countPeopleOnSitePlanOnOneYear,
+               countPeopleOnSiteFinishOnOneYear: objParams.countPeopleOnSiteFinishOnOneYear,
+               countPeopleOnSiteDescription: objParams.countPeopleOnSiteDescription,
+               countDigitalPeoplePlanOnOneYear: objParams.countDigitalPeoplePlanOnOneYear,
+               countDigitalPeopleFinishOnOneYear: objParams.countDigitalPeopleFinishOnOneYear,
+               countDigitalPeopleDescription: objParams.countDigitalPeopleDescription,
+               countDownloadInfoMaterialPlanOnOneYear: objParams.countDownloadInfoMaterialPlanOnOneYear,
+               countDownloadInfoMaterialFinishOnOneYear: objParams.countDownloadInfoMaterialFinishOnOneYear,
+               countDownloadInfoMaterialDescription: objParams.countDownloadInfoMaterialDescription,
+               countVisitsPlanOnOneYear: objParams.countVisitsPlanOnOneYear,
+               countVisitsFinishOnOneYear: objParams.countVisitsFinishOnOneYear,
+               countVisitsDescription: objParams.countVisitsDescription,
+               countMaleAndFemaleInInfoMaterialPlanOnOneYear: objParams.countMaleAndFemaleInInfoMaterialPlanOnOneYear,
+               countMaleAndFemaleInInfoMaterialFinishOnOneYear: objParams.countMaleAndFemaleInInfoMaterialFinishOnOneYear,
+               countMaleAndFemaleInInfoMaterialDescription: objParams.countMaleAndFemaleInInfoMaterialDescription,
+               countMaleAndFemalePlanOnOneYear: objParams.countMaleAndFemalePlanOnOneYear,
+               countMaleAndFemaleFinishOnOneYear: objParams.countMaleAndFemaleFinishOnOneYear,
+               countMaleAndFemaleDescription: objParams.countMaleAndFemaleDescription,
+               createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
 
@@ -121,7 +122,7 @@ module.exports = {
 
     },
 
-    getAll: async ()=> {
+    getAll: async (year)=> {
 
 
 
@@ -131,16 +132,31 @@ module.exports = {
 
 
             const col = dbConnect.getConnect().collection('strategic');
-
+            let nameYear = await NameYear.getYearById(year);
 
             const result = await col.aggregate([
                 { $match : { } },
 
 
-                { $addFields: {
 
-                    allCountrys: await CountryService.getAllCountrys()
-                }}
+
+                {
+                    $addFields:
+                        {
+
+                            allCountrys: await CountryService.getAllCountrys(),
+                            year: { $year: "$createAt" }
+
+                        }
+                },
+
+
+                {
+
+                    $match: {year: nameYear.codeName}
+
+                },
+
 
 
 
@@ -182,6 +198,7 @@ module.exports = {
 
 
             const col = dbConnect.getConnect().collection('strategic');
+            let nameCountry = await CountryService.getCountryById(objParams.country);
 
 
             const result = await col.updateOne({_id: ObjectId(objParams._id)},{
@@ -194,63 +211,62 @@ module.exports = {
 
 
                     country: ObjectId(objParams.country),
+                    nameCountry: nameCountry.name,
 
-                    NumberFaceFacePlan: objParams.NumberFaceFacePlan,
-                    NumberFaceFaceFact: objParams.NumberFaceFaceFact,
-                    NumberFaceFaceDetail: objParams.NumberFaceFaceDetail,
-                    NumberHighLevelPlan: objParams.NumberHighLevelPlan,
-                    NumberHighLeveleFact: objParams.NumberHighLeveleFact,
-                    NumberHighLevelDetail: objParams.NumberHighLevelDetail,
-                    NumberInformationPlan: objParams.NumberInformationPlan,
-                    NumberInformationFact: objParams.NumberInformationFact,
-                    NumberInformationDetail: objParams.NumberInformationDetail,
-                    NumberCoalitionsPlan: objParams.NumberCoalitionsPlan,
-                    NumberCoalitionsFact: objParams.NumberCoalitionsFact,
-                    NumberCoalitionsDetail: objParams.NumberCoalitionsDetail,
-                    NumberJointPartnershipPlan: objParams.NumberJointPartnershipPlan,
-                    NumberJointPartnershipFact: objParams.NumberJointPartnershipFact,
-                    NumberJointPartnershipDetail: objParams.NumberJointPartnershipDetail,
-                    NumberWebConferencingPlan: objParams.NumberWebConferencingPlan,
-                    NumberWebConferencingFact: objParams.NumberWebConferencingFact,
-                    NumberWebConferencingDetail: objParams.NumberWebConferencingDetail,
-                    NumberMeetingsMediaPlan: objParams.NumberMeetingsMediaPlan,
-                    NumberMeetingsMediaFact: objParams.NumberMeetingsMediaFact,
-                    NumberMeetingsMediaDetail: objParams.NumberMeetingsMediaDetail,
-                    NumberPrintedDocumentsPlan: objParams.NumberPrintedDocumentsPlan,
-                    NumberPrintedDocumentsFact: objParams.NumberPrintedDocumentsFact,
-                    NumberPrintedDocumentsDetail: objParams.NumberPrintedDocumentsDetail,
-                    NumberMediaPublicityPlan: objParams.NumberMediaPublicityPlan,
-                    NumberMediaPublicityFact: objParams.NumberMediaPublicityFact,
-                    NumberMediaPublicityDetail: objParams.NumberMediaPublicityDetail,
-                    NumberReadersPlan: objParams.NumberReadersPlan,
-                    NumberReadersFact: objParams.NumberReadersFact,
-                    NumberReadersDetail: objParams.NumberReadersDetail,
-                    NumberOnlineChannelsPlan: objParams.NumberOnlineChannelsPlan,
-                    NumberOnlineChannelsFact: objParams.NumberOnlineChannelsFact,
-                    NumberOnlineChannelsDetail: objParams.NumberOnlineChannelsDetail,
-                    InformationPartnerPagesPlan: objParams.InformationPartnerPagesPlan,
-                    InformationPartnerPagesFact: objParams.InformationPartnerPagesFact,
-                    InformationPartnerPagesDetail: objParams.InformationPartnerPagesDetail,
-                    NumberOnlineVisitorsPlan: objParams.NumberOnlineVisitorsPlan,
-                    NumberOnlineVisitorsFact: objParams.NumberOnlineVisitorsFact,
-                    NumberOnlineVisitorsDetail: objParams.NumberOnlineVisitorsDetail,
-                    NumberDigitalSubscribersPlan: objParams.NumberDigitalSubscribersPlan,
-                    NumberDigitalSubscribersFact: objParams.NumberDigitalSubscribersFact,
-                    NumberDigitalSubscribersDetail: objParams.NumberDigitalSubscribersDetail,
-                    NumberDownloadsPlan: objParams.NumberDownloadsPlan,
-                    NumberDownloadsFact: objParams.NumberDownloadsFact,
-                    NumberDownloadsDetail: objParams.NumberDownloadsDetail,
-                    NumberVisitorsCAMP4ASBPlan: objParams.NumberVisitorsCAMP4ASBPlan,
-                    NumberVisitorsCAMP4ASBFact: objParams.NumberVisitorsCAMP4ASBFact,
-                    NumberVisitorsCAMP4ASBDetail: objParams.NumberVisitorsCAMP4ASBDetail,
-                    NumberMenWomenFeaturedPlan: objParams.NumberMenWomenFeaturedPlan,
-                    NumberMenWomenFeaturedFact: objParams.NumberMenWomenFeaturedFact,
-                    NumberMenWomenFeaturedDetail: objParams.NumberMenWomenFeaturedDetail,
-                    NumberMenWomenReachedPlan: objParams.NumberMenWomenReachedPlan,
-                    NumberMenWomenReachedFact: objParams.NumberMenWomenReachedFact,
-                    NumberMenWomenReachedDetail: objParams.NumberMenWomenReachedDetail
-
-
+                    countMeetingPlanOnOneYear: objParams.countMeetingPlanOnOneYear,
+                    countMeetingFinishOnOneYear: objParams.countMeetingFinishOnOneYear,
+                    countMeetingDescription: objParams.countMeetingDescription,
+                    countEventHighLevelPlanOnOneYear: objParams.countEventHighLevelPlanOnOneYear,
+                    countEventHighLevelFinishOnOneYear: objParams.countEventHighLevelFinishOnOneYear,
+                    countEventHighLevelDescription: objParams.countEventHighLevelDescription,
+                    countInfoRequestPlanOnOneYear: objParams.countInfoRequestPlanOnOneYear,
+                    countInfoRequestFinishOnOneYear: objParams.countInfoRequestFinishOnOneYear,
+                    countInfoRequestDescription: objParams.countInfoRequestDescription,
+                    countNetWorkPlanOnOneYear: objParams.countNetWorkPlanOnOneYear,
+                    countNetWorkFinishOnOneYear: objParams.countNetWorkFinishOnOneYear,
+                    countNetWorkDescription: objParams.countNetWorkDescription,
+                    countStartPartnerPlanOnOneYear: objParams.countStartPartnerPlanOnOneYear,
+                    countStartPartnerFinishOnOneYear: objParams.countStartPartnerFinishOnOneYear,
+                    countStartPartnerDescription: objParams.countStartPartnerDescription,
+                    countOnlineConferencePlanOnOneYear: objParams.countOnlineConferencePlanOnOneYear,
+                    countOnlineConferenceFinishOnOneYear: objParams.countOnlineConferenceFinishOnOneYear,
+                    countOnlineConferenceDescription: objParams.countOnlineConferenceDescription,
+                    countMeetingPressPlanOnOneYear: objParams.countMeetingPressPlanOnOneYear,
+                    countMeetingPressFinishOnOneYear: objParams.countMeetingPressFinishOnOneYear,
+                    countMeetingPressDescription: objParams.countMeetingPressDescription,
+                    countCreatePressDocPlanOnOneYear: objParams.countCreatePressDocPlanOnOneYear,
+                    countCreatePressDocFinishOnOneYear: objParams.countCreatePressDocFinishOnOneYear,
+                    countCreatePressDocDescription: objParams.countCreatePressDocDescription,
+                    countPublishInPressPlanOnOneYear: objParams.countPublishInPressPlanOnOneYear,
+                    countPublishInPressFinishOnOneYear: objParams.countPublishInPressFinishOnOneYear,
+                    countPublishInPressDescription: objParams.countPublishInPressDescription,
+                    countReadersPlanOnOneYear: objParams.countReadersPlanOnOneYear,
+                    countReadersFinishOnOneYear: objParams.countReadersFinishOnOneYear,
+                    countReadersDescription: objParams.countReadersDescription,
+                    countOnlineChannelsPlanOnOneYear: objParams.countOnlineChannelsPlanOnOneYear,
+                    countOnlineChannelsFinishOnOneYear: objParams.countOnlineChannelsFinishOnOneYear,
+                    countOnlineChannelsDescription: objParams.countOnlineChannelsDescription,
+                    countInfoAboutPartnersPagePlanOnOneYear: objParams.countInfoAboutPartnersPagePlanOnOneYear,
+                    countInfoAboutPartnersPageFinishOnOneYear: objParams.countInfoAboutPartnersPageFinishOnOneYear,
+                    countInfoAboutPartnersPageDescription: objParams.countInfoAboutPartnersPageDescription,
+                    countPeopleOnSitePlanOnOneYear: objParams.countPeopleOnSitePlanOnOneYear,
+                    countPeopleOnSiteFinishOnOneYear: objParams.countPeopleOnSiteFinishOnOneYear,
+                    countPeopleOnSiteDescription: objParams.countPeopleOnSiteDescription,
+                    countDigitalPeoplePlanOnOneYear: objParams.countDigitalPeoplePlanOnOneYear,
+                    countDigitalPeopleFinishOnOneYear: objParams.countDigitalPeopleFinishOnOneYear,
+                    countDigitalPeopleDescription: objParams.countDigitalPeopleDescription,
+                    countDownloadInfoMaterialPlanOnOneYear: objParams.countDownloadInfoMaterialPlanOnOneYear,
+                    countDownloadInfoMaterialFinishOnOneYear: objParams.countDownloadInfoMaterialFinishOnOneYear,
+                    countDownloadInfoMaterialDescription: objParams.countDownloadInfoMaterialDescription,
+                    countVisitsPlanOnOneYear: objParams.countVisitsPlanOnOneYear,
+                    countVisitsFinishOnOneYear: objParams.countVisitsFinishOnOneYear,
+                    countVisitsDescription: objParams.countVisitsDescription,
+                    countMaleAndFemaleInInfoMaterialPlanOnOneYear: objParams.countMaleAndFemaleInInfoMaterialPlanOnOneYear,
+                    countMaleAndFemaleInInfoMaterialFinishOnOneYear: objParams.countMaleAndFemaleInInfoMaterialFinishOnOneYear,
+                    countMaleAndFemaleInInfoMaterialDescription: objParams.countMaleAndFemaleInInfoMaterialDescription,
+                    countMaleAndFemalePlanOnOneYear: objParams.countMaleAndFemalePlanOnOneYear,
+                    countMaleAndFemaleFinishOnOneYear: objParams.countMaleAndFemaleFinishOnOneYear,
+                    countMaleAndFemaleDescription: objParams.countMaleAndFemaleDescription
 
 
 

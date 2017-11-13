@@ -40,7 +40,7 @@ router.post('/addstrategic', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/getstrategic', checkSeesionToken, async (req, res, next) =>{
 
-    let result = await checkRole.forStrategic(req.body.sessionToken);
+    let result = await checkRole.forStrategic(req.body.sessionToken, req.body.data);
 
 
 
