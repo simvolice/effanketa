@@ -29,7 +29,7 @@ module.exports = {
 
                 { name: "Администратор 1 уровня",
 
-                    mainPageHtml: "<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Администраторы\n" +
+                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Администраторы\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -50,7 +50,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Ввод данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Ввод данных\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -75,7 +75,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Анализ данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Анализ данных\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -100,7 +100,7 @@ module.exports = {
                 {name: "Администратор 2 уровня",
 
 
-                    mainPageHtml: "<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Администраторы\n" +
+                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Администраторы\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -121,7 +121,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Ввод данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Ввод данных\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -144,7 +144,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Анализ данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Анализ данных\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -173,7 +173,7 @@ module.exports = {
                 { name: "Администратор 3 уровня",
 
 
-                    mainPageHtml: "<li class=\"drawer-dropdown\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Ввод данных\n" +
+                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Ввод данных\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
