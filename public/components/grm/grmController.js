@@ -300,6 +300,13 @@ angular.module('app').controller('GrmCtrl', function ($scope, $window, GetAllGrm
 
 
 
+    $scope.changeLastDateAnswer = function (data) {
+        $scope.timeDiff = Math.abs(data.lastDateAnswer.getTime() - data.dateInGo.getTime());
+
+        data.timeToCheckComplaint = Math.ceil($scope.timeDiff / (1000 * 3600 * 24));
+
+    };
+
 
 
 
