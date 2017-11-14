@@ -144,12 +144,12 @@
 
 
 
-                            <td md-cell><input type="date" value="{{data.lastDateAnswer}}" ng-model="data.lastDateAnswer"></td>
+                            <td md-cell><input type="date" value="{{data.lastDateAnswer}}" ng-model="data.lastDateAnswer" min="{{data.dateInGo | date:'yyyy-MM-dd'}}"></td>
 
 
 
 
-                            <td md-cell><input type="date" value="{{data.dateNotifDeclarer}}" ng-model="data.dateNotifDeclarer"></td>
+                            <td md-cell><input type="date" value="{{data.dateNotifDeclarer}}" ng-model="data.dateNotifDeclarer" min="{{data.dateInGo | date:'yyyy-MM-dd'}}"></td>
 
 
                             <td md-cell><input type="text" value="{{data.timeToCheckComplaint}}" ng-model="data.timeToCheckComplaint"></td>
