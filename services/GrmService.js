@@ -9,6 +9,7 @@
 
 const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
+const setColor = require('../utils/setColor');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
 const Int32 = require('mongodb').Int32;
@@ -38,7 +39,7 @@ module.exports = {
             let categName = await GrmStatusService.getCategById(objParams.categComplaint);
             let canalName = await GrmStatusService.getCanalById(objParams.canalRequest);
             let statusName = await GrmStatusService.getStatusById(objParams.statusId);
-
+            let colorForStatus = await setColor.setColorOnStatus(statusName.name);
 
 
             const result = await col.insertOne({
@@ -51,6 +52,7 @@ module.exports = {
                 categName: categName.name,
                 canalName: canalName.name,
                 statusName: statusName.name,
+                colorForStatus: colorForStatus,
 
 
                 dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
@@ -205,7 +207,7 @@ module.exports = {
 
 
 
-    changeSatatus: async (objParams) => {
+    changeStatus: async (objParams) => {
 
         try {
 
@@ -220,7 +222,7 @@ module.exports = {
                         lastModified: true
                     },
                     $set: {
-                        statusId: ObjectId(objParams.statusId)
+                        colorForStatus: await setColor.setColorOnStatus(objParams.colorForStatus)
                     }
                 });
 
@@ -289,21 +291,25 @@ module.exports = {
             let categName = await GrmStatusService.getCategById(objParams.categComplaint);
             let canalName = await GrmStatusService.getCanalById(objParams.canalRequest);
             let statusName = await GrmStatusService.getStatusById(objParams.statusId);
+            let colorForStatus = await setColor.setColorOnStatus(statusName.name);
 
 
 
 
-            const result = await col.updateOne({ _id: ObjectId(objParams._id) },
-                {
-                    $currentDate: {
-                        lastModified: true
-                    },
-                    $set: {
+            const result = await col.findOneAndUpdate(
+
+                {_id: ObjectId(objParams._id)},
+
+
+
+
+                {$set: {
 
                         nameCountry: nameCountry.name,
                         categName: categName.name,
                         canalName: canalName.name,
                         statusName: statusName.name,
+                        colorForStatus: colorForStatus,
 
 
                         dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
@@ -319,8 +325,14 @@ module.exports = {
                         dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
                         timeToCheckComplaint: objParams.timeToCheckComplaint
 
-                    }
-                });
+                    }},
+
+
+                {returnOriginal : false }
+
+
+
+                );
 
 
 
@@ -375,7 +387,46 @@ module.exports = {
 
 
 
+    },
+
+
+    checkOneWeekBefore: async (date) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm');
+
+
+            const result = await col.aggregate( [
+                {$match: {}},
+
+                { $project: { dateDifference: { $subtract: [ "$lastDateAnswer", new Date()] } } }
+
+
+
+
+                ] ).toArray();
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
     }
+
 
 
 

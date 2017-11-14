@@ -174,7 +174,7 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
   const hash = bcrypt.hashSync(pass, 10);
   let mail = {
         from: "simvolice@gmail.com",
-        to: fields.email, //TODO после тестирования надо поменять на переменную
+        to: fields.email,
         subject: "Ваш логин и пароль для входа в систему EFFORM",
 
         html: '<h4>Логин: '+ fields.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
@@ -366,7 +366,7 @@ router.post('/recoverypass', checkSeesionToken, async (req, res, next) =>{
         const hash = bcrypt.hashSync(pass, 10);
         let mail = {
             from: "simvolice@gmail.com",
-            to: result.email, //TODO после тестирования надо поменять на переменную
+            to: result.email,
             subject: "Ваш новый логин и пароль для входа в систему EFFORM",
 
             html: '<h4>Логин: '+ result.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'

@@ -28,42 +28,73 @@ module.exports = {
       agenda.define('changeStatusOnComplaint', async(job, done)=> {
 
 
-          let allStatus = await GrmStatusService.getAllStatus();
-
-          let statusDeadLine = allStatus[2]._id;
-          let statusFinishComplain = allStatus[3]._id;
 
 
 
           let dateNow = new Date( new Date().getTime() - ( new Date().getTimezoneOffset() * 60000 ) );
 
           let result = await GrmService.checkLastDateAnswer(dateNow);
+          let resultForOneWeekBefore = await GrmService.checkOneWeekBefore(dateNow);
 
 
-          let objParams = {
-
-              id: "",
-              statusId: statusDeadLine
-
-          };
 
 
           if (result.length !== 0) {
 
+              let objParams = {
+
+                  id: "",
+                  colorForStatus: "deadlineStatus"
+
+              };
 
               for (let obj of result) {
 
-                  if (obj.statusId !== statusFinishComplain) {
 
                       objParams.id = obj._id;
-                      await GrmService.changeSatatus(objParams);
+                      await GrmService.changeStatus(objParams);
 
-                  }
+
 
               }
 
               done();
 
+          } else if (resultForOneWeekBefore.length !== 0) {
+
+
+              let objParams = {
+
+                  id: "",
+                  colorForStatus: "oneWeekBefore"
+
+              };
+
+              for (let obj of resultForOneWeekBefore) {
+
+
+
+                  if (obj.dateDifference <= 604800000) {
+
+                      objParams.id = obj._id;
+                      await GrmService.changeStatus(objParams);
+
+
+
+                  }
+
+
+
+
+              }
+
+
+
+
+
+
+
+              done();
           } else {
 
 
@@ -81,7 +112,7 @@ module.exports = {
 
 
       agenda.on('ready', function() {
-          agenda.every('1 day', 'changeStatusOnComplaint');
+          agenda.every('1 day','changeStatusOnComplaint');
           agenda.start();
       });
 

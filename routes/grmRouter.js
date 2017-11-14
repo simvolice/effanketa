@@ -118,15 +118,13 @@ router.post('/deletegrm', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/updategrm', checkSeesionToken, async (req, res, next) =>{
 
-    let result =  await GrmService.updateGrm(req.body.data);
+    let result = await GrmService.updateGrm(req.body.data);
 
 
-    console.log("\x1b[42m", result);
+    if (result.hasOwnProperty("ok")) {
 
+        res.json({"code": 0, "resultFromDb": result.value});
 
-    if (result.hasOwnProperty("result")) {
-
-        res.json({"code": 0});
 
     } else {
 

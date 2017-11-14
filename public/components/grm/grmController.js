@@ -150,6 +150,7 @@ angular.module('app').controller('GrmCtrl', function ($scope, $window, GetAllGrm
 
                     $scope.data[$scope.data.length - 1]._id = result.resultFromDb._id;
                     $scope.data[$scope.data.length - 1].id = result.resultFromDb.id;
+                    $scope.data[$scope.data.length - 1].colorForStatus = result.resultFromDb.colorForStatus;
 
                     $mdToast.show(
                         $mdToast.simple()
@@ -185,8 +186,11 @@ angular.module('app').controller('GrmCtrl', function ($scope, $window, GetAllGrm
 
 
 
+
+
                 if (result.code === 0) {
 
+                    $scope.data[$scope.data.length - 1].colorForStatus = result.resultFromDb.colorForStatus;
 
 
                     $mdToast.show(
