@@ -46,9 +46,10 @@ router.post('/getgrowpotencialnewver', checkSeesionToken, async (req, res, next)
 router.post('/getgrowpotencial', checkSeesionToken, async (req, res, next) =>{
 
 
+
     let result = await BuildReportService.getgrowpotencial(req.body.data);
 
-res.json({"code": "ok", "resultFromDb": result});
+    res.json({"code": "ok", "resultFromDb": result});
 
 });
 

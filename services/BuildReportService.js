@@ -525,6 +525,9 @@ module.exports = {
 
     getgrowpotencial: async (objParams) => {
 
+
+
+
           if (objParams.country === 0) {
               objParams.allCountrys.pop();
               objParams.country = [];
@@ -549,10 +552,14 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
-            let period = await TypePeriod.getTypePeriodById(objParams.period);
+            let dateFromYear = new Date(objParams.dateFrom).getFullYear();
+            let dateFromMonth = new Date(objParams.dateFrom).getMonth() + 1;
+            let dateFromDay = new Date(objParams.dateFrom).getDate();
 
 
+            let dateToYear = new Date(objParams.dateTo).getFullYear();
+            let dateToMonth = new Date(objParams.dateTo).getMonth() + 1;
+            let dateToDay = new Date(objParams.dateTo).getDate();
 
 
 
@@ -560,17 +567,21 @@ module.exports = {
 
                 {
                     $facet: {
-                        "categorizedByDatePeriodCountry": [{
+                        "categorizedByDatePeriodCountry": [
+
+
+                            {
 
                             $match: {country: {$in: objParams.country}}
 
-                        },
+                            },
 
                             {
                                 $addFields:
                                     {
                                         year: { $year: "$myDate" },
                                         month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
 
                                     }
                             },
@@ -578,7 +589,61 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
 
                             },
 
@@ -592,7 +657,9 @@ module.exports = {
                         ],
 
 
-                        "countSatisfaction": [ {
+                        "countSatisfaction": [
+
+                            {
 
                             $match: {country: {$in: objParams.country}}
 
@@ -603,6 +670,7 @@ module.exports = {
                                     {
                                         year: { $year: "$myDate" },
                                         month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" }
 
                                     }
                             },
@@ -610,9 +678,64 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
 
                             },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
 
                             {
                             $lookup:
@@ -645,7 +768,10 @@ module.exports = {
 
 
 
-                        "countSatisfactionWomen": [ {
+                        "countSatisfactionWomen": [
+
+
+                            {
 
                             $match: {country: {$in: objParams.country}}
 
@@ -656,6 +782,7 @@ module.exports = {
                                     {
                                         year: { $year: "$myDate" },
                                         month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
 
                                     }
                             },
@@ -663,9 +790,64 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
 
                             },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
 
                             {
                                 $lookup:
@@ -701,7 +883,10 @@ module.exports = {
 
 
 
-                        "categorizedBySum": [ {
+                        "categorizedBySum": [
+
+
+                            {
 
                             $match: {country: {$in: objParams.country}}
 
@@ -712,6 +897,7 @@ module.exports = {
                                     {
                                         year: { $year: "$myDate" },
                                         month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
 
                                     }
                             },
@@ -719,9 +905,64 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
 
                             },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
                             {
                                 $group : {
                                     _id : null,
@@ -739,7 +980,9 @@ module.exports = {
 
 
 
-                        "countForms": [ {
+                        "countForms": [
+
+                            {
 
                             $match: {country: {$in: objParams.country}}
 
@@ -750,6 +993,7 @@ module.exports = {
                                     {
                                         year: { $year: "$myDate" },
                                         month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
 
                                     }
                             },
@@ -757,9 +1001,64 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
 
                             },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
 
                             {
                                 $lookup:
@@ -785,7 +1084,9 @@ module.exports = {
 
                         ],
 
-                        "allEvents": [ {
+                        "allEvents": [
+
+                            {
 
                             $match: {country: {$in: objParams.country}}
 
@@ -796,6 +1097,7 @@ module.exports = {
                                     {
                                         year: { $year: "$myDate" },
                                         month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
 
                                     }
                             },
@@ -803,12 +1105,66 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                                $match: {
 
-                            }
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
 
                         ],
-
 
 
                     }
@@ -831,7 +1187,7 @@ module.exports = {
         }catch(err) {
 
 
-
+            console.log("\x1b[42m", err);
 
             return err;
 

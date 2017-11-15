@@ -9,10 +9,11 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
 
     $scope.data = {
 
-        period: "",
-        yearname: "",
+
         country: "",
-        selectEvent: ""
+        selectEvent: "",
+        dateFrom: new Date(),
+        dateTo: new Date()
 
 
     };
@@ -20,32 +21,13 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
     GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
-        $scope.allCountrys = entry.resultFromDb;
-        $scope.country = entry.resultFromDb[0]._id;
+        $scope.data.allCountrys = entry.resultFromDb;
+        $scope.data.country = entry.resultFromDb[0]._id;
 
 
     });
 
 
-    GetTypePeriod.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-        $scope.allperiod = entry.resultFromDb;
-        $scope.period = entry.resultFromDb[0]._id;
-
-
-    });
-
-
-
-    GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-        $scope.allyearname = entry.resultFromDb;
-        $scope.yearname = entry.resultFromDb[0]._id;
-
-
-    });
 
 
 
@@ -59,17 +41,15 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
 
         $scope.eventShow = true;
 
-        $scope.data.period = $scope.period;
-        $scope.data.yearname = $scope.yearname;
-        $scope.data.country = $scope.country;
-        $scope.data.selectEvent = null;
 
+
+        $scope.data.selectEvent = null;
 
 
         GetGrowPotencial.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
 
-
+            console.log(entry.resultFromDb);
 
             for (let obj of entry.resultFromDb) {
                 $scope.data.categorizedByDatePeriodCountry = obj.categorizedByDatePeriodCountry;

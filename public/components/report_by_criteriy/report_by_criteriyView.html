@@ -17,7 +17,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Отчёт по заданным критериям</h3>
+                        <h3>Отчёт по отдельному мероприятию</h3>
 
 
                     </div>
@@ -32,9 +32,9 @@
                         <md-input-container class="custom__select__margin">
                             <label>Выберите страну</label>
                             <md-icon class="material-icons">place</md-icon>
-                            <md-select ng-model="country">
+                            <md-select ng-model="data.country">
 
-                                <md-option ng-repeat="y in allCountrys" ng-value="y._id">
+                                <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
                                     {{y.name}}
                                 </md-option>
                             </md-select>
@@ -43,28 +43,21 @@
 
 
 
-                        <md-input-container class="custom__select__margin">
-                            <label>Выберите отчетный период</label>
-                            <md-icon class="material-icons">date_range</md-icon>
-                            <md-select ng-model="period">
-
-                                <md-option ng-repeat="y in allperiod" ng-value="y._id">
-                                    {{y.name}}
-                                </md-option>
-                            </md-select>
+                        <md-input-container>
+                            <label>Выберите дату от</label>
+                            <md-datepicker ng-model="data.dateFrom" md-open-on-focus></md-datepicker>
                         </md-input-container>
 
 
-                        <md-input-container class="custom__margin__select__report">
-                            <label>Выберите год</label>
-                            <md-icon class="material-icons">date_range</md-icon>
-                            <md-select ng-model="yearname">
 
-                                <md-option ng-repeat="y in allyearname" ng-value="y._id">
-                                    {{y.name}}
-                                </md-option>
-                            </md-select>
+
+                        <md-input-container>
+                            <label>Выберите дату до</label>
+                            <md-datepicker ng-model="data.dateTo" md-open-on-focus md-min-date="data.dateFrom"></md-datepicker>
                         </md-input-container>
+
+
+
 
 
 
