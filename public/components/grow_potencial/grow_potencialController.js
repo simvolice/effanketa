@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('Grow_potencialCtrl', function ($scope, $cookies, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce, $window) {
+angular.module('app').controller('Grow_potencialCtrl', function ($scope, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce, $window) {
 
     GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
 

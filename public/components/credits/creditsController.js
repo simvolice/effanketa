@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('CreditsCtrl', function ($element, $scope, $cookies, Addcredit, GetAllCoutrys, $mdToast, DelCredits, GetAllCredits, UpdCredits, GetCreditsFact, SendNewCreditsFact, $window) {
+angular.module('app').controller('CreditsCtrl', function ($element, $scope, Addcredit, GetAllCoutrys, $mdToast, DelCredits, GetAllCredits, UpdCredits, GetCreditsFact, SendNewCreditsFact, $window) {
 
 
 $scope.data = [];

@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('HomePageCtrl', function ($scope, $cookies, $sce, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
+angular.module('app').controller('HomePageCtrl', function ($scope, $sce, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
 
     GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
 

@@ -64,3 +64,24 @@ img,tr {page-break-inside: avoid;}
 
 .page-break-after {
     page-break-after: always; }
+
+
+.custom__title__margin {
+    margin-bottom: 50px;
+
+
+}
+
+
+.custom__display__none {
+    display: none;
+
+}
+
+
+.custom__chart__center {
+
+
+    margin-left: -100px;
+
+}

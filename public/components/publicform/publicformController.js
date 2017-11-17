@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('PublicFormCtrl', function ($scope, $cookies, $mdToast, $mdDialog, GetToken, $location) {
+angular.module('app').controller('PublicFormCtrl', function ($scope, $mdToast, $mdDialog, GetToken, $location) {
 
     //Убираем весь UI
     jQuery( "nav" ).remove();

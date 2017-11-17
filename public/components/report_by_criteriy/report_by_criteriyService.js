@@ -12,3 +12,5 @@
 angular.module('app').factory("GetReportForEvent", function($resource) {
     return $resource("/getreportforevent");
 });
+
+

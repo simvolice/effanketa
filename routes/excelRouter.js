@@ -7,6 +7,8 @@ const router = express.Router();
 let XLSX = require('xlsx');
 let AllTableService = require('../services/AllTableService');
 
+
+
 function createDataForSheetJS(data) {
 
     let resultArr = [];
@@ -65,6 +67,10 @@ router.get('/generateexcel.xlsx', async (req, res, next) =>{
 
 
 });
+
+
+
+
 
 
 

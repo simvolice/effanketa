@@ -1,6 +1,6 @@
 <div class="row" ng-controller="Report_by_criteriyAppCtrl">
 
-    <div class="col-md-12">
+    <div class="col-md-12" id="printableArea">
 
 
 
@@ -14,7 +14,7 @@
                 <md-toolbar class="md-table-toolbar md-default">
 
 
-                    <div class="md-toolbar-tools">
+                    <div class="md-toolbar-tools custom__title__margin">
 
 
                         <h3>Отчёт по отдельному мероприятию</h3>
@@ -65,7 +65,8 @@
 
 
 
-                        <button class="btn btn-sm btn-primary" ng-click="createReport()">Сформировать отчет</button>
+                        <button class="btn btn-sm btn-primary custom__display__none" ng-click="createReport()">Сформировать отчет</button>
+                        <button class="btn btn-sm btn-primary custom__display__none" ng-click="createPdf()">Сформировать PDF</button>
 
 
                     </div>
@@ -101,7 +102,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div id="chart"></div>
+                        <div id="chart" class="custom__chart__center"></div>
 
 
                     </div>
@@ -114,7 +115,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div id="chartAverage"></div>
+                        <div id="chartAverage" class="custom__chart__center"></div>
 
 
                     </div>
@@ -173,7 +174,7 @@
 
 
 
-                        <button class="btn btn-sm btn-primary" ng-click="createReportForEvent()">Сформировать отчет</button>
+                        <button class="btn btn-sm btn-primary custom__display__none" ng-click="createReportForEvent()">Сформировать отчет</button>
 
 
                     </div>
@@ -490,7 +491,7 @@
                     <div class="col-md-12">
                         <h4>Вы представляете</h4>
                         <p>{{data.ques[0].ques19.totalAnswer || 0}} ответов</p>
-                        <div id="chartQues19"></div>
+                        <div id="chartQues19" class="custom__chart__center"></div>
 
                     </div>
 
@@ -505,7 +506,7 @@
                     <div class="col-md-12">
                         <h4>Пол</h4>
                         <p>{{data.ques[0].ques20.totalAnswer || 0}} ответов</p>
-                        <div id="chartQues20"></div>
+                        <div id="chartQues20" class="custom__chart__center"></div>
 
                     </div>
 
@@ -520,7 +521,7 @@
                     <div class="col-md-12">
                         <h4>Возрастная группа</h4>
                         <p>{{data.ques[0].ques21.totalAnswer || 0}} ответов</p>
-                        <div id="chartQues21"></div>
+                        <div id="chartQues21" class="custom__chart__center"></div>
 
                     </div>
 

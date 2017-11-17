@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('FinansialStatusCtrl', function ($scope, $cookies, AddFinansialStatus, GetAllCoutrys, $mdToast, GetFinansialStatus, UpdFinansialStatus, DelFinansialStatus) {
+angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFinansialStatus, GetAllCoutrys, $mdToast, GetFinansialStatus, UpdFinansialStatus, DelFinansialStatus) {
 
 
     $scope.data = [];

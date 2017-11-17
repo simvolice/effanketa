@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('LoginCtrl', function ($scope, $cookies, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
+angular.module('app').controller('LoginCtrl', function ($scope, GetToken, SendAuth, GetMainPage, $mdToast, $state, $rootScope) {
 
     $rootScope.err = false;
 

@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, GetYearName, GetTypePeriod, GetAllCoutrys, $mdToast, GetGrowPotencial, GetReportForEvent, $timeout) {
+angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope, GetYearName, GetTypePeriod, GetAllCoutrys, $mdToast, GetGrowPotencial, GetReportForEvent, $window) {
     $scope.eventShow = false;
 
     $scope.data = {
@@ -32,7 +32,11 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ($scope, 
 
 
 
+    $scope.createPdf = function () {
 
+        $("#printableArea").print();
+
+    };
 
 
 
