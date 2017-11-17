@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFinansialStatus, GetAllCoutrys, $mdToast, GetFinansialStatus, UpdFinansialStatus, DelFinansialStatus) {
+angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFinansialStatus, GetAllCoutrys, $mdToast, GetFinansialStatus, UpdFinansialStatus, DelFinansialStatus, $window) {
 
 
     $scope.data = [];
@@ -231,6 +231,20 @@ angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFin
         }
     };
 
+
+    $scope.excel = function () {
+
+
+
+        $scope.tableID = "finansial_status";
+        $scope.titleSheet = "Финансовый статус";
+
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+
+
+
+
+    };
 
 
 

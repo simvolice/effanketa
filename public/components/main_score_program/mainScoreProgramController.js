@@ -4,14 +4,28 @@
 
 
 
-angular.module('app').controller('MainScoreProgramCtrl', function ($scope, $mdDialog, GetPlatform, GetMainPage, $mdToast, $state, $rootScope, DeletePlatform, GetProject, DeleteProject, GetRegionalInvest, DeleteRegionalInvest, GetMobileResurs, DeleteMobileResurs) {
+angular.module('app').controller('MainScoreProgramCtrl', function ($window, $scope, $mdDialog, GetPlatform, GetMainPage, $mdToast, $state, $rootScope, DeletePlatform, GetProject, DeleteProject, GetRegionalInvest, DeleteRegionalInvest, GetMobileResurs, DeleteMobileResurs) {
 
 
 $rootScope.data = [];
 
+    $scope.excel = function (tableId, titleSheet) {
 
 
-$scope.tabClk = function (nameMethod) {
+
+        $scope.tableID = tableId;
+        $scope.titleSheet = titleSheet;
+
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+
+
+
+
+    };
+
+
+
+    $scope.tabClk = function (nameMethod) {
 
    if (nameMethod === "Platform"){
 

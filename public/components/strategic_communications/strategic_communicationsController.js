@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('StrategicCommunicationsCtrl', function ($scope, $rootScope, $mdDialog, GetAllCoutrys, AddStrategic, $mdToast, UpdStrategic, DelStrategic, GetStrategic, GetYearName) {
+angular.module('app').controller('StrategicCommunicationsCtrl', function ($window, $scope, $rootScope, $mdDialog, GetAllCoutrys, AddStrategic, $mdToast, UpdStrategic, DelStrategic, GetStrategic, GetYearName) {
 
 
     $rootScope.data = [];
@@ -435,6 +435,20 @@ $scope.delete = function (id, index) {
     });
 
 }
+
+    $scope.excel = function (data) {
+
+
+
+        $scope.tableID = data._id;
+        $scope.titleSheet = "Стратегия коммуникации";
+
+        $window.open('/strategiccommunication.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+
+
+
+
+    };
 
 
 

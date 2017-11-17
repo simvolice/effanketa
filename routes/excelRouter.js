@@ -70,6 +70,19 @@ router.get('/generateexcel.xlsx', async (req, res, next) =>{
 
 
 
+router.get('/strategiccommunication.xlsx', async (req, res, next) =>{
+
+
+    let allDataFromTable = await AllTableService.getById(req.query.data);
+
+    get_file(req, res, "xlsx", allDataFromTable, req.query.titleSheet);
+
+
+
+});
+
+
+
 
 
 
