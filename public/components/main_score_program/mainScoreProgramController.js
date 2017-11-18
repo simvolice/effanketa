@@ -401,7 +401,7 @@ function DialogControllerUpdMobileResurs($scope, data, GetAllCoutrys, UpdMobileR
 
 
                 if (result.code === 0) {
-
+                    $mdDialog.hide();
 
                     GetMobileResurs.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
@@ -493,7 +493,7 @@ function DialogControllerUpdRegionalInvest($scope, data, GetAllCoutrys, UpdRegio
 
                 if (result.code === 0) {
 
-
+                    $mdDialog.hide();
                     GetRegionalInvest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
@@ -584,7 +584,7 @@ function DialogControllerUpdPlatform($scope, data, GetAllCoutrys, UpdPlatform) {
 
             if (result.code === 0) {
 
-
+                $mdDialog.hide();
                 GetPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
@@ -672,7 +672,7 @@ function DialogControllerUpdProject($scope, data, GetAllCoutrys, UpdProject) {
 
                 if (result.code === 0) {
 
-
+                    $mdDialog.hide();
                     GetProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
@@ -856,7 +856,7 @@ function DialogControllerNewMobileResurs($scope, GetAllCoutrys, AddMobileResurs)
 
 
                 if (result.code === 0) {
-
+                    $mdDialog.hide();
 
                     GetMobileResurs.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
@@ -947,7 +947,7 @@ function DialogControllerNewRegionalInvest($scope, GetAllCoutrys, AddRegionalInv
 
                 if (result.code === 0) {
 
-
+                    $mdDialog.hide();
                     GetRegionalInvest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
@@ -1036,7 +1036,7 @@ function DialogControllerNewProject($scope, GetAllCoutrys, AddProject) {
 
             if (result.code === 0) {
 
-
+                $mdDialog.hide();
                 GetProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
@@ -1127,7 +1127,7 @@ function DialogControllerNewPlatform($scope, GetAllCoutrys, AddPlatform) {
 
             if (result.code === 0) {
 
-
+                $mdDialog.hide();
                 GetPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 

@@ -473,7 +473,7 @@ function DialogControllerUpdateForm($scope, data, UpdForm, index, GetOneForm) {
 
 
 
-
+                $mdDialog.hide();
 
                 $mdToast.show(
                     $mdToast.simple()
@@ -611,7 +611,7 @@ function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdE
 
 
 
-
+                $mdDialog.hide();
 
                 $mdToast.show(
                     $mdToast.simple()
@@ -734,7 +734,7 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
 
 
-
+                $mdDialog.hide();
 
                 $mdToast.show(
                     $mdToast.simple()
@@ -925,7 +925,7 @@ function DialogControllerForNewForm($scope, data, AddForm) {
 
 
 
-
+                $mdDialog.hide();
 
                 $mdToast.show(
                     $mdToast.simple()
