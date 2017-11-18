@@ -734,6 +734,14 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
 
 
+                GetEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+                    $rootScope.data = result.resultFromDb;
+
+
+                });
+
                 $mdDialog.hide();
 
                 $mdToast.show(

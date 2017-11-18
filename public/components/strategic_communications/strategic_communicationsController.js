@@ -289,34 +289,43 @@ function DialogController($scope, data, GetAllCoutrys, AddStrategic) {
 
 
 
-                GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
+                GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+                    $scope.allyearname = entry.resultFromDb;
+                    $scope.yearname = entry.resultFromDb[entry.resultFromDb.length - 2]._id;
 
 
 
-                    if (result.code === 0) {
+                    GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function (result) {
 
 
 
-                        $rootScope.data = result.resultFromDb;
-
-
-                    } else {
-
-                        $mdToast.show(
-                            $mdToast.simple()
-                                .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                                .position('bottom left')
-                                .hideDelay(6000)
-                        );
-
-
-                    }
+                        if (result.code === 0) {
 
 
 
+                            $rootScope.data = result.resultFromDb;
+
+
+                        } else {
+
+                            $mdToast.show(
+                                $mdToast.simple()
+                                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                                    .position('bottom left')
+                                    .hideDelay(6000)
+                            );
+
+
+                        }
+
+
+
+
+                    });
 
                 });
-
 
                 $mdDialog.hide();
                 $mdToast.show(
@@ -434,9 +443,9 @@ $scope.delete = function (id, index) {
 
     });
 
-}
+};
 
-    $scope.excel = function (data) {
+$scope.excel = function (data) {
 
 
 
