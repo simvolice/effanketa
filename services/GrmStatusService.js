@@ -27,15 +27,10 @@ module.exports = {
 
           const result = await col.insertMany([
 
-              {
-
-                  name: "Не относится к действиям проекта"
-
-              },
 
               {
 
-                  name: "На рассмотрении"
+                  name: "В работе"
 
               },
 
@@ -44,7 +39,7 @@ module.exports = {
 
               {
 
-                  name: "Закрыта"
+                  name: "Завершен"
 
               }
 

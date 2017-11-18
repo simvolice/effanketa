@@ -17,11 +17,11 @@ module.exports = {
 
 
 
-        if (statusName === "На рассмотрении") {
+        if (statusName === "В работе") {
 
             return inWorkStatus;
 
-        } else if (statusName === "Закрыта") {
+        } else if (statusName === "Завершен") {
 
 
             return finishStatus;
