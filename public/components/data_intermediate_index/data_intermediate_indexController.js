@@ -32,6 +32,14 @@ $scope.data = {
     });
 
 
+    /*
+    Считаем процент, на основе 5 бальной оценки в тесте.
+     */
+    $scope.calculatePercent = function (num) {
+
+        let result = num*100/5;
+        return result.toFixed(0);
+    };
 
     $scope.generateReport = function () {
 
@@ -41,8 +49,11 @@ $scope.data = {
 
             if (entry.resultFromDb.length !== 0) {
 
-                $scope.data.persentUsersSatisfied = entry.resultFromDb[0].average;
-                $scope.data.countFormIT = entry.resultFromDb[0].average;
+
+
+
+                $scope.data.persentUsersSatisfied = $scope.calculatePercent(entry.resultFromDb[0].average);
+                $scope.data.countFormIT = $scope.calculatePercent(entry.resultFromDb[0].average);
 
 
             } else {
