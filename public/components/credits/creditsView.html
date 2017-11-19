@@ -52,10 +52,10 @@
                             <th md-column colspan="4" scope="colgroup"></th>
 
                             <th md-column colspan="2" scope="colgroup">Общий объем</th>
-                            <th md-column colspan="3" scope="colgroup">Прямые бенефециары (заемщики+члены семьи+наёмные работники)</th>
-                            <th md-column colspan="3" scope="colgroup">Непрямые бенефециары (члены семей)</th>
-                            <th md-column colspan="3" scope="colgroup">Непрямые бенефециары (наемные работники)</th>
-                            <th md-column colspan="2" scope="colgroup">Создаваемые мощности/Ожидаемый эффект</th>
+                            <th md-column colspan="3" scope="colgroup">Прямые бенефециары <br>(заемщики+члены семьи+наёмные работники)</th>
+                            <th md-column colspan="3" scope="colgroup">Непрямые бенефециары <br> (члены семей)</th>
+                            <th md-column colspan="3" scope="colgroup">Непрямые бенефециары <br> (наемные работники)</th>
+                            <th md-column colspan="2" scope="colgroup">Создаваемые мощности <br>/Ожидаемый эффект</th>
 
                         </tr>
 
@@ -64,7 +64,7 @@
 
                             <th md-column>№</th>
                             <th md-column>Категория кредитов</th>
-                            <th md-column>Кол-во субпроектов</th>
+                            <th md-column>Кол-во <br> субпроектов</th>
                             <th md-column>Страна</th>
 
 
@@ -123,7 +123,7 @@
 
 
 
-                            <td md-cell><input type="text" value="{{data.countsubproject}}" ng-model="data.countsubproject"></td>
+                            <td md-cell><input class="custom__dual__digits" type="text" value="{{data.countsubproject}}" ng-model="data.countsubproject"></td>
 
 
                             <td md-cell>
@@ -144,27 +144,12 @@
 
 
 
-                            <td md-cell><input type="text" value="{{data.DirectBeneficiariesMale}}" ng-model="data.DirectBeneficiariesMale"></td>
+                            <td md-cell><input class="custom__four__digits" type="text" value="{{data.DirectBeneficiariesMale}}" ng-model="data.DirectBeneficiariesMale"></td>
 
 
-                            <td md-cell><input type="text" value="{{data.DirectBeneficiariesFemale}}" ng-model="data.DirectBeneficiariesFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
+                            <td md-cell><input class="custom__four__digits" type="text" value="{{data.DirectBeneficiariesFemale}}" ng-model="data.DirectBeneficiariesFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
 
-                            <td md-cell><input type="text" value="{{data.DirectBeneficiariesAll}}" ng-model="data.DirectBeneficiariesAll" disabled></td>
-
-
-
-
-
-
-
-
-                            <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesMemberFamilyMale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyMale"></td>
-
-
-
-                            <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesMemberFamilyFemale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
-
-                            <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesMemberFamilyAll}}" ng-model="data.NonDirectBeneficiariesMemberFamilyAll" disabled></td>
+                            <td md-cell><input class="custom__four__digits" type="text" value="{{data.DirectBeneficiariesAll}}" ng-model="data.DirectBeneficiariesAll" disabled></td>
 
 
 
@@ -173,16 +158,31 @@
 
 
 
-                            <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesHiredMale}}" ng-model="data.NonDirectBeneficiariesHiredMale"></td>
+                            <td md-cell><input class="custom__three__digits" type="text" value="{{data.NonDirectBeneficiariesMemberFamilyMale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyMale"></td>
 
 
 
-                            <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesHiredFemale}}" ng-model="data.NonDirectBeneficiariesHiredFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
-                            <td md-cell><input type="text" value="{{data.NonDirectBeneficiariesHiredAll}}" ng-model="data.NonDirectBeneficiariesHiredAll" disabled></td>
+                            <td md-cell><input class="custom__three__digits" type="text" value="{{data.NonDirectBeneficiariesMemberFamilyFemale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
+
+                            <td md-cell><input class="custom__three__digits" type="text" value="{{data.NonDirectBeneficiariesMemberFamilyAll}}" ng-model="data.NonDirectBeneficiariesMemberFamilyAll" disabled></td>
 
 
 
-                            <td md-cell><input type="text" value="{{data.CreatePowerPlan}}" ng-model="data.CreatePowerPlan"></td>
+
+
+
+
+
+                            <td md-cell><input class="custom__four__digits" type="text" value="{{data.NonDirectBeneficiariesHiredMale}}" ng-model="data.NonDirectBeneficiariesHiredMale"></td>
+
+
+
+                            <td md-cell><input class="custom__four__digits" type="text" value="{{data.NonDirectBeneficiariesHiredFemale}}" ng-model="data.NonDirectBeneficiariesHiredFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
+                            <td md-cell><input class="custom__four__digits" type="text" value="{{data.NonDirectBeneficiariesHiredAll}}" ng-model="data.NonDirectBeneficiariesHiredAll" disabled></td>
+
+
+
+                            <td md-cell><input class="custom__three__digits" type="text" value="{{data.CreatePowerPlan}}" ng-model="data.CreatePowerPlan"></td>
 
 
 
