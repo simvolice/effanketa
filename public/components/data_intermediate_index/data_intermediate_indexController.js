@@ -16,6 +16,7 @@ $scope.data = {
     countCivilService: 0,
     countPlatform: 0,
     countBenificiarProject: 0,
+    countBenificiarProjectInPersent: 0,
     areaGAProject: 0,
     countGRM: 0
 
@@ -40,6 +41,18 @@ $scope.data = {
         let result = num*100/5;
         return result.toFixed(0);
     };
+
+
+
+    /*
+    Считаем процент, для бенефициаров, включая женщин, за базу взяли 1 000 000.
+     */
+    $scope.calculatePercentForcountBenificiarProject = function (num) {
+
+        let result = num*100/1000000;
+        return result.toFixed(3);
+    };
+
 
     $scope.generateReport = function () {
 
@@ -162,6 +175,7 @@ $scope.data = {
 
 
                 $scope.data.countBenificiarProject = entry.resultFromDb[0].all_benificiar;
+                $scope.data.countBenificiarProjectInPersent = $scope.calculatePercentForcountBenificiarProject(entry.resultFromDb[0].all_benificiar);
 
 
             } else {
