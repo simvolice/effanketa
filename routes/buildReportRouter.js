@@ -170,7 +170,119 @@ router.post('/getreportforevent', checkSeesionToken, async (req, res, next) =>{
 });
 
 
+router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
 
+    let result = await BuildReportService.addnewreportYear(req.body.data);
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+});
+
+
+
+
+router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
+
+    let result = await BuildReportService.updreportYearNCU(req.body.data);
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+});
+
+
+
+router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) =>{
+
+
+    let result = await BuildReportService.addHalfYearrcusave(req.body.data);
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+
+});
+
+
+
+
+router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =>{
+
+
+    let result = await BuildReportService.updreportHalfYearRCU(req.body.data);
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+});
+
+
+
+
+router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) =>{
+
+    let result = await BuildReportService.addYearRCUsave(req.body.data);
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+});
+
+
+
+
+router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
+    let result = await BuildReportService.updreportYearRCU(req.body.data);
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+});
 
 module.exports = router;
 

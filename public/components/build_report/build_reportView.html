@@ -41,7 +41,7 @@
                                 <md-input-container class="custom__select__margin">
                                     <label>Выберите страну</label>
                                     <md-icon class="material-icons">place</md-icon>
-                                    <md-select ng-model="country">
+                                    <md-select ng-model="country" ng-change="changeCountry(country)">
 
                                         <md-option ng-repeat="y in allCountrys" ng-value="y._id">
                                             {{y.name}}

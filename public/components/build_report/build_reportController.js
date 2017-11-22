@@ -17,6 +17,28 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
+    $scope.changeCountry = function (country) {
+
+
+        if (country === 0) {
+            $scope.allperiod = $scope.allperiod.slice(4);
+      } else {
+            GetTypePeriod.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+                $scope.allperiod = entry.resultFromDb;
+
+            });
+
+
+        }
+
+
+
+    };
+
+
+
 
     GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
@@ -113,15 +135,74 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
     $scope.updateEvent = function (data, ev, index) {
 
 
-        $mdDialog.show({
-            controller: DialogControllerUpdReport,
-            locals:{data: data},
-            templateUrl: 'components/build_report/dialog_template_new_report.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: true // Only for -xs, -sm breakpoints.
-        });
+
+
+
+       if (data.typePeriod === "Годовой" && data.country !== "Все") {
+
+           $mdDialog.show({
+               controller: DialogControllerUpdReportYearNCU,
+               locals:{data: data},
+               templateUrl: 'components/build_report/dialog_template_new_report_year_ncu.html',
+               parent: angular.element(document.body),
+               targetEvent: ev,
+               clickOutsideToClose:true,
+               fullscreen: true // Only for -xs, -sm breakpoints.
+           });
+
+
+       } else if (data.country === "Все" && data.typePeriod.includes("Первое полугодие")) {
+
+           $mdDialog.show({
+               controller: DialogControllerUpdReportHalfYearRCU,
+               locals:{data: data},
+               templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+               parent: angular.element(document.body),
+               targetEvent: ev,
+               clickOutsideToClose:true,
+               fullscreen: true // Only for -xs, -sm breakpoints.
+           });
+
+
+
+
+
+       } else if (data.country === "Все" && data.typePeriod === "Годовой") {
+
+
+           $mdDialog.show({
+               controller: DialogControllerUpdReportYearRCU,
+               locals:{data: data},
+               templateUrl: 'components/build_report/dialog_template_new_report_year_rcu.html',
+               parent: angular.element(document.body),
+               targetEvent: ev,
+               clickOutsideToClose:true,
+               fullscreen: true // Only for -xs, -sm breakpoints.
+           });
+
+
+
+       } else {
+
+
+           $mdDialog.show({
+               controller: DialogControllerUpdReport,
+               locals:{data: data},
+               templateUrl: 'components/build_report/dialog_template_new_report.html',
+               parent: angular.element(document.body),
+               targetEvent: ev,
+               clickOutsideToClose:true,
+               fullscreen: true // Only for -xs, -sm breakpoints.
+           });
+
+
+       }
+
+
+
+
+
+
 
 
     };
@@ -130,22 +211,800 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
-    $scope.showModalWnd = function (ev) {
+$scope.showModalWnd = function (ev) {
+
+   let nameCountry = $scope.getNameById($scope.country, $scope.allCountrys);
+   let namePeriod = $scope.getNameById($scope.period, $scope.allperiod);
+
+
+            if (namePeriod === "Годовой" && nameCountry !== "Все") {
+
+                $mdDialog.show({
+                    controller: DialogControllerNewReportYearNCU,
+                    locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
+                    templateUrl: 'components/build_report/dialog_template_new_report_year_ncu.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: true // Only for -xs, -sm breakpoints.
+                });
+
+            } else if (nameCountry === "Все" && namePeriod.includes("Первое полугодие")) {
+
+                $mdDialog.show({
+                    controller: DialogControllerNewReportHalfYearRCU,
+                    locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
+                    templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: true // Only for -xs, -sm breakpoints.
+                });
 
 
 
-        $mdDialog.show({
-            controller: DialogControllerNewReport,
-            locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
-            templateUrl: 'components/build_report/dialog_template_new_report.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: true // Only for -xs, -sm breakpoints.
+
+
+            } else if (nameCountry === "Все" && namePeriod === "Годовой") {
+
+
+                $mdDialog.show({
+                    controller: DialogControllerNewReportYearRCU,
+                    locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
+                    templateUrl: 'components/build_report/dialog_template_new_report_year_rcu.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: true // Only for -xs, -sm breakpoints.
+                });
+
+
+            } else {
+
+                $mdDialog.show({
+                    controller: DialogControllerNewReport,
+                    locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
+                    templateUrl: 'components/build_report/dialog_template_new_report.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: true // Only for -xs, -sm breakpoints.
+                });
+
+
+            }
+
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetReport) {
+    $scope.data = {
+
+
+
+        id: data._id,
+        typePeriod: data.typePeriod,
+        year: data.year,
+
+        country: data.country,
+        finstatus: {},
+
+
+
+        introductionScopeReport: data.introductionScopeReport,
+        projectPerformance: data.projectPerformance,
+        resultsSummary: data.resultsSummary,
+        overallNarrativeProgressRegionalClimateKnowledge: data.overallNarrativeProgressRegionalClimateKnowledge,
+        resultsImpactSummaryRegionalClimateKnowledge: data.resultsImpactSummaryRegionalClimateKnowledge,
+        overallNarrativeProgressClimateInvestments: data.overallNarrativeProgressClimateInvestments,
+        resultsImpactSummaryClimateInvestments: data.resultsImpactSummaryClimateInvestments,
+        overallNarrativeProgressRegionalNationalCoordination: data.overallNarrativeProgressRegionalNationalCoordination,
+        risks: data.risks,
+        lessonsLearned: data.lessonsLearned,
+        recommendations: data.recommendations,
+        NCUTajikistan: data.NCUTajikistan,
+        NCUUzbekistan: data.NCUUzbekistan,
+        rcu: data.rcu,
+
+        categorizedByBudgetBisbursement: data.finstatus.categorizedByBudgetBisbursement,
+        categorizedByCreditLine: data.finstatus.categorizedByCreditLine,
+        categorizedByOperatingExpenses: data.finstatus.categorizedByOperatingExpenses,
+        categorizedByServices: data.finstatus.categorizedByServices,
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+    $scope.print = function () {
+
+
+
+        $("#printableArea").print();
+
+
+    };
+
+
+    $scope.save = function () {
+
+
+
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+        UpdReportYearRCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
+
+            if (entry.code === 0) {
+
+
+                GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+                    $mdDialog.hide();
+                    $rootScope.data = entry.resultFromDb;
+
+
+
+                });
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
         });
 
 
     };
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+}
+
+
+
+function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus, ReportYearRCUSave) {
+
+
+    $scope.data = {
+
+        typePeriod: data.periodName,
+        year: data.year,
+        idcountry: data.country,
+        country: data.nameCountry,
+
+
+        introductionScopeReport: "",
+        projectPerformance: "",
+        resultsSummary: "",
+        overallNarrativeProgressRegionalClimateKnowledge: "",
+        resultsImpactSummaryRegionalClimateKnowledge: "",
+        overallNarrativeProgressClimateInvestments: "",
+        resultsImpactSummaryClimateInvestments: "",
+        overallNarrativeProgressRegionalNationalCoordination: "",
+        risks: "",
+        lessonsLearned: "",
+        recommendations: "",
+        NCUTajikistan: "",
+        NCUUzbekistan: "",
+        rcu: "",
+        finstatus: {}
+    };
+
+
+
+    GetReportFinansialStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+        for (let obj of entry.resultFromDb) {
+            $scope.data.categorizedByBudgetBisbursement = obj.categorizedByBudgetBisbursement;
+            $scope.data.categorizedByCreditLine = obj.categorizedByCreditLine;
+            $scope.data.categorizedByOperatingExpenses = obj.categorizedByOperatingExpenses;
+            $scope.data.categorizedByServices = obj.categorizedByServices;
+
+
+        }
+    });
+
+
+
+
+    $scope.save = function () {
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+
+
+        ReportYearRCUSave.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
+
+            if (entry.code === 0) {
+
+
+                GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+                    $mdDialog.hide();
+                    $rootScope.data = entry.resultFromDb;
+
+
+
+                });
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+        });
+
+
+    };
+
+
+    $scope.print = function () {
+
+
+
+        $("#printableArea").print();
+
+
+    };
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+
+
+
+
+
+
+
+}
+
+
+
+function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU, GetReport) {
+
+
+
+
+    $scope.data = {
+
+
+
+        id: data._id,
+        typePeriod: data.typePeriod,
+        year: data.year,
+
+        country: data.country,
+        finstatus: {},
+
+
+
+        introductionScopeReport: data.introductionScopeReport,
+        resultsSummary: data.resultsSummary,
+        overallNarrativeProgress: data.overallNarrativeProgress,
+        resultsImpactSummary: data.resultsImpactSummary,
+        overallNarrativeProgressClimateInvestments: data.overallNarrativeProgressClimateInvestments,
+        resultsImpactSummaryClimateInvestments: data.resultsImpactSummaryClimateInvestments,
+        overallNarrativeProgressRegionalNationalCoordination: data.overallNarrativeProgressRegionalNationalCoordination,
+        risks: data.risks,
+        lessonsLearned: data.lessonsLearned,
+        recommendations: data.recommendations,
+        NCUTajikistan: data.NCUTajikistan,
+        NCUUzbekistan: data.NCUUzbekistan,
+        rcu: data.rcu,
+        nextHalfYearNCUTajikistan: data.nextHalfYearNCUTajikistan,
+        nextHalfYearNCUUzbekistan: data.nextHalfYearNCUUzbekistan,
+        nextHalfYearrcu: data.nextHalfYearrcu,
+
+        categorizedByBudgetBisbursement: data.finstatus.categorizedByBudgetBisbursement,
+        categorizedByCreditLine: data.finstatus.categorizedByCreditLine,
+        categorizedByOperatingExpenses: data.finstatus.categorizedByOperatingExpenses,
+        categorizedByServices: data.finstatus.categorizedByServices,
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+    $scope.print = function () {
+
+
+
+        $("#printableArea").print();
+
+
+    };
+
+
+    $scope.save = function () {
+
+
+
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+        UpdReportHalfYearRCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
+
+            if (entry.code === 0) {
+
+
+                GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+                    $mdDialog.hide();
+                    $rootScope.data = entry.resultFromDb;
+
+
+
+                });
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+        });
+
+
+    };
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+}
+
+
+
+
+function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatus, ReportHalfYearRCUSave, GetReport) {
+
+    $scope.data = {
+
+
+        typePeriod: data.periodName,
+        year: data.year,
+        idcountry: data.country,
+        country: data.nameCountry,
+
+        introductionScopeReport: "",
+        resultsSummary: "",
+        overallNarrativeProgress: "",
+        resultsImpactSummary: "",
+        overallNarrativeProgressClimateInvestments: "",
+        resultsImpactSummaryClimateInvestments: "",
+        overallNarrativeProgressRegionalNationalCoordination: "",
+        risks: "",
+        lessonsLearned: "",
+        recommendations: "",
+        NCUTajikistan: "",
+        NCUUzbekistan: "",
+        rcu: "",
+        nextHalfYearNCUTajikistan: "",
+        nextHalfYearNCUUzbekistan: "",
+        nextHalfYearrcu: "",
+        finstatus: {}
+
+    };
+
+
+
+
+
+    GetReportFinansialStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+        for (let obj of entry.resultFromDb) {
+            $scope.data.categorizedByBudgetBisbursement = obj.categorizedByBudgetBisbursement;
+            $scope.data.categorizedByCreditLine = obj.categorizedByCreditLine;
+            $scope.data.categorizedByOperatingExpenses = obj.categorizedByOperatingExpenses;
+            $scope.data.categorizedByServices = obj.categorizedByServices;
+
+
+        }
+    });
+
+
+
+
+    $scope.save = function () {
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+
+
+        ReportHalfYearRCUSave.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
+
+            if (entry.code === 0) {
+
+
+                GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+                    $mdDialog.hide();
+                    $rootScope.data = entry.resultFromDb;
+
+
+
+                });
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+        });
+
+
+    };
+
+
+    $scope.print = function () {
+
+
+
+        $("#printableArea").print();
+
+
+    };
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+
+
+
+
+
+
+
+
+}
+
+
+function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetReport) {
+    $scope.data = {
+
+
+
+        id: data._id,
+        typePeriod: data.typePeriod,
+        year: data.year,
+
+        country: data.country,
+        finstatus: {},
+
+
+
+        projectPerformance: data.projectPerformance,
+        projectPerformanceComments: data.projectPerformanceComments,
+        detailedProject: data.detailedProject,
+        risks: data.risks,
+        lessonsLearned: data.lessonsLearned,
+        recommendations: data.recommendations,
+        plannedBudget: data.plannedBudget,
+
+
+        categorizedByBudgetBisbursement: data.finstatus.categorizedByBudgetBisbursement,
+        categorizedByCreditLine: data.finstatus.categorizedByCreditLine,
+        categorizedByOperatingExpenses: data.finstatus.categorizedByOperatingExpenses,
+        categorizedByServices: data.finstatus.categorizedByServices,
+
+
+
+
+
+
+
+
+    };
+
+
+
+
+    $scope.print = function () {
+
+
+
+        $("#printableArea").print();
+
+
+    };
+
+
+    $scope.save = function () {
+
+
+
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+        UpdReportYearNCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
+
+            if (entry.code === 0) {
+
+
+                GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+                    $mdDialog.hide();
+                    $rootScope.data = entry.resultFromDb;
+
+
+
+                });
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+        });
+
+
+    };
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+
+}
+
+
+function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus, ReportYearSave, GetReport) {
+
+
+
+    $scope.data = {
+
+        typePeriod: data.periodName,
+        year: data.year,
+        idcountry: data.country,
+        country: data.nameCountry,
+        projectPerformance: "",
+        projectPerformanceComments: "",
+        detailedProject: "",
+        risks: "",
+        lessonsLearned: "",
+        recommendations: "",
+        plannedBudget: "",
+        finstatus: {}
+
+
+
+
+    };
+
+
+
+
+
+
+    GetReportFinansialStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+        for (let obj of entry.resultFromDb) {
+            $scope.data.categorizedByBudgetBisbursement = obj.categorizedByBudgetBisbursement;
+            $scope.data.categorizedByCreditLine = obj.categorizedByCreditLine;
+            $scope.data.categorizedByOperatingExpenses = obj.categorizedByOperatingExpenses;
+            $scope.data.categorizedByServices = obj.categorizedByServices;
+
+
+        }
+    });
+
+
+
+
+    $scope.save = function () {
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+
+
+
+        ReportYearSave.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
+
+            if (entry.code === 0) {
+
+
+                GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+                    $mdDialog.hide();
+                    $rootScope.data = entry.resultFromDb;
+
+
+
+                });
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+
+            } else {
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
+
+
+            }
+        });
+
+
+    };
+
+
+    $scope.print = function () {
+
+
+
+        $("#printableArea").print();
+
+
+    };
+
+    $scope.closeDialog = function () {
+
+
+        $mdDialog.hide();
+
+
+
+    };
+
+
+}
 
 
 function DialogControllerUpdReport($scope, data, UpdReport) {
@@ -221,7 +1080,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
-
+                    $mdDialog.hide();
                     $rootScope.data = entry.resultFromDb;
 
 
@@ -450,7 +1309,7 @@ $scope.data = {
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
-
+                    $mdDialog.hide();
                     $rootScope.data = entry.resultFromDb;
 
 

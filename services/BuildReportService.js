@@ -1927,6 +1927,228 @@ module.exports = {
     },
 
 
+    addnewreportYear: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+            let seq = await CounterService.getNextSequence("build_report_id");
+
+
+
+            const result = await col.insertOne({
+
+
+                id: seq,
+                typePeriod: objParams.typePeriod,
+                year: objParams.year,
+                country: objParams.country,
+
+                idcountry: ObjectId(objParams.idcountry),
+
+
+
+
+                projectPerformance: objParams.projectPerformance,
+                projectPerformanceComments: objParams.projectPerformanceComments,
+                detailedProject: objParams.detailedProject,
+                risks: objParams.risks,
+                lessonsLearned: objParams.lessonsLearned,
+                recommendations: objParams.recommendations,
+                plannedBudget: objParams.plannedBudget,
+
+
+                finstatus: objParams.finstatus,
+
+
+
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+    addHalfYearrcusave: async (objParams) => {
+
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+            let seq = await CounterService.getNextSequence("build_report_id");
+
+
+
+            const result = await col.insertOne({
+
+
+                id: seq,
+                typePeriod: objParams.typePeriod,
+                year: objParams.year,
+                country: objParams.country,
+
+                idcountry: ObjectId(objParams.idcountry),
+
+
+
+
+                introductionScopeReport: objParams.introductionScopeReport,
+                resultsSummary: objParams.resultsSummary,
+                overallNarrativeProgress: objParams.overallNarrativeProgress,
+                resultsImpactSummary: objParams.resultsImpactSummary,
+                overallNarrativeProgressClimateInvestments: objParams.overallNarrativeProgressClimateInvestments,
+                resultsImpactSummaryClimateInvestments: objParams.resultsImpactSummaryClimateInvestments,
+                overallNarrativeProgressRegionalNationalCoordination: objParams.overallNarrativeProgressRegionalNationalCoordination,
+                risks: objParams.risks,
+                lessonsLearned: objParams.lessonsLearned,
+                recommendations: objParams.recommendations,
+                NCUTajikistan: objParams.NCUTajikistan,
+                NCUUzbekistan: objParams.NCUUzbekistan,
+                rcu: objParams.rcu,
+                nextHalfYearNCUTajikistan: objParams.nextHalfYearNCUTajikistan,
+                nextHalfYearNCUUzbekistan: objParams.nextHalfYearNCUUzbekistan,
+                nextHalfYearrcu: objParams.nextHalfYearrcu,
+
+                finstatus: objParams.finstatus,
+
+
+
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+    addYearRCUsave: async (objParams) => {
+
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+            let seq = await CounterService.getNextSequence("build_report_id");
+
+
+
+            const result = await col.insertOne({
+
+
+                id: seq,
+                typePeriod: objParams.typePeriod,
+                year: objParams.year,
+                country: objParams.country,
+
+                idcountry: ObjectId(objParams.idcountry),
+
+
+
+
+                introductionScopeReport: objParams.introductionScopeReport,
+                projectPerformance: objParams.projectPerformance,
+                resultsSummary: objParams.resultsSummary,
+                overallNarrativeProgressRegionalClimateKnowledge: objParams.overallNarrativeProgressRegionalClimateKnowledge,
+                resultsImpactSummaryRegionalClimateKnowledge: objParams.resultsImpactSummaryRegionalClimateKnowledge,
+                overallNarrativeProgressClimateInvestments: objParams.overallNarrativeProgressClimateInvestments,
+                resultsImpactSummaryClimateInvestments: objParams.resultsImpactSummaryClimateInvestments,
+                overallNarrativeProgressRegionalNationalCoordination: objParams.overallNarrativeProgressRegionalNationalCoordination,
+                risks: objParams.risks,
+                lessonsLearned: objParams.lessonsLearned,
+                recommendations: objParams.recommendations,
+                NCUTajikistan: objParams.NCUTajikistan,
+                NCUUzbekistan: objParams.NCUUzbekistan,
+                rcu: objParams.rcu,
+
+                finstatus: objParams.finstatus,
+
+
+
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
 
     getAll: async () => {
 
@@ -2029,6 +2251,199 @@ module.exports = {
                     projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                     projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
 
+
+                }
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+    updreportYearNCU: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+
+
+            const result = await col.updateOne({_id: ObjectId(objParams.id)}, {
+
+                $currentDate: {
+                    lastModified: true
+                },
+
+                $set: {
+
+
+                    finstatus: objParams.finstatus,
+
+
+                    projectPerformance: objParams.projectPerformance,
+                    projectPerformanceComments: objParams.projectPerformanceComments,
+                    detailedProject: objParams.detailedProject,
+                    risks: objParams.risks,
+                    lessonsLearned: objParams.lessonsLearned,
+                    recommendations: objParams.recommendations,
+                    plannedBudget: objParams.plannedBudget
+
+                }
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
+    updreportHalfYearRCU: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+
+
+            const result = await col.updateOne({_id: ObjectId(objParams.id)}, {
+
+                $currentDate: {
+                    lastModified: true
+                },
+
+                $set: {
+
+
+                    finstatus: objParams.finstatus,
+
+
+                    introductionScopeReport: objParams.introductionScopeReport,
+                    resultsSummary: objParams.resultsSummary,
+                    overallNarrativeProgress: objParams.overallNarrativeProgress,
+                    resultsImpactSummary: objParams.resultsImpactSummary,
+                    overallNarrativeProgressClimateInvestments: objParams.overallNarrativeProgressClimateInvestments,
+                    resultsImpactSummaryClimateInvestments: objParams.resultsImpactSummaryClimateInvestments,
+                    overallNarrativeProgressRegionalNationalCoordination: objParams.overallNarrativeProgressRegionalNationalCoordination,
+                    risks: objParams.risks,
+                    lessonsLearned: objParams.lessonsLearned,
+                    recommendations: objParams.recommendations,
+                    NCUTajikistan: objParams.NCUTajikistan,
+                    NCUUzbekistan: objParams.NCUUzbekistan,
+                    rcu: objParams.rcu,
+                    nextHalfYearNCUTajikistan: objParams.nextHalfYearNCUTajikistan,
+                    nextHalfYearNCUUzbekistan: objParams.nextHalfYearNCUUzbekistan,
+                    nextHalfYearrcu: objParams.nextHalfYearrcu
+
+                }
+
+
+
+
+            });
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+    updreportYearRCU: async (objParams) => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+
+
+            const result = await col.updateOne({_id: ObjectId(objParams.id)}, {
+
+                $currentDate: {
+                    lastModified: true
+                },
+
+                $set: {
+
+
+                    finstatus: objParams.finstatus,
+
+
+                    introductionScopeReport: objParams.introductionScopeReport,
+                    projectPerformance: objParams.projectPerformance,
+                    resultsSummary: objParams.resultsSummary,
+                    overallNarrativeProgressRegionalClimateKnowledge: objParams.overallNarrativeProgressRegionalClimateKnowledge,
+                    resultsImpactSummaryRegionalClimateKnowledge: objParams.resultsImpactSummaryRegionalClimateKnowledge,
+                    overallNarrativeProgressClimateInvestments: objParams.overallNarrativeProgressClimateInvestments,
+                    resultsImpactSummaryClimateInvestments: objParams.resultsImpactSummaryClimateInvestments,
+                    overallNarrativeProgressRegionalNationalCoordination: objParams.overallNarrativeProgressRegionalNationalCoordination,
+                    risks: objParams.risks,
+                    lessonsLearned: objParams.lessonsLearned,
+                    recommendations: objParams.recommendations,
+                    NCUTajikistan: objParams.NCUTajikistan,
+                    NCUUzbekistan: objParams.NCUUzbekistan,
+                    rcu: objParams.rcu,
 
                 }
 

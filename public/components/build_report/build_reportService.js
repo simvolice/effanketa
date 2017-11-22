@@ -64,3 +64,32 @@ angular.module('app').factory("UpdReport", function($resource) {
 angular.module('app').factory("DelReport", function($resource) {
     return $resource("/delreport");
 });
+
+
+angular.module('app').factory("ReportYearSave", function($resource) {
+    return $resource("/reportyearsave");
+});
+
+
+angular.module('app').factory("UpdReportYearNCU", function($resource) {
+    return $resource("/updreportyearncu");
+});
+
+
+angular.module('app').factory("ReportHalfYearRCUSave", function($resource) {
+    return $resource("/reporthalfyearrcusave");
+});
+
+
+angular.module('app').factory("UpdReportHalfYearRCU", function($resource) {
+    return $resource("/updreporthalfyearrcu");
+});
+
+
+angular.module('app').factory("ReportYearRCUSave", function($resource) {
+    return $resource("/reportyearrcusave");
+});
+
+angular.module('app').factory("UpdReportYearRCU", function($resource) {
+    return $resource("/updreportyearrcu");
+});
