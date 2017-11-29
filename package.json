@@ -35,8 +35,17 @@
     "xlsx": "^0.11.8"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^7.0.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^3.2.1",
+    "grunt-html2js": "^0.5.1",
     "mocha": "^3.2.0"
   },
   "snyk": true
