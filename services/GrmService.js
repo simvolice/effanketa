@@ -39,6 +39,9 @@ module.exports = {
             let categName = await GrmStatusService.getCategById(objParams.categComplaint);
             let canalName = await GrmStatusService.getCanalById(objParams.canalRequest);
             let statusName = await GrmStatusService.getStatusById(objParams.statusId);
+            let levelComplaint = await GrmStatusService.getLevelById(objParams.levelComplaint);
+
+
             let colorForStatus = await setColor.setColorOnStatus(statusName.name);
 
 
@@ -53,10 +56,12 @@ module.exports = {
                 canalName: canalName.name,
                 statusName: statusName.name,
                 colorForStatus: colorForStatus,
+                levelComplaint: levelComplaint.name,
 
 
                 dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
                 canalRequest: ObjectId(objParams.canalRequest),
+                levelComplaintId: ObjectId(objParams.levelComplaint),
                 country: ObjectId(objParams.country),
                 declarerFIO: objParams.declarerFIO,
                 categComplaint: ObjectId(objParams.categComplaint),
@@ -292,13 +297,14 @@ module.exports = {
             let canalName = await GrmStatusService.getCanalById(objParams.canalRequest);
             let statusName = await GrmStatusService.getStatusById(objParams.statusId);
             let colorForStatus = await setColor.setColorOnStatus(statusName.name);
+            let levelComplaint = await GrmStatusService.getLevelById(objParams.levelComplaint);
 
 
 
 
             const result = await col.findOneAndUpdate(
 
-                {_id: ObjectId(objParams._id)},
+                {_id: ObjectId(objParams.id)},
 
 
 
@@ -310,6 +316,10 @@ module.exports = {
                         canalName: canalName.name,
                         statusName: statusName.name,
                         colorForStatus: colorForStatus,
+
+
+                        levelComplaintId: ObjectId(objParams.levelComplaint),
+                        levelComplaint: levelComplaint.name,
 
 
                         dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),

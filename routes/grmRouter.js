@@ -146,6 +146,15 @@ router.get('/getallcanalrequest', async (req, res, next) =>{
 
 });
 
+router.get('/getalllevelcomplaint', async (req, res, next) =>{
+
+    let result = await GrmStatusService.getAllLevelComplaint();
+
+    res.json({"code": 0, "resultFromDb": result});
+
+
+});
+
 
 router.post('/insertnewcanalrequest', checkSeesionToken, async (req, res, next) =>{
 

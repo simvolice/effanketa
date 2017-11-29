@@ -60,3 +60,8 @@ angular.module('app').factory("GetAllCategGRM", function($resource) {
 angular.module('app').factory("InsertNewCategGRM", function($resource) {
     return $resource("/insertnewcateggrm");
 });
+
+
+angular.module('app').factory("Getalllevelcomplaint", function($resource) {
+    return $resource("/getalllevelcomplaint");
+});

@@ -30,7 +30,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="addBtn($event)">Добавить запись</button>
                         <button class="btn btn-primary" ng-click="excel()">Выгрузить в Excel</button>
 
 
@@ -46,29 +46,29 @@
                         <thead md-head fix-head>
                         <tr md-row>
 
-                            <th md-column>Номер <br> отслеживания</th>
-                            <th md-column>Дата получения</th>
-                            <th md-column>Канал получения <br> жалобы</th>
-                            <th md-column>Страна</th>
-                            <th md-column>Заявитель</th>
+                            <th md-column class="custom__border__group__all">Номер <br> отслеживания</th>
+                            <th md-column class="custom__border__group__all">Дата получения</th>
+                            <th md-column class="custom__border__group__all">Канал получения <br> жалобы</th>
+                            <th md-column class="custom__border__group__all">Страна</th>
+                            <th md-column class="custom__border__group__all">Заявитель</th>
 
 
 
 
-                            <th md-column>Категория жалобы</th>
+                            <th md-column class="custom__border__group__all">Категория жалобы</th>
 
 
-                            <th md-column>Возникшие вопросы</th>
-                            <th md-column>Ответственный за <br> рассмотрение жалобы</th>
-                            <th md-column>Статус жалобы</th>
-                            <th md-column>Принятые меры</th>
-                            <th md-column>Крайний срок <br> для ответа заявителю</th>
-                            <th md-column>Дата уведомления <br> заявителя</th>
-                            <th md-column>Время затраченное <br> на рассмотрение жалобы</th>
+                            <th md-column class="custom__border__group__all">Возникшие вопросы</th>
+                            <th md-column class="custom__border__group__all">Ответственный за <br> рассмотрение жалобы</th>
+                            <th md-column class="custom__border__group__all">Статус жалобы</th>
+                            <th md-column class="custom__border__group__all">Принятые меры</th>
+                            <th md-column class="custom__border__group__all">Крайний срок <br> для ответа заявителю</th>
+                            <th md-column class="custom__border__group__all">Дата уведомления <br> заявителя</th>
+                            <th md-column class="custom__border__group__all">Время затраченное <br> на рассмотрение жалобы</th>
 
 
-                            <th md-column>Сохранить</th>
-                            <th md-column>Удалить</th>
+                            <th md-column class="custom__border__group__all">Обновить</th>
+                            <th md-column class="custom__border__group__all">Удалить</th>
 
                         </tr>
                         </thead>
@@ -90,13 +90,57 @@
                             <td md-cell>
 
 
-                                <input type="date" value="{{data.dateInGo}}" ng-model="data.dateInGo">
+                                {{data.dateInGo | date : "dd.MM.y"}}
                               </td>
 
                             <td md-cell>
 
-                                <select ng-model="data.canalRequest" ng-options="x._id as x.name for x in data.allCanalRequestStatus">
-                                </select>
+                                {{data.canalName}}
+                            </td>
+
+
+
+                            <td md-cell>
+
+                                {{data.nameCountry}}
+
+                            </td>
+
+
+
+
+                            <td md-cell>{{data.declarerFIO}}</td>
+
+
+                            <td md-cell>
+
+                               {{data.categName | limitTo:15}}
+
+                            </td>
+
+
+
+                            <td md-cell>{{data.raisedQuestion | limitTo:15}}</td>
+
+
+
+
+                            <td md-cell>{{data.responsibleConsideration}}</td>
+
+
+                            <td md-cell>
+
+                               {{data.statusName}}
+
+
+                            </td>
+
+
+                            <td md-cell>
+
+
+                                {{data.takeAction | limitTo:15}}
+
 
                             </td>
 
@@ -104,61 +148,29 @@
 
                             <td md-cell>
 
-                                <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                </select>
+
+                                {{data.lastDateAnswer | date : "dd.MM.y"}}
+
 
                             </td>
 
 
-
-
-                            <td md-cell><input type="text" value="{{data.declarerFIO}}" ng-model="data.declarerFIO"></td>
 
 
                             <td md-cell>
 
-                                <select ng-model="data.categComplaint" ng-options="x._id as x.name for x in data.allCategComplaint" style="max-width: 200px;">
-                                </select>
+                                {{data.dateNotifDeclarer | date : "dd.MM.y"}}
 
                             </td>
 
 
-
-                            <td md-cell><input type="text" value="{{data.raisedQuestion}}" ng-model="data.raisedQuestion"></td>
-
-
-
-
-                            <td md-cell><input type="text" value="{{data.responsibleConsideration}}" ng-model="data.responsibleConsideration"></td>
-
-
-                            <td md-cell>
-
-                                <select ng-model="data.statusId" ng-options="x._id as x.name for x in data.allStatus">
-                                </select>
-
-                            </td>
-
-
-                            <td md-cell><input type="text" value="{{data.takeAction}}" ng-model="data.takeAction"></td>
-
-
-
-                            <td md-cell><input type="date" value="{{data.lastDateAnswer}}" ng-model="data.lastDateAnswer" min="{{data.dateInGo | date:'yyyy-MM-dd'}}" ng-change="changeLastDateAnswer(data)"></td>
-
-
-
-
-                            <td md-cell><input type="date" value="{{data.dateNotifDeclarer}}" ng-model="data.dateNotifDeclarer" min="{{data.dateInGo | date:'yyyy-MM-dd'}}"></td>
-
-
-                            <td md-cell><input type="text" value="{{data.timeToCheckComplaint}}" ng-model="data.timeToCheckComplaint"></td>
+                            <td md-cell>{{data.timeToCheckComplaint}}</td>
 
 
 
 
 
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
+                            <td md-cell><i class="material-icons" ng-click="updBtn(data, $event)">done_all</i></td>
 
                             <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
 
