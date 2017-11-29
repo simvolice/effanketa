@@ -626,3 +626,21 @@ table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2)
     width: 101px;
 
 }
+
+
+.custom__border__group {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+
+.custom__border__left__group {
+    border-left: 1px solid black;
+
+}
+
+.custom__border__right__group {
+    border-right: 1px solid black;
+
+}

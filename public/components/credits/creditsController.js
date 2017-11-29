@@ -153,7 +153,7 @@ $scope.createNewFact = function (event) {
 
         GetCreditsFact.get(function (result) {
             tempObj.allCreditsFact = result.resultFromDb;
-            tempObj.creditsFactSelect = result.resultFromDb[0]._id;
+            tempObj.categcredits = result.resultFromDb[0]._id;
         });
 
 

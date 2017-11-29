@@ -125,7 +125,7 @@ module.exports = {
 
                     _id: 0,
                     nameCountry: 1,
-                    categcredits : 1,
+                    nameFactCategcredits: 1,
                     countsubproject : 1,
                     commonAmountInDollors : 1,
                     commonAmountInNatCurrency : 1,
@@ -139,7 +139,8 @@ module.exports = {
                     NonDirectBeneficiariesHiredMale : 1,
                     NonDirectBeneficiariesHiredFemale : 1,
                     CreatePowerPlan : 1,
-                    nameFact: 1
+                    CreatePowerFact: 1
+
 
 
 
@@ -147,15 +148,13 @@ module.exports = {
                 }).toArray();
 
 
+                console.log("\x1b[42m", result);
+
+
+
                 Object.defineProperties(result[0], {
                     'Страна': {
                         value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Категория кредитов': {
-                        value: result[0].categcredits,
                         writable: true,
                         enumerable: true,
                         configurable: true
@@ -238,8 +237,14 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
-                    'Создаваемые мощности/Ожидаемый эффект, Факт': {
-                        value: result[0].nameFact,
+                    'Создаваемые мощности/Ожидаемый эффект, Факт Га': {
+                        value: result[0].CreatePowerFact,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Категория кредитов': {
+                        value: result[0].nameFactCategcredits,
                         writable: true,
                         enumerable: true,
                         configurable: true
@@ -252,7 +257,7 @@ module.exports = {
 
 
                delete result[0].nameCountry;
-               delete result[0].categcredits;
+
                delete result[0].countsubproject;
                delete result[0].commonAmountInDollors;
                delete result[0].commonAmountInNatCurrency;
@@ -266,7 +271,8 @@ module.exports = {
                delete result[0].NonDirectBeneficiariesHiredMale;
                delete result[0].NonDirectBeneficiariesHiredFemale;
                delete result[0].CreatePowerPlan;
-               delete result[0].nameFact;
+               delete result[0].CreatePowerFact;
+               delete result[0].nameFactCategcredits;
 
 
 

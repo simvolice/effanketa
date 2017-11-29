@@ -51,50 +51,50 @@
 
                             <th md-column colspan="4" scope="colgroup"></th>
 
-                            <th md-column colspan="2" scope="colgroup">Общий объем</th>
-                            <th md-column colspan="3" scope="colgroup">Прямые бенефециары <br>(заемщики+члены семьи+наёмные работники)</th>
-                            <th md-column colspan="3" scope="colgroup">Непрямые бенефециары <br> (члены семей)</th>
-                            <th md-column colspan="3" scope="colgroup">Непрямые бенефециары <br> (наемные работники)</th>
-                            <th md-column colspan="2" scope="colgroup">Создаваемые мощности <br>/Ожидаемый эффект</th>
+                            <th md-column colspan="2" scope="colgroup" class="custom__border__group">Общий объем</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">Прямые бенефециары <br>(заемщики+члены семьи+наёмные работники)</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">Непрямые бенефециары <br> (члены семей)</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">Непрямые бенефециары <br> (наемные работники)</th>
+                            <th md-column colspan="2" scope="colgroup" class="custom__border__group">Создаваемые мощности <br>/Ожидаемый эффект</th>
 
                         </tr>
 
 
-                        <tr md-row>
+                        <tr md-row style="border-bottom: 1px solid black">
 
-                            <th md-column>№</th>
-                            <th md-column>Категория кредитов</th>
-                            <th md-column>Кол-во <br> субпроектов</th>
-                            <th md-column>Страна</th>
-
-
-
-
-                            <th md-column>В долларах</th>
-                            <th md-column>Нац. валюта</th>
+                            <th md-column class="custom__border__group">№</th>
+                            <th md-column class="custom__border__right__group">Категория кредитов</th>
+                            <th md-column class="custom__border__right__group">Кол-во <br> субпроектов</th>
+                            <th md-column class="custom__border__right__group">Страна</th>
 
 
 
 
-                            <th md-column>Муж.</th>
-                            <th md-column>Жен.</th>
-                            <th md-column>Всего</th>
+                            <th md-column class="custom__border__left__group">В долларах</th>
+                            <th md-column class="custom__border__right__group">Нац. валюта</th>
+
 
 
 
                             <th md-column>Муж.</th>
                             <th md-column>Жен.</th>
-                            <th md-column>Всего</th>
+                            <th md-column class="custom__border__right__group">Всего</th>
+
 
 
                             <th md-column>Муж.</th>
                             <th md-column>Жен.</th>
-                            <th md-column>Всего</th>
+                            <th md-column class="custom__border__right__group">Всего</th>
+
+
+                            <th md-column>Муж.</th>
+                            <th md-column>Жен.</th>
+                            <th md-column class="custom__border__right__group">Всего</th>
 
                             <th md-column>План Га</th>
-                            <th md-column>Факт</th>
-                            <th md-column>Сохранить</th>
-                            <th md-column>Удалить</th>
+                            <th md-column class="custom__border__right__group">Факт</th>
+                            <th md-column class="custom__border__group">Сохранить</th>
+                            <th md-column class="custom__border__group">Удалить</th>
 
 
                         </tr>
@@ -119,7 +119,32 @@
                             <td md-cell>{{data.id}}</td>
 
 
-                            <td md-cell><input type="text" value="{{data.categcredits}}" ng-model="data.categcredits"></td>
+
+
+                            <td md-cell>
+
+
+                                <md-select ng-model="data.categcredits"
+                                           md-on-close="clearSearchTerm()"
+                                           data-md-container-class="selectdemoSelectHeader"
+                                >
+                                    <md-select-header class="demo-select-header">
+                                        <input ng-model="dataCtrl.newFact"
+                                               ng-keyup='createNewFact($event)'
+                                               ng-keydown="$event.stopPropagation($event)"
+                                               type="text"
+                                               placeholder="Напечатайте здесь и нажмите Enter"
+                                               class="demo-header-searchbox md-text">
+                                    </md-select-header>
+                                    <md-optgroup>
+                                        <md-option ng-value="fact._id" ng-repeat="fact in data.allCreditsFact">{{fact.name}}</md-option>
+                                    </md-optgroup>
+                                </md-select>
+
+
+
+                            </td>
+
 
 
 
@@ -135,10 +160,10 @@
 
 
 
-                            <td md-cell><input type="text" value="{{data.commonAmountInDollors}}" ng-model="data.commonAmountInDollors"></td>
+                            <td md-cell><input type="text" class="custom__threeteen__digits" value="{{data.commonAmountInDollors}}" ng-model="data.commonAmountInDollors"></td>
 
 
-                            <td md-cell><input type="text" value="{{data.commonAmountInNatCurrency}}" ng-model="data.commonAmountInNatCurrency"></td>
+                            <td md-cell><input type="text" class="custom__threeteen__digits" value="{{data.commonAmountInNatCurrency}}" ng-model="data.commonAmountInNatCurrency"></td>
 
 
 
@@ -183,33 +208,12 @@
 
 
                             <td md-cell><input class="custom__three__digits" type="text" value="{{data.CreatePowerPlan}}" ng-model="data.CreatePowerPlan"></td>
+                            <td md-cell><input class="custom__three__digits" type="text" value="{{data.CreatePowerFact}}" ng-model="data.CreatePowerFact"></td>
 
 
 
 
-                            <td md-cell>
 
-
-                                <md-select ng-model="data.creditsFactSelect"
-                                           md-on-close="clearSearchTerm()"
-                                           data-md-container-class="selectdemoSelectHeader"
-                                           >
-                                    <md-select-header class="demo-select-header">
-                                        <input ng-model="dataCtrl.newFact"
-                                               ng-keyup='createNewFact($event)'
-                                               ng-keydown="$event.stopPropagation($event)"
-                                               type="text"
-                                               placeholder="Напечатайте здесь и нажмите Enter"
-                                               class="demo-header-searchbox md-text">
-                                    </md-select-header>
-                                    <md-optgroup>
-                                        <md-option ng-value="fact._id" ng-repeat="fact in data.allCreditsFact">{{fact.name}}</md-option>
-                                    </md-optgroup>
-                                </md-select>
-
-
-
-                            </td>
 
                             <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
 

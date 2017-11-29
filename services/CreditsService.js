@@ -28,7 +28,7 @@ module.exports = {
 
           let seq = await CounterService.getNextSequence("creditid");
           let nameCountry = await CountryService.getCountryById(objParams.country);
-          let nameFact = await ItemForFactInCredits.getNameById(objParams.creditsFactSelect);
+          let nameFact = await ItemForFactInCredits.getNameById(objParams.categcredits);
 
 
           const result = await col.insertOne({
@@ -39,7 +39,7 @@ module.exports = {
 
               country: ObjectId(objParams.country),
               nameCountry: nameCountry.name,
-              categcredits: objParams.categcredits,
+              categcredits: ObjectId(objParams.categcredits),
 
               countsubproject: Int32(objParams.countsubproject),
               commonAmountInDollors: Int32(objParams.commonAmountInDollors),
@@ -54,8 +54,9 @@ module.exports = {
               NonDirectBeneficiariesHiredMale: Int32(objParams.NonDirectBeneficiariesHiredMale),
               NonDirectBeneficiariesHiredFemale: Int32(objParams.NonDirectBeneficiariesHiredFemale),
               CreatePowerPlan: Double(objParams.CreatePowerPlan),
-              creditsFactSelect: ObjectId(objParams.creditsFactSelect),
-              nameFact: nameFact.name,
+              CreatePowerFact: Double(objParams.CreatePowerFact),
+
+              nameFactCategcredits: nameFact.name,
 
               createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
@@ -262,7 +263,7 @@ module.exports = {
             const col = dbConnect.getConnect().collection('credits');
 
             let nameCountry = await CountryService.getCountryById(objParams.country);
-            let nameFact = await ItemForFactInCredits.getNameById(objParams.creditsFactSelect);
+            let nameFact = await ItemForFactInCredits.getNameById(objParams.categcredits);
 
 
 
@@ -278,8 +279,8 @@ module.exports = {
 
 
                       country: ObjectId(objParams.country),
-                      categcredits: objParams.categcredits,
-                      nameFact: nameFact.name,
+                      categcredits: ObjectId(objParams.categcredits),
+                      nameFactCategcredits: nameFact.name,
                       nameCountry: nameCountry.name,
                       countsubproject: Int32(objParams.countsubproject),
                       commonAmountInDollors: Int32(objParams.commonAmountInDollors),
