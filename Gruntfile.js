@@ -53,6 +53,28 @@ module.exports = function(grunt) {
                     'dist/app.js': 'dist/app.js'
                 }
             }
+        },
+
+
+        cssmin: {
+            options: {
+                mergeIntoShorthands: false,
+                roundingPrecision: -1
+            },
+            target: {
+                files: {
+                    'dist/style.min.css': ['public/assets/css/angular-material.min.css', 'public/assets/css/app.css',
+                    'public/assets/css/bootstrap.min.css',
+                        'public/assets/css/c3.min.css',
+                        'public/assets/css/drawer.min.css',
+                        'public/assets/css/material-kit.css',
+                        'public/assets/css/md-data-table.min.css',
+                        'public/assets/css/print.css'
+
+
+                    ]
+                }
+            }
         }
 
 
@@ -68,6 +90,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-babel');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
 
 
@@ -75,4 +99,5 @@ module.exports = function(grunt) {
         'clean:temp']);
 
     grunt.registerTask('cleanDist', ['clean:dist']);
+    grunt.registerTask('cssMin', ['cssmin:target']);
 };
