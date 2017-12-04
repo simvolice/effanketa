@@ -184,6 +184,9 @@ function DialogControllerUpd($scope, data, Getalllevelcomplaint, InsertNewCanalR
         statusId: data.statusId,
         takeAction: data.takeAction,
         timeToCheckComplaint: data.timeToCheckComplaint,
+        satisfiedMeasuresTaken: data.satisfiedMeasuresTaken,
+        assessmentQualitySatisfactionComplaint: data.assessmentQualitySatisfactionComplaint,
+
 
 
     };
