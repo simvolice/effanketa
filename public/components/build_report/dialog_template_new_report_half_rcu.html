@@ -129,8 +129,8 @@
                                                 <p>3.Financial status and utilization</p>
                                                 <p>4.Plans for the next year</p>
                                                 <p>5.Annexes</p>
-                                                <p>5.1.Annex 1. Workplan
-                                                    Quarter, Semi-Annual Report</p>
+                                                <p>5.1.Annex 1. Workplan</p>
+                                                <p>Quarter, Semi-Annual Report</p>
                                                 <p>Notes:</p>
                                                 <p>Project Performance:</p>
                                                 <p>1.Climate Investments</p>
@@ -162,8 +162,8 @@
                                                 <p>5.Financial status and utilization</p>
                                                 <p>6.Plans for the next year</p>
                                                 <p>7.Annexes</p>
-                                                <p>7.1. Annex 2. Workplan
-                                                    Semi-Annual Report</p>
+                                                <p>7.1. Annex 2. Workplan</p>
+                                                <p>Semi-Annual Report</p>
                                                 <p>Notes:</p>
                                                 <p>1.Introduction and Scope of Report</p>
                                                 <p>2.Results summary and implementation review</p>
@@ -181,14 +181,16 @@
                                                 <p>6.Annexes</p>
                                                 <p>Annex 7. Draft Terms of Reference for Interim and Final Program
                                                     Evaluation</p>
-                                                <p>Notes:</p>
-                                                <p>The RCU Biannual Progress Report for the project will be used to demonstrate the progress of the project for the half-year period with consolidated inputs provided by NCUs.
-                                                    You should write your report using the black Arial font, size 11, single spaced.
-                                                </p>
-                                                <p>This report should be approximately 6-7 (maximum) pages, excluding instructions and annexes.
-                                                </p>
-                                                <p>Please be as direct and concise as possible.</p>
 
+                                                <p>Notes:</p>
+                                                <p>The RCU Biannual Progress Report for the project will be used to
+                                                    demonstrate the progress of the project for the half-year period
+                                                    with consolidated inputs provided by NCUs.
+                                                    You should write your report using the black Arial font, size 11,
+                                                    single spaced.
+                                                    This report should be approximately 6-7 (maximum) pages, excluding
+                                                    instructions and annexes.
+                                                    Please be as direct and concise as possible.</p>
 
 
 
@@ -512,6 +514,24 @@
 
                                                 <span class="material-input"></span></div>
                                         </div>
+
+
+                                        <div class="input-group" ng-show="data.arrAllFiles">
+										<span class="input-group-addon">
+											<i>Дополнительные документы</i>
+										</span>
+                                            <a class="label label-info" ng-repeat="file in data.arrAllFiles" href="{{file.url}}" target="_blank">{{file.name}}</a>
+                                        </div>
+
+                                        <div class="input-group">
+										<span class="input-group-addon">
+											<i>Дополнительные документы</i>
+										</span>
+                                            <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" multiple/>
+                                        </div>
+
+
+
                                     </div>
 
 
@@ -568,7 +588,7 @@
 
 
 
-        <md-button class="md-raised md-primary" ng-click="save()">
+        <md-button class="md-raised md-primary" ng-click="uploadFiles()">
             Сохранить
         </md-button>
 

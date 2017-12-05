@@ -405,7 +405,29 @@
 
 
 
+
+
+
+
+
+
                                                 <span class="material-input"></span></div>
+                                        </div>
+
+
+
+                                        <div class="input-group" ng-show="data.arrAllFiles">
+										<span class="input-group-addon">
+											<i>Дополнительные документы</i>
+										</span>
+                                            <a class="label label-info" ng-repeat="file in data.arrAllFiles" href="{{file.url}}" target="_blank">{{file.name}}</a>
+                                        </div>
+
+                                        <div class="input-group">
+										<span class="input-group-addon">
+											<i>Дополнительные документы</i>
+										</span>
+                                            <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" multiple/>
                                         </div>
                                     </div>
 
@@ -463,7 +485,7 @@
 
 
 
-        <md-button class="md-raised md-primary" ng-click="save()">
+        <md-button class="md-raised md-primary" ng-click="uploadFiles()">
             Сохранить
         </md-button>
 

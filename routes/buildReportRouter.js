@@ -7,10 +7,12 @@ const express = require('express');
 const router = express.Router();
 const checkSeesionToken = require('../utils/checkSeesionToken');
 const checkRole = require('../utils/checkRole');
-
+const Busboy = require('async-busboy');
 const TypePeriod = require('../services/TypePeriod');
 const NameYear = require('../services/NameYear');
 const BuildReportService = require('../services/BuildReportService');
+const path = require('path');
+const fs = require('fs');
 
 router.post('/gettypeperiod', checkSeesionToken, async (req, res, next) =>{
 
@@ -172,7 +174,22 @@ router.post('/getreportforevent', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
 
-    let result = await BuildReportService.addnewreportYear(req.body.data);
+
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let arrAllFiles = [];
+
+
+    for (let filesItem of files) {
+        filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
+        arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+    }
+
+
+
+
+    let result = await BuildReportService.addnewreportYear(JSON.parse(fields.data), arrAllFiles);
 
     if (result.hasOwnProperty("result")) {
 
@@ -191,7 +208,43 @@ router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
 
-    let result = await BuildReportService.updreportYearNCU(req.body.data);
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let arrAllFiles = [];
+
+
+
+
+    if (files.length === 0) {
+
+        arrAllFiles = JSON.parse(fields.data).arrAllFiles;
+        delete arrAllFiles[0].$$hashKey;
+    } else {
+
+        for (let filesItem of files) {
+            filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
+            arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+    let result = await BuildReportService.updreportYearNCU(JSON.parse(fields.data), arrAllFiles);
+
+
+
+
+
 
     if (result.hasOwnProperty("result")) {
 
@@ -210,7 +263,21 @@ router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
 router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) =>{
 
 
-    let result = await BuildReportService.addHalfYearrcusave(req.body.data);
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let arrAllFiles = [];
+
+
+    for (let filesItem of files) {
+        filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
+        arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+    }
+
+
+
+
+    let result = await BuildReportService.addHalfYearrcusave(JSON.parse(fields.data), arrAllFiles);
 
     if (result.hasOwnProperty("result")) {
 
@@ -232,7 +299,30 @@ router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) 
 router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =>{
 
 
-    let result = await BuildReportService.updreportHalfYearRCU(req.body.data);
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let arrAllFiles = [];
+
+
+
+
+    if (files.length === 0) {
+
+        arrAllFiles = JSON.parse(fields.data).arrAllFiles;
+        delete arrAllFiles[0].$$hashKey;
+    } else {
+
+        for (let filesItem of files) {
+            filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
+            arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+        }
+
+    }
+
+
+
+
+    let result = await BuildReportService.updreportHalfYearRCU(JSON.parse(fields.data), arrAllFiles);
 
     if (result.hasOwnProperty("result")) {
 
@@ -252,7 +342,22 @@ router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =
 
 router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) =>{
 
-    let result = await BuildReportService.addYearRCUsave(req.body.data);
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let arrAllFiles = [];
+
+
+    for (let filesItem of files) {
+        filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
+        arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+    }
+
+
+
+
+
+    let result = await BuildReportService.addYearRCUsave(JSON.parse(fields.data), arrAllFiles);
 
     if (result.hasOwnProperty("result")) {
 
@@ -270,7 +375,37 @@ router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) =>{
 
 
 router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
-    let result = await BuildReportService.updreportYearRCU(req.body.data);
+
+
+
+
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let arrAllFiles = [];
+
+
+
+
+    if (files.length === 0) {
+
+        arrAllFiles = JSON.parse(fields.data).arrAllFiles;
+        delete arrAllFiles[0].$$hashKey;
+    } else {
+
+        for (let filesItem of files) {
+            filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
+            arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+        }
+
+    }
+
+
+
+
+
+
+    let result = await BuildReportService.updreportYearRCU(JSON.parse(fields.data), arrAllFiles);
 
     if (result.hasOwnProperty("result")) {
 

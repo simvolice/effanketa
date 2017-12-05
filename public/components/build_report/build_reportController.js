@@ -287,7 +287,7 @@ $scope.showModalWnd = function (ev) {
 
 
 
-function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetReport) {
+function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetReport, $http) {
     $scope.data = {
 
 
@@ -298,6 +298,8 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
 
         country: data.country,
         finstatus: {},
+
+        arrAllFiles: data.arrAllFiles,
 
 
 
@@ -343,9 +345,18 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
     };
 
 
-    $scope.save = function () {
+
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
 
 
+
+
+    $scope.uploadFiles = function () {
 
 
         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
@@ -353,9 +364,28 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
         $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
-        UpdReportYearRCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
-            if (entry.code === 0) {
+        formdata.append('data', JSON.stringify($scope.data));
+
+
+        var request = {
+            method: 'POST',
+            url: '/updreportyearrcu',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
 
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -368,29 +398,31 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
                 });
 
 
+
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
+    }
 
 
-            }
-        });
-
-
-    };
 
     $scope.closeDialog = function () {
 
@@ -405,7 +437,7 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
 
 
 
-function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus, ReportYearRCUSave) {
+function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus, ReportYearRCUSave, $http) {
 
 
     $scope.data = {
@@ -450,7 +482,18 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
 
 
 
-    $scope.save = function () {
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
+
+
+
+    $scope.uploadFiles = function () {
+
 
         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
         $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
@@ -458,10 +501,27 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
 
+        formdata.append('data', JSON.stringify($scope.data));
 
-        ReportYearRCUSave.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
-            if (entry.code === 0) {
+        var request = {
+            method: 'POST',
+            url: '/reportyearrcusave',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
 
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -474,29 +534,31 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
                 });
 
 
+
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
+    }
 
 
-            }
-        });
-
-
-    };
 
 
     $scope.print = function () {
@@ -528,7 +590,7 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
 
 
 
-function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU, GetReport) {
+function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU, GetReport, $http) {
 
 
 
@@ -543,6 +605,7 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
 
         country: data.country,
         finstatus: {},
+        arrAllFiles: data.arrAllFiles,
 
 
 
@@ -590,9 +653,21 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
     };
 
 
-    $scope.save = function () {
 
 
+
+
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
+
+
+
+    $scope.uploadFiles = function () {
 
 
         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
@@ -600,9 +675,28 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
         $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
-        UpdReportHalfYearRCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
-            if (entry.code === 0) {
+        formdata.append('data', JSON.stringify($scope.data));
+
+
+        var request = {
+            method: 'POST',
+            url: '/updreporthalfyearrcu',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
 
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -615,29 +709,43 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
                 });
 
 
+
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
+    }
 
 
-            }
-        });
 
 
-    };
+
+
+
+
+
+
+
+
+
+
 
     $scope.closeDialog = function () {
 
@@ -653,7 +761,7 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
 
 
 
-function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatus, ReportHalfYearRCUSave, GetReport) {
+function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatus, ReportHalfYearRCUSave, GetReport, $http) {
 
     $scope.data = {
 
@@ -701,8 +809,18 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
 
 
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
 
-    $scope.save = function () {
+
+
+
+    $scope.uploadFiles = function () {
+
 
         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
         $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
@@ -710,10 +828,27 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
 
+        formdata.append('data', JSON.stringify($scope.data));
 
-        ReportHalfYearRCUSave.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
-            if (entry.code === 0) {
+        var request = {
+            method: 'POST',
+            url: '/reporthalfyearrcusave',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
 
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -726,29 +861,46 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
                 });
 
 
+
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
+    }
 
 
-            }
-        });
 
 
-    };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     $scope.print = function () {
@@ -780,7 +932,7 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 }
 
 
-function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetReport) {
+function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetReport, $http) {
     $scope.data = {
 
 
@@ -791,6 +943,7 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
 
         country: data.country,
         finstatus: {},
+        arrAllFiles: data.arrAllFiles,
 
 
 
@@ -809,12 +962,6 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
         categorizedByServices: data.finstatus.categorizedByServices,
 
 
-
-
-
-
-
-
     };
 
 
@@ -830,9 +977,17 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
     };
 
 
-    $scope.save = function () {
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
 
 
+
+
+    $scope.uploadFiles = function () {
 
 
         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
@@ -840,9 +995,28 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
         $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
-        UpdReportYearNCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
-            if (entry.code === 0) {
+        formdata.append('data', JSON.stringify($scope.data));
+
+
+        var request = {
+            method: 'POST',
+            url: '/updreportyearncu',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
 
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -855,29 +1029,35 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
                 });
 
 
+
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
+    }
 
 
-            }
-        });
 
 
-    };
+
+
 
     $scope.closeDialog = function () {
 
@@ -892,7 +1072,7 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
 }
 
 
-function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus, ReportYearSave, GetReport) {
+function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus, ReportYearSave, GetReport, $http) {
 
 
 
@@ -936,7 +1116,19 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
 
 
-    $scope.save = function () {
+
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
+
+
+
+    $scope.uploadFiles = function () {
+
 
         $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
         $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
@@ -944,10 +1136,27 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
         $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
 
+        formdata.append('data', JSON.stringify($scope.data));
 
-        ReportYearSave.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
-            if (entry.code === 0) {
+        var request = {
+            method: 'POST',
+            url: '/reportyearsave',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
 
 
                 GetReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -960,29 +1169,35 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
                 });
 
 
+
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
+    }
 
 
-            }
-        });
 
 
-    };
+
+
 
 
     $scope.print = function () {

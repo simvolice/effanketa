@@ -1927,7 +1927,9 @@ module.exports = {
     },
 
 
-    addnewreportYear: async (objParams) => {
+    addnewreportYear: async (objParams, arrAllFiles) => {
+
+
 
         try {
 
@@ -1962,6 +1964,7 @@ module.exports = {
 
 
                 finstatus: objParams.finstatus,
+                arrAllFiles: arrAllFiles,
 
 
 
@@ -1994,7 +1997,7 @@ module.exports = {
     },
 
 
-    addHalfYearrcusave: async (objParams) => {
+    addHalfYearrcusave: async (objParams, arrAllFiles) => {
 
 
 
@@ -2018,6 +2021,10 @@ module.exports = {
                 country: objParams.country,
 
                 idcountry: ObjectId(objParams.idcountry),
+
+
+
+                arrAllFiles: arrAllFiles,
 
 
 
@@ -2072,7 +2079,7 @@ module.exports = {
     },
 
 
-    addYearRCUsave: async (objParams) => {
+    addYearRCUsave: async (objParams, arrAllFiles) => {
 
 
 
@@ -2096,6 +2103,8 @@ module.exports = {
                 country: objParams.country,
 
                 idcountry: ObjectId(objParams.idcountry),
+
+                arrAllFiles: arrAllFiles,
 
 
 
@@ -2281,7 +2290,10 @@ module.exports = {
     },
 
 
-    updreportYearNCU: async (objParams) => {
+    updreportYearNCU: async (objParams, arrAllFiles) => {
+
+
+
 
         try {
 
@@ -2301,6 +2313,7 @@ module.exports = {
 
 
                     finstatus: objParams.finstatus,
+                    arrAllFiles: arrAllFiles,
 
 
                     projectPerformance: objParams.projectPerformance,
@@ -2341,7 +2354,7 @@ module.exports = {
 
 
 
-    updreportHalfYearRCU: async (objParams) => {
+    updreportHalfYearRCU: async (objParams, arrAllFiles) => {
 
         try {
 
@@ -2361,6 +2374,8 @@ module.exports = {
 
 
                     finstatus: objParams.finstatus,
+
+                    arrAllFiles: arrAllFiles,
 
 
                     introductionScopeReport: objParams.introductionScopeReport,
@@ -2408,7 +2423,7 @@ module.exports = {
 
     },
 
-    updreportYearRCU: async (objParams) => {
+    updreportYearRCU: async (objParams, arrAllFiles) => {
 
         try {
 
@@ -2428,6 +2443,8 @@ module.exports = {
 
 
                     finstatus: objParams.finstatus,
+
+                    arrAllFiles: arrAllFiles,
 
 
                     introductionScopeReport: objParams.introductionScopeReport,
