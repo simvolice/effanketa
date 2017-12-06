@@ -437,7 +437,7 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
 
 
 
-function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus, ReportYearRCUSave, $http) {
+function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus, ReportYearRCUSave, $http, GetTadjickUzbekNCUYear) {
 
 
     $scope.data = {
@@ -477,6 +477,12 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
 
 
         }
+    });
+
+
+    GetTadjickUzbekNCUYear.get(function (result) {
+       $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
+       $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
     });
 
 

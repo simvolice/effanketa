@@ -7,6 +7,7 @@
 
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
+const Int32 = require('mongodb').Int32;
 
 
 
@@ -1960,7 +1961,7 @@ module.exports = {
                 risks: objParams.risks,
                 lessonsLearned: objParams.lessonsLearned,
                 recommendations: objParams.recommendations,
-                plannedBudget: objParams.plannedBudget,
+                plannedBudget: Int32(objParams.plannedBudget),
 
 
                 finstatus: objParams.finstatus,
@@ -2523,5 +2524,116 @@ module.exports = {
 
 
     },
+
+
+
+    getTadjickUzbekNCUyear: async () => {
+
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('build_report');
+
+
+
+
+            const result = await col.aggregate([
+
+                {
+                    $facet: {
+
+
+                        "getTadzhikNCUYear": [
+
+
+                            {
+
+                                $match: {typePeriod: "Годовой", country: "Таджикистан"}
+
+                            },
+
+
+
+
+
+                            {
+                                $group : {
+                                    _id : null,
+                                    plannedBudget: { $sum: "$plannedBudget" }
+
+                                }
+                            }
+
+
+
+
+
+
+                        ],
+
+
+                        "getUzbekNCUYear": [
+
+
+                            {
+
+                                $match: {typePeriod: "Годовой", country: "Узбекистан"}
+
+                            },
+
+
+
+
+
+                            {
+                                $group : {
+                                    _id : null,
+                                    plannedBudget: { $sum: "$plannedBudget" }
+
+                                }
+                            }
+
+
+
+
+
+
+                        ],
+
+
+
+
+
+
+                    }
+                },
+
+
+            ]).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+
+    }
 
 };

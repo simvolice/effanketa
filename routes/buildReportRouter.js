@@ -191,6 +191,9 @@ router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
 
     let result = await BuildReportService.addnewreportYear(JSON.parse(fields.data), arrAllFiles);
 
+
+
+
     if (result.hasOwnProperty("result")) {
 
         res.json({"code": 0});
@@ -416,6 +419,17 @@ router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
         res.json({"code": 1});
 
     }
+
+});
+
+
+
+
+router.get('/gettadjickuzbekncuyear', async (req, res, next) =>{
+
+    let result = await BuildReportService.getTadjickUzbekNCUyear();
+
+    res.json({"code": "ok", "resultFromDb": result});
 
 });
 
