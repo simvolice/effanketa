@@ -1242,8 +1242,23 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
         country: data.country,
 
-        categorizedByDatePeriodCountry: data.capacityBuilding,
+
+
+
         creditsTable: data.credits,
+
+        grm: {},
+        finstatus: {},
+        capacityBuilding: {},
+
+
+
+        categorizedByDatePeriodCountry :  data.capacityBuilding.categorizedByDatePeriodCountry,
+        categorizedBySum :  data.capacityBuilding.categorizedBySum,
+        countSatisfaction :  data.capacityBuilding.countSatisfaction,
+        countSatisfactionWomen :  data.capacityBuilding.countSatisfactionWomen,
+
+
 
         categorizedByAllComplaints: data.grm.categorizedByAllComplaints,
         categorizedByAccept: data.grm.categorizedByAccept,
@@ -1289,10 +1304,26 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 
 
-        $scope.data.capacityBuilding = document.getElementById('capacityBuilding').innerHTML;
-        $scope.data.credits = document.getElementById('credits').innerHTML;
-        $scope.data.grm = document.getElementById('grm').innerHTML;
-        $scope.data.finstatus = document.getElementById('finstatus').innerHTML;
+        $scope.data.capacityBuilding.categorizedByDatePeriodCountry =  $scope.data.categorizedByDatePeriodCountry;
+        $scope.data.capacityBuilding.categorizedBySum =  $scope.data.categorizedBySum;
+        $scope.data.capacityBuilding.countSatisfaction =  $scope.data.countSatisfaction;
+        $scope.data.capacityBuilding.countSatisfactionWomen =  $scope.data.countSatisfactionWomen;
+
+
+
+        $scope.data.credits = $scope.data.creditsTable;
+
+        $scope.data.grm.categorizedByAllComplaints = $scope.data.categorizedByAllComplaints;
+        $scope.data.grm.categorizedByAccept = $scope.data.categorizedByAccept;
+        $scope.data.grm.categorizedByComplete = $scope.data.categorizedByComplete;
+        $scope.data.grm.categorizedByLowLevel = $scope.data.categorizedByLowLevel;
+        $scope.data.grm.categorizedByType = $scope.data.categorizedByType;
+
+
+        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
+        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
+        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
+        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
         UpdReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data:  $scope.data}, function(entry) {
 
@@ -1360,6 +1391,10 @@ $scope.data = {
     country: data.nameCountry,
     grm: {},
     finstatus: {},
+    capacityBuilding: {},
+
+    participantsStated: "",
+    comments: "",
 
 
     overallNarrative: "",
@@ -1404,10 +1439,11 @@ $scope.data = {
 
 
 
-
-
         for (let obj of entry.resultFromDb) {
             $scope.data.categorizedByDatePeriodCountry = obj.categorizedByDatePeriodCountry;
+            $scope.data.categorizedBySum = obj.categorizedBySum;
+            $scope.data.countSatisfaction = obj.countSatisfaction;
+            $scope.data.countSatisfactionWomen = obj.countSatisfactionWomen;
 
 
         }
@@ -1503,9 +1539,13 @@ $scope.data = {
 
     $scope.save = function () {
 
+      $scope.data.capacityBuilding.categorizedByDatePeriodCountry =  $scope.data.categorizedByDatePeriodCountry;
+      $scope.data.capacityBuilding.categorizedBySum =  $scope.data.categorizedBySum;
+      $scope.data.capacityBuilding.countSatisfaction =  $scope.data.countSatisfaction;
+      $scope.data.capacityBuilding.countSatisfactionWomen =  $scope.data.countSatisfactionWomen;
 
 
-        $scope.data.capacityBuilding = $scope.data.categorizedByDatePeriodCountry;
+
         $scope.data.credits = $scope.data.creditsTable;
 
          $scope.data.grm.categorizedByAllComplaints = $scope.data.categorizedByAllComplaints;

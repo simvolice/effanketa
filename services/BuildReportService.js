@@ -336,7 +336,7 @@ module.exports = {
         }catch(err) {
 
 
-            console.log("\x1b[42m", err);
+
 
             return err;
 
@@ -395,10 +395,33 @@ module.exports = {
 
                 {
                     $facet: {
+                        "categorizedByDatePeriodCountry": [{
+
+                            $match: {country: {$in: objParams.country}}
+
+                        },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+
+                                    }
+                            },
 
 
+                            {
 
-                        "categorizedByDatePeriodCountry": [ {
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            }
+
+
+                        ],
+
+
+                        "countSatisfaction": [ {
 
                             $match: {country: {$in: objParams.country}}
 
@@ -429,64 +452,124 @@ module.exports = {
                                         as: "forms_docs"
                                     }
                             },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
 
 
 
                             {
-                                $project:
+                                $group : {
+                                    _id : null,
+                                    average: { $avg: "$ques12" }
+
+
+                                }
+                            }
+
+
+                        ],
+
+
+
+                        "countSatisfactionWomen": [ {
+
+                            $match: {country: {$in: objParams.country}}
+
+                        },
+
+                            {
+                                $addFields:
                                     {
-
-
-                                        nameEvent: 1,
-                                        myDate: 1,
-                                        countPeopleEventCommon: 1,
-                                        countWomanEventCommon: 1,
-                                        countFacilatatorEventCommon: 1,
-                                        countFacilatatorWomanEventCommon: 1,
-                                        countSpeakerEventCommon: 1,
-                                        countSpeakerWomanEventCommon: 1,
-                                        average: { $avg: "$forms_docs.ques12" },
-
-                                        forms_docsWomen: {
-                                            $filter: {
-                                                input: "$forms_docs",
-                                                as: "forms_docs",
-                                                cond: { $eq: [ "$$forms_docs.ques20", "Женский" ] }
-                                            }
-                                        }
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
 
                                     }
                             },
 
 
+                            {
 
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+
+                            {$match: {ques20: "Женский"}},
 
 
                             {
-                                $project:
+                                $group : {
+                                    _id : null,
+                                    average: { $avg: "$ques12" }
+
+
+                                }
+                            }
+
+
+                        ],
+
+
+
+
+                        "categorizedBySum": [ {
+
+                            $match: {country: {$in: objParams.country}}
+
+                        },
+
+                            {
+                                $addFields:
                                     {
-                                        nameEvent: 1,
-                                        myDate: 1,
-                                        countPeopleEventCommon: 1,
-                                        countWomanEventCommon: 1,
-                                        countFacilatatorEventCommon: 1,
-                                        countFacilatatorWomanEventCommon: 1,
-                                        countSpeakerEventCommon: 1,
-                                        countSpeakerWomanEventCommon: 1,
-                                        average: 1,
-                                        participantsStated: "",
-                                        comments: "",
-                                        averageWomen: { $avg: "$forms_docsWomen.ques12" }
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
 
                                     }
                             },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+                            {
+                                $group : {
+                                    _id : null,
+                                    countPeopleEventCommon: { $sum: "$countPeopleEventCommon" },
+                                    countWomanEventCommon: { $sum: "$countWomanEventCommon" },
+                                    countFacilatatorEventCommon: { $sum: "$countFacilatatorEventCommon" },
+                                    countFacilatatorWomanEventCommon: { $sum: "$countFacilatatorWomanEventCommon" },
+                                    countSpeakerEventCommon: { $sum: "$countSpeakerEventCommon" },
+                                    countSpeakerWomanEventCommon: { $sum: "$countSpeakerWomanEventCommon" },
+
+                                }
+                            }
 
                         ]
-
-
-
                     }
                 },
+
+
+
 
 
 

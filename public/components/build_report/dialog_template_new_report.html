@@ -291,172 +291,132 @@
 
 
 
-                                                        <div ng-repeat="x in data.categorizedByDatePeriodCountry">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Event title and theme</th>
+                                                                <th>Date</th>
 
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="x in data.categorizedByDatePeriodCountry">
+                                                                <td>{{ x.nameEvent }}</td>
+                                                                <td>{{ x.myDate | date: "dd.MM.y" }}</td>
+                                                            </tr>
 
+                                                            </tbody>
+                                                        </table>
 
+                                                        <colgroup span="2"></colgroup>
+                                                        <colgroup span="2"></colgroup>
+                                                        <colgroup span="2"></colgroup>
 
+                                                        <table class="table table-bordered custom__table_margin">
+                                                            <thead>
+                                                            <tr>
+                                                                <th colspan="2" scope="colgroup">Participants</th>
+                                                                <th colspan="2" scope="colgroup">Facilitators</th>
+                                                                <th colspan="2" scope="colgroup">Speakers</th>
 
+                                                            </tr>
 
+                                                            <tr>
 
+                                                                <th>Total number</th>
+                                                                <th># of women</th>
 
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>Event title and theme</th>
-                                                                    <th>Date</th>
+                                                                <th>Total number</th>
+                                                                <th># of women</th>
 
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>{{ x.nameEvent }}</td>
-                                                                    <td>{{ x.myDate | date: "dd.MM.y" }}</td>
-                                                                </tr>
+                                                                <th>Total number</th>
+                                                                <th># of women</th>
 
-                                                                </tbody>
-                                                            </table>
 
-                                                            <colgroup span="2"></colgroup>
-                                                            <colgroup span="2"></colgroup>
-                                                            <colgroup span="2"></colgroup>
+                                                            </tr>
 
-                                                            <table class="table table-bordered custom__table_margin">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th colspan="2" scope="colgroup">Participants</th>
-                                                                    <th colspan="2" scope="colgroup">Facilitators</th>
-                                                                    <th colspan="2" scope="colgroup">Speakers</th>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="x in data.categorizedBySum">
 
-                                                                </tr>
 
-                                                                <tr>
 
-                                                                    <th>Total number</th>
-                                                                    <th># of women</th>
 
-                                                                    <th>Total number</th>
-                                                                    <th># of women</th>
+                                                                <td><input class="custom__input__width" type="text" value="{{ x.countPeopleEventCommon }}" ng-model="x.countPeopleEventCommon"></td>
+                                                                <td><input class="custom__input__width" type="text" value="{{ x.countWomanEventCommon }}" ng-model="x.countWomanEventCommon"></td>
 
-                                                                    <th>Total number</th>
-                                                                    <th># of women</th>
 
+                                                                <td><input class="custom__input__width" type="text" value="{{ x.countFacilatatorEventCommon }}" ng-model="x.countFacilatatorEventCommon"></td>
+                                                                <td><input class="custom__input__width" type="text" value="{{ x.countFacilatatorWomanEventCommon }}" ng-model="x.countFacilatatorWomanEventCommon"></td>
 
-                                                                </tr>
 
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td> <input type="text" value="{{ x.countPeopleEventCommon }}" ng-model="x.countPeopleEventCommon"></td>
-                                                                    <td><input type="text" value="{{ x.countWomanEventCommon }}" ng-model="x.countWomanEventCommon"></td>
 
+                                                                <td><input class="custom__input__width" type="text" value="{{ x.countSpeakerEventCommon }}" ng-model="x.countSpeakerEventCommon"></td>
+                                                                <td><input class="custom__input__width" type="text" value="{{ x.countSpeakerWomanEventCommon }}" ng-model="x.countSpeakerWomanEventCommon"></td>
 
-                                                                    <td><input type="text" value="{{ x.countFacilatatorEventCommon }}" ng-model="x.countFacilatatorEventCommon"></td>
-                                                                    <td><input type="text" value="{{ x.countFacilatatorWomanEventCommon }}" ng-model="x.countFacilatatorWomanEventCommon"></td>
 
 
 
-                                                                    <td><input type="text" value="{{ x.countSpeakerEventCommon }}" ng-model="x.countSpeakerEventCommon"></td>
-                                                                    <td><input type="text" value="{{ x.countSpeakerWomanEventCommon }}" ng-model="x.countSpeakerWomanEventCommon"></td>
 
+                                                            </tr>
 
+                                                            </tbody>
+                                                        </table>
 
 
 
-                                                                </tr>
+                                                        <colgroup span="2"></colgroup>
 
-                                                                </tbody>
-                                                            </table>
 
+                                                        <table class="table table-bordered custom__table_margin">
+                                                            <thead>
+                                                            <tr>
+                                                                <th colspan="2" scope="colgroup">Evaluation of the effectiveness of the event</th>
 
+                                                            </tr>
 
-                                                            <colgroup span="2"></colgroup>
+                                                            <tr>
 
+                                                                <th>Overall level of satisfaction with the activities carried out</th>
+                                                                <th>The level of satisfaction among women</th>
 
-                                                            <table class="table table-bordered custom__table_margin">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th colspan="2" scope="colgroup">Evaluation of the effectiveness of the event</th>
 
-                                                                </tr>
+                                                            </tr>
 
-                                                                <tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td ng-repeat="x in data.countSatisfaction"><input class="custom__input__width" type="text" value="{{ x.average }}" ng-model="x.average"></td>
+                                                                <td ng-repeat="y in data.countSatisfactionWomen"><input class="custom__input__width" type="text" value="{{ y.average }}" ng-model="y.average"></td>
 
-                                                                    <th>Overall level of satisfaction with the activities carried out</th>
-                                                                    <th>The level of satisfaction among women</th>
 
 
-                                                                </tr>
 
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td><input type="text" value="{{ x.average }}" ng-model="x.average"></td>
-                                                                    <td><input type="text" value="{{ x.averageWomen }}" ng-model="x.averageWomen"></td>
 
 
 
-                                                                </tr>
+                                                            </tr>
 
-                                                                </tbody>
-                                                            </table>
+                                                            </tbody>
+                                                        </table>
 
 
-                                                            <div class="row">
+                                                        <md-input-container class="md-block">
+                                                            <label> Participants stated their interest in the following topics for training/activities:
 
+                                                            </label>
+                                                            <textarea ng-model="data.participantsStated" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
 
 
 
-                                                                <div class="col-md-11">
+                                                        <md-input-container class="md-block">
+                                                            <label> Comments:
 
+                                                            </label>
+                                                            <textarea ng-model="data.comments" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
 
-
-                                                                    <md-input-container class="md-block">
-                                                                        <label> Participants stated their interest in the following topics for training/activities:
-
-                                                                        </label>
-
-                                                                        <textarea ng-model="x.participantsStated" rows="5" md-select-on-focus></textarea>
-                                                                    </md-input-container>
-
-
-
-
-
-
-                                                                </div>
-
-
-
-                                                            </div>
-
-
-                                                            <div class="row page-break-after">
-
-                                                                <div class="col-md-11">
-
-
-
-
-                                                                    <md-input-container class="md-block">
-                                                                        <label>Comments:</label>
-                                                                        <textarea ng-model="x.comments" rows="5" md-select-on-focus></textarea>
-                                                                    </md-input-container>
-
-
-
-
-
-
-                                                                </div>
-                                                            </div>
-
-
-
-                                                            <span class="material-input"></span>
-
-
-                                                        </div>
                                                     </div>
 
 
@@ -556,6 +516,9 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr ng-repeat="x in data.creditsTable">
+
+
+
 
                                                         <td><input class="custom__input__width" type="text" value="{{ x._id }}" ng-model="x._id"> </td>
                                                         <td><input class="custom__input__width" type="text" value="{{ x.countsubproject }}" ng-model="x.countsubproject"> </td>
