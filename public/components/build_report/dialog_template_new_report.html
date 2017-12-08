@@ -291,28 +291,13 @@
 
 
 
+
+
+                                                        <colgroup span="2"></colgroup>
+                                                        <colgroup span="2"></colgroup>
+                                                        <colgroup span="2"></colgroup>
+
                                                         <table class="table table-bordered">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>Event title and theme</th>
-                                                                <th>Date</th>
-
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr ng-repeat="x in data.categorizedByDatePeriodCountry">
-                                                                <td>{{ x.nameEvent }}</td>
-                                                                <td>{{ x.myDate | date: "dd.MM.y" }}</td>
-                                                            </tr>
-
-                                                            </tbody>
-                                                        </table>
-
-                                                        <colgroup span="2"></colgroup>
-                                                        <colgroup span="2"></colgroup>
-                                                        <colgroup span="2"></colgroup>
-
-                                                        <table class="table table-bordered custom__table_margin">
                                                             <thead>
                                                             <tr>
                                                                 <th colspan="2" scope="colgroup">Participants</th>
@@ -401,12 +386,6 @@
                                                         </table>
 
 
-                                                        <md-input-container class="md-block">
-                                                            <label> Participants stated their interest in the following topics for training/activities:
-
-                                                            </label>
-                                                            <textarea ng-model="data.participantsStated" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
-                                                        </md-input-container>
 
 
 
