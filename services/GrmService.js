@@ -59,6 +59,9 @@ module.exports = {
                 levelComplaint: levelComplaint.name,
 
 
+                dateStartInvestegment: new Date( new Date(objParams.dateStartInvestegment).getTime() -  ( new Date(objParams.dateStartInvestegment).getTimezoneOffset() * 60000 ) ),
+
+
                 dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
                 canalRequest: ObjectId(objParams.canalRequest),
                 levelComplaintId: ObjectId(objParams.levelComplaint),
@@ -322,6 +325,10 @@ module.exports = {
 
                         levelComplaintId: ObjectId(objParams.levelComplaint),
                         levelComplaint: levelComplaint.name,
+
+
+
+                        dateStartInvestegment: new Date( new Date(objParams.dateStartInvestegment).getTime() -  ( new Date(objParams.dateStartInvestegment).getTimezoneOffset() * 60000 ) ),
 
 
                         dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),

@@ -174,10 +174,11 @@ function DialogControllerUpd($scope, data, Getalllevelcomplaint, InsertNewCanalR
         categName: data.categName,
         colorForStatus: data.colorForStatus,
         country: data.country,
-        dateInGo: data.dateInGo,
-        dateNotifDeclarer: data.dateNotifDeclarer,
+        dateStartInvestegment: new Date(data.dateStartInvestegment),
+        dateInGo: new Date(data.dateInGo),
+        dateNotifDeclarer: new Date(data.dateNotifDeclarer),
         declarerFIO: data.declarerFIO,
-        lastDateAnswer: data.lastDateAnswer,
+        lastDateAnswer: new Date(data.lastDateAnswer),
         levelComplaint: data.levelComplaintId,
         raisedQuestion: data.raisedQuestion,
         responsibleConsideration: data.responsibleConsideration,
@@ -351,7 +352,15 @@ function DialogControllerUpd($scope, data, Getalllevelcomplaint, InsertNewCanalR
 
     };
 
+    $scope.closeDialog = function () {
 
+
+
+        $mdDialog.hide();
+
+
+
+    };
 
 }
 
@@ -372,6 +381,7 @@ function DialogController($scope, InsertNewCategGRM, InsertNewCanalRequest, Geta
 
 
         dateInGo: new Date(),
+        dateStartInvestegment: new Date(),
         declarerFIO: "",
         raisedQuestion: "",
         responsibleConsideration: "",
