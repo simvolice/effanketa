@@ -1345,36 +1345,13 @@ module.exports = {
 
                                 $match: {year: nameYear.codeName, month: {$in: period.codeName}}
 
-                            },
-
-
-
-
-
-                            {
-                                $group : {
-                                    _id : "$categcredits",
-
-                                    countsubproject: { $sum: "$countsubproject" },
-                                    commonAmountInDollors: { $sum: "$commonAmountInDollors" },
-                                    commonAmountInNatCurrency: { $sum: "$commonAmountInNatCurrency" },
-                                    DirectBeneficiariesAll: { $sum: "$DirectBeneficiariesAll" },
-                                    DirectBeneficiariesMale: { $sum: "$DirectBeneficiariesMale" },
-                                    DirectBeneficiariesFemale: { $sum: "$DirectBeneficiariesFemale" },
-                                    NonDirectBeneficiariesMemberFamilyAll: { $sum: "$NonDirectBeneficiariesMemberFamilyAll" },
-                                    NonDirectBeneficiariesMemberFamilyMale: { $sum: "$NonDirectBeneficiariesMemberFamilyMale" },
-                                    NonDirectBeneficiariesMemberFamilyFemale: { $sum: "$NonDirectBeneficiariesMemberFamilyFemale" },
-                                    NonDirectBeneficiariesHiredAll: { $sum: "$NonDirectBeneficiariesHiredAll" },
-                                    NonDirectBeneficiariesHiredMale: { $sum: "$NonDirectBeneficiariesHiredMale" },
-                                    NonDirectBeneficiariesHiredFemale: { $sum: "$NonDirectBeneficiariesHiredFemale" },
-                                    CreatePowerPlan: { $sum: "$CreatePowerPlan" },
-                                    CreatePowerFact: { $sum: "$CreatePowerFact" }
-
-
-                                }
-
-
                             }
+
+
+
+
+
+
 
 
 
