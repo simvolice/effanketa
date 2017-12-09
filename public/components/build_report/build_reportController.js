@@ -8,6 +8,9 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
     $rootScope.data = [];
 
+
+
+
 //Блокируем Ctrl+P
     $(document).bind("keyup keydown", function(e){
         if(e.ctrlKey && e.keyCode === 80){
@@ -1279,6 +1282,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
         overallNarrative: data.overallNarrative,
 
         grmSourceInformation: data.grmSourceInformation,
+        satisfiedComplaintsInPercentage:  data.satisfiedComplaintsInPercentage,
         projectRisksIssuesQuestion: data.projectRisksIssuesQuestion,
         projectRisksPotentialRisksQuestion: data.projectRisksPotentialRisksQuestion,
 
@@ -1381,7 +1385,11 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 function DialogControllerNewReport($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
+    $scope.calculatePercent = function (num) {
 
+        let result = num*100/100;
+        return result.toFixed(0);
+    };
 
 $scope.data = {
 
@@ -1510,6 +1518,15 @@ $scope.data = {
             if (obj.categorizedByType.length !== 0) {
 
              $scope.data.categorizedByType = obj.categorizedByType;
+
+            }
+
+
+
+
+            if (obj.categorizedBySatisfiedInPercent.length !== 0) {
+
+                $scope.data.satisfiedComplaintsInPercentage = $scope.calculatePercent(obj.categorizedBySatisfiedInPercent[0].countAll);
 
             }
 

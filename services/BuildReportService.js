@@ -1796,6 +1796,56 @@ module.exports = {
                         ],
 
 
+                        "categorizedBySatisfiedInPercent": [
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$dateInGo" },
+                                        month: { $month: "$dateInGo" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+
+                            {
+
+                                $match: {satisfiedMeasuresTaken: "Да"}
+
+                            },
+
+
+
+
+
+                            {
+                                $count: "countAll"
+                            }
+
+
+
+
+
+
+
+
+
+
+
+                        ],
+
+
 
 
 
@@ -2062,6 +2112,7 @@ module.exports = {
                 overallNarrative: objParams.overallNarrative,
 
                 grmSourceInformation: objParams.grmSourceInformation,
+                satisfiedComplaintsInPercentage: Int32(objParams.satisfiedComplaintsInPercentage),
                 projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                 projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
 
@@ -2425,6 +2476,7 @@ module.exports = {
                     comments: objParams.comments,
 
                     grmSourceInformation: objParams.grmSourceInformation,
+                    satisfiedComplaintsInPercentage: Int32(objParams.satisfiedComplaintsInPercentage),
                     projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                     projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
 
