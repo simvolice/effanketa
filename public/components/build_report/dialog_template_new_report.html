@@ -605,34 +605,26 @@
 
 
 
-                                                        <colgroup span="2"></colgroup>
-                                                        <colgroup span="2"></colgroup>
-                                                        <colgroup span="2"></colgroup>
-                                                        <colgroup span="2"></colgroup>
+                                                        <colgroup span="1"></colgroup>
+                                                        <colgroup span="3"></colgroup>
+
 
                                                         <table class="table table-bordered page-break-after">
                                                             <thead>
                                                             <tr>
-                                                                <th colspan="2" scope="colgroup">Budget disbursement $</th>
-                                                                <th colspan="2" scope="colgroup">Services $</th>
-                                                                <th colspan="2" scope="colgroup">Credit line $</th>
-                                                                <th colspan="2" scope="colgroup">OperatingExpenses $</th>
+                                                                <th colspan="1" scope="colgroup"></th>
+                                                                <th colspan="3" scope="colgroup">Budget disbursement $</th>
+
 
                                                             </tr>
 
                                                             <tr>
 
+                                                                <th></th>
                                                                 <th>planned</th>
                                                                 <th>in fact</th>
 
-                                                                <th>planned</th>
-                                                                <th>in fact</th>
-
-                                                                <th>planned</th>
-                                                                <th>in fact</th>
-
-                                                                <th>planned</th>
-                                                                <th>in fact</th>
+                                                                <th>comments (in case of planned and in fact differ)</th>
 
 
 
@@ -645,24 +637,51 @@
 
 
                                                             <tr>
-                                                                <td ng-repeat="x in data.categorizedByBudgetBisbursement"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                                <td ng-repeat="x in data.categorizedByBudgetBisbursement"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
 
+                                                                <td ng-repeat="x in data.categorizedByServices">{{x.name}}</td>
                                                                 <td ng-repeat="x in data.categorizedByServices"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
                                                                 <td ng-repeat="x in data.categorizedByServices"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
-
-                                                                <td ng-repeat="x in data.categorizedByCreditLine"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                                <td ng-repeat="x in data.categorizedByCreditLine"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
-
-
-                                                                <td ng-repeat="x in data.categorizedByOperatingExpenses"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                                <td ng-repeat="x in data.categorizedByOperatingExpenses"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
-
-
-
-
-
+                                                                <td ng-repeat="x in data.categorizedByServices"><input type="text" value="{{ x.comments }}" ng-model="x.comments"></td>
                                                             </tr>
+
+
+                                                            <tr>
+                                                                <td ng-repeat="x in data.categorizedByCreditLine">{{x.name}}</td>
+                                                                <td ng-repeat="x in data.categorizedByCreditLine"><input
+                                                                        class="custom__input__width" type="text"
+                                                                        value="{{ x.totalPlan }}"
+                                                                        ng-model="x.totalPlan"></td>
+                                                                <td ng-repeat="x in data.categorizedByCreditLine"><input
+                                                                        class="custom__input__width" type="text"
+                                                                        value="{{ x.totalFact }}"
+                                                                        ng-model="x.totalFact"></td>
+                                                                <td ng-repeat="x in data.categorizedByServices"><input
+                                                                         type="text"
+                                                                        value="{{ x.comments }}" ng-model="x.comments">
+                                                                </td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td ng-repeat="x in data.categorizedByOperatingExpenses">
+                                                                    {{x.name}}</td>
+                                                                <td ng-repeat="x in data.categorizedByOperatingExpenses">
+                                                                    <input class="custom__input__width" type="text"
+                                                                           value="{{ x.totalPlan }}"
+                                                                           ng-model="x.totalPlan"></td>
+                                                                <td ng-repeat="x in data.categorizedByOperatingExpenses">
+                                                                    <input class="custom__input__width" type="text"
+                                                                           value="{{ x.totalFact }}"
+                                                                           ng-model="x.totalFact"></td>
+                                                                <td ng-repeat="x in data.categorizedByServices"><input
+                                                                         type="text"
+                                                                        value="{{ x.comments }}" ng-model="x.comments">
+                                                                </td>
+                                                            </tr>
+
+
+
+
 
                                                             </tbody>
                                                         </table>

@@ -1994,7 +1994,8 @@ module.exports = {
 
                             {
                                 $addFields: {
-                                    name: "Services"
+                                    name: "Services",
+                                    comments: ""
                                 }
                             }
                         ],
@@ -2013,7 +2014,8 @@ module.exports = {
 
                             {
                                 $addFields: {
-                                    name: "Credit Line"
+                                    name: "Credit Line",
+                                    comments: ""
                                 }
                             }
                         ],
@@ -2031,7 +2033,8 @@ module.exports = {
 
                             {
                                 $addFields: {
-                                    name: "Operating Expenses"
+                                    name: "Operating Expenses",
+                                    comments: ""
                                 }
                             }
                         ],

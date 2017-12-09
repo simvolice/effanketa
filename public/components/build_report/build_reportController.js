@@ -1546,6 +1546,10 @@ $scope.data = {
 
     GetReportFinansialStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
 
+
+
+
+
         for (let obj of entry.resultFromDb) {
             $scope.data.categorizedByBudgetBisbursement = obj.categorizedByBudgetBisbursement;
             $scope.data.categorizedByCreditLine = obj.categorizedByCreditLine;
