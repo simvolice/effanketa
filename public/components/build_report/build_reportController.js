@@ -1255,6 +1255,11 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
         capacityBuilding: {},
 
 
+        plansNextPeriod: data.plansNextPeriod,
+        plansNextHalfYearPeriod: data.plansNextHalfYearPeriod,
+
+
+
 
         categorizedByDatePeriodCountry :  data.capacityBuilding.categorizedByDatePeriodCountry,
         categorizedBySum :  data.capacityBuilding.categorizedBySum,

@@ -2111,6 +2111,9 @@ module.exports = {
                 grm: objParams.grm,
                 finstatus: objParams.finstatus,
 
+                plansNextPeriod: Int32(objParams.plansNextPeriod),
+                plansNextHalfYearPeriod: Int32(objParams.plansNextHalfYearPeriod),
+
 
                 overallNarrative: objParams.overallNarrative,
 
@@ -2472,6 +2475,11 @@ module.exports = {
                     credits: objParams.credits,
                     grm: objParams.grm,
                     finstatus: objParams.finstatus,
+
+
+                    plansNextPeriod: Int32(objParams.plansNextPeriod),
+                    plansNextHalfYearPeriod: Int32(objParams.plansNextHalfYearPeriod),
+
 
 
                     overallNarrative: objParams.overallNarrative,
