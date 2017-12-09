@@ -1261,8 +1261,8 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 
         categorizedByAllComplaints: data.grm.categorizedByAllComplaints,
-        categorizedByAccept: data.grm.categorizedByAccept,
-        categorizedByComplete: data.grm.categorizedByComplete,
+        categorizedByInvestiginationStarted: data.grm.categorizedByInvestiginationStarted,
+        categorizedByInvestiginationCompleted: data.grm.categorizedByInvestiginationCompleted,
         categorizedByLowLevel: data.grm.categorizedByLowLevel,
         categorizedByType: data.grm.categorizedByType,
 
@@ -1314,8 +1314,8 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
         $scope.data.credits = $scope.data.creditsTable;
 
         $scope.data.grm.categorizedByAllComplaints = $scope.data.categorizedByAllComplaints;
-        $scope.data.grm.categorizedByAccept = $scope.data.categorizedByAccept;
-        $scope.data.grm.categorizedByComplete = $scope.data.categorizedByComplete;
+        $scope.data.grm.categorizedByInvestiginationStarted = $scope.data.categorizedByInvestiginationStarted;
+        $scope.data.grm.categorizedByInvestiginationCompleted = $scope.data.categorizedByInvestiginationCompleted;
         $scope.data.grm.categorizedByLowLevel = $scope.data.categorizedByLowLevel;
         $scope.data.grm.categorizedByType = $scope.data.categorizedByType;
 
@@ -1457,7 +1457,6 @@ $scope.data = {
 
     GetReportCredits.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
 
-        console.log(entry.resultFromDb);
 
         $scope.data.creditsTable = entry.resultFromDb;
 
@@ -1471,7 +1470,6 @@ $scope.data = {
     GetReportGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
 
 
-
         for (let obj of entry.resultFromDb) {
 
             if (obj.categorizedByAllComplaints.length !== 0){
@@ -1483,16 +1481,16 @@ $scope.data = {
 
             }
 
-            if (obj.categorizedByAccept.length !== 0) {
+            if (obj.categorizedByInvestiginationStarted.length !== 0) {
 
-                $scope.data.categorizedByAccept = obj.categorizedByAccept[0].countAll;
+                $scope.data.categorizedByInvestiginationStarted = obj.categorizedByInvestiginationStarted[0].countAll;
 
             }
 
-            if (obj.categorizedByComplete.length !== 0) {
+            if (obj.categorizedByInvestiginationCompleted.length !== 0) {
 
 
-                $scope.data.categorizedByComplete = obj.categorizedByComplete[0].countAll;
+                $scope.data.categorizedByInvestiginationCompleted = obj.categorizedByInvestiginationCompleted[0].countAll;
 
 
             }
@@ -1504,7 +1502,23 @@ $scope.data = {
 
             }
 
-            $scope.data.categorizedByType = obj.categorizedByType;
+
+
+
+
+
+            if (obj.categorizedByType.length !== 0) {
+
+             $scope.data.categorizedByType = obj.categorizedByType;
+
+            }
+
+
+
+
+
+
+
 
         }
 
@@ -1549,8 +1563,8 @@ $scope.data = {
         $scope.data.credits = $scope.data.creditsTable;
 
          $scope.data.grm.categorizedByAllComplaints = $scope.data.categorizedByAllComplaints;
-         $scope.data.grm.categorizedByAccept = $scope.data.categorizedByAccept;
-         $scope.data.grm.categorizedByComplete = $scope.data.categorizedByComplete;
+         $scope.data.grm.categorizedByInvestiginationStarted = $scope.data.categorizedByInvestiginationStarted;
+         $scope.data.grm.categorizedByInvestiginationCompleted = $scope.data.categorizedByInvestiginationCompleted;
          $scope.data.grm.categorizedByLowLevel = $scope.data.categorizedByLowLevel;
          $scope.data.grm.categorizedByType = $scope.data.categorizedByType;
 

@@ -1442,8 +1442,8 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$dateInGo" },
-                                        month: { $month: "$dateInGo" },
+                                        year: { $year: "$createAt" },
+                                        month: { $month: "$createAt" },
 
                                     }
                             },
@@ -1489,23 +1489,11 @@ module.exports = {
 
                             },
 
-                            {
-                                $lookup:
-                                    {
-                                        from: "grmstatus",
-                                        localField: "statusId",
-                                        foreignField: "_id",
-                                        as: "status"
-                                    }
-                            },
-
-
-                            { $unwind : "$status" },
 
 
                             {
 
-                                $match: {"status.name": "Не релевантно"}
+                                $match: {"levelComplaint": "Простая"}
 
                             },
 
@@ -1516,6 +1504,95 @@ module.exports = {
 
 
                         ],
+
+
+
+                        "categorizedByInvestiginationStarted": [
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$dateStartInvestegment" },
+                                        month: { $month: "$dateStartInvestegment" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+
+                            {
+
+                                $match: {"statusName": "В работе"}
+
+                            },
+
+
+
+                            {
+                                $count: "countAll"
+                            }
+
+
+
+                        ],
+
+
+                        "categorizedByInvestiginationCompleted": [
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$dateStartInvestegment" },
+                                        month: { $month: "$dateStartInvestegment" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                            },
+
+
+                            {
+
+                                $match: {"statusName": "Завершен"}
+
+                            },
+
+
+
+
+
+                            {
+                                $count: "countAll"
+                            }
+
+
+
+                        ],
+
+
+
+
+
 
                         "categorizedByAccept": [
                             {
@@ -1646,42 +1723,72 @@ module.exports = {
                             },
 
 
-                            {
-                                $lookup:
-                                    {
-                                        from: "grmstatus",
-                                        localField: "statusId",
-                                        foreignField: "_id",
-                                        as: "status"
-                                    }
-                            },
-
-
-                            { $unwind : "$status" },
-
-
-                            {
-
-                                $match: {"status.name": {$in: ["Принято", "Не релевантно", "Завершен", "Просрочено"]}}
-
-                            },
-
 
 
                             {
                                 $group : {
-                                    _id : "$categComplaint",
+                                    _id : "$categName",
 
-                                    takeAction: {$push: "$takeAction"},
+
+
+
 
 
                                     totalTakeTime: { $sum: "$timeToCheckComplaint" },
 
-                                    count: { $sum: 1 }
+                                    countComplaintInWork: { $push: "$statusName" },
+
+
+
+
+
+
                                 }
 
 
+                            },
+
+
+                            {
+                                $project: {
+
+                                    totalTakeTime: 1,
+                                    countComplaintInWorkFilter:
+                                    {
+                                        $filter: {
+                                            input: "$countComplaintInWork",
+                                            as: "item",
+                                            cond: { $eq: [ "$$item", "В работе" ] }
+                                        }
+                                    }
+
+
+                                }},
+
+
+                            {
+                                $project: {
+
+
+
+
+                                    countComplaintInWorkFilter:1,
+                                    totalTakeTime: 1,
+                                    count: { $size: "$countComplaintInWorkFilter" }
+
+
+                                }},
+
+
+                            {
+                                $addFields:
+                                    {
+                                        solutionResult: "",
+
+
+                                    }
                             }
+
 
 
 

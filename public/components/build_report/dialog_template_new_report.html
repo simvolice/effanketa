@@ -582,8 +582,8 @@
                                                         <ul>
                                                             <li>1) Number of offers complaints in the reporting period: <strong><input type="text" value="{{data.categorizedByAllComplaints}}" ng-model="data.categorizedByAllComplaints"></strong> </li>
                                                             <li>2) Number of grievances resolved at the lowest level: <strong><input type="text" value="{{data.categorizedByLowLevel}}" ng-model="data.categorizedByLowLevel"></strong> </li>
-                                                            <li>3) Number of investigations started: <strong><input type="text" value="{{data.categorizedByAccept}}" ng-model="data.categorizedByAccept"></strong> </li>
-                                                            <li>4) Number of investigations completed in the reporting period: <strong><input type="text" value="{{data.categorizedByComplete}}" ng-model="data.categorizedByComplete"></strong></li>
+                                                            <li>3) Number of investigations started: <strong><input type="text" value="{{data.categorizedByInvestiginationStarted}}" ng-model="data.categorizedByInvestiginationStarted"></strong> </li>
+                                                            <li>4) Number of investigations completed in the reporting period: <strong><input type="text" value="{{data.categorizedByInvestiginationCompleted}}" ng-model="data.categorizedByInvestiginationCompleted"></strong></li>
 
 
 
@@ -595,7 +595,8 @@
                                                             <thead>
                                                             <tr>
                                                                 <th>Sorting/categorization of complaints (types of grievances)</th>
-                                                                <th>Solution result and time taken to resolve complaints</th>
+                                                                <th>Solution result</th>
+                                                                <th>Time taken to resolve complaints</th>
                                                                 <th>Unresolved complaints (the current and in the process)</th>
 
                                                             </tr>
@@ -605,6 +606,12 @@
 
                                                             <tr ng-repeat="x in data.categorizedByType">
                                                                 <td><input type="text" value="{{ x._id }}" ng-model="x._id"> </td>
+                                                                <td><input type="text" value="{{ x.solutionResult }}" ng-model="x.solutionResult"> </td>
+
+
+
+
+
                                                                 <td><input type="text" value="{{ x.totalTakeTime }}" ng-model="x.totalTakeTime"> </td>
 
 
