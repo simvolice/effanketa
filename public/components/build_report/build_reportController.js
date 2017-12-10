@@ -1081,7 +1081,7 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
 }
 
 
-function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus, ReportYearSave, GetReport, $http) {
+function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatusYearNCU, ReportYearSave, GetReport, $http) {
 
 
 
@@ -1098,7 +1098,10 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
         lessonsLearned: "",
         recommendations: "",
         plannedBudget: "",
-        finstatus: {}
+        finstatus: {},
+
+        categorizedByFourthQuarterTotalPlan: 0,
+        categorizedByFourthQuarterTotalFact: 0
 
 
 
@@ -1110,13 +1113,35 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
 
 
-    GetReportFinansialStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+    GetReportFinansialStatusYearNCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+
+
 
         for (let obj of entry.resultFromDb) {
-            $scope.data.categorizedByBudgetBisbursement = obj.categorizedByBudgetBisbursement;
-            $scope.data.categorizedByCreditLine = obj.categorizedByCreditLine;
-            $scope.data.categorizedByOperatingExpenses = obj.categorizedByOperatingExpenses;
-            $scope.data.categorizedByServices = obj.categorizedByServices;
+            $scope.data.categorizedByBudgetBisbursementPlanYear = obj.categorizedByBudgetBisbursementPlanYear[0].totalPlan;
+            $scope.data.categorizedByBudgetBisbursementPlanYearCopy = obj.categorizedByBudgetBisbursementPlanYear[0].totalPlan;
+
+
+
+
+            $scope.data.categorizedByBalanceYear = obj.categorizedByBalanceYear[0].totalBalance;
+            $scope.data.categorizedByBalanceYearCopy = obj.categorizedByBalanceYear[0].totalBalance;
+
+
+            $scope.data.categorizedByFirstQuarterPlan = obj.categorizedByFirstQuarter[0].totalPlan;
+            $scope.data.categorizedByFirstQuarterFact = obj.categorizedByFirstQuarter[0].totalFact;
+
+
+
+            $scope.data.categorizedBySecondQuarterTotalPlan = obj.categorizedBySecondQuarter[0].totalPlan;
+            $scope.data.categorizedBySecondQuarterTotalFact = obj.categorizedBySecondQuarter[0].totalFact;
+
+
+
+            $scope.data.categorizedByThirdQuarterTotalPlan = obj.categorizedByThirdQuarter[0].totalPlan;
+            $scope.data.categorizedByThirdQuarterTotalFact = obj.categorizedByThirdQuarter[0].totalFact;
 
 
         }

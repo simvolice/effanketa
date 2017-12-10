@@ -433,6 +433,17 @@ router.get('/gettadjickuzbekncuyear', async (req, res, next) =>{
 
 });
 
+
+
+
+router.post('/getreportfinansialstatusyearncu', checkSeesionToken, async (req, res, next) =>{
+
+    let result = await BuildReportService.getReportFinansialStatusYearNcu(req.body.data);
+
+    res.json({"code": "ok", "resultFromDb": result});
+
+});
+
 module.exports = router;
 
 

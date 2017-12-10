@@ -2082,6 +2082,240 @@ module.exports = {
 
 
 
+    /*
+    Это годовой NCU
+     */
+    getReportFinansialStatusYearNcu: async (objParams) => {
+
+
+        if (objParams.country === 0) {
+            objParams.allCountrys.pop();
+            objParams.country = [];
+            for (let item of objParams.allCountrys) {
+                objParams.country.push(ObjectId(item._id));
+            }
+
+
+
+        } else {
+            let tempCountry = objParams.country;
+            objParams.country = [];
+            objParams.country.push(ObjectId(tempCountry));
+
+
+        }
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('finansial_status');
+
+
+
+            let nameYear = await NameYear.getYearById(objParams.yearname);
+            let period = await TypePeriod.getTypePeriodById(objParams.period);
+
+
+            const result = await col.aggregate([
+
+
+                {
+
+                    $match: {country: {$in: objParams.country}}
+
+                },
+
+                {
+                    $addFields:
+                        {
+                            year: { $year: "$createAt" },
+                            month: { $month: "$createAt" },
+
+                        }
+                },
+
+
+                {
+
+                    $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                },
+
+
+
+
+
+                {
+                    $facet: {
+
+
+
+                        "categorizedByBudgetBisbursementPlanYear": [
+                            {
+                                $group: {
+                                    _id: "$BudgetBisbursement",
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+
+                        "categorizedByBalanceYear": [
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                            {
+                                $project: {
+
+                                    totalPlan: 1,
+                                    totalFact: 1,
+
+
+                                    totalBalance: { $subtract: [ "$totalPlan", "$totalFact" ] },
+                                }
+                            },
+
+
+
+                        ],
+
+
+                        "categorizedByFirstQuarter": [
+
+
+                            {
+
+                                $match: {month: {$in: [1,2,3]}}
+
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                        ],
+
+
+
+                        "categorizedBySecondQuarter": [
+
+
+                            {
+
+                                $match: {month: {$in: [4,5,6]}}
+
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                        ],
+
+
+                        "categorizedByThirdQuarter": [
+
+
+                            {
+
+                                $match: {month: {$in: [7,8,9]}}
+
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                        ],
+
+
+
+
+
+
+
+                    }
+                },
+
+
+
+
+
+
+
+
+
+            ]).toArray();
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    },
+
+
+
+
     addnewreport: async (objParams) => {
 
         try {

@@ -230,67 +230,67 @@
 
 
 
-                                                    <colgroup span="2"></colgroup>
-                                                    <colgroup span="2"></colgroup>
-                                                    <colgroup span="2"></colgroup>
-                                                    <colgroup span="2"></colgroup>
-
-                                                    <table class="table table-bordered page-break-after">
-                                                        <thead>
+                                                    <style type="text/css">
+                                                        .tg  {border-collapse:collapse;border-spacing:0;}
+                                                        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                        .tg .tg-s6z2{text-align:center}
+                                                        .tg .tg-baqh{text-align:center;vertical-align:top}
+                                                        .tg .tg-yw4l{vertical-align:top}
+                                                    </style>
+                                                    <table class="tg">
                                                         <tr>
-                                                            <th colspan="2" scope="colgroup">Budget disbursement $</th>
-                                                            <th colspan="2" scope="colgroup">Services $</th>
-                                                            <th colspan="2" scope="colgroup">Credit line $</th>
-                                                            <th colspan="2" scope="colgroup">OperatingExpenses $</th>
-
+                                                            <th class="tg-031e" rowspan="3">Planned Budget [year]</th>
+                                                            <th class="tg-s6z2" colspan="8">Expenditures</th>
+                                                            <th class="tg-baqh" rowspan="3"><br><br>Balance [year]</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="tg-031e" colspan="2">1st quarter</td>
+                                                            <td class="tg-yw4l" colspan="2">2nd quarter</td>
+                                                            <td class="tg-yw4l" colspan="2">3d quarter</td>
+                                                            <td class="tg-yw4l" colspan="2">4th quarter</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="tg-031e">planned</td>
+                                                            <td class="tg-031e">utilized</td>
+                                                            <td class="tg-yw4l">planned</td>
+                                                            <td class="tg-yw4l">utilized</td>
+                                                            <td class="tg-yw4l">planned</td>
+                                                            <td class="tg-yw4l">utilized</td>
+                                                            <td class="tg-yw4l">planned</td>
+                                                            <td class="tg-yw4l">utilized</td>
                                                         </tr>
 
-                                                        <tr>
 
-                                                            <th>planned</th>
-                                                            <th>in fact</th>
-
-                                                            <th>planned</th>
-                                                            <th>in fact</th>
-
-                                                            <th>planned</th>
-                                                            <th>in fact</th>
-
-                                                            <th>planned</th>
-                                                            <th>in fact</th>
-
-
-
-
-
-                                                        </tr>
-
-                                                        </thead>
                                                         <tbody>
 
-
                                                         <tr>
-                                                            <td ng-repeat="x in data.categorizedByBudgetBisbursement"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                            <td ng-repeat="x in data.categorizedByBudgetBisbursement"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementPlanYear }}" ng-model="data.categorizedByBudgetBisbursementPlanYear"></td>
 
-                                                            <td ng-repeat="x in data.categorizedByServices"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                            <td ng-repeat="x in data.categorizedByServices"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
-
-                                                            <td ng-repeat="x in data.categorizedByCreditLine"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                            <td ng-repeat="x in data.categorizedByCreditLine"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByFirstQuarterPlan }}" ng-model="data.categorizedByFirstQuarterPlan"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByFirstQuarterFact }}" ng-model="data.categorizedByFirstQuarterFact"></td>
 
 
-                                                            <td ng-repeat="x in data.categorizedByOperatingExpenses"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                            <td ng-repeat="x in data.categorizedByOperatingExpenses"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedBySecondQuarterTotalPlan }}" ng-model="data.categorizedBySecondQuarterTotalPlan"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedBySecondQuarterTotalFact }}" ng-model="data.categorizedBySecondQuarterTotalFact"></td>
 
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByThirdQuarterTotalPlan }}" ng-model="data.categorizedByThirdQuarterTotalPlan"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByThirdQuarterTotalFact }}" ng-model="data.categorizedByThirdQuarterTotalFact"></td>
 
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByFourthQuarterTotalPlan }}" ng-model="data.categorizedByFourthQuarterTotalPlan"></td>
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByFourthQuarterTotalFact }}" ng-model="data.categorizedByFourthQuarterTotalFact"></td>
 
-
+                                                            <td><input class="custom__input__width" type="number" value="{{ data.categorizedByBalanceYear }}" ng-model="data.categorizedByBalanceYear"></td>
 
                                                         </tr>
+
 
                                                         </tbody>
                                                     </table>
+
+
+
+
                                                 </div>
 
 
