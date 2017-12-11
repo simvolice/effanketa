@@ -965,10 +965,16 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
         plannedBudget: data.plannedBudget,
 
 
-        categorizedByBudgetBisbursement: data.finstatus.categorizedByBudgetBisbursement,
-        categorizedByCreditLine: data.finstatus.categorizedByCreditLine,
-        categorizedByOperatingExpenses: data.finstatus.categorizedByOperatingExpenses,
-        categorizedByServices: data.finstatus.categorizedByServices,
+        categorizedByBudgetBisbursementPlanYear: data.finstatus.categorizedByBudgetBisbursementPlanYear,
+        categorizedByBalanceYear: data.finstatus.categorizedByBalanceYear,
+        categorizedByFirstQuarterPlan: data.finstatus.categorizedByFirstQuarterPlan,
+        categorizedByFirstQuarterFact: data.finstatus.categorizedByFirstQuarterFact,
+        categorizedBySecondQuarterTotalPlan: data.finstatus.categorizedBySecondQuarterTotalPlan,
+        categorizedBySecondQuarterTotalFact: data.finstatus.categorizedBySecondQuarterTotalFact,
+        categorizedByThirdQuarterTotalPlan: data.finstatus.categorizedByThirdQuarterTotalPlan,
+        categorizedByThirdQuarterTotalFact: data.finstatus.categorizedByThirdQuarterTotalFact,
+        categorizedByForthQuarterTotalPlan: data.finstatus.categorizedByForthQuarterTotalPlan,
+        categorizedByForthQuarterTotalFact: data.finstatus.categorizedByForthQuarterTotalFact
 
 
     };
@@ -999,10 +1005,6 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
     $scope.uploadFiles = function () {
 
 
-        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
-        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
-        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
-        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
 
 
         formdata.append('data', JSON.stringify($scope.data));
@@ -1100,10 +1102,6 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
         plannedBudget: "",
         finstatus: {},
 
-        categorizedByFourthQuarterTotalPlan: 0,
-        categorizedByFourthQuarterTotalFact: 0
-
-
 
 
     };
@@ -1121,27 +1119,21 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
         for (let obj of entry.resultFromDb) {
             $scope.data.categorizedByBudgetBisbursementPlanYear = obj.categorizedByBudgetBisbursementPlanYear[0].totalPlan;
-            $scope.data.categorizedByBudgetBisbursementPlanYearCopy = obj.categorizedByBudgetBisbursementPlanYear[0].totalPlan;
-
-
-
-
             $scope.data.categorizedByBalanceYear = obj.categorizedByBalanceYear[0].totalBalance;
-            $scope.data.categorizedByBalanceYearCopy = obj.categorizedByBalanceYear[0].totalBalance;
-
-
             $scope.data.categorizedByFirstQuarterPlan = obj.categorizedByFirstQuarter[0].totalPlan;
             $scope.data.categorizedByFirstQuarterFact = obj.categorizedByFirstQuarter[0].totalFact;
-
 
 
             $scope.data.categorizedBySecondQuarterTotalPlan = obj.categorizedBySecondQuarter[0].totalPlan;
             $scope.data.categorizedBySecondQuarterTotalFact = obj.categorizedBySecondQuarter[0].totalFact;
 
 
-
             $scope.data.categorizedByThirdQuarterTotalPlan = obj.categorizedByThirdQuarter[0].totalPlan;
             $scope.data.categorizedByThirdQuarterTotalFact = obj.categorizedByThirdQuarter[0].totalFact;
+
+
+            $scope.data.categorizedByForthQuarterTotalPlan = obj.categorizedByForthQuarter[0].totalPlan;
+            $scope.data.categorizedByForthQuarterTotalFact = obj.categorizedByForthQuarter[0].totalFact;
 
 
         }
@@ -1164,10 +1156,19 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
     $scope.uploadFiles = function () {
 
 
-        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
-        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
-        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
-        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYear   = $scope.data.categorizedByBudgetBisbursementPlanYear;
+        $scope.data.finstatus.categorizedByBalanceYear   = $scope.data.categorizedByBalanceYear;
+        $scope.data.finstatus.categorizedByFirstQuarterPlan   = $scope.data.categorizedByFirstQuarterPlan;
+        $scope.data.finstatus.categorizedByFirstQuarterFact   = $scope.data.categorizedByFirstQuarterFact;
+        $scope.data.finstatus.categorizedBySecondQuarterTotalPlan   = $scope.data.categorizedBySecondQuarterTotalPlan;
+
+        $scope.data.finstatus.categorizedBySecondQuarterTotalFact   = $scope.data.categorizedBySecondQuarterTotalFact;
+        $scope.data.finstatus.categorizedByThirdQuarterTotalPlan   = $scope.data.categorizedByThirdQuarterTotalPlan;
+        $scope.data.finstatus.categorizedByThirdQuarterTotalFact   = $scope.data.categorizedByThirdQuarterTotalFact;
+        $scope.data.finstatus.categorizedByForthQuarterTotalPlan   = $scope.data.categorizedByForthQuarterTotalPlan;
+        $scope.data.finstatus.categorizedByForthQuarterTotalFact   = $scope.data.categorizedByForthQuarterTotalFact;
+
+
 
 
         formdata.append('data', JSON.stringify($scope.data));

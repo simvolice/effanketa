@@ -2268,6 +2268,31 @@ module.exports = {
                         ],
 
 
+                        "categorizedByForthQuarter": [
+
+
+                            {
+
+                                $match: {month: {$in: [10,11,12]}}
+
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                        ],
+
+
+
 
 
 
@@ -2777,7 +2802,7 @@ module.exports = {
                 $set: {
 
 
-                    finstatus: objParams.finstatus,
+
                     arrAllFiles: arrAllFiles,
 
 
