@@ -2157,7 +2157,7 @@ module.exports = {
                         "categorizedByBudgetBisbursementPlanYear": [
                             {
                                 $group: {
-                                    _id: "$BudgetBisbursement",
+                                    _id: null,
 
                                     totalPlan: { $sum: "$BudgetBisbursementPlan" }
 
@@ -2341,6 +2341,304 @@ module.exports = {
 
     },
 
+
+
+
+    /*
+   Это годовой RCU
+    */
+    getReportFinansialStatusForYearRCU: async (objParams) => {
+
+
+        /*
+        Чтобы отловить все страны
+         */
+        if (objParams.country === 0) {
+            objParams.allCountrys.pop();
+            objParams.country = [];
+            for (let item of objParams.allCountrys) {
+                objParams.country.push(ObjectId(item._id));
+            }
+
+
+
+        } else {
+            let tempCountry = objParams.country;
+            objParams.country = [];
+            objParams.country.push(ObjectId(tempCountry));
+
+
+        }
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('finansial_status');
+
+
+
+            let nameYear = await NameYear.getYearById(objParams.yearname);
+            let period = await TypePeriod.getTypePeriodById(objParams.period);
+
+
+            const result = await col.aggregate([
+
+
+                {
+
+                    $match: {country: {$in: objParams.country}}
+
+                },
+
+                {
+                    $addFields:
+                        {
+                            year: { $year: "$createAt" },
+                            month: { $month: "$createAt" },
+
+                        }
+                },
+
+
+                {
+
+                    $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+                },
+
+
+
+
+
+                {
+                    $facet: {
+
+
+
+                        "categorizedByBudgetBisbursementPlanYearTadzhik": [
+
+                            {
+
+                                $match: {nameCountry: "Таджикистан"}
+
+                            },
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+                        "categorizedByBudgetBisbursementFactYearTadzhik": [
+
+                            {
+
+                                $match: {nameCountry: "Таджикистан"}
+
+                            },
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+
+                        "categorizedByBalanceYearTadzhik": [
+
+
+                            {
+
+                                $match: {nameCountry: "Таджикистан"}
+
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                            {
+                                $project: {
+
+                                    totalPlan: 1,
+                                    totalFact: 1,
+
+
+                                    totalBalance: { $subtract: [ "$totalPlan", "$totalFact" ] },
+                                }
+                            },
+
+
+
+                        ],
+
+
+
+
+                        "categorizedByBudgetBisbursementPlanYearUzbeck": [
+
+                            {
+
+                                $match: {nameCountry: "Узбекистан"}
+
+                            },
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+                        "categorizedByBudgetBisbursementFactYearUzbeck": [
+
+                            {
+
+                                $match: {nameCountry: "Узбекистан"}
+
+                            },
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+
+                        "categorizedByBalanceYearUzbeck": [
+
+
+                            {
+
+                                $match: {nameCountry: "Узбекистан"}
+
+                            },
+
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$BudgetBisbursementPlan" } ,
+                                    totalFact: { $sum: "$BudgetBisbursementFact" }
+                                }
+                            },
+
+
+                            {
+                                $project: {
+
+                                    totalPlan: 1,
+                                    totalFact: 1,
+
+
+                                    totalBalance: { $subtract: [ "$totalPlan", "$totalFact" ] },
+                                }
+                            },
+
+
+
+                        ],
+
+
+
+
+
+
+
+
+
+
+
+
+                    }
+                },
+
+
+
+
+
+
+
+
+
+            ]).toArray();
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    },
 
 
 

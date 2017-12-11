@@ -216,6 +216,7 @@ module.exports = {
 
 
             const col = dbConnect.getConnect().collection('finansial_status');
+            let nameCountry = await CountryService.getCountryById(objParams.country);
 
 
 
@@ -244,6 +245,7 @@ module.exports = {
                     OperatingExpensesFact: Int32(objParams.OperatingExpensesFact),
                     OperatingExpensesComment: objParams.OperatingExpensesComment,
                     country: ObjectId(objParams.country),
+                    nameCountry: nameCountry.name
 
 
 

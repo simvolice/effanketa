@@ -104,3 +104,8 @@ angular.module('app').factory("GetTadjickUzbekNCUYear", function($resource) {
 angular.module('app').factory("GetReportFinansialStatusYearNCU", function($resource) {
     return $resource("/getreportfinansialstatusyearncu");
 });
+
+
+angular.module('app').factory("GetReportFinansialStatusForYearRCU", function($resource) {
+    return $resource("/getreportfinansialstatusforyearrcu");
+});

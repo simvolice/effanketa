@@ -265,23 +265,27 @@
                                                         <tbody>
 
                                                         <tr>
-                                                            <td>{{ data.categorizedByBudgetBisbursementPlanYear }}</td>
-
-                                                            <td>{{ data.categorizedByFirstQuarterPlan }}</td>
-                                                            <td>{{ data.categorizedByFirstQuarterFact }}</td>
+                                                            <td>{{ data.categorizedByBudgetBisbursementPlanYear[0].totalPlan || 0 }}</td>
 
 
-                                                            <td>{{ data.categorizedBySecondQuarterTotalPlan }}</td>
-                                                            <td>{{ data.categorizedBySecondQuarterTotalFact }}</td>
+                                                            <td>{{ data.categorizedByFirstQuarter[0].totalPlan || 0 }}</td>
+                                                            <td>{{ data.categorizedByFirstQuarter[0].totalFact || 0 }}</td>
 
-                                                            <td>{{ data.categorizedByThirdQuarterTotalPlan }}</td>
-                                                            <td>{{ data.categorizedByThirdQuarterTotalFact }}</td>
 
-                                                            <td>{{ data.categorizedByForthQuarterTotalPlan }}</td>
-                                                            <td>{{ data.categorizedByForthQuarterTotalFact }}</td>
+                                                            <td>{{ data.categorizedBySecondQuarter[0].totalPlan || 0 }}</td>
 
-                                                            <td>{{ data.categorizedByBalanceYear }}</td>
+                                                            <td>{{ data.categorizedBySecondQuarter[0].totalFact || 0 }}</td>
 
+                                                            <td>{{ data.categorizedByThirdQuarter[0].totalPlan || 0 }}</td>
+                                                            <td>{{ data.categorizedByThirdQuarter[0].totalFact || 0 }}</td>
+
+                                                            <td>{{ data.categorizedByForthQuarter[0].totalPlan || 0 }}</td>
+
+                                                            <td>{{ data.categorizedByForthQuarter[0].totalFact || 0 }}</td>
+
+
+
+                                                            <td>{{ data.categorizedByBalanceYear[0].totalBalance || 0 }}</td>
                                                         </tr>
 
 
