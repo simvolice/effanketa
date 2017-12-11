@@ -25,3 +25,8 @@ angular.module('app').factory("UpdFinansialStatus", function($resource) {
 angular.module('app').factory("DelFinansialStatus", function($resource) {
     return $resource("/delfinansialstatus");
 });
+
+
+angular.module('app').factory("GetNameQurter", function($resource) {
+    return $resource("/getnamequrter");
+});

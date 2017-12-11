@@ -187,5 +187,51 @@ module.exports = {
     },
 
 
+    getOnlyQurters: async () => {
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('type_period');
+
+
+
+
+
+            const result = await col.find({
+
+
+
+                name: { $regex: /квартал/ }
+
+
+
+
+            }).toArray();
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+
+
+
+    }
+
+
 
 };

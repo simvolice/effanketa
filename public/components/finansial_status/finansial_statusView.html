@@ -49,6 +49,7 @@
 
                     <colgroup span="1"></colgroup>
                     <colgroup span="1"></colgroup>
+                    <colgroup span="1"></colgroup>
 
 
                     <colgroup span="3"></colgroup>
@@ -62,6 +63,7 @@
                         <thead md-head fix-head>
                         <tr md-row>
 
+                            <th md-column colspan="1" scope="colgroup"></th>
                             <th md-column colspan="1" scope="colgroup"></th>
                             <th md-column colspan="1" scope="colgroup"></th>
 
@@ -83,6 +85,7 @@
 
                             <th md-column>№</th>
                             <th md-column>Страна</th>
+                            <th md-column>Период</th>
 
                             <th md-column>План</th>
                             <th md-column>Факт</th>
@@ -136,6 +139,9 @@
                                 </select>
 
                             </td>
+
+
+                            <td md-cell>{{data.nameQuarter}}</td>
 
 
 

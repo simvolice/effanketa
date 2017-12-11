@@ -6,11 +6,16 @@
 
 const dbConnect = require('../utils/dbConnect');
 const config = require('../utils/devConfig');
+const searchQuarter = require('../utils/searchQuarter');
 
 const ObjectId = require('mongodb').ObjectId;
 const Int32 = require('mongodb').Int32;
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
+const TypePeriod = require('../services/TypePeriod');
+
+
+
 
 
 
@@ -21,6 +26,8 @@ module.exports = {
     addFinansialStatus: async (objParams) => {
 
         try {
+
+
 
 
             const col = dbConnect.getConnect().collection('finansial_status');
@@ -57,6 +64,9 @@ module.exports = {
 
 
 
+
+
+                nameQuarter: objParams.nameQuarter,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 

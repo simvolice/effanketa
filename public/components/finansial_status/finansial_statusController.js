@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFinansialStatus, GetAllCoutrys, $mdToast, GetFinansialStatus, UpdFinansialStatus, DelFinansialStatus, $window) {
+angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFinansialStatus, GetAllCoutrys, $mdToast, GetFinansialStatus, UpdFinansialStatus, DelFinansialStatus, $window, GetNameQurter) {
 
 
     $scope.data = [];
@@ -72,6 +72,16 @@ angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFin
 
             tempObj.allCountrys = entry.resultFromDb;
             tempObj.country = entry.resultFromDb[0]._id;
+
+
+        });
+
+
+        GetNameQurter.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: new Date()}, function(entry) {
+
+
+            tempObj.nameQuarter = entry.resultFromDb;
+
 
 
         });
