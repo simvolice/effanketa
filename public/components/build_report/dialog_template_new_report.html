@@ -229,17 +229,17 @@
 
 
 
-                                                                <td><input class="custom__input__width" type="text" value="{{ x.countPeopleEventCommon }}" ng-model="x.countPeopleEventCommon"></td>
-                                                                <td><input class="custom__input__width" type="text" value="{{ x.countWomanEventCommon }}" ng-model="x.countWomanEventCommon"></td>
+                                                                <td>{{ x.countPeopleEventCommon }}</td>
+                                                                <td>{{ x.countWomanEventCommon }}</td>
 
 
-                                                                <td><input class="custom__input__width" type="text" value="{{ x.countFacilatatorEventCommon }}" ng-model="x.countFacilatatorEventCommon"></td>
-                                                                <td><input class="custom__input__width" type="text" value="{{ x.countFacilatatorWomanEventCommon }}" ng-model="x.countFacilatatorWomanEventCommon"></td>
+                                                                <td>{{ x.countFacilatatorEventCommon }}</td>
+                                                                <td>{{ x.countFacilatatorWomanEventCommon }}</td>
 
 
 
-                                                                <td><input class="custom__input__width" type="text" value="{{ x.countSpeakerEventCommon }}" ng-model="x.countSpeakerEventCommon"></td>
-                                                                <td><input class="custom__input__width" type="text" value="{{ x.countSpeakerWomanEventCommon }}" ng-model="x.countSpeakerWomanEventCommon"></td>
+                                                                <td>{{ x.countSpeakerEventCommon }}</td>
+                                                                <td>{{ x.countSpeakerWomanEventCommon }}</td>
 
 
 
@@ -273,8 +273,8 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr>
-                                                                <td ng-repeat="x in data.countSatisfaction"><input class="custom__input__width" type="text" value="{{ x.average }}" ng-model="x.average"></td>
-                                                                <td ng-repeat="y in data.countSatisfactionWomen"><input class="custom__input__width" type="text" value="{{ y.average }}" ng-model="y.average"></td>
+                                                                <td ng-repeat="x in data.countSatisfaction">{{ x.average }}</td>
+                                                                <td ng-repeat="y in data.countSatisfactionWomen">{{ y.average }}</td>
 
 
 
@@ -401,31 +401,31 @@
 
 
 
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.nameFactCategcredits }}" ng-model="x.nameFactCategcredits"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.countsubproject }}" ng-model="x.countsubproject"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.commonAmountInDollors }}" ng-model="x.commonAmountInDollors"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.commonAmountInNatCurrency }}" ng-model="x.commonAmountInNatCurrency"> </td>
+                                                        <td>{{ x.nameFactCategcredits }}</td>
+                                                        <td>{{ x.countsubproject }}</td>
+                                                        <td>{{ x.commonAmountInDollors }}</td>
+                                                        <td>{{ x.commonAmountInNatCurrency }}</td>
 
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.DirectBeneficiariesAll }}" ng-model="x.DirectBeneficiariesAll"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.DirectBeneficiariesMale }}" ng-model="x.DirectBeneficiariesMale"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.DirectBeneficiariesFemale }}" ng-model="x.DirectBeneficiariesFemale"> </td>
-
-
-
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.NonDirectBeneficiariesMemberFamilyAll }}" ng-model="x.NonDirectBeneficiariesMemberFamilyAll"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.NonDirectBeneficiariesMemberFamilyMale }}" ng-model="x.NonDirectBeneficiariesMemberFamilyMale"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.NonDirectBeneficiariesMemberFamilyFemale }}" ng-model="x.NonDirectBeneficiariesMemberFamilyFemale"> </td>
+                                                        <td>{{ x.DirectBeneficiariesAll }}</td>
+                                                        <td>{{ x.DirectBeneficiariesMale }}</td>
+                                                        <td>{{ x.DirectBeneficiariesFemale }}</td>
 
 
 
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.NonDirectBeneficiariesHiredAll }}" ng-model="x.NonDirectBeneficiariesHiredAll"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.NonDirectBeneficiariesHiredMale }}" ng-model="x.NonDirectBeneficiariesHiredMale"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.NonDirectBeneficiariesHiredFemale }}" ng-model="x.NonDirectBeneficiariesHiredFemale"> </td>
+                                                        <td>{{ x.NonDirectBeneficiariesMemberFamilyAll }}</td>
+                                                        <td>{{ x.NonDirectBeneficiariesMemberFamilyMale }}</td>
+                                                        <td>{{ x.NonDirectBeneficiariesMemberFamilyFemale }}</td>
 
 
 
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.CreatePowerPlan }}" ng-model="x.CreatePowerPlan"> </td>
-                                                        <td><input class="custom__input__width" type="text" value="{{ x.CreatePowerFact }}" ng-model="x.CreatePowerFact"> </td>
+                                                        <td>{{ x.NonDirectBeneficiariesHiredAll }}</td>
+                                                        <td>{{ x.NonDirectBeneficiariesHiredMale }}</td>
+                                                        <td>{{ x.NonDirectBeneficiariesHiredFemale }}</td>
+
+
+
+                                                        <td>{{ x.CreatePowerPlan }}</td>
+                                                        <td>{{ x.CreatePowerFact }}</td>
 
 
 
@@ -482,10 +482,10 @@
 
                                                         <h6>A. Quantitative data on the offers received, the number that were relevant, and the number resolved</h6>
                                                         <ul>
-                                                            <li>1) Number of offers complaints in the reporting period: <strong><input type="text" value="{{data.categorizedByAllComplaints}}" ng-model="data.categorizedByAllComplaints"></strong> </li>
-                                                            <li>2) Number of grievances resolved at the lowest level: <strong><input type="text" value="{{data.categorizedByLowLevel}}" ng-model="data.categorizedByLowLevel"></strong> </li>
-                                                            <li>3) Number of investigations started: <strong><input type="text" value="{{data.categorizedByInvestiginationStarted}}" ng-model="data.categorizedByInvestiginationStarted"></strong> </li>
-                                                            <li>4) Number of investigations completed in the reporting period: <strong><input type="text" value="{{data.categorizedByInvestiginationCompleted}}" ng-model="data.categorizedByInvestiginationCompleted"></strong></li>
+                                                            <li>1) Number of offers complaints in the reporting period: <strong>{{data.categorizedByAllComplaints}}</strong> </li>
+                                                            <li>2) Number of grievances resolved at the lowest level: <strong>{{data.categorizedByLowLevel}}</strong> </li>
+                                                            <li>3) Number of investigations started: <strong>{{data.categorizedByInvestiginationStarted}}</strong> </li>
+                                                            <li>4) Number of investigations completed in the reporting period: <strong>{{data.categorizedByInvestiginationCompleted}}</strong></li>
 
 
 
@@ -507,17 +507,17 @@
 
 
                                                             <tr ng-repeat="x in data.categorizedByType">
-                                                                <td><input type="text" value="{{ x._id }}" ng-model="x._id"> </td>
+                                                                <td>{{ x._id }}</td>
                                                                 <td><input type="text" value="{{ x.solutionResult }}" ng-model="x.solutionResult"> </td>
 
 
 
 
 
-                                                                <td><input type="text" value="{{ x.totalTakeTime }}" ng-model="x.totalTakeTime"> </td>
+                                                                <td>{{ x.totalTakeTime }}</td>
 
 
-                                                                <td><input type="text" value="{{ x.count }}" ng-model="x.count"></td>
+                                                                <td>{{ x.count }}</td>
 
 
 
@@ -639,22 +639,16 @@
                                                             <tr>
 
                                                                 <td ng-repeat="x in data.categorizedByServices">{{x.name}}</td>
-                                                                <td ng-repeat="x in data.categorizedByServices"><input class="custom__input__width" type="text" value="{{ x.totalPlan }}" ng-model="x.totalPlan"></td>
-                                                                <td ng-repeat="x in data.categorizedByServices"><input class="custom__input__width" type="text" value="{{ x.totalFact }}" ng-model="x.totalFact"></td>
+                                                                <td ng-repeat="x in data.categorizedByServices">{{ x.totalPlan }}</td>
+                                                                <td ng-repeat="x in data.categorizedByServices">{{ x.totalFact }}</td>
                                                                 <td ng-repeat="x in data.categorizedByServices"><input type="text" value="{{ x.comments }}" ng-model="x.comments"></td>
                                                             </tr>
 
 
                                                             <tr>
                                                                 <td ng-repeat="x in data.categorizedByCreditLine">{{x.name}}</td>
-                                                                <td ng-repeat="x in data.categorizedByCreditLine"><input
-                                                                        class="custom__input__width" type="text"
-                                                                        value="{{ x.totalPlan }}"
-                                                                        ng-model="x.totalPlan"></td>
-                                                                <td ng-repeat="x in data.categorizedByCreditLine"><input
-                                                                        class="custom__input__width" type="text"
-                                                                        value="{{ x.totalFact }}"
-                                                                        ng-model="x.totalFact"></td>
+                                                                <td ng-repeat="x in data.categorizedByCreditLine">{{ x.totalPlan }}</td>
+                                                                <td ng-repeat="x in data.categorizedByCreditLine">{{ x.totalFact }}</td>
                                                                 <td ng-repeat="x in data.categorizedByServices"><input
                                                                          type="text"
                                                                         value="{{ x.comments }}" ng-model="x.comments">
@@ -666,13 +660,9 @@
                                                                 <td ng-repeat="x in data.categorizedByOperatingExpenses">
                                                                     {{x.name}}</td>
                                                                 <td ng-repeat="x in data.categorizedByOperatingExpenses">
-                                                                    <input class="custom__input__width" type="text"
-                                                                           value="{{ x.totalPlan }}"
-                                                                           ng-model="x.totalPlan"></td>
+                                                                   {{ x.totalPlan }}</td>
                                                                 <td ng-repeat="x in data.categorizedByOperatingExpenses">
-                                                                    <input class="custom__input__width" type="text"
-                                                                           value="{{ x.totalFact }}"
-                                                                           ng-model="x.totalFact"></td>
+                                                                    {{ x.totalFact }}</td>
                                                                 <td ng-repeat="x in data.categorizedByServices"><input
                                                                          type="text"
                                                                         value="{{ x.comments }}" ng-model="x.comments">
