@@ -309,10 +309,21 @@ router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =
 
 
 
+
+
+
+
     if (files.length === 0) {
 
         arrAllFiles = JSON.parse(fields.data).arrAllFiles;
-        delete arrAllFiles[0].$$hashKey;
+
+
+        if (arrAllFiles.length !== 0){
+
+            delete arrAllFiles[0].$$hashKey;
+        }
+
+
     } else {
 
         for (let filesItem of files) {
@@ -336,6 +347,7 @@ router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =
         res.json({"code": 1});
 
     }
+
 
 
 });

@@ -2088,6 +2088,9 @@ module.exports = {
     getReportFinansialStatusYearNcu: async (objParams) => {
 
 
+        /*
+        Чтобы отловить все страны
+         */
         if (objParams.country === 0) {
             objParams.allCountrys.pop();
             objParams.country = [];

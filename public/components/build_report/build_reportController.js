@@ -170,7 +170,29 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
-       } else if (data.country === "Все" && data.typePeriod === "Годовой") {
+       } else if (data.country === "Все" && data.typePeriod.includes("Второе полугодие")) {
+
+           $mdDialog.show({
+               controller: DialogControllerUpdReportHalfYearRCU,
+               locals:{data: data},
+               templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+               parent: angular.element(document.body),
+               targetEvent: ev,
+               clickOutsideToClose:true,
+               fullscreen: true // Only for -xs, -sm breakpoints.
+           });
+
+
+
+
+
+       }
+
+
+
+
+
+       else if (data.country === "Все" && data.typePeriod === "Годовой") {
 
 
            $mdDialog.show({
@@ -248,7 +270,30 @@ $scope.showModalWnd = function (ev) {
 
 
 
-            } else if (nameCountry === "Все" && namePeriod === "Годовой") {
+            } else if (nameCountry === "Все" && namePeriod.includes("Второе полугодие")) {
+
+                $mdDialog.show({
+                    controller: DialogControllerNewReportHalfYearRCU,
+                    locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
+                    templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                    clickOutsideToClose:true,
+                    fullscreen: true // Only for -xs, -sm breakpoints.
+                });
+
+
+
+
+
+            }
+
+
+
+
+
+
+            else if (nameCountry === "Все" && namePeriod === "Годовой") {
 
 
                 $mdDialog.show({
@@ -635,10 +680,12 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
         nextHalfYearNCUUzbekistan: data.nextHalfYearNCUUzbekistan,
         nextHalfYearrcu: data.nextHalfYearrcu,
 
-        categorizedByBudgetBisbursement: data.finstatus.categorizedByBudgetBisbursement,
-        categorizedByCreditLine: data.finstatus.categorizedByCreditLine,
-        categorizedByOperatingExpenses: data.finstatus.categorizedByOperatingExpenses,
-        categorizedByServices: data.finstatus.categorizedByServices,
+        categorizedByBudgetBisbursementPlanYear: data.finstatus.categorizedByBudgetBisbursementPlanYear,
+        categorizedByBalanceYear: data.finstatus.categorizedByBalanceYear,
+        categorizedByFirstQuarter: data.finstatus.categorizedByFirstQuarter,
+        categorizedBySecondQuarter: data.finstatus.categorizedBySecondQuarter,
+        categorizedByThirdQuarter: data.finstatus.categorizedByThirdQuarter,
+        categorizedByForthQuarterT: data.finstatus.categorizedByForthQuarterT,
 
 
 
@@ -679,10 +726,12 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
     $scope.uploadFiles = function () {
 
 
-        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
-        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
-        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
-        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYear   = $scope.data.categorizedByBudgetBisbursementPlanYear;
+        $scope.data.finstatus.categorizedByBalanceYear   = $scope.data.categorizedByBalanceYear;
+        $scope.data.finstatus.categorizedByFirstQuarter   = $scope.data.categorizedByFirstQuarter;
+        $scope.data.finstatus.categorizedBySecondQuarter   = $scope.data.categorizedBySecondQuarter;
+        $scope.data.finstatus.categorizedByThirdQuarter   = $scope.data.categorizedByThirdQuarter;
+        $scope.data.finstatus.categorizedByForthQuarterT   = $scope.data.categorizedByForthQuarterT;
 
 
         formdata.append('data', JSON.stringify($scope.data));
@@ -770,7 +819,7 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
 
 
 
-function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatus, ReportHalfYearRCUSave, GetReport, $http) {
+function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatusYearNCU, ReportHalfYearRCUSave, GetReport, $http) {
 
     $scope.data = {
 
@@ -804,17 +853,31 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
 
 
-    GetReportFinansialStatus.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+    GetReportFinansialStatusYearNCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
+
+
 
         for (let obj of entry.resultFromDb) {
-            $scope.data.categorizedByBudgetBisbursement = obj.categorizedByBudgetBisbursement;
-            $scope.data.categorizedByCreditLine = obj.categorizedByCreditLine;
-            $scope.data.categorizedByOperatingExpenses = obj.categorizedByOperatingExpenses;
-            $scope.data.categorizedByServices = obj.categorizedByServices;
+            $scope.data.categorizedByBudgetBisbursementPlanYear = obj.categorizedByBudgetBisbursementPlanYear;
+            $scope.data.categorizedByBalanceYear = obj.categorizedByBalanceYear;
+
+
+            $scope.data.categorizedByFirstQuarter = obj.categorizedByFirstQuarter;
+
+
+            $scope.data.categorizedBySecondQuarter = obj.categorizedBySecondQuarter;
+
+
+            $scope.data.categorizedByThirdQuarter = obj.categorizedByThirdQuarter;
+
+
+            $scope.data.categorizedByForthQuarterT = obj.categorizedByForthQuarter;
 
 
         }
     });
+
 
 
 
@@ -831,10 +894,12 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
     $scope.uploadFiles = function () {
 
 
-        $scope.data.finstatus.categorizedByBudgetBisbursement   = $scope.data.categorizedByBudgetBisbursement;
-        $scope.data.finstatus.categorizedByCreditLine   = $scope.data.categorizedByCreditLine;
-        $scope.data.finstatus.categorizedByOperatingExpenses   = $scope.data.categorizedByOperatingExpenses;
-        $scope.data.finstatus.categorizedByServices   = $scope.data.categorizedByServices;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYear   = $scope.data.categorizedByBudgetBisbursementPlanYear;
+        $scope.data.finstatus.categorizedByBalanceYear   = $scope.data.categorizedByBalanceYear;
+        $scope.data.finstatus.categorizedByFirstQuarter   = $scope.data.categorizedByFirstQuarter;
+        $scope.data.finstatus.categorizedBySecondQuarter   = $scope.data.categorizedBySecondQuarter;
+        $scope.data.finstatus.categorizedByThirdQuarter   = $scope.data.categorizedByThirdQuarter;
+        $scope.data.finstatus.categorizedByForthQuarterT   = $scope.data.categorizedByForthQuarterT;
 
 
         formdata.append('data', JSON.stringify($scope.data));
