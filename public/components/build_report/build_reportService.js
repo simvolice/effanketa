@@ -109,3 +109,7 @@ angular.module('app').factory("GetReportFinansialStatusYearNCU", function($resou
 angular.module('app').factory("GetReportFinansialStatusForYearRCU", function($resource) {
     return $resource("/getreportfinansialstatusforyearrcu");
 });
+
+angular.module('app').factory("GetReportFinansialStatusForHalfYearRCU", function($resource) {
+    return $resource("/getreportfinansialstatusforhalfyearrcu");
+});

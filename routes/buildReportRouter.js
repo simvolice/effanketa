@@ -473,6 +473,16 @@ router.post('/getreportfinansialstatusforyearrcu', checkSeesionToken, async (req
 
 });
 
+
+
+router.post('/getreportfinansialstatusforhalfyearrcu', checkSeesionToken, async (req, res, next) =>{
+
+    let result = await BuildReportService.getReportFinansialStatusForHalfYearRCU(req.body.data);
+
+    res.json({"code": "ok", "resultFromDb": result});
+
+});
+
 module.exports = router;
 
 

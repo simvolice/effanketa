@@ -700,13 +700,18 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
         nextHalfYearNCUUzbekistan: data.nextHalfYearNCUUzbekistan,
         nextHalfYearrcu: data.nextHalfYearrcu,
 
-        categorizedByBudgetBisbursementPlanYear: data.finstatus.categorizedByBudgetBisbursementPlanYear,
-        categorizedByBalanceYear: data.finstatus.categorizedByBalanceYear,
-        categorizedByFirstQuarter: data.finstatus.categorizedByFirstQuarter,
-        categorizedBySecondQuarter: data.finstatus.categorizedBySecondQuarter,
-        categorizedByThirdQuarter: data.finstatus.categorizedByThirdQuarter,
-        categorizedByForthQuarterT: data.finstatus.categorizedByForthQuarterT,
-
+        categorizedByBudgetBisbursementPlanYearTadzhik: data.finstatus.categorizedByBudgetBisbursementPlanYearTadzhik,
+        categorizedByBalanceYearTadzhik: data.finstatus.categorizedByBalanceYearTadzhik,
+        categorizedByBudgetBisbursementPlanHalfYearTadzhik: data.finstatus.categorizedByBudgetBisbursementPlanHalfYearTadzhik,
+        categorizedByBudgetBisbursementFactHalfYearTadzhik: data.finstatus.categorizedByBudgetBisbursementFactHalfYearTadzhik,
+        categorizedByBudgetBisbursementPlanYearUzbeck: data.finstatus.categorizedByBudgetBisbursementPlanYearUzbeck,
+        categorizedByBalanceYearUzbeck: data.finstatus.categorizedByBalanceYearUzbeck,
+        categorizedByBudgetBisbursementPlanHalfYearUzbeck: data.finstatus.categorizedByBudgetBisbursementPlanHalfYearUzbeck,
+        categorizedByBudgetBisbursementFactHalfYearUzbeck: data.finstatus.categorizedByBudgetBisbursementFactHalfYearUzbeck,
+        rcuPlanYear: data.finstatus.rcuPlanYear,
+        rcuPlanHalfYear: data.finstatus.rcuPlanHalfYear,
+        rcuFactHalfYear: data.finstatus.rcuFactHalfYear,
+        rcuBalanceYear: data.finstatus.rcuBalanceYear
 
 
 
@@ -746,12 +751,21 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
     $scope.uploadFiles = function () {
 
 
-        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYear   = $scope.data.categorizedByBudgetBisbursementPlanYear;
-        $scope.data.finstatus.categorizedByBalanceYear   = $scope.data.categorizedByBalanceYear;
-        $scope.data.finstatus.categorizedByFirstQuarter   = $scope.data.categorizedByFirstQuarter;
-        $scope.data.finstatus.categorizedBySecondQuarter   = $scope.data.categorizedBySecondQuarter;
-        $scope.data.finstatus.categorizedByThirdQuarter   = $scope.data.categorizedByThirdQuarter;
-        $scope.data.finstatus.categorizedByForthQuarterT   = $scope.data.categorizedByForthQuarterT;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYearTadzhik  = $scope.data.categorizedByBudgetBisbursementPlanYearTadzhik;
+        $scope.data.finstatus.categorizedByBalanceYearTadzhik   = $scope.data.categorizedByBalanceYearTadzhik;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanHalfYearTadzhik   = $scope.data.categorizedByBudgetBisbursementPlanHalfYearTadzhik;
+        $scope.data.finstatus.categorizedByBudgetBisbursementFactHalfYearTadzhik   = $scope.data.categorizedByBudgetBisbursementFactHalfYearTadzhik;
+
+
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYearUzbeck   = $scope.data.categorizedByBudgetBisbursementPlanYearUzbeck;
+        $scope.data.finstatus.categorizedByBalanceYearUzbeck   = $scope.data.categorizedByBalanceYearUzbeck;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanHalfYearUzbeck   = $scope.data.categorizedByBudgetBisbursementPlanHalfYearUzbeck;
+        $scope.data.finstatus.categorizedByBudgetBisbursementFactHalfYearUzbeck   = $scope.data.categorizedByBudgetBisbursementFactHalfYearUzbeck;
+
+        $scope.data.finstatus.rcuPlanYear   = $scope.data.rcuPlanYear;
+        $scope.data.finstatus.rcuPlanHalfYear   = $scope.data.rcuPlanHalfYear;
+        $scope.data.finstatus.rcuFactHalfYear   = $scope.data.rcuFactHalfYear;
+        $scope.data.finstatus.rcuBalanceYear   = $scope.data.rcuBalanceYear;
 
 
         formdata.append('data', JSON.stringify($scope.data));
@@ -839,7 +853,7 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
 
 
 
-function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatusYearNCU, ReportHalfYearRCUSave, GetReport, $http) {
+function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialStatusForHalfYearRCU, ReportHalfYearRCUSave, GetReport, $http) {
 
     $scope.data = {
 
@@ -873,31 +887,24 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
 
 
-    GetReportFinansialStatusYearNCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+    GetReportFinansialStatusForHalfYearRCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
+
 
 
 
 
         for (let obj of entry.resultFromDb) {
-            $scope.data.categorizedByBudgetBisbursementPlanYear = obj.categorizedByBudgetBisbursementPlanYear;
-            $scope.data.categorizedByBalanceYear = obj.categorizedByBalanceYear;
-
-
-            $scope.data.categorizedByFirstQuarter = obj.categorizedByFirstQuarter;
-
-
-            $scope.data.categorizedBySecondQuarter = obj.categorizedBySecondQuarter;
-
-
-            $scope.data.categorizedByThirdQuarter = obj.categorizedByThirdQuarter;
-
-
-            $scope.data.categorizedByForthQuarterT = obj.categorizedByForthQuarter;
-
+            $scope.data.categorizedByBudgetBisbursementPlanYearTadzhik = obj.categorizedByBudgetBisbursementPlanYearTadzhik;
+            $scope.data.categorizedByBalanceYearTadzhik = obj.categorizedByBalanceYearTadzhik;
+            $scope.data.categorizedByBudgetBisbursementPlanHalfYearTadzhik = obj.categorizedByBudgetBisbursementPlanHalfYearTadzhik;
+            $scope.data.categorizedByBudgetBisbursementFactHalfYearTadzhik = obj.categorizedByBudgetBisbursementFactHalfYearTadzhik;
+            $scope.data.categorizedByBudgetBisbursementPlanYearUzbeck = obj.categorizedByBudgetBisbursementPlanYearUzbeck;
+            $scope.data.categorizedByBalanceYearUzbeck = obj.categorizedByBalanceYearUzbeck;
+            $scope.data.categorizedByBudgetBisbursementPlanHalfYearUzbeck = obj.categorizedByBudgetBisbursementPlanHalfYearUzbeck;
+            $scope.data.categorizedByBudgetBisbursementFactHalfYearUzbeck = obj.categorizedByBudgetBisbursementFactHalfYearUzbeck;
 
         }
     });
-
 
 
 
@@ -914,12 +921,21 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
     $scope.uploadFiles = function () {
 
 
-        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYear   = $scope.data.categorizedByBudgetBisbursementPlanYear;
-        $scope.data.finstatus.categorizedByBalanceYear   = $scope.data.categorizedByBalanceYear;
-        $scope.data.finstatus.categorizedByFirstQuarter   = $scope.data.categorizedByFirstQuarter;
-        $scope.data.finstatus.categorizedBySecondQuarter   = $scope.data.categorizedBySecondQuarter;
-        $scope.data.finstatus.categorizedByThirdQuarter   = $scope.data.categorizedByThirdQuarter;
-        $scope.data.finstatus.categorizedByForthQuarterT   = $scope.data.categorizedByForthQuarterT;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYearTadzhik  = $scope.data.categorizedByBudgetBisbursementPlanYearTadzhik;
+        $scope.data.finstatus.categorizedByBalanceYearTadzhik   = $scope.data.categorizedByBalanceYearTadzhik;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanHalfYearTadzhik   = $scope.data.categorizedByBudgetBisbursementPlanHalfYearTadzhik;
+        $scope.data.finstatus.categorizedByBudgetBisbursementFactHalfYearTadzhik   = $scope.data.categorizedByBudgetBisbursementFactHalfYearTadzhik;
+
+
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanYearUzbeck   = $scope.data.categorizedByBudgetBisbursementPlanYearUzbeck;
+        $scope.data.finstatus.categorizedByBalanceYearUzbeck   = $scope.data.categorizedByBalanceYearUzbeck;
+        $scope.data.finstatus.categorizedByBudgetBisbursementPlanHalfYearUzbeck   = $scope.data.categorizedByBudgetBisbursementPlanHalfYearUzbeck;
+        $scope.data.finstatus.categorizedByBudgetBisbursementFactHalfYearUzbeck   = $scope.data.categorizedByBudgetBisbursementFactHalfYearUzbeck;
+
+        $scope.data.finstatus.rcuPlanYear   = $scope.data.rcuPlanYear;
+        $scope.data.finstatus.rcuPlanHalfYear   = $scope.data.rcuPlanHalfYear;
+        $scope.data.finstatus.rcuFactHalfYear   = $scope.data.rcuFactHalfYear;
+        $scope.data.finstatus.rcuBalanceYear   = $scope.data.rcuBalanceYear;
 
 
         formdata.append('data', JSON.stringify($scope.data));

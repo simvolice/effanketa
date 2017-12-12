@@ -312,61 +312,42 @@
                                                     </style>
                                                     <table class="tg">
                                                         <tr>
+                                                            <th class="tg-031e" rowspan="3"></th>
                                                             <th class="tg-031e" rowspan="3">Planned Budget [year]</th>
-                                                            <th class="tg-s6z2" colspan="8">Expenditures</th>
-                                                            <th class="tg-baqh" rowspan="3"><br><br>Balance [year]</th>
+                                                            <th class="tg-s6z2" colspan="2">Expenditures</th>
+                                                            <th class="tg-s6z2" rowspan="3">Balance [year]</th>
                                                         </tr>
                                                         <tr>
-                                                            <td class="tg-031e" colspan="2">1st quarter</td>
-                                                            <td class="tg-yw4l" colspan="2">2nd quarter</td>
-                                                            <td class="tg-yw4l" colspan="2">3d quarter</td>
-                                                            <td class="tg-yw4l" colspan="2">4th quarter</td>
+                                                            <td class="tg-baqh" colspan="2">half-year</td>
                                                         </tr>
                                                         <tr>
-                                                            <td class="tg-031e">planned</td>
-                                                            <td class="tg-031e">utilized</td>
-                                                            <td class="tg-yw4l">planned</td>
-                                                            <td class="tg-yw4l">utilized</td>
-                                                            <td class="tg-yw4l">planned</td>
-                                                            <td class="tg-yw4l">utilized</td>
                                                             <td class="tg-yw4l">planned</td>
                                                             <td class="tg-yw4l">utilized</td>
                                                         </tr>
-
-
-                                                        <tbody>
-
                                                         <tr>
-                                                            <td><input class="custom__input__width" type="text" value="{{  data.categorizedByBudgetBisbursementPlanYear[0].totalPlan || 0  }}" ng-model="data.categorizedByBudgetBisbursementPlanYear[0].totalPlan"></td>
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByFirstQuarter[0].totalPlan || 0 }}" ng-model="data.categorizedByFirstQuarter[0].totalPlan"> </td>
-
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByFirstQuarter[0].totalFact || 0 }}" ng-model="data.categorizedByFirstQuarter[0].totalFact"> </td>
-
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedBySecondQuarter[0].totalPlan || 0 }}" ng-model="data.categorizedBySecondQuarter[0].totalPlan"> </td>
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedBySecondQuarter[0].totalFact || 0 }}" ng-model="data.categorizedBySecondQuarter[0].totalFact"> </td>
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByThirdQuarter[0].totalPlan || 0 }}" ng-model="data.categorizedByThirdQuarter[0].totalPlan"> </td>
-
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByThirdQuarter[0].totalFact || 0 }}" ng-model="data.categorizedByThirdQuarter[0].totalFact"> </td>
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByForthQuarterT[0].totalPlan || 0 }}" ng-model="data.categorizedByForthQuarterT[0].totalPlan"> </td>
-
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByForthQuarterT[0].totalFact || 0 }}" ng-model="data.categorizedByForthQuarterT[0].totalFact"> </td>
-
-                                                            <td><input class="custom__input__width" type="text" value="{{ data.categorizedByBalanceYear[0].totalBalance || 0 }}" ng-model="data.categorizedByBalanceYear[0].totalBalance"> </td>
+                                                            <td class="tg-031e">NCU (Tajikistan)</td>
+                                                            <td class="tg-031e"><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementPlanYearTadzhik[0].totalPlan }}" ng-model="data.categorizedByBudgetBisbursementPlanYearTadzhik[0].totalPlan"></td>
+                                                            <td class="tg-031e"><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementPlanHalfYearTadzhik[0].totalPlan }}" ng-model="data.categorizedByBudgetBisbursementPlanHalfYearTadzhik[0].totalPlan"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementFactHalfYearTadzhik[0].totalFact }}" ng-model="data.categorizedByBudgetBisbursementFactHalfYearTadzhik[0].totalFact"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.categorizedByBalanceYearTadzhik[0].totalBalance }}" ng-model="data.categorizedByBalanceYearTadzhik[0].totalBalance"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="tg-031e">NCU (Uzbekistan)</td>
+                                                            <td class="tg-031e"><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementPlanYearUzbeck[0].totalPlan }}" ng-model="data.categorizedByBudgetBisbursementPlanYearUzbeck[0].totalPlan"></td>
+                                                            <td class="tg-031e"><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementPlanHalfYearUzbeck[0].totalPlan }}" ng-model="data.categorizedByBudgetBisbursementPlanHalfYearUzbeck[0].totalPlan"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.categorizedByBudgetBisbursementFactHalfYearUzbeck[0].totalFact }}" ng-model="data.categorizedByBudgetBisbursementFactHalfYearUzbeck[0].totalFact"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.categorizedByBalanceYearUzbeck[0].totalBalance }}" ng-model="data.categorizedByBalanceYearUzbeck[0].totalBalance"></td>
 
                                                         </tr>
+                                                        <tr>
+                                                            <td class="tg-yw4l">RCU</td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.rcuPlanYear }}" ng-model="data.rcuPlanYear"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.rcuPlanHalfYear }}" ng-model="data.rcuPlanHalfYear"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.rcuFactHalfYear }}" ng-model="data.rcuFactHalfYear"></td>
+                                                            <td class="tg-yw4l"><input class="custom__input__width" type="number" value="{{ data.rcuBalanceYear }}" ng-model="data.rcuBalanceYear"></td>
 
-
-                                                        </tbody>
+                                                        </tr>
                                                     </table>
-
-
 
 
                                                 </div>
