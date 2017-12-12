@@ -60,7 +60,7 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
         $scope.country = entry.resultFromDb[0]._id;
 
 
-        $scope.allCountrys.push({_id: 0, name: "Все"});
+        $scope.allCountrys.push({_id: 0, name: "РКГ"});
 
 
 
@@ -141,7 +141,7 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
-       if (data.typePeriod === "Годовой" && data.country !== "Все") {
+       if (data.typePeriod === "Годовой" && data.country !== "РКГ") {
 
            $mdDialog.show({
                controller: DialogControllerUpdReportYearNCU,
@@ -154,7 +154,7 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
            });
 
 
-       } else if (data.country === "Все" && data.typePeriod.includes("Первое полугодие")) {
+       } else if (data.country === "РКГ" && data.typePeriod.includes("Первое полугодие")) {
 
            $mdDialog.show({
                controller: DialogControllerUpdReportHalfYearRCU,
@@ -170,7 +170,7 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
-       } else if (data.country === "Все" && data.typePeriod.includes("Второе полугодие")) {
+       } else if (data.country === "РКГ" && data.typePeriod.includes("Второе полугодие")) {
 
            $mdDialog.show({
                controller: DialogControllerUpdReportHalfYearRCU,
@@ -192,7 +192,7 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
 
-       else if (data.country === "Все" && data.typePeriod === "Годовой") {
+       else if (data.country === "РКГ" && data.typePeriod === "Годовой") {
 
 
            $mdDialog.show({
@@ -242,7 +242,7 @@ $scope.showModalWnd = function (ev) {
    let namePeriod = $scope.getNameById($scope.period, $scope.allperiod);
 
 
-            if (namePeriod === "Годовой" && nameCountry !== "Все") {
+            if (namePeriod === "Годовой" && nameCountry !== "РКГ") {
 
                 $mdDialog.show({
                     controller: DialogControllerNewReportYearNCU,
@@ -254,7 +254,7 @@ $scope.showModalWnd = function (ev) {
                     fullscreen: true // Only for -xs, -sm breakpoints.
                 });
 
-            } else if (nameCountry === "Все" && namePeriod.includes("Первое полугодие")) {
+            } else if (nameCountry === "РКГ" && namePeriod.includes("Первое полугодие")) {
 
                 $mdDialog.show({
                     controller: DialogControllerNewReportHalfYearRCU,
@@ -270,7 +270,7 @@ $scope.showModalWnd = function (ev) {
 
 
 
-            } else if (nameCountry === "Все" && namePeriod.includes("Второе полугодие")) {
+            } else if (nameCountry === "РКГ" && namePeriod.includes("Второе полугодие")) {
 
                 $mdDialog.show({
                     controller: DialogControllerNewReportHalfYearRCU,
@@ -286,14 +286,7 @@ $scope.showModalWnd = function (ev) {
 
 
 
-            }
-
-
-
-
-
-
-            else if (nameCountry === "Все" && namePeriod === "Годовой") {
+            }else if (nameCountry === "РКГ" && namePeriod === "Годовой") {
 
 
                 $mdDialog.show({
