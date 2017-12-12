@@ -1493,7 +1493,7 @@ module.exports = {
 
                             {
 
-                                $match: {"levelComplaint": "Простая"}
+                                $match: {"timeToCheckComplaint": 1}
 
                             },
 
