@@ -1530,11 +1530,6 @@ module.exports = {
 
                             },
 
-                            {
-
-                                $match: {"statusName": "В работе"}
-
-                            },
 
 
 
