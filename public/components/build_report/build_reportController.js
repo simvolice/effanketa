@@ -1493,6 +1493,11 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 function DialogControllerNewReport($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
+
+
+    /*
+    Процент одного числа от другого
+     */
     $scope.calculatePercent = function (numAllComplaint, numComplaintWithYes) {
 
         let result = numComplaintWithYes * 100 / numAllComplaint;
