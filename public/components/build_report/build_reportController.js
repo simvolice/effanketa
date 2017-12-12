@@ -1493,9 +1493,9 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 function DialogControllerNewReport($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
-    $scope.calculatePercent = function (num) {
+    $scope.calculatePercent = function (numAllComplaint, numComplaintWithYes) {
 
-        let result = num*100/100;
+        let result = numComplaintWithYes * 100 / numAllComplaint;
         return result.toFixed(0);
     };
 
@@ -1634,7 +1634,8 @@ $scope.data = {
 
             if (obj.categorizedBySatisfiedInPercent.length !== 0) {
 
-                $scope.data.satisfiedComplaintsInPercentage = $scope.calculatePercent(obj.categorizedBySatisfiedInPercent[0].countAll);
+
+                $scope.data.satisfiedComplaintsInPercentage = $scope.calculatePercent($scope.data.categorizedByAllComplaints, obj.categorizedBySatisfiedInPercent[0].countAll);
 
             }
 
