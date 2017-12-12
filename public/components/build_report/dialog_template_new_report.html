@@ -508,7 +508,10 @@
 
                                                             <tr ng-repeat="x in data.categorizedByType">
                                                                 <td>{{ x._id }}</td>
-                                                                <td><input type="text" value="{{ x.solutionResult }}" ng-model="x.solutionResult"> </td>
+
+
+
+                                                                <td><textarea ng-model="x.solutionResult"></textarea> </td>
 
 
 
