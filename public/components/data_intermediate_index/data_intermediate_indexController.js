@@ -56,6 +56,8 @@ $scope.data = {
 
     $scope.generateReport = function () {
 
+        //12 показателей
+
 
         GetReportUsersSatisfied.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
