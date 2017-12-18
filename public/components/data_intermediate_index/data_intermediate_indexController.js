@@ -15,10 +15,14 @@ $scope.data = {
     countFormIT: 0,
     countCivilService: 0,
     countPlatform: 0,
+    countClimateNetworks: 0,
+    genderFromClimate: 0,
     countBenificiarProject: 0,
+    countBenificiarProjectWomen: 0,
     countBenificiarProjectInPersent: 0,
     areaGAProject: 0,
-    countGRM: 0
+    countGRM: 0,
+    countTrasactionOnProject: 0
 
 };
 
@@ -54,9 +58,19 @@ $scope.data = {
     };
 
 
+    /*
+    Процент одного числа от другого
+     */
+    $scope.calculatePercentNumComplaintWithYes = function (numAllComplaint, numComplaintWithYes) {
+
+        let result = numComplaintWithYes * 100 / numAllComplaint;
+        return result.toFixed(0);
+    };
+
+
     $scope.generateReport = function () {
 
-        //12 показателей
+        //10 показателей
 
 
         GetReportUsersSatisfied.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
@@ -219,7 +233,7 @@ $scope.data = {
 
             if (entry.resultFromDb.length !== 0) {
 
-                $scope.data.countGRM = entry.resultFromDb[0].all_completegrm;
+                $scope.data.countGRM = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYes[0].all_completegrmWithYes);
 
 
             } else {

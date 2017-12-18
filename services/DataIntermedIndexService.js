@@ -509,7 +509,7 @@ module.exports = {
         try {
 
 
-            const col = dbConnect.getConnect().collection('table5');
+            const col = dbConnect.getConnect().collection('credits');
 
 
 
@@ -544,7 +544,7 @@ module.exports = {
 
                         _id: null,
 
-                        all_gaproject: {$sum: { $add: [ "$IriggSquareGA", "$WaterSquareGA", "$GardeningSquareGA", "$SeedSquareGA" ] }}
+                        all_gaproject: {$sum: "$CreatePowerFact"}
 
 
                     }
@@ -602,11 +602,13 @@ module.exports = {
             let nameYear = await NameYear.getYearById(yearId);
 
 
-            let statusId = await GrmStatusService.getStatusByName("Завершен");
 
-            const result = await col.aggregate([{
+            const result = await col.aggregate([
 
-                $match: {statusId: ObjectId(statusId._id)}
+
+                {
+
+                $match: {}
 
             },
 
@@ -627,9 +629,51 @@ module.exports = {
 
 
 
+
                 {
-                    $count : "all_completegrm"
-                }
+                    $facet: {
+
+
+
+                        "categorizedByAllCompletegrm": [
+
+                            {
+                                $count : "all_completegrm"
+                            }
+
+
+                        ],
+
+
+
+
+                        "categorizedByWithYes": [
+
+
+                            {
+
+                                $match: {satisfiedMeasuresTaken: "Да"}
+
+                            },
+
+                            {
+                                $count : "all_completegrmWithYes"
+                            }
+
+                        ]
+
+
+
+
+
+
+
+                    }
+                },
+
+
+
+
 
 
             ]).toArray();

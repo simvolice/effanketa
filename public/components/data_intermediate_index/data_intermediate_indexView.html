@@ -77,13 +77,14 @@
             <md-card>
 
                 <style type="text/css">
-                    .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                    .tg  {border-collapse:collapse;border-spacing:0;}
                     .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
                     .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
                     .tg .tg-e3zv{font-weight:bold}
                     .tg .tg-hgcj{font-weight:bold;text-align:center}
                     .tg .tg-9hbo{font-weight:bold;vertical-align:top}
                     .tg .tg-yw4l{vertical-align:top}
+                    .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
                 </style>
                 <table class="tg">
                     <tr>
@@ -100,118 +101,107 @@
                         <td class="tg-9hbo">Конечный целевой показатель</td>
                     </tr>
                     <tr>
-                        <td class="tg-031e">Процент пользователей, довольных <br>климатическими информационными <br>услугами, оказанными Программой</td>
-                        <td class="tg-031e"></td>
+                        <td class="tg-031e">ИЦ 1. Процент пользователей, <br>удовлетворенных услугами программы <br>по предоставлению<br>знаний <br>в области изменения климата</td>
+                        <td class="tg-031e">{{data.persentUsersSatisfied}}%</td>
                         <td class="tg-031e"></td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l">30%</td>
-                        <td class="tg-yw4l"></td>
+                        <td class="tg-yw4l">30%</td>
                         <td class="tg-yw4l">60%</td>
                         <td class="tg-yw4l">60%</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Количество разработанных странами планов и<br>программ, составленных с использованием<br>климатических информационных услуг, оказанных<br>Программой, включая уроки, вынесенные в<br>результате реализации климатических инвестиций</td>
+                        <td class="tg-yw4l">ИЦ 2. Количество планов и программ, <br>которые разработаны самими <br>странами с учетом<br>знаний и уроков, <br>предоставленных программой</td>
+                        <td class="tg-yw4l">{{data.countProgramm}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">3.00</td>
-                        <td class="tg-yw4l">5.00</td>
-                        <td class="tg-yw4l">5.00</td>
+                        <td class="tg-yw4l">1</td>
+                        <td class="tg-yw4l">3</td>
+                        <td class="tg-yw4l">3</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Сотрудничество, организованное в результате<br>финансирования инвестиций, требующих<br>совместных действий разных стран. Данное<br>сотрудничество может выражаться в<br>поддержке трансграничных географических<br>регионов или в координации между<br>странами действий по максимизации и<br>приумножению выгод с целью улучшения<br>готовности к изменениям климата в контексте<br>национальных политик</td>
+                        <td class="tg-yw4l">ИЦ 3. Примеры совм. деятельности, <br>которые привели к финансированию инвестиций, <br>требующих сотрудничества стран</td>
+                        <td class="tg-yw4l">{{data.finInvest}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">3.00</td>
-                        <td class="tg-yw4l">3.00</td>
+                        <td class="tg-yw4l">1</td>
+                        <td class="tg-yw4l">2</td>
+                        <td class="tg-yw4l">2</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Мобилизация дополнительных<br>ресурсов для распространения<br>информации, наращивания потенциала и<br>инвестиций в региональные климатические<br>мероприятия благодаря координации между<br>странами Центральной Азии и донорским<br>сообществом, организованной Программой</td>
-                        <td class="tg-yw4l"></td>
+                        <td class="tg-yw4l">ИЦ 4. Объем дополнительно мобилизованных <br>ресурсов для финансирования знаний, поднятия потенциала и <br>инвестиций в региональное сотрудничество в области изменения<br>климата/ «зеленой» деятельности как результат улучшенного уровня программной координации между странами ЦА и м/н сообществом, поддерживающим развития</td>
+                        <td class="tg-yw4l">{{data.mobileResurs.$numberDecimal}} M</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l">$20 M</td>
-                        <td class="tg-yw4l">$35 M</td>
-                        <td class="tg-yw4l">$50 M</td>
-                        <td class="tg-yw4l">$50 M</td>
+                        <td class="tg-yw4l">$30 M</td>
+                        <td class="tg-yw4l">$40 M</td>
+                        <td class="tg-yw4l">$40 M</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Уровень восприятия качества (информационных<br>технологий) государственных услуг (%) со стороны<br>пользователей (в процентах) - (основной<br>показатель) </td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">42.00</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">75.00</td>
-                        <td class="tg-yw4l">75.00</td>
+                        <td class="tg-amwm" colspan="8">Компонент 1: Региональные услуги по предоставлению<br>знаний в области климата</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Общее количество операций <br>со стороны основной государственной <br>службы,поддержанной проектом <br>(количество - подтип:дополнительный) - (основной показатель)</td>
+                        <td class="tg-yw4l">ИПР 1.1 Восприятие пользователей<br>услуг, предоставляемых в том числе с использованием ИТ</td>
+                        <td class="tg-yw4l">{{data.countFormIT}}%</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">3,000.00</td>
-                        <td class="tg-yw4l">3,000.00</td>
+                        <td class="tg-yw4l">42%</td>
+                        <td class="tg-yw4l">42%</td>
+                        <td class="tg-yw4l">75%</td>
+                        <td class="tg-yw4l">75%</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Прямые бенефициары проекта<br>(количество) - (основной показатель)</td>
+                        <td class="tg-yw4l">ИПР 1.2 Общее число транзакций основных услуг проекта</td>
+                        <td class="tg-yw4l">{{data.countTrasactionOnProject}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">192,000</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">320,000</td>
-                        <td class="tg-yw4l">320,000</td>
+                        <td class="tg-yw4l">4000</td>
+                        <td class="tg-yw4l">4000</td>
+                        <td class="tg-yw4l">9000</td>
+                        <td class="tg-yw4l">9000</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Бенефициары- женщины (количество - подтип:<br>дополнительный) - (основной показатель)</td>
+                        <td class="tg-yw4l">ИПР 1.3 Число поддержанных<br>проектом сетей/ платформ по координации,в области климата, объединяющих несколько стран и предоставляющих<br>возможности меж-правительственного, меж-секторного сотрудничества,<br>сотрудничество с НПО и пр.</td>
+                        <td class="tg-yw4l">{{data.countPlatform}}</td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">15%</td>
-                        <td class="tg-yw4l">25%</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">40%</td>
-                        <td class="tg-yw4l">40%</td>
+                        <td class="tg-yw4l">1</td>
+                        <td class="tg-yw4l">1</td>
+                        <td class="tg-yw4l">2</td>
+                        <td class="tg-yw4l">3</td>
+                        <td class="tg-yw4l">3</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Количество гектаров в зоне реализации<br>проекта, которые охвачены<br>эффективной практикой ведения<br>сельского хозяйства, управления<br>земельными и водными ресурсами,<br>подходящей для местных агроэкологических<br>условий, и которая дает возможность<br>для решения проблем, связанных с изменением<br>климата (в га)</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">39,600</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">66,000.00</td>
-                        <td class="tg-yw4l">66,000.00</td>
+                        <td class="tg-amwm" colspan="8">Компонент 2: Региональный фонд инвестиций в климат</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Количество многострановых координационных<br>климатических сетей, поддержанных в<br>рамках программы, которые способствуют<br>межправительственному,<br>межотраслевому, меж-НПО и т.д.<br>сотрудничеству. (Количество)</td>
+                        <td class="tg-yw4l">ИПР 2.1 Число бенефициаров<br>проекта, включая женщин</td>
+                        <td class="tg-yw4l">{{data.countBenificiarProject}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">1.00</td>
-                        <td class="tg-yw4l">3.00</td>
-                        <td class="tg-yw4l">4.00</td>
-                        <td class="tg-yw4l">5.00</td>
-                        <td class="tg-yw4l">5.00</td>
+                        <td class="tg-yw4l">10000</td>
+                        <td class="tg-yw4l">10000</td>
+                        <td class="tg-yw4l">16000</td>
+                        <td class="tg-yw4l">16000</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Более глубокое понимание гендерных<br>последствий от изменения климата<br>среди основных заинтересованных<br>сторон и осуществление основных видов<br>деятельности (количество мероприятий по<br>гендерным вопросам в совокупности)</td>
+                        <td class="tg-yw4l">ИПР 2.2 Охват проектом территорий<br>(га), на которых осуществляются эффективные с/х, земельные и водные<br>управленческие мероприятия по борьбе с изменением климата, учитывающие местные<br>агро-экологические условия</td>
+                        <td class="tg-yw4l">{{data.areaGAProject}}</td>
                         <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">1.00</td>
-                        <td class="tg-yw4l">3.00</td>
-                        <td class="tg-yw4l">5.00</td>
-                        <td class="tg-yw4l">8.00</td>
-                        <td class="tg-yw4l">10.00</td>
-                        <td class="tg-yw4l">10.00</td>
+                        <td class="tg-yw4l"></td>
+                        <td class="tg-yw4l">7000</td>
+                        <td class="tg-yw4l">7000</td>
+                        <td class="tg-yw4l">9200</td>
+                        <td class="tg-yw4l">9200</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">Обратная связь/количество разрешенных жалоб<br>согласно предусмотренным стандартам<br>обслуживания и установленным сроком<br>реагирования (100%)</td>
-                        <td class="tg-yw4l"></td>
+                        <td class="tg-amwm" colspan="8">Компонент 3: Региональная координация</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-yw4l">ИПР 3.1 Обратная связь/ жалобы,<br>удовлетворенные в срок и в соответствие с заданным стандартом услуг</td>
+                        <td class="tg-yw4l">{{data.countGRM}}%</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l">70%</td>
                         <td class="tg-yw4l">70%</td>
