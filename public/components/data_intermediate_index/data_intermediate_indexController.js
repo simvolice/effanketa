@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('DataIntermediateIndexCtrl', function ($scope, GetYearName, GetReportUsersSatisfied, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
+angular.module('app').controller('DataIntermediateIndexCtrl', function ($scope, $window, GetYearName, GetReportUsersSatisfied, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
 
 $scope.data = {
 
@@ -252,6 +252,56 @@ $scope.data = {
 
     };
 
+
+
+
+    $scope.print = function () {
+        $window.print();
+    };
+
+    $scope.excel = function () {
+
+
+        $(".display__none__excel").remove();
+
+        var allHtmlTable = document.getElementById('tableau');
+
+
+
+        var workbook = XLSX.utils.table_to_book(allHtmlTable);
+        var wopts = { bookType:'xlsx', bookSST:false, type:'binary' };
+
+        var wbout = XLSX.write(workbook,wopts);
+
+        function s2ab(s) {
+            var buf = new ArrayBuffer(s.length);
+            var view = new Uint8Array(buf);
+            for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+            return buf;
+        }
+
+        /* the saveAs call downloads a file on the local machine */
+        saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "report.xlsx");
+
+
+        $( "<tr class=\"custom__display__none display__none__excel\">\n" +
+            "                        <td class=\"tg-amwm\" colspan=\"8\">Компонент 1: Региональные услуги по предоставлению<br>знаний в области климата</td>\n" +
+            "                    </tr>" ).insertAfter( "#comp1" );
+
+
+        $( " <tr class=\"custom__display__none display__none__excel\">\n" +
+            "                        <td class=\"tg-amwm\" colspan=\"8\">Компонент 2: Региональный фонд инвестиций в климат</td>\n" +
+            "                    </tr>" ).insertAfter( "#comp2" );
+
+
+        $( "<tr class=\"custom__display__none display__none__excel\">\n" +
+            "                        <td class=\"tg-amwm\" colspan=\"8\">Компонент 3: Региональная координация</td>\n" +
+            "                    </tr>" ).insertAfter( "#comp3" );
+
+
+
+
+    };
 
 
 });

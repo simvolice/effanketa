@@ -1,4 +1,4 @@
-<div class="row" ng-controller="DataIntermediateIndexCtrl">
+<div id="toolbar" class="row" ng-controller="DataIntermediateIndexCtrl">
 
     <div class="row custom__display__none">
         <div class="col-md-12">
@@ -30,7 +30,7 @@
 
 
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
 
                             <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
                             </select>
@@ -44,10 +44,24 @@
 
 
 
-                        <div class="col-md-8">
+                        <div class="col-md-3" style="left: -50px">
                             <button class="btn btn-sm btn-primary" ng-click="generateReport()" style="margin-top: 0">Сформировать отчет</button>
 
 
+
+                        </div>
+
+                        <div class="col-md-3">
+
+
+                            <button class="btn btn-sm btn-primary" ng-click="print()" style="margin-top: 0">Печать</button>
+
+                        </div>
+
+
+                        <div class="col-md-3" style="left: -40px">
+
+                            <button class="btn btn-sm btn-primary" ng-click="excel()" style="margin-top: 0">Сформировать Excel</button>
 
                         </div>
 
@@ -63,8 +77,8 @@
 
         </div>
 
-
     </div>
+
 
 
 
@@ -86,7 +100,9 @@
                     .tg .tg-yw4l{vertical-align:top}
                     .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
                 </style>
-                <table class="tg">
+                <table id="tableau" class="tg">
+
+
                     <tr>
                         <th class="tg-hgcj" rowspan="2">Название индикатора</th>
                         <th class="tg-e3zv" rowspan="2">Исходные данные</th>
@@ -100,8 +116,13 @@
                         <td class="tg-9hbo">Год 5</td>
                         <td class="tg-9hbo">Конечный целевой показатель</td>
                     </tr>
+
+
+
+
+
                     <tr>
-                        <td class="tg-031e">ИЦ 1. Процент пользователей, <br>удовлетворенных услугами программы <br>по предоставлению<br>знаний <br>в области изменения климата</td>
+                        <td class="tg-031e"><span class="custom__display__none">ИЦ 1. </span>Процент пользователей, <br>удовлетворенных услугами программы <br>по предоставлению<br>знаний <br>в области изменения климата</td>
                         <td class="tg-031e">{{data.persentUsersSatisfied}}%</td>
                         <td class="tg-031e"></td>
                         <td class="tg-yw4l"></td>
@@ -111,7 +132,7 @@
                         <td class="tg-yw4l">60%</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">ИЦ 2. Количество планов и программ, <br>которые разработаны самими <br>странами с учетом<br>знаний и уроков, <br>предоставленных программой</td>
+                        <td class="tg-yw4l"><span class="custom__display__none">ИЦ 2. </span>Количество планов и программ, <br>которые разработаны самими <br>странами с учетом<br>знаний и уроков, <br>предоставленных программой</td>
                         <td class="tg-yw4l">{{data.countProgramm}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
@@ -121,7 +142,7 @@
                         <td class="tg-yw4l">3</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">ИЦ 3. Примеры совм. деятельности, <br>которые привели к финансированию инвестиций, <br>требующих сотрудничества стран</td>
+                        <td class="tg-yw4l"><span class="custom__display__none">ИЦ 3. </span>Примеры совм. деятельности, <br>которые привели к финансированию инвестиций, <br>требующих сотрудничества стран</td>
                         <td class="tg-yw4l">{{data.finInvest}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
@@ -130,8 +151,8 @@
                         <td class="tg-yw4l">2</td>
                         <td class="tg-yw4l">2</td>
                     </tr>
-                    <tr>
-                        <td class="tg-yw4l">ИЦ 4. Объем дополнительно мобилизованных <br>ресурсов для финансирования знаний, поднятия потенциала и <br>инвестиций в региональное сотрудничество в области изменения<br>климата/ «зеленой» деятельности как результат улучшенного уровня программной координации между странами ЦА и м/н сообществом, поддерживающим развития</td>
+                    <tr id="comp1">
+                        <td class="tg-yw4l"><span class="custom__display__none">ИЦ 4. </span>Объем дополнительно мобилизованных <br>ресурсов для финансирования знаний, поднятия потенциала и <br>инвестиций в региональное сотрудничество в области изменения<br>климата/ «зеленой» деятельности как результат улучшенного уровня программной координации между странами ЦА и м/н сообществом, поддерживающим развития</td>
                         <td class="tg-yw4l">{{data.mobileResurs.$numberDecimal}} M</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
@@ -140,11 +161,11 @@
                         <td class="tg-yw4l">$40 M</td>
                         <td class="tg-yw4l">$40 M</td>
                     </tr>
-                    <tr>
+                    <tr class="custom__display__none display__none__excel">
                         <td class="tg-amwm" colspan="8">Компонент 1: Региональные услуги по предоставлению<br>знаний в области климата</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">ИПР 1.1 Восприятие пользователей<br>услуг, предоставляемых в том числе с использованием ИТ</td>
+                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 1.1 </span>Восприятие пользователей<br>услуг, предоставляемых в том числе с использованием ИТ</td>
                         <td class="tg-yw4l">{{data.countFormIT}}%</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
@@ -154,8 +175,8 @@
                         <td class="tg-yw4l">75%</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">ИПР 1.2 Общее число транзакций основных услуг проекта</td>
-                        <td class="tg-yw4l">{{data.countTrasactionOnProject}}</td>
+                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 1.2 </span>Общее число транзакций основных услуг проекта</td>
+                        <td class="tg-yw4l">{{data.countTrasactionOnProjects}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l">4000</td>
@@ -163,8 +184,8 @@
                         <td class="tg-yw4l">9000</td>
                         <td class="tg-yw4l">9000</td>
                     </tr>
-                    <tr>
-                        <td class="tg-yw4l">ИПР 1.3 Число поддержанных<br>проектом сетей/ платформ по координации,в области климата, объединяющих несколько стран и предоставляющих<br>возможности меж-правительственного, меж-секторного сотрудничества,<br>сотрудничество с НПО и пр.</td>
+                    <tr id="comp2">
+                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 1.3 </span>Число поддержанных<br>проектом сетей/ платформ по координации,в области климата, объединяющих несколько стран и предоставляющих<br>возможности меж-правительственного, меж-секторного сотрудничества,<br>сотрудничество с НПО и пр.</td>
                         <td class="tg-yw4l">{{data.countPlatform}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l">1</td>
@@ -173,11 +194,11 @@
                         <td class="tg-yw4l">3</td>
                         <td class="tg-yw4l">3</td>
                     </tr>
-                    <tr>
+                    <tr class="custom__display__none display__none__excel">
                         <td class="tg-amwm" colspan="8">Компонент 2: Региональный фонд инвестиций в климат</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">ИПР 2.1 Число бенефициаров<br>проекта, включая женщин</td>
+                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 2.1 </span>Число бенефициаров<br>проекта, включая женщин</td>
                         <td class="tg-yw4l">{{data.countBenificiarProject}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
@@ -186,8 +207,8 @@
                         <td class="tg-yw4l">16000</td>
                         <td class="tg-yw4l">16000</td>
                     </tr>
-                    <tr>
-                        <td class="tg-yw4l">ИПР 2.2 Охват проектом территорий<br>(га), на которых осуществляются эффективные с/х, земельные и водные<br>управленческие мероприятия по борьбе с изменением климата, учитывающие местные<br>агро-экологические условия</td>
+                    <tr id="comp3">
+                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 2.2 </span>Охват проектом территорий<br>(га), на которых осуществляются эффективные с/х, земельные и водные<br>управленческие мероприятия по борьбе с изменением климата, учитывающие местные<br>агро-экологические условия</td>
                         <td class="tg-yw4l">{{data.areaGAProject}}</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l"></td>
@@ -196,11 +217,11 @@
                         <td class="tg-yw4l">9200</td>
                         <td class="tg-yw4l">9200</td>
                     </tr>
-                    <tr>
+                    <tr class="custom__display__none display__none__excel">
                         <td class="tg-amwm" colspan="8">Компонент 3: Региональная координация</td>
                     </tr>
                     <tr>
-                        <td class="tg-yw4l">ИПР 3.1 Обратная связь/ жалобы,<br>удовлетворенные в срок и в соответствие с заданным стандартом услуг</td>
+                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 3.1 </span>Обратная связь/ жалобы,<br>удовлетворенные в срок и в соответствие с заданным стандартом услуг</td>
                         <td class="tg-yw4l">{{data.countGRM}}%</td>
                         <td class="tg-yw4l"></td>
                         <td class="tg-yw4l">70%</td>
@@ -231,3 +252,5 @@
 
 
 </div>
+
+

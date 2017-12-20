@@ -648,3 +648,9 @@ table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2)
 .custom__border__group__all {
     border: 1px solid black;
 }
+
+
+.custom__height__table {
+    height: 400px;
+    overflow: auto;
+}
