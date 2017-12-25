@@ -17,7 +17,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Наращивание потенциала</h3>
+                        <h3>{{ 'GROW_POTENCIAL' | translate }}</h3>
 
 
                     </div>
@@ -26,7 +26,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                        <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
 
 
                     </div>
@@ -34,11 +34,11 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="showModalWnd($event)">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="showModalWnd($event)">{{ 'ADD_ROW' | translate }}</button>
 
 
 
-                        <button class="btn btn-primary" ng-click="excel()">Выгрузить в Excel</button>
+                        <button class="btn btn-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</button>
 
 
                     </div>
@@ -55,19 +55,21 @@
 
                             <th md-column></th>
                             <th md-column class="custom__border__right__group">№</th>
-                            <th md-column class="custom__border__right__group">Название мероприятия</th>
+                            <th md-column class="custom__border__right__group">{{ 'NAME_EVENT' | translate }}</th>
 
-                            <th md-column class="custom__border__right__group">Место мероприятия</th>
+                            <th md-column class="custom__border__right__group">{{ 'PLACE_EVENT' | translate }}</th>
 
-                            <th md-column class="custom__border__right__group">Дата проведения</th>
+                            <th md-column class="custom__border__right__group">{{ 'DATE_EVENT' | translate }}</th>
 
 
 
-                            <th md-column class="custom__border__right__group">Отправить анкету <br> на заполнение</th>
-                            <th md-column class="custom__border__right__group">Просмотреть</th>
-                            <th md-column class="custom__border__right__group">Обновить</th>
-                            <th md-column class="custom__border__right__group">Удалить</th>
-                            <th md-column>Добавить анкету</th>
+                            <th md-column class="custom__border__right__group" style="min-width: 129px;
+    max-width: 129px;
+    white-space: pre-wrap;">{{ 'SEND_FORM' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'VIEW' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'REFRESH' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'DELETE' | translate }}</th>
+                            <th md-column>{{ 'ADD_FORM' | translate }}</th>
 
                         </tr>
                         </thead>

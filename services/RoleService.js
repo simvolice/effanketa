@@ -29,7 +29,7 @@ module.exports = {
 
                 { name: "Администратор 1 уровня",
 
-                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Администраторы\n" +
+                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ADMINS' | translate }}\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -37,7 +37,7 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
@@ -50,7 +50,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Ввод данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ENTER_DATA' | translate }}\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -58,12 +58,12 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">Кредиты</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/main_score_program\">Главные и промежуточные цели программы</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/strategic_communications\">Стратегия коммуникаций</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/main_score_program\">{{ 'MAIN_SCORE_PROGRAM' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/strategic_communications\">{{ 'STRATEGIC_COMMUNICATIONS' | translate }}</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
@@ -75,7 +75,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Анализ данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ANALYS_DATA' | translate }}\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -84,10 +84,10 @@ module.exports = {
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
 
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по отдельному мероприятию</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">Матрица результатов и их мониторинга</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">{{ 'REPORT_BY_EVENT' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">{{ 'REPORT_BY_MATRIX' | translate }}</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
@@ -100,7 +100,7 @@ module.exports = {
                 {name: "Администратор 2 уровня",
 
 
-                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Администраторы\n" +
+                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ADMINS' | translate }}\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -108,7 +108,7 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">Список администраторов</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
@@ -121,7 +121,7 @@ module.exports = {
                     "\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Ввод данных\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ENTER_DATA' | translate }}\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -129,40 +129,42 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">Кредиты</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">Механизм рассмотрения жалоб и отзывов</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">Финансовый статус</a></li>\n" +
-                    "\t\t\t\t\t\t\n" +
-                    "\n" +
-                    "\t\t\t\t\t</ul>\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t</li>\n" +
-                    "\n" +
-                    "\n" +
-                    "\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Анализ данных\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
-                    "\n" +
-                    "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">Сформировать отчёт (квартальный, полугодовой, годовой)</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
 
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">Отчёт по отдельному мероприятию</a></li>\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">Матрица результатов и их мониторинга</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t</li>\n"
+                    "\t\t\t\t</li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ANALYS_DATA' | translate }}\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/build_report\">{{ 'BUILD_REPORT' | translate }}</a></li>\n" +
+
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/report_by_criteriy\">{{ 'REPORT_BY_EVENT' | translate }}</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/data_intermediate_index\">{{ 'REPORT_BY_MATRIX' | translate }}</a></li>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t\t</ul>\n" +
+                    "\n" +
+                    "\n" +
+                    "\t\t\t\t</li>\n" +
+                    "\n"
 
 
 
@@ -173,7 +175,9 @@ module.exports = {
                 { name: "Администратор 3 уровня",
 
 
-                    mainPageHtml: "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">Ввод данных\n" +
+                    mainPageHtml:
+
+                    "<li class=\"drawer-dropdown open\"><a class=\"drawer-menu-item\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"true\">{{ 'ENTER_DATA' | translate }}\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t<span class=\"drawer-caret\"></span></a>\n" +
@@ -181,13 +185,16 @@ module.exports = {
                     "\n" +
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
-                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">Наращивание потенциала</a></li>\n" +
+                    "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grow_potencial\">{{ 'GROW_POTENCIAL' | translate }}</a></li>\n" +
                     "\t\t\t\t\t\t\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
                     "\n" +
                     "\n" +
-                    "\t\t\t\t</li>"}]
+                    "\t\t\t\t</li>"
+
+
+                }]
 
             );
 

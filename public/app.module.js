@@ -67,6 +67,10 @@ app.directive('ngFiles', ['$parse', function ($parse) {
 } ]);
 
 
+
+
+
+
 angular.module('app').factory("GetMainPage", function($resource) {
     return $resource("/getmainpage");
 });
@@ -139,7 +143,9 @@ app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $root
         return $sce.trustAsHtml($rootScope.myHTML);
     };
 
-
+    $rootScope.trustDangerousSnippet = function(val) {
+        return $sce.trustAsHtml(val);
+    };
 
 
 

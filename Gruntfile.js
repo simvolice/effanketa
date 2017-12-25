@@ -75,6 +75,15 @@ module.exports = function(grunt) {
                     ]
                 }
             }
+        },
+
+
+        i18nextract: {
+            default_options: {
+                src: [ 'public/components/**/*.html' ],
+                lang:     ['ru_RU'],
+                dest:     'tmp'
+            }
         }
 
 
@@ -92,6 +101,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-angular-translate');
 
 
 
@@ -100,4 +110,5 @@ module.exports = function(grunt) {
 
     grunt.registerTask('cleanDist', ['clean:dist']);
     grunt.registerTask('cssMin', ['cssmin:target']);
+    grunt.registerTask('i18nextract', ['i18nextract:default_options']);
 };

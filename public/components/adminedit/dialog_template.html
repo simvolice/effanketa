@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать администратора</h2>
+                <h2>{{ 'CREATE_ADMIN' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -37,7 +37,7 @@
 
 
                                     <md-input-container class="custom__select__margin">
-                                        <label>Выберите страну</label>
+                                        <label>{{ 'SELECT_COUNTRY' | translate }}</label>
                                         <md-icon class="material-icons">place</md-icon>
                                         <md-select ng-model="data.country">
 
@@ -52,7 +52,7 @@
 
 
                                     <md-input-container class="custom__select__margin" style="margin-right: 250px;">
-                                        <label>Выберите роль</label>
+                                        <label>{{ 'SELECT_ROLE' | translate }}</label>
                                         <md-icon class="material-icons">event_available</md-icon>
                                         <md-select ng-model="data.role">
 
@@ -65,7 +65,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>ФИО</label>
+                                        <label>{{ 'FIO' | translate }}</label>
                                         <md-icon class="material-icons">people</md-icon>
 
                                         <input type="text" ng-model="data.fio">
@@ -84,7 +84,7 @@
 
                                     <div class="input-group" ng-show="data.urlImg">
 										<span class="input-group-addon">
-											<i>Фотография администратора</i>
+											<i>{{ 'PHOTO_ADMIN' | translate }}</i>
 										</span>
                                         <img ng-src="{{data.urlImg}}" height="100" width="100">
                                     </div>
@@ -93,7 +93,7 @@
 
                                     <div class="input-group">
 										<span class="input-group-addon">
-											<i>Фотография администратора</i>
+											<i>{{ 'PHOTO_ADMIN' | translate }}</i>
 										</span>
                                         <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" accept="image/*"/>
                                     </div>
@@ -157,11 +157,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="uploadFiles()">
-            Сохранить
+            {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+            {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>
