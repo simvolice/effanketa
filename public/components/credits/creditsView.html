@@ -9,7 +9,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Кредиты</h3>
+                        <h3>{{ 'CREDITS' | translate }}</h3>
 
 
                     </div>
@@ -18,7 +18,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                        <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
 
 
                     </div>
@@ -26,10 +26,10 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
+                        <button class="btn btn-primary" ng-click="addBtn()">{{ 'ADD_ROW' | translate }}</button>
 
 
-                        <button class="btn btn-primary" ng-click="excel()">Выгрузить в Excel</button>
+                        <button class="btn btn-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</button>
 
 
                     </div>
@@ -51,11 +51,11 @@
 
                             <th md-column colspan="4" scope="colgroup"></th>
 
-                            <th md-column colspan="2" scope="colgroup" class="custom__border__group">Общий объем</th>
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">Прямые бенефециары <br>(заемщики+члены семьи+наёмные работники)</th>
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">Непрямые бенефециары <br> (члены семей)</th>
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">Непрямые бенефециары <br> (наемные работники)</th>
-                            <th md-column colspan="2" scope="colgroup" class="custom__border__group">Создаваемые мощности <br>/Ожидаемый эффект</th>
+                            <th md-column colspan="2" scope="colgroup" class="custom__border__group">{{ 'OVERALL_VOLUME' | translate }}</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'DIRECT_BENEFICIARIES' | translate }}</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'INDIRECT_BENEFICIARY_FAMILY_MEMBERS' | translate }}</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'INDIRECT_BENEFICIARY_EMPLOYEES' | translate }}</th>
+                            <th md-column colspan="2" scope="colgroup" class="custom__border__group" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'GENERATED_CAPACITIES' | translate }}</th>
 
                         </tr>
 
@@ -63,38 +63,38 @@
                         <tr md-row style="border-bottom: 1px solid black">
 
                             <th md-column class="custom__border__group">№</th>
-                            <th md-column class="custom__border__right__group">Категория кредитов</th>
-                            <th md-column class="custom__border__right__group">Кол-во <br> субпроектов</th>
-                            <th md-column class="custom__border__right__group">Страна</th>
+                            <th md-column class="custom__border__right__group">{{ 'CATEG_CREDITS' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'COUNT_SUBPROJECT' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'COUNTRY' | translate }}</th>
 
 
 
 
-                            <th md-column class="custom__border__left__group">В долларах</th>
-                            <th md-column class="custom__border__right__group">Нац. валюта</th>
+                            <th md-column class="custom__border__left__group">{{ 'INDOLLORS' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'NACCURRENCY' | translate }}</th>
 
 
 
 
-                            <th md-column>Муж.</th>
-                            <th md-column>Жен.</th>
-                            <th md-column class="custom__border__right__group">Всего</th>
+                            <th md-column>{{ 'MAN' | translate }}</th>
+                            <th md-column>{{ 'WOMAN' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'ALL' | translate }}</th>
 
 
 
-                            <th md-column>Муж.</th>
-                            <th md-column>Жен.</th>
-                            <th md-column class="custom__border__right__group">Всего</th>
+                            <th md-column>{{ 'MAN' | translate }}</th>
+                            <th md-column>{{ 'WOMAN' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'ALL' | translate }}</th>
 
 
-                            <th md-column>Муж.</th>
-                            <th md-column>Жен.</th>
-                            <th md-column class="custom__border__right__group">Всего</th>
+                            <th md-column>{{ 'MAN' | translate }}</th>
+                            <th md-column>{{ 'WOMAN' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'ALL' | translate }}</th>
 
-                            <th md-column>План Га</th>
-                            <th md-column class="custom__border__right__group">Факт</th>
-                            <th md-column class="custom__border__group">Сохранить</th>
-                            <th md-column class="custom__border__group">Удалить</th>
+                            <th md-column>{{ 'PLAN' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'FACT' | translate }}</th>
+                            <th md-column class="custom__border__group">{{ 'SAVE' | translate }}</th>
+                            <th md-column class="custom__border__group">{{ 'DELETE' | translate }}</th>
 
 
                         </tr>

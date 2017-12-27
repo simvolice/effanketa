@@ -17,7 +17,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Финансовый статус</h3>
+                        <h3>{{ 'FINANSIAL_STATUS' | translate }}</h3>
 
 
                     </div>
@@ -26,7 +26,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                        <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
 
 
                     </div>
@@ -34,8 +34,8 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">Добавить запись</button>
-                        <button class="btn btn-primary" ng-click="excel()">Выгрузить в Excel</button>
+                        <button class="btn btn-primary" ng-click="addBtn()">{{ 'ADD_ROW' | translate }}</button>
+                        <button class="btn btn-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</button>
 
 
                     </div>
@@ -67,10 +67,10 @@
                             <th md-column colspan="1" scope="colgroup"></th>
                             <th md-column colspan="1" scope="colgroup"></th>
 
-                            <th md-column colspan="3" scope="colgroup">Планирование бюджета</th>
-                            <th md-column colspan="3" scope="colgroup">Сервис</th>
-                            <th md-column colspan="3" scope="colgroup">Кредитная линия</th>
-                            <th md-column colspan="3" scope="colgroup">Операционные расходы</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'PLANNING_BUDGET' | translate }}</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'SERVICE' | translate }}</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'CREDIT_LINE' | translate }}</th>
+                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'OPERAC_CURRENCY' | translate }}</th>
 
                             <th md-column colspan="1" scope="colgroup"></th>
                             <th md-column colspan="1" scope="colgroup"></th>
@@ -79,37 +79,37 @@
 
                         </tr>
 
-                        <tr md-row>
+                        <tr md-row style="border-bottom: 1px solid black">
 
 
 
-                            <th md-column>№</th>
-                            <th md-column>Страна</th>
-                            <th md-column>Период</th>
+                            <th md-column class="custom__border__group">№</th>
+                            <th md-column class="custom__border__group">{{ 'COUNTRY' | translate }}</th>
+                            <th md-column class="custom__border__group">{{ 'PERIOD' | translate }}</th>
 
-                            <th md-column>План</th>
-                            <th md-column>Факт</th>
-                            <th md-column>Комментарий</th>
-
-
-                            <th md-column>План</th>
-                            <th md-column>Факт</th>
-                            <th md-column>Комментарий</th>
+                            <th md-column>{{ 'PLAN' | translate }}</th>
+                            <th md-column>{{ 'FACT' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
 
 
-                            <th md-column>План</th>
-                            <th md-column>Факт</th>
-                            <th md-column>Комментарий</th>
+                            <th md-column>{{ 'PLAN' | translate }}</th>
+                            <th md-column>{{ 'FACT' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
 
 
-                            <th md-column>План</th>
-                            <th md-column>Факт</th>
-                            <th md-column>Комментарий</th>
+                            <th md-column>{{ 'PLAN' | translate }}</th>
+                            <th md-column>{{ 'FACT' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
+
+
+                            <th md-column>{{ 'PLAN' | translate }}</th>
+                            <th md-column>{{ 'FACT' | translate }}</th>
+                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
 
 
 
-                            <th md-column>Обновить</th>
-                            <th md-column>Удалить</th>
+                            <th md-column class="custom__border__group">{{ 'REFRESH' | translate }}</th>
+                            <th md-column class="custom__border__group">{{ 'DELETE' | translate }}</th>
 
 
                         </tr>

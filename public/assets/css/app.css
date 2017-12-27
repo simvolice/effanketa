@@ -650,7 +650,3 @@ table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2)
 }
 
 
-.custom__height__table {
-    height: 400px;
-    overflow: auto;
-}

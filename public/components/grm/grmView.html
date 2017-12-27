@@ -14,7 +14,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <h3>Механизм рассмотрения жалоб и отзывов</h3>
+                        <h3>{{ 'GRM' | translate }}</h3>
 
 
                     </div>
@@ -22,7 +22,7 @@
                     <div class="md-toolbar-tools">
 
 
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                        <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
 
 
                     </div>
@@ -30,8 +30,8 @@
                     <div class="md-toolbar-tools">
 
 
-                        <button class="btn btn-primary" ng-click="addBtn($event)">Добавить запись</button>
-                        <button class="btn btn-primary" ng-click="excel()">Выгрузить в Excel</button>
+                        <button class="btn btn-primary" ng-click="addBtn($event)">{{ 'ADD_ROW' | translate }}</button>
+                        <button class="btn btn-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</button>
 
 
                     </div>
@@ -46,29 +46,29 @@
                         <thead md-head fix-head>
                         <tr md-row>
 
-                            <th md-column class="custom__border__group__all">Номер <br> отслеживания</th>
-                            <th md-column class="custom__border__group__all">Дата получения</th>
-                            <th md-column class="custom__border__group__all">Канал получения <br> жалобы</th>
-                            <th md-column class="custom__border__group__all">Страна</th>
-                            <th md-column class="custom__border__group__all">Заявитель</th>
+                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'NUMBER_TRACK' | translate }}</th>
+                            <th md-column class="custom__border__group__all">{{ 'DATE_TAKE' | translate }}</th>
+                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'CHANNEL_COMPLAINT' | translate }}</th>
+                            <th md-column class="custom__border__group__all">{{ 'COUNTRY' | translate }}</th>
+                            <th md-column class="custom__border__group__all">{{ 'DECLARER' | translate }}</th>
 
 
 
 
-                            <th md-column class="custom__border__group__all">Категория жалобы</th>
+                            <th md-column class="custom__border__group__all">{{ 'CATEG_COMPLAINT' | translate }}</th>
 
 
-                            <th md-column class="custom__border__group__all">Возникшие вопросы</th>
-                            <th md-column class="custom__border__group__all">Ответственный за <br> рассмотрение жалобы</th>
-                            <th md-column class="custom__border__group__all">Статус жалобы</th>
-                            <th md-column class="custom__border__group__all">Принятые меры</th>
-                            <th md-column class="custom__border__group__all">Крайний срок <br> для ответа заявителю</th>
-                            <th md-column class="custom__border__group__all">Дата уведомления <br> заявителя</th>
-                            <th md-column class="custom__border__group__all">Время затраченное <br> на рассмотрение жалобы</th>
+                            <th md-column class="custom__border__group__all">{{ 'RAISED_QUESTIONS' | translate }}</th>
+                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'RESPONSIBLE_BY_COMPLAINT' | translate }}</th>
+                            <th md-column class="custom__border__group__all">{{ 'STATUS_COMPLAINT' | translate }}</th>
+                            <th md-column class="custom__border__group__all">{{ 'TAKEN_MEASURES' | translate }}</th>
+                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'DEADLINE_FOR_ANSWER' | translate }}</th>
+                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'DATE_NOTIFICATION' | translate }}</th>
+                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'TIME_TO_CHECK' | translate }}</th>
 
 
-                            <th md-column class="custom__border__group__all">Обновить</th>
-                            <th md-column class="custom__border__group__all">Удалить</th>
+                            <th md-column class="custom__border__group__all">{{ 'REFRESH' | translate }}</th>
+                            <th md-column class="custom__border__group__all">{{ 'DELETE' | translate }}</th>
 
                         </tr>
                         </thead>

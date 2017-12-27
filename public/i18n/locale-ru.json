@@ -58,7 +58,56 @@
   "DATE_EVENT": "Дата проведения",
   "SEND_FORM": "Отправить анкету на заполнение",
   "VIEW": "Просмотреть",
-  "ADD_FORM": "Добавить анкету"
+  "ADD_FORM": "Добавить анкету",
+
+
+
+
+  "OVERALL_VOLUME": "Общий объем",
+  "DIRECT_BENEFICIARIES": "Прямые бенефициары (заемщики+члены семьи+наёмные работники)",
+  "INDIRECT_BENEFICIARY_FAMILY_MEMBERS": "Непрямые бенефециары (члены семей)",
+  "INDIRECT_BENEFICIARY_EMPLOYEES": "Непрямые бенефециары (наемные работники)",
+  "GENERATED_CAPACITIES": "Создаваемые мощности/Ожидаемый эффект ГА",
+  "CATEG_CREDITS": "Категория кредитов",
+  "COUNT_SUBPROJECT": "Кол-во субпроектов",
+  "INDOLLORS": "В долларах",
+  "NACCURRENCY": "Нац. валюта",
+  "MAN": "Муж.",
+  "WOMAN": "Жен.",
+  "ALL": "Всего",
+  "PLAN": "План",
+  "FACT": "Факт",
+
+
+
+
+
+  "NUMBER_TRACK": "Номер отслеживания",
+  "DATE_TAKE": "Дата получения",
+  "CHANNEL_COMPLAINT": "Канал получения жалобы",
+  "DECLARER": "Заявитель",
+  "CATEG_COMPLAINT": "Категория жалобы",
+  "RAISED_QUESTIONS": "Возникшие вопросы",
+  "RESPONSIBLE_BY_COMPLAINT": "Ответственный за рассмотрение жалобы",
+  "STATUS_COMPLAINT": "Статус жалобы",
+  "TAKEN_MEASURES": "Принятые меры",
+  "DEADLINE_FOR_ANSWER": "Крайний срок для ответа заявителю",
+  "DATE_NOTIFICATION": "Дата уведомления заявителя",
+  "TIME_TO_CHECK": "Время затраченное на рассмотрение жалобы",
+
+
+
+
+
+  "PLANNING_BUDGET": "Планирование бюджета",
+  "SERVICE": "Сервис",
+  "CREDIT_LINE": "Кредитная линия",
+  "OPERAC_CURRENCY": "Операционные расходы",
+  "PERIOD": "Период",
+  "COMMENTS": "Комментарий"
+
+
+
 
 
 
