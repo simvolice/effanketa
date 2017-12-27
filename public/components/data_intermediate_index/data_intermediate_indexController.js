@@ -187,16 +187,21 @@ $scope.data = {
         GetReportCountBenificiarProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
 
+
+
             if (entry.resultFromDb.length !== 0) {
 
 
-                $scope.data.countBenificiarProject = entry.resultFromDb[0].all_benificiar;
-                $scope.data.countBenificiarProjectInPersent = $scope.calculatePercentForcountBenificiarProject(entry.resultFromDb[0].all_benificiar);
+                $scope.data.countBenificiarProject = entry.resultFromDb[0].categByAll[0].all_benificiar;
+                $scope.data.countBenificiarProjectTj = entry.resultFromDb[0].categByTj[0].all_benificiar;
+                $scope.data.countBenificiarProjectUz = entry.resultFromDb[0].categByUz[0].all_benificiar;
 
 
             } else {
 
                 $scope.data.countBenificiarProject = 0;
+                $scope.data.countBenificiarProjectTj = 0;
+                $scope.data.countBenificiarProjectUz = 0;
 
             }
 
@@ -212,12 +217,16 @@ $scope.data = {
 
             if (entry.resultFromDb.length !== 0) {
 
-                $scope.data.areaGAProject = entry.resultFromDb[0].all_gaproject;
+                $scope.data.areaGAProject = entry.resultFromDb[0].categByAll[0].all_gaproject;
+                $scope.data.areaGAProjectTj = entry.resultFromDb[0].categByTj[0].all_gaproject;
+                $scope.data.areaGAProjectUz = entry.resultFromDb[0].categByUz[0].all_gaproject;
 
 
             } else {
 
                 $scope.data.areaGAProject = 0;
+                $scope.data.areaGAProjectTj = 0;
+                $scope.data.areaGAProjectUz = 0;
 
             }
 
@@ -234,11 +243,15 @@ $scope.data = {
             if (entry.resultFromDb.length !== 0) {
 
                 $scope.data.countGRM = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYes[0].all_completegrmWithYes);
+                $scope.data.countGRMTj = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrmTj[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYesTj[0].all_completegrmWithYes);
+                $scope.data.countGRMUz = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrmUz[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYesUz[0].all_completegrmWithYes);
 
 
             } else {
 
                 $scope.data.countGRM = 0;
+                $scope.data.countGRMTj = 0;
+                $scope.data.countGRMUz = 0;
             }
 
 
