@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const generator = require('generate-password');
 const nodemailer = require('nodemailer');
+const nodemailerHBS = require('nodemailer-express-handlebars');
 const jsonwebtoken = require('jsonwebtoken');
 const Busboy = require('async-busboy');
 const fs = require('fs');
@@ -20,6 +21,15 @@ const RoleService = require('../services/RoleService');
 const uuidV4 = require('uuid/v4');
 
 let transporter = nodemailer.createTransport(config.smtpServer);
+
+const optionsHBS = {
+
+    viewEngine: ".hbs",
+    viewPath: path.join(__dirname, "../template")
+
+};
+
+transporter.use('compile', nodemailerHBS(optionsHBS));
 
 
 
@@ -156,14 +166,26 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
     const {files, fields} = await Busboy(req);
     let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let urlImg = null;
 
 
 
+    if (files.length !== 0) {
 
-    files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
+        files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
 
 
-    let urlImg = "uploads/" + path.basename(files[0].path);
+        urlImg = "uploads/" + path.basename(files[0].path);
+
+
+
+    } else {
+
+
+        urlImg = "assets/img/user.png";
+
+
+    }
 
 
 
@@ -175,10 +197,17 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
   let mail = {
         from: "simvolice@gmail.com",
         to: fields.email,
-        subject: "Ваш логин и пароль для входа в систему EFFORM",
+        subject: "Ваш логин и пароль для входа в систему CAMP4ASB",
 
-        html: '<h4>Логин: '+ fields.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
-    };
+
+      template: 'mail_succes_reg',
+      context: {
+          login: fields.email,
+          pass: pass,
+          url: req.protocol + '://' + req.get('host')
+      }
+
+  };
 
     transporter.sendMail(mail);
 
@@ -367,9 +396,14 @@ router.post('/recoverypass', checkSeesionToken, async (req, res, next) =>{
         let mail = {
             from: "simvolice@gmail.com",
             to: result.email,
-            subject: "Ваш новый логин и пароль для входа в систему EFFORM",
+            subject: "Ваш новый пароль для входа в систему CAMP4ASB",
+            template: 'mail_succes_reg',
+            context: {
+                login: result.email,
+                pass: pass,
+                url: req.protocol + '://' + req.get('host')
+            }
 
-            html: '<h4>Логин: '+ result.email +'</h4> <br> <h4>Пароль: '+ pass +'</h4>'
         };
 
         transporter.sendMail(mail);

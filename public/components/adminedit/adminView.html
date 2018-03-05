@@ -7,108 +7,148 @@
 
         <md-content layout="column" flex class="custom__md-content__categ">
 
+
+
+
+            <md-card>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'ADMIN_LIST' | translate }}</h3>
+
+                    </div>
+
+                </div>
+
+            </md-card>
+
+
+
             <md-card>
 
 
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools">
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                        <h3>{{ 'ADMIN_LIST' | translate }}</h3>
-
-
-                    </div>
-
-
-                    <div class="md-toolbar-tools">
-
-
-                                <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
+                        </md-input-container>
 
 
                     </div>
 
-                    <div class="md-toolbar-tools">
+
+                </div>
 
 
-                        <button class="btn btn-primary" ng-click="addBtn($event)">{{ 'ADD_ROW' | translate }}</button>
+                <div class="row" style="    margin-left: -5px;
+    margin-top: -25px;
+    margin-bottom: 25px;">
+                     <div class="col-md-12">
+                         <md-button class="md-raised md-primary" ng-click="addBtn($event)">{{ 'ADD_ROW' | translate }}</md-button>
+
+                     </div>
+
+                </div>
+
+
+
+
+
+
+                <div class="row" style="margin-left: 5px;
+
+    margin-right: 5px;">
+                    <div class="col-md-12">
+
+
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center; vertical-align:middle}
+                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:middle}
+
+
+                        </style>
+                        <table class="tg table-striped">
+                            <tr>
+                                <th class="tg-hgcj">№</th>
+                                <th class="tg-hgcj">ФИО</th>
+                                <th class="tg-hgcj">Роль</th>
+                                <th class="tg-amwm">Страна</th>
+                                <th class="tg-amwm">Email</th>
+                                <th class="tg-amwm">Фото</th>
+                                <th class="tg-amwm">Дата создания</th>
+                                <th class="tg-amwm">Обновить</th>
+                                <th class="tg-amwm">Удалить</th>
+                                <th class="tg-amwm">Восстановить пароль</th>
+                            </tr>
+
+
+                            <tbody>
+
+
+                            <tr ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                <td class="tg-baqh">{{data.id}}</td>
+
+                                <td class="tg-baqh">{{data.fio}}</td>
+
+                                <td class="tg-baqh">
+
+                                    <select disabled ng-model="data.role" ng-options="x._id as x.name for x in data.allRoles">
+                                    </select>
+
+                                </td>
+
+                                <td class="tg-baqh">
+
+                                    <select disabled ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                    </select>
+
+                                </td>
+
+                                <td class="tg-baqh">{{data.email}}</td>
+                                <td class="tg-baqh"><img ng-src="{{data.urlImg}}" height="50" width="50"></td>
+
+
+
+
+
+                                <td class="tg-baqh">{{data.createAt | date : "dd.MM.y"}}</td>
+
+
+                                <td class="tg-baqh"><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
+
+                                <td class="tg-baqh"><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+
+                                <td class="tg-baqh"><i class="material-icons" ng-click="recoverpass(data._id)">lock_open</i></td>
+
+                            </tr>
+
+
+
+                            </tbody>
+
+
+                        </table>
+
 
 
                     </div>
 
-                </md-toolbar>
-
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head class="custom__border__group__all">
-                        <tr md-row>
-
-                            <th md-column class="custom__border__right__group">№</th>
-                            <th md-column class="custom__border__right__group">{{ 'FIO' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'ROLE' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'COUNTRY' | translate }}</th>
-                            <th md-column class="custom__border__right__group">Email</th>
-                            <th md-column class="custom__border__right__group">{{ 'PHOTO' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'DATE_CREATE' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'REFRESH' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'DELETE' | translate }}</th>
-                            <th md-column>{{ 'REMEMBER_PASS' | translate }}</th>
-                        </tr>
-                        </thead>
-                        <tbody md-body>
+                </div>
 
 
 
-
-
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                            <td md-cell>{{data.id}}</td>
-
-                            <td md-cell>{{data.fio}}</td>
-
-                            <td md-cell>
-
-                                <select disabled ng-model="data.role" ng-options="x._id as x.name for x in data.allRoles">
-                                </select>
-
-                            </td>
-
-                            <td md-cell>
-
-                                <select disabled ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                </select>
-
-                            </td>
-
-                            <td md-cell>{{data.email}}</td>
-                            <td md-cell><img ng-src="{{data.urlImg}}" height="50" width="50"></td>
-
-
-
-
-
-                            <td md-cell>{{data.createAt | date : "dd.MM.y"}}</td>
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data, $event)">done_all</i></td>
-
-                            <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
-
-                            <td md-cell><i class="material-icons" ng-click="recoverpass(data._id)">lock_open</i></td>
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
 
 
 
