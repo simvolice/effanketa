@@ -7,10 +7,24 @@ const router = express.Router();
 const config = require('../utils/devConfig');
 const checkSeesionToken = require('../utils/checkSeesionToken');
 const querystring = require('querystring');
+const path = require('path');
 const FormService = require('../services/FormService');
 const SendFormService = require('../services/SendFormService');
 const nodemailer = require('nodemailer');
+const nodemailerHBS = require('nodemailer-express-handlebars');
 let transporter = nodemailer.createTransport(config.smtpServer);
+
+const formatter = new Intl.DateTimeFormat("ru");
+
+
+const optionsHBS = {
+
+    viewEngine: ".hbs",
+    viewPath: path.join(__dirname, "../template")
+
+};
+
+transporter.use('compile', nodemailerHBS(optionsHBS));
 
 
 
@@ -121,13 +135,23 @@ router.post('/sendformforemail', checkSeesionToken, async (req, res, next) =>{
 
 
 
+
     for (let item of req.body.data.emails) {
         let mail = {
             from: "simvolice@gmail.com",
             to: item,
-            subject: "Добрый день, просим Вас заполнить анкету",
+            subject: "Уважаемый участник, просим Вас заполнить анкету для системы CAMP4ASB",
 
-            html: '<a href="'+ req.get("origin") + '/?#!/publicform?' + urlToPublicForm +'">Перейдите по этой ссылке, чтобы заполнить анкету</a>'
+
+            template: 'mail_send_form',
+            context: {
+                nameEvent: req.body.data.nameEvent,
+                dateEvent: formatter.format(new Date(req.body.data.dateOfEvent)),
+                nameCountry: req.body.data.nameCountry,
+                url: `${req.protocol}://${req.get('host')}/?#!/publicform?${urlToPublicForm}`
+            }
+
+
         };
 
         transporter.sendMail(mail);

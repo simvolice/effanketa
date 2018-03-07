@@ -40,7 +40,7 @@ if (process.env.DEPLOY === 'dev') {
     module.exports = {
 
         port: 3065,
-        smtpServer: "smtps://simvolice@gmail.com:gFb6kjtJFqpnQB@smtp-pulse.com:465",
+        smtpServer: "smtps://camp4asb@carececo.org:Ke6qLRD2rK@smtp-pulse.com:465",
         urlToMongoDBLocalhost: "mongodb://admin:1989aaaAAA@127.0.0.1:27017/efform",
         SECRETJSONWEBTOKEN: "5df9ed11-2bc3-4a2e-a4fc-780c271b25ac",
 

@@ -4,10 +4,17 @@
 
 
 
-angular.module('app').controller('PublicFormCtrl', function ($scope, $mdToast, $mdDialog, GetToken, $location) {
+angular.module('app').controller('PublicFormCtrl', function ($window, $timeout, $scope, $mdToast, $mdDialog, GetToken, $location) {
 
     //Убираем весь UI
     jQuery( "nav" ).remove();
+    $timeout(function () {
+
+
+        $('.drawer').drawer('close');
+
+
+    }, 150);
 
 
     if (localStorage.getItem('tokenCSRF') === null) {
@@ -150,7 +157,7 @@ angular.module('app').controller('PublicFormCtrl', function ($scope, $mdToast, $
 
 
 
-                    $mdDialog.hide();
+                   $window.location.href = "http://climate.carececo.org";
 
                 } else {
 

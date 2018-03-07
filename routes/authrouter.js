@@ -195,7 +195,7 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
   let pass = generator.generate({numbers: true, symbols: true});
   const hash = bcrypt.hashSync(pass, 10);
   let mail = {
-        from: "simvolice@gmail.com",
+        from: "camp4asb@carececo.org",
         to: fields.email,
         subject: "Ваш логин и пароль для входа в систему CAMP4ASB",
 
@@ -394,7 +394,7 @@ router.post('/recoverypass', checkSeesionToken, async (req, res, next) =>{
         let pass = generator.generate({numbers: true, symbols: true});
         const hash = bcrypt.hashSync(pass, 10);
         let mail = {
-            from: "simvolice@gmail.com",
+            from: "camp4asb@carececo.org",
             to: result.email,
             subject: "Ваш новый пароль для входа в систему CAMP4ASB",
             template: 'mail_succes_reg',
