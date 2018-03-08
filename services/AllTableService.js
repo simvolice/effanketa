@@ -154,9 +154,7 @@ module.exports = {
                     NonDirectBeneficiariesMemberFamilyAll : 1,
                     NonDirectBeneficiariesMemberFamilyMale : 1,
                     NonDirectBeneficiariesMemberFamilyFemale : 1,
-                    NonDirectBeneficiariesHiredAll : 1,
-                    NonDirectBeneficiariesHiredMale : 1,
-                    NonDirectBeneficiariesHiredFemale : 1,
+
                     CreatePowerPlan : 1,
                     CreatePowerFact: 1
 
@@ -205,13 +203,13 @@ module.exports = {
                         configurable: true
                     },
 
-                    'Прямые бенефециары, муж.': {
+                    'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), муж.': {
                         value: result[0].DirectBeneficiariesMale,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Прямые бенефециары, жен.': {
+                    'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), жен.': {
                         value: result[0].DirectBeneficiariesFemale,
                         writable: true,
                         enumerable: true,
@@ -219,7 +217,7 @@ module.exports = {
                     },
 
 
-                    'Прямые бенефециары, общее': {
+                    'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), общее': {
                         value: result[0].DirectBeneficiariesAll,
                         writable: true,
                         enumerable: true,
@@ -229,20 +227,20 @@ module.exports = {
 
 
 
-                    'Непрямые бенефециары (члены семей), муж.': {
+                    'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), муж.': {
                         value: result[0].NonDirectBeneficiariesMemberFamilyMale,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Непрямые бенефециары (члены семей), жен.': {
+                    'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), жен.': {
                         value: result[0].NonDirectBeneficiariesMemberFamilyFemale,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
 
-                    'Непрямые бенефециары (члены семей), всего': {
+                    'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), всего': {
                         value: result[0].NonDirectBeneficiariesMemberFamilyAll,
                         writable: true,
                         enumerable: true,
@@ -251,36 +249,17 @@ module.exports = {
 
 
 
-                    'Непрямые бенефециары (наемные работники), муж.': {
-                        value: result[0].NonDirectBeneficiariesHiredMale,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Непрямые бенефециары (наемные работники), жен.': {
-                        value: result[0].NonDirectBeneficiariesHiredFemale,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-                    'Непрямые бенефециары (наемные работники), всего': {
-                        value: result[0].NonDirectBeneficiariesHiredAll,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
 
 
 
 
-                    'Создаваемые мощности/Ожидаемый эффект, План Га': {
+                    'Создаваемые мощности/Ожидаемый эффект, Га': {
                         value: result[0].CreatePowerPlan,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Создаваемые мощности/Ожидаемый эффект, Факт Га': {
+                    'Создаваемые мощности/Ожидаемый эффект, Другое': {
                         value: result[0].CreatePowerFact,
                         writable: true,
                         enumerable: true,
@@ -304,9 +283,7 @@ module.exports = {
                delete result[0].NonDirectBeneficiariesMemberFamilyAll;
                delete result[0].NonDirectBeneficiariesMemberFamilyMale;
                delete result[0].NonDirectBeneficiariesMemberFamilyFemale;
-               delete result[0].NonDirectBeneficiariesHiredAll;
-               delete result[0].NonDirectBeneficiariesHiredMale;
-               delete result[0].NonDirectBeneficiariesHiredFemale;
+
                delete result[0].CreatePowerPlan;
                delete result[0].CreatePowerFact;
                delete result[0].nameFactCategcredits;

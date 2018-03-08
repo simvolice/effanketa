@@ -76,10 +76,17 @@
                                 <th class="tg-hgcj" rowspan="2">Кол-во субпроектов</th>
                                 <th class="tg-hgcj" rowspan="2">Страна</th>
                                 <th class="tg-hgcj" colspan="2">Общий объем</th>
-                                <th class="tg-hgcj" colspan="3">Прямые бенефициары <br>(заемщики+члены семьи + <br>наёмные работники)</th>
-                                <th class="tg-hgcj" colspan="3">Непрямые бенефициары <br>(члены семей)</th>
-                                <th class="tg-hgcj" colspan="3">Непрямые бенефициары <br>(наемные работники)</th>
-                                <th class="tg-hgcj" colspan="2">Создаваемые мощности/<br>Ожидаемый эффект ГА</th>
+
+
+                                <th class="tg-hgcj" colspan="3">Прямые бенефициары <br>(заёмщики и члены их семьи (для заемщиков физ. и юр. лиц)</th>
+
+
+
+                                <th class="tg-hgcj" colspan="3">Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц)</th>
+
+
+
+                                <th class="tg-hgcj" colspan="2">Создаваемые мощности/<br>Ожидаемый эффект</th>
                                 <th class="tg-hgcj" rowspan="2">Сохранить</th>
                                 <th class="tg-e3zv" rowspan="2">Удалить</th>
                             </tr>
@@ -92,11 +99,9 @@
                                 <td class="tg-hgcj">Муж.</td>
                                 <td class="tg-hgcj">Жен.</td>
                                 <td class="tg-hgcj">Всего</td>
-                                <td class="tg-hgcj">Муж.</td>
-                                <td class="tg-hgcj">Жен.</td>
-                                <td class="tg-hgcj">Всего</td>
-                                <td class="tg-hgcj">План</td>
-                                <td class="tg-hgcj">Факт</td>
+
+                                <td class="tg-hgcj">ГА</td>
+                                <td class="tg-hgcj">Другое</td>
                             </tr>
 
 
@@ -193,12 +198,6 @@
 
 
 
-                                <td><input class="custom__four__digits" type="text" value="{{data.NonDirectBeneficiariesHiredMale}}" ng-model="data.NonDirectBeneficiariesHiredMale"></td>
-
-
-
-                                <td><input class="custom__four__digits" type="text" value="{{data.NonDirectBeneficiariesHiredFemale}}" ng-model="data.NonDirectBeneficiariesHiredFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
-                                <td><input class="custom__four__digits" type="text" value="{{data.NonDirectBeneficiariesHiredAll}}" ng-model="data.NonDirectBeneficiariesHiredAll" disabled></td>
 
 
 

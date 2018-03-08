@@ -50,9 +50,8 @@ module.exports = {
               NonDirectBeneficiariesMemberFamilyAll: Int32(objParams.NonDirectBeneficiariesMemberFamilyAll),
               NonDirectBeneficiariesMemberFamilyMale: Int32(objParams.NonDirectBeneficiariesMemberFamilyMale),
               NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
-              NonDirectBeneficiariesHiredAll: Int32(objParams.NonDirectBeneficiariesHiredAll),
-              NonDirectBeneficiariesHiredMale: Int32(objParams.NonDirectBeneficiariesHiredMale),
-              NonDirectBeneficiariesHiredFemale: Int32(objParams.NonDirectBeneficiariesHiredFemale),
+
+
               CreatePowerPlan: Double(objParams.CreatePowerPlan),
               CreatePowerFact: Double(objParams.CreatePowerFact),
 
@@ -291,9 +290,8 @@ module.exports = {
                       NonDirectBeneficiariesMemberFamilyAll: Int32(objParams.NonDirectBeneficiariesMemberFamilyAll),
                       NonDirectBeneficiariesMemberFamilyMale: Int32(objParams.NonDirectBeneficiariesMemberFamilyMale),
                       NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
-                      NonDirectBeneficiariesHiredAll: Int32(objParams.NonDirectBeneficiariesHiredAll),
-                      NonDirectBeneficiariesHiredMale: Int32(objParams.NonDirectBeneficiariesHiredMale),
-                      NonDirectBeneficiariesHiredFemale: Int32(objParams.NonDirectBeneficiariesHiredFemale),
+
+
                       CreatePowerPlan: Double(objParams.CreatePowerPlan),
                       creditsFactSelect: ObjectId(objParams.creditsFactSelect)
 
