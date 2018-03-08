@@ -167,11 +167,19 @@ module.exports = {
                 }).toArray();
 
 
-                console.log("\x1b[42m", result);
-
 
 
                 Object.defineProperties(result[0], {
+
+
+                    'Категория кредитов': {
+                        value: result[0].nameFactCategcredits,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
                     'Страна': {
                         value: result[0].nameCountry,
                         writable: true,
@@ -196,12 +204,7 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
-                    'Прямые бенефециары, общее': {
-                        value: result[0].DirectBeneficiariesAll,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+
                     'Прямые бенефециары, муж.': {
                         value: result[0].DirectBeneficiariesMale,
                         writable: true,
@@ -214,12 +217,18 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
-                    'Непрямые бенефециары (члены семей), всего': {
-                        value: result[0].NonDirectBeneficiariesMemberFamilyAll,
+
+
+                    'Прямые бенефециары, общее': {
+                        value: result[0].DirectBeneficiariesAll,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
+
+
+
+
                     'Непрямые бенефециары (члены семей), муж.': {
                         value: result[0].NonDirectBeneficiariesMemberFamilyMale,
                         writable: true,
@@ -232,12 +241,16 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
-                    'Непрямые бенефециары (наемные работники), всего': {
-                        value: result[0].NonDirectBeneficiariesHiredAll,
+
+                    'Непрямые бенефециары (члены семей), всего': {
+                        value: result[0].NonDirectBeneficiariesMemberFamilyAll,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
+
+
+
                     'Непрямые бенефециары (наемные работники), муж.': {
                         value: result[0].NonDirectBeneficiariesHiredMale,
                         writable: true,
@@ -250,6 +263,17 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
+
+                    'Непрямые бенефециары (наемные работники), всего': {
+                        value: result[0].NonDirectBeneficiariesHiredAll,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
+
+
                     'Создаваемые мощности/Ожидаемый эффект, План Га': {
                         value: result[0].CreatePowerPlan,
                         writable: true,
@@ -262,12 +286,6 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
-                    'Категория кредитов': {
-                        value: result[0].nameFactCategcredits,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
 
 
 
