@@ -316,7 +316,8 @@ module.exports = {
                     takeAction : 1,
                     lastDateAnswer : 1,
                     dateNotifDeclarer : 1,
-                    timeToCheckComplaint : 1
+                    timeToCheckComplaint : 1,
+                    assessmentQualitySatisfactionComplaint : 1
 
 
 
@@ -406,7 +407,14 @@ module.exports = {
                         writable: true,
                         enumerable: true,
                         configurable: true
+                    },
+                    'Оценка качества удовлетворённости жалобы': {
+                        value: result[0].assessmentQualitySatisfactionComplaint,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
                     }
+
 
 
 
@@ -428,6 +436,7 @@ module.exports = {
                     delete result[0].lastDateAnswer;
                     delete result[0].dateNotifDeclarer;
                     delete result[0].timeToCheckComplaint;
+                    delete result[0].assessmentQualitySatisfactionComplaint;
 
 
 

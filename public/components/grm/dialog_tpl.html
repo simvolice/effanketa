@@ -161,7 +161,7 @@
 
 
 
-                                <md-input-container class="custom__select__margin">
+                                <md-input-container style="width: 200px">
                                     <label>Сложность жалобы</label>
                                     <md-icon class="material-icons">place</md-icon>
                                     <md-select ng-model="data.levelComplaint" ng-change="selectLevel(data.levelComplaint)">
@@ -305,8 +305,8 @@
 
 
 
-                                <p style="margin-top: 20px">Оценка качества удовлетворённости жалобы</p>
-                                <md-radio-group ng-model="data.assessmentQualitySatisfactionComplaint" layout="row">
+                                <p style="margin-top: 20px;">Оценка качества удовлетворённости жалобы</p>
+                                <md-radio-group  style="margin-bottom: 20px" ng-model="data.assessmentQualitySatisfactionComplaint" layout="row">
 
                                     <md-radio-button value="1">1</md-radio-button>
                                     <md-radio-button value="2">2</md-radio-button>

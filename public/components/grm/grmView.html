@@ -5,185 +5,216 @@
 
 
 
+
+            <md-card>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'GRM' | translate }}</h3>
+
+                    </div>
+
+                </div>
+
+            </md-card>
+
+
+
             <md-card>
 
 
-                <md-toolbar class="md-table-toolbar md-default">
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                    <div class="md-toolbar-tools">
-
-
-                        <h3>{{ 'GRM' | translate }}</h3>
-
-
-                    </div>
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
-
-
-                    </div>
-
-                    <div class="md-toolbar-tools">
-
-
-                        <button class="btn btn-primary" ng-click="addBtn($event)">{{ 'ADD_ROW' | translate }}</button>
-                        <button class="btn btn-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</button>
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
+                        </md-input-container>
 
 
                     </div>
 
 
-                </md-toolbar>
+                </div>
 
 
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
+                <div class="row" style="    margin-left: -5px;
+    margin-top: -25px;
+    margin-bottom: 25px;">
+                    <div class="col-md-12">
+                        <md-button class="md-raised md-primary" ng-click="addBtn($event)">{{ 'ADD_ROW' | translate }}</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</md-button>
 
-                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'NUMBER_TRACK' | translate }}</th>
-                            <th md-column class="custom__border__group__all">{{ 'DATE_TAKE' | translate }}</th>
-                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'CHANNEL_COMPLAINT' | translate }}</th>
-                            <th md-column class="custom__border__group__all">{{ 'COUNTRY' | translate }}</th>
-                            <th md-column class="custom__border__group__all">{{ 'DECLARER' | translate }}</th>
+                    </div>
 
+                </div>
 
 
 
-                            <th md-column class="custom__border__group__all">{{ 'CATEG_COMPLAINT' | translate }}</th>
 
 
-                            <th md-column class="custom__border__group__all">{{ 'RAISED_QUESTIONS' | translate }}</th>
-                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'RESPONSIBLE_BY_COMPLAINT' | translate }}</th>
-                            <th md-column class="custom__border__group__all">{{ 'STATUS_COMPLAINT' | translate }}</th>
-                            <th md-column class="custom__border__group__all">{{ 'TAKEN_MEASURES' | translate }}</th>
-                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'DEADLINE_FOR_ANSWER' | translate }}</th>
-                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'DATE_NOTIFICATION' | translate }}</th>
-                            <th md-column class="custom__border__group__all" style="min-width: 129px;max-width: 129px;white-space: pre-wrap;">{{ 'TIME_TO_CHECK' | translate }}</th>
 
+                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                    <div class="col-md-12 table-responsive">
 
-                            <th md-column class="custom__border__group__all">{{ 'REFRESH' | translate }}</th>
-                            <th md-column class="custom__border__group__all">{{ 'DELETE' | translate }}</th>
 
-                        </tr>
-                        </thead>
-                        <tbody md-body>
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                        </style>
+                        <table class="tg table-striped">
+                            <tr>
+                                <th class="tg-hgcj">Номер отслеживания</th>
+                                <th class="tg-hgcj">Дата получения</th>
+                                <th class="tg-hgcj">Канал получения жалобы</th>
+                                <th class="tg-hgcj">Страна</th>
+                                <th class="tg-hgcj">Заявитель</th>
+                                <th class="tg-hgcj">Категория жалобы</th>
+                                <th class="tg-hgcj">Возникшие вопросы</th>
+                                <th class="tg-hgcj">Ответственный за рассмотрение жалобы</th>
+                                <th class="tg-hgcj">Статус жалобы</th>
+                                <th class="tg-hgcj">Принятые меры</th>
+                                <th class="tg-hgcj">Крайний срок для ответа заявителю</th>
+                                <th class="tg-hgcj">Дата уведомления заявителя</th>
+                                <th class="tg-hgcj">Время затраченное на рассмотрение жалобы</th>
+                                <th class="tg-hgcj">Оценка качества удовлетворённости жалобы</th>
+                                <th class="tg-hgcj">Просмотр</th>
+                                <th class="tg-hgcj">Сохранить</th>
+                                <th class="tg-hgcj">Удалить</th>
+                            </tr>
 
 
 
 
+                            <tbody>
 
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
 
 
 
 
+                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
 
-                            <td md-cell ng-style="{'background-color': data.colorForStatus}">{{data.id}}</td>
 
 
-                            <td md-cell>
 
 
-                                {{data.dateInGo | date : "dd.MM.y"}}
-                              </td>
+                                <td ng-style="{'background-color': data.colorForStatus}">{{data.id}}</td>
 
-                            <td md-cell>
 
-                                {{data.canalName}}
-                            </td>
+                                <td>
 
 
+                                    {{data.dateInGo | date : "dd.MM.y"}}
+                                </td>
 
-                            <td md-cell>
+                                <td>
 
-                                {{data.nameCountry}}
+                                    {{data.canalName}}
+                                </td>
 
-                            </td>
 
 
+                                <td>
 
+                                    {{data.nameCountry}}
 
-                            <td md-cell>{{data.declarerFIO}}</td>
+                                </td>
 
 
-                            <td md-cell>
 
-                               {{data.categName | limitTo:15}}
 
-                            </td>
+                                <td>{{data.declarerFIO}}</td>
 
 
+                                <td>
 
-                            <td md-cell>{{data.raisedQuestion | limitTo:15}}</td>
+                                    {{data.categName | limitTo:15}}
 
+                                </td>
 
 
 
-                            <td md-cell>{{data.responsibleConsideration}}</td>
+                                <td>{{data.raisedQuestion | limitTo:15}}</td>
 
 
-                            <td md-cell>
 
-                               {{data.statusName}}
 
+                                <td>{{data.responsibleConsideration}}</td>
 
-                            </td>
 
+                                <td>
 
-                            <td md-cell>
+                                    {{data.statusName}}
 
 
-                                {{data.takeAction | limitTo:15}}
+                                </td>
 
 
-                            </td>
+                                <td>
 
 
+                                    {{data.takeAction | limitTo:15}}
 
-                            <td md-cell>
 
+                                </td>
 
-                                {{data.lastDateAnswer | date : "dd.MM.y"}}
 
 
-                            </td>
+                                <td>
 
 
+                                    {{data.lastDateAnswer | date : "dd.MM.y"}}
 
 
-                            <td md-cell>
+                                </td>
 
-                                {{data.dateNotifDeclarer | date : "dd.MM.y"}}
 
-                            </td>
 
 
-                            <td md-cell>{{data.timeToCheckComplaint}}</td>
+                                <td>
 
+                                    {{data.dateNotifDeclarer | date : "dd.MM.y"}}
 
+                                </td>
 
 
+                                <td>{{data.timeToCheckComplaint}}</td>
+                                <td>{{data.assessmentQualitySatisfactionComplaint}}</td>
 
 
 
 
 
-                            <td md-cell><i class="material-icons" ng-click="updBtn(data, $event)">done_all</i></td>
 
-                            <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
 
 
 
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
+                                <td><i class="material-icons" ng-click="updBtn(data, $event)">visibility</i></td>
+                                <td><i class="material-icons" ng-click="updBtn(data, $event)">done_all</i></td>
+
+                                <td><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+
+
+
+                            </tr>
+
+
+
+                            </tbody>
+
+
+
+
+
+
+                        </table>
+                    </div>
+
+                </div>
 
 
 
@@ -193,6 +224,8 @@
 
 
             </md-card>
+
+
 
 
 
