@@ -120,4 +120,18 @@ router.get('/getalleventstatuses', async (req, res, next) =>{
 
 
 
+router.get('/getalleventsubstatuses', async (req, res, next) =>{
+
+    let result =  await EventService.getAllEventSubStatuses();
+
+
+
+
+    res.json({"code": 0, "resultFromDb": result});
+
+});
+
+
+
+
 module.exports = router;

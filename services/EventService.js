@@ -65,6 +65,62 @@ module.exports = {
     },
 
 
+    initialSubStatus: async () => {
+
+        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+        try {
+
+
+
+
+            const col = db.collection('event_sub_statuses');
+            col.createIndex({ name : 1 }, {unique: true});
+
+
+
+
+            const result = await col.insertMany([
+
+                    {
+                        name: "Нет"
+                    },
+
+                    {
+                        name: "Частично"
+                    },
+
+                    {
+                    name: "Полностью"
+                    }
+
+                ]
+
+            );
+
+
+
+            db.close();
+
+            return result;
+
+
+        }catch(err) {
+
+
+            db.close();
+
+            return err;
+
+
+        }
+
+
+
+
+
+    },
+
+
     getAllEventStatuses: async () => {
 
         try {
@@ -98,6 +154,41 @@ module.exports = {
     },
 
 
+    getAllEventSubStatuses: async () => {
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('event_sub_statuses');
+
+
+
+            const result = await col.find({}).toArray();
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+    },
+
+
+
+
     addEvent: async (objParams) => {
 
         try {
@@ -108,6 +199,7 @@ module.exports = {
 
             let nameCountry = await CountryService.getCountryById(objParams.country);
             let nameTypeEvent = await dbUtilsHelpMethods.getOneObjById(objParams.typeEvent, "event_statuses");
+            let nameSubTypeEvent = await dbUtilsHelpMethods.getOneObjById(objParams.subTypeEvent, "event_sub_statuses");
 
             let seq = await CounterService.getNextSequence("eventid");
 
@@ -127,6 +219,8 @@ module.exports = {
                 nameEvent: objParams.nameEvent,
                 typeEvent: ObjectId(objParams.typeEvent),
                 nameTypeEvent: nameTypeEvent.name,
+                subTypeEvent: ObjectId(objParams.subTypeEvent),
+                nameSubTypeEvent: nameSubTypeEvent.name,
 
                 countPeopleEventCommon: objParams.countPeopleEventCommon,
                 countWomanEventCommon: objParams.countWomanEventCommon,
@@ -292,6 +386,8 @@ module.exports = {
             const col = dbConnect.getConnect().collection('events');
 
             let nameCountry = await CountryService.getCountryById(objParams.country);
+            let nameTypeEvent = await dbUtilsHelpMethods.getOneObjById(objParams.typeEvent, "event_statuses");
+            let nameSubTypeEvent = await dbUtilsHelpMethods.getOneObjById(objParams.subTypeEvent, "event_sub_statuses");
 
 
 
@@ -308,6 +404,11 @@ module.exports = {
 
                         nameEvent: objParams.nameEvent,
                         typeEvent: ObjectId(objParams.typeEvent),
+
+                        nameTypeEvent: nameTypeEvent.name,
+                        subTypeEvent: ObjectId(objParams.subTypeEvent),
+                        nameSubTypeEvent: nameSubTypeEvent.name,
+
 
                         countPeopleEventCommon: objParams.countPeopleEventCommon,
                         countWomanEventCommon: objParams.countWomanEventCommon,

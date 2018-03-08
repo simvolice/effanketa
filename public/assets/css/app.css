@@ -448,7 +448,7 @@ ul:not(.browser-default) > li {
 
 
 .custom__select__margin {
-    min-width: 200px;
+    min-width: 400px;
     margin-right: 30px;
 
 }
@@ -649,4 +649,7 @@ table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2)
     border: 1px solid black;
 }
 
+.custom__select__coutry {
 
+    width: 200px;
+}

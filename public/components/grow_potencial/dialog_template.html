@@ -36,7 +36,7 @@
 
 
 
-                                    <md-input-container class="custom__select__margin">
+                                    <md-input-container class="custom__select__coutry">
                                         <label>Выберите страну</label>
                                         <md-icon class="material-icons">place</md-icon>
                                         <md-select ng-model="data.country">
@@ -86,7 +86,16 @@
                                     </md-input-container>
 
 
+                                    <md-input-container class="custom__select__margin" style="margin-right: 250px;">
+                                        <label>Мероприятие посвящено гендерным вопросам</label>
+                                        <md-icon class="material-icons">event_available</md-icon>
+                                        <md-select ng-model="data.subTypeEvent">
 
+                                            <md-option ng-repeat="y in data.allEventSubStatuses" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
 
 

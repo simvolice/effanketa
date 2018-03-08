@@ -98,6 +98,7 @@ async function initApp() {
     await NameYear.initialNameYear();
 
     await EventService.initialStatus();
+    await EventService.initialSubStatus();
 
     await AuthService.createUserSuperRoot(config.hashAdmin);
 

@@ -68,3 +68,6 @@ angular.module('app').factory("GetAllEventStatuses", function($resource) {
 });
 
 
+angular.module('app').factory("GetAllEventSubStatuses", function($resource) {
+    return $resource("/getalleventsubstatuses");
+});

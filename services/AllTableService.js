@@ -29,6 +29,7 @@ module.exports = {
                     nameCountry: 1,
                     nameEvent: 1,
                     nameTypeEvent: 1,
+                    nameSubTypeEvent: 1,
                     myDate: 1,
                     countPeopleEventCommon: 1,
                     countWomanEventCommon: 1,
@@ -69,7 +70,12 @@ module.exports = {
                         configurable: true
                     },
 
-
+                    'Мероприятие посвящено гендерным вопросам': {
+                        value: result[0].nameSubTypeEvent,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
 
                     'Количество участников, общее': {
                         value: result[0].countPeopleEventCommon,
@@ -115,6 +121,7 @@ module.exports = {
                delete result[0].nameCountry;
                delete result[0].nameEvent;
                delete result[0].nameTypeEvent;
+               delete result[0].nameSubTypeEvent;
                delete result[0].myDate;
                delete result[0].countPeopleEventCommon;
                delete result[0].countWomanEventCommon;

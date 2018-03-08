@@ -343,7 +343,7 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, DelEven
             $mdDialog.show({
                 controller: DialogControllerUpdateEvent,
                 locals:{data: data},
-                templateUrl: 'components/grow_potencial/dialog_template_upd_event.html',
+                templateUrl: 'components/grow_potencial/dialog_template.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true,
@@ -555,7 +555,7 @@ function DialogControllerUpdateForm($scope, data, UpdForm, index, GetOneForm) {
 
 
 
-function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdEvent, GetAllEventStatuses) {
+function DialogControllerUpdateEvent(GetAllEventSubStatuses, $scope, data, GetAllCoutrys, $mdToast, UpdEvent, GetAllEventStatuses) {
 
 
 
@@ -570,6 +570,7 @@ function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdE
 
         nameEvent: data.nameEvent,
         typeEvent: data.typeEvent,
+        subTypeEvent: data.subTypeEvent,
 
         countPeopleEventCommon: data.countPeopleEventCommon,
         countWomanEventCommon: data.countWomanEventCommon,
@@ -601,7 +602,16 @@ function DialogControllerUpdateEvent($scope, data, GetAllCoutrys, $mdToast, UpdE
     });
 
 
-    $scope.save = function () {
+    GetAllEventSubStatuses.get(function(entry) {
+
+
+        $scope.data.allEventSubStatuses = entry.resultFromDb;
+
+
+    });
+
+
+    $scope.addEvent = function () {
 
 
         UpdEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
@@ -676,7 +686,7 @@ $scope.showModalWnd = function(ev) {
             });
         };
 
-function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEventStatuses) {
+function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEventStatuses, GetAllEventSubStatuses) {
 
 
 
@@ -688,6 +698,7 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
         nameEvent: "",
         typeEvent: "",
+        subTypeEvent: "",
 
         countPeopleEventCommon: "",
         countWomanEventCommon: "",
@@ -717,6 +728,17 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
         $scope.data.allEventStatuses = entry.resultFromDb;
         $scope.data.typeEvent = entry.resultFromDb[0]._id;
+
+
+    });
+
+
+
+    GetAllEventSubStatuses.get(function(entry) {
+
+
+        $scope.data.allEventSubStatuses = entry.resultFromDb;
+        $scope.data.subTypeEvent = entry.resultFromDb[0]._id;
 
 
     });
