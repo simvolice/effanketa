@@ -77,14 +77,7 @@ angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFin
         });
 
 
-        GetNameQurter.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: new Date()}, function(entry) {
 
-
-            tempObj.nameQuarter = entry.resultFromDb;
-
-
-
-        });
 
 
         $scope.data.push(tempObj);

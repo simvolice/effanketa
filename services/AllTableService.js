@@ -466,7 +466,8 @@ module.exports = {
                     CreditLineComment: 1,
                     OperatingExpensesPlan: 1,
                     OperatingExpensesFact: 1,
-                    OperatingExpensesComment: 1
+                    OperatingExpensesComment: 1,
+                    nameQuarter: 1
 
 
                 }).toArray();
@@ -475,12 +476,25 @@ module.exports = {
 
 
                 Object.defineProperties(result[0], {
-                    'Номер': {
-                        value: result[0].id,
+
+
+                    'Страна': {
+                    value: result[0].nameCountry,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
+
+
+
+                    'Период': {
+                    value: result[0].nameQuarter,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
                     'Планирование бюджета, План': {
                         value: result[0].BudgetBisbursementPlan,
                         writable: true,
@@ -553,12 +567,6 @@ module.exports = {
                         writable: true,
                         enumerable: true,
                         configurable: true
-                    },
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
                     }
 
 
@@ -582,6 +590,7 @@ module.exports = {
                     delete result[0].OperatingExpensesFact;
                     delete result[0].OperatingExpensesComment;
                     delete result[0].nameCountry;
+                    delete result[0].nameQuarter;
 
 
 

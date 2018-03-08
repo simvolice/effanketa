@@ -7,183 +7,189 @@
 
         <md-content layout="column" flex class="custom__md-content__categ">
 
+
+
+
+            <md-card>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'FINANSIAL_STATUS' | translate }}</h3>
+
+                    </div>
+
+                </div>
+
+            </md-card>
+
+
+
             <md-card>
 
 
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools">
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                        <h3>{{ 'FINANSIAL_STATUS' | translate }}</h3>
-
-
-                    </div>
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="{{ 'SEARCH' | translate }}" class="custom__search__input">
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
+                        </md-input-container>
 
 
                     </div>
 
-                    <div class="md-toolbar-tools">
+
+                </div>
 
 
-                        <button class="btn btn-primary" ng-click="addBtn()">{{ 'ADD_ROW' | translate }}</button>
-                        <button class="btn btn-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</button>
-
+                <div class="row" style="    margin-left: -5px;
+    margin-top: -25px;
+    margin-bottom: 25px;">
+                    <div class="col-md-12">
+                        <md-button class="md-raised md-primary" ng-click="addBtn()">{{ 'ADD_ROW' | translate }}</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</md-button>
 
                     </div>
 
-                </md-toolbar>
+                </div>
 
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
 
 
 
-                    <colgroup span="1"></colgroup>
-                    <colgroup span="1"></colgroup>
-                    <colgroup span="1"></colgroup>
 
 
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="3"></colgroup>
-                    <colgroup span="1"></colgroup>
-                    <colgroup span="1"></colgroup>
+                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                    <div class="col-md-12 table-responsive">
 
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0;width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                        </style>
+                        <table class="tg table-striped">
+                            <tr>
+                                <th class="tg-hgcj" rowspan="2">№</th>
+                                <th class="tg-hgcj" rowspan="2">Страна</th>
+                                <th class="tg-hgcj" rowspan="2">Период</th>
+                                <th class="tg-hgcj" colspan="3">Планирование бюджета</th>
+                                <th class="tg-amwm" colspan="3">Сервис</th>
+                                <th class="tg-amwm" colspan="3">Кредитная линия</th>
+                                <th class="tg-amwm" colspan="3">Операционные расходы</th>
+                                <th class="tg-hgcj" rowspan="2">Сохранить</th>
+                                <th class="tg-hgcj" rowspan="2">Удалить</th>
+                            </tr>
+                            <tr>
+                                <td class="tg-amwm">План</td>
+                                <td class="tg-amwm">Факт</td>
+                                <td class="tg-amwm">Комментарий</td>
+                                <td class="tg-amwm">План</td>
+                                <td class="tg-amwm">Факт</td>
+                                <td class="tg-amwm">Комментарий</td>
+                                <td class="tg-amwm">План</td>
+                                <td class="tg-amwm">Факт</td>
+                                <td class="tg-amwm">Комментарий</td>
+                                <td class="tg-amwm">План</td>
+                                <td class="tg-amwm">Факт</td>
+                                <td class="tg-amwm">Комментарий</td>
+                            </tr>
 
-                            <th md-column colspan="1" scope="colgroup"></th>
-                            <th md-column colspan="1" scope="colgroup"></th>
-                            <th md-column colspan="1" scope="colgroup"></th>
 
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'PLANNING_BUDGET' | translate }}</th>
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'SERVICE' | translate }}</th>
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'CREDIT_LINE' | translate }}</th>
-                            <th md-column colspan="3" scope="colgroup" class="custom__border__group">{{ 'OPERAC_CURRENCY' | translate }}</th>
 
-                            <th md-column colspan="1" scope="colgroup"></th>
-                            <th md-column colspan="1" scope="colgroup"></th>
 
+                            <tbody>
 
 
-                        </tr>
 
-                        <tr md-row style="border-bottom: 1px solid black">
 
 
+                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
 
-                            <th md-column class="custom__border__group">№</th>
-                            <th md-column class="custom__border__group">{{ 'COUNTRY' | translate }}</th>
-                            <th md-column class="custom__border__group">{{ 'PERIOD' | translate }}</th>
 
-                            <th md-column>{{ 'PLAN' | translate }}</th>
-                            <th md-column>{{ 'FACT' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
 
 
-                            <th md-column>{{ 'PLAN' | translate }}</th>
-                            <th md-column>{{ 'FACT' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
 
+                                <td>{{data.id}}</td>
 
-                            <th md-column>{{ 'PLAN' | translate }}</th>
-                            <th md-column>{{ 'FACT' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
 
 
-                            <th md-column>{{ 'PLAN' | translate }}</th>
-                            <th md-column>{{ 'FACT' | translate }}</th>
-                            <th md-column class="custom__border__right__group">{{ 'COMMENTS' | translate }}</th>
+                                <td>
 
+                                    <select style="width: 150px" ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                    </select>
 
+                                </td>
 
-                            <th md-column class="custom__border__group">{{ 'REFRESH' | translate }}</th>
-                            <th md-column class="custom__border__group">{{ 'DELETE' | translate }}</th>
 
+                                <td><input type="text" value="{{data.nameQuarter}}" ng-model="data.nameQuarter"></td>
 
-                        </tr>
 
 
 
-                        </thead>
-                        <tbody md-body>
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.BudgetBisbursementPlan}}" ng-model="data.BudgetBisbursementPlan"></td>
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.BudgetBisbursementFact}}" ng-model="data.BudgetBisbursementFact"></td>
+                                <td><input type="text" value="{{data.BudgetBisbursementComment}}" ng-model="data.BudgetBisbursementComment"></td>
 
 
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.ServicesPlan}}" ng-model="data.ServicesPlan"></td>
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.ServicesFact}}" ng-model="data.ServicesFact"></td>
+                                <td><input type="text" value="{{data.ServicesComment}}" ng-model="data.ServicesComment"></td>
 
 
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.CreditLinePlan}}" ng-model="data.CreditLinePlan"></td>
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.CreditLineFact}}" ng-model="data.CreditLineFact"></td>
+                                <td><input type="text" value="{{data.CreditLineComment}}" ng-model="data.CreditLineComment"></td>
 
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
 
 
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.OperatingExpensesPlan}}" ng-model="data.OperatingExpensesPlan"></td>
+                                <td><input class="custom__threeteen__digits" type="text" value="{{data.OperatingExpensesFact}}" ng-model="data.OperatingExpensesFact"></td>
+                                <td><input type="text" value="{{data.OperatingExpensesComment}}" ng-model="data.OperatingExpensesComment"></td>
 
 
 
-                            <td md-cell>{{data.id}}</td>
 
+                                <td><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
 
+                                <td><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
 
-                            <td md-cell>
 
-                                <select ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
-                                </select>
+                            </tr>
+                            </tbody>
 
-                            </td>
 
 
-                            <td md-cell>{{data.nameQuarter}}</td>
 
 
 
 
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.BudgetBisbursementPlan}}" ng-model="data.BudgetBisbursementPlan"></td>
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.BudgetBisbursementFact}}" ng-model="data.BudgetBisbursementFact"></td>
-                            <td md-cell><input type="text" value="{{data.BudgetBisbursementComment}}" ng-model="data.BudgetBisbursementComment"></td>
 
+                        </table>
 
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.ServicesPlan}}" ng-model="data.ServicesPlan"></td>
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.ServicesFact}}" ng-model="data.ServicesFact"></td>
-                            <td md-cell><input type="text" value="{{data.ServicesComment}}" ng-model="data.ServicesComment"></td>
+                    </div>
 
+                </div>
 
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.CreditLinePlan}}" ng-model="data.CreditLinePlan"></td>
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.CreditLineFact}}" ng-model="data.CreditLineFact"></td>
-                            <td md-cell><input type="text" value="{{data.CreditLineComment}}" ng-model="data.CreditLineComment"></td>
 
 
-
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.OperatingExpensesPlan}}" ng-model="data.OperatingExpensesPlan"></td>
-                            <td md-cell><input class="custom__threeteen__digits" type="text" value="{{data.OperatingExpensesFact}}" ng-model="data.OperatingExpensesFact"></td>
-                            <td md-cell><input type="text" value="{{data.OperatingExpensesComment}}" ng-model="data.OperatingExpensesComment"></td>
-
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
-
-                            <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
-
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
 
 
 
 
 
             </md-card>
+
+
+
+
+
+
+
+
+
 
 
         </md-content>
