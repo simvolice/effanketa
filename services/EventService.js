@@ -9,7 +9,7 @@ const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
 const MongoClient = require('mongodb').MongoClient;
 const config = require('../utils/devConfig');
-
+const dbUtilsHelpMethods = require('../utils/dbUtilsHelpMethods');
 
 module.exports = {
 
@@ -107,6 +107,7 @@ module.exports = {
 
 
             let nameCountry = await CountryService.getCountryById(objParams.country);
+            let nameTypeEvent = await dbUtilsHelpMethods.getOneObjById(objParams.typeEvent, "event_statuses");
 
             let seq = await CounterService.getNextSequence("eventid");
 
@@ -125,6 +126,7 @@ module.exports = {
 
                 nameEvent: objParams.nameEvent,
                 typeEvent: ObjectId(objParams.typeEvent),
+                nameTypeEvent: nameTypeEvent.name,
 
                 countPeopleEventCommon: objParams.countPeopleEventCommon,
                 countWomanEventCommon: objParams.countWomanEventCommon,

@@ -5,6 +5,7 @@
 
 
 const dbConnect = require('../utils/dbConnect');
+
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -27,6 +28,7 @@ module.exports = {
                     _id: 0,
                     nameCountry: 1,
                     nameEvent: 1,
+                    nameTypeEvent: 1,
                     myDate: 1,
                     countPeopleEventCommon: 1,
                     countWomanEventCommon: 1,
@@ -60,6 +62,15 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
+                    'Тип события': {
+                        value: result[0].nameTypeEvent,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
+
                     'Количество участников, общее': {
                         value: result[0].countPeopleEventCommon,
                         writable: true,
@@ -103,6 +114,7 @@ module.exports = {
 
                delete result[0].nameCountry;
                delete result[0].nameEvent;
+               delete result[0].nameTypeEvent;
                delete result[0].myDate;
                delete result[0].countPeopleEventCommon;
                delete result[0].countWomanEventCommon;
