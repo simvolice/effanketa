@@ -4,7 +4,7 @@
 
 
 
-const config = require('../utils/devConfig');
+
 
 const Agenda = require('agenda');
 const querystring = require('querystring');
@@ -13,9 +13,7 @@ const GrmStatusService = require('../services/GrmStatusService');
 const SendFormService = require('../services/SendFormService');
 const FormService = require('../services/FormService');
 
-let agenda = new Agenda({db: {address: config.urlToMongoDBLocalhost}});
-const nodemailer = require('nodemailer');
-let transporter = nodemailer.createTransport(config.smtpServer);
+let agenda = new Agenda({db: {address: process.env.DB_HOST}});
 
 
 module.exports = {
@@ -125,7 +123,9 @@ module.exports = {
 
 
 
-  sendEmailNotificationOnWriteForm: async ()=> {
+
+    //TODO Надо пользоваться уже готовым апи для отсылки письма
+  /*sendEmailNotificationOnWriteForm: async ()=> {
 
 
 
@@ -217,7 +217,7 @@ module.exports = {
 
 
 
-    }
+    }*/
 
 
 

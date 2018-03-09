@@ -5,8 +5,8 @@
 
 
 const dbConnect = require('../utils/dbConnect');
-const config = require('../utils/devConfig');
-const MongoClient = require('mongodb').MongoClient;
+
+
 const ObjectId = require('mongodb').ObjectId;
 
 
@@ -14,13 +14,16 @@ module.exports = {
 
   initialItemFactForCredits: async () => {
 
-      const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
       try {
 
 
 
 
-          const col = db.collection('credits_fact_item');
+
+
+          const col = dbConnect.getConnect().collection('credits_fact_item');
+
           col.createIndex({ name : 1 }, {unique: true});
 
 
@@ -85,7 +88,7 @@ module.exports = {
 
 
 
-          db.close();
+
 
           return result;
 
@@ -93,7 +96,7 @@ module.exports = {
       }catch(err) {
 
 
-          db.close();
+
 
           return err;
 

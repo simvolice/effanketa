@@ -3,7 +3,7 @@
  */
 
 
-const config = require('../utils/devConfig');
+
 const validator = require('../utils/validator');
 const AuthService = require('../services/Auth');
 const RoleService = require('../services/RoleService');
@@ -23,7 +23,10 @@ const jsonwebtoken = require('jsonwebtoken');
 
 module.exports = {
 
-   forUsers: async (SeesionToken) => {
+
+
+
+    forUsers: async (SeesionToken) => {
 
 
 
@@ -37,7 +40,7 @@ module.exports = {
 
 
 
-    let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+    let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -112,7 +115,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -188,7 +191,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -264,7 +267,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -347,7 +350,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -429,7 +432,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -506,7 +509,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -580,7 +583,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -666,7 +669,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -749,7 +752,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -819,7 +822,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -889,7 +892,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -959,7 +962,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -1030,7 +1033,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 
@@ -1101,7 +1104,7 @@ module.exports = {
 
 
 
-        let userId = jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId = jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
 
 

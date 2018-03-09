@@ -5,7 +5,7 @@
 
 
 const dbConnect = require('../utils/dbConnect');
-const config = require('../utils/devConfig');
+
 const searchQuarter = require('../utils/searchQuarter');
 
 const ObjectId = require('mongodb').ObjectId;

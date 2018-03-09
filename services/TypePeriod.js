@@ -5,8 +5,8 @@
 
 
 const dbConnect = require('../utils/dbConnect');
-const config = require('../utils/devConfig');
-const MongoClient = require('mongodb').MongoClient;
+
+
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -14,15 +14,14 @@ module.exports = {
 
     initialTypePeriod: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
 
 
-            const col = db.collection('type_period');
 
-
+            const col = dbConnect.getConnect().collection('type_period');
             col.createIndex({ name : 1 }, {unique: true});
 
 
@@ -88,7 +87,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -96,7 +95,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 

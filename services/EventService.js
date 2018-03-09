@@ -7,21 +7,22 @@ const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
-const MongoClient = require('mongodb').MongoClient;
-const config = require('../utils/devConfig');
+
 const dbUtilsHelpMethods = require('../utils/dbUtilsHelpMethods');
 
 module.exports = {
 
     initialStatus: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
 
 
-            const col = db.collection('event_statuses');
+
+            const col = dbConnect.getConnect().collection('event_statuses');
+
             col.createIndex({ name : 1 }, {unique: true});
 
 
@@ -43,7 +44,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -51,7 +52,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 
@@ -67,13 +68,15 @@ module.exports = {
 
     initialSubStatus: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
 
 
-            const col = db.collection('event_sub_statuses');
+
+            const col = dbConnect.getConnect().collection('event_sub_statuses');
+
             col.createIndex({ name : 1 }, {unique: true});
 
 
@@ -99,7 +102,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -107,7 +110,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 

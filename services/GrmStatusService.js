@@ -5,8 +5,8 @@
 
 
 const dbConnect = require('../utils/dbConnect');
-const config = require('../utils/devConfig');
-const MongoClient = require('mongodb').MongoClient;
+
+
 const ObjectId = require('mongodb').ObjectId;
 
 
@@ -14,13 +14,16 @@ module.exports = {
 
     initialGrmStatus: async () => {
 
-      const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
       try {
 
 
 
 
-          const col = db.collection('grmstatus');
+
+
+          const col = dbConnect.getConnect().collection('grmstatus');
+
 
           col.createIndex({ name : 1 }, {unique: true});
 
@@ -49,7 +52,7 @@ module.exports = {
 
 
 
-          db.close();
+
 
           return result;
 
@@ -57,7 +60,7 @@ module.exports = {
       }catch(err) {
 
 
-          db.close();
+
 
           return err;
 
@@ -73,13 +76,16 @@ module.exports = {
 
     initialLevelComplaint: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
 
 
-            const col = db.collection('grm_level_complaint');
+
+
+            const col = dbConnect.getConnect().collection('grm_level_complaint');
+
 
             col.createIndex({ name : 1 }, {unique: true});
 
@@ -108,7 +114,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -116,7 +122,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 
@@ -133,13 +139,16 @@ module.exports = {
 
     initialGrmCanalsRequest: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
 
 
-            const col = db.collection('grmstatus_canals_request');
+
+
+            const col = dbConnect.getConnect().collection('grmstatus_canals_request');
+
 
             col.createIndex({ name : 1 }, {unique: true});
 
@@ -187,7 +196,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -195,7 +204,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 
@@ -212,13 +221,16 @@ module.exports = {
 
     initialGrmCategGRM: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
 
 
-            const col = db.collection('grm_categ');
+
+
+            const col = dbConnect.getConnect().collection('grm_categ');
+
 
             col.createIndex({ name : 1 }, {unique: true});
 
@@ -296,7 +308,6 @@ module.exports = {
 
 
 
-            db.close();
 
             return result;
 
@@ -304,7 +315,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 

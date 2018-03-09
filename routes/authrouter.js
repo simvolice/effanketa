@@ -9,7 +9,7 @@ const Busboy = require('async-busboy');
 const fs = require('fs');
 const path = require('path');
 
-const config = require('../utils/devConfig');
+
 const validator = require('../utils/validator');
 const checkSeesionToken = require('../utils/checkSeesionToken');
 const checkRole = require('../utils/checkRole');
@@ -20,7 +20,7 @@ const RoleService = require('../services/RoleService');
 
 const uuidV4 = require('uuid/v4');
 
-let transporter = nodemailer.createTransport(config.smtpServer);
+let transporter = nodemailer.createTransport(process.env.SMTP_SERVER);
 
 const optionsHBS = {
 
@@ -131,7 +131,7 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
-      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), config.SECRETJSONWEBTOKEN), "fio": result.fio});
+      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), process.env.SECRETJSONWEBTOKEN), "fio": result.fio});
 
 
     }else {
@@ -195,7 +195,7 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
   let pass = generator.generate({numbers: true, symbols: true});
   const hash = bcrypt.hashSync(pass, 10);
   let mail = {
-        from: "camp4asb@carececo.org",
+        from: process.env.MAIL_SENDER,
         to: fields.email,
         subject: "Ваш логин и пароль для входа в систему CAMP4ASB",
 
@@ -225,8 +225,7 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
     urlImg: urlImg,
 
 
-        //TODO Только для отладки, потом удалить
-        passClear: pass
+
 
 
 
@@ -239,6 +238,10 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
 let result =  await AuthService.register(objParams);
 
 
+
+console.log("\x1b[42m", result);
+
+//TODO надо проверку сделать на дубликацию ключа
 
 if (result.hasOwnProperty("result")) {
 
@@ -394,7 +397,7 @@ router.post('/recoverypass', checkSeesionToken, async (req, res, next) =>{
         let pass = generator.generate({numbers: true, symbols: true});
         const hash = bcrypt.hashSync(pass, 10);
         let mail = {
-            from: "camp4asb@carececo.org",
+            from: process.env.MAIL_SENDER,
             to: result.email,
             subject: "Ваш новый пароль для входа в систему CAMP4ASB",
             template: 'mail_succes_reg',

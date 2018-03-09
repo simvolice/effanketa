@@ -1,16 +1,15 @@
-
+require("dotenv").config();
 global.Intl = require('intl');
 
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
 const dbConnect = require('./utils/dbConnect');
-const config = require('./utils/devConfig');
+
 const scheduler = require('./utils/agenda');
 
 
@@ -26,7 +25,7 @@ const TypePeriod = require('./services/TypePeriod');
 const NameYear = require('./services/NameYear');
 const EventService = require('./services/EventService');
 
-const cors = require('cors');//TODO В продакте обязательно удалить
+
 const fsExtra = require('fs-extra');
 
 
@@ -40,9 +39,7 @@ app.use(helmet.noCache());
 
 
 
-//TODO В продакте обязательно удалить
-cors({credentials: true, origin: true});
-app.use(cors());
+
 
 
 app.use(favicon(path.join(__dirname, 'public/assets/img/', 'favicon.ico')));
@@ -66,20 +63,23 @@ require('./routes')(app);
 
 
 
-async function initDB() {
-   await dbConnect.connect();
-   await scheduler.changeStatusOnComplaint();
-
-   //TODO затестировать, потом в продакт
-   // await scheduler.sendEmailNotificationOnWriteForm()
-}
 
 
 
-initDB();
+
+
 
 
 async function initApp() {
+
+
+    await dbConnect.connect();
+
+
+    await scheduler.changeStatusOnComplaint();
+
+    //TODO затестировать, потом в продакт
+    // await scheduler.sendEmailNotificationOnWriteForm()
 
     await CounterService.initialCounter();
 
@@ -100,17 +100,17 @@ async function initApp() {
     await EventService.initialStatus();
     await EventService.initialSubStatus();
 
-    await AuthService.createUserSuperRoot(config.hashAdmin);
+    await AuthService.createUserSuperRoot(process.env.HASHADMIN);
 
 
 }
 
-if (config.firstStart) {
-
-        initApp();
 
 
-}
+initApp();
+
+
+
 
 
 

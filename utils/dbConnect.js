@@ -2,11 +2,11 @@
  * Created by simvolice on 07.05.2017 18:13
  */
 
-const config = require('../utils/devConfig');
+
 const MongoClient = require('mongodb').MongoClient;
 
 const Logger = require('mongodb').Logger;
-Logger.setLevel('debug');
+Logger.setLevel(process.env.MONGODB_LEVEL_LOG);
 
 
 let state = {
@@ -23,7 +23,11 @@ module.exports = {
         try {
 
 
-            state.db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+            let client = await MongoClient.connect(process.env.DB_HOST);
+
+            state.db = client.db(process.env.DB_NAME);
+
+
 
 
         } catch (err) {

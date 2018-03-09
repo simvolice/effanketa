@@ -3,7 +3,7 @@
  */
 
 
-const config = require('../utils/devConfig');
+
 const validator = require('../utils/validator');
 const AuthService = require('../services/Auth');
 const jsonwebtoken = require('jsonwebtoken');
@@ -25,7 +25,7 @@ module.exports = async (req, res, next) => {
 
     try {
 
-        let userId= jsonwebtoken.verify(SeesionToken, config.SECRETJSONWEBTOKEN);
+        let userId= jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
 
         let result = await AuthService.checkUserById(userId);
 

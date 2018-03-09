@@ -6,12 +6,10 @@ const dbConnect = require('../utils/dbConnect');
 
 const ObjectId = require('mongodb').ObjectId;
 
-const config = require('../utils/devConfig');
+
 const CounterService = require('../services/CounterService');
 const RoleService = require('../services/RoleService');
 const CountryService = require('../services/CountryService');
-
-const MongoClient = require('mongodb').MongoClient;
 
 
 
@@ -436,14 +434,17 @@ module.exports = {
     createUserSuperRoot: async (hash) => {
 
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
 
         try {
 
 
 
 
-            const col = db.collection('users');
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+
             col.createIndex({ email : 1 }, {unique: true});
 
 
@@ -470,7 +471,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -478,7 +479,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 

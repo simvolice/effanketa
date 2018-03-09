@@ -3,10 +3,6 @@
  */
 
 const dbConnect = require('../utils/dbConnect');
-const config = require('../utils/devConfig');
-const MongoClient = require('mongodb').MongoClient;
-
-
 
 
 
@@ -18,18 +14,17 @@ module.exports = {
 
     initialCounter: async () => {
 
-        const db = await MongoClient.connect(config.urlToMongoDBLocalhost);
+
         try {
 
 
-
-
-            const col = db.collection('counters');
+            const col = dbConnect.getConnect().collection('counters');
 
 
 
 
-            const result = await col.insertMany([{
+            const result = await col.insertMany([
+                {
                 _id: "userid",
                 seq: 1
             },
@@ -103,7 +98,7 @@ module.exports = {
 
 
 
-            db.close();
+
 
             return result;
 
@@ -111,7 +106,7 @@ module.exports = {
         }catch(err) {
 
 
-            db.close();
+
 
             return err;
 

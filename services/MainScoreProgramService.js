@@ -6,7 +6,7 @@
 
 
 const dbConnect = require('../utils/dbConnect');
-const config = require('../utils/devConfig');
+
 
 const ObjectId = require('mongodb').ObjectId;
 const Decimal128 = require('mongodb').Decimal128;

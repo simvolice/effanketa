@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const config = require('../utils/devConfig');
+
 const checkSeesionToken = require('../utils/checkSeesionToken');
 const querystring = require('querystring');
 const path = require('path');
@@ -12,7 +12,7 @@ const FormService = require('../services/FormService');
 const SendFormService = require('../services/SendFormService');
 const nodemailer = require('nodemailer');
 const nodemailerHBS = require('nodemailer-express-handlebars');
-let transporter = nodemailer.createTransport(config.smtpServer);
+let transporter = nodemailer.createTransport(process.env.SMTP_SERVER);
 
 const formatter = new Intl.DateTimeFormat("ru");
 
@@ -138,7 +138,7 @@ router.post('/sendformforemail', checkSeesionToken, async (req, res, next) =>{
 
     for (let item of req.body.data.emails) {
         let mail = {
-            from: "simvolice@gmail.com",
+            from: process.env.MAIL_SENDER,
             to: item,
             subject: "Уважаемый участник, просим Вас заполнить анкету для системы CAMP4ASB",
 
