@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать проект</h2>
+                <h2>Создать новую запись</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -33,9 +33,9 @@
                                 <div class="col-md-12">
 
                                     <md-input-container class="custom__select__margin">
-                                        <label>Выберите страну</label>
+                                        <label>Выберите страны</label>
                                         <md-icon class="material-icons">place</md-icon>
-                                        <md-select ng-model="data.country">
+                                        <md-select ng-model="data.country" multiple>
 
                                             <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
                                                 {{y.name}}
@@ -58,7 +58,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Программа</label>
+                                        <label>Название программы</label>
                                         <md-icon class="material-icons">dashboard</md-icon>
 
                                         <input ng-model="data.programm">
@@ -118,12 +118,19 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Контактные данные реализующего агенства</label>
+                                        <label>Контакты</label>
                                         <md-icon class="material-icons">phone</md-icon>
 
                                         <input ng-model="data.executorAgentsContacts">
                                     </md-input-container>
 
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Краткое описание использованного ноу-хау проекта</label>
+                                        <md-icon class="material-icons">group</md-icon>
+
+                                        <textarea ng-model="data.projectDescription" rows="5" md-select-on-focus></textarea>
+                                    </md-input-container>
 
 
 

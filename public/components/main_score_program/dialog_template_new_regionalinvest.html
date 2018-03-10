@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать региональную инвестицию</h2>
+                <h2>Создать новую запись</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -31,25 +31,6 @@
                             <div class="content">
 
                                 <div class="col-md-12">
-
-                                    <md-input-container class="custom__select__margin">
-                                        <label>Выберите страну</label>
-                                        <md-icon class="material-icons">place</md-icon>
-                                        <md-select ng-model="data.country">
-
-                                            <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
-                                                {{y.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-
-
-
-
-
-
-
 
 
 
@@ -93,11 +74,6 @@
 
 
 
-
-
-
-
-
                                     <md-input-container class="md-icon-float md-block">
                                         <label>Сотрудничающие страны</label>
                                         <md-icon class="material-icons">place</md-icon>
@@ -110,7 +86,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Исполнительный деятель с контактами</label>
+                                        <label>Исполнитель деятельности</label>
                                         <md-icon class="material-icons">person_pin</md-icon>
 
                                         <input ng-model="data.executorWithContact">
@@ -118,7 +94,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Контактные данные реализующего агенства</label>
+                                        <label>Контакты</label>
                                         <md-icon class="material-icons">phone</md-icon>
 
                                         <input ng-model="data.executorAgentsContacts">

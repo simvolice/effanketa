@@ -27,20 +27,28 @@ module.exports = {
 
               const col = dbConnect.getConnect().collection('platform_network');
               let seq = await CounterService.getNextSequence("platform_network_id");
-              let nameCountry = await CountryService.getCountryById(objParams.country);
+              let nameCountry = [];
 
+
+
+
+
+              for (let oneIdCountry of objParams.country) {
+                  let resultName = await CountryService.getCountryById(oneIdCountry);
+                  nameCountry.push(resultName.name);
+              }
 
               const result = await col.insertOne({
 
                   id :seq,
-                  country: ObjectId(objParams.country),
-                  projectIniciativ: objParams.projectIniciativ,
-                  nameCountry: nameCountry.name,
-                  amountFinance: objParams.amountFinance,
-                  sourceFinance: objParams.sourceFinance,
-                  mainDestination: objParams.mainDestination,
-                  executorProject: objParams.executorProject,
-                  contactExecutor: objParams.contactExecutor,
+                  country: objParams.country,
+                  nameCountry: nameCountry,
+                  platform_name: objParams.platform_name,
+                  platform_participants: objParams.platform_participants,
+                  platform_target: objParams.platform_target,
+                  platform_subject: objParams.platform_subject,
+                  platform_typeHelp: objParams.platform_typeHelp,
+                  platform_results: objParams.platform_results,
                   createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
@@ -120,8 +128,16 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('platform_network');
 
-            let nameCountry = await CountryService.getCountryById(objParams.country);
+            let nameCountry = [];
 
+
+
+
+
+            for (let oneIdCountry of objParams.country) {
+                let resultName = await CountryService.getCountryById(oneIdCountry);
+                nameCountry.push(resultName.name);
+            }
 
             const result = await col.updateOne({_id: ObjectId(objParams._id)},{
 
@@ -132,14 +148,15 @@ module.exports = {
                 $set: {
 
 
-                    country: ObjectId(objParams.country),
-                    projectIniciativ: objParams.projectIniciativ,
-                    nameCountry: nameCountry.name,
-                    amountFinance: objParams.amountFinance,
-                    sourceFinance: objParams.sourceFinance,
-                    mainDestination: objParams.mainDestination,
-                    executorProject: objParams.executorProject,
-                    contactExecutor: objParams.contactExecutor
+                    country: objParams.country,
+
+                    nameCountry: nameCountry,
+                    platform_name: objParams.platform_name,
+                    platform_participants: objParams.platform_participants,
+                    platform_target: objParams.platform_target,
+                    platform_subject: objParams.platform_subject,
+                    platform_typeHelp: objParams.platform_typeHelp,
+                    platform_results: objParams.platform_results
 
 
                 }
@@ -224,21 +241,33 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('project');
             let seq = await CounterService.getNextSequence("project_id");
-            let nameCountry = await CountryService.getCountryById(objParams.country);
+
+
+            let nameCountry = [];
+
+
+
+
+
+            for (let oneIdCountry of objParams.country) {
+                let resultName = await CountryService.getCountryById(oneIdCountry);
+                nameCountry.push(resultName.name);
+            }
 
 
             const result = await col.insertOne({
 
                 id :seq,
-                country: ObjectId(objParams.country),
+                country: objParams.country,
 
-                nameCountry: nameCountry.name,
+                nameCountry: nameCountry,
 
                 programm: objParams.programm,
                 sector: objParams.sector,
                 developers: objParams.developers,
                 executorAgents: objParams.executorAgents,
                 executorAgentsContacts: objParams.executorAgentsContacts,
+                projectDescription: objParams.projectDescription,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
@@ -319,8 +348,16 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('project');
 
-            let nameCountry = await CountryService.getCountryById(objParams.country);
+            let nameCountry = [];
 
+
+
+
+
+            for (let oneIdCountry of objParams.country) {
+                let resultName = await CountryService.getCountryById(oneIdCountry);
+                nameCountry.push(resultName.name);
+            }
 
             const result = await col.updateOne({_id: ObjectId(objParams._id)},{
 
@@ -331,14 +368,15 @@ module.exports = {
                 $set: {
 
 
-                    country: ObjectId(objParams.country),
+                    country: objParams.country,
 
-                    nameCountry: nameCountry.name,
+                    nameCountry: nameCountry,
                     programm: objParams.programm,
                     sector: objParams.sector,
                     developers: objParams.developers,
                     executorAgents: objParams.executorAgents,
                     executorAgentsContacts: objParams.executorAgentsContacts,
+                    projectDescription: objParams.projectDescription,
 
 
 
@@ -426,14 +464,10 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('regional_invest');
             let seq = await CounterService.getNextSequence("regional_invest_id");
-            let nameCountry = await CountryService.getCountryById(objParams.country);
-
 
             const result = await col.insertOne({
 
                 id: seq,
-                country: ObjectId(objParams.country),
-                nameCountry: nameCountry.name,
 
                 typeInvest: objParams.typeInvest,
                 sizeInvest: objParams.sizeInvest,
@@ -520,7 +554,6 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('regional_invest');
 
-            let nameCountry = await CountryService.getCountryById(objParams.country);
 
 
             const result = await col.updateOne({_id: ObjectId(objParams._id)},{
@@ -532,9 +565,7 @@ module.exports = {
                 $set: {
 
 
-                    country: ObjectId(objParams.country),
 
-                    nameCountry: nameCountry.name,
                     typeInvest: objParams.typeInvest,
                     sizeInvest: objParams.sizeInvest,
                     investor: objParams.investor,
@@ -625,20 +656,23 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('mobile_resurse');
             let seq = await CounterService.getNextSequence("mobile_resurse_id");
-            let nameCountry = await CountryService.getCountryById(objParams.country);
 
 
             const result = await col.insertOne({
 
                 id :seq,
-                country: ObjectId(objParams.country),
+
                 projectIniciativ: objParams.projectIniciativ,
-                nameCountry: nameCountry.name,
+
                 amountFinance: Decimal128.fromString(objParams.amountFinance),
                 sourceFinance: objParams.sourceFinance,
                 mainDestination: objParams.mainDestination,
                 executorProject: objParams.executorProject,
                 contactExecutor: objParams.contactExecutor,
+                mobileOther: objParams.mobileOther,
+
+
+
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
@@ -718,8 +752,6 @@ module.exports = {
 
             const col = dbConnect.getConnect().collection('mobile_resurse');
 
-            let nameCountry = await CountryService.getCountryById(objParams.country);
-
 
             const result = await col.updateOne({_id: ObjectId(objParams._id)},{
 
@@ -730,9 +762,10 @@ module.exports = {
                 $set: {
 
 
-                    country: ObjectId(objParams.country),
+
                     projectIniciativ: objParams.projectIniciativ,
-                    nameCountry: nameCountry.name,
+                    mobileOther: objParams.mobileOther,
+
                     amountFinance: Decimal128.fromString(objParams.amountFinance),
                     sourceFinance: objParams.sourceFinance,
                     mainDestination: objParams.mainDestination,

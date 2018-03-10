@@ -3,397 +3,623 @@
 
     <div class="col-md-12">
         <md-content layout="column" flex class="custom__md-content__categ">
+
+
             <md-card>
 
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <h3>Главные и промежуточные цели программы</h3>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'MAIN_SCORE_PROGRAM' | translate }}</h3>
 
                     </div>
 
+                </div>
+
+            </md-card>
 
 
 
-                </md-toolbar>
+
+            <md-card>
+
+
+
 
                 <md-tabs md-dynamic-height md-border-bottom>
-                    <md-tab ng-click="tabClk('Platform')" label="Платформы и сети">
-                        <md-content class="md-padding">
-                            <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                                </div>
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <button class="btn btn-primary" ng-click="addBtn($event, 'Platform')">Добавить запись</button>
-                                    <button class="btn btn-primary" ng-click="excel('platform_network', 'Платформы и сети')">Выгрузить в Excel</button>
-
-
-                                </div>
-
-                            </md-toolbar>
-
-                            <!-- exact table from live demo -->
-                            <md-table-container class="custom__fix__freez__head">
-                                <table md-table ng-model="ctrl.selected">
-                                    <thead md-head fix-head>
-                                    <tr md-row>
-
-                                        <th md-column>№</th>
-                                        <th md-column>Проект/инициатива</th>
-                                        <th md-column>Объем финансирования</th>
-                                        <th md-column>Страна</th>
-                                        <th md-column>Источник финансирования</th>
-                                        <th md-column>Исполнитель проекта</th>
-                                        <th md-column>Контакты исполнителя</th>
-
-                                        <th md-column>Просмотреть</th>
-                                        <th md-column>Обновить</th>
-                                        <th md-column>Удалить</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody md-body>
-
-
-
-
-
-                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                                        <td md-cell>{{data.id}}</td>
-                                        <td md-cell>{{data.projectIniciativ}}</td>
-
-                                        <td md-cell>{{data.amountFinance}}</td>
-
-
-
-                                        <td md-cell>{{data.nameCountry}}</td>
-
-
-
-                                        <td md-cell>{{data.sourceFinance}}</td>
-                                        <td md-cell>{{data.executorProject}}</td>
-                                        <td md-cell>{{data.contactExecutor}}</td>
-
-
-
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'Platform')">visibility</i></td>
-
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'Platform')">done_all</i></td>
-
-                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'Platform')">delete</i></td>
-
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-table-container>
-
-
-                        </md-content>
-                    </md-tab>
-
-                    <md-tab ng-click="tabClk('Projects')" label="Проекты и программы стран участниц РЭЦЦА">
-                        <md-content class="md-padding">
-                            <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                                </div>
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <button class="btn btn-primary" ng-click="addBtn($event, 'Projects')">Добавить запись</button>
-                                    <button class="btn btn-primary" ng-click="excel('project', 'Проекты и программы стран участниц РЭЦЦА')">Выгрузить в Excel</button>
-
-
-                                </div>
-
-                            </md-toolbar>
-
-                            <!-- exact table from live demo -->
-                            <md-table-container class="custom__fix__freez__head">
-                                <table md-table ng-model="ctrl.selected">
-                                    <thead md-head fix-head>
-                                    <tr md-row>
-
-                                        <th md-column>№</th>
-                                        <th md-column>Программа</th>
-                                        <th md-column>Сфера/сектор</th>
-                                        <th md-column>Страна</th>
-                                        <th md-column>Разработчики</th>
-                                        <th md-column>Реализующее агенство</th>
-
-                                        <th md-column>Просмотреть</th>
-                                        <th md-column>Обновить</th>
-                                        <th md-column>Удалить</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody md-body>
-
-
-
-
-
-                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                                        <td md-cell>{{data.id}}</td>
-                                        <td md-cell>{{data.programm}}</td>
-
-                                        <td md-cell>{{data.sector}}</td>
-
-
-
-                                        <td md-cell>{{data.nameCountry}}</td>
-
-
-
-                                        <td md-cell>{{data.developers}}</td>
-                                        <td md-cell>{{data.executorAgents}}</td>
-
-
-
-
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'Projects')">visibility</i></td>
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'Projects')">done_all</i></td>
-
-                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'Projects')">delete</i></td>
-
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-table-container>
-
-                        </md-content>
-                    </md-tab>
-
-
-                    <md-tab ng-click="tabClk('RegionalInvest')" label="Региональные инвестиции">
-                        <md-content class="md-padding">
-                            <md-toolbar class="md-table-toolbar md-default">
-
-
-
-
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                                </div>
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <button class="btn btn-primary" ng-click="addBtn($event, 'RegionalInvest')">Добавить запись</button>
-                                    <button class="btn btn-primary" ng-click="excel('regional_invest', 'Региональные инвестиции')">Выгрузить в Excel</button>
-
-
-                                </div>
-
-                            </md-toolbar>
-
-                            <!-- exact table from live demo -->
-                            <md-table-container class="custom__fix__freez__head">
-                                <table md-table ng-model="ctrl.selected">
-                                    <thead md-head fix-head>
-                                    <tr md-row>
-
-                                        <th md-column>№</th>
-                                        <th md-column>Тип инвестиций</th>
-                                        <th md-column>Размер инвестиций</th>
-                                        <th md-column>Страна</th>
-                                        <th md-column>Инвестор</th>
-                                        <th md-column>Сотрудничающие страны</th>
-
-                                        <th md-column>Просмотреть</th>
-                                        <th md-column>Обновить</th>
-                                        <th md-column>Удалить</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody md-body>
-
-
-
-
-
-                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-
-
-                                        <td md-cell>{{data.id}}</td>
-                                        <td md-cell>{{data.typeInvest}}</td>
-
-                                        <td md-cell>{{data.sizeInvest}}</td>
-
-
-
-                                        <td md-cell>{{data.nameCountry}}</td>
-
-
-
-                                        <td md-cell>{{data.investor}}</td>
-                                        <td md-cell>{{data.coloborationCountry}}</td>
-
-
-
-
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'RegionalInvest')">visibility</i></td>
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'RegionalInvest')">done_all</i></td>
-
-                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'RegionalInvest')">delete</i></td>
-
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-table-container>
-
-                        </md-content>
-                    </md-tab>
-
-
-                    <md-tab ng-click="tabClk('MobileResurs')">
+                    <md-tab ng-click="tabClk('Platform')">
 
                         <md-tab-label>
-                            <h6 class="custom__tab__label">Дополнительно мобилизованные ресурсы для финансирования <br> знаний/потенциала и климатических инвестиций</h6>
+                            <h6 class="custom__tab__label">ИПР 1.3 Число поддержанных проектом сетей/ платформ по координации  в области климата, объединяющих несколько стран и предоставляющих возможности меж-правительственного, меж-секторного сотрудничества, сотрудничество с НПО и пр.</h6>
                         </md-tab-label>
+
+
 
                         <md-tab-body>
 
 
 
                         <md-content class="md-padding">
-                            <md-toolbar class="md-table-toolbar md-default">
 
 
 
 
-
-                                <div class="md-toolbar-tools">
-
-
-                                    <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                                </div>
+                                    <div class="col-md-6">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                                            <input type="search" ng-model="search">
+                                        </md-input-container>
 
-                                <div class="md-toolbar-tools">
 
-
-                                    <button class="btn btn-primary" ng-click="addBtn($event, 'MobileResurs')">Добавить запись</button>
-                                    <button class="btn btn-primary" ng-click="excel('mobile_resurse', 'Дополнительно мобилизованные ресурсы для финансирования')">Выгрузить в Excel</button>
+                                    </div>
 
 
                                 </div>
 
-                            </md-toolbar>
 
-                            <!-- exact table from live demo -->
-                            <md-table-container class="custom__fix__freez__head">
-                                <table md-table ng-model="ctrl.selected">
-                                    <thead md-head fix-head>
-                                    <tr md-row>
+                                <div class="row" style="margin-left: -5px;margin-top: -25px;margin-bottom: 25px;">
+                                    <div class="col-md-12">
+                                        <md-button class="md-raised md-primary" ng-click="addBtn($event, 'Platform')">{{ 'ADD_ROW' | translate }}</md-button>
+                                        <md-button class="md-raised md-primary" ng-click="excel('platform_network', 'Платформы и сети')">{{ 'EXPORT_EXCEL' | translate }}</md-button>
 
-                                        <th md-column>№</th>
-                                        <th md-column>Проект/инициатива</th>
-                                        <th md-column>Объем финансирования</th>
-                                        <th md-column>Страна</th>
-                                        <th md-column>Источник финансирования</th>
-                                        <th md-column>Исполнитель проекта</th>
-                                        <th md-column>Контакты исполнителя</th>
+                                    </div>
 
-                                        <th md-column>Просмотреть</th>
-                                        <th md-column>Обновить</th>
-                                        <th md-column>Удалить</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody md-body>
-
-
-
-
-
-                                    <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+                                </div>
 
 
 
 
 
 
-                                        <td md-cell>{{data.id}}</td>
-                                        <td md-cell>{{data.projectIniciativ}}</td>
-
-                                        <td md-cell>{{data.amountFinance.$numberDecimal}}</td>
+                                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                                    <div class="col-md-12 table-responsive">
 
 
+                                        <style type="text/css">
+                                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg .tg-e3zv{font-weight:bold}
+                                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                                        </style>
+                                        <table class="tg table-striped">
+                                            <tr>
+                                                <th class="tg-hgcj">№</th>
+                                                <th class="tg-hgcj">Сеть/ платформа</th>
+                                                <th class="tg-hgcj">Страна\ы</th>
+                                                <th class="tg-hgcj">Участники</th>
+                                                <th class="tg-hgcj">Цель</th>
 
-                                        <td md-cell>{{data.nameCountry}}</td>
+                                                <th class="tg-hgcj">Тема</th>
+                                                <th class="tg-hgcj">Тип оказанной поддержки</th>
+                                                <th class="tg-hgcj">Достигнутые результаты</th>
+
+                                                <th class="tg-hgcj">Просмотреть</th>
+                                                <th class="tg-hgcj">Сохранить</th>
+                                                <th class="tg-hgcj">Удалить</th>
+                                            </tr>
 
 
 
-                                        <td md-cell>{{data.sourceFinance}}</td>
-                                        <td md-cell>{{data.executorProject}}</td>
-                                        <td md-cell>{{data.contactExecutor}}</td>
+
+
+
+                                            <tbody>
+
+                                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
 
 
 
 
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'MobileResurs')">visibility</i></td>
-                                        <td md-cell><i class="material-icons" ng-click="updBtn(data, $event, 'MobileResurs')">done_all</i></td>
-
-                                        <td md-cell><i class="material-icons" ng-click="delete(data._id, 'MobileResurs')">delete</i></td>
+                                                <td>{{data.id}}</td>
+                                                <td>{{data.platform_name}}</td>
 
 
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </md-table-container>
+                                                <td>{{data.nameCountry.join(",")}}</td>
+
+
+
+
+                                                <td>{{data.platform_participants}}</td>
+
+                                                <td>{{data.platform_target}}</td>
+
+
+
+
+
+
+
+                                                <td>{{data.platform_subject}}</td>
+                                                <td>{{data.platform_typeHelp}}</td>
+                                                <td>{{data.platform_results}}</td>
+
+
+
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'Platform')">visibility</i></td>
+
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'Platform')">done_all</i></td>
+
+                                                <td><i class="material-icons" ng-click="delete(data._id, 'Platform')">delete</i></td>
+
+
+                                            </tr>
+
+
+
+                                            </tbody>
+
+
+
+
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
 
                         </md-content>
+
+                        </md-tab-body>
+
+                    </md-tab>
+
+                    <md-tab ng-click="tabClk('Projects')">
+
+
+
+                        <md-tab-label>
+                            <h6 class="custom__tab__label" style="margin-top: 0">ИЦ 2. Количество планов и программ, которые разработаны самими странами с учетом знаний и уроков, предоставленных программой</h6>
+                        </md-tab-label>
+
+
+                        <md-tab-body>
+
+                            <md-content class="md-padding">
+
+
+
+
+                                <div class="row" style="margin-left: 0;margin-top: 10px;">
+
+
+                                    <div class="col-md-6">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                                            <input type="search" ng-model="search">
+                                        </md-input-container>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row" style="margin-left: -5px;margin-top: -25px;margin-bottom: 25px;">
+                                    <div class="col-md-12">
+                                        <md-button class="md-raised md-primary" ng-click="addBtn($event, 'Projects')">{{ 'ADD_ROW' | translate }}</md-button>
+                                        <md-button class="md-raised md-primary" ng-click="excel('project', 'Проекты и программы стран участниц РЭЦЦА')">{{ 'EXPORT_EXCEL' | translate }}</md-button>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+                                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                                    <div class="col-md-12 table-responsive">
+
+
+                                        <style type="text/css">
+                                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg .tg-e3zv{font-weight:bold}
+                                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                                        </style>
+                                        <table class="tg table-striped">
+                                            <tr>
+                                                <th class="tg-hgcj">№</th>
+                                                <th class="tg-hgcj">Программа</th>
+                                                <th class="tg-hgcj">Сфера/сектор</th>
+                                                <th class="tg-hgcj">Страна</th>
+                                                <th class="tg-hgcj">Разработчики</th>
+                                                <th class="tg-hgcj">Реализующее агенство</th>
+                                                <th class="tg-hgcj">Краткое описание использованного ноу-хау проекта</th>
+
+                                                <th class="tg-hgcj">Просмотреть</th>
+                                                <th class="tg-hgcj">Сохранить</th>
+                                                <th class="tg-hgcj">Удалить</th>
+                                            </tr>
+
+
+
+
+
+
+                                            <tbody>
+
+                                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                                <td>{{data.id}}</td>
+                                                <td>{{data.programm}}</td>
+
+                                                <td>{{data.sector}}</td>
+
+
+
+                                                <td>{{data.nameCountry.join(",")}}</td>
+
+
+
+                                                <td>{{data.developers}}</td>
+                                                <td>{{data.executorAgents}}</td>
+                                                <td>{{data.projectDescription}}</td>
+
+
+
+
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'Projects')">visibility</i></td>
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'Projects')">done_all</i></td>
+
+                                                <td><i class="material-icons" ng-click="delete(data._id, 'Projects')">delete</i></td>
+
+                                            </tr>
+
+
+
+                                            </tbody>
+
+
+
+
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                            </md-content>
+
+
+                        </md-tab-body>
+
+
+
+
+
+                    </md-tab>
+
+
+                    <md-tab ng-click="tabClk('RegionalInvest')" label="Региональные инвестиции">
+
+
+
+                        <md-tab-label>
+                            <h6 class="custom__tab__label" style="margin-top: 0">ИЦ 3. Примеры совм. деятельности, которые привели к финансированию инвестиций, требующих сотрудничества стран</h6>
+                        </md-tab-label>
+
+
+
+
+                        <md-tab-body>
+                            <md-content class="md-padding">
+
+
+
+
+                                <div class="row" style="margin-left: 0;margin-top: 10px;">
+
+
+                                    <div class="col-md-6">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                                            <input type="search" ng-model="search">
+                                        </md-input-container>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row" style="margin-left: -5px;margin-top: -25px;margin-bottom: 25px;">
+                                    <div class="col-md-12">
+                                        <md-button class="md-raised md-primary" ng-click="addBtn($event, 'RegionalInvest')">{{ 'ADD_ROW' | translate }}</md-button>
+                                        <md-button class="md-raised md-primary" ng-click="excel('regional_invest', 'Региональные инвестиции')">{{ 'EXPORT_EXCEL' | translate }}</md-button>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+                                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                                    <div class="col-md-12 table-responsive">
+
+
+                                        <style type="text/css">
+                                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg .tg-e3zv{font-weight:bold}
+                                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                                        </style>
+                                        <table class="tg table-striped">
+                                            <tr>
+                                                <th class="tg-hgcj">№</th>
+                                                <th class="tg-hgcj">Тип инвестиций</th>
+                                                <th class="tg-hgcj">Размер инвестиций</th>
+
+                                                <th class="tg-hgcj">Инвестор</th>
+                                                <th class="tg-hgcj">Сотрудничающие страны</th>
+
+                                                <th class="tg-hgcj">Просмотреть</th>
+                                                <th class="tg-hgcj">Сохранить</th>
+                                                <th class="tg-hgcj">Удалить</th>
+
+                                            </tr>
+
+
+
+
+
+
+                                            <tbody>
+
+                                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
+
+
+
+
+                                                <td>{{data.id}}</td>
+                                                <td>{{data.typeInvest}}</td>
+
+                                                <td>{{data.sizeInvest}}</td>
+
+
+
+
+
+
+                                                <td>{{data.investor}}</td>
+                                                <td>{{data.coloborationCountry}}</td>
+
+
+
+
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'RegionalInvest')">visibility</i></td>
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'RegionalInvest')">done_all</i></td>
+
+                                                <td><i class="material-icons" ng-click="delete(data._id, 'RegionalInvest')">delete</i></td>
+
+                                            </tr>
+
+
+
+                                            </tbody>
+
+
+
+
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                            </md-content>
+
+
+
+
+                        </md-tab-body>
+
+
+
+
+
+
+                    </md-tab>
+
+
+                    <md-tab ng-click="tabClk('MobileResurs')">
+
+                        <md-tab-label>
+                            <h6 class="custom__tab__label">ИЦ 4. Объем дополнительно мобилизованных ресурсов для финансирования знаний, поднятия потенциала и инвестиций в региональное сотрудничество в области изменения климата/ «зеленой» деятельности как результат улучшенного уровня программной координации между странами ЦА и м/н сообществом, поддерживающим развития</h6>
+                        </md-tab-label>
+
+                        <md-tab-body>
+
+
+                            <md-content class="md-padding">
+
+
+
+
+                                <div class="row" style="margin-left: 0;margin-top: 10px;">
+
+
+                                    <div class="col-md-6">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                                            <input type="search" ng-model="search">
+                                        </md-input-container>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="row" style="margin-left: -5px;margin-top: -25px;margin-bottom: 25px;">
+                                    <div class="col-md-12">
+                                        <md-button class="md-raised md-primary" ng-click="addBtn($event, 'MobileResurs')">{{ 'ADD_ROW' | translate }}</md-button>
+                                        <md-button class="md-raised md-primary" ng-click="excel('mobile_resurse', 'Дополнительно мобилизованные ресурсы для финансирования')">{{ 'EXPORT_EXCEL' | translate }}</md-button>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+                                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                                    <div class="col-md-12 table-responsive">
+
+
+                                        <style type="text/css">
+                                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                            .tg .tg-e3zv{font-weight:bold}
+                                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                                        </style>
+                                        <table class="tg table-striped">
+                                            <tr>
+                                                <th class="tg-hgcj">№</th>
+                                                <th class="tg-hgcj">Проект/инициатива</th>
+                                                <th class="tg-hgcj">Объем финансирования</th>
+
+                                                <th class="tg-hgcj">Источник финансирования</th>
+                                                <th class="tg-hgcj">Исполнитель проекта</th>
+                                                <th class="tg-hgcj">Контакты исполнителя</th>
+
+                                                <th class="tg-hgcj">Просмотреть</th>
+                                                <th class="tg-hgcj">Сохранить</th>
+                                                <th class="tg-hgcj">Удалить</th>
+
+                                            </tr>
+
+
+
+
+
+
+                                            <tbody>
+
+                                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
+
+
+
+                                                <td>{{data.id}}</td>
+                                                <td>{{data.projectIniciativ}}</td>
+
+                                                <td>{{data.amountFinance.$numberDecimal}}</td>
+
+
+
+
+
+
+                                                <td>{{data.sourceFinance}}</td>
+                                                <td>{{data.executorProject}}</td>
+                                                <td>{{data.contactExecutor}}</td>
+
+
+
+
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'MobileResurs')">visibility</i></td>
+                                                <td><i class="material-icons" ng-click="updBtn(data, $event, 'MobileResurs')">done_all</i></td>
+
+                                                <td><i class="material-icons" ng-click="delete(data._id, 'MobileResurs')">delete</i></td>
+
+                                            </tr>
+
+
+
+                                            </tbody>
+
+
+
+
+                                        </table>
+
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                            </md-content>
+
+
+
 
                         </md-tab-body>
 
@@ -405,6 +631,14 @@
 
 
             </md-card>
+
+
+
+
+
+
+
+
 
         </md-content>
 

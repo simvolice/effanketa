@@ -301,7 +301,7 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
+
                     nameCountry: 1,
                     categName : 1,
                     canalName : 1,
@@ -423,7 +423,7 @@ module.exports = {
 
 
 
-                    delete result[0].id;
+
                     delete result[0].nameCountry;
                     delete result[0].categName;
                     delete result[0].canalName;
@@ -452,7 +452,7 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
+
                     nameCountry: 1,
 
                     BudgetBisbursementPlan: 1,
@@ -576,7 +576,7 @@ module.exports = {
 
 
 
-                    delete result[0].id;
+
                     delete result[0].BudgetBisbursementPlan;
                     delete result[0].BudgetBisbursementFact;
                     delete result[0].BudgetBisbursementComment;
@@ -605,7 +605,7 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
+
                     nameCountry: 1,
 
                     BudgetBisbursementPlan: 1,
@@ -628,12 +628,15 @@ module.exports = {
 
 
                 Object.defineProperties(result[0], {
-                    'Номер': {
-                        value: result[0].id,
+
+
+                    'Страна': {
+                        value: result[0].nameCountry,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
+
                     'Планирование бюджета, План': {
                         value: result[0].BudgetBisbursementPlan,
                         writable: true,
@@ -707,12 +710,7 @@ module.exports = {
                         enumerable: true,
                         configurable: true
                     },
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+
 
 
 
@@ -721,7 +719,7 @@ module.exports = {
 
 
 
-                delete result[0].id;
+
                 delete result[0].BudgetBisbursementPlan;
                 delete result[0].BudgetBisbursementFact;
                 delete result[0].BudgetBisbursementComment;
@@ -749,16 +747,16 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
+
                     nameCountry: 1,
 
-                    projectIniciativ: 1,
+                    platform_name: 1,
 
-                    amountFinance: 1,
-                    sourceFinance: 1,
-                    mainDestination: 1,
-                    executorProject: 1,
-                    contactExecutor: 1
+                    platform_participants: 1,
+                    platform_target: 1,
+                    platform_subject: 1,
+                    platform_typeHelp: 1,
+                    platform_results: 1
 
 
                 }).toArray();
@@ -767,51 +765,49 @@ module.exports = {
 
 
                 Object.defineProperties(result[0], {
-                    'Номер': {
-                        value: result[0].id,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Проект/инициатива': {
-                        value: result[0].projectIniciativ,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+
+
                     'Страна': {
-                        value: result[0].nameCountry,
+                        value: result[0].nameCountry.join(","),
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Объем финансирования': {
-                        value: result[0].amountFinance,
+
+                    'Сеть/ платформа': {
+                        value: result[0].platform_name,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Источник финансирования': {
-                        value: result[0].sourceFinance,
+
+                    'Участники': {
+                        value: result[0].platform_participants,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Основное назначение': {
-                        value: result[0].mainDestination,
+                    'Цель': {
+                        value: result[0].platform_target,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Исполнитель проекта': {
-                        value: result[0].executorProject,
+                    'Тема': {
+                        value: result[0].platform_subject,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Тип оказанной поддержки': {
+                        value: result[0].platform_typeHelp,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     }
                     ,
-                    'Контакты исполнителя': {
-                        value: result[0].contactExecutor,
+                    'Достигнутые результаты': {
+                        value: result[0].platform_results,
                         writable: true,
                         enumerable: true,
                         configurable: true
@@ -820,14 +816,14 @@ module.exports = {
 
                 });
 
-                    delete result[0].id;
-                    delete result[0].projectIniciativ;
+
                     delete result[0].nameCountry;
-                    delete result[0].amountFinance;
-                    delete result[0].sourceFinance;
-                    delete result[0].mainDestination;
-                    delete result[0].executorProject;
-                    delete result[0].contactExecutor;
+                    delete result[0].platform_name;
+                    delete result[0].platform_participants;
+                    delete result[0].platform_target;
+                    delete result[0].platform_subject;
+                    delete result[0].platform_typeHelp;
+                    delete result[0].platform_results;
 
 
 
@@ -842,32 +838,28 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
-                    nameCountry: 1,
 
+                    nameCountry: 1,
                     programm: 1,
                     sector: 1,
                     developers: 1,
-                    executorAgents: 1
+                    executorAgents: 1,
+                    executorAgentsContacts: 1,
+                    projectDescription: 1
 
                 }).toArray();
 
 
 
                 Object.defineProperties(result[0], {
-                    'Номер': {
-                        value: result[0].id,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+
                     'Страна': {
-                        value: result[0].nameCountry,
+                        value: result[0].nameCountry.join(","),
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Программа': {
+                    'Название программы': {
                         value: result[0].programm,
                         writable: true,
                         enumerable: true,
@@ -890,17 +882,32 @@ module.exports = {
                         writable: true,
                         enumerable: true,
                         configurable: true
+                    },
+                    'Контакты': {
+                        value: result[0].executorAgentsContacts,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+                    'Краткое описание использованного ноу-хау проекта': {
+                        value: result[0].projectDescription,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
                     }
 
 
                 });
 
-                delete result[0].id;
+
                 delete result[0].programm;
                 delete result[0].nameCountry;
                 delete result[0].sector;
                 delete result[0].developers;
                 delete result[0].executorAgents;
+                delete result[0].executorAgentsContacts;
+                delete result[0].projectDescription;
 
 
             }else if (idTable === "regional_invest") {
@@ -914,8 +921,8 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
-                    nameCountry: 1,
+
+
                     typeInvest: 1,
                     sizeInvest: 1,
                     investor: 1,
@@ -924,23 +931,16 @@ module.exports = {
                     descriptionInvest: 1,
                     executorAgentsContacts: 1
 
+
+
+
+
                 }).toArray();
 
 
 
                 Object.defineProperties(result[0], {
-                    'Номер': {
-                        value: result[0].id,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+
                     'Тип инвестиций': {
                         value: result[0].typeInvest,
                         writable: true,
@@ -988,8 +988,7 @@ module.exports = {
 
                 });
 
-                delete result[0].id;
-                delete result[0].nameCountry;
+
                 delete result[0].typeInvest;
                 delete result[0].sizeInvest;
                 delete result[0].investor;
@@ -1009,8 +1008,8 @@ module.exports = {
                 result = await col.find({}, {
 
                     _id: 0,
-                    id: 1,
-                    nameCountry: 1,
+
+
 
                     projectIniciativ: 1,
 
@@ -1018,7 +1017,8 @@ module.exports = {
                     sourceFinance: 1,
                     mainDestination: 1,
                     executorProject: 1,
-                    contactExecutor: 1
+                    contactExecutor: 1,
+                    mobileOther: 1
 
 
                 }).toArray();
@@ -1027,24 +1027,14 @@ module.exports = {
 
 
                 Object.defineProperties(result[0], {
-                    'Номер': {
-                        value: result[0].id,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+
                     'Проект/инициатива': {
                         value: result[0].projectIniciativ,
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+
                     'Объем финансирования': {
                         value: result[0].amountFinance,
                         writable: true,
@@ -1058,11 +1048,20 @@ module.exports = {
                         configurable: true
                     },
                     'Основное назначение': {
-                        value: result[0].mainDestination,
+                        value: result[0].mainDestination.join(","),
                         writable: true,
                         enumerable: true,
                         configurable: true
                     },
+
+                    'Другое': {
+                        value: result[0].mobileOther,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
                     'Исполнитель проекта': {
                         value: result[0].executorProject,
                         writable: true,
@@ -1070,7 +1069,7 @@ module.exports = {
                         configurable: true
                     }
                     ,
-                    'Контакты исполнителя': {
+                    'Контактные данные исполнителя': {
                         value: result[0].contactExecutor,
                         writable: true,
                         enumerable: true,
@@ -1080,9 +1079,9 @@ module.exports = {
 
                 });
 
-                delete result[0].id;
+
                 delete result[0].projectIniciativ;
-                delete result[0].nameCountry;
+                delete result[0].mobileOther;
                 delete result[0].amountFinance;
                 delete result[0].sourceFinance;
                 delete result[0].mainDestination;

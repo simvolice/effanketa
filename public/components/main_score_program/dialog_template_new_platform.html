@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать платформу/сеть</h2>
+                <h2>Создать новую запись</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -33,9 +33,9 @@
                                 <div class="col-md-12">
 
                                     <md-input-container class="custom__select__margin">
-                                        <label>Выберите страну</label>
+                                        <label>Выберите страны</label>
                                         <md-icon class="material-icons">place</md-icon>
-                                        <md-select ng-model="data.country">
+                                        <md-select ng-model="data.country" multiple>
 
                                             <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
                                                 {{y.name}}
@@ -50,35 +50,28 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Проект/инициатива</label>
-                                        <md-icon class="material-icons">feedback</md-icon>
-
-                                        <input ng-model="data.projectIniciativ">
-                                    </md-input-container>
-
-
-
-
-
-
-
-
-                                    <md-input-container class="md-icon-float md-block">
-                                        <label>Объем финансирования</label>
+                                        <label>Сеть/ платформа</label>
                                         <md-icon class="material-icons">attach_money</md-icon>
 
-                                        <input ng-model="data.amountFinance">
+                                        <input ng-model="data.platform_name">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Участники</label>
+                                        <md-icon class="material-icons">group</md-icon>
+
+                                        <textarea ng-model="data.platform_participants" rows="5" md-select-on-focus></textarea>
                                     </md-input-container>
 
 
@@ -89,56 +82,30 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Источник финансирования</label>
+                                        <label>Цель</label>
+                                        <md-icon class="material-icons">attach_money</md-icon>
+
+                                        <input ng-model="data.platform_target">
+                                    </md-input-container>
+
+
+
+
+
+
+
+
+                                    <md-input-container class="md-icon-float md-block">
+                                        <label>Тема</label>
                                         <md-icon class="material-icons">work</md-icon>
 
-                                        <input ng-model="data.sourceFinance">
+                                        <input ng-model="data.platform_subject">
                                     </md-input-container>
 
 
 
 
 
-
-                                    <div class="input-group">
-                                             <span class="input-group-addon">
-
-                                             </span>
-                                        <div class="form-group is-empty">
-
-                                            <h6>Основное назначение:</h6>
-
-
-
-
-
-
-                                            <md-radio-group ng-model="data.mainDestination">
-
-                                                <md-radio-button value="Улучшение знаний">Улучшение знаний
-                                                </md-radio-button>
-                                                <md-radio-button value="Поднятие потенциала">Поднятие потенциала</md-radio-button>
-                                                <md-radio-button value="Инвестиции в региональное сотрудничество в области климата">Инвестиции в региональное сотрудничество в области климата</md-radio-button>
-
-
-                                            </md-radio-group>
-
-                                            <md-input-container class="md-icon-float md-block">
-                                                <label>Другое</label>
-
-                                                <input ng-model="data.mainDestination">
-                                            </md-input-container>
-
-
-
-
-
-
-
-
-
-                                            <span class="material-input"></span></div>
-                                    </div>
 
 
 
@@ -147,10 +114,10 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Исполнитель проекта</label>
+                                        <label>Тип оказанной поддержки</label>
                                         <md-icon class="material-icons">account_circle</md-icon>
 
-                                        <input ng-model="data.executorProject">
+                                        <input ng-model="data.platform_typeHelp">
                                     </md-input-container>
 
 
@@ -159,10 +126,10 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Контакты исполнителя</label>
+                                        <label>Достигнутые результаты</label>
                                         <md-icon class="material-icons">contact_phone</md-icon>
 
-                                        <input ng-model="data.contactExecutor">
+                                        <input ng-model="data.platform_results">
                                     </md-input-container>
 
 

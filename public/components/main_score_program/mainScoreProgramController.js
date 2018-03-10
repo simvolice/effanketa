@@ -369,27 +369,38 @@ function DialogControllerUpdMobileResurs($scope, data, GetAllCoutrys, UpdMobileR
         $scope.data = {
 
             _id: data._id,
-            country: data.country,
+
             projectIniciativ: data.projectIniciativ,
-            amountFinance: data.amountFinance,
+            amountFinance: data.amountFinance.$numberDecimal,
             sourceFinance: data.sourceFinance,
             mainDestination: data.mainDestination,
             executorProject: data.executorProject,
+            mobileOther: data.mobileOther,
             contactExecutor: data.contactExecutor
 
 
 
 
         };
+        
+        
+        $scope.exists = function (item) {
+            return $scope.data.mainDestination.indexOf(item) > -1;
+        };
+
+    $scope.pushToSelected = function (item) {
+
+        let idx = $scope.data.mainDestination.indexOf(item);
+        if (idx > -1) {
+            $scope.data.mainDestination.splice(idx, 1);
+        }
+        else {
+            $scope.data.mainDestination.push(item);
+        }
 
 
-        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+    };
 
-
-            $scope.data.allCountrys = entry.resultFromDb;
-
-
-        });
 
 
 
@@ -459,7 +470,7 @@ function DialogControllerUpdRegionalInvest($scope, data, GetAllCoutrys, UpdRegio
         $scope.data = {
 
             _id: data._id,
-            country: data.country,
+
             typeInvest: data.typeInvest,
             sizeInvest: data.sizeInvest,
             investor: data.investor,
@@ -474,13 +485,7 @@ function DialogControllerUpdRegionalInvest($scope, data, GetAllCoutrys, UpdRegio
         };
 
 
-        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
-
-            $scope.data.allCountrys = entry.resultFromDb;
-
-
-        });
 
 
 
@@ -552,13 +557,12 @@ function DialogControllerUpdPlatform($scope, data, GetAllCoutrys, UpdPlatform) {
 
         _id: data._id,
         country: data.country,
-        projectIniciativ: data.projectIniciativ,
-        amountFinance: data.amountFinance,
-        sourceFinance: data.sourceFinance,
-        mainDestination: data.mainDestination,
-        executorProject: data.executorProject,
-        contactExecutor: data.contactExecutor
-
+        platform_name: data.platform_name,
+        platform_participants: data.platform_participants,
+        platform_target: data.platform_target,
+        platform_subject: data.platform_subject,
+        platform_typeHelp: data.platform_typeHelp,
+        platform_results: data.platform_results
 
 
 
@@ -645,7 +649,8 @@ function DialogControllerUpdProject($scope, data, GetAllCoutrys, UpdProject) {
             sector: data.sector,
             developers: data.developers,
             executorAgents: data.executorAgents,
-            executorAgentsContacts: data.executorAgentsContacts
+            executorAgentsContacts: data.executorAgentsContacts,
+            projectDescription: data.projectDescription
 
 
 
@@ -819,16 +824,23 @@ $scope.addBtn = function (ev, nameMethod) {
     };
 
 
+
+
+
+
 function DialogControllerNewMobileResurs($scope, GetAllCoutrys, AddMobileResurs) {
 
 
+
+   
+
         $scope.data = {
 
-            country: "",
+
             projectIniciativ: "",
             amountFinance: "",
             sourceFinance: "",
-            mainDestination: "",
+            mainDestination: [],
             executorProject: "",
             contactExecutor: ""
 
@@ -837,19 +849,25 @@ function DialogControllerNewMobileResurs($scope, GetAllCoutrys, AddMobileResurs)
 
         };
 
+    $scope.pushToSelected = function (item) {
 
-        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+        let idx = $scope.data.mainDestination.indexOf(item);
+        if (idx > -1) {
+            $scope.data.mainDestination.splice(idx, 1);
+        }
+        else {
+            $scope.data.mainDestination.push(item);
+        }
 
 
-            $scope.data.allCountrys = entry.resultFromDb;
-            $scope.data.country = entry.resultFromDb[0]._id;
-
-
-        });
+    };
 
 
 
         $scope.addPlatform = function () {
+
+
+
 
             AddMobileResurs.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function (result) {
 
@@ -915,7 +933,7 @@ function DialogControllerNewRegionalInvest($scope, GetAllCoutrys, AddRegionalInv
 
         $scope.data = {
 
-            country: "",
+
             typeInvest: "",
             sizeInvest: "",
             investor: "",
@@ -928,14 +946,7 @@ function DialogControllerNewRegionalInvest($scope, GetAllCoutrys, AddRegionalInv
         };
 
 
-        GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
-
-            $scope.data.allCountrys = entry.resultFromDb;
-            $scope.data.country = entry.resultFromDb[0]._id;
-
-
-        });
 
 
 

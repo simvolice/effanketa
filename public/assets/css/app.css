@@ -531,7 +531,12 @@ ul:not(.browser-default) > li {
 
 
 .custom__tab__label {
-    margin-top: -15px;
+    width: 450px;
+    white-space: normal;
+    font-size: 10px;
+    margin-top: -12px;
+    line-height: 12px;
+
 }
 
 

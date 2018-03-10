@@ -8,7 +8,7 @@
 
     <md-toolbar class="md-toolbar-tools">
 
-        <h2>Создать мобильный ресурс</h2>
+        <h2>Создать новую запись</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="closeDialog()">
             <i class="material-icons">close</i>
@@ -31,20 +31,6 @@
                         <div class="content">
 
                             <div class="col-md-12">
-
-                                <md-input-container class="custom__select__margin">
-                                    <label>Выберите страну</label>
-                                    <md-icon class="material-icons">place</md-icon>
-                                    <md-select ng-model="data.country">
-
-                                        <md-option ng-repeat="y in data.allCountrys" ng-value="y._id">
-                                            {{y.name}}
-                                        </md-option>
-                                    </md-select>
-                                </md-input-container>
-
-
-
 
 
 
@@ -113,20 +99,22 @@
 
 
 
-                                        <md-radio-group ng-model="data.mainDestination">
-
-                                            <md-radio-button value="Улучшение знаний">Улучшение знаний
-                                            </md-radio-button>
-                                            <md-radio-button value="Поднятие потенциала">Поднятие потенциала</md-radio-button>
-                                            <md-radio-button value="Инвестиции в региональное сотрудничество в области климата">Инвестиции в региональное сотрудничество в области климата</md-radio-button>
+                                            <md-checkbox ng-checked="exists('Улучшение знаний')" ng-click="pushToSelected('Улучшение знаний')">Улучшение знаний
+                                            </md-checkbox>
+                                            <md-checkbox ng-checked="exists('Поднятие потенциала')" ng-click="pushToSelected('Поднятие потенциала')">Поднятие потенциала</md-checkbox>
+                                            <md-checkbox ng-checked="exists('Инвестиции в региональное сотрудничество в области климата')" ng-click="pushToSelected('Инвестиции в региональное сотрудничество в области климата')">Инвестиции в региональное сотрудничество в области климата</md-checkbox>
 
 
-                                        </md-radio-group>
+
+
+
+
+
 
                                         <md-input-container class="md-icon-float md-block">
                                             <label>Другое</label>
 
-                                            <input ng-model="data.mainDestination">
+                                            <input ng-model="data.mobileOther">
                                         </md-input-container>
 
 

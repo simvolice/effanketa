@@ -22,7 +22,9 @@
   "BUILD_REPORT": "EnglishVersion",
   "REPORT_BY_MAIN_SCORE": "EnglishVersion",
   "REPORT_BY_CRITERIY": "EnglishVersion",
-  "DATA_INTERMEDIATE_INDEX": "EnglishVersion"
+  "DATA_INTERMEDIATE_INDEX": "EnglishVersion",
+
+  "NAME_INDICATOR": "Name of indicators"
 
 
 
