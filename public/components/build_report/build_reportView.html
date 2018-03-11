@@ -7,165 +7,200 @@
 
         <md-content layout="column" flex class="custom__md-content__categ">
 
+
+
+            <md-card>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">Сформировать отчёт (квартальный, полугодовой, годовой)</h3>
+
+                    </div>
+
+                </div>
+
+            </md-card>
+
+
             <md-card>
 
 
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools">
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                        <h3>Сформировать отчёт (квартальный, полугодовой, годовой)</h3>
-
-
-                    </div>
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
+                        </md-input-container>
 
 
                     </div>
 
-                    <div class="md-toolbar-tools">
+
+                </div>
+
+
+                <div class="row" style="    margin-left: -5px;
+    margin-top: -25px;
+    margin-bottom: 25px;">
+                    <div class="col-md-12">
+
+
+                        <md-input-container style="width: 260px; margin-right: 20px">
+                            <label>Выберите страну</label>
+                            <md-icon class="material-icons">place</md-icon>
+                            <md-select ng-model="country" ng-change="changeCountry(country)">
+
+                                <md-option ng-repeat="y in allCountrys" ng-value="y._id">
+                                    {{y.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+
+
+
+                        <md-input-container class="custom__select__margin">
+                            <label>Выберите отчетный период</label>
+                            <md-icon class="material-icons">date_range</md-icon>
+                            <md-select ng-model="period">
+
+                                <md-option ng-repeat="y in allperiod" ng-value="y._id">
+                                    {{y.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+
+                        <md-input-container style="width: 200px">
+                            <label>Выберите год</label>
+                            <md-icon class="material-icons">date_range</md-icon>
+                            <md-select ng-model="yearname">
+
+                                <md-option ng-repeat="y in allyearname" ng-value="y._id">
+                                    {{y.name}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+
+
+
+
+                        <md-button class="md-raised md-primary" ng-click="showModalWnd($event)">Сформировать отчет</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</md-button>
+
+                    </div>
+
+                </div>
 
 
 
 
 
 
-                                <md-input-container class="custom__select__margin">
-                                    <label>Выберите страну</label>
-                                    <md-icon class="material-icons">place</md-icon>
-                                    <md-select ng-model="country" ng-change="changeCountry(country)">
-
-                                        <md-option ng-repeat="y in allCountrys" ng-value="y._id">
-                                            {{y.name}}
-                                        </md-option>
-                                    </md-select>
-                                </md-input-container>
+                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                    <div class="col-md-12 table-responsive">
 
 
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-e3zv{font-weight:bold}
+                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                        </style>
+                        <table class="tg table-striped">
+                            <tr>
+                                <th class="tg-hgcj">№</th>
+                                <th class="tg-hgcj">Страна</th>
+
+                                <th class="tg-hgcj">Тип периода</th>
+                                <th class="tg-hgcj">Год</th>
+                                <th class="tg-hgcj">Дата создания</th>
 
 
-                                <md-input-container class="custom__select__margin">
-                                    <label>Выберите отчетный период</label>
-                                    <md-icon class="material-icons">date_range</md-icon>
-                                    <md-select ng-model="period">
 
-                                        <md-option ng-repeat="y in allperiod" ng-value="y._id">
-                                            {{y.name}}
-                                        </md-option>
-                                    </md-select>
-                                </md-input-container>
+                                <th class="tg-hgcj">Просмотреть</th>
+                                <th class="tg-hgcj">Обновить</th>
+                                <th class="tg-hgcj">Удалить</th>
 
-
-                                <md-input-container class="custom__margin__select__report">
-                                    <label>Выберите год</label>
-                                    <md-icon class="material-icons">date_range</md-icon>
-                                    <md-select ng-model="yearname">
-
-                                        <md-option ng-repeat="y in allyearname" ng-value="y._id">
-                                            {{y.name}}
-                                        </md-option>
-                                    </md-select>
-                                </md-input-container>
+                            </tr>
 
 
 
 
 
 
+                            <tbody>
+
+                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
 
 
 
-                                <button class="btn btn-sm btn-primary" ng-click="showModalWnd($event)">Сформировать отчет</button>
 
 
 
+                                <td>{{data.id}}</td>
+
+                                <td>{{data.country}}</td>
+                                <td>{{data.typePeriod}}</td>
+                                <td>{{data.year}}</td>
+
+                                <td>{{data.createAt | date : "dd.MM.y"}}</td>
+
+
+
+
+
+                                <td><md-button class="md-icon-button" aria-label="More">
+                                    <i class="material-icons" ng-click="updateEvent(data, $event, $index)">visibility</i>
+                                </md-button></td>
+
+                                <td><md-button class="md-icon-button" aria-label="More">
+                                    <i class="material-icons" ng-click="updateEvent(data, $event, $index)">done_all</i>
+                                </md-button></td>
+
+                                <td> <md-button class="md-icon-button" aria-label="More">
+                                    <i class="material-icons" ng-click="delete(data, $index)">delete</i>
+                                </md-button></td>
+
+
+
+                            </tr>
+
+
+
+                            </tbody>
+
+
+
+
+                        </table>
 
 
                     </div>
 
-                </md-toolbar>
-
-                <!-- exact table from live demo -->
-                <md-table-container class="custom__fix__freez__head">
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-                        <tr md-row>
+                </div>
 
 
 
-
-                            <th md-column>№</th>
-                            <th md-column>Страна</th>
-
-                            <th md-column>Тип периода</th>
-                            <th md-column>Год</th>
-                            <th md-column>Дата создания</th>
-
-
-
-                            <th md-column>Просмотреть</th>
-                            <th md-column>Обновить</th>
-                            <th md-column>Удалить</th>
-
-                        </tr>
-                        </thead>
-                        <tbody md-body>
-
-
-
-
-
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
-
-
-
-                            <td md-cell>{{data.id}}</td>
-
-                            <td md-cell>{{data.country}}</td>
-                            <td md-cell>{{data.typePeriod}}</td>
-                            <td md-cell>{{data.year}}</td>
-
-                            <td md-cell>{{data.createAt | date : "dd.MM.y"}}</td>
-
-
-
-
-
-                            <td md-cell><md-button class="md-icon-button" aria-label="More">
-                                <i class="material-icons" ng-click="updateEvent(data, $event, $index)">visibility</i>
-                            </md-button></td>
-
-                            <td md-cell><md-button class="md-icon-button" aria-label="More">
-                                <i class="material-icons" ng-click="updateEvent(data, $event, $index)">done_all</i>
-                            </md-button></td>
-
-                            <td md-cell> <md-button class="md-icon-button" aria-label="More">
-                                <i class="material-icons" ng-click="delete(data, $index)">delete</i>
-                            </md-button></td>
-
-
-
-
-
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
 
 
 
 
 
             </md-card>
+
+
+
+
+
+
 
 
         </md-content>

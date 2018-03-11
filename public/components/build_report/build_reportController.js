@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog, GetAllCoutrys, GetTypePeriod, $mdToast, GetYearName, GetReport, $rootScope, DelReport) {
+angular.module('app').controller('BuildReportCtrl', function ($timeout, $scope, $mdDialog, GetAllCoutrys, GetTypePeriod, $mdToast, GetYearName, GetReport, $rootScope, DelReport) {
 
     $rootScope.data = [];
 
@@ -23,18 +23,39 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
     $scope.changeCountry = function (country) {
 
 
-        if (country === 0) {
-            $scope.allperiod = $scope.allperiod.slice(4);
-      } else {
-            GetTypePeriod.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+        for (let itemCountry of $scope.allCountrys) {
+            if (itemCountry._id === country){
+
+                if (itemCountry.name === "РКГ, Региональный компонент 1") {
 
 
-                $scope.allperiod = entry.resultFromDb;
+                    $scope.allperiod = $scope.allperiod.slice(2);
+                    $scope.period = $scope.allperiod[0]._id;
 
-            });
 
 
+                } else {
+
+
+
+                    GetTypePeriod.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+                        $scope.allperiod = entry.resultFromDb;
+                        $scope.period = entry.resultFromDb[0]._id;
+
+                    });
+
+
+
+
+                }
+
+
+
+            }
         }
+
 
 
 
@@ -60,7 +81,6 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
         $scope.country = entry.resultFromDb[0]._id;
 
 
-        $scope.allCountrys.push({_id: 0, name: "РКГ"});
 
 
 
@@ -71,7 +91,8 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
         $scope.allperiod = entry.resultFromDb;
-        $scope.period = entry.resultFromDb[0]._id;
+
+
 
 
     });
@@ -82,7 +103,7 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
 
 
         $scope.allyearname = entry.resultFromDb;
-        $scope.yearname = entry.resultFromDb[0]._id;
+        $scope.yearname = entry.resultFromDb[entry.resultFromDb.length-1]._id;
 
 
     });
@@ -233,6 +254,15 @@ angular.module('app').controller('BuildReportCtrl', function ($scope, $mdDialog,
     };
 
 
+
+
+    $timeout(function () {
+
+
+        $scope.changeCountry($scope.country);
+
+
+    }, 350);
 
 
 
