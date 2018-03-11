@@ -1019,7 +1019,7 @@ module.exports = {
 
 
 
-    forStrategic: async (SeesionToken, data) => {
+    forStrategic: async (SeesionToken) => {
 
 
 
@@ -1049,7 +1049,7 @@ module.exports = {
 
 
 
-                return await StrategicService.getAll(data);
+                return await StrategicService.getAll();
 
 
 

@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать коммуникацию</h2>
+                <h2>Создать таблицу мониторинга исполнения стратегии</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -23,12 +23,11 @@
 
 
 
-                <div class="col-md-12">
+
 
                     <div class="row">
-                        <md-card>
 
-                            <div class="content">
+
 
                                 <div class="col-md-12">
 
@@ -49,577 +48,27 @@
 
 
 
+                                    <md-input-container class="custom__select__margin">
+                                        <label>Выберите год</label>
+                                        <md-icon class="material-icons">date_range</md-icon>
+                                        <md-select ng-model="data.yearname">
 
+                                            <md-option ng-repeat="y in data.allyearname" ng-value="y._id">
+                                                {{y.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
 
 
 
-                                    <md-table-container class="custom__fix__freez__head">
+                                    <div class="input-group">
+										<span class="input-group-addon">
+											<i>Прикрепить файл excel</i>
+										</span>
+                                        <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" accept="application/vnd.ms-excel"/>
+                                    </div>
 
-                                        <colgroup span="4"></colgroup>
 
-                                        <table md-table ng-model="ctrl.selected">
-                                            <thead md-head fix-head>
-                                            <tr md-row>
-
-
-                                                <th md-column colspan="4" scope="colgroup">Прямое Общение</th>
-
-                                            </tr>
-
-
-                                            <tr md-row>
-
-                                                <th md-column style="max-width: 120px;">Индикаторы</th>
-                                                <th md-column>Запланированы на 1 год</th>
-                                                <th md-column>Достигнуты на 1 год</th>
-                                                <th md-column>Детали/Объяснение</th>
-
-
-
-
-
-
-
-                                            </tr>
-
-
-
-
-
-                                            </thead>
-                                            <tbody md-body>
-
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество организованных личных встреч и взаимодействий (форумы, воркшопы, семинары, общественные диалоги, политические диалоги, личные встречи) и количество участников</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countMeetingPlanOnOneYear}}" ng-model="data.countMeetingPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMeetingFinishOnOneYear}}" ng-model="data.countMeetingFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMeetingDescription}}" ng-model="data.countMeetingDescription"></td>
-
-
-
-                                            </tr>
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество мероприятий высокого уровня, где была представлена программа CAMP4ASB</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countEventHighLevelPlanOnOneYear}}" ng-model="data.countEventHighLevelPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countEventHighLevelFinishOnOneYear}}" ng-model="data.countEventHighLevelFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countEventHighLevelDescription}}" ng-model="data.countEventHighLevelDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество информационных запросов от заинтересованных сторон</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countInfoRequestPlanOnOneYear}}" ng-model="data.countInfoRequestPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countInfoRequestFinishOnOneYear}}" ng-model="data.countInfoRequestFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countInfoRequestDescription}}" ng-model="data.countInfoRequestDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество коалиций / сетей, созданных и усиленных CAMP4ASB</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countNetWorkPlanOnOneYear}}" ng-model="data.countNetWorkPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countNetWorkFinishOnOneYear}}" ng-model="data.countNetWorkFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countNetWorkDescription}}" ng-model="data.countNetWorkDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество запущенных совместных партнерских инициатив</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countStartPartnerPlanOnOneYear}}" ng-model="data.countStartPartnerPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countStartPartnerFinishOnOneYear}}" ng-model="data.countStartPartnerFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countStartPartnerDescription}}" ng-model="data.countStartPartnerDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество организованных онлайн-конференций и количество участников</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countOnlineConferencePlanOnOneYear}}" ng-model="data.countOnlineConferencePlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countOnlineConferenceFinishOnOneYear}}" ng-model="data.countOnlineConferenceFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countOnlineConferenceDescription}}" ng-model="data.countOnlineConferenceDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество встреч со СМИ (тренинги в СМИ, пресс-конференции, выезды на места)</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countMeetingPressPlanOnOneYear}}" ng-model="data.countMeetingPressPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMeetingPressFinishOnOneYear}}" ng-model="data.countMeetingPressFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMeetingPressDescription}}" ng-model="data.countMeetingPressDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-
-
-
-
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </md-table-container>
-
-
-
-
-                                    <md-table-container class="custom__fix__freez__head">
-
-                                        <colgroup span="4"></colgroup>
-
-                                        <table md-table ng-model="ctrl.selected">
-                                            <thead md-head fix-head>
-                                            <tr md-row>
-
-
-                                                <th md-column colspan="4" scope="colgroup">Косвенное Общение</th>
-
-                                            </tr>
-
-
-                                            <tr md-row>
-
-                                                <th md-column style="max-width: 120px;">Индикаторы</th>
-                                                <th md-column>Запланированы на 1 год</th>
-                                                <th md-column>Достигнуты на 1 год</th>
-                                                <th md-column>Детали/Объяснение</th>
-
-
-
-
-
-
-
-                                            </tr>
-
-
-
-
-
-                                            </thead>
-                                            <tbody md-body>
-
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество изданных печатных документов (отчеты, краткие политические обзоры, брошюры, инфографика, информационные бюллетени, информационные продукты)</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countCreatePressDocPlanOnOneYear}}" ng-model="data.countCreatePressDocPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countCreatePressDocFinishOnOneYear}}" ng-model="data.countCreatePressDocFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countCreatePressDocDescription}}" ng-model="data.countCreatePressDocDescription"></td>
-
-
-
-                                            </tr>
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество публикаций в СМИ (газетные статьи, телевидение, радио, интернет-медиа)</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countPublishInPressPlanOnOneYear}}" ng-model="data.countPublishInPressPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countPublishInPressFinishOnOneYear}}" ng-model="data.countPublishInPressFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countPublishInPressDescription}}" ng-model="data.countPublishInPressDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество читателей, которым были распространены информационные материалы о проекте</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countReadersPlanOnOneYear}}" ng-model="data.countReadersPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countReadersFinishOnOneYear}}" ng-model="data.countReadersFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countReadersDescription}}" ng-model="data.countReadersDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </md-table-container>
-
-
-                                    <md-table-container class="custom__fix__freez__head">
-
-                                        <colgroup span="4"></colgroup>
-
-                                        <table md-table ng-model="ctrl.selected">
-                                            <thead md-head fix-head>
-                                            <tr md-row>
-
-
-                                                <th md-column colspan="4" scope="colgroup">Онлайн Общение</th>
-
-                                            </tr>
-
-
-                                            <tr md-row>
-
-                                                <th md-column style="max-width: 120px;">Индикаторы</th>
-                                                <th md-column>Запланированы на 1 год</th>
-                                                <th md-column>Достигнуты на 1 год</th>
-                                                <th md-column>Детали/Объяснение</th>
-
-
-
-
-
-
-
-                                            </tr>
-
-
-
-
-
-                                            </thead>
-                                            <tbody md-body>
-
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество онлайн-каналов CAMP4ASB</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countOnlineChannelsPlanOnOneYear}}" ng-model="data.countOnlineChannelsPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countOnlineChannelsFinishOnOneYear}}" ng-model="data.countOnlineChannelsFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countOnlineChannelsDescription}}" ng-model="data.countOnlineChannelsDescription"></td>
-
-
-
-                                            </tr>
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Информация о партнерских страницах (обмен информацией в интернете, блогах, социальных сетях) о деятельности или новостях CAMP4ASB</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countInfoAboutPartnersPagePlanOnOneYear}}" ng-model="data.countInfoAboutPartnersPagePlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countInfoAboutPartnersPageFinishOnOneYear}}" ng-model="data.countInfoAboutPartnersPageFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countInfoAboutPartnersPageDescription}}" ng-model="data.countInfoAboutPartnersPageDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество онлайн-посетителей на веб-сайте и в социальных сетях из региона Центральной Азии</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countPeopleOnSitePlanOnOneYear}}" ng-model="data.countPeopleOnSitePlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countPeopleOnSiteFinishOnOneYear}}" ng-model="data.countPeopleOnSiteFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countPeopleOnSiteDescription}}" ng-model="data.countPeopleOnSiteDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество цифровых подписчиков на информационный бюллетень CAMP4ASB из региона Центральной Азии</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countDigitalPeoplePlanOnOneYear}}" ng-model="data.countDigitalPeoplePlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countDigitalPeopleFinishOnOneYear}}" ng-model="data.countDigitalPeopleFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countDigitalPeopleDescription}}" ng-model="data.countDigitalPeopleDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество загрузок информационных материалов CAMP4ASB</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countDownloadInfoMaterialPlanOnOneYear}}" ng-model="data.countDownloadInfoMaterialPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countDownloadInfoMaterialFinishOnOneYear}}" ng-model="data.countDownloadInfoMaterialFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countDownloadInfoMaterialDescription}}" ng-model="data.countDownloadInfoMaterialDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество посетителей информационной платформы CAMP4ASB</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countVisitsPlanOnOneYear}}" ng-model="data.countVisitsPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countVisitsFinishOnOneYear}}" ng-model="data.countVisitsFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countVisitsDescription}}" ng-model="data.countVisitsDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </md-table-container>
-
-                                    <md-table-container class="custom__fix__freez__head">
-
-                                        <colgroup span="4"></colgroup>
-
-                                        <table md-table ng-model="ctrl.selected">
-                                            <thead md-head fix-head>
-                                            <tr md-row>
-
-
-                                                <th md-column colspan="4" scope="colgroup">Гендер</th>
-
-                                            </tr>
-
-
-                                            <tr md-row>
-
-                                                <th md-column style="max-width: 120px;">Индикаторы</th>
-                                                <th md-column>Запланированы на 1 год</th>
-                                                <th md-column>Достигнуты на 1 год</th>
-                                                <th md-column>Детали/Объяснение</th>
-
-
-
-
-
-
-
-                                            </tr>
-
-
-
-
-
-                                            </thead>
-                                            <tbody md-body>
-
-
-
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество мужчин и женщин, опоминающихся в информационных материалах</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countMaleAndFemaleInInfoMaterialPlanOnOneYear}}" ng-model="data.countMaleAndFemaleInInfoMaterialPlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMaleAndFemaleInInfoMaterialFinishOnOneYear}}" ng-model="data.countMaleAndFemaleInInfoMaterialFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMaleAndFemaleInInfoMaterialDescription}}" ng-model="data.countMaleAndFemaleInInfoMaterialDescription"></td>
-
-
-
-                                            </tr>
-
-
-                                            <tr md-row md-select="data" md-select-id="id" md-auto-select>
-
-
-
-
-
-                                                <td md-cell style="max-width: 50px">Количество охваченных мужчин и женщин (по возможности)</td>
-
-
-
-                                                <td md-cell><input type="text" value="{{data.countMaleAndFemalePlanOnOneYear}}" ng-model="data.countMaleAndFemalePlanOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMaleAndFemaleFinishOnOneYear}}" ng-model="data.countMaleAndFemaleFinishOnOneYear"></td>
-                                                <td md-cell><input type="text" value="{{data.countMaleAndFemaleDescription}}" ng-model="data.countMaleAndFemaleDescription"></td>
-
-
-
-                                            </tr>
-
-
-
-
-
-
-
-
-
-                                            </tbody>
-                                        </table>
-                                    </md-table-container>
 
 
 
@@ -628,25 +77,6 @@
 
                                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                            </div>
-
-
-                        </md-card>
 
 
                     </div>
@@ -662,7 +92,8 @@
 
 
 
-                </div>
+
+
 
 
 
@@ -678,7 +109,7 @@
     <md-dialog-actions layout="row">
 
         <span flex></span>
-        <md-button class="md-raised md-primary" ng-click="save()">
+        <md-button class="md-raised md-primary" ng-click="uploadFiles()">
             Сохранить
         </md-button>
 

@@ -2,49 +2,78 @@
 
     <div class="col-md-12">
         <md-content layout="column" flex class="custom__md-content__categ">
+
+
+
+
+            <md-card>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'STRATEGIC_COMMUNICATIONS' | translate }}</h3>
+
+                    </div>
+
+                </div>
+
+            </md-card>
+
+
             <md-card>
 
 
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools">
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                        <h3 style="text-transform: uppercase">Стратегия коммуникации</h3>
-
-
-                    </div>
-
-
-                    <div class="md-toolbar-tools">
-
-
-                        <input type="text" ng-model="search" placeholder="Поиск..." class="custom__search__input">
-
-
-                    </div>
-
-                    <div class="md-toolbar-tools">
-
-
-                        <button class="btn btn-primary" ng-click="addBtn($event)">Добавить запись</button>
-
-                        <md-input-container>
-                            <label>Выберите год</label>
-                            <md-icon class="material-icons">date_range</md-icon>
-                            <md-select ng-model="yearname" md-on-close="selectClose()">
-
-                                <md-option ng-repeat="y in allyearname" ng-value="y._id">
-                                    {{y.name}}
-                                </md-option>
-                            </md-select>
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
                         </md-input-container>
 
+
                     </div>
 
-                </md-toolbar>
+
+                </div>
+
+
+                <div class="row" style="    margin-left: -5px;
+    margin-top: -25px;
+    margin-bottom: 25px;">
+                    <div class="col-md-12">
+                        <md-button class="md-raised md-primary" ng-click="addBtn($event)">{{ 'ADD_ROW' | translate }}</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</md-button>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                    <div class="col-md-12 table-responsive">
+
+
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-e3zv{font-weight:bold}
+                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                        </style>
+                        <table class="tg table-striped">
+                            <tr>
+                                <th class="tg-hgcj">№</th>
+
+                                <th class="tg-hgcj">Страна</th>
+                                <th class="tg-hgcj">Год</th>
 
 
 
@@ -53,86 +82,81 @@
 
 
 
-                <md-table-container class="custom__fix__freez__head">
+                                <th class="tg-hgcj">Просмотреть Excel фай</th>
 
+                                <th class="tg-hgcj">Сохранить</th>
+                                <th class="tg-hgcj">Удалить</th>
 
-
-
-                    <table md-table ng-model="ctrl.selected">
-                        <thead md-head fix-head>
-
-
-
-                        <tr md-row>
-
-                            <th md-column>№</th>
-
-                            <th md-column>Страна</th>
+                            </tr>
 
 
 
 
 
+                            <tbody>
+
+                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
 
 
 
-                            <th md-column>Просмотреть</th>
-                            <th md-column>Excel</th>
-                            <th md-column>Обновить</th>
-                            <th md-column>Удалить</th>
-
-
-                        </tr>
-
+                                <td>{{data.id}}</td>
 
 
 
 
-                        </thead>
-                        <tbody md-body>
+                                <td>{{data.nameCountry}}</td>
+                                <td>{{data.nameYear}}</td>
 
 
 
 
 
-                        <tr md-row md-select="data" md-select-id="id" md-auto-select ng-repeat="data in data | filter:search">
+                                <td><a target="_blank" href="{{data.urlExcel}}"><i class="material-icons">visibility</i></a></td>
+
+
+
+                                <td><i class="material-icons" ng-click="updBtn(data, $event)">done_all</i></td>
+
+
+
+                                <td><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+
+
+                            </tr>
+
+
+
+                            </tbody>
 
 
 
 
-
-                            <td md-cell>{{data.id}}</td>
-
+                        </table>
 
 
+                    </div>
 
-                            <td md-cell>{{data.nameCountry}}</td>
-
+                </div>
 
 
 
 
-                            <td md-cell><i class="material-icons" ng-click="updBtn(data, $event)">visibility</i></td>
-                            <td md-cell><i class="material-icons" ng-click="excel(data)">border_all</i></td>
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="updBtn(data, $event)">done_all</i></td>
-
-
-
-                            <td md-cell><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
-
-
-                        </tr>
-                        </tbody>
-                    </table>
-                </md-table-container>
 
 
 
 
             </md-card>
+
+
+
+
+
+
+
+
+
+
+
         </md-content>
     </div>
 

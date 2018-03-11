@@ -4,22 +4,19 @@
 
 
 
-angular.module('app').controller('StrategicCommunicationsCtrl', function ($window, $scope, $rootScope, $mdDialog, GetAllCoutrys, AddStrategic, $mdToast, UpdStrategic, DelStrategic, GetStrategic, GetYearName) {
+angular.module('app').controller('StrategicCommunicationsCtrl', function ($window, $scope, $rootScope, $mdDialog, GetAllCoutrys, $mdToast, DelStrategic, GetStrategic, GetYearName) {
 
 
     $rootScope.data = [];
 
 
 
-    GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-        $scope.allyearname = entry.resultFromDb;
-        $scope.yearname = entry.resultFromDb[entry.resultFromDb.length - 2]._id;
 
 
 
-        GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function (result) {
+
+
+        GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
 
 
 
@@ -47,7 +44,7 @@ angular.module('app').controller('StrategicCommunicationsCtrl', function ($windo
 
         });
 
-    });
+
 
 
 
@@ -85,7 +82,7 @@ angular.module('app').controller('StrategicCommunicationsCtrl', function ($windo
     };
 
 
-function DialogControllerUpdate($scope, data, GetAllCoutrys, UpdStrategic) {
+function DialogControllerUpdate($scope, data, GetAllCoutrys, GetYearName, $http) {
 
 
 
@@ -95,64 +92,7 @@ function DialogControllerUpdate($scope, data, GetAllCoutrys, UpdStrategic) {
             _id: data._id,
 
             country: data.country,
-            countMeetingPlanOnOneYear: data.countMeetingPlanOnOneYear,
-            countMeetingFinishOnOneYear: data.countMeetingFinishOnOneYear,
-            countMeetingDescription: data.countMeetingDescription,
-            countEventHighLevelPlanOnOneYear: data.countEventHighLevelPlanOnOneYear,
-            countEventHighLevelFinishOnOneYear: data.countEventHighLevelFinishOnOneYear,
-            countEventHighLevelDescription: data.countEventHighLevelDescription,
-            countInfoRequestPlanOnOneYear: data.countInfoRequestPlanOnOneYear,
-            countInfoRequestFinishOnOneYear: data.countInfoRequestFinishOnOneYear,
-            countInfoRequestDescription: data.countInfoRequestDescription,
-            countNetWorkPlanOnOneYear: data.countNetWorkPlanOnOneYear,
-            countNetWorkFinishOnOneYear: data.countNetWorkFinishOnOneYear,
-            countNetWorkDescription: data.countNetWorkDescription,
-            countStartPartnerPlanOnOneYear: data.countStartPartnerPlanOnOneYear,
-            countStartPartnerFinishOnOneYear: data.countStartPartnerFinishOnOneYear,
-            countStartPartnerDescription: data.countStartPartnerDescription,
-            countOnlineConferencePlanOnOneYear: data.countOnlineConferencePlanOnOneYear,
-            countOnlineConferenceFinishOnOneYear: data.countOnlineConferenceFinishOnOneYear,
-            countOnlineConferenceDescription: data.countOnlineConferenceDescription,
-            countMeetingPressPlanOnOneYear: data.countMeetingPressPlanOnOneYear,
-            countMeetingPressFinishOnOneYear: data.countMeetingPressFinishOnOneYear,
-            countMeetingPressDescription: data.countMeetingPressDescription,
-            countCreatePressDocPlanOnOneYear: data.countCreatePressDocPlanOnOneYear,
-            countCreatePressDocFinishOnOneYear: data.countCreatePressDocFinishOnOneYear,
-            countCreatePressDocDescription: data.countCreatePressDocDescription,
-            countPublishInPressPlanOnOneYear: data.countPublishInPressPlanOnOneYear,
-            countPublishInPressFinishOnOneYear: data.countPublishInPressFinishOnOneYear,
-            countPublishInPressDescription: data.countPublishInPressDescription,
-            countReadersPlanOnOneYear: data.countReadersPlanOnOneYear,
-            countReadersFinishOnOneYear: data.countReadersFinishOnOneYear,
-            countReadersDescription: data.countReadersDescription,
-            countOnlineChannelsPlanOnOneYear: data.countOnlineChannelsPlanOnOneYear,
-            countOnlineChannelsFinishOnOneYear: data.countOnlineChannelsFinishOnOneYear,
-            countOnlineChannelsDescription: data.countOnlineChannelsDescription,
-            countInfoAboutPartnersPagePlanOnOneYear: data.countInfoAboutPartnersPagePlanOnOneYear,
-            countInfoAboutPartnersPageFinishOnOneYear: data.countInfoAboutPartnersPageFinishOnOneYear,
-            countInfoAboutPartnersPageDescription: data.countInfoAboutPartnersPageDescription,
-            countPeopleOnSitePlanOnOneYear: data.countPeopleOnSitePlanOnOneYear,
-            countPeopleOnSiteFinishOnOneYear: data.countPeopleOnSiteFinishOnOneYear,
-            countPeopleOnSiteDescription: data.countPeopleOnSiteDescription,
-            countDigitalPeoplePlanOnOneYear: data.countDigitalPeoplePlanOnOneYear,
-            countDigitalPeopleFinishOnOneYear: data.countDigitalPeopleFinishOnOneYear,
-            countDigitalPeopleDescription: data.countDigitalPeopleDescription,
-            countDownloadInfoMaterialPlanOnOneYear: data.countDownloadInfoMaterialPlanOnOneYear,
-            countDownloadInfoMaterialFinishOnOneYear: data.countDownloadInfoMaterialFinishOnOneYear,
-            countDownloadInfoMaterialDescription: data.countDownloadInfoMaterialDescription,
-            countVisitsPlanOnOneYear: data.countVisitsPlanOnOneYear,
-            countVisitsFinishOnOneYear: data.countVisitsFinishOnOneYear,
-            countVisitsDescription: data.countVisitsDescription,
-            countMaleAndFemaleInInfoMaterialPlanOnOneYear: data.countMaleAndFemaleInInfoMaterialPlanOnOneYear,
-            countMaleAndFemaleInInfoMaterialFinishOnOneYear: data.countMaleAndFemaleInInfoMaterialFinishOnOneYear,
-            countMaleAndFemaleInInfoMaterialDescription: data.countMaleAndFemaleInInfoMaterialDescription,
-            countMaleAndFemalePlanOnOneYear: data.countMaleAndFemalePlanOnOneYear,
-            countMaleAndFemaleFinishOnOneYear: data.countMaleAndFemaleFinishOnOneYear,
-            countMaleAndFemaleDescription: data.countMaleAndFemaleDescription,
-
-
-
-
+            yearname: data.year
 
         };
 
@@ -166,45 +106,213 @@ function DialogControllerUpdate($scope, data, GetAllCoutrys, UpdStrategic) {
 
 
 
+    GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
 
 
 
 
-        $scope.save = function () {
+        $scope.data.allyearname = entry.resultFromDb;
 
 
-            UpdStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function (result) {
+    });
 
 
 
-                if (result.code === 0) {
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
+
+
+
+    $scope.uploadFiles = function () {
+
+
+        formdata.append('country', $scope.data.country);
+        formdata.append('yearName', $scope.data.yearname);
+        formdata.append('urlExcel', data.urlExcel);
+        formdata.append('_id',  data._id);
+
+
+        var request = {
+            method: 'POST',
+            url: '/updstrategic',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
+
+                if (response.data.code === 0) {
+
+
+
+
+
+
+                    $mdDialog.hide();
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась УСПЕШНО.')
+                            .position('bottom left')
+                            .hideDelay(3000)
+                    );
+
+
+
                     GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
-
-
-
-                        if (result.code === 0) {
-
 
 
                             $rootScope.data = result.resultFromDb;
 
 
-                        } else {
-
-                            $mdToast.show(
-                                $mdToast.simple()
-                                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                                    .position('bottom left')
-                                    .hideDelay(6000)
-                            );
-
-
-                        }
-
-
-
-
                     });
+
+
+
+
+
+
+
+
+
+
+
+
+                } else {
+
+                    $mdToast.show(
+                        $mdToast.simple()
+                            .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                            .position('bottom left')
+                            .hideDelay(6000)
+                    );
+
+
+                }
+
+
+
+
+
+
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
+                );
+            });
+    }
+
+
+
+
+
+
+
+    $scope.closeDialog = function () {
+            $mdDialog.hide();
+        }
+
+
+
+
+
+
+
+    }
+
+function DialogController($http, $scope, data, GetAllCoutrys, GetYearName) {
+
+
+
+    $scope.data = {};
+
+
+    GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+        $scope.data.allCountrys = entry.resultFromDb;
+        $scope.data.country = entry.resultFromDb[0]._id;
+
+    });
+
+
+
+    GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
+
+
+
+        $scope.data.yearname = entry.resultFromDb[entry.resultFromDb.length - 1]._id;
+        $scope.data.allyearname = entry.resultFromDb;
+
+
+    });
+
+
+
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
+
+
+
+    $scope.uploadFiles = function () {
+
+
+        formdata.append('country', $scope.data.country);
+        formdata.append('yearName', $scope.data.yearname);
+
+
+        var request = {
+            method: 'POST',
+            url: '/addstrategic',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+        // SEND THE FILES.
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+
+
+                if (response.data.code === 0) {
+
+
+
+
+
+                    $rootScope.data.push(response.data.resultFromDb);
 
 
                     $mdDialog.hide();
@@ -231,132 +339,27 @@ function DialogControllerUpdate($scope, data, GetAllCoutrys, UpdStrategic) {
 
 
 
-            });
 
 
 
 
-        };
-
-
-
-
-
-
-
-
-        $scope.closeDialog = function () {
-            $mdDialog.hide();
-        }
-
-
-
-
-
-
-
-    }
-
-function DialogController($scope, data, GetAllCoutrys, AddStrategic) {
-
-
-
-    $scope.data = {};
-
-
-    GetAllCoutrys.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-        $scope.data.allCountrys = entry.resultFromDb;
-        $scope.data.country = entry.resultFromDb[0]._id;
-
-    });
-
-
-
-
-
-
-
-    $scope.save = function () {
-
-
-        AddStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function (result) {
-
-
-
-            if (result.code === 0) {
-
-
-
-                GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
-
-
-                    $scope.allyearname = entry.resultFromDb;
-                    $scope.yearname = entry.resultFromDb[entry.resultFromDb.length - 2]._id;
-
-
-
-                    GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function (result) {
-
-
-
-                        if (result.code === 0) {
-
-
-
-                            $rootScope.data = result.resultFromDb;
-
-
-                        } else {
-
-                            $mdToast.show(
-                                $mdToast.simple()
-                                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                                    .position('bottom left')
-                                    .hideDelay(6000)
-                            );
-
-
-                        }
-
-
-
-
-                    });
-
-                });
-
-                $mdDialog.hide();
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
-
-
-            } else {
-
-                $mdToast.show(
-                    $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
-                );
-
-
-            }
+            });
+    }
 
 
 
 
-        });
 
 
-
-
-    };
 
 
 
@@ -381,36 +384,6 @@ function DialogController($scope, data, GetAllCoutrys, AddStrategic) {
 
 
 
-$scope.selectClose = function () {
-    GetStrategic.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function (result) {
-
-
-
-        if (result.code === 0) {
-
-
-
-            $rootScope.data = result.resultFromDb;
-
-
-        } else {
-
-            $mdToast.show(
-                $mdToast.simple()
-                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                    .position('bottom left')
-                    .hideDelay(6000)
-            );
-
-
-        }
-
-
-
-
-    });
-
-};
 
 
 $scope.delete = function (id, index) {
@@ -445,19 +418,19 @@ $scope.delete = function (id, index) {
 
 };
 
-$scope.excel = function (data) {
+$scope.excel = function () {
 
 
 
-        $scope.tableID = data._id;
-        $scope.titleSheet = "Стратегия коммуникации";
+        $scope.tableID = "strategic";
+        $scope.titleSheet = "Стратегия по коммуникации";
 
-        $window.open('/strategiccommunication.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
-
-
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
 
 
-    };
+
+
+};
 
 
 

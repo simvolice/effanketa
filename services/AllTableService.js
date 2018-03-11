@@ -1090,6 +1090,64 @@ module.exports = {
 
 
 
+            } else if (idTable === "strategic") {
+
+
+
+
+                const col = dbConnect.getConnect().collection(idTable);
+
+
+                result = await col.find({}, {
+
+                    _id: 0,
+
+
+
+                    nameCountry: 1,
+
+                    nameYear: 1,
+                    urlExcel: 1,
+
+
+
+                }).toArray();
+
+
+
+
+                Object.defineProperties(result[0], {
+
+                    'Страна': {
+                        value: result[0].nameCountry,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+                    'Год': {
+                        value: result[0].nameYear,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+                    'Путь до Excel файла': {
+                        value: result[0].urlExcel,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    }
+
+
+                });
+
+
+                delete result[0].nameCountry;
+                delete result[0].nameYear;
+                delete result[0].urlExcel;
+
+
+
             }
 
 
@@ -1103,261 +1161,6 @@ module.exports = {
 
         }
 
-
-
-
-
-
-
-    },
-
-
-
-
-    getById: async (id) => {
-
-
-        try {
-
-            const col = dbConnect.getConnect().collection("strategic");
-            let arrResult = [];
-
-            let result = await col.findOne({_id: ObjectId(id)}, {
-
-                _id: 0,
-                id: 0,
-                country: 0,
-                createAt: 0,
-
-
-
-
-
-            });
-
-
-            arrResult[0] = {};
-
-
-            Object.defineProperties(arrResult[0], {
-
-                'Индикаторы': {
-                    value: result.countMeetingTitle,
-                    writable: true,
-                    enumerable: true,
-                    configurable: true
-                },
-                'Запланированы на 1 год': {
-                    value: result.countMeetingPlanOnOneYear,
-                    writable: true,
-                    enumerable: true,
-                    configurable: true
-                },
-                'Достигнуты на 1 год': {
-                    value: result.countMeetingFinishOnOneYear,
-                    writable: true,
-                    enumerable: true,
-                    configurable: true
-                },
-                'Детали/Объяснение': {
-                    value: result.countMeetingDescription,
-                    writable: true,
-                    enumerable: true,
-                    configurable: true
-                }
-
-            });
-
-
-
-            arrResult.push({
-
-                countEventHighLevelTitle: result.countEventHighLevelTitle,
-                "countEventHighLevelPlanOnOneYear" : result.countEventHighLevelPlanOnOneYear,
-                "countEventHighLevelFinishOnOneYear" : result.countEventHighLevelFinishOnOneYear,
-                "countEventHighLevelDescription" : result.countEventHighLevelDescription
-
-
-            });
-
-
-
-            arrResult.push({
-
-                "countInfoRequest" : result.countInfoRequest,
-                "countInfoRequestPlanOnOneYear" : result.countInfoRequestPlanOnOneYear,
-                "countInfoRequestFinishOnOneYear" : result.countInfoRequestFinishOnOneYear,
-                "countInfoRequestDescription" : result.countInfoRequestDescription
-
-            });
-
-
-            arrResult.push({
-
-                "countNetWorkTitle" : result.countNetWorkTitle,
-                "countNetWorkPlanOnOneYear" : result.countNetWorkPlanOnOneYear,
-                "countNetWorkFinishOnOneYear" : result.countNetWorkFinishOnOneYear,
-                "countNetWorkDescription" : result.countNetWorkDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countStartPartnerTitle" : result.countStartPartnerTitle,
-                "countStartPartnerPlanOnOneYear" : result.countStartPartnerPlanOnOneYear,
-                "countStartPartnerFinishOnOneYear" : result.countStartPartnerFinishOnOneYear,
-                "countStartPartnerDescription" : result.countStartPartnerDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countOnlineConferenceTitle" : result.countOnlineConferenceTitle,
-                "countOnlineConferencePlanOnOneYear" : result.countOnlineConferencePlanOnOneYear,
-                "countOnlineConferenceFinishOnOneYear" : result.countOnlineConferenceFinishOnOneYear,
-                "countOnlineConferenceDescription" : result.countOnlineConferenceDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countMeetingPressTitle" : result.countMeetingPressTitle,
-                "countMeetingPressPlanOnOneYear" : result.countMeetingPressPlanOnOneYear,
-                "countMeetingPressFinishOnOneYear" : result.countMeetingPressFinishOnOneYear,
-                "countMeetingPressDescription" : result.countMeetingPressDescription
-            });
-
-
-
-
-
-            arrResult.push({
-
-                "countCreatePressDocTitle" : result.countCreatePressDocTitle,
-                "countCreatePressDocPlanOnOneYear" : result.countCreatePressDocPlanOnOneYear,
-                "countCreatePressDocFinishOnOneYear" : result.countCreatePressDocFinishOnOneYear,
-                "countCreatePressDocDescription" : result.countCreatePressDocDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countPublishInPressTitle" : result.countPublishInPressTitle,
-                "countPublishInPressPlanOnOneYear" : result.countPublishInPressPlanOnOneYear,
-                "countPublishInPressFinishOnOneYear" : result.countPublishInPressFinishOnOneYear,
-                "countPublishInPressDescription" : result.countPublishInPressDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countReadersTitle" : result.countReadersTitle,
-                "countReadersPlanOnOneYear" : result.countReadersPlanOnOneYear,
-                "countReadersFinishOnOneYear" : result.countReadersFinishOnOneYear,
-                "countReadersDescription" : result.countReadersDescription
-            });
-
-
-
-
-            arrResult.push({
-
-                "countOnlineChannelsTitle" : result.countOnlineChannelsTitle,
-                "countOnlineChannelsPlanOnOneYear" : result.countOnlineChannelsPlanOnOneYear,
-                "countOnlineChannelsFinishOnOneYear" : result.countOnlineChannelsFinishOnOneYear,
-                "countOnlineChannelsDescription" : result.countOnlineChannelsDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countInfoAboutPartnersPageTitle" : result.countInfoAboutPartnersPageTitle,
-                "countInfoAboutPartnersPagePlanOnOneYear" : result.countInfoAboutPartnersPagePlanOnOneYear,
-                "countInfoAboutPartnersPageFinishOnOneYear" : result.countInfoAboutPartnersPageFinishOnOneYear,
-                "countInfoAboutPartnersPageDescription" : result.countInfoAboutPartnersPageDescription
-            });
-
-
-
-
-            arrResult.push({
-
-                "countPeopleOnSiteTitle" : result.countPeopleOnSiteTitle,
-                "countPeopleOnSitePlanOnOneYear" : result.countPeopleOnSitePlanOnOneYear,
-                "countPeopleOnSiteFinishOnOneYear" : result.countPeopleOnSiteFinishOnOneYear,
-                "countPeopleOnSiteDescription" : result.countPeopleOnSiteDescription
-            });
-
-
-            arrResult.push({
-
-                "countDigitalPeopleTitle" : result.countDigitalPeopleTitle,
-                "countDigitalPeoplePlanOnOneYear" : result.countDigitalPeoplePlanOnOneYear,
-                "countDigitalPeopleFinishOnOneYear" : result.countDigitalPeopleFinishOnOneYear,
-                "countDigitalPeopleDescription" : result.countDigitalPeopleDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countDownloadInfoMaterialTitle" : result.countDownloadInfoMaterialTitle,
-                "countDownloadInfoMaterialPlanOnOneYear" : result.countDownloadInfoMaterialPlanOnOneYear,
-                "countDownloadInfoMaterialFinishOnOneYear" : result.countDownloadInfoMaterialFinishOnOneYear,
-                "countDownloadInfoMaterialDescription" : result.countDownloadInfoMaterialDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countVisitsTitle" : result.countVisitsTitle,
-                "countVisitsPlanOnOneYear" : result.countVisitsPlanOnOneYear,
-                "countVisitsFinishOnOneYear" : result.countVisitsFinishOnOneYear,
-                "countVisitsDescription" : result.countVisitsDescription
-            });
-
-
-
-            arrResult.push({
-
-                "countMaleAndFemaleInInfoMaterialTitle" : result.countMaleAndFemaleInInfoMaterialTitle,
-                "countMaleAndFemaleInInfoMaterialPlanOnOneYear" : result.countMaleAndFemaleInInfoMaterialPlanOnOneYear,
-                "countMaleAndFemaleInInfoMaterialFinishOnOneYear" : result.countMaleAndFemaleInInfoMaterialFinishOnOneYear,
-                "countMaleAndFemaleInInfoMaterialDescription" : result.countMaleAndFemaleInInfoMaterialDescription
-            });
-
-
-
-            arrResult.push({
-                "countMaleAndFemaleTitle" : result.countMaleAndFemaleTitle,
-                "countMaleAndFemalePlanOnOneYear" : result.countMaleAndFemalePlanOnOneYear,
-                "countMaleAndFemaleFinishOnOneYear" : result.countMaleAndFemaleFinishOnOneYear,
-                "countMaleAndFemaleDescription" : result.countMaleAndFemaleDescription
-            });
-
-
-
-
-            console.log("\x1b[42m", arrResult);
-
-
-            return arrResult;
-
-        }catch(err) {
-
-            console.log("\x1b[42m", err);
-
-            return err;
-
-
-        }
 
 
 
