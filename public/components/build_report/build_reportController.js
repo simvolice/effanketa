@@ -29,7 +29,7 @@ angular.module('app').controller('BuildReportCtrl', function ($timeout, $scope, 
                 if (itemCountry.name === "РКГ, Региональный компонент 1") {
 
 
-                    $scope.allperiod = $scope.allperiod.slice(2);
+                    $scope.allperiod = $scope.allperiod.slice(4);
                     $scope.period = $scope.allperiod[0]._id;
 
 
@@ -272,7 +272,7 @@ $scope.showModalWnd = function (ev) {
    let namePeriod = $scope.getNameById($scope.period, $scope.allperiod);
 
 
-            if (namePeriod === "Годовой" && nameCountry !== "РКГ") {
+            if (namePeriod.includes("Годовой") && nameCountry.includes("НКГ")) {
 
                 $mdDialog.show({
                     controller: DialogControllerNewReportYearNCU,
@@ -284,12 +284,12 @@ $scope.showModalWnd = function (ev) {
                     fullscreen: true // Only for -xs, -sm breakpoints.
                 });
 
-            } else if (nameCountry === "РКГ" && namePeriod.includes("Первое полугодие")) {
+            } else if (namePeriod.includes("Полугодовой") && nameCountry.includes("НКГ")) {
 
                 $mdDialog.show({
                     controller: DialogControllerNewReportHalfYearRCU,
                     locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
-                    templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+                    templateUrl: 'components/build_report/dialog_template_new_report_half_ncu.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose:true,
@@ -300,12 +300,12 @@ $scope.showModalWnd = function (ev) {
 
 
 
-            } else if (nameCountry === "РКГ" && namePeriod.includes("Второе полугодие")) {
+            } else if (namePeriod.includes("Квартальный") && nameCountry.includes("НКГ")) {
 
                 $mdDialog.show({
-                    controller: DialogControllerNewReportHalfYearRCU,
+                    controller: DialogControllerNewReportQ,
                     locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
-                    templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+                    templateUrl: 'components/build_report/dialog_template_new_report_q_ncu.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose:true,
@@ -316,7 +316,7 @@ $scope.showModalWnd = function (ev) {
 
 
 
-            }else if (nameCountry === "РКГ" && namePeriod === "Годовой") {
+            }else if (namePeriod.includes("Годовой") && nameCountry.includes("РКГ")) {
 
 
                 $mdDialog.show({
@@ -330,12 +330,13 @@ $scope.showModalWnd = function (ev) {
                 });
 
 
-            } else {
+            } else if (namePeriod.includes("Полугодовой") && nameCountry.includes("РКГ")) {
+
 
                 $mdDialog.show({
-                    controller: DialogControllerNewReport,
+                    controller: DialogControllerNewReportYearRCU,
                     locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
-                    templateUrl: 'components/build_report/dialog_template_new_report.html',
+                    templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose:true,
@@ -1530,7 +1531,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 }
 
 
-function DialogControllerNewReport($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
+function DialogControllerNewReportQ($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
 
 
@@ -1676,10 +1677,11 @@ $scope.data = {
 
 
 
+
             if (obj.categorizedBySatisfiedInPercent.length !== 0) {
 
 
-                $scope.data.satisfiedComplaintsInPercentage = $scope.calculatePercent($scope.data.categorizedByAllComplaints, obj.categorizedBySatisfiedInPercent[0].countAll);
+                $scope.data.satisfiedComplaintsInPercentage = obj.categorizedBySatisfiedInPercent[0].avg;
 
             }
 
@@ -1723,6 +1725,21 @@ $scope.data = {
 
 
     };
+
+
+
+    $scope.toDocx = function () {
+
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.nameCountry + ", " + data.periodName);
+
+
+    };
+
 
 
     $scope.save = function () {

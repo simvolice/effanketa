@@ -25,10 +25,23 @@ module.exports = {
             col.createIndex({ name : 1 }, {unique: true});
 
 
-            const result = await col.insertMany([{
+            const result = await col.insertMany([
+
+
+
+                {
 
                 name: "Квартальный (1-вый квартал, янв-март)",
                 codeName: [1, 2, 3]
+
+                },
+
+
+
+                {
+
+                    name: "Квартальный (2-ий квартал, апр-июнь)",
+                    codeName: [4, 5, 6]
 
                 },
 
@@ -39,6 +52,15 @@ module.exports = {
                     codeName: [7, 8, 9]
 
                 },
+
+                {
+
+                    name: "Квартальный (4-ий квартал, окт-дек)",
+                    codeName: [10, 11, 12]
+
+                },
+
+
 
 
 

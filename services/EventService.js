@@ -232,7 +232,10 @@ module.exports = {
                 countFacilatatorWomanEventCommon: objParams.countFacilatatorWomanEventCommon,
 
                 countSpeakerEventCommon: objParams.countSpeakerEventCommon,
-                countSpeakerWomanEventCommon: objParams.countSpeakerWomanEventCommon
+                countSpeakerWomanEventCommon: objParams.countSpeakerWomanEventCommon,
+                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+
+
 
 
             });

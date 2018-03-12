@@ -1,0 +1,797 @@
+<md-dialog class="fullscreen-dialog" aria-label="Создать мероприятие">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>Создать отчет</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+
+                        <md-card>
+
+                            <div class="content" id="printableArea">
+
+
+                                <div class="col-md-12">
+                                    <div class="row">
+
+                                        <h4 class="text-center"><strong>Climate Adaptation and Mitigation Program for Aral Sea Basin (CAMP4ASB)</strong></h4>
+
+                                    </div>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Период отчета: <strong>{{data.typePeriod}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Год: <strong>{{data.year}}</strong></h5><span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+
+                                        <div class="input-group" ng-switch on="data.country">
+                                             <span class="input-group-addon">
+                                                <i class="material-icons">event</i>
+                                             </span>
+                                            <div class="form-group is-empty" ng-switch-default><h5>Национальная координационная группа: <strong>{{data.country}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty" ng-switch-when="Все"><h5><strong>Региональная координационная группа</strong></h5><span class="material-input"></span></div>
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row page-break-after">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty"><h5>Table of contents:</h5>
+
+                                                <p>NCU Report Forms</p>
+                                                <p>Semi-Annual Report</p>
+                                                <p>Notes:</p>
+                                                <p>Project Performance:</p>
+                                                <p>1.Climate Investments</p>
+                                                <p>1.1. Overall Narrative Progress for the reporting period</p>
+                                                <p>1.2.Capacity Building</p>
+                                                <p>1.3.Credits</p>
+                                                <p>1.4.Grievance Redress Mechanism</p>
+                                                <p>1.5.Financial status</p>
+                                                <p>1.6.Project risks and issues</p>
+                                                <p>1.7.Plans for the next period</p>
+                                                <p>Annexes</p>
+                                                <p>Annex 1 Capacity Building</p>
+                                                <p>Annex 2 Credits</p>
+                                                <p>Annex 3 Grievance Redress Mechanism</p>
+                                                <p>Annex 4 Financial status</p>
+
+
+                                                <p>Notes:</p>
+                                                <p>The Quarterly Progress Report (QPR) for the project will be used as
+                                                    both a stand-alone document that demonstrates the progress of the
+                                                    project for the quarter and will also be used to compile information
+                                                    for the Annual Progress Report (APR).
+                                                    You should write your report using black Arial font, size 11, single
+                                                    spaced.
+                                                    This report should be approximately 4-5 (maximum) pages, excluding
+                                                    instructions and annexes.
+                                                    Please be as direct and concise as possible.</p>
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+
+
+                                    <div class="row">
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+
+                                                <h5>Project Performance</h5>
+                                                <h5>1. Climate Investments </h5>
+                                                <h5>1.1 Overall Narrative Progress for the reporting period</h5>
+
+                                                <md-input-container class="md-block">
+                                                    <label>Please, describe the quarterly progress, overview of activities and main outcomes for the reporting period.
+                                                    </label>
+                                                    <textarea ng-model="data.overallNarrative" rows="5" md-select-on-focus></textarea>
+                                                </md-input-container>
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <hr>
+
+
+
+
+
+
+
+                                    <div class="row">
+
+
+
+
+
+
+
+
+                                    <div class="row page-break-after">
+
+                                        <div class="col-md-12 table-responsive">
+
+
+                                               <h5>1.2 Capacity Building</h5>
+
+
+
+
+
+
+                                                        <style type="text/css">
+                                                            .tg  {border-collapse:collapse;border-spacing:0; width: 99%;}
+                                                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                            .tg .tg-lqy6{text-align:right;vertical-align:top}
+                                                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                                        </style>
+                                                        <table class="tg table-striped">
+                                                            <tr>
+                                                                <th class="tg-hgcj" colspan="2">Participants</th>
+                                                                <th class="tg-amwm" colspan="2">Facilitators</th>
+                                                                <th class="tg-amwm" colspan="2">Speakers</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tg-amwm">Total number</td>
+                                                                <td class="tg-amwm"># of women</td>
+                                                                <td class="tg-amwm">Total number</td>
+                                                                <td class="tg-amwm"># of women</td>
+                                                                <td class="tg-amwm">Total number</td>
+                                                                <td class="tg-amwm"># of women</td>
+                                                            </tr>
+                                                            <tr ng-repeat="x in data.categorizedBySum">
+
+                                                                <td class="tg-lqy6">{{ x.countPeopleEventCommon }}</td>
+                                                                <td class="tg-lqy6">{{ x.countWomanEventCommon }}</td>
+
+
+                                                                   <td class="tg-lqy6">{{ x.countFacilatatorEventCommon }}</td>
+                                                                   <td class="tg-lqy6">{{ x.countFacilatatorWomanEventCommon }}</td>
+
+
+
+                                                                <td class="tg-lqy6">{{ x.countSpeakerEventCommon }}</td>
+                                                                <td class="tg-lqy6">{{ x.countSpeakerWomanEventCommon }}</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tg-amwm" colspan="6">Evaluation of the effectiveness of the event</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="tg-amwm" colspan="3">Overall level of satisfaction with the activities carried out</td>
+                                                                <td class="tg-amwm" colspan="3">The level of satisfaction among women</td>
+                                                            </tr>
+                                                            <tr>
+
+
+                                                                <td class="tg-lqy6" colspan="3" ng-repeat="x in data.countSatisfaction">{{ x.average.toFixed(2) }}</td>
+                                                                <td class="tg-lqy6" colspan="3" ng-repeat="y in data.countSatisfactionWomen">{{ y.average.toFixed(2) }}</td>
+
+
+                                                            </tr>
+                                                        </table>
+
+
+
+
+
+                                                        <md-input-container class="md-block" style="margin-top: 50px">
+                                                            <label>Comments:</label>
+                                                            <textarea ng-model="data.comments" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row page-break-after">
+
+                                        <div class="col-md-12">
+
+
+
+                                            <h5>1.3 Credits</h5>
+
+                                            <style type="text/css">
+                                                .tg  {border-collapse:collapse;border-spacing:0; width: 99%}
+                                                .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                .tg .tg-0ord{text-align:right}
+                                                .tg .tg-e3zv{font-weight:bold}
+                                                .tg .tg-lqy6{text-align:right;vertical-align:top}
+                                                .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                                .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                                .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                                            </style>
+                                            <table class="tg">
+                                                <tr>
+                                                    <th class="tg-hgcj" rowspan="2">Категория кредитов</th>
+                                                    <th class="tg-hgcj" rowspan="2">Кол-во субпроектов</th>
+                                                    <th class="tg-e3zv" colspan="2">Общий объем</th>
+                                                    <th class="tg-amwm" colspan="3">Прямые бенефециары (заемщики+члены семьи+наёмные работники)</th>
+                                                    <th class="tg-amwm" colspan="3">Непрямые бенефециары (члены семей)</th>
+                                                    <th class="tg-amwm" colspan="2">Создаваемые мощности/ Ожидаемый эффект</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tg-e3zv">$</td>
+                                                    <td class="tg-9hbo">нац.валюта</td>
+                                                    <td class="tg-amwm">Всего</td>
+                                                    <td class="tg-amwm">Муж.</td>
+                                                    <td class="tg-amwm">Жен.</td>
+                                                    <td class="tg-amwm">Всего</td>
+                                                    <td class="tg-amwm">Муж.</td>
+                                                    <td class="tg-amwm">Жен.</td>
+                                                    <td class="tg-amwm">План</td>
+                                                    <td class="tg-amwm">Факт</td>
+                                                </tr>
+                                                <tr ng-repeat="x in data.creditsTable">
+                                                    <td class="tg-0ord">{{ x.nameFactCategcredits }}</td>
+                                                    <td class="tg-0ord">{{ x.countsubproject }}</td>
+                                                    <td class="tg-0ord">{{ x.commonAmountInDollors }}</td>
+                                                    <td class="tg-0ord">{{ x.commonAmountInNatCurrency }}</td>
+
+                                                      <td class="tg-0ord">{{ x.DirectBeneficiariesAll }}</td>
+                                                      <td class="tg-0ord">{{ x.DirectBeneficiariesMale }}</td>
+                                                      <td class="tg-0ord">{{ x.DirectBeneficiariesFemale }}</td>
+
+
+
+                                                      <td class="tg-0ord">{{ x.NonDirectBeneficiariesMemberFamilyAll }}</td>
+                                                      <td class="tg-0ord">{{ x.NonDirectBeneficiariesMemberFamilyMale }}</td>
+                                                      <td class="tg-0ord">{{ x.NonDirectBeneficiariesMemberFamilyFemale }}</td>
+
+
+
+
+
+
+                                                      <td class="tg-0ord">{{ x.CreatePowerPlan }}</td>
+                                                      <td class="tg-0ord">{{ x.CreatePowerFact }}</td>
+
+
+                                                </tr>
+                                            </table>
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+
+
+
+
+                                    <hr>
+
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+
+
+                                                    <h5>1.4 Grievance Redress Mechanism</h5>
+
+
+
+
+
+
+                                                        <h6>A. Quantitative data on the offers received, the number that were relevant, and the number resolved</h6>
+                                                        <ul>
+                                                            <li>1) Number of offers complaints in the reporting period: <strong>{{data.categorizedByAllComplaints}}</strong> </li>
+                                                            <li>2) Number of grievances resolved at the lowest level: <strong>{{data.categorizedByLowLevel}}</strong> </li>
+                                                            <li>3) Number of investigations started: <strong>{{data.categorizedByInvestiginationStarted}}</strong> </li>
+                                                            <li>4) Number of investigations completed in the reporting period: <strong>{{data.categorizedByInvestiginationCompleted}}</strong></li>
+
+
+
+                                                        </ul>
+
+
+                                                        <h6>В. Qualitative data on the type of complaints and solution result, issues that are unresolved</h6>
+
+
+
+                                                        <style type="text/css">
+                                                            .tg  {border-collapse:collapse;border-spacing:0; width: 99%}
+                                                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                            .tg .tg-0ord{text-align:right}
+                                                            .tg .tg-lqy6{text-align:right;vertical-align:top}
+                                                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                                        </style>
+                                                        <table class="tg table-striped">
+                                                            <tr>
+                                                                <th class="tg-hgcj" style="width: 200px">Sorting/categorization of complaints (types of grievances)</th>
+                                                                <th class="tg-hgcj" style="width: 400px">Solution result</th>
+                                                                <th class="tg-hgcj">Time taken to resolve complaints</th>
+                                                                <th class="tg-hgcj">Unresolved complaints (the current and in the process)</th>
+                                                            </tr>
+                                                            <tr ng-repeat="x in data.categorizedByType">
+
+
+                                                                <td class="tg-0ord">{{ x._id }}</td>
+
+
+
+                                                                <td class="tg-0ord"><textarea ng-model="x.solutionResult" style="width: 100%" rows="5"></textarea> </td>
+
+
+
+
+
+                                                                <td class="tg-0ord">{{ x.totalTakeTime }}</td>
+
+
+                                                                <td class="tg-0ord">{{ x.count }}</td>
+
+
+
+
+
+                                                            </tr>
+                                                        </table>
+
+
+
+
+
+
+                                            <div class="row">
+
+
+                                                <div class="col-md-12">
+
+                                                    <h6>C. Satisfaction with the action taken (the number of satisfied to the total number of complaints in percentage). If any processing appeals, please describe
+                                                    </h6>
+
+                                                    <md-input-container class="md-block">
+                                                        <label> The number of satisfied to the total number of complaints in percentage
+
+                                                        </label>
+                                                        <textarea ng-model="data.satisfiedComplaintsInPercentage" rows="5" md-select-on-focus></textarea>
+                                                    </md-input-container>
+
+
+
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <div class="row">
+
+
+                                                <div class="col-md-12">
+
+
+                                                    <h6>D. Publishing responses to complaints
+                                                    </h6>
+                                                    <md-input-container class="md-block">
+                                                        <label> Please, provide the sources used to disclose information on resolved complaints and actions taken
+
+                                                        </label>
+                                                        <textarea ng-model="data.grmSourceInformation" rows="5" md-select-on-focus></textarea>
+                                                    </md-input-container>
+
+
+
+
+                                                </div>
+
+                                            </div>
+
+
+
+
+
+
+
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+                                    <div class="row">
+
+
+                                        <div class="col-md-12">
+
+
+                                            <h5>1.5 Financial status</h5>
+
+
+                                            <style type="text/css">
+                                                .tg  {border-collapse:collapse;border-spacing:0; width: 99%}
+                                                .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                                .tg .tg-lqy6{text-align:right;vertical-align:top; }
+                                                .tg .tg-yw4l{vertical-align:top}
+                                                .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                                .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                                            </style>
+                                            <table class="tg table-striped">
+                                                <tr>
+                                                    <th class="tg-yw4l" rowspan="2"></th>
+                                                    <th class="tg-hgcj" colspan="3">Budget disbursement $</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="tg-hgcj">planned</td>
+                                                    <td class="tg-hgcj">in fact</td>
+                                                    <td class="tg-hgcj">comments (in case of planned and in fact differ)</td>
+                                                </tr>
+
+
+
+
+
+                                                <tr>
+
+                                                    <td class="tg-9hbo" ng-repeat="x in data.categorizedByServices">{{x.name}}</td>
+                                                    <td class="tg-lqy6" ng-repeat="x in data.categorizedByServices">{{ x.totalPlan }}</td>
+                                                    <td class="tg-lqy6" ng-repeat="x in data.categorizedByServices">{{ x.totalFact }}</td>
+                                                    <td class="tg-lqy6" ng-repeat="x in data.categorizedByServices"><textarea type="text" value="{{ x.comments }}" ng-model="x.comments" rows="3" style="width: 100%"></textarea></td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td class="tg-9hbo" ng-repeat="y in data.categorizedByCreditLine">{{y.name}}</td>
+                                                    <td class="tg-lqy6" ng-repeat="y in data.categorizedByCreditLine">{{ y.totalPlan }}</td>
+                                                    <td class="tg-lqy6" ng-repeat="y in data.categorizedByCreditLine">{{ y.totalFact }}</td>
+                                                    <td class="tg-lqy6" ng-repeat="y in data.categorizedByCreditLine"><textarea
+                                                            type="text"
+                                                            value="{{ y.comments }}" ng-model="y.comments" rows="3" style="width: 100%"></textarea>
+                                                    </td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <td class="tg-9hbo" ng-repeat="z in data.categorizedByOperatingExpenses">
+                                                        {{z.name}}</td>
+                                                    <td class="tg-lqy6" ng-repeat="z in data.categorizedByOperatingExpenses">
+                                                        {{ z.totalPlan }}</td>
+                                                    <td class="tg-lqy6" ng-repeat="z in data.categorizedByOperatingExpenses">
+                                                        {{ z.totalFact }}</td>
+                                                    <td class="tg-lqy6" ng-repeat="z in data.categorizedByOperatingExpenses"><textarea
+                                                            type="text"
+                                                            value="{{ z.comments }}" ng-model="z.comments" rows="3" style="width: 100%"></textarea>
+                                                    </td>
+                                                </tr>
+
+
+
+
+
+
+
+                                            </table>
+
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <hr>
+
+
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+
+
+                                        <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                            <div class="form-group is-empty">
+
+                                                <h6>1.6 Project risks and issues</h6>
+
+                                                <p>Please specify the risks & issues that manifested themselves or newly appeared during the reporting period. Describe the steps taken for mitigation of the risks (Management response). Please provide clear recommendations for the future approach to addressing the main risks and issues that could jeopardize the success of the project.</p>
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Question
+                                                            </label>
+                                                            <textarea ng-model="data.projectRisksIssuesQuestion" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+
+                                                <p>Please identify potential risks and issues (if any) you anticipate for the next quarters. Describe the steps could be taken for mitigation of the risks and issues (Management response)</p>
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Question
+                                                            </label>
+                                                            <textarea ng-model="data.projectRisksPotentialRisksQuestion" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+
+
+
+                                                <span class="material-input"></span></div>
+                                        </div>
+
+                                    </div>
+                                    </div>
+
+
+                                        <hr>
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-11">
+
+
+
+                                                <div class="input-group">
+                                             <span class="input-group-addon">
+
+                                             </span>
+                                                    <div class="form-group is-empty">
+
+                                                        <h6>1.7 Plans for the next period</h6>
+
+                                                        <p>Please, describe plans for the next half-year, including the main activities and expected outcomes for the next reporting period. Use bullet points. You may use this box only in case if the planned activities for the next half-year do not correspond to the activities indicated in the project annual work plan (AWP). In case there are NO changes, please, use the abbreviation “In line with the AWP”.</p>
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Key activities, which NCU team plans to convene in the next period, are:
+                                                            </label>
+                                                            <textarea ng-model="data.plansNextPeriod" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+
+                                                        <p>Please, specify the total amount of the budget (in USD) planned for the next half-year.
+                                                        </p>
+
+
+                                                        <md-input-container class="md-block">
+                                                            <label>Planned budget for the next half-year:
+                                                            </label>
+                                                            <textarea ng-model="data.plansNextHalfYearPeriod" rows="5" md-select-on-focus></textarea>
+                                                        </md-input-container>
+
+
+
+
+
+
+
+
+
+                                                        <span class="material-input"></span></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+                            </div>
+                        </md-card>
+
+
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+
+        <md-button class="md-raised md-primary" ng-click="print()">
+            Печать
+        </md-button>
+
+
+        <md-button class="md-raised md-primary" ng-click="toDocx()">
+            Сформировать Microsoft Word
+        </md-button>
+        <span flex></span>
+
+
+
+        <md-button class="md-raised md-primary" ng-click="save()">
+            Сохранить
+        </md-button>
+
+
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            Отмена
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>

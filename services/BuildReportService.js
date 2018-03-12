@@ -583,6 +583,9 @@ module.exports = {
 
 
 
+
+
+
             return result;
 
 
@@ -1816,23 +1819,16 @@ module.exports = {
 
                             {
 
-                                $match: {satisfiedMeasuresTaken: "Да"}
+                                $group: {
 
-                            },
-
-
-
+                                    _id: null,
+                                    avg: {$avg: "$assessmentQualitySatisfactionComplaint"}
 
 
-                            {
-                                $count: "countAll"
+
+                                }
+
                             }
-
-
-
-
-
-
 
 
 
@@ -1859,6 +1855,8 @@ module.exports = {
 
 
             ]).toArray();
+
+
 
 
 
