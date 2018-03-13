@@ -977,7 +977,7 @@ module.exports = {
 
                             $match: {country: {$in: objParams.country}}
 
-                        },
+                            },
 
                             {
                                 $addFields:
@@ -1065,6 +1065,210 @@ module.exports = {
 
                         ],
 
+
+
+                        "categorizedByLearningEvent": [
+
+
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: { nameTypeEvent: "Обучающий" }
+
+
+                            },
+
+
+
+
+                            {
+                                $count : "all_learning_event"
+                            }
+
+
+                        ],
+
+                        "categorizedByGenderEvent": [
+
+
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match:  { $or: [
+
+
+                                    {nameSubTypeEvent: "Частично"},
+                                    {nameSubTypeEvent: "Полностью"}
+
+
+                                    ] }
+
+
+                            },
+
+
+
+
+                            {
+                                $count : "all_gender_event"
+                            }
+
+
+                        ],
 
 
                         "countForms": [

@@ -663,3 +663,8 @@ table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2)
 
     width: 100px;
 }
+
+md-datepicker.custom__datepicker__report__criteriy > div.md-datepicker-input-container > input {
+
+    min-width: 150px;
+}

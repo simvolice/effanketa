@@ -53,15 +53,20 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
         GetGrowPotencial.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
 
-            console.log(entry.resultFromDb);
+
 
             for (let obj of entry.resultFromDb) {
                 $scope.data.categorizedByDatePeriodCountry = obj.categorizedByDatePeriodCountry;
                 $scope.data.categorizedBySum = obj.categorizedBySum;
+                $scope.data.categorizedByLearningEvent = obj.categorizedByLearningEvent;
+                $scope.data.categorizedByGenderEvent = obj.categorizedByGenderEvent;
                 $scope.data.countSatisfaction = obj.countSatisfaction;
                 $scope.data.countSatisfactionWomen = obj.countSatisfactionWomen;
                 $scope.data.countForms = obj.countForms;
                 $scope.data.allEvents = obj.allEvents;
+
+
+
 
             }
 
@@ -83,83 +88,6 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-            if ($scope.data.categorizedBySum.length !== 0) {
-
-                let chart = c3.generate({
-
-                    bindto: '#chart',
-                    data: {
-                        columns: [
-                            ['Общее количество участников', $scope.data.categorizedBySum[0].countPeopleEventCommon],
-                            ['Общее количество участников, женщин', $scope.data.categorizedBySum[0].countWomanEventCommon],
-                            ['Общее количество фасилитаторов', $scope.data.categorizedBySum[0].countFacilatatorEventCommon],
-                            ['Общее количество фасилитаторов, женщин', $scope.data.categorizedBySum[0].countFacilatatorWomanEventCommon],
-                            ['Общее количество спикеров', $scope.data.categorizedBySum[0].countSpeakerEventCommon],
-                            ['Общее количество спикеров, женщин', $scope.data.categorizedBySum[0].countSpeakerWomanEventCommon],
-
-                        ],
-                        type : 'pie'
-
-                    },
-                    pie: {
-                        label: {
-                            format: function (value, ratio, id) {
-                                return d3.format('')(value);
-                            }
-                        }
-                    },
-                    tooltip: {
-                        format: {
-
-                            value: function (value, ratio, id) {
-                                return d3.format('')(value);
-                            }
-
-                        }
-                    }
-
-                });
-
-            } else {
-
-                let chart = c3.generate({
-
-                    bindto: '#chart',
-                    data: {
-                        columns: [
-                            ['Общее количество участников', 0],
-                            ['Общее количество участников, женщин', 0],
-                            ['Общее количество фасилитаторов', 0],
-                            ['Общее количество фасилитаторов, женщин', 0],
-                            ['Общее количество спикеров', 0],
-                            ['Общее количество спикеров, женщин', 0],
-
-                        ],
-                        type : 'pie'
-
-                    },
-                    pie: {
-                        label: {
-                            format: function (value, ratio, id) {
-                                return d3.format('')(value);
-                            }
-                        }
-                    },
-                    tooltip: {
-                        format: {
-
-                            value: function (value, ratio, id) {
-                                return d3.format('')(value);
-                            }
-
-                        }
-                    }
-
-                });
-
-
-
-            }
 
 
 

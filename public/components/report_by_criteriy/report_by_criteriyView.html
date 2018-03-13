@@ -7,29 +7,32 @@
 
         <md-content layout="column" flex class="custom__md-content__categ">
 
+
+
+
             <md-card>
 
-
-
-                <md-toolbar class="md-table-toolbar md-default">
-
-
-                    <div class="md-toolbar-tools custom__title__margin">
-
-
-                        <h3>Отчёт по отдельному мероприятию</h3>
-
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">Отчёт по отдельному мероприятию</h3>
 
                     </div>
 
+                </div>
+
+            </md-card>
 
 
 
-                    <div class="md-toolbar-tools">
+
+            <md-card>
+                <div class="row">
+
+                    <div class="col-md-12">
 
 
+                        <md-input-container style="width: 250px">
 
-                        <md-input-container class="custom__select__margin">
                             <label>Выберите страну</label>
                             <md-icon class="material-icons">place</md-icon>
                             <md-select ng-model="data.country">
@@ -38,40 +41,41 @@
                                     {{y.name}}
                                 </md-option>
                             </md-select>
+
                         </md-input-container>
 
+                        <md-input-container style="margin-top: 40px">
 
 
-
-                        <md-input-container>
                             <label>Выберите дату от</label>
-                            <md-datepicker ng-model="data.dateFrom" md-open-on-focus></md-datepicker>
+                            <md-datepicker class="custom__datepicker__report__criteriy" ng-model="data.dateFrom" md-open-on-focus></md-datepicker>
+
+
                         </md-input-container>
 
 
 
 
-                        <md-input-container>
+                        <md-input-container style="margin-top: 40px">
+
                             <label>Выберите дату до</label>
-                            <md-datepicker ng-model="data.dateTo" md-open-on-focus md-min-date="data.dateFrom"></md-datepicker>
+                            <md-datepicker class="custom__datepicker__report__criteriy" ng-model="data.dateTo" md-open-on-focus md-min-date="data.dateFrom"></md-datepicker>
+
+
                         </md-input-container>
 
 
+                        <md-button class="md-raised md-primary" ng-click="createReport()">Сформировать отчет</md-button>
+                        <md-button class="md-raised md-primary" ng-click="createPdf()">Сформировать PDF</md-button>
 
 
-
-
-
-
-
-
-                        <button class="btn btn-sm btn-primary custom__display__none" ng-click="createReport()">Сформировать отчет</button>
-                        <button class="btn btn-sm btn-primary custom__display__none" ng-click="createPdf()">Сформировать PDF</button>
 
 
                     </div>
 
-                </md-toolbar>
+
+                </div>
+
 
 
                 <div class="row" style="margin-left: 10px">
@@ -99,16 +103,76 @@
 
 
 
-                <div class="row">
+
+
+                <div class="row" style="margin-left: 10px">
+
+
                     <div class="col-md-12">
-
-                        <div id="chart" class="custom__chart__center"></div>
-
+                        <h5>Общее количество участников: <strong>{{data.categorizedBySum[0].countPeopleEventCommon || 0}}</strong></h5>
 
                     </div>
 
 
                 </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Общее количество фасилитаторов: <strong>{{data.categorizedBySum[0].countFacilatatorEventCommon || 0}}</strong> из них женщин: <strong>{{data.categorizedBySum[0].countFacilatatorWomanEventCommon || 0}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Общее количество спикеров: <strong>{{data.categorizedBySum[0].countSpeakerEventCommon || 0}}</strong> из них женщин: <strong>{{data.categorizedBySum[0].countSpeakerWomanEventCommon || 0}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Общее количество обучающих мероприятий: <strong>{{data.categorizedByLearningEvent[0].all_learning_event || 0}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+
+
+                    <div class="col-md-12">
+                        <h5>Общее количество мероприятий, направленных на гендерные аспекты: <strong>{{data.categorizedByGenderEvent[0].all_gender_event || 0}}</strong></h5>
+
+                    </div>
+
+
+                </div>
+
+
+
 
 
 
