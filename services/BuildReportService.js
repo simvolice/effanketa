@@ -2378,11 +2378,7 @@ module.exports = {
             const result = await col.aggregate([
 
 
-                {
 
-                    $match: {country: {$in: objParams.country}}
-
-                },
 
                 {
                     $addFields:
@@ -2413,7 +2409,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -2437,7 +2433,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -2463,7 +2459,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -2501,7 +2497,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -2525,7 +2521,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -2551,7 +2547,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -2679,11 +2675,7 @@ module.exports = {
             const result = await col.aggregate([
 
 
-                {
 
-                    $match: {country: {$in: objParams.country}}
-
-                },
 
                 {
                     $addFields:
@@ -2697,7 +2689,7 @@ module.exports = {
 
                 {
 
-                    $match: {year: nameYear.codeName, month: {$in: [1,2,3,4,5,6,7,8,9,10,11,12]}}
+                    $match: {year: nameYear.codeName, month: {$in: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}}
 
                 },
 
@@ -2714,7 +2706,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -2741,7 +2733,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -2780,7 +2772,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан", month: {$in: period.codeName}}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2", month: {$in: period.codeName}}
 
                             },
 
@@ -2804,7 +2796,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан", month: {$in: period.codeName}}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2", month: {$in: period.codeName}}
 
                             },
 
@@ -2832,7 +2824,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -2859,7 +2851,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -2895,7 +2887,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан", month: {$in: period.codeName}}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2", month: {$in: period.codeName}}
 
                             },
 
@@ -2919,7 +2911,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан", month: {$in: period.codeName}}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2", month: {$in: period.codeName}}
 
                             },
 
@@ -2961,6 +2953,8 @@ module.exports = {
 
 
             ]).toArray();
+
+
 
 
 
@@ -3010,6 +3004,7 @@ module.exports = {
                 typePeriod: objParams.typePeriod,
                 year: objParams.year,
                 country: objParams.country,
+                comments: objParams.comments,
 
                 idcountry: ObjectId(objParams.idcountry),
 
@@ -3462,7 +3457,7 @@ module.exports = {
                     risks: objParams.risks,
                     lessonsLearned: objParams.lessonsLearned,
                     recommendations: objParams.recommendations,
-                    plannedBudget: objParams.plannedBudget
+                    plannedBudget: Int32(objParams.plannedBudget)
 
                 }
 
@@ -3690,7 +3685,7 @@ module.exports = {
 
                             {
 
-                                $match: {typePeriod: "Годовой", country: "Таджикистан"}
+                                $match: {typePeriod: "Годовой (янв-дек)", country: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -3719,7 +3714,7 @@ module.exports = {
 
                             {
 
-                                $match: {typePeriod: "Годовой", country: "Узбекистан"}
+                                $match: {typePeriod: "Годовой (янв-дек)", country: "НКГ Узбекистана, Компонент 2"}
 
                             },
 

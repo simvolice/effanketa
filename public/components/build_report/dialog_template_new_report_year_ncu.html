@@ -160,7 +160,7 @@
                                                 <md-input-container class="md-block">
                                                     <label>Comments
                                                     </label>
-                                                    <textarea ng-model="data.projectPerformanceComments" md-maxlength="3000" rows="5" md-select-on-focus></textarea>
+                                                    <textarea ng-model="data.projectPerformanceComments" rows="5" md-select-on-focus></textarea>
                                                 </md-input-container>
 
 
@@ -180,7 +180,7 @@
                                                 <md-input-container class="md-block">
                                                     <label>Текст
                                                     </label>
-                                                    <textarea ng-model="data.detailedProject" md-maxlength="6500" rows="5" md-select-on-focus></textarea>
+                                                    <textarea ng-model="data.detailedProject" rows="5" md-select-on-focus></textarea>
                                                 </md-input-container>
 
 
@@ -201,19 +201,19 @@
                                                 <md-input-container class="md-block">
                                                     <label>Risks
                                                     </label>
-                                                    <textarea ng-model="data.risks" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                    <textarea ng-model="data.risks" rows="5" md-select-on-focus></textarea>
                                                 </md-input-container>
 
                                                 <md-input-container class="md-block">
                                                     <label>Lessons Learned
                                                     </label>
-                                                    <textarea ng-model="data.lessonsLearned" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                    <textarea ng-model="data.lessonsLearned" rows="5" md-select-on-focus></textarea>
                                                 </md-input-container>
 
                                                 <md-input-container class="md-block">
                                                     <label>Recommendations
                                                     </label>
-                                                    <textarea ng-model="data.recommendations" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
+                                                    <textarea ng-model="data.recommendations" rows="5" md-select-on-focus></textarea>
                                                 </md-input-container>
 
 
@@ -231,14 +231,14 @@
 
 
                                                     <style type="text/css">
-                                                        .tg  {border-collapse:collapse;border-spacing:0;}
+                                                        .tg  {border-collapse:collapse;border-spacing:0; width: 99%}
                                                         .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
                                                         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
                                                         .tg .tg-s6z2{text-align:center}
                                                         .tg .tg-baqh{text-align:center;vertical-align:top}
                                                         .tg .tg-yw4l{vertical-align:top}
                                                     </style>
-                                                    <table class="tg">
+                                                    <table class="tg table-striped">
                                                         <tr>
                                                             <th class="tg-031e" rowspan="3">Planned Budget [year]</th>
                                                             <th class="tg-s6z2" colspan="8">Expenditures</th>
@@ -311,7 +311,7 @@
                                                 <md-input-container class="md-block">
                                                     <label>Planned budget for the next year
                                                     </label>
-                                                    <textarea ng-model="data.plannedBudget" md-maxlength="50" rows="5" md-select-on-focus></textarea>
+                                                    <textarea ng-model="data.plannedBudget" rows="5" md-select-on-focus></textarea>
                                                 </md-input-container>
 
 
@@ -407,6 +407,12 @@
         <md-button class="md-raised md-primary" ng-click="print()">
             Печать
         </md-button>
+
+
+        <md-button class="md-raised md-primary" ng-click="toDocx()">
+            Сформировать Microsoft Word
+        </md-button>
+
         <span flex></span>
 
 

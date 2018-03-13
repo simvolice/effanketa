@@ -295,26 +295,29 @@
                                             </style>
                                             <table class="tg">
                                                 <tr>
-                                                    <th class="tg-hgcj" rowspan="2">Категория кредитов</th>
-                                                    <th class="tg-hgcj" rowspan="2">Кол-во субпроектов</th>
-                                                    <th class="tg-e3zv" colspan="2">Общий объем</th>
-                                                    <th class="tg-amwm" colspan="3">Прямые бенефециары (заемщики+члены семьи+наёмные работники)</th>
-                                                    <th class="tg-amwm" colspan="3">Непрямые бенефециары (члены семей)</th>
-                                                    <th class="tg-amwm" colspan="2">Создаваемые мощности/ Ожидаемый эффект</th>
+                                                    <th class="tg-hgcj" rowspan="2">Credit types</th>
+                                                    <th class="tg-hgcj" rowspan="2">Number of sub-projects</th>
+                                                    <th class="tg-e3zv" colspan="2">Total funding volume</th>
+                                                    <th class="tg-amwm" colspan="3">Direct borrowers and their family members (for both, private and legal entity borrowers)</th>
+                                                    <th class="tg-amwm" colspan="3">Direct beneficiaries – hired workers (for both, private and legal entity borrowers)</th>
+                                                    <th class="tg-amwm" colspan="2">Created potential/ Expected effect</th>
                                                 </tr>
                                                 <tr>
                                                     <td class="tg-e3zv">$</td>
-                                                    <td class="tg-9hbo">нац.валюта</td>
-                                                    <td class="tg-amwm">Всего</td>
-                                                    <td class="tg-amwm">Муж.</td>
-                                                    <td class="tg-amwm">Жен.</td>
-                                                    <td class="tg-amwm">Всего</td>
-                                                    <td class="tg-amwm">Муж.</td>
-                                                    <td class="tg-amwm">Жен.</td>
-                                                    <td class="tg-amwm">План</td>
-                                                    <td class="tg-amwm">Факт</td>
+                                                    <td class="tg-9hbo">National currency</td>
+                                                    <td class="tg-amwm">Total</td>
+                                                    <td class="tg-amwm">Men</td>
+                                                    <td class="tg-amwm">Women</td>
+                                                    <td class="tg-amwm">Total</td>
+                                                    <td class="tg-amwm">Men</td>
+                                                    <td class="tg-amwm">Women</td>
+                                                    <td class="tg-amwm">Hectarеs</td>
+                                                    <td class="tg-amwm">Other</td>
                                                 </tr>
                                                 <tr ng-repeat="x in data.creditsTable">
+
+
+
                                                     <td class="tg-0ord">{{ x.nameFactCategcredits }}</td>
                                                     <td class="tg-0ord">{{ x.countsubproject }}</td>
                                                     <td class="tg-0ord">{{ x.commonAmountInDollors }}</td>

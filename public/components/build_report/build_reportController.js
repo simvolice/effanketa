@@ -162,87 +162,83 @@ angular.module('app').controller('BuildReportCtrl', function ($timeout, $scope, 
 
 
 
-       if (data.typePeriod === "Годовой" && data.country !== "РКГ") {
+        if (data.typePeriod.includes("Годовой") && data.country.includes("НКГ")) {
 
-           $mdDialog.show({
-               controller: DialogControllerUpdReportYearNCU,
-               locals:{data: data},
-               templateUrl: 'components/build_report/dialog_template_new_report_year_ncu.html',
-               parent: angular.element(document.body),
-               targetEvent: ev,
-               clickOutsideToClose:true,
-               fullscreen: true // Only for -xs, -sm breakpoints.
-           });
+            $mdDialog.show({
+                controller: DialogControllerUpdReportYearNCU,
+                locals:{data: data},
+                templateUrl: 'components/build_report/dialog_template_new_report_year_ncu.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
 
+        } else if (data.typePeriod.includes("Полугодовой") && data.country.includes("НКГ")) {
 
-       } else if (data.country === "РКГ" && data.typePeriod.includes("Первое полугодие")) {
-
-           $mdDialog.show({
-               controller: DialogControllerUpdReportHalfYearRCU,
-               locals:{data: data},
-               templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
-               parent: angular.element(document.body),
-               targetEvent: ev,
-               clickOutsideToClose:true,
-               fullscreen: true // Only for -xs, -sm breakpoints.
-           });
-
-
-
-
-
-       } else if (data.country === "РКГ" && data.typePeriod.includes("Второе полугодие")) {
-
-           $mdDialog.show({
-               controller: DialogControllerUpdReportHalfYearRCU,
-               locals:{data: data},
-               templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
-               parent: angular.element(document.body),
-               targetEvent: ev,
-               clickOutsideToClose:true,
-               fullscreen: true // Only for -xs, -sm breakpoints.
-           });
+            $mdDialog.show({
+                controller: DialogControllerUpdReportQNCU,
+                locals:{data: data},
+                templateUrl: 'components/build_report/dialog_template_new_report_q_ncu.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
 
 
 
 
 
-       }
+        } else if (data.typePeriod.includes("Квартальный") && data.country.includes("НКГ")) {
+
+            $mdDialog.show({
+                controller: DialogControllerUpdReportQNCU,
+                locals:{data: data},
+                templateUrl: 'components/build_report/dialog_template_new_report_q_ncu.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
 
 
 
 
 
-       else if (data.country === "РКГ" && data.typePeriod === "Годовой") {
+        }else if (data.typePeriod.includes("Годовой") && data.country.includes("РКГ")) {
 
 
-           $mdDialog.show({
-               controller: DialogControllerUpdReportYearRCU,
-               locals:{data: data},
-               templateUrl: 'components/build_report/dialog_template_new_report_year_rcu.html',
-               parent: angular.element(document.body),
-               targetEvent: ev,
-               clickOutsideToClose:true,
-               fullscreen: true // Only for -xs, -sm breakpoints.
-           });
+            $mdDialog.show({
+                controller: DialogControllerUpdReportYearRCU,
+                locals:{data: data},
+                templateUrl: 'components/build_report/dialog_template_new_report_year_rcu.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
+
+
+        } else if (data.typePeriod.includes("Полугодовой") && data.country.includes("РКГ")) {
+
+
+            $mdDialog.show({
+                controller: DialogControllerUpdReportHalfYearRCU,
+                locals:{data: data},
+                templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: true // Only for -xs, -sm breakpoints.
+            });
+
+
+        }
 
 
 
-       } else {
 
-
-           $mdDialog.show({
-               controller: DialogControllerUpdReport,
-               locals:{data: data},
-               templateUrl: 'components/build_report/dialog_template_new_report.html',
-               parent: angular.element(document.body),
-               targetEvent: ev,
-               clickOutsideToClose:true,
-               fullscreen: true // Only for -xs, -sm breakpoints.
-           });
-
-
-       }
 
 
 
@@ -287,9 +283,9 @@ $scope.showModalWnd = function (ev) {
             } else if (namePeriod.includes("Полугодовой") && nameCountry.includes("НКГ")) {
 
                 $mdDialog.show({
-                    controller: DialogControllerNewReportHalfYearRCU,
+                    controller: DialogControllerNewReportQ,
                     locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
-                    templateUrl: 'components/build_report/dialog_template_new_report_half_ncu.html',
+                    templateUrl: 'components/build_report/dialog_template_new_report_q_ncu.html',
                     parent: angular.element(document.body),
                     targetEvent: ev,
                     clickOutsideToClose:true,
@@ -334,7 +330,7 @@ $scope.showModalWnd = function (ev) {
 
 
                 $mdDialog.show({
-                    controller: DialogControllerNewReportYearRCU,
+                    controller: DialogControllerNewReportHalfYearRCU,
                     locals:{data: {allCountrys: $scope.allCountrys, country: $scope.country, nameCountry: $scope.getNameById($scope.country, $scope.allCountrys), period: $scope.period, periodName: $scope.getNameById($scope.period, $scope.allperiod), yearname: $scope.yearname, year: $scope.getNameById($scope.yearname, $scope.allyearname)}},
                     templateUrl: 'components/build_report/dialog_template_new_report_half_rcu.html',
                     parent: angular.element(document.body),
@@ -359,7 +355,16 @@ $scope.showModalWnd = function (ev) {
 
 
 
-function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetReport, $http) {
+function DialogControllerUpdReportYearRCU($state, $scope, data, UpdReportYearRCU, GetReport, $http) {
+
+
+
+    $scope.goTo = function () {
+
+        $mdDialog.hide();
+        $state.go("data_intermediate_index");
+
+    };
 
 
     $scope.data = {
@@ -507,6 +512,18 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
 
 
 
+    $scope.toDocx = function () {
+
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.country + ", " + data.typePeriod);
+
+
+    };
+
     $scope.closeDialog = function () {
 
 
@@ -520,8 +537,15 @@ function DialogControllerUpdReportYearRCU($scope, data, UpdReportYearRCU, GetRep
 
 
 
-function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatusForYearRCU, ReportYearRCUSave, $http, GetTadjickUzbekNCUYear) {
+function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansialStatusForYearRCU, ReportYearRCUSave, $http, GetTadjickUzbekNCUYear) {
 
+
+    $scope.goTo = function () {
+
+        $mdDialog.hide();
+        $state.go("data_intermediate_index");
+
+    };
 
     $scope.data = {
 
@@ -556,10 +580,6 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
     GetReportFinansialStatusForYearRCU.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
 
 
-
-
-
-
         for (let obj of entry.resultFromDb) {
             $scope.data.categorizedByBudgetBisbursementPlanYearTadzhik = obj.categorizedByBudgetBisbursementPlanYearTadzhik;
             $scope.data.categorizedByBudgetBisbursementFactYearTadzhik = obj.categorizedByBudgetBisbursementFactYearTadzhik;
@@ -574,8 +594,22 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
 
 
     GetTadjickUzbekNCUYear.get(function (result) {
-       $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
-       $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
+
+      if (result.resultFromDb[0].getUzbekNCUYear.length !== 0) {
+
+          $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
+
+
+      } else if (result.resultFromDb[0].getTadzhikNCUYear.length !== 0) {
+
+          $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
+
+
+      }
+
+
+
+
     });
 
 
@@ -664,6 +698,17 @@ function DialogControllerNewReportYearRCU($scope, data, GetReportFinansialStatus
     }
 
 
+    $scope.toDocx = function () {
+
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.nameCountry + ", " + data.periodName);
+
+
+    };
 
 
     $scope.print = function () {
@@ -765,6 +810,17 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
     };
 
 
+    $scope.toDocx = function () {
+
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.country + ", " + data.typePeriod);
+
+
+    };
 
 
 
@@ -1037,7 +1093,17 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
 
 
+    $scope.toDocx = function () {
 
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.nameCountry + ", " + data.periodName);
+
+
+    };
 
 
 
@@ -1071,6 +1137,11 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
 
 }
+
+
+
+
+
 
 
 function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetReport, $http) {
@@ -1193,7 +1264,17 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
 
 
 
+    $scope.toDocx = function () {
 
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.country + ", " + data.typePeriod);
+
+
+    };
 
 
 
@@ -1348,7 +1429,17 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
 
 
+    $scope.toDocx = function () {
 
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.nameCountry + ", " + data.periodName);
+
+
+    };
 
 
 
@@ -1374,7 +1465,7 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 }
 
 
-function DialogControllerUpdReport($scope, data, UpdReport) {
+function DialogControllerUpdReportQNCU($scope, data, UpdReport) {
 
 
 
@@ -1388,7 +1479,7 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
         country: data.country,
 
-
+        comments: data.comments,
 
 
         creditsTable: data.credits,
@@ -1447,6 +1538,19 @@ function DialogControllerUpdReport($scope, data, UpdReport) {
 
 
         $("#printableArea").print();
+
+
+    };
+
+
+    $scope.toDocx = function () {
+
+
+        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+
+
+        var converted = htmlDocx.asBlob(content);
+        saveAs(converted, data.country + ", " + data.typePeriod);
 
 
     };
@@ -1554,7 +1658,7 @@ $scope.data = {
     finstatus: {},
     capacityBuilding: {},
 
-    participantsStated: "",
+
     comments: "",
 
 
