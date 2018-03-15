@@ -5,7 +5,34 @@
 
 
 angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope, GetYearName, GetTypePeriod, GetAllCoutrys, $mdToast, GetGrowPotencial, GetReportForEvent, $window) {
+
+    /*
+   Поиск 100 процентов
+    */
+    $scope.calculatePercent = function (numberBase, value) {
+
+
+        if (value === 0) {
+
+            return 0;
+
+        } else {
+
+
+            let result = value * 100 / numberBase;
+            return result.toFixed(1);
+
+        }
+
+
+    };
+
+
     $scope.eventShow = false;
+
+
+    let chartAverage = null;
+    let chartWomen = null;
 
     $scope.data = {
 
@@ -61,7 +88,11 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 $scope.data.categorizedByLearningEvent = obj.categorizedByLearningEvent;
                 $scope.data.categorizedByGenderEvent = obj.categorizedByGenderEvent;
                 $scope.data.countSatisfaction = obj.countSatisfaction;
+                $scope.data.countNoSatisfaction = obj.countNoSatisfaction;
+                $scope.data.countSatisfactionCommonAll = obj.countSatisfactionCommonAll;
+
                 $scope.data.countSatisfactionWomen = obj.countSatisfactionWomen;
+                $scope.data.countNoSatisfactionWomen = obj.countNoSatisfactionWomen;
                 $scope.data.countForms = obj.countForms;
                 $scope.data.allEvents = obj.allEvents;
 
@@ -91,81 +122,144 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
+                chartAverage = bb.generate({
 
-
-
-            if ($scope.data.countSatisfaction.length !== 0 &&  $scope.data.countSatisfactionWomen !== 0) {
-
-
-
-                let chartAverage = c3.generate({
-
-                    bindto: '#chartAverage',
+                    bindto: '#chartCommon',
                     data: {
 
                         columns: [
-                            ['Средняя удоволетворительность участниками', $scope.data.countSatisfaction[0].average],
-                            ['Средняя удоволетворительность участниками, женщин', $scope.data.countSatisfactionWomen[0].average]
+                            ['Общая удовлетворенность участников', $scope.data.countSatisfaction.length === 0 ? 0 : $scope.data.countSatisfaction[0].countAll],
+                            ['Не удовлетворены участием', $scope.data.countNoSatisfaction.length === 0 ? 0 : $scope.data.countNoSatisfaction[0].countAll]
+
 
                         ],
-                        type : 'pie'
+                        type : 'pie',
+
+
 
                     },
-                    pie: {
-                        label: {
-                            format: function (value, ratio, id) {
-                                return d3.format('')(value.toFixed(1));
-                            }
-                        }
-                    },
+
                     tooltip: {
                         format: {
 
                             value: function (value, ratio, id) {
-                                return d3.format('')(value.toFixed(1));
+
+                                return value;
                             }
 
                         }
                     }
+
                 });
 
 
+            chartWomen = bb.generate({
 
-            } else {
+                bindto: '#chartWomen',
+                data: {
 
-                let chartAverage = c3.generate({
+                    columns: [
+                        ['Общая удовлетворенность мероприятиями среди женщин', $scope.data.countSatisfactionWomen.length === 0 ? 0 : $scope.data.countSatisfactionWomen[0].countAll],
+                        ['Общая не удовлетворенность мероприятиями среди женщин', $scope.data.countNoSatisfactionWomen.length === 0 ? 0 : $scope.data.countNoSatisfactionWomen[0].countAll]
 
-                    bindto: '#chartAverage',
-                    data: {
 
-                        columns: [
-                            ['Средняя удоволетворительность участниками', 0],
-                            ['Средняя удоволетворительность участниками, женщин', 0]
+                    ],
+                    type : 'pie',
+                    labels: true
 
-                        ],
-                        type : 'pie'
+                },
 
-                    },
-                    pie: {
-                        label: {
-                            format: function (value, ratio, id) {
-                                return d3.format('')(value.toFixed(1));
-                            }
+                tooltip: {
+                    format: {
+
+                        value: function (value, ratio, id) {
+
+                            return value;
                         }
-                    },
-                    tooltip: {
-                        format: {
 
-                            value: function (value, ratio, id) {
-                                return d3.format('')(value.toFixed(1));
-                            }
-
-                        }
                     }
-                });
+                }
+            });
 
 
-            }
+
+
+
+
+            bb.generate({
+                bindto: "#chartCommonOrg",
+                data: {
+                    json: [
+                        $scope.data.countSatisfactionCommonAll[0].ques19
+                    ],
+                    keys: {
+
+                        value: ['Государственное учреждение', 'Региональную организацию', 'НПО', 'Академическое сообщество', 'Ассоциацию фермеров', 'Ассоциацию малого и среднего бизнеса', 'Международную организацию', 'СМИ', 'Другое'],
+                    },
+                    type: 'pie'
+                },
+
+                tooltip: {
+                    format: {
+
+                        value: function (value, ratio, id) {
+                            return value;
+                        }
+
+                    }
+                }
+
+            });
+
+
+            bb.generate({
+                bindto: "#chartCommonSex",
+                data: {
+                    json: [
+                        $scope.data.countSatisfactionCommonAll[0].ques20
+                    ],
+                    keys: {
+
+                        value: ['Мужской', 'Женский'],
+                    },
+                    type: 'pie'
+                },
+                tooltip: {
+                    format: {
+
+                        value: function (value, ratio, id) {
+                            return value;
+                        }
+
+                    }
+                }
+            });
+
+
+
+            bb.generate({
+                bindto: "#chartCommonAge",
+                data: {
+                    json: [
+                        $scope.data.countSatisfactionCommonAll[0].ques21
+                    ],
+                    keys: {
+
+                        value: ['25-29', '30-34', '35-39', '40-44', '45-49', '50-и старше'],
+                    },
+                    type: 'pie'
+                },
+                tooltip: {
+                    format: {
+
+                        value: function (value, ratio, id) {
+                            return value;
+                        }
+
+                    }
+                }
+            });
+
 
 
 
@@ -177,11 +271,17 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
     };
 
 
+
+    $scope.chartAllQuiz = [];
+
     $scope.createReportForEvent = function () {
 
 
         GetReportForEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.selectEvent}, function(entry) {
 
+
+
+            $scope.dataForOneEvent = entry.resultFromDb;
 
             for (let item of entry.resultFromDb) {
                $scope.data.countAllAnswer = item.getAnswerAndNotAnswer;
@@ -199,333 +299,106 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
+
             if ($scope.data.ques.length !== 0) {
 
 
-                c3.generate({
-                    bindto: "#chartQues1",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques1
-                        ],
-                        keys: {
+                let arrForChart = [1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                17,
+            ];
 
-                            value: ['1', '2', '3', '4', '5'],
+
+                for (let itemOneChart of arrForChart) {
+                    let chart = bb.generate({
+                        bindto: `#chartQues${itemOneChart}`,
+                        data: {
+
+
+                            columns: [
+
+                                ["data", $scope.data.ques[0][`ques${itemOneChart}`].hasOwnProperty("1") ? $scope.data.ques[0][`ques${itemOneChart}`]["1"] : 0,
+
+                                    $scope.data.ques[0][`ques${itemOneChart}`].hasOwnProperty("2") ? $scope.data.ques[0][`ques${itemOneChart}`]["2"] : 0,
+                                    $scope.data.ques[0][`ques${itemOneChart}`].hasOwnProperty("3") ? $scope.data.ques[0][`ques${itemOneChart}`]["3"] : 0,
+                                    $scope.data.ques[0][`ques${itemOneChart}`].hasOwnProperty("4") ? $scope.data.ques[0][`ques${itemOneChart}`]["4"] : 0,
+                                    $scope.data.ques[0][`ques${itemOneChart}`].hasOwnProperty("5") ? $scope.data.ques[0][`ques${itemOneChart}`]["5"] : 0
+
+
+                                ]
+                            ],
+
+                            type: 'bar',
+                            labels: {
+                                format: function (value, id, i, j) {
+
+
+
+                                    return `${value} (${$scope.calculatePercent($scope.data.ques[0][`ques${itemOneChart}`].totalAnswer, value)} %)`;
+
+
+                                },
+
+                            }
                         },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues2",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques2
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
+                        bar: {
+                            width: {
+                                ratio: 0.5 // this makes bar width 50% of length between ticks
+                            }
+                            // or
+                            //width: 100 // this makes bar width 100px
                         },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
 
-                    grid: {
+                        grid: {
 
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues3",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques3
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
+                            y: {
+                                show: true
+                            }
                         },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
 
-                    grid: {
 
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues4",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques4
-                        ],
-                        keys: {
+                        axis: {
+                            x: {
+                                type: 'category',
+                                categories: ["1",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "5"]
+                            },
+                            y: {
+                                max: $scope.data.ques[0][`ques${itemOneChart}`].totalAnswer
 
-                            value: ['1', '2', '3', '4', '5'],
+                            }
                         },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
 
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues5",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques5
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
+                        legend: {
+                            show: false
                         },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
+
+                        tooltip: {
+                            show: false
+
                         }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
 
-                    grid: {
 
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues6",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques6
-                        ],
-                        keys: {
+                    });
 
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
+                    $scope.chartAllQuiz.push(chart);
+                }
 
-                    grid: {
 
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues7",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques7
-                        ],
-                        keys: {
 
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues8",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques8
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues9",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques9
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues10",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques10
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues11",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques11
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues12",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques12
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
 
 
 
@@ -547,33 +420,6 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 $scope.data.totalQues16 = dimensions16.length;
 
 
-                c3.generate({
-                    bindto: "#chartQues17",
-                    data: {
-                        json: [
-                            $scope.data.ques[0].ques17
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
 
 
 
@@ -587,7 +433,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-                c3.generate({
+                bb.generate({
                     bindto: "#chartQues19",
                     data: {
                         json: [
@@ -604,7 +450,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                         format: {
 
                             value: function (value, ratio, id) {
-                                return d3.format('')(value);
+                                return value;
                             }
 
                         }
@@ -613,7 +459,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 });
 
 
-                c3.generate({
+                bb.generate({
                     bindto: "#chartQues20",
                     data: {
                         json: [
@@ -629,7 +475,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                         format: {
 
                             value: function (value, ratio, id) {
-                                return d3.format('')(value);
+                                return value;
                             }
 
                         }
@@ -638,7 +484,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-                c3.generate({
+                bb.generate({
                     bindto: "#chartQues21",
                     data: {
                         json: [
@@ -654,7 +500,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                         format: {
 
                             value: function (value, ratio, id) {
-                                return d3.format('')(value);
+                                return value;
                             }
 
                         }
@@ -663,421 +509,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-            } else {
-
-
-                c3.generate({
-                    bindto: "#chartQues1",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues2",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues3",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues4",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues5",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues6",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues7",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues8",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues9",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues10",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues11",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-                c3.generate({
-                    bindto: "#chartQues12",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-
-
-
-                $scope.data.totalQues13 = 0;
-                $scope.data.totalQues14 = 0;
-                $scope.data.totalQues15 = 0;
-                $scope.data.totalQues16 = 0;
-                $scope.data.totalQues18 = 0;
-
-
-
-
-                c3.generate({
-                    bindto: "#chartQues17",
-                    data: {
-                        json: [
-                            {1:0, 2:0, 3:0, 4:0, 5:0}
-                        ],
-                        keys: {
-
-                            value: ['1', '2', '3', '4', '5'],
-                        },
-                        type: 'bar'
-                    },
-                    bar: {
-                        width: {
-                            ratio: 0.5 // this makes bar width 50% of length between ticks
-                        }
-                        // or
-                        //width: 100 // this makes bar width 100px
-                    },
-
-                    grid: {
-
-                        y: {
-                            show: true
-                        }
-                    }
-                });
-
-
-                c3.generate({
-                    bindto: "#chartQues19",
-                    data: {
-                        json: [
-                            {'Государственное учреждение': 0, 'Региональную организацию': 0, 'НПО': 0, 'Академическое сообщество': 0, 'Ассоциацию фермеров': 0, 'Ассоциацию малого и среднего бизнеса': 0, 'Международную организацию': 0, 'СМИ': 0, 'Другое': 0}
-                        ],
-                        keys: {
-
-                            value: ['Государственное учреждение', 'Региональную организацию', 'НПО', 'Академическое сообщество', 'Ассоциацию фермеров', 'Ассоциацию малого и среднего бизнеса', 'Международную организацию', 'СМИ', 'Другое'],
-                        },
-                        type: 'pie'
-                    }
-                });
-
-
-
-                c3.generate({
-                    bindto: "#chartQues20",
-                    data: {
-                        json: [
-                            {'Мужской': 0, 'Женский': 0}
-                        ],
-                        keys: {
-
-                            value: ['Мужской', 'Женский'],
-                        },
-                        type: 'pie'
-                    }
-                });
-
-
-
-                c3.generate({
-                    bindto: "#chartQues21",
-                    data: {
-                        json: [
-                            {'25-29': 0, '30-34': 0, '35-39': 0, '40-44': 0, '45-49': 0, '50-и старше': 0}
-                        ],
-                        keys: {
-
-                            value: ['25-29', '30-34', '35-39', '40-44', '45-49', '50-и старше'],
-                        },
-                        type: 'pie'
-                    }
-                });
-
             }
+
 
 
 
@@ -1094,6 +527,70 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
         };
+
+
+
+
+
+    $scope.printOneEvent = function () {
+
+        $("#print__one__event").print();
+
+    };
+
+
+
+
+    $scope.excel = function () {
+
+
+       console.log(JSON.stringify($scope.dataForOneEvent));
+
+    };
+
+
+
+
+    $('.drawer').on('drawer.opened', function(){
+
+
+
+        if ($scope.chartAllQuiz.length !== 0) {
+
+
+            for (let obj of $scope.chartAllQuiz) {
+                obj.resize();
+            }
+
+        }
+
+        if (chartAverage !== null) {
+
+            chartAverage.resize();
+
+        }
+
+
+
+    });
+
+    $('.drawer').on('drawer.closed', function(){
+        if ($scope.chartAllQuiz.length !== 0) {
+
+
+            for (let obj of $scope.chartAllQuiz) {
+                obj.resize();
+            }
+
+        }
+
+        if (chartAverage !== null) {
+
+            chartAverage.resize();
+
+        }
+
+    });
 
 
 });

@@ -278,10 +278,15 @@ module.exports = {
                        let countedNamesTempObj = item[itemObj].reduce(function (allNames, name) {
 
                            if (name in allNames) {
+
                                 allNames[name]++;
                             }
                             else {
+
+
                                 allNames[name] = 1;
+
+
                             }
                             return allNames;
                         }, {});
@@ -294,6 +299,8 @@ module.exports = {
 
 
             }
+
+
 
             /*
             Считаем сумму ответов на каждый вопрос
@@ -326,6 +333,7 @@ module.exports = {
 
 
             }
+
 
 
 
@@ -842,18 +850,139 @@ module.exports = {
 
 
                             {
-                                $group : {
-                                    _id : null,
-                                    average: { $avg: "$ques12" }
+                                $match : {
 
+                                    $or: [{ques12: 5},
+                                        {ques12: 4}
+                                    ]
 
                                 }
-                            }
+                            },
+
+
+
+                            {$count: "countAll"}
 
 
                         ],
 
+                        "countNoSatisfaction": [
 
+
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+
+
+
+
+                            {
+                                $match : {
+
+                                    $or: [{ques12: 3},
+                                        {ques12: 2},
+                                        {ques12: 1}
+                                    ]
+
+                                }
+                            },
+
+
+
+                            {$count: "countAll"}
+
+
+                        ],
 
                         "countSatisfactionWomen": [
 
@@ -956,17 +1085,271 @@ module.exports = {
 
 
                             {
-                                $group : {
-                                    _id : null,
-                                    average: { $avg: "$ques12" }
+                                $match : {
 
+                                    $or: [{ques12: 5},
+                                        {ques12: 4}
+                                    ]
 
                                 }
-                            }
+                            },
+
+
+
+                            {$count: "countAll"}
+
+
 
 
                         ],
 
+
+                        "countNoSatisfactionWomen": [
+
+
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+
+
+                            {$match: {ques20: "Женский"}},
+
+
+
+                            {
+                                $match : {
+
+                                    $or: [{ques12: 3},
+                                        {ques12: 2},
+                                        {ques12: 1}
+                                    ]
+
+                                }
+                            },
+
+
+                            {$count: "countAll"},
+
+
+
+
+
+
+
+                        ],
+
+
+                        "countSatisfactionCommonAll": [
+
+
+                            {
+
+                                $match: {country: {$in: objParams.country}}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$myDate" },
+                                        month: { $month: "$myDate" },
+                                        day: { $dayOfMonth: "$myDate" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {year: {$gte: dateFromYear}},
+
+                                        {year: {$lte: dateToYear}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {month: {$gte: dateFromMonth}},
+
+                                        {month: {$lte: dateToMonth}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+                            {
+
+                                $match: {
+
+                                    $and: [
+
+
+                                        {day: {$gte: dateFromDay}},
+
+                                        {day: {$lte: dateToDay}}
+
+
+                                    ]
+
+
+                                }
+
+
+                            },
+
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+
+
+                            {
+                                $group: {
+
+
+
+                                    _id: null,
+
+                                    ques19: {$push: "$ques19"},
+                                    ques20: {$push: "$ques20"},
+                                    ques21: {$push: "$ques21"}
+
+
+
+                                }
+
+
+
+                            }
+
+
+
+
+                        ],
 
 
 
@@ -1472,13 +1855,80 @@ module.exports = {
 
 
 
+
+            /*
+           Введется подсчет количества ответов
+            */
+            let countedNames = [];
+            for (let item of result[0].countSatisfactionCommonAll) {
+
+                for (let itemObj in item) {
+
+                    if (Array.isArray(item[itemObj])) {
+
+                        let countedNamesTempObj = item[itemObj].reduce(function (allNames, name) {
+
+                            if (name in allNames) {
+                                allNames[name]++;
+                            }
+                            else {
+                                allNames[name] = 1;
+                            }
+                            return allNames;
+                        }, {});
+                        countedNames.push(countedNamesTempObj);
+
+
+                    }
+                }
+
+
+
+            }
+
+            /*
+            Считаем сумму ответов на каждый вопрос
+             */
+            for (let item of countedNames) {
+
+
+                let allObjValue = Object.values(item);
+                const total = allObjValue.reduce((sum, value) => sum + value);
+                item["totalAnswer"] = total;
+
+
+            }
+
+            /*
+            Присваеваем результат на новый массив
+             */
+            for (let item of result[0].countSatisfactionCommonAll) {
+
+                for (let itemObj in item) {
+
+                    if (Array.isArray(item[itemObj])) {
+
+
+                        item[itemObj] = countedNames.shift();
+
+                    }
+                }
+
+
+
+            }
+
+
+
+
+
             return result;
 
 
         }catch(err) {
 
 
-            console.log("\x1b[42m", err);
+
 
             return err;
 

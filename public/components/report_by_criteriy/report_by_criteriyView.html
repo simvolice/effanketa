@@ -26,9 +26,11 @@
 
 
             <md-card>
+
+
                 <div class="row">
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 text-center">
 
 
                         <md-input-container style="width: 250px">
@@ -65,8 +67,8 @@
                         </md-input-container>
 
 
-                        <md-button class="md-raised md-primary" ng-click="createReport()">Сформировать отчет</md-button>
-                        <md-button class="md-raised md-primary" ng-click="createPdf()">Сформировать PDF</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="createReport()">Сформировать отчет</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="createPdf()">Сформировать PDF</md-button>
 
 
 
@@ -179,7 +181,10 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <div id="chartAverage" class="custom__chart__center"></div>
+
+
+                        <h5 class="title text-center" style="text-transform: uppercase">Общая удовлетворенность участниКОВ проведенными мероприятиями</h5>
+
 
 
                     </div>
@@ -188,8 +193,70 @@
                 </div>
 
 
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="chartCommon"></div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div id="chartWomen"></div>
+                    </div>
+
+                </div>
 
 
+                <div class="row">
+                    <div class="col-md-12">
+
+
+
+                        <h5 class="title text-center" style="text-transform: uppercase">ИНФОРМАЦИЯ ОБ УЧАСТНИКАХ</h5>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+                    <div class="col-md-12">
+
+
+
+                        <h4>Вы представляете</h4>
+                        <p>{{data.countSatisfactionCommonAll[0].ques19.totalAnswer || 0}} ответов</p>
+                        <div id="chartCommonOrg"></div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+                    <div class="col-md-12">
+
+                        <h4>Пол</h4>
+                        <p>{{data.countSatisfactionCommonAll[0].ques20.totalAnswer || 0}} ответов</p>
+
+                        <div id="chartCommonSex"></div>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-left: 10px">
+                    <div class="col-md-12">
+
+                        <h4>Возраст</h4>
+                        <p>{{data.countSatisfactionCommonAll[0].ques21.totalAnswer || 0}} ответов</p>
+
+                        <div id="chartCommonAge"></div>
+                    </div>
+                </div>
 
 
 
@@ -201,27 +268,30 @@
         </md-content>
 
 
-        <md-content ng-show="eventShow" layout="column" flex class="custom__md-content__categ">
+        <md-content ng-show="eventShow" layout="column" flex class="custom__md-content__categ" id="print__one__event">
 
             <md-card>
 
 
 
-                <md-toolbar class="md-table-toolbar md-default">
 
 
-                    <div class="md-toolbar-tools">
+
+                <div class="row">
+                    <div class="col-md-12 text-left">
 
 
-                        <h3>Отчёт по мероприятию</h3>
+                        <h5 class="title text-center" style="text-transform: uppercase">Отчёт по мероприятию</h5>
+
 
 
                     </div>
 
+                </div>
 
 
-                    <div class="md-toolbar-tools">
-
+                <div class="row">
+                    <div class="col-md-12">
 
 
                         <md-input-container class="custom__select__margin">
@@ -238,12 +308,22 @@
 
 
 
-                        <button class="btn btn-sm btn-primary custom__display__none" ng-click="createReportForEvent()">Сформировать отчет</button>
+
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="createReportForEvent()">Сформировать отчет</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="printOneEvent()">Печать</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="excel()">Сформировать Excel</md-button>
 
 
                     </div>
 
-                </md-toolbar>
+                </div>
+
+
+
+
+
+
+
 
 
                 <div class="row" style="margin-left: 10px">
@@ -314,7 +394,10 @@
 
 
 
-                <div class="row" style="margin-left: 10px">
+
+
+
+                <div class="row custom__margin__top" style="margin-left: 10px">
 
 
                     <div class="col-md-12">
@@ -359,7 +442,7 @@
 
 
 
-                <div class="row" style="margin-left: 10px">
+                <div class="row custom__margin__top__2x" style="margin-left: 10px">
 
 
                     <div class="col-md-12">
@@ -402,7 +485,7 @@
 
 
 
-                <div class="row" style="margin-left: 10px">
+                <div class="row custom__margin__top__2x" style="margin-left: 10px">
 
 
                     <div class="col-md-12">
@@ -462,7 +545,7 @@
 
 
 
-                <div class="row" style="margin-left: 10px">
+                <div class="row custom__margin__top__2x" style="margin-left: 10px">
 
 
                     <div class="col-md-12">
@@ -549,7 +632,7 @@
 
 
 
-                <div class="row" style="margin-left: 10px">
+                <div class="row custom__margin__top" style="margin-left: 10px">
 
 
                     <div class="col-md-12">
