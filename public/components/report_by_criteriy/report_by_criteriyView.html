@@ -5,7 +5,7 @@
 
 
 
-        <md-content layout="column" flex class="custom__md-content__categ">
+        <md-content layout="column" flex class="custom__md-content__categ page-break-after" >
 
 
 
@@ -193,7 +193,7 @@
                 </div>
 
 
-                <div class="row">
+                <div class="row custom__chart__center">
                     <div class="col-md-6">
                         <div id="chartCommon"></div>
 
@@ -207,7 +207,9 @@
                 </div>
 
 
-                <div class="row">
+
+
+                <div class="row custom__margin__top__1x">
                     <div class="col-md-12">
 
 
@@ -638,7 +640,7 @@
                     <div class="col-md-12">
                         <h4>Вы представляете</h4>
                         <p>{{data.ques[0].ques19.totalAnswer || 0}} ответов</p>
-                        <div id="chartQues19" class="custom__chart__center"></div>
+                        <div id="chartQues19"></div>
 
                     </div>
 
@@ -653,7 +655,7 @@
                     <div class="col-md-12">
                         <h4>Пол</h4>
                         <p>{{data.ques[0].ques20.totalAnswer || 0}} ответов</p>
-                        <div id="chartQues20" class="custom__chart__center"></div>
+                        <div id="chartQues20"></div>
 
                     </div>
 
@@ -668,7 +670,7 @@
                     <div class="col-md-12">
                         <h4>Возрастная группа</h4>
                         <p>{{data.ques[0].ques21.totalAnswer || 0}} ответов</p>
-                        <div id="chartQues21" class="custom__chart__center"></div>
+                        <div id="chartQues21"></div>
 
                     </div>
 

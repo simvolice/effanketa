@@ -31,8 +31,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
     $scope.eventShow = false;
 
 
-    let chartAverage = null;
-    let chartWomen = null;
+    $scope.chartAllVariable = [];
 
     $scope.data = {
 
@@ -122,7 +121,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-                chartAverage = bb.generate({
+               let chartAverage = bb.generate({
 
                     bindto: '#chartCommon',
                     data: {
@@ -153,7 +152,10 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 });
 
 
-            chartWomen = bb.generate({
+            $scope.chartAllVariable.push(chartAverage);
+
+
+           let chartWomen = bb.generate({
 
                 bindto: '#chartWomen',
                 data: {
@@ -183,10 +185,12 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
+            $scope.chartAllVariable.push(chartWomen);
 
 
 
-            bb.generate({
+
+           let chartCommonOrg = bb.generate({
                 bindto: "#chartCommonOrg",
                 data: {
                     json: [
@@ -212,7 +216,11 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
             });
 
 
-            bb.generate({
+            $scope.chartAllVariable.push(chartCommonOrg);
+
+
+
+           let chartCommonSex = bb.generate({
                 bindto: "#chartCommonSex",
                 data: {
                     json: [
@@ -235,9 +243,10 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 }
             });
 
+            $scope.chartAllVariable.push(chartCommonSex);
 
 
-            bb.generate({
+           let chartCommonAge = bb.generate({
                 bindto: "#chartCommonAge",
                 data: {
                     json: [
@@ -261,6 +270,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
             });
 
 
+            $scope.chartAllVariable.push(chartCommonAge);
+
 
 
 
@@ -272,7 +283,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-    $scope.chartAllQuiz = [];
+
 
     $scope.createReportForEvent = function () {
 
@@ -394,7 +405,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
                     });
 
-                    $scope.chartAllQuiz.push(chart);
+                    $scope.chartAllVariable.push(chart);
                 }
 
 
@@ -555,40 +566,31 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-        if ($scope.chartAllQuiz.length !== 0) {
+        if ($scope.chartAllVariable.length !== 0) {
 
 
-            for (let obj of $scope.chartAllQuiz) {
+            for (let obj of $scope.chartAllVariable) {
                 obj.resize();
             }
 
         }
 
-        if (chartAverage !== null) {
-
-            chartAverage.resize();
-
-        }
 
 
 
     });
 
     $('.drawer').on('drawer.closed', function(){
-        if ($scope.chartAllQuiz.length !== 0) {
+        if ($scope.chartAllVariable.length !== 0) {
 
 
-            for (let obj of $scope.chartAllQuiz) {
+            for (let obj of $scope.chartAllVariable) {
                 obj.resize();
             }
 
         }
 
-        if (chartAverage !== null) {
 
-            chartAverage.resize();
-
-        }
 
     });
 

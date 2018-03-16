@@ -74,6 +74,10 @@ img,tr {page-break-inside: avoid;}
 
 }
 
+.custom__display__center {
+
+    text-align: center;
+}
 
 .custom__margin__top__2x {
 
@@ -93,3 +97,14 @@ img,tr {page-break-inside: avoid;}
 }
 
 
+.custom__chart__center {
+
+
+    margin-left: 260px;
+
+}
+.custom__margin__top__1x {
+    padding-top: 330px;
+
+
+}
