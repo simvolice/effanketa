@@ -1,266 +1,693 @@
 <div id="toolbar" class="row" ng-controller="DataIntermediateIndexCtrl">
 
-    <div class="row custom__display__none">
-        <div class="col-md-12">
-
-
-
-            <md-toolbar class="md-table-toolbar md-default">
-
-
-                <div class="md-toolbar-tools">
-
-
-                    <h3>Матрица результатов и их мониторинга</h3>
-
-
-                </div>
-
-
-
-
-                <div class="md-toolbar-tools">
-
-
-
-                    <div class="row">
-
-
-
-
-
-
-                        <div class="col-md-3">
-
-                            <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
-                            </select>
-
-                        </div>
-
-
-
-
-
-
-
-
-                        <div class="col-md-3" style="left: -50px">
-                            <button class="btn btn-sm btn-primary" ng-click="generateReport()" style="margin-top: 0">Сформировать отчет</button>
-
-
-
-                        </div>
-
-                        <div class="col-md-3">
-
-
-                            <button class="btn btn-sm btn-primary" ng-click="print()" style="margin-top: 0">Печать</button>
-
-                        </div>
-
-
-                        <div class="col-md-3" style="left: -40px">
-
-                            <button class="btn btn-sm btn-primary" ng-click="excel()" style="margin-top: 0">Сформировать Excel</button>
-
-                        </div>
-
-                    </div>
-
-
-
-                </div>
-
-            </md-toolbar>
-
-
-
-        </div>
-
-    </div>
-
-
-
-
-    <div class="row">
-        <div class="col-md-12">
+    <div class="col-md-12">
+        <md-content layout="column" flex class="custom__md-content__categ">
 
 
 
 
             <md-card>
 
-                <style type="text/css">
-                    .tg  {border-collapse:collapse;border-spacing:0;}
-                    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-                    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-                    .tg .tg-e3zv{font-weight:bold}
-                    .tg .tg-hgcj{font-weight:bold;text-align:center}
-                    .tg .tg-9hbo{font-weight:bold;vertical-align:top}
-                    .tg .tg-yw4l{vertical-align:top}
-                    .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
-                </style>
-                <table id="tableau" class="tg">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">Матрица результатов и их мониторинга</h3>
 
+                    </div>
 
-                    <tr>
-                        <th class="tg-hgcj" rowspan="2">{{ 'NAME_INDICATOR' | translate}}</th>
-                        <th class="tg-e3zv" rowspan="2">Исходные данные</th>
-                        <th class="tg-hgcj" colspan="6">Совокупные целевые показатели</th>
-                    </tr>
-                    <tr>
-                        <td class="tg-e3zv">Год 1</td>
-                        <td class="tg-9hbo">Год 2</td>
-                        <td class="tg-9hbo">Год 3</td>
-                        <td class="tg-9hbo">Год 4</td>
-                        <td class="tg-9hbo">Год 5</td>
-                        <td class="tg-9hbo">Конечный целевой показатель</td>
-                    </tr>
+                </div>
+
+            </md-card>
 
 
 
 
-
-                    <tr>
-                        <td class="tg-031e"><span class="custom__display__none">ИЦ 1. </span>Процент пользователей, <br>удовлетворенных услугами программы <br>по предоставлению<br>знаний <br>в области изменения климата</td>
-                        <td class="tg-031e">{{data.persentUsersSatisfied}}%</td>
-                        <td class="tg-031e"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">30%</td>
-                        <td class="tg-yw4l">30%</td>
-                        <td class="tg-yw4l">60%</td>
-                        <td class="tg-yw4l">60%</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l"><span class="custom__display__none">ИЦ 2. </span>Количество планов и программ, <br>которые разработаны самими <br>странами с учетом<br>знаний и уроков, <br>предоставленных программой</td>
-                        <td class="tg-yw4l">{{data.countProgramm}}</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">1</td>
-                        <td class="tg-yw4l">3</td>
-                        <td class="tg-yw4l">3</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l"><span class="custom__display__none">ИЦ 3. </span>Примеры совм. деятельности, <br>которые привели к финансированию инвестиций, <br>требующих сотрудничества стран</td>
-                        <td class="tg-yw4l">{{data.finInvest}}</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">1</td>
-                        <td class="tg-yw4l">2</td>
-                        <td class="tg-yw4l">2</td>
-                    </tr>
-                    <tr id="comp1">
-                        <td class="tg-yw4l"><span class="custom__display__none">ИЦ 4. </span>Объем дополнительно мобилизованных <br>ресурсов для финансирования знаний, поднятия потенциала и <br>инвестиций в региональное сотрудничество в области изменения<br>климата/ «зеленой» деятельности как результат улучшенного уровня программной координации между странами ЦА и м/н сообществом, поддерживающим развития</td>
-                        <td class="tg-yw4l">{{data.mobileResurs.$numberDecimal}} M</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">$20 M</td>
-                        <td class="tg-yw4l">$30 M</td>
-                        <td class="tg-yw4l">$40 M</td>
-                        <td class="tg-yw4l">$40 M</td>
-                    </tr>
-                    <tr class="custom__display__none display__none__excel">
-                        <td class="tg-amwm" colspan="8">Компонент 1: Региональные услуги по предоставлению<br>знаний в области климата</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 1.1 </span>Восприятие пользователей<br>услуг, предоставляемых в том числе с использованием ИТ</td>
-                        <td class="tg-yw4l">{{data.countFormIT}}%</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">42%</td>
-                        <td class="tg-yw4l">42%</td>
-                        <td class="tg-yw4l">75%</td>
-                        <td class="tg-yw4l">75%</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 1.2 </span>Общее число транзакций основных услуг проекта</td>
-                        <td class="tg-yw4l">{{data.countTrasactionOnProjects}}</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">4000</td>
-                        <td class="tg-yw4l">4000</td>
-                        <td class="tg-yw4l">9000</td>
-                        <td class="tg-yw4l">9000</td>
-                    </tr>
-                    <tr id="comp2">
-                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 1.3 </span>Число поддержанных<br>проектом сетей/ платформ по координации,в области климата, объединяющих несколько стран и предоставляющих<br>возможности меж-правительственного, меж-секторного сотрудничества,<br>сотрудничество с НПО и пр.</td>
-                        <td class="tg-yw4l">{{data.countPlatform}}</td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">1</td>
-                        <td class="tg-yw4l">1</td>
-                        <td class="tg-yw4l">2</td>
-                        <td class="tg-yw4l">3</td>
-                        <td class="tg-yw4l">3</td>
-                    </tr>
-                    <tr class="custom__display__none display__none__excel">
-                        <td class="tg-amwm" colspan="8">Компонент 2: Региональный фонд инвестиций в климат</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 2.1 </span>Число бенефициаров<br>проекта, включая женщин</td>
-
-                        <td class="tg-yw4l">{{data.countBenificiarProject}} <br>
-
-                        C2 - {{data.countBenificiarProject}} <br>
-
-                            Tj - {{data.countBenificiarProjectTj}} <br>
-                            Uz - {{data.countBenificiarProjectUz}}
-
-                        </td>
+            <md-card>
 
 
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">10000</td>
-                        <td class="tg-yw4l">10000</td>
-                        <td class="tg-yw4l">16000</td>
-                        <td class="tg-yw4l">16000</td>
-                    </tr>
-                    <tr id="comp3">
-                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 2.2 </span>Охват проектом территорий<br>(га), на которых осуществляются эффективные с/х, земельные и водные<br>управленческие мероприятия по борьбе с изменением климата, учитывающие местные<br>агро-экологические условия</td>
-                        <td class="tg-yw4l">{{data.areaGAProject}} <br>
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
 
 
-                            C2 - {{data.areaGAProject}} <br>
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
+                        </md-input-container>
 
-                            Tj - {{data.areaGAProjectTj}} <br>
-                            Uz - {{data.areaGAProjectUz}}
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="row" style="    margin-left: -5px;
+    margin-top: -25px;
+    margin-bottom: 25px;">
+                    <div class="col-md-12">
+
+
+                        <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
+                        </select>
+                        <md-button class="md-raised md-primary" ng-click="generateReport()">Сформировать отчет</md-button>
+                        <md-button class="md-raised md-primary" ng-click="print()">Печать</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">Сформировать Excel</md-button>
+
+                    </div>
+
+                </div>
 
 
 
 
-                        </td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">7000</td>
-                        <td class="tg-yw4l">7000</td>
-                        <td class="tg-yw4l">9200</td>
-                        <td class="tg-yw4l">9200</td>
-                    </tr>
-                    <tr class="custom__display__none display__none__excel">
-                        <td class="tg-amwm" colspan="8">Компонент 3: Региональная координация</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l"><span class="custom__display__none">ИПР 3.1 </span>Обратная связь/ жалобы,<br>удовлетворенные в срок и в соответствие с заданным стандартом услуг</td>
-                        <td class="tg-yw4l">{{data.countGRM}}% <br>
-
-
-                        C3 - {{data.countGRM}}% <br>
-                        Tj - {{data.countGRMTj}}% <br>
-                        Uz - {{data.countGRMUz}}% <br>
 
 
 
-                        </td>
-                        <td class="tg-yw4l"></td>
-                        <td class="tg-yw4l">70%</td>
-                        <td class="tg-yw4l">70%</td>
-                        <td class="tg-yw4l">80%</td>
-                        <td class="tg-yw4l">100%</td>
-                        <td class="tg-yw4l">100%</td>
-                    </tr>
-                </table>
+
+
+
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-lqy6{text-align:right;vertical-align:top}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg .tg-yw4l{vertical-align:top}
+                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                        </style>
+
+
+                        <style type="text/css">
+                            .tg__header  {border-collapse:collapse;border-spacing:0; width: 98.5%}
+                            .tg__header td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg__header th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg__header .tg-lqy6{text-align:right;vertical-align:top}
+                            .tg__header .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg__header .tg-yw4l{vertical-align:top}
+                            .tg__header .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                        </style>
+
+
+
+                        <table class="tg__header">
+
+                            <thead>
+
+                            <tr>
+                                <th class="tg-hgcj" rowspan="2">Indicator Name<br>Название индикатора</th>
+                                <th class="tg-hgcj" rowspan="2">Baseline<br>Исходные данные</th>
+                                <th class="tg-hgcj" colspan="6">Cumulative Target Values<br>Совокупные целевые показатели</th>
+                            </tr>
+                            <tr>
+                                <td class="tg-hgcj">YR1<br>Год 1</td>
+                                <td class="tg-hgcj">YR2<br>Год 2</td>
+                                <td class="tg-hgcj">YR3<br>Год 3</td>
+                                <td class="tg-hgcj">YR4<br>Год 4</td>
+                                <td class="tg-hgcj">YR5<br>Год 5</td>
+                                <td class="tg-hgcj">End Target<br>Конечный целевой показатель</td>
+                            </tr>
+
+                            </thead>
+
+                            <tbody style="visibility: collapse">
+
+                            <tr>
+                                <td class="tg-hgcj" colspan="8">Project Development Objective Indicators<br>Индикаторы цели (ИЦ)</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Number of country-led plans <br>and programs that draw on <br>Program’s climate knowledge <br>services, including<br>lessons <br>from climate investments (Number)<br><br>ИЦ 2. Количество<br>планов и программ, <br>которые разработаны самими,<br>странами с учетом знаний и <br>уроков, предоставленных<br>программой (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countProgramm || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Cooperative action<br>resulting <br>in the financing of investments <br>that require collaboration across <br>countries. This collaborative action <br>could be supporting action in a <br>transboundary geographical <br>area or could include explicit <br>coordination actions<br>across countries<br>to maximize synergies to better <br>adapt to climate change in<br>relevant <br>national policies (Number)<br><br><br>ИЦ 3. Примеры совм. деятельности, <br>которые<br>привели к финансированию <br>инвестиций, требующих<br>сотрудничества стран (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.finInvest || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Additional resources mobilized for <br>knowledge,<br>capacity, and investment <br>for regional climate/green actions <br>through increased<br>Program-led <br>coordination between Central Asian <br>countries and development<br>community. (Amount (USD))<br><br>ИЦ 4. Объем дополнительно мобилизованных <br>ресурсов для<br>финансирования знаний, <br>поднятия потенциала и инвестиций<br>в <br>региональное сотрудничество в области <br>изменения климата/ «зеленой»<br>деятельности <br>как результат улучшенного уровня <br>программной координации между <br>странами ЦА и м/н сообществом, <br>поддерживающим развития (в<br>долларах США)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>${{data.mobileResurs.$numberDecimal || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$20 000 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$30 000 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-amwm" colspan="8">Intermediate Results Indicators<br>Индикаторы,промежуточных результатов,(ИПР)</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td class="tg-yw4l">Direct project beneficiaries (Number) - (Core)<br><br>ИПР 1.4 и 2.1 Число<br>бенефициаров проекта (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countComponent1 + data.countComponent2 || 0}}
+
+                                    <br>C1 - {{data.countComponent1 || 0}}
+                                    <br>C2 - {{data.countComponent2 || 0}}
+                                    <br>Tj - {{data.countBenificiarProjectTj || 0}}
+                                    <br>Uz - {{data.countBenificiarProjectUz || 0}}
+
+                                </td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Female beneficiaries <br>(Percentage -<br>Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.4 и 2.1 Число бенефициаров <br>проекта – женщин (в процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span>
+
+                                    <br>{{data.percentSum || 0}}%
+                                    <br>C1 - {{data.percentC1 || 0}}%
+                                    <br>C2 - {{data.percentC2 || 0}}%
+                                    <br>Tj - {{data.TjPercentWomen || 0}}%
+                                    <br>Uz - {{data.UzPercentWomen || 0}}%
+
+
+
+                                </td>
+                                <td class="tg-lqy6"><span class="custom__data__index">15%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Number of hectares in project <br>area covered by<br>effective agricultural, <br>land and water management practices <br>suited to local<br>agro-ecological conditions, <br>which can address climate change (Hectare(Ha))<br><br>ИПР 2.2 Охват проектом территорий (Га), <br>на которых осуществляются <br>эффективные с/х, земельные <br>и водные управленческие <br>мероприятия по борьбе с <br>изменением климата, учитывающие <br>местные агро-экологические условия (в гектарах (Га))</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span>
+
+
+                                    <br>{{data.areaGAProject || 0}}Га
+                                    <br>Tj - {{data.areaGAProjectTj || 0}}Га
+                                    <br>Uz - {{data.areaGAProjectUz || 0}}Га
+
+
+
+                                </td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                            </tr>
+
+                            <tr>
+                                <td class="tg-yw4l">Improved understanding of<br>gender-specific <br>implications of climate change <br>among key stakeholders and <br>implementation of key activities <br>(Number of Knowledge Product <br>events on gender<br>issues, cumulative)<br><br>ИПР 1.5 Улучшено понимание <br>последствий влияния<br>климата <br>на вопросы гендера среди <br>стейкхолдеров (Кол-во мероприятий <br>по повышению<br>уровня <br>знаний, посвященных гендерным вопросам)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{data.sumgenderevent || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">5</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">8</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Feedback/grievances resolved within <br>the<br>stipulated service standards <br>for response times (Percentage)<br><br>ИПР 3.1 Обратная связь/ жалобы, <br>удовлетворенные в срок и в <br>соответствие с заданным <br>стандартом услуг (в процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.countGRM}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">80%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                            </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+
+                        <div style="width: 100%; height: 500px; overflow-y: auto">
+
+                            <table class="tg">
+
+                                <thead style="visibility: collapse">
+
+                                <tr>
+                                    <th class="tg-hgcj" rowspan="2">Indicator Name<br>Название индикатора</th>
+                                    <th class="tg-hgcj" rowspan="2">Baseline<br>Исходные данные</th>
+                                    <th class="tg-hgcj" colspan="6">Cumulative Target Values<br>Совокупные целевые показатели</th>
+                                </tr>
+                                <tr>
+                                    <td class="tg-hgcj">YR1<br>Год 1</td>
+                                    <td class="tg-hgcj">YR2<br>Год 2</td>
+                                    <td class="tg-hgcj">YR3<br>Год 3</td>
+                                    <td class="tg-hgcj">YR4<br>Год 4</td>
+                                    <td class="tg-hgcj">YR5<br>Год 5</td>
+                                    <td class="tg-hgcj">End Target<br>Конечный целевой показатель</td>
+                                </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                <tr>
+                                    <td class="tg-hgcj" colspan="8">Project Development Objective Indicators<br>Индикаторы цели (ИЦ)</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Number of country-led plans <br>and programs that draw on <br>Program’s climate knowledge <br>services, including<br>lessons <br>from climate investments (Number)<br><br>ИЦ 2. Количество<br>планов и программ, <br>которые разработаны самими,<br>странами с учетом знаний и <br>уроков, предоставленных<br>программой (кол-во)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countProgramm || 0}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Cooperative action<br>resulting <br>in the financing of investments <br>that require collaboration across <br>countries. This collaborative action <br>could be supporting action in a <br>transboundary geographical <br>area or could include explicit <br>coordination actions<br>across countries<br>to maximize synergies to better <br>adapt to climate change in<br>relevant <br>national policies (Number)<br><br><br>ИЦ 3. Примеры совм. деятельности, <br>которые<br>привели к финансированию <br>инвестиций, требующих<br>сотрудничества стран (кол-во)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.finInvest || 0}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Additional resources mobilized for <br>knowledge,<br>capacity, and investment <br>for regional climate/green actions <br>through increased<br>Program-led <br>coordination between Central Asian <br>countries and development<br>community. (Amount (USD))<br><br>ИЦ 4. Объем дополнительно мобилизованных <br>ресурсов для<br>финансирования знаний, <br>поднятия потенциала и инвестиций<br>в <br>региональное сотрудничество в области <br>изменения климата/ «зеленой»<br>деятельности <br>как результат улучшенного уровня <br>программной координации между <br>странами ЦА и м/н сообществом, <br>поддерживающим развития (в<br>долларах США)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>${{data.mobileResurs.$numberDecimal || 0}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$20 000 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$30 000 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-amwm" colspan="8">Intermediate Results Indicators<br>Индикаторы,промежуточных результатов,(ИПР)</td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                </tr>
+
+
+                                <tr>
+                                    <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countPlatform}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                </tr>
+
+
+
+                                <tr>
+                                    <td class="tg-yw4l">Direct project beneficiaries (Number) - (Core)<br><br>ИПР 1.4 и 2.1 Число<br>бенефициаров проекта (кол-во)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countComponent1 + data.countComponent2 || 0}}
+
+                                        <br>C1 - {{data.countComponent1 || 0}}
+                                        <br>C2 - {{data.countComponent2 || 0}}
+                                        <br>Tj - {{data.countBenificiarProjectTj || 0}}
+                                        <br>Uz - {{data.countBenificiarProjectUz || 0}}
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Female beneficiaries <br>(Percentage -<br>Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.4 и 2.1 Число бенефициаров <br>проекта – женщин (в процентах)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span>
+
+                                        <br>{{data.percentSum || 0}}%
+                                        <br>C1 - {{data.percentC1 || 0}}%
+                                        <br>C2 - {{data.percentC2 || 0}}%
+                                        <br>Tj - {{data.TjPercentWomen || 0}}%
+                                        <br>Uz - {{data.UzPercentWomen || 0}}%
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">15%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Number of hectares in project <br>area covered by<br>effective agricultural, <br>land and water management practices <br>suited to local<br>agro-ecological conditions, <br>which can address climate change (Hectare(Ha))<br><br>ИПР 2.2 Охват проектом территорий (Га), <br>на которых осуществляются <br>эффективные с/х, земельные <br>и водные управленческие <br>мероприятия по борьбе с <br>изменением климата, учитывающие <br>местные агро-экологические условия (в гектарах (Га))</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span>
+
+
+                                        <br>{{data.areaGAProject || 0}}Га
+                                        <br>Tj - {{data.areaGAProjectTj || 0}}Га
+                                        <br>Uz - {{data.areaGAProjectUz || 0}}Га
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="tg-yw4l">Improved understanding of<br>gender-specific <br>implications of climate change <br>among key stakeholders and <br>implementation of key activities <br>(Number of Knowledge Product <br>events on gender<br>issues, cumulative)<br><br>ИПР 1.5 Улучшено понимание <br>последствий влияния<br>климата <br>на вопросы гендера среди <br>стейкхолдеров (Кол-во мероприятий <br>по повышению<br>уровня <br>знаний, посвященных гендерным вопросам)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{data.sumgenderevent || 0}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">5</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">8</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l">Feedback/grievances resolved within <br>the<br>stipulated service standards <br>for response times (Percentage)<br><br>ИПР 3.1 Обратная связь/ жалобы, <br>удовлетворенные в срок и в <br>соответствие с заданным <br>стандартом услуг (в процентах)</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.countGRM}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">80%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                                </tr>
+
+                                </tbody>
+
+
+                            </table>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="row" id="printmatrix" style="visibility: collapse">
+                    <div class="col-md-12">
+                        <style type="text/css">
+                            .tg__header  {border-collapse:collapse;border-spacing:0; width: 98.5%}
+                            .tg__header td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg__header th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg__header .tg-lqy6{text-align:right;vertical-align:top}
+                            .tg__header .tg-hgcj{font-weight:bold;text-align:center}
+                            .tg__header .tg-yw4l{vertical-align:top}
+                            .tg__header .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                        </style>
+
+
+
+                        <table class="tg__header">
+
+                            <thead>
+
+                            <tr>
+                                <th class="tg-hgcj" rowspan="2">Indicator Name<br>Название индикатора</th>
+                                <th class="tg-hgcj" rowspan="2">Baseline<br>Исходные данные</th>
+                                <th class="tg-hgcj" colspan="6">Cumulative Target Values<br>Совокупные целевые показатели</th>
+                            </tr>
+                            <tr>
+                                <td class="tg-hgcj">YR1<br>Год 1</td>
+                                <td class="tg-hgcj">YR2<br>Год 2</td>
+                                <td class="tg-hgcj">YR3<br>Год 3</td>
+                                <td class="tg-hgcj">YR4<br>Год 4</td>
+                                <td class="tg-hgcj">YR5<br>Год 5</td>
+                                <td class="tg-hgcj">End Target<br>Конечный целевой показатель</td>
+                            </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                            <tr>
+                                <td class="tg-hgcj" colspan="8">Project Development Objective Indicators<br>Индикаторы цели (ИЦ)</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Number of country-led plans <br>and programs that draw on <br>Program’s climate knowledge <br>services, including<br>lessons <br>from climate investments (Number)<br><br>ИЦ 2. Количество<br>планов и программ, <br>которые разработаны самими,<br>странами с учетом знаний и <br>уроков, предоставленных<br>программой (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countProgramm || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Cooperative action<br>resulting <br>in the financing of investments <br>that require collaboration across <br>countries. This collaborative action <br>could be supporting action in a <br>transboundary geographical <br>area or could include explicit <br>coordination actions<br>across countries<br>to maximize synergies to better <br>adapt to climate change in<br>relevant <br>national policies (Number)<br><br><br>ИЦ 3. Примеры совм. деятельности, <br>которые<br>привели к финансированию <br>инвестиций, требующих<br>сотрудничества стран (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.finInvest || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Additional resources mobilized for <br>knowledge,<br>capacity, and investment <br>for regional climate/green actions <br>through increased<br>Program-led <br>coordination between Central Asian <br>countries and development<br>community. (Amount (USD))<br><br>ИЦ 4. Объем дополнительно мобилизованных <br>ресурсов для<br>финансирования знаний, <br>поднятия потенциала и инвестиций<br>в <br>региональное сотрудничество в области <br>изменения климата/ «зеленой»<br>деятельности <br>как результат улучшенного уровня <br>программной координации между <br>странами ЦА и м/н сообществом, <br>поддерживающим развития (в<br>долларах США)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>${{data.mobileResurs.$numberDecimal || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$20 000 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$30 000 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-amwm" colspan="8">Intermediate Results Indicators<br>Индикаторы,промежуточных результатов,(ИПР)</td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                            </tr>
+
+
+                            <tr>
+                                <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                            </tr>
+
+
+
+                            <tr>
+                                <td class="tg-yw4l">Direct project beneficiaries (Number) - (Core)<br><br>ИПР 1.4 и 2.1 Число<br>бенефициаров проекта (кол-во)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countComponent1 + data.countComponent2 || 0}}
+
+                                    <br>C1 - {{data.countComponent1 || 0}}
+                                    <br>C2 - {{data.countComponent2 || 0}}
+                                    <br>Tj - {{data.countBenificiarProjectTj || 0}}
+                                    <br>Uz - {{data.countBenificiarProjectUz || 0}}
+
+                                </td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Female beneficiaries <br>(Percentage -<br>Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.4 и 2.1 Число бенефициаров <br>проекта – женщин (в процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span>
+
+                                    <br>{{data.percentSum || 0}}%
+                                    <br>C1 - {{data.percentC1 || 0}}%
+                                    <br>C2 - {{data.percentC2 || 0}}%
+                                    <br>Tj - {{data.TjPercentWomen || 0}}%
+                                    <br>Uz - {{data.UzPercentWomen || 0}}%
+
+
+
+                                </td>
+                                <td class="tg-lqy6"><span class="custom__data__index">15%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Number of hectares in project <br>area covered by<br>effective agricultural, <br>land and water management practices <br>suited to local<br>agro-ecological conditions, <br>which can address climate change (Hectare(Ha))<br><br>ИПР 2.2 Охват проектом территорий (Га), <br>на которых осуществляются <br>эффективные с/х, земельные <br>и водные управленческие <br>мероприятия по борьбе с <br>изменением климата, учитывающие <br>местные агро-экологические условия (в гектарах (Га))</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span>
+
+
+                                    <br>{{data.areaGAProject || 0}}Га
+                                    <br>Tj - {{data.areaGAProjectTj || 0}}Га
+                                    <br>Uz - {{data.areaGAProjectUz || 0}}Га
+
+
+
+                                </td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                            </tr>
+
+                            <tr>
+                                <td class="tg-yw4l">Improved understanding of<br>gender-specific <br>implications of climate change <br>among key stakeholders and <br>implementation of key activities <br>(Number of Knowledge Product <br>events on gender<br>issues, cumulative)<br><br>ИПР 1.5 Улучшено понимание <br>последствий влияния<br>климата <br>на вопросы гендера среди <br>стейкхолдеров (Кол-во мероприятий <br>по повышению<br>уровня <br>знаний, посвященных гендерным вопросам)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{data.sumgenderevent || 0}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">5</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">8</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                            </tr>
+                            <tr>
+                                <td class="tg-yw4l">Feedback/grievances resolved within <br>the<br>stipulated service standards <br>for response times (Percentage)<br><br>ИПР 3.1 Обратная связь/ жалобы, <br>удовлетворенные в срок и в <br>соответствие с заданным <br>стандартом услуг (в процентах)</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.countGRM}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">80%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                            </tr>
+
+                            </tbody>
+
+
+                        </table>
+                    </div>
+
+                </div>
+
+
+
 
             </md-card>
 
@@ -269,10 +696,6 @@
 
 
 
-        </div>
-
-
-    </div>
 
 
 
@@ -280,6 +703,11 @@
 
 
 
+
+
+        </md-content>
+
+</div>
 
 </div>
 

@@ -76,8 +76,11 @@ module.exports = {
                 dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
                 timeToCheckComplaint: objParams.timeToCheckComplaint,
 
+
+
                 assessmentQualitySatisfactionComplaint: Int32(objParams.assessmentQualitySatisfactionComplaint),
 
+                timeOfSatisfaction: "В срок"
 
 
             });
@@ -294,6 +297,36 @@ module.exports = {
         try {
 
 
+            const colForTimeSatisfaction = dbConnect.getConnect().collection('grm');
+            let dateNow = new Date( new Date().getTime() - ( new Date().getTimezoneOffset() * 60000 ) );
+
+            let timeOfSatisfaction = "";
+
+            const resultForTimeSatisfaction = await colForTimeSatisfaction.findOne({_id: ObjectId(objParams.id), lastDateAnswer: {$lt: dateNow}});
+
+
+
+            if (resultForTimeSatisfaction !== null){
+
+
+                timeOfSatisfaction = "Просрочен";
+
+            } else {
+
+                timeOfSatisfaction = "В срок";
+            }
+
+
+
+
+
+
+
+
+
+
+
+
             const col = dbConnect.getConnect().collection('grm');
 
 
@@ -346,6 +379,7 @@ module.exports = {
 
                         assessmentQualitySatisfactionComplaint: Int32(objParams.assessmentQualitySatisfactionComplaint),
 
+                        timeOfSatisfaction: timeOfSatisfaction
 
                     }},
 
@@ -423,7 +457,7 @@ module.exports = {
             const result = await col.aggregate( [
                 {$match: {}},
 
-                { $project: { dateDifference: { $subtract: [ "$lastDateAnswer", new Date()] } } }
+                { $project: { dateDifference: { $subtract: [ "$lastDateAnswer", date] } } }
 
 
 

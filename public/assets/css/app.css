@@ -668,3 +668,7 @@ md-datepicker.custom__datepicker__report__criteriy > div.md-datepicker-input-con
 
     min-width: 150px;
 }
+
+.custom__data__index {
+    color: grey; font-size: 12px
+}

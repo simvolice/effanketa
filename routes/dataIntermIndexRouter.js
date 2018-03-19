@@ -13,9 +13,9 @@ const DataIntermedIndexService = require('../services/DataIntermedIndexService')
 
 
 
-router.post('/getreportuserssatisfied', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportallforms', checkSeesionToken, async (req, res, next) =>{
 
-    let result = await DataIntermedIndexService.getUserSatisfaction(req.body.data);
+    let result = await DataIntermedIndexService.getAllForm(req.body.data);
 
     res.json({"code": "ok", "resultFromDb": result});
 
@@ -95,6 +95,19 @@ router.post('/getreportsumgaproject', checkSeesionToken, async (req, res, next) 
 
 router.post('/getreportcountcompletegrm', checkSeesionToken, async (req, res, next) =>{
     let result = await DataIntermedIndexService.getReportCountCompleteGRM(req.body.data);
+
+
+    res.json({"code": "ok", "resultFromDb": result});
+
+
+
+
+});
+
+
+
+router.post('/getreportsumgenderevent', checkSeesionToken, async (req, res, next) =>{
+    let result = await DataIntermedIndexService.getReportSumGenderEvent(req.body.data);
 
 
     res.json({"code": "ok", "resultFromDb": result});

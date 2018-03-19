@@ -10,8 +10,8 @@
 
 
 
-angular.module('app').factory("GetReportUsersSatisfied", function($resource) {
-    return $resource("/getreportuserssatisfied");
+angular.module('app').factory("GetReportAllForms", function($resource) {
+    return $resource("/getreportallforms");
 });
 
 
@@ -49,4 +49,9 @@ angular.module('app').factory("GetReportSumGAProject", function($resource) {
 
 angular.module('app').factory("GetReportCountCompleteGRM", function($resource) {
     return $resource("/getreportcountcompletegrm");
+});
+
+
+angular.module('app').factory("GetReportSumGenderEvent", function($resource) {
+    return $resource("/getreportsumgenderevent");
 });

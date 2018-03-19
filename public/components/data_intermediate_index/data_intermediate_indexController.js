@@ -4,27 +4,14 @@
 
 
 
-angular.module('app').controller('DataIntermediateIndexCtrl', function ($scope, $window, GetYearName, GetReportUsersSatisfied, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
+angular.module('app').controller('DataIntermediateIndexCtrl', function (GetReportSumGenderEvent, $scope, $window, GetYearName, GetReportAllForms, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
 
-$scope.data = {
 
-    persentUsersSatisfied: 0,
-    countProgramm: 0,
-    finInvest: 0,
-    mobileResurs: 0,
-    countFormIT: 0,
-    countCivilService: 0,
-    countPlatform: 0,
-    countClimateNetworks: 0,
-    genderFromClimate: 0,
-    countBenificiarProject: 0,
-    countBenificiarProjectWomen: 0,
-    countBenificiarProjectInPersent: 0,
-    areaGAProject: 0,
-    countGRM: 0,
-    countTrasactionOnProject: 0
 
-};
+    $scope.data = {};
+
+
+
 
 
     GetYearName.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(entry) {
@@ -37,60 +24,42 @@ $scope.data = {
     });
 
 
-    /*
-    Считаем процент, на основе 5 бальной оценки в тесте.
-     */
-    $scope.calculatePercent = function (num) {
-
-        let result = num*100/5;
-        return result.toFixed(0);
-    };
 
 
 
     /*
-    Считаем процент, для бенефициаров, включая женщин, за базу взяли 1 000 000.
-     */
-    $scope.calculatePercentForcountBenificiarProject = function (num) {
-
-        let result = num*100/1000000;
-        return result.toFixed(3);
-    };
+  Поиск 100 процентов
+   */
+    $scope.calculatePercent = function (numberBase, value) {
 
 
-    /*
-    Процент одного числа от другого
-     */
-    $scope.calculatePercentNumComplaintWithYes = function (numAllComplaint, numComplaintWithYes) {
+        if (value === 0) {
 
-        let result = numComplaintWithYes * 100 / numAllComplaint;
-        return result.toFixed(0);
+            return 0;
+
+        } else {
+
+
+            let result = value * 100 / numberBase;
+            return result.toFixed(1);
+
+        }
+
+
     };
 
 
     $scope.generateReport = function () {
 
-        //10 показателей
 
 
-        GetReportUsersSatisfied.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
+        GetReportAllForms.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
 
-            if (entry.resultFromDb.length !== 0) {
+            let numberBase = entry.resultFromDb[0].getAllCount.length === 0 ? 0 : entry.resultFromDb[0].getAllCount[0].countAll;
+            let value = entry.resultFromDb[0].getAllGoodTestResult.length === 0 ? 0 : entry.resultFromDb[0].getAllGoodTestResult[0].countAll;
 
-
-
-
-                $scope.data.persentUsersSatisfied = $scope.calculatePercent(entry.resultFromDb[0].average);
-                $scope.data.countFormIT = $scope.calculatePercent(entry.resultFromDb[0].average);
-
-
-            } else {
-
-                $scope.data.persentUsersSatisfied = 0;
-                $scope.data.countFormIT = 0;
-
-            }
+            $scope.data.allFormPercent = $scope.calculatePercent(numberBase, value);
 
 
 
@@ -105,10 +74,6 @@ $scope.data = {
 
                 $scope.data.countProgramm = entry.resultFromDb[0].all_programm;
 
-
-            } else {
-
-                $scope.data.countProgramm = 0;
 
             }
 
@@ -128,13 +93,7 @@ $scope.data = {
 
 
 
-            } else {
-
-                $scope.data.finInvest = 0;
-
-
             }
-
 
 
 
@@ -151,12 +110,7 @@ $scope.data = {
 
 
 
-            } else {
-
-                $scope.data.mobileResurs = 0;
-
             }
-
 
 
 
@@ -164,7 +118,7 @@ $scope.data = {
 
 
 
-        GetReportCountPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
+       GetReportCountPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
             if (entry.resultFromDb.length !== 0) {
 
@@ -172,36 +126,47 @@ $scope.data = {
                 $scope.data.countPlatform = entry.resultFromDb[0].all_platform;
 
 
-            } else {
-
-                $scope.data.countPlatform = 0;
-
             }
-
 
 
 
         });
 
 
-        GetReportCountBenificiarProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
-
+         GetReportCountBenificiarProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
 
 
             if (entry.resultFromDb.length !== 0) {
 
 
-                $scope.data.countBenificiarProject = entry.resultFromDb[0].categByAll[0].all_benificiar;
+                $scope.data.countComponent1 = entry.resultFromDb[1][0].allEventSumPeople[0].all_countPeopleEventCommon;
+                $scope.data.countComponent2 = entry.resultFromDb[0].categByAll[0].all_benificiar;
                 $scope.data.countBenificiarProjectTj = entry.resultFromDb[0].categByTj[0].all_benificiar;
                 $scope.data.countBenificiarProjectUz = entry.resultFromDb[0].categByUz[0].all_benificiar;
 
 
-            } else {
 
-                $scope.data.countBenificiarProject = 0;
-                $scope.data.countBenificiarProjectTj = 0;
-                $scope.data.countBenificiarProjectUz = 0;
+
+
+                $scope.sumComponents = $scope.data.countComponent1 + $scope.data.countComponent2;
+
+                $scope.sumWomen = entry.resultFromDb[1][0].allEventSumWomen[0].all_countWomanEventCommon + entry.resultFromDb[0].categByAllWomen[0].all_benificiar;
+
+
+                $scope.data.percentSum = $scope.calculatePercent($scope.sumComponents, $scope.sumWomen);
+
+
+                $scope.data.percentC1 = $scope.calculatePercent($scope.data.countComponent1, entry.resultFromDb[1][0].allEventSumWomen[0].all_countWomanEventCommon);
+
+                $scope.data.percentC2 = $scope.calculatePercent($scope.data.countComponent2, entry.resultFromDb[0].categByAllWomen[0].all_benificiar);
+
+                $scope.data.TjPercentWomen = $scope.calculatePercent($scope.data.countBenificiarProjectTj, entry.resultFromDb[0].categByTjWomen[0].all_benificiar);
+
+                $scope.data.UzPercentWomen = $scope.calculatePercent($scope.data.countBenificiarProjectUz, entry.resultFromDb[0].categByUzWomen[0].all_benificiar);
+
+
+
 
             }
 
@@ -212,7 +177,7 @@ $scope.data = {
 
 
 
-        GetReportSumGAProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
+       GetReportSumGAProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
 
             if (entry.resultFromDb.length !== 0) {
@@ -222,12 +187,6 @@ $scope.data = {
                 $scope.data.areaGAProjectUz = entry.resultFromDb[0].categByUz[0].all_gaproject;
 
 
-            } else {
-
-                $scope.data.areaGAProject = 0;
-                $scope.data.areaGAProjectTj = 0;
-                $scope.data.areaGAProjectUz = 0;
-
             }
 
 
@@ -235,23 +194,16 @@ $scope.data = {
         });
 
 
-        GetReportCountCompleteGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
+        GetReportSumGenderEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
 
 
 
 
             if (entry.resultFromDb.length !== 0) {
 
-                $scope.data.countGRM = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYes[0].all_completegrmWithYes);
-                $scope.data.countGRMTj = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrmTj[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYesTj[0].all_completegrmWithYes);
-                $scope.data.countGRMUz = $scope.calculatePercentNumComplaintWithYes(entry.resultFromDb[0].categorizedByAllCompletegrmUz[0].all_completegrm, entry.resultFromDb[0].categorizedByWithYesUz[0].all_completegrmWithYes);
+                $scope.data.sumgenderevent = entry.resultFromDb[0].countAll;
 
 
-            } else {
-
-                $scope.data.countGRM = 0;
-                $scope.data.countGRMTj = 0;
-                $scope.data.countGRMUz = 0;
             }
 
 
@@ -263,27 +215,64 @@ $scope.data = {
 
 
 
+         GetReportCountCompleteGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.yearname}, function(entry) {
+
+
+
+
+            if (entry.resultFromDb.length !== 0) {
+
+                $scope.data.countGRM = $scope.calculatePercent(entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction[0].all_completegrmWithTimeOfSatisfaction);
+
+
+            }
+
+
+        });
+
+
+
+
+
     };
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
     $scope.print = function () {
-        $window.print();
+        $("#printmatrix").css("visibility", "visible");
+        $("#printmatrix").print();
+        $("#printmatrix").css("visibility", "collapse");
     };
+
+
+
+
+
 
     $scope.excel = function () {
 
 
-        let sheetName = "Тестовый лист";
-        let fileName = "report.xlsx";
+        let sheetName = "Матрица результатов";
+        let fileName = "Матрица результатов и их мониторинга.xlsx";
 
 
 
 
 
 
-        var allHtmlTable = document.getElementById('tableau');
+        var allHtmlTable = document.getElementById('printmatrix');
         var workbook = XLSX.utils.table_to_book(allHtmlTable);
 
 
@@ -292,7 +281,6 @@ $scope.data = {
         delete workbook.Sheets["Sheet1"];
 
 
-        console.log(workbook);
 
 
         var wopts = {bookType: 'xlsx', bookSST: false, type: 'binary'};

@@ -10,15 +10,14 @@
 
 const dbConnect = require('../utils/dbConnect');
 
-const ObjectId = require('mongodb').ObjectId;
+
 
 const NameYear = require('../services/NameYear');
-const GrmStatusService = require('../services/GrmStatusService');
 
 
 module.exports = {
 
-    getUserSatisfaction: async (yearId) => {
+    getAllForm: async (yearId) => {
 
 
 
@@ -34,55 +33,246 @@ module.exports = {
             let nameYear = await NameYear.getYearById(yearId);
 
 
-            const result = await col.aggregate([{
+            const result = await col.aggregate([
 
-                            $match: {}
 
-                        },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
+
+                {
+
+
+                    $facet:
+
+                        {
+
+                            "getAllGoodTestResult":  [
+
+
+                                {
+
+                                    $match: {}
+
+                                },
+
+                                {
+                                    $addFields:
+                                        {
+                                            year: { $year: "$myDate" },
+
+                                        }
+                                },
+
+
+                                {
+
+                                    $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий"}
+
+                                },
+
+                                {
+                                    $lookup:
+                                        {
+                                            from: "forms",
+                                            localField: "_id",
+                                            foreignField: "parentId",
+                                            as: "forms_docs"
+                                        }
+                                },
+                                { $unwind : "$forms_docs" },
+
+                                {
+                                    $replaceRoot: { newRoot: "$forms_docs" }
+                                },
+
+
+
+                                {
+                                    $match : {
+
+
+                                        $or: [
+
+
+                                            {"ques12": 5},
+
+                                            {"ques12": 4}
+
+                                        ]
+
 
                                     }
-                            },
+                                },
 
-
-                            {
-
-                                $match: {year: nameYear.codeName}
-
-                            },
-
-                            {
-                                $lookup:
-                                    {
-                                        from: "forms",
-                                        localField: "_id",
-                                        foreignField: "parentId",
-                                        as: "forms_docs"
-                                    }
-                            },
-                            { $unwind : "$forms_docs" },
-
-                            {
-                                $replaceRoot: { newRoot: "$forms_docs" }
-                            },
-
-
-
-                            {
-                                $group : {
-                                    _id : null,
-                                    average: { $avg: "$ques12" }
-
-
+                                {
+                                    $count : "countAll"
                                 }
-                            }
+
+
+
+
+
+                            ],
+
+
+                            "getAllCount":  [
+
+
+                                {
+
+                                    $match: {}
+
+                                },
+
+                                {
+                                    $addFields:
+                                        {
+                                            year: { $year: "$myDate" },
+
+                                        }
+                                },
+
+
+                                {
+
+                                    $match: {year: nameYear.codeName}
+
+                                },
+
+                                {
+                                    $lookup:
+                                        {
+                                            from: "forms",
+                                            localField: "_id",
+                                            foreignField: "parentId",
+                                            as: "forms_docs"
+                                        }
+                                },
+                                { $unwind : "$forms_docs" },
+
+                                {
+                                    $replaceRoot: { newRoot: "$forms_docs" }
+                                },
+
+
+
+                                {
+                                    $count : "countAll"
+                                }
+
+
+
+
+                            ]
+
+
+
+                        }
+
+
+
+
+
+
+
+
+                }
+
+
 
 
                         ]).toArray();
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+    },
+
+
+    getReportSumGenderEvent: async (yearId) => {
+
+
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('events');
+
+
+
+            let nameYear = await NameYear.getYearById(yearId);
+
+
+            const result = await col.aggregate([
+
+
+
+
+                {
+
+                    $match: {}
+
+                },
+
+                {
+                    $addFields:
+                        {
+                            year: { $year: "$myDate" },
+
+                        }
+                },
+
+
+                {
+
+                    $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий",
+
+
+                        $or: [{nameSubTypeEvent: "Частично"},
+                            {nameSubTypeEvent: "Полностью"}
+
+                        ]
+
+
+                    }
+
+                },
+
+
+
+                {
+                    $count : "countAll"
+                }
+
+
+
+
+
+
+            ]).toArray();
 
 
 
@@ -428,10 +618,106 @@ module.exports = {
 
 
             const col = dbConnect.getConnect().collection('credits');
+            const colEvents = dbConnect.getConnect().collection('events');
 
 
 
             let nameYear = await NameYear.getYearById(yearId);
+
+
+
+            const resultEvents = await colEvents.aggregate([
+
+
+                {
+
+                    $facet: {
+
+                        allEventSumPeople: [
+
+                            {
+
+                                $match: {}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: {$year: "$createAt"},
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий"}
+
+                            },
+
+
+                            {
+                                $group: {
+
+                                    _id: null,
+                                    all_countPeopleEventCommon: {$sum: "$countPeopleEventCommon"}
+
+
+                                }
+                            }
+
+
+                        ],
+
+
+                        allEventSumWomen: [
+
+                            {
+
+                                $match: {}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: {$year: "$createAt"},
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий"}
+
+                            },
+
+
+                            {
+                                $group: {
+
+                                    _id: null,
+                                    all_countWomanEventCommon: {$sum: "$countWomanEventCommon"}
+
+
+                                }
+                            }
+
+
+                        ]
+
+
+                    }
+
+                }
+
+
+
+
+
+        ]).toArray();
 
 
             const result = await col.aggregate([
@@ -486,7 +772,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -525,7 +811,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -565,11 +851,136 @@ module.exports = {
                         ],
 
 
+                        categByAllWomen: [
+
+
+                            {
+
+                                $match: {}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$createAt" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName}
+
+                            },
+
+
+
+                            {
+                                $group : {
+
+                                    _id: null,
+                                    all_benificiar: {$sum: "$DirectBeneficiariesFemale"}
+
+
+                                }
+                            }
+
+
+                        ],
 
 
 
 
-                    }}
+                        categByTjWomen: [
+
+                            {
+
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$createAt" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName}
+
+                            },
+
+
+
+                            {
+                                $group : {
+
+                                    _id: null,
+                                    all_benificiar: {$sum: "$DirectBeneficiariesFemale"}
+
+
+                                }
+                            }
+
+
+
+                        ],
+                        categByUzWomen: [
+
+
+                            {
+
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$createAt" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: nameYear.codeName}
+
+                            },
+
+
+
+                            {
+                                $group : {
+
+                                    _id: null,
+                                    all_benificiar: {$sum: "$DirectBeneficiariesFemale"}
+
+
+                                }
+                            }
+
+
+
+
+
+
+
+                        ],
+
+
+
+                    }
+
+
+                }
 
 
 
@@ -579,6 +990,9 @@ module.exports = {
             ]).toArray();
 
 
+
+
+            result.push(resultEvents);
 
 
             return result;
@@ -660,7 +1074,7 @@ module.exports = {
 
                                     _id: null,
 
-                                    all_gaproject: {$sum: "$CreatePowerFact"}
+                                    all_gaproject: {$sum: "$CreatePowerPlan"}
 
 
                                 }
@@ -676,7 +1090,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Таджикистан"}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -702,7 +1116,7 @@ module.exports = {
 
                                     _id: null,
 
-                                    all_gaproject: {$sum: "$CreatePowerFact"}
+                                    all_gaproject: {$sum: "$CreatePowerPlan"}
 
 
                                 }
@@ -717,7 +1131,7 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "Узбекистан"}
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
 
                             },
 
@@ -743,7 +1157,7 @@ module.exports = {
 
                                     _id: null,
 
-                                    all_gaproject: {$sum: "$CreatePowerFact"}
+                                    all_gaproject: {$sum: "$CreatePowerPlan"}
 
 
                                 }
@@ -833,14 +1247,14 @@ module.exports = {
 
                             {
 
-                                $match: {statusName: "Завершен"}
+                                $match: {}
 
                             },
 
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$dateInGo" },
 
                                     }
                             },
@@ -863,18 +1277,18 @@ module.exports = {
 
 
 
-                        "categorizedByWithYes": [
+                        "categorizedByWithTimeOfSatisfaction": [
 
                             {
 
-                                $match: {satisfiedMeasuresTaken: "Да", statusName: "Завершен"}
+                                $match: {}
 
                             },
 
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$dateInGo" },
 
                                     }
                             },
@@ -882,7 +1296,16 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {
+
+                                    year: nameYear.codeName,
+
+                                    timeOfSatisfaction: "В срок",
+
+
+                                    $or: [{assessmentQualitySatisfactionComplaint: 5}, {assessmentQualitySatisfactionComplaint: 4}]
+
+                                }
 
                             },
 
@@ -891,151 +1314,11 @@ module.exports = {
 
 
                             {
-                                $count : "all_completegrmWithYes"
+                                $count : "all_completegrmWithTimeOfSatisfaction"
                             }
 
                         ],
 
-
-
-                        "categorizedByAllCompletegrmTj": [
-
-
-                            {
-
-                                $match: {statusName: "Завершен", nameCountry: "Таджикистан"}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$createAt" },
-
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName}
-
-                            },
-
-
-                            {
-                                $count : "all_completegrm"
-                            }
-
-
-                        ],
-
-
-
-
-                        "categorizedByWithYesTj": [
-
-                            {
-
-                                $match: {statusName: "Завершен", satisfiedMeasuresTaken: "Да", nameCountry: "Таджикистан"}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$createAt" },
-
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName}
-
-                            },
-
-
-
-
-
-                            {
-                                $count : "all_completegrmWithYes"
-                            }
-
-                        ],
-
-
-
-
-                        "categorizedByAllCompletegrmUz": [
-
-
-                            {
-
-                                $match: {statusName: "Завершен", nameCountry: "Узбекистан"}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$createAt" },
-
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName}
-
-                            },
-
-
-                            {
-                                $count : "all_completegrm"
-                            }
-
-
-                        ],
-
-
-
-
-                        "categorizedByWithYesUz": [
-
-                            {
-
-                                $match: {statusName: "Завершен", satisfiedMeasuresTaken: "Да", nameCountry: "Узбекистан"}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$createAt" },
-
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName}
-
-                            },
-
-
-
-
-
-                            {
-                                $count : "all_completegrmWithYes"
-                            }
-
-                        ],
 
 
 
