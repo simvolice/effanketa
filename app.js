@@ -78,8 +78,8 @@ async function initApp() {
 
     await scheduler.changeStatusOnComplaint();
 
-    //TODO затестировать, потом в продакт
-    // await scheduler.sendEmailNotificationOnWriteForm()
+
+    await scheduler.sendEmailNotificationOnWriteForm();
 
     await CounterService.initialCounter();
 

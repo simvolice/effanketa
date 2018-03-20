@@ -9,7 +9,14 @@
 const Agenda = require('agenda');
 const querystring = require('querystring');
 const GrmService = require('../services/GrmService');
-const GrmStatusService = require('../services/GrmStatusService');
+const request = require('request');
+
+const util = require('util');
+
+
+const requestPromise = util.promisify(request);
+
+
 const SendFormService = require('../services/SendFormService');
 const FormService = require('../services/FormService');
 
@@ -110,7 +117,7 @@ module.exports = {
 
 
       agenda.on('ready', function() {
-          agenda.every('1 day','changeStatusOnComplaint');
+          agenda.every('1 day','changeStatusOnComplaint', null, {timezone: "Asia/Dhaka"}, null);
           agenda.start();
       });
 
@@ -125,7 +132,7 @@ module.exports = {
 
 
     //TODO Надо пользоваться уже готовым апи для отсылки письма
-  /*sendEmailNotificationOnWriteForm: async ()=> {
+  sendEmailNotificationOnWriteForm: async ()=> {
 
 
 
@@ -133,6 +140,11 @@ module.exports = {
         agenda.define('sendEmailNotificationOnWriteForm', async(job, done)=> {
 
             let allEmails = await SendFormService.getAllFormEmails();
+
+
+
+
+
 
 
 
@@ -150,21 +162,26 @@ module.exports = {
 
                     if (oneForms === null) {
 
-                        let urlToPublicForm = querystring.stringify({ parentId: item.parentId, country: item.country, dateOfEvent: item.dateOfEvent, nameEvent: item.nameEvent,
-                            nameCountry: item.nameCountry});
+
+
+                        let urlForNotif = querystring.stringify({
+
+                            parentId: item.parentId,
+
+                            country: item.country,
+                            dateOfEvent: item.dateOfEvent,
+                            nameEvent: item.nameEvent,
+                            nameCountry: item.nameCountry,
+                            email: emailItem
+
+                        });
 
 
 
 
-                            let mail = {
-                                from: "simvolice@gmail.com",
-                                to: objParams.email,
-                                subject: "Добрый день, просим Вас заполнить анкету",
+                       await requestPromise.get(`${process.env.HOSTNAME}/sendnotif?${urlForNotif}`);
 
-                                html: '<a href="'+ "http://localhost:3000" + '/?#!/publicform?' + urlToPublicForm +'">Перейдите по этой ссылке, чтобы заполнить анкету</a>'
-                            }; //TODO Потом надо отвязаться от вшитого домена
 
-                            transporter.sendMail(mail);
 
 
                     } else {
@@ -200,7 +217,6 @@ module.exports = {
 
 
 
-
         });
 
 
@@ -208,7 +224,11 @@ module.exports = {
 
 
         agenda.on('ready', function() {
-            agenda.every('1 week', 'sendEmailNotificationOnWriteForm');
+
+            agenda.every( "1 week", 'sendEmailNotificationOnWriteForm', null, {timezone: "Asia/Dhaka"}, null);
+
+
+
             agenda.start();
         });
 
@@ -217,7 +237,7 @@ module.exports = {
 
 
 
-    }*/
+    }
 
 
 

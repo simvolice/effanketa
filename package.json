@@ -13,7 +13,7 @@
     "version:patch": "npm version patch"
   },
   "dependencies": {
-    "agenda": "^1.0.0",
+    "agenda": "^1.0.3",
     "async-busboy": "^0.6.1",
     "bcryptjs": "^2.4.0",
     "body-parser": "~1.17.1",
@@ -31,6 +31,7 @@
     "morgan": "~1.7.0",
     "nodemailer": "^2.7.0",
     "nodemailer-express-handlebars": "^2.0.0",
+    "request": "^2.85.0",
     "serve-favicon": "~2.3.0",
     "snyk": "^1.24.6",
     "uuid": "^3.0.1",

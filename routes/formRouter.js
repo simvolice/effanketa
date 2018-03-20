@@ -125,6 +125,55 @@ router.post('/getoneform', checkSeesionToken, async (req, res, next) =>{
 
 
 
+
+router.get('/sendnotif', async (req, res, next) =>{
+
+
+
+    let urlToPublicForm = querystring.stringify({
+
+        parentId: req.query.parentId,
+
+        country: req.query.country,
+        dateOfEvent: req.query.dateOfEvent,
+        nameEvent: req.query.nameEvent,
+        nameCountry: req.query.nameCountry
+
+    });
+
+
+
+
+
+        let mail = {
+            from: process.env.MAIL_SENDER,
+            to: req.query.email,
+            subject: "Уважаемый участник, просим Вас заполнить анкету для системы CAMP4ASB",
+
+
+            template: 'mail_send_form',
+            context: {
+                nameEvent: req.query.nameEvent,
+                dateEvent: formatter.format(new Date(req.query.dateOfEvent)),
+                nameCountry: req.query.nameCountry,
+                url: `${req.protocol}://${req.get('host')}/?#!/publicform?${urlToPublicForm}`
+            }
+
+
+        };
+
+        transporter.sendMail(mail);
+
+
+
+
+
+    res.json({"code": 0});
+
+});
+
+
+
 router.post('/sendformforemail', checkSeesionToken, async (req, res, next) =>{
 
     await SendFormService.sendFormEmails(req.body.data);
