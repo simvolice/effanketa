@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать анкету</h2>
+                <h2>{{ 'CREATE_FORM' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -32,7 +32,7 @@
                                 <div class="col-md-12">
                                     <div class="row">
 
-                                        <h4 class="text-center"><strong>Анкета-опрос о проведенном мероприятии</strong></h4>
+                                        <h4 class="text-center"><strong>{{ 'ABOUT_FORM' | translate }}</strong></h4>
 
                                     </div>
 
@@ -44,7 +44,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">event</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Дата проведения: <strong>{{data.myDate | date : "dd.MM.y"}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>{{ 'DATE_EVENT' | translate }}: <strong>{{data.myDate | date : "dd.MM.y"}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -56,7 +56,7 @@
                                              <span class="input-group-addon">
                                               <i class="material-icons">location_on</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Место проведения: <strong>{{data.nameCountry}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>{{ 'PLACE_EVENT' | translate }}: <strong>{{data.nameCountry}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -66,7 +66,7 @@
                                              <span class="input-group-addon">
                                             <i class="material-icons">event_available</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Название мероприятия: <strong>{{data.nameEvent}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>{{ 'NAME_EVENT' | translate }}: <strong>{{data.nameEvent}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -77,8 +77,7 @@
 
                                     <div class="row">
 
-                                        <p class="text-center"><strong>Уважаемый участник,
-                                            Любезно просим Вас, ответить на вопросы анкеты, которая поможет улучшить содержательную и организационную части последующих мероприятий, организуемых в рамках проекта CAMP4ASB. Информация будет использована в обобщенном виде, и Вы можете заполнить анкету без указания персональных данных.</strong></p>
+                                        <p class="text-center"><strong>{{ 'MESSAGE_FOR_PERSON' | translate }}</strong></p>
 
 
 
@@ -91,7 +90,7 @@
                                     <div class="row">
 
                                         <md-input-container class="md-icon-float md-block">
-                                            <label>Электронный ящик</label>
+                                            <label>Email</label>
                                             <md-icon class="material-icons">email</md-icon>
 
                                             <input type="email" ng-model="data.email">
@@ -109,8 +108,7 @@
                                              </span>
                                             <div class="form-group is-empty">
 
-                                                <h5><strong>На сколько Вы согласны со следующими
-                                                    утверждениями:</strong></h5>
+                                                <h5><strong>{{ 'TITLE_FORM' | translate }}</strong></h5>
 
                                                 <span class="material-input"></span></div>
                                         </div>
@@ -133,7 +131,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -169,7 +167,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -204,7 +202,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -240,7 +238,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -274,7 +272,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -310,7 +308,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -346,7 +344,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -382,7 +380,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -419,7 +417,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -455,7 +453,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -491,7 +489,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -527,7 +525,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -567,7 +565,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -603,7 +601,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -641,7 +639,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -677,7 +675,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -712,7 +710,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -748,7 +746,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -783,7 +781,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -819,7 +817,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -856,7 +854,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью не согласен</p>
+                                                        <p>{{ 'NOT_QUESTION' | translate }}</p>
 
 
 
@@ -892,7 +890,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Полностью согласен</p>
+                                                        <p>{{ 'YES_QUESTION' | translate }}</p>
 
 
 
@@ -980,7 +978,7 @@
 
 
                                                         <md-input-container class="md-block">
-                                                            <label>Текст</label>
+                                                            <label>{{ 'ANSWER' | translate }}</label>
                                                             <textarea ng-model="data.ques13" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
@@ -1022,7 +1020,7 @@
 
 
                                                         <md-input-container class="md-block">
-                                                            <label>Текст</label>
+                                                            <label>{{ 'ANSWER' | translate }}</label>
                                                             <textarea ng-model="data.ques14" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
@@ -1064,7 +1062,7 @@
 
 
                                                         <md-input-container class="md-block">
-                                                            <label>Текст</label>
+                                                            <label>{{ 'ANSWER' | translate }}</label>
                                                             <textarea ng-model="data.ques15" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
@@ -1106,7 +1104,7 @@
 
 
                                                         <md-input-container class="md-block">
-                                                            <label>Текст</label>
+                                                            <label>{{ 'ANSWER' | translate }}</label>
                                                             <textarea ng-model="data.ques16" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
@@ -1145,7 +1143,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Плохо</p>
+                                                        <p>{{ 'BAD' | translate }}</p>
 
 
 
@@ -1181,7 +1179,7 @@
                                                     <div class="row">
 
 
-                                                        <p>Очень хорошо</p>
+                                                        <p>{{ 'VERY_GOOD' | translate }}</p>
 
 
 
@@ -1221,7 +1219,7 @@
 
 
                                                         <md-input-container class="md-block">
-                                                            <label>Текст</label>
+                                                            <label>{{ 'ANSWER' | translate }}</label>
                                                             <textarea ng-model="data.ques18" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                                         </md-input-container>
 
@@ -1252,7 +1250,7 @@
                                              </span>
                                             <div class="form-group is-empty">
 
-                                                <h5><strong>Информация об участнике:</strong></h5>
+                                                <h5><strong>{{ 'INFO_ABOUT_USER' | translate }}</strong></h5>
 
                                                 <span class="material-input"></span></div>
                                         </div>
@@ -1395,7 +1393,7 @@
 
                                     <div class="row">
 
-                                        <h4 class="text-center custom__thanks"><strong>Спасибо большое за участие!</strong></h4>
+                                        <h4 class="text-center custom__thanks"><strong>{{ 'THANKS' | translate }}</strong></h4>
 
                                     </div>
 
@@ -1458,13 +1456,13 @@
 
 
         <md-button class="md-raised md-primary" ng-click="save()">
-            Сохранить
+           {{ 'SAVE' | translate }}
         </md-button>
 
 
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+            {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

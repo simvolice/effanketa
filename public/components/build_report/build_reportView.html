@@ -13,7 +13,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title text-center" style="text-transform: uppercase">Сформировать отчёт (квартальный, полугодовой, годовой)</h3>
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'BUILD_REPORT' | translate }}</h3>
 
                     </div>
 
@@ -48,7 +48,7 @@
 
 
                         <md-input-container style="width: 260px; margin-right: 20px">
-                            <label>Выберите страну</label>
+                            <label>{{ 'SELECT_COUNTRY' | translate }}</label>
                             <md-icon class="material-icons">place</md-icon>
                             <md-select ng-model="country" ng-change="changeCountry(country)">
 
@@ -62,7 +62,7 @@
 
 
                         <md-input-container class="custom__select__margin">
-                            <label>Выберите отчетный период</label>
+                            <label>{{ 'SELECT_REPORT_PERIOD' | translate }}</label>
                             <md-icon class="material-icons">date_range</md-icon>
                             <md-select ng-model="period">
 
@@ -74,7 +74,7 @@
 
 
                         <md-input-container style="width: 200px">
-                            <label>Выберите год</label>
+                            <label>{{ 'SELECT_YEAR' | translate }}</label>
                             <md-icon class="material-icons">date_range</md-icon>
                             <md-select ng-model="yearname">
 
@@ -88,7 +88,7 @@
 
 
 
-                        <md-button class="md-raised md-primary" ng-click="showModalWnd($event)">Сформировать отчет</md-button>
+                        <md-button class="md-raised md-primary" ng-click="showModalWnd($event)">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
                         <md-button class="md-raised md-primary" ng-click="excel()">{{ 'EXPORT_EXCEL' | translate }}</md-button>
 
                     </div>
@@ -117,17 +117,17 @@
                         <table class="tg table-striped">
                             <tr>
                                 <th class="tg-hgcj">№</th>
-                                <th class="tg-hgcj">Страна</th>
+                                <th class="tg-hgcj">{{ 'COUNTRY' | translate }}</th>
 
-                                <th class="tg-hgcj">Тип периода</th>
-                                <th class="tg-hgcj">Год</th>
-                                <th class="tg-hgcj">Дата создания</th>
+                                <th class="tg-hgcj">{{ 'TYPE_PERIOD' | translate }}</th>
+                                <th class="tg-hgcj">{{ 'YEAR' | translate }}</th>
+                                <th class="tg-hgcj">{{ 'DATE_CREATE' | translate }}</th>
 
 
 
-                                <th class="tg-hgcj">Просмотреть</th>
-                                <th class="tg-hgcj">Обновить</th>
-                                <th class="tg-hgcj">Удалить</th>
+                                <th class="tg-hgcj">{{ 'VIEW' | translate }}</th>
+                                <th class="tg-hgcj">{{ 'REFRESH' | translate }}</th>
+                                <th class="tg-hgcj">{{ 'DELETE' | translate }}</th>
 
                             </tr>
 

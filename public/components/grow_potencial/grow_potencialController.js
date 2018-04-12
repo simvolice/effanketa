@@ -329,7 +329,7 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, DelEven
             $mdDialog.show({
                 controller: DialogControllerUpdateForm,
                 locals:{data: data, index: index},
-                templateUrl: 'components/grow_potencial/dialog_template_upd_form.html',
+                templateUrl: 'components/grow_potencial/dialog_template_new_form.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose:true,
@@ -364,6 +364,7 @@ angular.module('app').controller('Grow_potencialCtrl', function ($scope, DelEven
 function DialogControllerUpdateForm($scope, data, UpdForm, index, GetOneForm) {
 
 
+    console.log(data);
 
     $scope.data = {
 

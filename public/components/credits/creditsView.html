@@ -72,36 +72,36 @@
                         <table class="tg table-striped">
                             <tr>
                                 <th class="tg-hgcj" rowspan="2">№</th>
-                                <th class="tg-hgcj" rowspan="2">Категория кредитов</th>
-                                <th class="tg-hgcj" rowspan="2">Кол-во субпроектов</th>
-                                <th class="tg-hgcj" rowspan="2">Страна</th>
-                                <th class="tg-hgcj" colspan="2">Общий объем</th>
+                                <th class="tg-hgcj" rowspan="2">{{ 'CATEG_CREDITS' | translate }}</th>
+                                <th class="tg-hgcj" rowspan="2">{{ 'COUNT_SUBPROJECT' | translate }}</th>
+                                <th class="tg-hgcj" rowspan="2">{{ 'COUNTRY' | translate }}</th>
+                                <th class="tg-hgcj" colspan="2">{{ 'OVERALL_VOLUME' | translate }}</th>
 
 
-                                <th class="tg-hgcj" colspan="3">Прямые бенефициары <br>(заёмщики и члены их семьи (для заемщиков физ. и юр. лиц)</th>
-
-
-
-                                <th class="tg-hgcj" colspan="3">Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц)</th>
+                                <th class="tg-hgcj" colspan="3">{{ 'DIRECT_BENEFICIARIES' | translate }}</th>
 
 
 
-                                <th class="tg-hgcj" colspan="2">Создаваемые мощности/<br>Ожидаемый эффект</th>
-                                <th class="tg-hgcj" rowspan="2">Сохранить</th>
-                                <th class="tg-e3zv" rowspan="2">Удалить</th>
+                                <th class="tg-hgcj" colspan="3">{{ 'DIRECT_BENEFICIARIES_WORKERS' | translate }}</th>
+
+
+
+                                <th class="tg-hgcj" colspan="2">{{ 'GENERATED_CAPACITIES' | translate }}</th>
+                                <th class="tg-hgcj" rowspan="2">{{ 'SAVE' | translate }}</th>
+                                <th class="tg-e3zv" rowspan="2">{{ 'DELETE' | translate }}</th>
                             </tr>
                             <tr>
-                                <td class="tg-amwm">В долларах</td>
-                                <td class="tg-amwm">Нац. валюта</td>
-                                <td class="tg-hgcj">Муж.</td>
-                                <td class="tg-hgcj">Жен.</td>
-                                <td class="tg-hgcj">Всего</td>
-                                <td class="tg-hgcj">Муж.</td>
-                                <td class="tg-hgcj">Жен.</td>
-                                <td class="tg-hgcj">Всего</td>
+                                <td class="tg-amwm">$</td>
+                                <td class="tg-amwm">{{ 'NACCURRENCY' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'ALL' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'ALL' | translate }}</td>
 
-                                <td class="tg-hgcj">ГА</td>
-                                <td class="tg-hgcj">Другое</td>
+                                <td class="tg-hgcj">{{ 'HA' | translate }}</td>
+                                <td class="tg-hgcj">{{ 'OTHER' | translate }}</td>
                             </tr>
 
 
@@ -133,7 +133,7 @@
                                                    ng-keyup='createNewFact($event)'
                                                    ng-keydown="$event.stopPropagation($event)"
                                                    type="text"
-                                                   placeholder="Напечатайте здесь и нажмите Enter"
+                                                   placeholder="{{ 'TYPE_HERE' | translate }}"
                                                    class="demo-header-searchbox md-text">
                                         </md-select-header>
                                         <md-optgroup>

@@ -8,7 +8,7 @@
 
     <md-toolbar class="md-toolbar-tools">
 
-        <h2>Создать жалобу</h2>
+        <h2>{{ 'CREATE_GRM' | translate }}</h2>
         <span flex></span>
         <md-button class="md-icon-button" ng-click="closeDialog()">
             <i class="material-icons">close</i>
@@ -40,7 +40,7 @@
 
 
                                 <md-input-container class="custom__date__grm">
-                                    <label>Дата получения</label>
+                                    <label>{{ 'DATE_TAKE' | translate }}</label>
                                     <md-datepicker ng-model="data.dateInGo" md-open-on-focus></md-datepicker>
                                 </md-input-container>
 
@@ -61,7 +61,7 @@
 
 
                                 <md-input-container class="md-icon-float md-block">
-                                    <label>Канал получения жалобы</label>
+                                    <label>{{ 'CHANNEL_COMPLAINT' | translate }}</label>
                                     <md-icon class="material-icons">feedback</md-icon>
 
 
@@ -76,7 +76,7 @@
                                                    ng-keyup='createNewCanalRequest($event)'
                                                    ng-keydown="$event.stopPropagation($event)"
                                                    type="text"
-                                                   placeholder="Напечатайте здесь и нажмите Enter"
+                                                   placeholder="{{ 'TYPE_HERE' | translate }}"
                                                    class="demo-header-searchbox md-text">
                                         </md-select-header>
                                         <md-optgroup>
@@ -93,7 +93,7 @@
 
 
                                 <md-input-container class="custom__select__margin">
-                                    <label>Выберите страну</label>
+                                    <label>{{ 'SELECT_COUNTRY' | translate }}</label>
                                     <md-icon class="material-icons">place</md-icon>
                                     <md-select ng-model="data.country">
 
@@ -106,7 +106,7 @@
 
 
                                 <md-input-container class="md-icon-float md-block">
-                                    <label>Заявитель ФИО</label>
+                                    <label>{{ 'DECLARER' | translate }}</label>
                                     <md-icon class="material-icons">account_circle</md-icon>
 
                                     <input ng-model="data.declarerFIO">
@@ -116,7 +116,7 @@
 
 
                                 <md-input-container class="md-icon-float md-block">
-                                    <label>Категория жалобы</label>
+                                    <label>{{ 'CATEG_COMPLAINT' | translate }}</label>
                                     <md-icon class="material-icons">subject</md-icon>
 
 
@@ -131,7 +131,7 @@
                                                    ng-keyup='createNewCategGRM($event)'
                                                    ng-keydown="$event.stopPropagation($event)"
                                                    type="text"
-                                                   placeholder="Напечатайте здесь и нажмите Enter"
+                                                   placeholder="{{ 'TYPE_HERE' | translate }}"
                                                    class="demo-header-searchbox md-text">
                                         </md-select-header>
                                         <md-optgroup>
@@ -153,7 +153,7 @@
 
 
                                 <md-input-container class="md-block">
-                                    <label>Возникшие вопросы</label>
+                                    <label>{{ 'RAISED_QUESTIONS' | translate }}</label>
                                     <md-icon class="material-icons">thumbs_up_down</md-icon>
                                     <textarea ng-model="data.raisedQuestion" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                 </md-input-container>
@@ -162,7 +162,7 @@
 
 
                                 <md-input-container style="width: 200px">
-                                    <label>Сложность жалобы</label>
+                                    <label>{{ 'LEVEL_GRM' | translate }}</label>
                                     <md-icon class="material-icons">place</md-icon>
                                     <md-select ng-model="data.levelComplaint" ng-change="selectLevel(data.levelComplaint)">
 
@@ -175,7 +175,7 @@
 
 
                                 <md-input-container style="margin-top: 45px">
-                                    <label>Дата начала расследования</label>
+                                    <label>{{ 'DATE_START_INVESTEGINATION' | translate }}</label>
                                     <md-datepicker ng-model="data.dateStartInvestegment" md-open-on-focus></md-datepicker>
                                 </md-input-container>
 
@@ -215,7 +215,7 @@
 
 
                                 <md-input-container class="md-icon-float md-block">
-                                    <label>Отвественный за рассмотрение жалобы</label>
+                                    <label>{{ 'RESPONSIBLE_BY_COMPLAINT' | translate }}</label>
                                     <md-icon class="material-icons">account_circle</md-icon>
 
                                     <input ng-model="data.responsibleConsideration">
@@ -230,7 +230,7 @@
 
 
                                 <md-input-container class="custom__select__margin">
-                                    <label>Статус жалобы</label>
+                                    <label>{{ 'STATUS_COMPLAINT' | translate }}</label>
                                     <md-icon class="material-icons">place</md-icon>
                                     <md-select ng-model="data.statusId">
 
@@ -251,7 +251,7 @@
 
 
                                 <md-input-container class="md-block">
-                                    <label>Принятые меры</label>
+                                    <label>{{ 'TAKEN_MEASURES' | translate }}</label>
                                     <md-icon class="material-icons">thumbs_up_down</md-icon>
                                     <textarea ng-model="data.takeAction" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                 </md-input-container>
@@ -265,7 +265,7 @@
 
 
                                 <md-input-container class="custom__date__grm">
-                                    <label>Крайний срок для ответа заявителю</label>
+                                    <label>{{ 'DEADLINE_FOR_ANSWER' | translate }}</label>
                                     <md-datepicker ng-model="data.lastDateAnswer" ng-disabled="true"></md-datepicker>
                                 </md-input-container>
 
@@ -277,7 +277,7 @@
 
 
                                 <md-input-container class="custom__date__grm">
-                                    <label>Дата уведомления заявителя</label>
+                                    <label>{{ 'DATE_NOTIFICATION' | translate }}</label>
                                     <md-datepicker ng-model="data.dateNotifDeclarer" md-open-on-focus md-min-date="data.dateInGo"></md-datepicker>
                                 </md-input-container>
 
@@ -294,7 +294,7 @@
 
 
                                 <md-input-container class="md-icon-float md-block">
-                                    <label>Время затраченное на рассмотрение жалобы, (в сутках)</label>
+                                    <label>{{ 'TIME_TO_CHECK_IN_DAY' | translate }}</label>
                                     <md-icon class="material-icons">alarm</md-icon>
 
                                     <input ng-model="data.timeToCheckComplaint" ng-disabled="true">
@@ -305,7 +305,7 @@
 
 
 
-                                <p style="margin-top: 20px;">Оценка качества удовлетворённости жалобы</p>
+                                <p style="margin-top: 20px;">{{ 'QUELITY_STATUS' | translate }}</p>
                                 <md-radio-group  style="margin-bottom: 20px" ng-model="data.assessmentQualitySatisfactionComplaint" layout="row">
 
                                     <md-radio-button value="1">1</md-radio-button>
@@ -373,11 +373,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="addComplaint()">
-            Сохранить
+             {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+            {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

@@ -1148,9 +1148,83 @@ module.exports = {
 
 
 
+            }else if (idTable === "build_report") {
+
+
+
+
+                const col = dbConnect.getConnect().collection(idTable);
+
+
+                result = await col.find({}, {
+
+                    _id: 0,
+
+
+
+                    country: 1,
+
+                    typePeriod: 1,
+                    year: 1,
+                    createAt: 1,
+
+
+
+                }).toArray();
+
+
+
+
+                Object.defineProperties(result[0], {
+                    'Тип периода': {
+                        value: result[0].typePeriod,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
+                    'Год': {
+                        value: result[0].year,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
+                    'Страна': {
+                        value: result[0].country,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    },
+
+
+
+
+                    'Дата создания': {
+                        value: result[0].createAt,
+                        writable: true,
+                        enumerable: true,
+                        configurable: true
+                    }
+
+
+                });
+
+
+                delete result[0].country;
+                delete result[0].typePeriod;
+                delete result[0].year;
+                delete result[0].createAt;
+
+
+
             }
 
 
+
+            console.log("\x1b[42m", result);
 
             return result;
 

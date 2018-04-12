@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать новую запись</h2>
+                <h2>{{ 'CREATE_NEW_ROW' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -33,7 +33,7 @@
                                 <div class="col-md-12">
 
                                     <md-input-container class="custom__select__margin">
-                                        <label>Выберите страны</label>
+                                        <label>{{ 'SELECT_COUNTRYESS' | translate }}</label>
                                         <md-icon class="material-icons">place</md-icon>
                                         <md-select ng-model="data.country" multiple>
 
@@ -58,7 +58,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Название программы</label>
+                                        <label>{{ 'NAME_OF_PROGRAMS' | translate }}</label>
                                         <md-icon class="material-icons">dashboard</md-icon>
 
                                         <input ng-model="data.programm">
@@ -78,7 +78,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Сфера/сектор</label>
+                                        <label>{{ 'SPHERE' | translate }}</label>
                                         <md-icon class="material-icons">business</md-icon>
 
                                         <input ng-model="data.sector">
@@ -90,7 +90,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Разработчики</label>
+                                        <label>{{ 'DEVELOPERS' | translate }}</label>
                                         <md-icon class="material-icons">group_work</md-icon>
 
                                         <input ng-model="data.developers">
@@ -109,7 +109,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Реализующее агенство</label>
+                                        <label>{{ 'CREATE_AGENST' | translate }}</label>
                                         <md-icon class="material-icons">account_balance</md-icon>
 
                                         <input ng-model="data.executorAgents">
@@ -118,7 +118,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Контакты</label>
+                                        <label>{{ 'CONTACTS' | translate }}</label>
                                         <md-icon class="material-icons">phone</md-icon>
 
                                         <input ng-model="data.executorAgentsContacts">
@@ -126,7 +126,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Краткое описание использованного ноу-хау проекта</label>
+                                        <label>{{ 'DISCRIPTION_NOU_HAU' | translate }}</label>
                                         <md-icon class="material-icons">group</md-icon>
 
                                         <textarea ng-model="data.projectDescription" rows="5" md-select-on-focus></textarea>
@@ -193,11 +193,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="addPlatform()">
-            Сохранить
+             {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+            {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

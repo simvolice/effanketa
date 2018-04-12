@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать таблицу мониторинга исполнения стратегии</h2>
+                <h2>{{ 'CREATE_TABLE_MONITORING' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -36,7 +36,7 @@
 
 
                                     <md-input-container class="custom__select__margin">
-                                        <label>Выберите страну</label>
+                                        <label>{{ 'SELECT_COUNTRY' | translate }}</label>
                                         <md-icon class="material-icons">place</md-icon>
                                         <md-select ng-model="data.country">
 
@@ -49,7 +49,7 @@
 
 
                                     <md-input-container class="custom__select__margin">
-                                        <label>Выберите год</label>
+                                        <label>{{ 'SELECT_YEAR' | translate }}</label>
                                         <md-icon class="material-icons">date_range</md-icon>
                                         <md-select ng-model="data.yearname">
 
@@ -63,7 +63,7 @@
 
                                     <div class="input-group">
 										<span class="input-group-addon">
-											<i>Прикрепить файл excel</i>
+											<i>{{ 'ATTACH_EXCEL' | translate }}</i>
 										</span>
                                         <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" accept="application/vnd.ms-excel"/>
                                     </div>
@@ -110,11 +110,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="uploadFiles()">
-            Сохранить
+            {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+           {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать новую запись</h2>
+                <h2>{{ 'CREATE_NEW_ROW' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -38,7 +38,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Тип инвестиций</label>
+                                        <label>{{ 'TYPE_INVEST' | translate }}</label>
                                         <md-icon class="material-icons">attach_money</md-icon>
 
                                         <input ng-model="data.typeInvest">
@@ -52,7 +52,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Размер инвестиций</label>
+                                        <label>{{ 'SIZE_INVEST' | translate }}</label>
                                         <md-icon class="material-icons">attach_money</md-icon>
 
                                         <input ng-model="data.sizeInvest">
@@ -62,7 +62,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Инвестор</label>
+                                        <label>{{ 'INVESTOR' | translate }}</label>
                                         <md-icon class="material-icons">work</md-icon>
 
                                         <input ng-model="data.investor">
@@ -75,7 +75,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Сотрудничающие страны</label>
+                                        <label>{{ 'COLLABORATION_COUNTRY' | translate }}</label>
                                         <md-icon class="material-icons">place</md-icon>
 
                                         <input ng-model="data.coloborationCountry">
@@ -86,7 +86,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Исполнитель деятельности</label>
+                                        <label>{{ 'EXECUTORWITHCONTACT' | translate }}</label>
                                         <md-icon class="material-icons">person_pin</md-icon>
 
                                         <input ng-model="data.executorWithContact">
@@ -94,7 +94,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Контакты</label>
+                                        <label>{{ 'CONTACTS' | translate }}</label>
                                         <md-icon class="material-icons">phone</md-icon>
 
                                         <input ng-model="data.executorAgentsContacts">
@@ -103,7 +103,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                        <label>Краткое описание совместной деятельности, приведшей к инвестициям.</label>
+                                        <label>{{ 'DESCRIPTIONINVEST' | translate }}</label>
                                         <md-icon class="material-icons">description</md-icon>
                                         <textarea ng-model="data.descriptionInvest" md-maxlength="1000" rows="5" md-select-on-focus></textarea>
                                     </md-input-container>
@@ -164,11 +164,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="addPlatform()">
-            Сохранить
+           {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+            {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

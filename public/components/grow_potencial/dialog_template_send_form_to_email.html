@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Заполните email адреса, чтобы добавить еще один адрес, нажмите Enter</h2>
+                <h2>{{ 'WRITE_EMAILS' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -30,7 +30,7 @@
 
                             <div class="content">
 
-                                    <md-chips ng-model="data.emails" readonly="data.readonly" md-removable="data.removable" placeholder="Введите email здесь...">
+                                    <md-chips ng-model="data.emails" readonly="data.readonly" md-removable="data.removable" placeholder="{{ 'WRITE_EMAILS_PLACEHOLDER' | translate }}">
 
 
 
@@ -70,11 +70,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="sendForm()">
-            Сохранить
+            {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+           {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

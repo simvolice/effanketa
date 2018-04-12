@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать отчет</h2>
+                <h2>{{ 'CREATE_REPORT' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -44,7 +44,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">event</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Период отчета: <strong>{{data.typePeriod}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>{{ 'PERIOD_REPORT' | translate }}: <strong>{{data.typePeriod}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -55,7 +55,7 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">event</i>
                                              </span>
-                                            <div class="form-group is-empty"><h5>Год: <strong>{{data.year}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty"><h5>{{ 'YEAR' | translate }}: <strong>{{data.year}}</strong></h5><span class="material-input"></span></div>
                                         </div>
                                     </div>
 
@@ -66,8 +66,8 @@
                                              <span class="input-group-addon">
                                                 <i class="material-icons">event</i>
                                              </span>
-                                            <div class="form-group is-empty" ng-switch-default><h5>Национальная координационная группа: <strong>{{data.country}}</strong></h5><span class="material-input"></span></div>
-                                            <div class="form-group is-empty" ng-switch-when="Все"><h5><strong>Региональная координационная группа</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty" ng-switch-default><h5>{{ 'NCU_TITLE' | translate }}: <strong>{{data.country}}</strong></h5><span class="material-input"></span></div>
+                                            <div class="form-group is-empty" ng-switch-when="Все"><h5><strong>{{ 'RCU_TITLE' | translate }}</strong></h5><span class="material-input"></span></div>
 
 
 
@@ -772,25 +772,25 @@
 
 
         <md-button class="md-raised md-primary" ng-click="print()">
-            Печать
+            {{ 'PRINT' | translate }}
         </md-button>
 
 
         <md-button class="md-raised md-primary" ng-click="toDocx()">
-            Сформировать Microsoft Word
+            {{ 'CREATE_DOCX' | translate }}
         </md-button>
         <span flex></span>
 
 
 
         <md-button class="md-raised md-primary" ng-click="save()">
-            Сохранить
+             {{ 'SAVE' | translate }}
         </md-button>
 
 
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+           {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>

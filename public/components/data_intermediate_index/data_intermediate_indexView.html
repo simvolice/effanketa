@@ -10,7 +10,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title text-center" style="text-transform: uppercase">Матрица результатов и их мониторинга</h3>
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'REPORT_BY_MATRIX' | translate }}</h3>
 
                     </div>
 
@@ -48,9 +48,9 @@
 
                         <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
                         </select>
-                        <md-button class="md-raised md-primary" ng-click="generateReport()">Сформировать отчет</md-button>
-                        <md-button class="md-raised md-primary" ng-click="print()">Печать</md-button>
-                        <md-button class="md-raised md-primary" ng-click="excel()">Сформировать Excel</md-button>
+                        <md-button class="md-raised md-primary" ng-click="generateReport()">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
+                        <md-button class="md-raised md-primary" ng-click="print()">{{ 'PRINT' | translate }}</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'CREATE_EXCEL' | translate }}</md-button>
 
                     </div>
 

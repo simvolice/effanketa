@@ -14,7 +14,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="title text-center" style="text-transform: uppercase">Отчёт по отдельному мероприятию</h3>
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'REPORT_BY_EVENT' | translate }}</h3>
 
                     </div>
 
@@ -35,7 +35,7 @@
 
                         <md-input-container style="width: 250px">
 
-                            <label>Выберите страну</label>
+                            <label>{{ 'SELECT_COUNTRY' | translate }}</label>
                             <md-icon class="material-icons">place</md-icon>
                             <md-select ng-model="data.country">
 
@@ -49,7 +49,7 @@
                         <md-input-container style="margin-top: 40px">
 
 
-                            <label>Выберите дату от</label>
+                            <label>{{ 'DATE_FROM' | translate }}</label>
                             <md-datepicker class="custom__datepicker__report__criteriy" ng-model="data.dateFrom" md-open-on-focus></md-datepicker>
 
 
@@ -60,15 +60,15 @@
 
                         <md-input-container style="margin-top: 40px">
 
-                            <label>Выберите дату до</label>
+                            <label>{{ 'DATE_TO' | translate }}</label>
                             <md-datepicker class="custom__datepicker__report__criteriy" ng-model="data.dateTo" md-open-on-focus md-min-date="data.dateFrom"></md-datepicker>
 
 
                         </md-input-container>
 
 
-                        <md-button class="md-raised md-primary custom__display__none" ng-click="createReport()">Сформировать отчет</md-button>
-                        <md-button class="md-raised md-primary custom__display__none" ng-click="createPdf()">Сформировать PDF</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="createReport()">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="createPdf()">{{ 'TO_PDF' | translate }}</md-button>
 
 
 
@@ -84,7 +84,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество мероприятий: <strong>{{data.categorizedByDatePeriodCountry[0].all_event || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_EVENT' | translate }}: <strong>{{data.categorizedByDatePeriodCountry[0].all_event || 0}}</strong></h5>
 
                     </div>
 
@@ -96,7 +96,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество анкет: <strong>{{data.countForms[0].all_form || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_FORM' | translate }}: <strong>{{data.countForms[0].all_form || 0}}</strong></h5>
 
                     </div>
 
@@ -111,7 +111,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество участников: <strong>{{data.categorizedBySum[0].countPeopleEventCommon || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_PEOPLE' | translate }}: <strong>{{data.categorizedBySum[0].countPeopleEventCommon || 0}}</strong></h5>
 
                     </div>
 
@@ -123,7 +123,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество фасилитаторов: <strong>{{data.categorizedBySum[0].countFacilatatorEventCommon || 0}}</strong> из них женщин: <strong>{{data.categorizedBySum[0].countFacilatatorWomanEventCommon || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_FAC' | translate }}: <strong>{{data.categorizedBySum[0].countFacilatatorEventCommon || 0}}</strong> {{ 'OF_WOMAN' | translate }}: <strong>{{data.categorizedBySum[0].countFacilatatorWomanEventCommon || 0}}</strong></h5>
 
                     </div>
 
@@ -136,7 +136,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество спикеров: <strong>{{data.categorizedBySum[0].countSpeakerEventCommon || 0}}</strong> из них женщин: <strong>{{data.categorizedBySum[0].countSpeakerWomanEventCommon || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_SPEACKER' | translate }}: <strong>{{data.categorizedBySum[0].countSpeakerEventCommon || 0}}</strong> {{ 'OF_WOMAN' | translate }}: <strong>{{data.categorizedBySum[0].countSpeakerWomanEventCommon || 0}}</strong></h5>
 
                     </div>
 
@@ -154,7 +154,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество обучающих мероприятий: <strong>{{data.categorizedByLearningEvent[0].all_learning_event || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_LEARNING_EVENT' | translate }}: <strong>{{data.categorizedByLearningEvent[0].all_learning_event || 0}}</strong></h5>
 
                     </div>
 
@@ -166,7 +166,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Общее количество мероприятий, направленных на гендерные аспекты: <strong>{{data.categorizedByGenderEvent[0].all_gender_event || 0}}</strong></h5>
+                        <h5>{{ 'ALL_COUNT_GENDER_EVENT' | translate }}: <strong>{{data.categorizedByGenderEvent[0].all_gender_event || 0}}</strong></h5>
 
                     </div>
 
@@ -183,7 +183,7 @@
 
 
 
-                        <h5 class="title text-center" style="text-transform: uppercase">Общая удовлетворенность участниКОВ проведенными мероприятиями</h5>
+                        <h5 class="title text-center" style="text-transform: uppercase">{{ 'ALL_COUNT_GOOD_EVENT' | translate }}</h5>
 
 
 
@@ -214,7 +214,7 @@
 
 
 
-                        <h5 class="title text-center" style="text-transform: uppercase">ИНФОРМАЦИЯ ОБ УЧАСТНИКАХ</h5>
+                        <h5 class="title text-center" style="text-transform: uppercase">{{ 'INFO_ABOUT_PEOPLE' | translate }}</h5>
 
 
 
@@ -229,8 +229,8 @@
 
 
 
-                        <h4>Вы представляете</h4>
-                        <p>{{data.countSatisfactionCommonAll[0].ques19.totalAnswer || 0}} ответов</p>
+                        <h4>Вы представляете \ You represent:</h4>
+                        <p>{{data.countSatisfactionCommonAll[0].ques19.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartCommonOrg"></div>
 
                     </div>
@@ -242,8 +242,8 @@
                 <div class="row" style="margin-left: 10px">
                     <div class="col-md-12">
 
-                        <h4>Пол</h4>
-                        <p>{{data.countSatisfactionCommonAll[0].ques20.totalAnswer || 0}} ответов</p>
+                        <h4>Пол \ Sex:</h4>
+                        <p>{{data.countSatisfactionCommonAll[0].ques20.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
 
                         <div id="chartCommonSex"></div>
                     </div>
@@ -253,8 +253,8 @@
                 <div class="row" style="margin-left: 10px">
                     <div class="col-md-12">
 
-                        <h4>Возраст</h4>
-                        <p>{{data.countSatisfactionCommonAll[0].ques21.totalAnswer || 0}} ответов</p>
+                        <h4>Возрастная группа \ Age Group:</h4>
+                        <p>{{data.countSatisfactionCommonAll[0].ques21.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
 
                         <div id="chartCommonAge"></div>
                     </div>
@@ -283,7 +283,7 @@
                     <div class="col-md-12 text-left">
 
 
-                        <h5 class="title text-center" style="text-transform: uppercase">Отчёт по мероприятию</h5>
+                        <h5 class="title text-center" style="text-transform: uppercase">{{ 'REPORT_BY_EVENT_ONE' | translate }}</h5>
 
 
 
@@ -297,7 +297,7 @@
 
 
                         <md-input-container class="custom__select__margin">
-                            <label>Выберите мероприятие</label>
+                            <label>{{ 'SELECT_EVENT' | translate }}</label>
                             <md-icon class="material-icons">place</md-icon>
                             <md-select ng-model="data.selectEvent">
 
@@ -311,9 +311,9 @@
 
 
 
-                        <md-button class="md-raised md-primary custom__display__none" ng-click="createReportForEvent()">Сформировать отчет</md-button>
-                        <md-button class="md-raised md-primary custom__display__none" ng-click="printOneEvent()">Печать</md-button>
-                        <md-button class="md-raised md-primary custom__display__none" ng-click="excel()">Сформировать Excel</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="createReportForEvent()">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="printOneEvent()">{{ 'PRINT' | translate }}</md-button>
+                        <md-button class="md-raised md-primary custom__display__none" ng-click="excel()">{{ 'CREATE_EXCEL' | translate }}</md-button>
 
 
                     </div>
@@ -332,7 +332,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Количество ответивших: <strong>{{data.countAllAnswer[0].countAllAnswer || 0}}</strong></h5>
+                        <h5>{{ 'COUNT_ANSWER' | translate }}: <strong>{{data.countAllAnswer[0].countAllAnswer || 0}}</strong></h5>
 
                     </div>
 
@@ -344,7 +344,7 @@
 
 
                     <div class="col-md-12">
-                        <h5>Количество не ответивших: <strong>{{data.countAllNotAnswer[0].countAllNotAnswer || 0}}</strong></h5>
+                        <h5>{{ 'COUNT_NOT_ANSWER' | translate }}: <strong>{{data.countAllNotAnswer[0].countAllNotAnswer || 0}}</strong></h5>
 
                     </div>
 
@@ -358,8 +358,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Цели данного мероприятия были четко определены</h4>
-                        <p>{{data.ques[0].ques1.totalAnswer || 0}} ответов</p>
+                        <h4>Цели данного мероприятия были четко определены \ The objectives of the activity were clearly defined</h4>
+                        <p>{{data.ques[0].ques1.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues1"></div>
 
                     </div>
@@ -371,8 +371,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Взаимодействие между участниками поощрялось</h4>
-                        <p>{{data.ques[0].ques2.totalAnswer || 0}} ответов</p>
+                        <h4>Взаимодействие между участниками поощрялось \ Interaction between participants was encouraged</h4>
+                        <p>{{data.ques[0].ques2.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues2"></div>
 
                     </div>
@@ -384,8 +384,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Темы имели отношение к тому, чем я занимаюсь</h4>
-                        <p>{{data.ques[0].ques3.totalAnswer || 0}} ответов</p>
+                        <h4>Темы имели отношение к тому, чем я занимаюсь \ Topics were related to what I do</h4>
+                        <p>{{data.ques[0].ques3.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues3"></div>
 
                     </div>
@@ -403,8 +403,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Содержание было хорошо структурировано и понятно</h4>
-                        <p>{{data.ques[0].ques4.totalAnswer || 0}} ответов</p>
+                        <h4>Содержание было хорошо структурировано и понятно \ The content was well structured and understandable</h4>
+                        <p>{{data.ques[0].ques4.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues4"></div>
 
                     </div>
@@ -419,8 +419,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Раздаточные материалы были полезны</h4>
-                        <p>{{data.ques[0].ques5.totalAnswer || 0}} ответов</p>
+                        <h4>Раздаточные материалы были полезны \ Handouts were useful</h4>
+                        <p>{{data.ques[0].ques5.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues5"></div>
 
                     </div>
@@ -433,8 +433,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Полученная информация/знания и навыки будут полезны мне в работе</h4>
-                        <p>{{data.ques[0].ques6.totalAnswer || 0}} ответов</p>
+                        <h4>Полученная информация/знания и навыки будут полезны мне в работе \ The gained information / knowledge and skills will be useful in my work</h4>
+                        <p>{{data.ques[0].ques6.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues6"></div>
 
                     </div>
@@ -448,8 +448,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Тренер/модератор хорошо знал тему</h4>
-                        <p>{{data.ques[0].ques7.totalAnswer || 0}} ответов</p>
+                        <h4>Тренер/модератор хорошо знал тему \ Trainer/moderator knew the topic well</h4>
+                        <p>{{data.ques[0].ques7.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues7"></div>
 
                     </div>
@@ -462,8 +462,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Тренер/модератор был хорошо подготовлен</h4>
-                        <p>{{data.ques[0].ques8.totalAnswer || 0}} ответов</p>
+                        <h4>Тренер/модератор был хорошо подготовлен \ Trainer / moderator was well prepared</h4>
+                        <p>{{data.ques[0].ques8.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues8"></div>
 
                     </div>
@@ -476,8 +476,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Цели мероприятия были достигнуты</h4>
-                        <p>{{data.ques[0].ques9.totalAnswer || 0}} ответов</p>
+                        <h4>Цели мероприятия были достигнуты \ The goals of the event were achieved</h4>
+                        <p>{{data.ques[0].ques9.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues9"></div>
 
                     </div>
@@ -491,8 +491,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Время выделенное для мероприятия было достаточным</h4>
-                        <p>{{data.ques[0].ques10.totalAnswer || 0}} ответов</p>
+                        <h4>Время выделенное для мероприятия было достаточным \ The time allocated for the event was sufficient</h4>
+                        <p>{{data.ques[0].ques10.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues10"></div>
 
                     </div>
@@ -506,8 +506,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Помещения для проведения мероприятия и используемая участниками инфраструктура были удобными</h4>
-                        <p>{{data.ques[0].ques11.totalAnswer || 0}} ответов</p>
+                        <h4>Помещения для проведения мероприятия и используемая участниками инфраструктура были удобными \ The venue for the event and the infrastructure used by the participants were convenient</h4>
+                        <p>{{data.ques[0].ques11.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues11"></div>
 
                     </div>
@@ -520,8 +520,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Оцените свою общую удовлетворенность проведенным мероприятием используя 5-бальную шкалу</h4>
-                        <p>{{data.ques[0].ques12.totalAnswer || 0}} ответов</p>
+                        <h4>Оцените свою общую удовлетворенность проведенным мероприятием используя 5-бальную шкалу \ Evaluate your overall satisfaction with the event, using a 5-point scale</h4>
+                        <p>{{data.ques[0].ques12.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues12"></div>
 
                     </div>
@@ -534,10 +534,10 @@
 
 
                     <div class="col-md-12">
-                        <h4>Что вам понравилось больше всего?</h4>
-                        <p>{{data.totalQues13 || 0}} ответов</p>
+                        <h4>Что вам понравилось больше всего? \ What did you like the most?</h4>
+                        <p>{{data.totalQues13 || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <ul ng-repeat="(key, value) in data.ques[0].dimensions13">
-                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                            <li><strong>{{ 'ANSWER_ONE' | translate }}:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
                         </ul>
 
                     </div>
@@ -551,10 +551,10 @@
 
 
                     <div class="col-md-12">
-                        <h4>Что можно было бы улучшить?</h4>
-                        <p>{{data.totalQues14 || 0}} ответов</p>
+                        <h4>Что можно было бы улучшить? \ What could have been improved?</h4>
+                        <p>{{data.totalQues14 || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <ul ng-repeat="(key, value) in data.ques[0].dimensions14">
-                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                            <li><strong>{{ 'ANSWER_ONE' | translate }}:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
                         </ul>
 
                     </div>
@@ -568,10 +568,10 @@
 
 
                     <div class="col-md-12">
-                        <h4>Как вы планируете использовать полученные знания/информацию?</h4>
-                        <p>{{data.totalQues15 || 0}} ответов</p>
+                        <h4>Как вы планируете использовать полученные знания/информацию? \ How do you plan to use gained knowledge / information?</h4>
+                        <p>{{data.totalQues15 || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <ul ng-repeat="(key, value) in data.ques[0].dimensions15">
-                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                            <li><strong>{{ 'ANSWER_ONE' | translate }}:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
                         </ul>
 
                     </div>
@@ -585,10 +585,10 @@
 
 
                     <div class="col-md-12">
-                        <h4>В каких темах вы заинтересованы и хотели бы пройти обучение/получать информацию в дальнейшем?</h4>
-                        <p>{{data.totalQues16 || 0}} ответов</p>
+                        <h4>В каких темах вы заинтересованы и хотели бы пройти обучение/получать информацию в дальнейшем? \ What topics are you interested in and would like to receive future training / information on?</h4>
+                        <p>{{data.totalQues16 || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <ul ng-repeat="(key, value) in data.ques[0].dimensions16">
-                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                            <li><strong>{{ 'ANSWER_ONE' | translate }}:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
                         </ul>
 
                     </div>
@@ -603,8 +603,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Как вы оцениваете организацию мероприятия?</h4>
-                        <p>{{data.ques[0].ques17.totalAnswer || 0}} ответов</p>
+                        <h4>Как вы оцениваете организацию мероприятия? \ How would you rate the organization of the event?</h4>
+                        <p>{{data.ques[0].ques17.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues17"></div>
 
                     </div>
@@ -619,10 +619,10 @@
 
 
                     <div class="col-md-12">
-                        <h4>Пожалуйста, отметьте, есть ли у Вас замечания или пожелания в целом по организации мероприятия?</h4>
-                        <p>{{data.totalQues18 || 0}} ответов</p>
+                        <h4>Пожалуйста, отметьте, есть ли у Вас замечания или пожелания в целом по организации мероприятия? \ Please write if you have any comments or requests on the organization of the event in general</h4>
+                        <p>{{data.totalQues18 || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <ul ng-repeat="(key, value) in data.ques[0].dimensions18">
-                            <li><strong>Ответ:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
+                            <li><strong>{{ 'ANSWER_ONE' | translate }}:</strong> {{key}}, <strong>Email:</strong> {{value}}</li>
                         </ul>
 
                     </div>
@@ -638,8 +638,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Вы представляете</h4>
-                        <p>{{data.ques[0].ques19.totalAnswer || 0}} ответов</p>
+                        <h4>Вы представляете \ You represent:</h4>
+                        <p>{{data.ques[0].ques19.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues19"></div>
 
                     </div>
@@ -653,8 +653,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Пол</h4>
-                        <p>{{data.ques[0].ques20.totalAnswer || 0}} ответов</p>
+                        <h4>Пол \ Sex:</h4>
+                        <p>{{data.ques[0].ques20.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues20"></div>
 
                     </div>
@@ -668,8 +668,8 @@
 
 
                     <div class="col-md-12">
-                        <h4>Возрастная группа</h4>
-                        <p>{{data.ques[0].ques21.totalAnswer || 0}} ответов</p>
+                        <h4>Возрастная группа \ Age Group:</h4>
+                        <p>{{data.ques[0].ques21.totalAnswer || 0}} {{ 'ANSWER_ALL' | translate }}</p>
                         <div id="chartQues21"></div>
 
                     </div>

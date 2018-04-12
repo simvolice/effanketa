@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('BuildReportCtrl', function ($timeout, $scope, $mdDialog, GetAllCoutrys, GetTypePeriod, $mdToast, GetYearName, GetReport, $rootScope, DelReport) {
+angular.module('app').controller('BuildReportCtrl', function ($window, $timeout, $scope, $mdDialog, GetAllCoutrys, GetTypePeriod, $mdToast, GetYearName, GetReport, $rootScope, DelReport) {
 
     $rootScope.data = [];
 
@@ -1919,6 +1919,21 @@ $scope.data = {
 
 
     };
+
+
+
+}
+
+
+
+
+$scope.excel = function () {
+
+    $scope.tableID = "build_report";
+    $scope.titleSheet = "Сформировать отчёт (квартальный, полугодовой, годовой)";
+
+    $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+
 
 
 

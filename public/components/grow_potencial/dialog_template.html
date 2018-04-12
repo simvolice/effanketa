@@ -8,7 +8,7 @@
 
         <md-toolbar class="md-toolbar-tools">
 
-                <h2>Создать мероприятие</h2>
+                <h2>{{ 'CREATE_EVENT' | translate }}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="closeDialog()">
                     <i class="material-icons">close</i>
@@ -37,7 +37,7 @@
 
 
                                     <md-input-container class="custom__select__coutry">
-                                        <label>Выберите страну</label>
+                                        <label>{{ 'SELECT_COUNTRY' | translate }}</label>
                                         <md-icon class="material-icons">place</md-icon>
                                         <md-select ng-model="data.country">
 
@@ -55,7 +55,7 @@
 
 
                                     <md-input-container class="custom__date__margin">
-                                        <label>Выберите дату</label>
+                                        <label>{{ 'SELECT_DATE' | translate }}</label>
                                         <md-datepicker ng-model="data.myDate" md-open-on-focus></md-datepicker>
                                     </md-input-container>
 
@@ -64,7 +64,7 @@
 
 
                                     <md-input-container class="md-icon-float md-block">
-                                    <label>Название мероприятия</label>
+                                    <label>{{ 'NAME_EVENT' | translate }}</label>
                                         <md-icon class="material-icons">event_available</md-icon>
 
                                         <input ng-model="data.nameEvent">
@@ -75,7 +75,7 @@
 
 
                                     <md-input-container class="custom__select__margin" style="margin-right: 250px;">
-                                        <label>Тип мероприятия</label>
+                                        <label>{{ 'TYPE_EVENT' | translate }}</label>
                                         <md-icon class="material-icons">event_available</md-icon>
                                         <md-select ng-model="data.typeEvent">
 
@@ -87,7 +87,7 @@
 
 
                                     <md-input-container class="custom__select__margin" style="margin-right: 250px;">
-                                        <label>Мероприятие посвящено гендерным вопросам</label>
+                                        <label>{{ 'EVENT_TYPE_GENDER' | translate }}</label>
                                         <md-icon class="material-icons">event_available</md-icon>
                                         <md-select ng-model="data.subTypeEvent">
 
@@ -107,7 +107,7 @@
 
 
                         <md-input-container class="md-icon-float md-block">
-                            <label>Количество участников, общее</label>
+                            <label>{{ 'COUNTPEOPLEEVENTCOMMON' | translate }}</label>
                             <md-icon class="material-icons">people</md-icon>
 
                             <input type="number" ng-model="data.countPeopleEventCommon">
@@ -115,7 +115,7 @@
 
 
                         <md-input-container class="md-icon-float md-block">
-                            <label>Из них женщин</label>
+                            <label>{{ 'OF_WOMEN' | translate }}</label>
                             <md-icon class="material-icons">pregnant_woman</md-icon>
 
                             <input type="number" ng-model="data.countWomanEventCommon">
@@ -131,7 +131,7 @@
 
 
                         <md-input-container class="md-icon-float md-block">
-                            <label>Количество фасилитаторов, общее</label>
+                            <label>{{ 'COUNTFACILATATOREVENTCOMMON' | translate }}</label>
                             <md-icon class="material-icons">people</md-icon>
 
                             <input type="number" ng-model="data.countFacilatatorEventCommon">
@@ -145,7 +145,7 @@
 
 
                         <md-input-container class="md-icon-float md-block">
-                            <label>Из них женщин</label>
+                            <label>{{ 'OF_WOMEN' | translate }}</label>
                             <md-icon class="material-icons">pregnant_woman</md-icon>
 
                             <input type="number" ng-model="data.countFacilatatorWomanEventCommon">
@@ -158,7 +158,7 @@
 
 
                         <md-input-container class="md-icon-float md-block">
-                            <label>Количество спикеров, общее</label>
+                            <label>{{ 'COUNTSPEAKEREVENTCOMMON' | translate }}</label>
                             <md-icon class="material-icons">people</md-icon>
 
                             <input type="number" ng-model="data.countSpeakerEventCommon">
@@ -170,7 +170,7 @@
 
 
                         <md-input-container class="md-icon-float md-block">
-                            <label>Из них женщин</label>
+                            <label>{{ 'OF_WOMEN' | translate }}</label>
                             <md-icon class="material-icons">pregnant_woman</md-icon>
 
                             <input type="number" ng-model="data.countSpeakerWomanEventCommon">
@@ -230,11 +230,11 @@
 
         <span flex></span>
         <md-button class="md-raised md-primary" ng-click="addEvent()">
-            Сохранить
+             {{ 'SAVE' | translate }}
         </md-button>
 
         <md-button class="md-raised md-primary" ng-click="closeDialog()">
-            Отмена
+            {{ 'CANCEL' | translate }}
         </md-button>
 
     </md-dialog-actions>
