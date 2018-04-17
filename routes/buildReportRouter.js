@@ -14,7 +14,7 @@ const BuildReportService = require('../services/BuildReportService');
 const path = require('path');
 const fs = require('fs');
 
-router.post('/gettypeperiod', checkSeesionToken, async (req, res, next) =>{
+router.post('/gettypeperiod', checkSeesionToken, async (req, res, next) => {
 
     let result = await TypePeriod.getAll();
 
@@ -24,7 +24,7 @@ router.post('/gettypeperiod', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-router.post('/getyearname', checkSeesionToken, async (req, res, next) =>{
+router.post('/getyearname', checkSeesionToken, async (req, res, next) => {
 
 
     let result = await NameYear.getAll();
@@ -34,8 +34,7 @@ router.post('/getyearname', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-router.post('/getgrowpotencialnewver', checkSeesionToken, async (req, res, next) =>{
+router.post('/getgrowpotencialnewver', checkSeesionToken, async (req, res, next) => {
 
 
     let result = await BuildReportService.getgrowpotencialNewVersion(req.body.data);
@@ -45,17 +44,17 @@ router.post('/getgrowpotencialnewver', checkSeesionToken, async (req, res, next)
 });
 
 
-router.post('/getgrowpotencial', checkSeesionToken, async (req, res, next) =>{
-
+router.post('/getgrowpotencial', checkSeesionToken, async (req, res, next) => {
 
 
     let result = await BuildReportService.getgrowpotencial(req.body.data);
+
 
     res.json({"code": "ok", "resultFromDb": result});
 
 });
 
-router.post('/getreportcredits', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportcredits', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.getreportcredits(req.body.data);
 
@@ -64,9 +63,7 @@ router.post('/getreportcredits', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-
-router.post('/getreportgrm', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportgrm', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.getreportgrm(req.body.data);
 
@@ -76,8 +73,7 @@ router.post('/getreportgrm', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-router.post('/getreportfinansialstatus', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportfinansialstatus', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.getreportfinansialstatus(req.body.data);
 
@@ -87,7 +83,7 @@ router.post('/getreportfinansialstatus', checkSeesionToken, async (req, res, nex
 });
 
 
-router.post('/addnewreport', checkSeesionToken, async (req, res, next) =>{
+router.post('/addnewreport', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.addnewreport(req.body.data);
 
@@ -103,11 +99,11 @@ router.post('/addnewreport', checkSeesionToken, async (req, res, next) =>{
 
 });
 
-router.post('/getreport', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreport', checkSeesionToken, async (req, res, next) => {
     let result = await checkRole.forBuildReport(req.body.sessionToken);
 
 
-    if (result === false){
+    if (result === false) {
 
         res.json({"code": 1});
 
@@ -120,8 +116,7 @@ router.post('/getreport', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-router.post('/updreport', checkSeesionToken, async (req, res, next) =>{
+router.post('/updreport', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.updreport(req.body.data);
 
@@ -138,8 +133,7 @@ router.post('/updreport', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-router.post('/delreport', checkSeesionToken, async (req, res, next) =>{
+router.post('/delreport', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.delreport(req.body.data);
 
@@ -156,13 +150,7 @@ router.post('/delreport', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-
-
-router.post('/getreportforevent', checkSeesionToken, async (req, res, next) =>{
-
-
-
+router.post('/getreportforevent', checkSeesionToken, async (req, res, next) => {
 
 
     let result = await BuildReportService.getreportforevent(req.body.data);
@@ -172,8 +160,7 @@ router.post('/getreportforevent', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
-
+router.post('/reportyearsave', checkSeesionToken, async (req, res, next) => {
 
 
     const {files, fields} = await Busboy(req);
@@ -183,15 +170,14 @@ router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
 
     for (let filesItem of files) {
         filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
-        arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+        arrAllFiles.push({
+            url: "uploads/" + path.basename(filesItem.path),
+            name: path.basename(filesItem.path).substr(14)
+        });
     }
 
 
-
-
     let result = await BuildReportService.addnewreportYear(JSON.parse(fields.data), arrAllFiles);
-
-
 
 
     if (result.hasOwnProperty("result")) {
@@ -207,9 +193,7 @@ router.post('/reportyearsave', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-
-router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
+router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) => {
 
 
     const {files, fields} = await Busboy(req);
@@ -217,12 +201,10 @@ router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
     let arrAllFiles = [];
 
 
-
-
     if (files.length === 0) {
 
         arrAllFiles = JSON.parse(fields.data).arrAllFiles;
-        if (arrAllFiles.length !== 0){
+        if (arrAllFiles.length !== 0) {
 
             delete arrAllFiles[0].$$hashKey;
         }
@@ -230,26 +212,16 @@ router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
 
         for (let filesItem of files) {
             filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
-            arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+            arrAllFiles.push({
+                url: "uploads/" + path.basename(filesItem.path),
+                name: path.basename(filesItem.path).substr(14)
+            });
         }
 
     }
 
 
-
-
-
-
-
-
-
-
-
     let result = await BuildReportService.updreportYearNCU(JSON.parse(fields.data), arrAllFiles);
-
-
-
-
 
 
     if (result.hasOwnProperty("result")) {
@@ -265,9 +237,7 @@ router.post('/updreportyearncu', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) =>{
-
+router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) => {
 
 
     const {files, fields} = await Busboy(req);
@@ -277,10 +247,11 @@ router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) 
 
     for (let filesItem of files) {
         filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
-        arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+        arrAllFiles.push({
+            url: "uploads/" + path.basename(filesItem.path),
+            name: path.basename(filesItem.path).substr(14)
+        });
     }
-
-
 
 
     let result = await BuildReportService.addHalfYearrcusave(JSON.parse(fields.data), arrAllFiles);
@@ -296,13 +267,10 @@ router.post('/reporthalfyearrcusave', checkSeesionToken, async (req, res, next) 
     }
 
 
-
 });
 
 
-
-
-router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =>{
+router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) => {
 
 
     const {files, fields} = await Busboy(req);
@@ -310,18 +278,12 @@ router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =
     let arrAllFiles = [];
 
 
-
-
-
-
-
-
     if (files.length === 0) {
 
         arrAllFiles = JSON.parse(fields.data).arrAllFiles;
 
 
-        if (arrAllFiles.length !== 0){
+        if (arrAllFiles.length !== 0) {
 
             delete arrAllFiles[0].$$hashKey;
         }
@@ -331,12 +293,13 @@ router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =
 
         for (let filesItem of files) {
             filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
-            arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+            arrAllFiles.push({
+                url: "uploads/" + path.basename(filesItem.path),
+                name: path.basename(filesItem.path).substr(14)
+            });
         }
 
     }
-
-
 
 
     let result = await BuildReportService.updreportHalfYearRCU(JSON.parse(fields.data), arrAllFiles);
@@ -352,13 +315,10 @@ router.post('/updreporthalfyearrcu', checkSeesionToken, async (req, res, next) =
     }
 
 
-
 });
 
 
-
-
-router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) =>{
+router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) => {
 
 
     const {files, fields} = await Busboy(req);
@@ -368,11 +328,11 @@ router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) =>{
 
     for (let filesItem of files) {
         filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
-        arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+        arrAllFiles.push({
+            url: "uploads/" + path.basename(filesItem.path),
+            name: path.basename(filesItem.path).substr(14)
+        });
     }
-
-
-
 
 
     let result = await BuildReportService.addYearRCUsave(JSON.parse(fields.data), arrAllFiles);
@@ -390,12 +350,7 @@ router.post('/reportyearrcusave', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-
-router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
-
-
-
+router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) => {
 
 
     const {files, fields} = await Busboy(req);
@@ -403,12 +358,10 @@ router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
     let arrAllFiles = [];
 
 
-
-
     if (files.length === 0) {
 
         arrAllFiles = JSON.parse(fields.data).arrAllFiles;
-        if (arrAllFiles.length !== 0){
+        if (arrAllFiles.length !== 0) {
 
             delete arrAllFiles[0].$$hashKey;
         }
@@ -416,14 +369,13 @@ router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
 
         for (let filesItem of files) {
             filesItem.pipe(fs.createWriteStream(pathForWrite + path.basename(filesItem.path)));
-            arrAllFiles.push({url: "uploads/" + path.basename(filesItem.path), name: path.basename(filesItem.path).substr(14)});
+            arrAllFiles.push({
+                url: "uploads/" + path.basename(filesItem.path),
+                name: path.basename(filesItem.path).substr(14)
+            });
         }
 
     }
-
-
-
-
 
 
     let result = await BuildReportService.updreportYearRCU(JSON.parse(fields.data), arrAllFiles);
@@ -441,9 +393,7 @@ router.post('/updreportyearrcu', checkSeesionToken, async (req, res, next) =>{
 });
 
 
-
-
-router.get('/gettadjickuzbekncuyear', async (req, res, next) =>{
+router.get('/gettadjickuzbekncuyear', async (req, res, next) => {
 
     let result = await BuildReportService.getTadjickUzbekNCUyear();
 
@@ -452,9 +402,7 @@ router.get('/gettadjickuzbekncuyear', async (req, res, next) =>{
 });
 
 
-
-
-router.post('/getreportfinansialstatusyearncu', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportfinansialstatusyearncu', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.getReportFinansialStatusYearNcu(req.body.data);
 
@@ -463,9 +411,7 @@ router.post('/getreportfinansialstatusyearncu', checkSeesionToken, async (req, r
 });
 
 
-
-
-router.post('/getreportfinansialstatusforyearrcu', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportfinansialstatusforyearrcu', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.getReportFinansialStatusForYearRCU(req.body.data);
 
@@ -474,8 +420,7 @@ router.post('/getreportfinansialstatusforyearrcu', checkSeesionToken, async (req
 });
 
 
-
-router.post('/getreportfinansialstatusforhalfyearrcu', checkSeesionToken, async (req, res, next) =>{
+router.post('/getreportfinansialstatusforhalfyearrcu', checkSeesionToken, async (req, res, next) => {
 
     let result = await BuildReportService.getReportFinansialStatusForHalfYearRCU(req.body.data);
 

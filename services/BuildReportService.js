@@ -8,6 +8,7 @@
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
 const Int32 = require('mongodb').Int32;
+const Timestamp = require('mongodb').Timestamp;
 
 
 
@@ -647,14 +648,6 @@ module.exports = {
 
 
 
-            let dateFromYear = new Date(objParams.dateFrom).getFullYear();
-            let dateFromMonth = new Date(objParams.dateFrom).getMonth() + 1;
-            let dateFromDay = new Date(objParams.dateFrom).getDate();
-
-
-            let dateToYear = new Date(objParams.dateTo).getFullYear();
-            let dateToMonth = new Date(objParams.dateTo).getMonth() + 1;
-            let dateToDay = new Date(objParams.dateTo).getDate();
 
 
 
@@ -662,83 +655,40 @@ module.exports = {
 
                 {
                     $facet: {
+
+
+
+
                         "categorizedByDatePeriodCountry": [
 
 
                             {
 
-                            $match: {country: {$in: objParams.country}}
+                            $match: {
 
-                            },
 
-                            {
-                                $addFields:
+                                country: {$in: objParams.country},
+
+
+                                $and: [
+
                                     {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
 
-                                    }
-                            },
+                                        myDate: {$gte: new Date(objParams.dateFrom)}
+                                    },
 
+                                    {
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                        myDate: {$lte: new Date(objParams.dateTo)}
+                                    },
 
 
-                                        {year: {$gte: dateFromYear}},
-
-                                        {year: {$lte: dateToYear}}
+                                ],
 
 
-                                    ]
 
 
-                                }
-
-
-                            },
-
-
-                            {
-
-                                $match: {
-
-                                    $and: [
-
-
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
-                            {
-
-                                $match: {
-
-                                    $and: [
-
-
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
+                            }
 
                             },
 
@@ -756,77 +706,27 @@ module.exports = {
 
                             {
 
-                            $match: {country: {$in: objParams.country}}
-
-                        },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" }
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
-                            {
-
-                                $match: {
-
-                                    $and: [
-
-
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
@@ -871,80 +771,32 @@ module.exports = {
 
                             {
 
-                                $match: {country: {$in: objParams.country}}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
-
-                                $match: {
-
-                                    $and: [
 
 
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -989,80 +841,31 @@ module.exports = {
 
                             {
 
-                            $match: {country: {$in: objParams.country}}
-
-                        },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
 
-                                $match: {
-
-                                    $and: [
-
-
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -1109,80 +912,33 @@ module.exports = {
 
                             {
 
-                                $match: {country: {$in: objParams.country}}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
-
-                                $match: {
-
-                                    $and: [
 
 
-                                        {day: {$gte: dateFromDay}},
 
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -1234,80 +990,32 @@ module.exports = {
 
                             {
 
-                                $match: {country: {$in: objParams.country}}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
-
-                                $match: {
-
-                                    $and: [
 
 
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -1358,80 +1066,33 @@ module.exports = {
 
                             {
 
-                            $match: {country: {$in: objParams.country}}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
-
-                                $match: {
-
-                                    $and: [
 
 
-                                        {day: {$gte: dateFromDay}},
 
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
                             {
                                 $group : {
@@ -1455,80 +1116,31 @@ module.exports = {
 
                             {
 
-                                $match: {country: {$in: objParams.country}}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
 
-                                $match: {
-
-                                    $and: [
-
-
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -1553,80 +1165,31 @@ module.exports = {
 
                             {
 
-                                $match: {country: {$in: objParams.country}}
-
-                            },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
 
-                                $match: {
-
-                                    $and: [
-
-
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -1658,80 +1221,32 @@ module.exports = {
 
                             {
 
-                            $match: {country: {$in: objParams.country}}
-
-                        },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
-                            {
-
-                                $match: {
-
-                                    $and: [
 
 
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
 
 
                             {
@@ -1762,87 +1277,40 @@ module.exports = {
 
                             {
 
-                            $match: {country: {$in: objParams.country}}
-
-                        },
-
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-                                        day: { $dayOfMonth: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
                                 $match: {
+
+                                    country: {$in: objParams.country},
 
                                     $and: [
 
+                                        {
 
-                                        {year: {$gte: dateFromYear}},
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
 
-                                        {year: {$lte: dateToYear}}
+                                        {
 
-
-                                    ]
-
-
-                                }
-
-
-                            },
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
 
 
-                            {
-
-                                $match: {
-
-                                    $and: [
+                                    ],
 
 
-                                        {month: {$gte: dateFromMonth}},
-
-                                        {month: {$lte: dateToMonth}}
-
-
-                                    ]
-
-
-                                }
-
-
-                            },
-                            {
-
-                                $match: {
-
-                                    $and: [
-
-
-                                        {day: {$gte: dateFromDay}},
-
-                                        {day: {$lte: dateToDay}}
-
-
-                                    ]
-
-
-                                }
+                                },
 
 
                             },
 
 
-                        ],
+
+
+
+                        ]
 
 
                     }
-                },
+                }
 
 
 
@@ -1917,6 +1385,7 @@ module.exports = {
 
 
             }
+
 
 
 

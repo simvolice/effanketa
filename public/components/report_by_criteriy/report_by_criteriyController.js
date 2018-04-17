@@ -190,90 +190,100 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-           let chartCommonOrg = bb.generate({
-                bindto: "#chartCommonOrg",
-                data: {
-                    json: [
-                        $scope.data.countSatisfactionCommonAll[0].ques19
-                    ],
-                    keys: {
 
-                        value: ['Государственное учреждение', 'Региональную организацию', 'НПО', 'Академическое сообщество', 'Ассоциацию фермеров', 'Ассоциацию малого и среднего бизнеса', 'Международную организацию', 'СМИ', 'Другое'],
+            if ( $scope.data.countSatisfactionCommonAll.length !== 0) {
+
+
+
+                let chartCommonOrg = bb.generate({
+                    bindto: "#chartCommonOrg",
+                    data: {
+                        json: [
+                            $scope.data.countSatisfactionCommonAll[0].ques19
+                        ],
+                        keys: {
+
+                            value: ['Государственное учреждение', 'Региональную организацию', 'НПО', 'Академическое сообщество', 'Ассоциацию фермеров', 'Ассоциацию малого и среднего бизнеса', 'Международную организацию', 'СМИ', 'Другое'],
+                        },
+                        type: 'pie'
                     },
-                    type: 'pie'
-                },
 
-                tooltip: {
-                    format: {
+                    tooltip: {
+                        format: {
 
-                        value: function (value, ratio, id) {
-                            return value;
+                            value: function (value, ratio, id) {
+                                return value;
+                            }
+
                         }
-
                     }
-                }
 
-            });
-
-
-            $scope.chartAllVariable.push(chartCommonOrg);
+                });
 
 
+                $scope.chartAllVariable.push(chartCommonOrg);
 
-           let chartCommonSex = bb.generate({
-                bindto: "#chartCommonSex",
-                data: {
-                    json: [
-                        $scope.data.countSatisfactionCommonAll[0].ques20
-                    ],
-                    keys: {
 
-                        value: ['Мужской', 'Женский'],
+
+                let chartCommonSex = bb.generate({
+                    bindto: "#chartCommonSex",
+                    data: {
+                        json: [
+                            $scope.data.countSatisfactionCommonAll[0].ques20
+                        ],
+                        keys: {
+
+                            value: ['Мужской', 'Женский'],
+                        },
+                        type: 'pie'
                     },
-                    type: 'pie'
-                },
-                tooltip: {
-                    format: {
+                    tooltip: {
+                        format: {
 
-                        value: function (value, ratio, id) {
-                            return value;
+                            value: function (value, ratio, id) {
+                                return value;
+                            }
+
                         }
-
                     }
-                }
-            });
+                });
 
-            $scope.chartAllVariable.push(chartCommonSex);
+                $scope.chartAllVariable.push(chartCommonSex);
 
 
-           let chartCommonAge = bb.generate({
-                bindto: "#chartCommonAge",
-                data: {
-                    json: [
-                        $scope.data.countSatisfactionCommonAll[0].ques21
-                    ],
-                    keys: {
+                let chartCommonAge = bb.generate({
+                    bindto: "#chartCommonAge",
+                    data: {
+                        json: [
+                            $scope.data.countSatisfactionCommonAll[0].ques21
+                        ],
+                        keys: {
 
-                        value: ['25-29', '30-34', '35-39', '40-44', '45-49', '50-и старше'],
+                            value: ['25-29', '30-34', '35-39', '40-44', '45-49', '50-и старше'],
+                        },
+                        type: 'pie'
                     },
-                    type: 'pie'
-                },
-                tooltip: {
-                    format: {
+                    tooltip: {
+                        format: {
 
-                        value: function (value, ratio, id) {
-                            return value;
+                            value: function (value, ratio, id) {
+                                return value;
+                            }
+
                         }
-
                     }
-                }
-            });
+                });
 
 
-            $scope.chartAllVariable.push(chartCommonAge);
+                $scope.chartAllVariable.push(chartCommonAge);
 
 
 
+
+
+
+
+            }
 
 
 

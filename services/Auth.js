@@ -216,7 +216,10 @@ module.exports = {
 
 
 
-            const result = await col.updateOne({_id: ObjectId(objParam._id)} ,{ $set: {
+            const result = await col.updateOne({_id: ObjectId(objParam._id)} ,
+
+
+                { $set: {
 
 
                 email: objParam.email,
