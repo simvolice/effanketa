@@ -515,11 +515,19 @@ function DialogControllerUpdReportYearRCU($state, $scope, data, UpdReportYearRCU
     $scope.toDocx = function () {
 
 
+
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
+
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
 
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.country + ", " + data.typePeriod);
+        $mdDialog.hide();
 
 
     };
@@ -701,12 +709,19 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
     $scope.toDocx = function () {
 
 
+
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
 
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.nameCountry + ", " + data.periodName);
 
+        $mdDialog.hide();
 
     };
 
@@ -813,11 +828,18 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
     $scope.toDocx = function () {
 
 
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
 
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.country + ", " + data.typePeriod);
+
+        $mdDialog.hide();
 
 
     };
@@ -1096,12 +1118,20 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
     $scope.toDocx = function () {
 
 
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
+
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
 
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.nameCountry + ", " + data.periodName);
 
+
+        $mdDialog.hide();
 
     };
 
@@ -1267,12 +1297,19 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
     $scope.toDocx = function () {
 
 
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
 
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.country + ", " + data.typePeriod);
 
+
+        $mdDialog.hide();
 
     };
 
@@ -1431,6 +1468,11 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
     $scope.toDocx = function () {
 
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
 
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
@@ -1438,6 +1480,8 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.nameCountry + ", " + data.periodName);
 
+
+        $mdDialog.hide();
 
     };
 
@@ -1546,11 +1590,20 @@ function DialogControllerUpdReportQNCU($scope, data, UpdReport) {
     $scope.toDocx = function () {
 
 
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
+
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
 
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.country + ", " + data.typePeriod);
+
+
+        $mdDialog.hide();
 
 
     };
@@ -1834,6 +1887,13 @@ $scope.data = {
 
     $scope.toDocx = function () {
 
+        $(".for__label__doc").removeClass("hidden");
+        $(".for__doc__word").remove();
+        $(".for__icon__remove__in__doc").remove();
+
+
+
+
 
         var content = '<!DOCTYPE html>' + $("#printableArea").html();
 
@@ -1841,6 +1901,7 @@ $scope.data = {
         var converted = htmlDocx.asBlob(content);
         saveAs(converted, data.nameCountry + ", " + data.periodName);
 
+        $mdDialog.hide();
 
     };
 

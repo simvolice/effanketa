@@ -42,7 +42,7 @@
 
                                         <div class="input-group">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">event</i>
+                                                <i class="material-icons for__icon__remove__in__doc">event</i>
                                              </span>
                                             <div class="form-group is-empty"><h5>{{ 'PERIOD_REPORT' | translate }}: <strong>{{data.typePeriod}}</strong></h5><span class="material-input"></span></div>
                                         </div>
@@ -53,7 +53,7 @@
 
                                         <div class="input-group">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">event</i>
+                                                <i class="material-icons for__icon__remove__in__doc">event</i>
                                              </span>
                                             <div class="form-group is-empty"><h5>{{ 'YEAR' | translate }}: <strong>{{data.year}}</strong></h5><span class="material-input"></span></div>
                                         </div>
@@ -64,7 +64,7 @@
 
                                         <div class="input-group" ng-switch on="data.country">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">event</i>
+                                                <i class="material-icons for__icon__remove__in__doc">event</i>
                                              </span>
                                             <div class="form-group is-empty" ng-switch-default><h5>{{ 'NCU_TITLE' | translate }}: <strong>{{data.country}}</strong></h5><span class="material-input"></span></div>
                                             <div class="form-group is-empty" ng-switch-when="Все"><h5><strong>{{ 'RCU_TITLE' | translate }}</strong></h5><span class="material-input"></span></div>
@@ -150,7 +150,10 @@
                                                 <md-input-container class="md-block">
                                                     <label>Please, describe the quarterly progress, overview of activities and main outcomes for the reporting period.
                                                     </label>
-                                                    <textarea ng-model="data.overallNarrative" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.overallNarrative" rows="5" md-select-on-focus></textarea>
+
+                                                    <label class="for__label__doc hidden">{{data.overallNarrative}}</label>
+
                                                 </md-input-container>
 
 
@@ -250,7 +253,12 @@
 
                                                         <md-input-container class="md-block" style="margin-top: 50px">
                                                             <label>Comments:</label>
-                                                            <textarea ng-model="data.comments" rows="5" md-select-on-focus></textarea>
+                                                            <textarea class="for__doc__word" ng-model="data.comments" rows="5" md-select-on-focus></textarea>
+
+
+                                                            <label class="for__label__doc hidden">{{data.comments}}</label>
+
+
                                                         </md-input-container>
 
 
@@ -446,7 +454,11 @@
                                                         <label> The number of satisfied to the total number of complaints in percentage
 
                                                         </label>
-                                                        <textarea ng-model="data.satisfiedComplaintsInPercentage" rows="5" md-select-on-focus></textarea>
+                                                        <textarea class="for__doc__word" ng-model="data.satisfiedComplaintsInPercentage" rows="5" md-select-on-focus></textarea>
+
+                                                        <label class="for__label__doc hidden">{{data.satisfiedComplaintsInPercentage}}</label>
+
+
                                                     </md-input-container>
 
 
@@ -470,7 +482,12 @@
                                                         <label> Please, provide the sources used to disclose information on resolved complaints and actions taken
 
                                                         </label>
-                                                        <textarea ng-model="data.grmSourceInformation" rows="5" md-select-on-focus></textarea>
+                                                        <textarea class="for__doc__word" ng-model="data.grmSourceInformation" rows="5" md-select-on-focus></textarea>
+
+
+                                                        <label class="hidden for__label__doc">{{data.grmSourceInformation}}</label>
+
+
                                                     </md-input-container>
 
 
@@ -606,7 +623,12 @@
                                                         <md-input-container class="md-block">
                                                             <label>Question
                                                             </label>
-                                                            <textarea ng-model="data.projectRisksIssuesQuestion" rows="5" md-select-on-focus></textarea>
+                                                            <textarea class="for__doc__word" ng-model="data.projectRisksIssuesQuestion" rows="5" md-select-on-focus></textarea>
+
+                                                            <label class="hidden for__label__doc">{{data.projectRisksIssuesQuestion}}</label>
+
+
+
                                                         </md-input-container>
 
 
@@ -621,7 +643,11 @@
                                                         <md-input-container class="md-block">
                                                             <label>Question
                                                             </label>
-                                                            <textarea ng-model="data.projectRisksPotentialRisksQuestion" rows="5" md-select-on-focus></textarea>
+                                                            <textarea class="for__doc__word" ng-model="data.projectRisksPotentialRisksQuestion" rows="5" md-select-on-focus></textarea>
+
+
+                                                            <label class="hidden for__label__doc">{{data.projectRisksPotentialRisksQuestion}}</label>
+
                                                         </md-input-container>
 
 
@@ -661,7 +687,10 @@
                                                         <md-input-container class="md-block">
                                                             <label>Key activities, which NCU team plans to convene in the next period, are:
                                                             </label>
-                                                            <textarea ng-model="data.plansNextPeriod" rows="5" md-select-on-focus></textarea>
+                                                            <textarea class="for__doc__word" ng-model="data.plansNextPeriod" rows="5" md-select-on-focus></textarea>
+
+                                                            <label class="hidden for__label__doc">{{data.plansNextPeriod}}</label>
+
                                                         </md-input-container>
 
 
@@ -677,7 +706,9 @@
                                                         <md-input-container class="md-block">
                                                             <label>Planned budget for the next half-year:
                                                             </label>
-                                                            <textarea ng-model="data.plansNextHalfYearPeriod" rows="5" md-select-on-focus></textarea>
+                                                            <textarea class="for__doc__word" ng-model="data.plansNextHalfYearPeriod" rows="5" md-select-on-focus></textarea>
+
+                                                            <label class="for__label__doc hidden">{{data.plansNextHalfYearPeriod}}</label>
                                                         </md-input-container>
 
 

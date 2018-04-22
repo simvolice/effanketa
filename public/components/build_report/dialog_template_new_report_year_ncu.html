@@ -42,7 +42,7 @@
 
                                         <div class="input-group">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">event</i>
+                                                <i class="material-icons for__icon__remove__in__doc">event</i>
                                              </span>
                                             <div class="form-group is-empty"><h5>{{ 'PERIOD_REPORT' | translate }}: <strong>{{data.typePeriod}}</strong></h5><span class="material-input"></span></div>
                                         </div>
@@ -53,7 +53,7 @@
 
                                         <div class="input-group">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">event</i>
+                                                <i class="material-icons for__icon__remove__in__doc">event</i>
                                              </span>
                                             <div class="form-group is-empty"><h5>{{ 'YEAR' | translate }}: <strong>{{data.year}}</strong></h5><span class="material-input"></span></div>
                                         </div>
@@ -64,7 +64,7 @@
 
                                         <div class="input-group" ng-switch on="data.country">
                                              <span class="input-group-addon">
-                                                <i class="material-icons">event</i>
+                                                <i class="material-icons for__icon__remove__in__doc">event</i>
                                              </span>
                                             <div class="form-group is-empty" ng-switch-default><h5>{{ 'NCU_TITLE' | translate }}: <strong>{{data.country}}</strong></h5><span class="material-input"></span></div>
                                             <div class="form-group is-empty" ng-switch-when="Все"><h5><strong>{{ 'RCU_TITLE' | translate }}</strong></h5><span class="material-input"></span></div>
@@ -160,7 +160,11 @@
                                                 <md-input-container class="md-block">
                                                     <label>Comments
                                                     </label>
-                                                    <textarea ng-model="data.projectPerformanceComments" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.projectPerformanceComments" rows="5" md-select-on-focus></textarea>
+
+                                                    <label class="hidden for__label__doc">{{data.projectPerformanceComments}}</label>
+
+
                                                 </md-input-container>
 
 
@@ -180,7 +184,12 @@
                                                 <md-input-container class="md-block">
                                                     <label>Текст
                                                     </label>
-                                                    <textarea ng-model="data.detailedProject" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.detailedProject" rows="5" md-select-on-focus></textarea>
+
+
+                                                    <label class="hidden for__label__doc">{{data.detailedProject}}</label>
+
+
                                                 </md-input-container>
 
 
@@ -201,19 +210,35 @@
                                                 <md-input-container class="md-block">
                                                     <label>Risks
                                                     </label>
-                                                    <textarea ng-model="data.risks" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.risks" rows="5" md-select-on-focus></textarea>
+
+                                                    <label class="hidden for__label__doc">{{data.risks}}</label>
+
+
+
                                                 </md-input-container>
 
                                                 <md-input-container class="md-block">
                                                     <label>Lessons Learned
                                                     </label>
-                                                    <textarea ng-model="data.lessonsLearned" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.lessonsLearned" rows="5" md-select-on-focus></textarea>
+
+
+                                                    <label class="hidden for__label__doc">{{data.lessonsLearned}}</label>
+
+
+
                                                 </md-input-container>
 
                                                 <md-input-container class="md-block">
                                                     <label>Recommendations
                                                     </label>
-                                                    <textarea ng-model="data.recommendations" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.recommendations" rows="5" md-select-on-focus></textarea>
+
+                                                    <label class="hidden for__label__doc">{{data.recommendations}}</label>
+
+
+
                                                 </md-input-container>
 
 
@@ -311,7 +336,12 @@
                                                 <md-input-container class="md-block">
                                                     <label>Planned budget for the next year
                                                     </label>
-                                                    <textarea ng-model="data.plannedBudget" rows="5" md-select-on-focus></textarea>
+                                                    <textarea class="for__doc__word" ng-model="data.plannedBudget" rows="5" md-select-on-focus></textarea>
+
+                                                    <label class="hidden for__label__doc">{{data.plannedBudget}}</label>
+
+
+
                                                 </md-input-container>
 
 
