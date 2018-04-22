@@ -109,6 +109,3 @@ typings/
 public/uploads/
 
 
-/.env
-/.gitignore
-/public/uploads/
