@@ -12,8 +12,6 @@ const dbConnect = require('../utils/dbConnect');
 
 
 
-const NameYear = require('../services/NameYear');
-
 
 module.exports = {
 
@@ -30,7 +28,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
 
 
             const result = await col.aggregate([
@@ -65,7 +62,7 @@ module.exports = {
 
                                 {
 
-                                    $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий"}
+                                    $match: {year: yearId, nameTypeEvent: "Обучающий"}
 
                                 },
 
@@ -134,7 +131,7 @@ module.exports = {
 
                                 {
 
-                                    $match: {year: nameYear.codeName}
+                                    $match: {year: yearId}
 
                                 },
 
@@ -223,7 +220,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
 
 
             const result = await col.aggregate([
@@ -248,7 +244,7 @@ module.exports = {
 
                 {
 
-                    $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий",
+                    $match: {year: yearId, nameTypeEvent: "Обучающий",
 
 
                         $or: [{nameSubTypeEvent: "Частично"},
@@ -316,8 +312,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
-
 
             const result = await col.aggregate([{
 
@@ -336,7 +330,7 @@ module.exports = {
 
                 {
 
-                    $match: {year: nameYear.codeName}
+                    $match: {year: yearId}
 
                 },
 
@@ -391,7 +385,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
 
 
             const result = await col.aggregate([{
@@ -411,7 +404,7 @@ module.exports = {
 
                 {
 
-                    $match: {year: nameYear.codeName}
+                    $match: {year: yearId}
 
                 },
 
@@ -465,7 +458,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
 
 
             const result = await col.aggregate([{
@@ -485,7 +477,7 @@ module.exports = {
 
                 {
 
-                    $match: {year: nameYear.codeName}
+                    $match: {year: yearId}
 
                 },
 
@@ -545,8 +537,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
-
 
             const result = await col.aggregate([{
 
@@ -565,7 +555,7 @@ module.exports = {
 
                 {
 
-                    $match: {year: nameYear.codeName}
+                    $match: {year: yearId}
 
                 },
 
@@ -622,8 +612,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
-
 
 
             const resultEvents = await colEvents.aggregate([
@@ -652,7 +640,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий"}
+                                $match: {year: yearId, nameTypeEvent: "Обучающий"}
 
                             },
 
@@ -690,7 +678,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName, nameTypeEvent: "Обучающий"}
+                                $match: {year: yearId, nameTypeEvent: "Обучающий"}
 
                             },
 
@@ -746,7 +734,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -787,7 +775,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -826,7 +814,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -871,7 +859,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -912,7 +900,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -951,7 +939,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -1035,7 +1023,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
 
 
             const result = await col.aggregate([
@@ -1063,7 +1050,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -1105,7 +1092,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -1146,7 +1133,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -1229,7 +1216,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(yearId);
 
 
 
@@ -1262,7 +1248,7 @@ module.exports = {
 
                             {
 
-                                $match: {year: nameYear.codeName}
+                                $match: {year: yearId}
 
                             },
 
@@ -1298,7 +1284,7 @@ module.exports = {
 
                                 $match: {
 
-                                    year: nameYear.codeName,
+                                    year: yearId,
 
                                     timeOfSatisfaction: "В срок",
 

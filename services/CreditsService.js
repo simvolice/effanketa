@@ -57,7 +57,7 @@ module.exports = {
 
               nameFactCategcredits: nameFact.name,
 
-              createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+              createAt: new Date( new Date(objParams.createAt).getTime() - ( new Date(objParams.createAt).getTimezoneOffset() * 60000 ) )
 
 
 
@@ -293,7 +293,9 @@ module.exports = {
 
 
                       CreatePowerPlan: Double(objParams.CreatePowerPlan),
-                      creditsFactSelect: ObjectId(objParams.creditsFactSelect)
+                      creditsFactSelect: ObjectId(objParams.creditsFactSelect),
+                      createAt: new Date( new Date(objParams.createAt).getTime() - ( new Date(objParams.createAt).getTimezoneOffset() * 60000 ) )
+
 
 
 

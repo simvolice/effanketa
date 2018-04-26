@@ -91,6 +91,11 @@ $scope.createNewFact = function (event) {
 
             $scope.data = result.resultFromDb;
 
+            for (let item of $scope.data) {
+
+                item.createAt = new Date(item.createAt);
+
+            }
 
         } else {
 

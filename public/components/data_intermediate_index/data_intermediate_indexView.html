@@ -46,9 +46,9 @@
                     <div class="col-md-12">
 
 
-                        <select ng-model="yearname" ng-options="y._id as y.name for y in allyearname">
-                        </select>
-                        <md-button class="md-raised md-primary" ng-click="generateReport()">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
+
+                        <md-button class="md-raised md-primary" ng-click="generateNewReport()">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
+
                         <md-button class="md-raised md-primary" ng-click="print()">{{ 'PRINT' | translate }}</md-button>
                         <md-button class="md-raised md-primary" ng-click="excel()">{{ 'CREATE_EXCEL' | translate }}</md-button>
 
@@ -106,12 +106,12 @@
                                 <th class="tg-hgcj" colspan="6">Cumulative Target Values<br>Совокупные целевые показатели</th>
                             </tr>
                             <tr>
-                                <td class="tg-hgcj">YR1<br>Год 1</td>
-                                <td class="tg-hgcj">YR2<br>Год 2</td>
-                                <td class="tg-hgcj">YR3<br>Год 3</td>
-                                <td class="tg-hgcj">YR4<br>Год 4</td>
-                                <td class="tg-hgcj">YR5<br>Год 5</td>
-                                <td class="tg-hgcj">End Target<br>Конечный целевой показатель</td>
+                                <td class="tg-hgcj">YR1<br>Год 1 <br>2016</td>
+                                <td class="tg-hgcj">YR2<br>Год 2 <br>2017</td>
+                                <td class="tg-hgcj">YR3<br>Год 3 <br>2018</td>
+                                <td class="tg-hgcj">YR4<br>Год 4 <br>2019</td>
+                                <td class="tg-hgcj">YR5<br>Год 5 <br>2020</td>
+                                <td class="tg-hgcj">End Target<br>Конечный целевой показатель <br>2021</td>
                             </tr>
 
                             </thead>
@@ -313,22 +313,22 @@
                                 <tr>
                                     <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllArrNew[0][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllArrNew[1][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllArrNew[2][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllArrNew[3][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllArrNew[4][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllArrNew[0][0].allFormPercent + arrAllArrNew[1][0].allFormPercent + arrAllArrNew[2][0].allFormPercent + arrAllArrNew[3][0].allFormPercent + arrAllArrNew[4][0].allFormPercent}}%</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Number of country-led plans <br>and programs that draw on <br>Program’s climate knowledge <br>services, including<br>lessons <br>from climate investments (Number)<br><br>ИЦ 2. Количество<br>планов и программ, <br>которые разработаны самими,<br>странами с учетом знаний и <br>уроков, предоставленных<br>программой (кол-во)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countProgramm || 0}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllArr[0][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllArr[1][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllArr[2][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllArr[3][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllArr[4][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllArr[0][0].countProgramm + arrAllArr[1][0].countProgramm + arrAllArr[2][0].countProgramm + arrAllArr[3][0].countProgramm + arrAllArr[4][0].countProgramm}}</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Cooperative action<br>resulting <br>in the financing of investments <br>that require collaboration across <br>countries. This collaborative action <br>could be supporting action in a <br>transboundary geographical <br>area or could include explicit <br>coordination actions<br>across countries<br>to maximize synergies to better <br>adapt to climate change in<br>relevant <br>national policies (Number)<br><br><br>ИЦ 3. Примеры совм. деятельности, <br>которые<br>привели к финансированию <br>инвестиций, требующих<br>сотрудничества стран (кол-во)</td>
@@ -507,12 +507,12 @@
                                 <th class="tg-hgcj" colspan="6">Cumulative Target Values<br>Совокупные целевые показатели</th>
                             </tr>
                             <tr>
-                                <td class="tg-hgcj">YR1<br>Год 1</td>
-                                <td class="tg-hgcj">YR2<br>Год 2</td>
-                                <td class="tg-hgcj">YR3<br>Год 3</td>
-                                <td class="tg-hgcj">YR4<br>Год 4</td>
-                                <td class="tg-hgcj">YR5<br>Год 5</td>
-                                <td class="tg-hgcj">End Target<br>Конечный целевой показатель</td>
+                                <td class="tg-hgcj">YR1<br>Год 1 <br>2016</td>
+                                <td class="tg-hgcj">YR2<br>Год 2 <br>2017</td>
+                                <td class="tg-hgcj">YR3<br>Год 3 <br>2018</td>
+                                <td class="tg-hgcj">YR4<br>Год 4 <br>2019</td>
+                                <td class="tg-hgcj">YR5<br>Год 5 <br>2020</td>
+                                <td class="tg-hgcj">End Target<br>Конечный целевой показатель <br>2021</td>
                             </tr>
 
                             </thead>
