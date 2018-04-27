@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('DataIntermediateIndexCtrl', function (GetReportSumGenderEvent, $scope, $window, GetYearName, GetReportAllForms, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
+angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout, GetReportSumGenderEvent, $scope, $window, GetYearName, GetReportAllForms, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
 
 
 
@@ -12,8 +12,15 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (GetRepor
 
 
 
-    $scope.arrAllArr = [];
-    $scope.arrAllArrNew = [];
+    $scope.arrAllForms = [];
+    $scope.arrAllCountProgramm = [];
+    $scope.arrAllCountRegeonalInvest = [];
+    $scope.arrAllSumMobileAmount = [];
+    $scope.arrAllCountPlatform = [];
+    $scope.arrAllCountBenificiarProject = [];
+    $scope.arrAllSumGAProject = [];
+    $scope.arrAllSumGenderEvent = [];
+    $scope.arrAllCountCompleteGRM = [];
 
     $scope.arrYear = [2016, 2017, 2018, 2019, 2020, 2021];
 
@@ -69,72 +76,166 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (GetRepor
 
         });
 
-        GetReportCountProgramm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+
+        $scope.arrAllForms.push(arrAllData);
 
 
 
-                $scope.data.countProgramm = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_programm;
+    };
+
+    $scope.generateReportCountProgramm = function (yearname) {
 
 
-              arrAllData.push({countProgramm: $scope.data.countProgramm});
+        let arrAllData = [];
 
 
-
-
-
-        });
-
-
-
-        GetReportCountRegeonalInvest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+          GetReportCountProgramm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
 
 
+                  $scope.data.countProgramm = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_programm;
 
-                $scope.data.finInvest = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_invest;
 
 
-               arrAllData.push({finInvest: $scope.data.finInvest});
+                arrAllData.push({countProgramm: $scope.data.countProgramm});
 
 
 
 
 
-        });
-
-
-
-        GetReportSumMobileAmount.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
-
-
-               $scope.data.mobileResurs = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_mobileresurs.$numberDecimal;
-
-
-                arrAllData.push({mobileResurs: Number.parseFloat($scope.data.mobileResurs)});
+          });
 
 
 
 
-
-
-        });
-
-
-
-       GetReportCountPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+        $scope.arrAllCountProgramm.push(arrAllData);
 
 
 
-                $scope.data.countPlatform = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_platform;
+    };
 
 
-                arrAllData.push({countPlatform: $scope.data.countPlatform});
+    $scope.generateReportCountRegeonalInvest = function (yearname) {
+
+
+        let arrAllData = [];
 
 
 
 
 
-        });
+
+         GetReportCountRegeonalInvest.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+
+
+
+
+                   $scope.data.finInvest = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_invest;
+
+
+                  arrAllData.push({finInvest: $scope.data.finInvest});
+
+
+
+
+
+           });
+
+
+
+
+        $scope.arrAllCountRegeonalInvest.push(arrAllData);
+
+
+
+    };
+
+
+
+
+
+    $scope.generateReportSumMobileAmount = function (yearname) {
+
+
+        let arrAllData = [];
+
+
+
+
+
+
+
+
+          GetReportSumMobileAmount.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+
+
+                $scope.data.mobileResurs = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_mobileresurs.$numberDecimal;
+
+
+                 arrAllData.push({mobileResurs: Number.parseFloat($scope.data.mobileResurs)});
+
+
+
+
+
+
+         });
+
+
+
+
+        $scope.arrAllSumMobileAmount.push(arrAllData);
+
+
+
+    };
+
+
+
+
+
+
+    $scope.generateReportCountPlatform = function (yearname) {
+
+
+        let arrAllData = [];
+
+
+
+
+          GetReportCountPlatform.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+
+
+
+                  $scope.data.countPlatform = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_platform;
+
+
+                  arrAllData.push({countPlatform: $scope.data.countPlatform});
+
+
+
+
+
+          });
+
+
+
+        $scope.arrAllCountPlatform.push(arrAllData);
+
+
+
+    };
+
+
+
+    $scope.generateReportCountBenificiarProject = function (yearname) {
+
+
+        let arrAllData = [];
+
+
+
+
 
 
          GetReportCountBenificiarProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
@@ -205,47 +306,105 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (GetRepor
 
 
 
-       GetReportSumGAProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
-
-            if (entry.resultFromDb.length !== 0) {
-
-                $scope.data.areaGAProject = entry.resultFromDb[0].categByAll.length === 0 ? 0 : entry.resultFromDb[0].categByAll[0].all_gaproject;
-                $scope.data.areaGAProjectTj = entry.resultFromDb[0].categByTj.length === 0 ? 0 : entry.resultFromDb[0].categByTj[0].all_gaproject;
-                $scope.data.areaGAProjectUz = entry.resultFromDb[0].categByUz.length === 0 ? 0 : entry.resultFromDb[0].categByUz[0].all_gaproject;
-
-
-                arrAllData.push({areaGAProject: $scope.data.areaGAProject});
-                arrAllData.push({areaGAProjectTj: $scope.data.areaGAProjectTj});
-                arrAllData.push({areaGAProjectUz: $scope.data.areaGAProjectUz});
-
-
-            }
+        $scope.arrAllCountBenificiarProject.push(arrAllData);
 
 
 
-        });
+    };
 
 
-        GetReportSumGenderEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
+
+
+    $scope.generateReportSumGAProject = function (yearname) {
+
+
+        let arrAllData = [];
 
 
 
 
 
-                $scope.data.sumgenderevent = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].countAll;
+         GetReportSumGAProject.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
 
-                arrAllData.push({sumgenderevent: $scope.data.sumgenderevent});
+              if (entry.resultFromDb.length !== 0) {
+
+                  $scope.data.areaGAProject = entry.resultFromDb[0].categByAll.length === 0 ? 0 : entry.resultFromDb[0].categByAll[0].all_gaproject;
+                  $scope.data.areaGAProjectTj = entry.resultFromDb[0].categByTj.length === 0 ? 0 : entry.resultFromDb[0].categByTj[0].all_gaproject;
+                  $scope.data.areaGAProjectUz = entry.resultFromDb[0].categByUz.length === 0 ? 0 : entry.resultFromDb[0].categByUz[0].all_gaproject;
+
+
+                  arrAllData.push({areaGAProject: $scope.data.areaGAProject});
+                  arrAllData.push({areaGAProjectTj: $scope.data.areaGAProjectTj});
+                  arrAllData.push({areaGAProjectUz: $scope.data.areaGAProjectUz});
+
+
+              }
+
+
+
+          });
+
+
+
+        $scope.arrAllSumGAProject.push(arrAllData);
+
+
+
+    };
+
+
+
+
+
+    $scope.generateReportSumGenderEvent = function (yearname) {
+
+
+        let arrAllData = [];
 
 
 
 
 
 
-        });
+
+          GetReportSumGenderEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
 
+
+
+
+                  $scope.data.sumgenderevent = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].countAll;
+
+
+                  arrAllData.push({sumgenderevent: $scope.data.sumgenderevent});
+
+
+
+
+
+
+          });
+
+
+
+
+
+
+        $scope.arrAllSumGenderEvent.push(arrAllData);
+
+
+
+    };
+
+
+
+
+    $scope.generateReportCountCompleteGRM = function (yearname) {
+
+
+        let arrAllData = [];
 
 
 
@@ -255,65 +414,48 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (GetRepor
 
 
 
-            if (entry.resultFromDb.length !== 0) {
+             if (entry.resultFromDb.length !== 0) {
 
-                $scope.data.countGRM = $scope.calculatePercent(entry.resultFromDb[0].categorizedByAllCompletegrm.length === 0 ? 0 : entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction.length === 0 ? 0 : entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction[0].all_completegrmWithTimeOfSatisfaction);
-                arrAllData.push({countGRM: $scope.data.countGRM});
-
-
-            }
+                 $scope.data.countGRM = $scope.calculatePercent(entry.resultFromDb[0].categorizedByAllCompletegrm.length === 0 ? 0 : entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction.length === 0 ? 0 : entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction[0].all_completegrmWithTimeOfSatisfaction);
+                 arrAllData.push({countGRM: $scope.data.countGRM});
 
 
-        });
+             }
 
 
+         });
 
 
 
-        $scope.arrAllArr.push(arrAllData);
+
+
+        $scope.arrAllCountCompleteGRM.push(arrAllData);
 
 
 
     };
 
+
+
+
     for (const itemYear of $scope.arrYear) {
-
         $scope.generateReport(itemYear);
+        $scope.generateReportCountProgramm(itemYear);
 
+        $scope.generateReportCountRegeonalInvest(itemYear);
+        $scope.generateReportSumMobileAmount(itemYear);
+        $scope.generateReportCountPlatform(itemYear);
+        $scope.generateReportCountBenificiarProject(itemYear);
+        $scope.generateReportSumGAProject(itemYear);
+        $scope.generateReportSumGenderEvent(itemYear);
+        $scope.generateReportCountCompleteGRM(itemYear);
 
 
     }
 
 
-    setTimeout(function () {
-        $scope.arrAllArrNew = $scope.arrAllArr;
-    }, 1500);
 
-
-
-
-
-
-
-    $scope.generateNewReport = function () {
-
-
-        $scope.arrAllArr = [];
-        for (const itemYear of $scope.arrYear) {
-
-
-            $scope.generateReport(itemYear);
-
-
-        }
-
-
-    };
-
-
-
-
-
+    console.log($scope.arrAllSumGAProject);
 
 
     $scope.print = function () {

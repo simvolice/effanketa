@@ -47,7 +47,6 @@
 
 
 
-                        <md-button class="md-raised md-primary" ng-click="generateNewReport()">{{ 'BUILD_REPORT_BTN' | translate }}</md-button>
 
                         <md-button class="md-raised md-primary" ng-click="print()">{{ 'PRINT' | translate }}</md-button>
                         <md-button class="md-raised md-primary" ng-click="excel()">{{ 'CREATE_EXCEL' | translate }}</md-button>
@@ -313,42 +312,42 @@
                                 <tr>
                                     <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllArrNew[0][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllArrNew[1][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllArrNew[2][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllArrNew[3][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllArrNew[4][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllArrNew[0][0].allFormPercent + arrAllArrNew[1][0].allFormPercent + arrAllArrNew[2][0].allFormPercent + arrAllArrNew[3][0].allFormPercent + arrAllArrNew[4][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Number of country-led plans <br>and programs that draw on <br>Program’s climate knowledge <br>services, including<br>lessons <br>from climate investments (Number)<br><br>ИЦ 2. Количество<br>планов и программ, <br>которые разработаны самими,<br>странами с учетом знаний и <br>уроков, предоставленных<br>программой (кол-во)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllArr[0][0].countProgramm}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllArr[1][0].countProgramm}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllArr[2][0].countProgramm}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllArr[3][0].countProgramm}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllArr[4][0].countProgramm}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllArr[0][0].countProgramm + arrAllArr[1][0].countProgramm + arrAllArr[2][0].countProgramm + arrAllArr[3][0].countProgramm + arrAllArr[4][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountProgramm[0][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountProgramm[1][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountProgramm[2][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountProgramm[3][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountProgramm[4][0].countProgramm}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountProgramm[0][0].countProgramm + arrAllCountProgramm[1][0].countProgramm + arrAllCountProgramm[2][0].countProgramm + arrAllCountProgramm[3][0].countProgramm + arrAllCountProgramm[4][0].countProgramm}}</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Cooperative action<br>resulting <br>in the financing of investments <br>that require collaboration across <br>countries. This collaborative action <br>could be supporting action in a <br>transboundary geographical <br>area or could include explicit <br>coordination actions<br>across countries<br>to maximize synergies to better <br>adapt to climate change in<br>relevant <br>national policies (Number)<br><br><br>ИЦ 3. Примеры совм. деятельности, <br>которые<br>привели к финансированию <br>инвестиций, требующих<br>сотрудничества стран (кол-во)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.finInvest || 0}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountRegeonalInvest[0][0].finInvest}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountRegeonalInvest[1][0].finInvest}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountRegeonalInvest[2][0].finInvest}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountRegeonalInvest[3][0].finInvest}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountRegeonalInvest[4][0].finInvest}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountRegeonalInvest[0][0].finInvest + arrAllCountRegeonalInvest[1][0].finInvest + arrAllCountRegeonalInvest[2][0].finInvest + arrAllCountRegeonalInvest[3][0].finInvest + arrAllCountRegeonalInvest[4][0].finInvest}}</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Additional resources mobilized for <br>knowledge,<br>capacity, and investment <br>for regional climate/green actions <br>through increased<br>Program-led <br>coordination between Central Asian <br>countries and development<br>community. (Amount (USD))<br><br>ИЦ 4. Объем дополнительно мобилизованных <br>ресурсов для<br>финансирования знаний, <br>поднятия потенциала и инвестиций<br>в <br>региональное сотрудничество в области <br>изменения климата/ «зеленой»<br>деятельности <br>как результат улучшенного уровня <br>программной координации между <br>странами ЦА и м/н сообществом, <br>поддерживающим развития (в<br>долларах США)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>${{data.mobileResurs.$numberDecimal || 0}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">$20 000 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">$30 000 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllSumMobileAmount[0][0].mobileResurs}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllSumMobileAmount[1][0].mobileResurs}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$20 000 000</span><br>{{arrAllSumMobileAmount[2][0].mobileResurs}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$30 000 000</span><br>{{arrAllSumMobileAmount[3][0].mobileResurs}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span><br>{{arrAllSumMobileAmount[4][0].mobileResurs}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">$40 000 000</span><br>{{arrAllSumMobileAmount[0][0].mobileResurs + arrAllSumMobileAmount[1][0].mobileResurs + arrAllSumMobileAmount[2][0].mobileResurs + arrAllSumMobileAmount[3][0].mobileResurs + arrAllSumMobileAmount[4][0].mobileResurs}}</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-amwm" colspan="8">Intermediate Results Indicators<br>Индикаторы,промежуточных результатов,(ИПР)</td>
@@ -356,12 +355,12 @@
                                 <tr>
                                     <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.allFormPercent || 0}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
@@ -378,12 +377,12 @@
                                 <tr>
                                     <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countPlatform}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">2</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}%</td>
                                 </tr>
 
 
@@ -391,39 +390,147 @@
                                 <tr>
                                     <td class="tg-yw4l">Direct project beneficiaries (Number) - (Core)<br><br>ИПР 1.4 и 2.1 Число<br>бенефициаров проекта (кол-во)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{data.countComponent1 + data.countComponent2 || 0}}
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
-                                        <br>C1 - {{data.countComponent1 || 0}}
-                                        <br>C2 - {{data.countComponent2 || 0}}
-                                        <br>Tj - {{data.countBenificiarProjectTj || 0}}
-                                        <br>Uz - {{data.countBenificiarProjectUz || 0}}
+                                        <br>{{arrAllCountBenificiarProject[0][0].sumComponents}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[0][1].countComponent1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[0][2].countComponent2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[0][3].countBenificiarProjectTj}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[0][4].countBenificiarProjectUz}}
 
                                     </td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">10 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">16 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span>
+
+                                        <br>{{arrAllCountBenificiarProject[1][0].sumComponents}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[1][1].countComponent1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[1][2].countComponent2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[1][3].countBenificiarProjectTj}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[1][4].countBenificiarProjectUz}}
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10 000</span>
+
+                                        <br>{{arrAllCountBenificiarProject[2][0].sumComponents}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[2][1].countComponent1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[2][2].countComponent2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[2][3].countBenificiarProjectTj}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[2][4].countBenificiarProjectUz}}
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10 000</span>
+
+                                        <br>{{arrAllCountBenificiarProject[3][0].sumComponents}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[3][1].countComponent1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[3][2].countComponent2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[3][3].countBenificiarProjectTj}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[3][4].countBenificiarProjectUz}}
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">16 000</span>
+
+
+                                        <br>{{arrAllCountBenificiarProject[4][0].sumComponents}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[4][1].countComponent1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[4][2].countComponent2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[4][3].countBenificiarProjectTj}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[4][4].countBenificiarProjectUz}}
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">16 000</span>
+
+
+                                        <br>{{arrAllCountBenificiarProject[0][0].sumComponents + arrAllCountBenificiarProject[1][0].sumComponents + arrAllCountBenificiarProject[2][0].sumComponents + arrAllCountBenificiarProject[3][0].sumComponents + arrAllCountBenificiarProject[4][0].sumComponents}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[0][1].countComponent1 + arrAllCountBenificiarProject[1][1].countComponent1 + arrAllCountBenificiarProject[2][1].countComponent1 + arrAllCountBenificiarProject[3][1].countComponent1 + arrAllCountBenificiarProject[4][1].countComponent1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[0][2].countComponent2 + arrAllCountBenificiarProject[1][2].countComponent2 + arrAllCountBenificiarProject[2][2].countComponent2 + arrAllCountBenificiarProject[3][2].countComponent2 + arrAllCountBenificiarProject[4][2].countComponent2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[0][3].countBenificiarProjectTj + arrAllCountBenificiarProject[1][3].countBenificiarProjectTj + arrAllCountBenificiarProject[2][3].countBenificiarProjectTj + arrAllCountBenificiarProject[3][3].countBenificiarProjectTj + arrAllCountBenificiarProject[4][3].countBenificiarProjectTj}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[0][4].countBenificiarProjectUz + arrAllCountBenificiarProject[1][4].countBenificiarProjectUz + arrAllCountBenificiarProject[2][4].countBenificiarProjectUz + arrAllCountBenificiarProject[3][4].countBenificiarProjectUz + arrAllCountBenificiarProject[4][4].countBenificiarProjectUz}}
+
+
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Female beneficiaries <br>(Percentage -<br>Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.4 и 2.1 Число бенефициаров <br>проекта – женщин (в процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span>
 
-                                        <br>{{data.percentSum || 0}}%
-                                        <br>C1 - {{data.percentC1 || 0}}%
-                                        <br>C2 - {{data.percentC2 || 0}}%
-                                        <br>Tj - {{data.TjPercentWomen || 0}}%
-                                        <br>Uz - {{data.UzPercentWomen || 0}}%
+                                        <br>{{arrAllCountBenificiarProject[0][5].percentSum}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[0][6].percentC1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[0][7].percentC2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[0][8].TjPercentWomen}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[0][9].UzPercentWomen}}
 
 
 
                                     </td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">15%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">25%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">35%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">15%</span>
+
+
+
+                                        <br>{{arrAllCountBenificiarProject[1][5].percentSum}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[1][6].percentC1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[1][7].percentC2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[1][8].TjPercentWomen}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[1][9].UzPercentWomen}}
+
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">25%</span>
+
+
+
+                                        <br>{{arrAllCountBenificiarProject[2][5].percentSum}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[2][6].percentC1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[2][7].percentC2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[2][8].TjPercentWomen}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[2][9].UzPercentWomen}}
+
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">25%</span>
+
+
+                                        <br>{{arrAllCountBenificiarProject[3][5].percentSum}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[3][6].percentC1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[3][7].percentC2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[3][8].TjPercentWomen}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[3][9].UzPercentWomen}}
+
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">35%</span>
+
+
+                                        <br>{{arrAllCountBenificiarProject[4][5].percentSum}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[4][6].percentC1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[4][7].percentC2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[4][8].TjPercentWomen}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[4][9].UzPercentWomen}}
+
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">35%</span>
+
+
+                                        <br>{{arrAllCountBenificiarProject[0][5].percentSum + arrAllCountBenificiarProject[1][5].percentSum + arrAllCountBenificiarProject[2][5].percentSum + arrAllCountBenificiarProject[3][5].percentSum + arrAllCountBenificiarProject[4][5].percentSum}}
+                                        <br>C1 - {{arrAllCountBenificiarProject[0][6].percentC1 + arrAllCountBenificiarProject[1][6].percentC1 + arrAllCountBenificiarProject[2][6].percentC1 + arrAllCountBenificiarProject[3][6].percentC1 + arrAllCountBenificiarProject[4][6].percentC1}}
+                                        <br>C2 - {{arrAllCountBenificiarProject[0][7].percentC2 + arrAllCountBenificiarProject[1][7].percentC2 + arrAllCountBenificiarProject[2][7].percentC2 + arrAllCountBenificiarProject[3][7].percentC2 + arrAllCountBenificiarProject[4][7].percentC2}}
+                                        <br>Tj - {{arrAllCountBenificiarProject[0][8].TjPercentWomen + arrAllCountBenificiarProject[1][8].TjPercentWomen + arrAllCountBenificiarProject[2][8].TjPercentWomen + arrAllCountBenificiarProject[3][8].TjPercentWomen + arrAllCountBenificiarProject[4][8].TjPercentWomen}}
+                                        <br>Uz - {{arrAllCountBenificiarProject[0][9].UzPercentWomen + arrAllCountBenificiarProject[1][9].UzPercentWomen + arrAllCountBenificiarProject[2][9].UzPercentWomen + arrAllCountBenificiarProject[3][9].UzPercentWomen + arrAllCountBenificiarProject[4][9].UzPercentWomen}}
+
+
+
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Number of hectares in project <br>area covered by<br>effective agricultural, <br>land and water management practices <br>suited to local<br>agro-ecological conditions, <br>which can address climate change (Hectare(Ha))<br><br>ИПР 2.2 Охват проектом территорий (Га), <br>на которых осуществляются <br>эффективные с/х, земельные <br>и водные управленческие <br>мероприятия по борьбе с <br>изменением климата, учитывающие <br>местные агро-экологические условия (в гектарах (Га))</td>
@@ -431,39 +538,84 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                        <br>{{data.areaGAProject || 0}}Га
-                                        <br>Tj - {{data.areaGAProjectTj || 0}}Га
-                                        <br>Uz - {{data.areaGAProjectUz || 0}}Га
+                                        <br>{{arrAllSumGAProject[0][0].areaGAProject}}Га
+                                        <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}Га
+                                        <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}Га
 
 
 
                                     </td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">7 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">9 200</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span>
+
+
+                                        <br>{{arrAllSumGAProject[1][0].areaGAProject}}Га
+                                        <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}Га
+                                        <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}Га
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">7 000</span>
+
+
+                                        <br>{{arrAllSumGAProject[2][0].areaGAProject}}Га
+                                        <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}Га
+                                        <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}Га
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">7 000</span>
+
+
+
+                                        <br>{{arrAllSumGAProject[3][0].areaGAProject}}Га
+                                        <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}Га
+                                        <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}Га
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
+
+
+                                        <br>{{arrAllSumGAProject[4][0].areaGAProject}}Га
+                                        <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}Га
+                                        <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+
+
+
+                                    </td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
+
+
+                                        <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}Га
+                                        <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}Га
+                                        <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+
+
+
+                                    </td>
                                 </tr>
 
                                 <tr>
                                     <td class="tg-yw4l">Improved understanding of<br>gender-specific <br>implications of climate change <br>among key stakeholders and <br>implementation of key activities <br>(Number of Knowledge Product <br>events on gender<br>issues, cumulative)<br><br>ИПР 1.5 Улучшено понимание <br>последствий влияния<br>климата <br>на вопросы гендера среди <br>стейкхолдеров (Кол-во мероприятий <br>по повышению<br>уровня <br>знаний, посвященных гендерным вопросам)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{data.sumgenderevent || 0}}</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">5</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">8</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">10</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllSumGenderEvent[0][0].sumgenderevent}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllSumGenderEvent[1][0].sumgenderevent}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">5</span><br>{{arrAllSumGenderEvent[2][0].sumgenderevent}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">8</span><br>{{arrAllSumGenderEvent[3][0].sumgenderevent}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10</span><br>{{arrAllSumGenderEvent[4][0].sumgenderevent}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">10</span><br>{{arrAllSumGenderEvent[0][0].sumgenderevent + arrAllSumGenderEvent[1][0].sumgenderevent + arrAllSumGenderEvent[2][0].sumgenderevent + arrAllSumGenderEvent[3][0].sumgenderevent + arrAllSumGenderEvent[4][0].sumgenderevent}}</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Feedback/grievances resolved within <br>the<br>stipulated service standards <br>for response times (Percentage)<br><br>ИПР 3.1 Обратная связь/ жалобы, <br>удовлетворенные в срок и в <br>соответствие с заданным <br>стандартом услуг (в процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{data.countGRM}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">70%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">80%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">100%</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllCountCompleteGRM[0][0].countGRM}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">70%</span><br>{{arrAllCountCompleteGRM[1][0].countGRM}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">70%</span><br>{{arrAllCountCompleteGRM[2][0].countGRM}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">80%</span><br>{{arrAllCountCompleteGRM[3][0].countGRM}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">100%</span><br>{{arrAllCountCompleteGRM[4][0].countGRM}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">100%</span><br>{{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%</td>
                                 </tr>
 
                                 </tbody>
