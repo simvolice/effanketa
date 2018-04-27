@@ -21,6 +21,11 @@ angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFin
             $scope.data = result.resultFromDb;
 
 
+            for (let item of $scope.data) {
+                item.nameQuarter = new Date(item.nameQuarter);
+            }
+
+
         } else {
 
             $mdToast.show(
@@ -61,7 +66,8 @@ angular.module('app').controller('FinansialStatusCtrl', function ($scope, AddFin
             OperatingExpensesPlan: "",
             OperatingExpensesFact: "",
             OperatingExpensesComment: "",
-            country: ""
+            country: "",
+            nameQuarter: new Date()
 
 
 

@@ -66,7 +66,7 @@ module.exports = {
 
 
 
-                nameQuarter: objParams.nameQuarter,
+                nameQuarter: new Date( new Date(objParams.nameQuarter).getTime() -  ( new Date(objParams.nameQuarter).getTimezoneOffset() * 60000 ) ),
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
@@ -245,7 +245,9 @@ module.exports = {
                     OperatingExpensesFact: Int32(objParams.OperatingExpensesFact),
                     OperatingExpensesComment: objParams.OperatingExpensesComment,
                     country: ObjectId(objParams.country),
-                    nameCountry: nameCountry.name
+                    nameCountry: nameCountry.name,
+                    nameQuarter: new Date( new Date(objParams.nameQuarter).getTime() -  ( new Date(objParams.nameQuarter).getTimezoneOffset() * 60000 ) ),
+
 
 
 
