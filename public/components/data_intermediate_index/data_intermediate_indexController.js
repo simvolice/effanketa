@@ -455,9 +455,6 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
-    console.log($scope.arrAllSumGAProject);
-
-
     $scope.print = function () {
         $("#printmatrix").css("visibility", "visible");
         $("#printmatrix").print();

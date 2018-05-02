@@ -168,6 +168,7 @@
   "COUNT_NOT_ANSWER": "Количество не ответивших",
   "ANSWER_ALL": "ответов",
   "ANSWER_ONE": "Ответ",
-  "OF_WOMAN": "из них женщин"
+  "OF_WOMAN": "из них женщин",
+  "ADD_FORM_FROM_EXCEL": "Добавить анкеты из excel"
 
 }

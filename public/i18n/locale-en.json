@@ -168,5 +168,6 @@
   "COUNT_NOT_ANSWER": " Number of those who did not respond",
   "ANSWER_ALL": "Total answers",
   "ANSWER_ONE": "Answer",
-  "OF_WOMAN": "Including women"
+  "OF_WOMAN": "Including women",
+  "ADD_FORM_FROM_EXCEL": "Add form from excel"
 }

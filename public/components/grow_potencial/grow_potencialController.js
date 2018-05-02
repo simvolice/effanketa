@@ -1034,5 +1034,103 @@ function DialogControllerForNewForm($scope, data, AddForm) {
 
 
 
+
+
+    $scope.addFromExcel = function(ev) {
+        $mdDialog.show({
+            controller: DialogControllerFormFromExcel,
+            locals:{data: "testDataFromParentController"},
+            templateUrl: 'components/grow_potencial/dialog_template_form_from_excel.html',
+            parent: angular.element(document.body),
+            targetEvent: ev,
+            clickOutsideToClose:true,
+            fullscreen: true // Only for -xs, -sm breakpoints.
+        });
+    };
+
+
+
+    function DialogControllerFormFromExcel($scope, $rootScope, $http) {
+
+
+        $scope.allevents = $rootScope.data;
+
+
+        $scope.closeDialog = function () {
+            $mdDialog.hide();
+        };
+
+
+        var formdata = new FormData();
+        $scope.getTheFiles = function ($files) {
+            angular.forEach($files, function (value, key) {
+                formdata.append(key, value);
+            });
+        };
+
+
+
+        $scope.addFormExcel = function () {
+
+
+
+
+
+
+                formdata.append('selectedEvent', $scope.selectedEvent);
+
+
+                var request = {
+                    method: 'POST',
+                    url: '/formfromexcel',
+                    data: formdata,
+                    headers: {
+                        'Content-Type': undefined,
+                        'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                        'sessionToken' : localStorage.getItem('sessionToken')
+                    }
+                };
+
+                // SEND THE FILES.
+                $http(request)
+                    .then(function successCallback(response) {
+                        formdata = new FormData();
+                        document.getElementById("file").value = null;
+
+                        $mdDialog.hide();
+
+
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('Вы успешно загрузили объект.')
+                                .position('left bottom')
+                                .hideDelay(3000)
+                        );
+
+
+
+
+
+                    }, function errorCallback(response) {
+                        formdata = new FormData();
+                        document.getElementById("file").value = null;
+                        $mdToast.show(
+                            $mdToast.simple()
+                                .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                                .position('left bottom')
+                                .hideDelay(3000)
+                        );
+                    });
+            }
+
+
+
+
+
+
+
+    }
+
+
 });
 

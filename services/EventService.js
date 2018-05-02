@@ -508,4 +508,47 @@ module.exports = {
 
 
 
+    getEventByID: async (id) => {
+
+
+
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('events');
+
+
+
+
+
+            const result = await col.findOne({_id: ObjectId(id)});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+
+
+
 };

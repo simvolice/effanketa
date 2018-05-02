@@ -1,0 +1,130 @@
+<md-dialog class="fullscreen-dialog" aria-label="Добавить анкеты из excel">
+
+
+
+
+
+
+
+        <md-toolbar class="md-toolbar-tools">
+
+                <h2>{{ 'ADD_FORM_FROM_EXCEL' | translate }}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="closeDialog()">
+                    <i class="material-icons">close</i>
+                </md-button>
+
+        </md-toolbar>
+
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+
+
+
+
+                <div class="col-md-12">
+
+                    <div class="row">
+                        <md-card>
+
+                            <div class="content">
+
+                                <div class="col-md-6">
+
+
+
+
+
+                                    <md-input-container class="custom__select__coutry">
+                                        <label>{{ 'SELECT_EVENT' | translate }}</label>
+                                        <md-icon class="material-icons">place</md-icon>
+                                        <md-select ng-model="selectedEvent">
+
+                                            <md-option ng-repeat="y in allevents" ng-value="y._id">
+                                                {{y.nameEvent}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <div class="input-group">
+										<span class="input-group-addon">
+
+										</span>
+                                        <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </md-card>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+                </div>
+        </md-dialog-content>
+
+
+
+
+    <md-dialog-actions layout="row">
+
+        <span flex></span>
+        <md-button class="md-raised md-primary" ng-click="addFormExcel()">
+             {{ 'SAVE' | translate }}
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="closeDialog()">
+            {{ 'CANCEL' | translate }}
+        </md-button>
+
+    </md-dialog-actions>
+
+
+
+</md-dialog>
