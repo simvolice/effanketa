@@ -181,7 +181,7 @@ module.exports = {
 
             let seq = await CounterService.getNextSequence("userid");
 
-            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ), passClear: objParam.passClear, urlImg: objParam.urlImg});
+            const result = await col.insertOne({pass: objParam.pass, email: objParam.email, role: ObjectId(objParam.role), fio: objParam.fio, country: ObjectId(objParam.country), id: seq, createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ), urlImg: objParam.urlImg});
 
 
 

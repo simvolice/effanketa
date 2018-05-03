@@ -212,8 +212,10 @@ module.exports = {
 
                 { $addFields: {
 
-                    allCountrys: arrCoutry
-                }}
+                    allCountrys: arrCoutry,
+                    allCreditsFact: await ItemForFactInCredits.getAllCreditsFact()
+
+                    }}
 
 
 

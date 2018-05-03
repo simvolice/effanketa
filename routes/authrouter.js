@@ -233,13 +233,10 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
 
 
-
-
 let result =  await AuthService.register(objParams);
 
 
 
-console.log("\x1b[42m", result);
 
 //TODO надо проверку сделать на дубликацию ключа
 
