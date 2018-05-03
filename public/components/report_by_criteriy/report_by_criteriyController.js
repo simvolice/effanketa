@@ -301,7 +301,6 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
         GetReportForEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data.selectEvent}, function(entry) {
 
 
-
             $scope.dataForOneEvent = entry.resultFromDb;
 
             for (let item of entry.resultFromDb) {

@@ -29,6 +29,7 @@ module.exports = {
 
 
 
+
         try {
 
 
@@ -133,12 +134,12 @@ module.exports = {
                                     ques10: {$push: "$ques10"},
                                     ques11: {$push: "$ques11"},
                                     ques12: {$push: "$ques12"},
-                                    ques13: {$push: "$ques13"},
-                                    ques14: {$push: "$ques14"},
-                                    ques15: {$push: "$ques15"},
-                                    ques16: {$push: "$ques16"},
+                                    ques13: {$push: { $ifNull: [ "$ques13", "Не предоставлена ответа" ] }},
+                                    ques14: {$push: { $ifNull: [ "$ques14", "Не предоставлена ответа" ] }},
+                                    ques15: {$push: { $ifNull: [ "$ques15", "Не предоставлена ответа" ] }},
+                                    ques16: {$push: { $ifNull: [ "$ques16", "Не предоставлена ответа" ] }},
                                     ques17: {$push: "$ques17"},
-                                    ques18: {$push: "$ques18"},
+                                    ques18: {$push: { $ifNull: [ "$ques18", "Не предоставлена ответа" ] }},
                                     ques19: {$push: "$ques19"},
                                     ques20: {$push: "$ques20"},
                                     ques21: {$push: "$ques21"}
@@ -179,33 +180,33 @@ module.exports = {
 
                                     transposed13: {
                                         $zip: {
-                                            inputs: ["$ques13", "$email"]
+                                            inputs: ["$email", "$ques13"]
                                         }
                                     },
 
                                     transposed14: {
                                         $zip: {
-                                            inputs: ["$ques14", "$email"]
+                                            inputs: ["$email", "$ques14"]
                                         }
                                     },
 
 
                                     transposed15: {
                                         $zip: {
-                                            inputs: ["$ques15", "$email"]
+                                            inputs: ["$email", "$ques15"]
                                         }
                                     },
 
                                     transposed16: {
                                         $zip: {
-                                            inputs: ["$ques16", "$email"]
+                                            inputs: ["$email","$ques16" ]
                                         }
                                     },
 
 
                                     transposed18: {
                                         $zip: {
-                                            inputs: ["$ques18", "$email"]
+                                            inputs: ["$email", "$ques18"]
                                         }
                                     },
 
@@ -242,7 +243,6 @@ module.exports = {
                                     dimensions18: { $arrayToObject: "$transposed18" },
                                 }
                             }
-
 
 
 
@@ -343,7 +343,6 @@ module.exports = {
 
 
         }catch(err) {
-
 
 
 
