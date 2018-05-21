@@ -294,7 +294,13 @@ module.exports = {
                       NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
 
 
+
+
                       CreatePowerPlan: Double(objParams.CreatePowerPlan),
+                      CreatePowerFact: Double(objParams.CreatePowerFact),
+
+
+
                       creditsFactSelect: ObjectId(objParams.creditsFactSelect),
                       createAt: new Date( new Date(objParams.createAt).getTime() - ( new Date(objParams.createAt).getTimezoneOffset() * 60000 ) )
 
