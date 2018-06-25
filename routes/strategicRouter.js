@@ -41,7 +41,7 @@ router.post('/addstrategic', checkSeesionToken, async (req, res, next) =>{
         files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
 
 
-        urlExcel = "uploads/" + path.basename(files[0].path);
+        urlExcel = req.protocol + '://' + req.get('host') + "/uploads/" + path.basename(files[0].path);
 
         fields["urlExcel"] = urlExcel;
 

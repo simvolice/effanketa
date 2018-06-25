@@ -41,6 +41,16 @@ module.exports = {
 
 
                 id: seq,
+
+                nameCountry: nameCountry.name,
+
+
+
+
+
+                nameQuarter: new Date( new Date(objParams.nameQuarter).getTime() -  ( new Date(objParams.nameQuarter).getTimezoneOffset() * 60000 ) ),
+
+
                 categFinStatusBudgetBisbursement: "BudgetBisbursement",
                 categFinStatusServices: "Services",
                 categFinStatusCreditLine: "CreditLine",
@@ -60,14 +70,7 @@ module.exports = {
                 OperatingExpensesFact: Int32(objParams.OperatingExpensesFact),
                 OperatingExpensesComment: objParams.OperatingExpensesComment,
                 country: ObjectId(objParams.country),
-                nameCountry: nameCountry.name,
-
-
-
-
-
-                nameQuarter: new Date( new Date(objParams.nameQuarter).getTime() -  ( new Date(objParams.nameQuarter).getTimezoneOffset() * 60000 ) ),
-                createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
+               createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )
 
 
 

@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('MainScoreProgramCtrl', function ($window, $scope, $mdDialog, GetPlatform, GetMainPage, $mdToast, $state, $rootScope, DeletePlatform, GetProject, DeleteProject, GetRegionalInvest, DeleteRegionalInvest, GetMobileResurs, DeleteMobileResurs) {
+angular.module('app').controller('MainScoreProgramCtrl', function ($translate, $window, $scope, $mdDialog, GetPlatform, GetMainPage, $mdToast, $state, $rootScope, DeletePlatform, GetProject, DeleteProject, GetRegionalInvest, DeleteRegionalInvest, GetMobileResurs, DeleteMobileResurs) {
 
 
 $rootScope.data = [];
@@ -16,7 +16,7 @@ $rootScope.data = [];
         $scope.tableID = tableId;
         $scope.titleSheet = titleSheet;
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
 
 
 

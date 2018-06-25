@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('Grow_potencialCtrl', function ($scope, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce, $window) {
+angular.module('app').controller('Grow_potencialCtrl', function ($translate, $scope, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce, $window) {
 
     GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
 
@@ -1024,7 +1024,7 @@ function DialogControllerForNewForm($scope, data, AddForm) {
         $scope.tableID = "events";
         $scope.titleSheet = "Наращивание потенциала";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
 
 
 

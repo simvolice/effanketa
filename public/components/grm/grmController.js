@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('GrmCtrl', function ($scope, $rootScope, $window, GetAllGrm, GetAllStatus, $mdToast, $mdDialog, UpdateGrm, GetAllCategGRM, GetAllCanalRequest, DeleteGrm, GetAllCoutrys, AddGrm) {
+angular.module('app').controller('GrmCtrl', function ($translate, $scope, $rootScope, $window, GetAllGrm, GetAllStatus, $mdToast, $mdDialog, UpdateGrm, GetAllCategGRM, GetAllCanalRequest, DeleteGrm, GetAllCoutrys, AddGrm) {
 
 
 
@@ -138,7 +138,7 @@ angular.module('app').controller('GrmCtrl', function ($scope, $rootScope, $windo
         $scope.tableID = "grm";
         $scope.titleSheet = "Механизм рассмотрения жалоб и отзывов";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
 
 
 

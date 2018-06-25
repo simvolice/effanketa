@@ -213,7 +213,6 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
 
 
 
-
     let objParams = {
 
 

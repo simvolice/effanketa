@@ -60,7 +60,7 @@ function get_file(req, res, type, data, titleSheet) {
 router.get('/generateexcel.xlsx', async (req, res, next) =>{
 
 
-    let allDataFromTable = await AllTableService.getAllData(req.query.data);
+    let allDataFromTable = await AllTableService.getAllData(req.query.data, req.query.lang);
 
     get_file(req, res, "xlsx", allDataFromTable, req.query.titleSheet);
 

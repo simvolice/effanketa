@@ -42,8 +42,10 @@ module.exports = {
 
                   id :seq,
                   country: objParams.country,
-                  nameCountry: nameCountry,
+
                   platform_name: objParams.platform_name,
+                  nameCountry: nameCountry,
+
                   platform_participants: objParams.platform_participants,
                   platform_target: objParams.platform_target,
                   platform_subject: objParams.platform_subject,
@@ -260,10 +262,15 @@ module.exports = {
                 id :seq,
                 country: objParams.country,
 
-                nameCountry: nameCountry,
+
 
                 programm: objParams.programm,
                 sector: objParams.sector,
+
+                nameCountry: nameCountry,
+
+
+
                 developers: objParams.developers,
                 executorAgents: objParams.executorAgents,
                 executorAgentsContacts: objParams.executorAgentsContacts,
@@ -666,9 +673,11 @@ module.exports = {
 
                 amountFinance: Decimal128.fromString(objParams.amountFinance),
                 sourceFinance: objParams.sourceFinance,
-                mainDestination: objParams.mainDestination,
                 executorProject: objParams.executorProject,
                 contactExecutor: objParams.contactExecutor,
+                mainDestination: objParams.mainDestination,
+
+
                 mobileOther: objParams.mobileOther,
 
 

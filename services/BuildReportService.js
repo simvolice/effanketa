@@ -3123,9 +3123,16 @@ module.exports = {
 
 
                 id: seq,
-                typePeriod: objParams.typePeriod,
-                year: objParams.year,
+
+
                 country: objParams.country,
+
+
+
+                typePeriod: objParams.typePeriod,
+
+
+                year: objParams.year,
                 comments: objParams.comments,
 
                 idcountry: ObjectId(objParams.idcountry),

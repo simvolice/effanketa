@@ -11,7 +11,7 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = {
 
 
-    getAllData: async (idTable) => {
+    getAllData: async (idTable, lang) => {
 
         try {
 
@@ -44,77 +44,165 @@ module.exports = {
                 }).toArray();
 
 
-                Object.defineProperties(result[0], {
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Дата события': {
-                        value: result[0].myDate,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Имя события': {
-                        value: result[0].nameEvent,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Тип события': {
-                        value: result[0].nameTypeEvent,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
 
-                    'Мероприятие посвящено гендерным вопросам': {
-                        value: result[0].nameSubTypeEvent,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
 
-                    'Количество участников, общее': {
-                        value: result[0].countPeopleEventCommon,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Количество участников, женщин': {
-                        value: result[0].countWomanEventCommon,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Количество фасилитаторов, общее': {
-                        value: result[0].countFacilatatorEventCommon,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Количество фасилитаторов, женщин': {
-                        value: result[0].countFacilatatorWomanEventCommon,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Количество спикеров, общее': {
-                        value: result[0].countSpeakerEventCommon,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Количество спикеров, женщин': {
-                        value: result[0].countSpeakerWomanEventCommon,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
 
-                });
+                if (lang === "ru") {
+
+
+                    Object.defineProperties(result[0], {
+                        'Страна': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Дата события': {
+                            value: result[0].myDate,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Имя события': {
+                            value: result[0].nameEvent,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Тип события': {
+                            value: result[0].nameTypeEvent,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Мероприятие посвящено гендерным вопросам': {
+                            value: result[0].nameSubTypeEvent,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Количество участников, общее': {
+                            value: result[0].countPeopleEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Количество участников, женщин': {
+                            value: result[0].countWomanEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Количество фасилитаторов, общее': {
+                            value: result[0].countFacilatatorEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Количество фасилитаторов, женщин': {
+                            value: result[0].countFacilatatorWomanEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Количество спикеров, общее': {
+                            value: result[0].countSpeakerEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Количество спикеров, женщин': {
+                            value: result[0].countSpeakerWomanEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+                    });
+
+
+                } else {
+
+
+                    Object.defineProperties(result[0], {
+                        'Country': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Event date': {
+                            value: result[0].myDate,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Event name': {
+                            value: result[0].nameEvent,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Event type': {
+                            value: result[0].nameTypeEvent,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Event dedicated to gender': {
+                            value: result[0].nameSubTypeEvent,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Number of participants, Total': {
+                            value: result[0].countPeopleEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Number of women, Total': {
+                            value: result[0].countWomanEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Number of facilitators, Total': {
+                            value: result[0].countFacilatatorEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Number of facilitators, women': {
+                            value: result[0].countFacilatatorWomanEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Number of speakers, Total': {
+                            value: result[0].countSpeakerEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Number of speakers, women': {
+                            value: result[0].countSpeakerWomanEventCommon,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+                    });
+
+
+
+                }
+
+
 
 
 
@@ -145,9 +233,11 @@ module.exports = {
                     _id: 0,
                     nameCountry: 1,
                     nameFactCategcredits: 1,
-                    countsubproject : 1,
+
                     commonAmountInDollors : 1,
                     commonAmountInNatCurrency : 1,
+
+
                     DirectBeneficiariesAll : 1,
                     DirectBeneficiariesMale : 1,
                     DirectBeneficiariesFemale : 1,
@@ -156,7 +246,9 @@ module.exports = {
                     NonDirectBeneficiariesMemberFamilyFemale : 1,
 
                     CreatePowerPlan : 1,
-                    CreatePowerFact: 1
+                    CreatePowerFact: 1,
+
+                    power_ha: 1
 
 
 
@@ -166,86 +258,82 @@ module.exports = {
 
 
 
+                if (lang === "ru") {
 
-                Object.defineProperties(result[0], {
-
-
-                    'Категория кредитов': {
-                        value: result[0].nameFactCategcredits,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                    Object.defineProperties(result[0], {
 
 
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Кол-во субпроектов': {
-                        value: result[0].countsubproject,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Общий объем, в долларах': {
-                        value: result[0].commonAmountInDollors,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Общий объем, в нац. валюте': {
-                        value: result[0].commonAmountInNatCurrency,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-                    'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), муж.': {
-                        value: result[0].DirectBeneficiariesMale,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), жен.': {
-                        value: result[0].DirectBeneficiariesFemale,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Категория кредитов': {
+                            value: result[0].nameFactCategcredits,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
-                    'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), общее': {
-                        value: result[0].DirectBeneficiariesAll,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Страна': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Общий объем, в долларах': {
+                            value: result[0].commonAmountInDollors,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Общий объем, в нац. валюте': {
+                            value: result[0].commonAmountInNatCurrency,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), муж.': {
+                            value: result[0].DirectBeneficiariesMale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), жен.': {
+                            value: result[0].DirectBeneficiariesFemale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Прямые бенефициары (заёмщики и члены их семьи (для заемщиков физ. и юр. лиц), общее': {
+                            value: result[0].DirectBeneficiariesAll,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
 
 
-                    'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), муж.': {
-                        value: result[0].NonDirectBeneficiariesMemberFamilyMale,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), жен.': {
-                        value: result[0].NonDirectBeneficiariesMemberFamilyFemale,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), муж.': {
+                            value: result[0].NonDirectBeneficiariesMemberFamilyMale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), жен.': {
+                            value: result[0].NonDirectBeneficiariesMemberFamilyFemale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
-                    'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), всего': {
-                        value: result[0].NonDirectBeneficiariesMemberFamilyAll,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Прямые бенефициары-наемные работники (для заемщиков физ. лиц и юр. лиц), всего': {
+                            value: result[0].NonDirectBeneficiariesMemberFamilyAll,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
 
@@ -253,22 +341,142 @@ module.exports = {
 
 
 
-                    'Создаваемые мощности/Ожидаемый эффект, Га': {
-                        value: result[0].CreatePowerPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Создаваемые мощности/Ожидаемый эффект, Другое': {
-                        value: result[0].CreatePowerFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Создаваемые мощности/Ожидаемый эффект, Га': {
+                            value: result[0].CreatePowerPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Создаваемые мощности/Ожидаемый эффект, Другое': {
+                            value: result[0].CreatePowerFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Мощности (охват га)': {
+                            value: result[0].power_ha,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
 
-                });
+                    });
+
+
+                } else {
+
+
+                    Object.defineProperties(result[0], {
+
+
+                        'Loans type': {
+                            value: result[0].nameFactCategcredits,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Country': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Total volume, in dollars': {
+                            value: result[0].commonAmountInDollors,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Total volume, national currency': {
+                            value: result[0].commonAmountInNatCurrency,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Direct beneficiaries (for both individual and judicial entities borrowers), men': {
+                            value: result[0].DirectBeneficiariesMale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Direct beneficiaries (for both individual and judicial entities borrowers), women': {
+                            value: result[0].DirectBeneficiariesFemale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Direct beneficiaries (for both individual and judicial entities borrowers), all': {
+                            value: result[0].DirectBeneficiariesAll,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+
+                        'Direct beneficiaries – employed workers (for both individual and judicial entities borrowers), men': {
+                            value: result[0].NonDirectBeneficiariesMemberFamilyMale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Direct beneficiaries – employed workers (for both individual and judicial entities borrowers), women': {
+                            value: result[0].NonDirectBeneficiariesMemberFamilyFemale,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Direct beneficiaries – employed workers (for both individual and judicial entities borrowers), all': {
+                            value: result[0].NonDirectBeneficiariesMemberFamilyAll,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+
+
+
+
+                        'Among all direct beneficiaries, men': {
+                            value: result[0].CreatePowerPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Among all direct beneficiaries, women': {
+                            value: result[0].CreatePowerFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Powers (in HA)': {
+                            value: result[0].power_ha,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                    });
+
+
+
+                }
+
 
 
 
@@ -287,6 +495,7 @@ module.exports = {
                delete result[0].CreatePowerPlan;
                delete result[0].CreatePowerFact;
                delete result[0].nameFactCategcredits;
+               delete result[0].power_ha;
 
 
 
@@ -302,22 +511,20 @@ module.exports = {
 
                     _id: 0,
 
+                    dateInGo: 1,
+                    canalName: 1,
                     nameCountry: 1,
-                    categName : 1,
-                    canalName : 1,
-                    statusName : 1,
-                    dateInGo : 1,
-
-                    declarerFIO : 1,
-
-                    raisedQuestion : 1,
-                    responsibleConsideration : 1,
-
-                    takeAction : 1,
-                    lastDateAnswer : 1,
-                    dateNotifDeclarer : 1,
-                    timeToCheckComplaint : 1,
-                    assessmentQualitySatisfactionComplaint : 1
+                    declarerFIO: 1,
+                    categName: 1,
+                    raisedQuestion: 1,
+                    responsibleConsideration: 1,
+                    statusName: 1,
+                    takeAction: 1,
+                    lastDateAnswer: 1,
+                    dateNotifDeclarer: 1,
+                    timeToCheckComplaint: 1,
+                    assessmentQualitySatisfactionComplaint: 1,
+                    timeOfSatisfaction: 1,
 
 
 
@@ -327,116 +534,251 @@ module.exports = {
 
 
 
+                if (lang === "ru") {
+
+                    Object.defineProperties(result[0], {
 
 
-                Object.defineProperties(result[0], {
-                    'Номер отслеживания': {
-                        value: result[0].id,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Категория жалобы': {
-                        value: result[0].categName,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Канал получения жалобы': {
-                        value: result[0].canalName,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Статус жалобы': {
-                        value: result[0].statusName,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Дата получения': {
-                        value: result[0].dateInGo,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Заявитель': {
-                        value: result[0].declarerFIO,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Возникшие вопросы': {
-                        value: result[0].raisedQuestion,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Ответственный за рассмотрение жалобы': {
-                        value: result[0].responsibleConsideration,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Принятые меры ': {
-                        value: result[0].takeAction,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Крайний срок для ответа заявителю': {
-                        value: result[0].lastDateAnswer,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Дата уведомления заявителя': {
-                        value: result[0].dateNotifDeclarer,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Время затраченное на рассмотрение жалобы': {
-                        value: result[0].timeToCheckComplaint,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Оценка качества удовлетворённости жалобы': {
-                        value: result[0].assessmentQualitySatisfactionComplaint,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                        'Дата получения': {
+                            value: result[0].dateInGo,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Канал получения жалобы': {
+                            value: result[0].canalName,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Страна': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Заявитель': {
+                            value: result[0].declarerFIO,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+                        'Категория жалобы': {
+                            value: result[0].categName,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Возникшие вопросы': {
+                            value: result[0].raisedQuestion,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Ответственный за рассмотрение жалобы': {
+                            value: result[0].responsibleConsideration,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Статус жалобы': {
+                            value: result[0].statusName,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
 
 
-                });
+                        'Принятые меры ': {
+                            value: result[0].takeAction,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Крайний срок для ответа заявителю': {
+                            value: result[0].lastDateAnswer,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Дата уведомления заявителя': {
+                            value: result[0].dateNotifDeclarer,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Время затраченное на рассмотрение жалобы': {
+                            value: result[0].timeToCheckComplaint,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Оценка качества удовлетворённости жалобы': {
+                            value: result[0].assessmentQualitySatisfactionComplaint,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Время удовлетворения': {
+                            value: result[0].timeOfSatisfaction,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+
+
+                    });
+
+
+                } else {
+
+                    Object.defineProperties(result[0], {
+
+
+                        'Date of registry': {
+                            value: result[0].dateInGo,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Channel of sending complaint': {
+                            value: result[0].canalName,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Country': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Complainant': {
+                            value: result[0].declarerFIO,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+                        'Category of complaint': {
+                            value: result[0].categName,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Issues raised': {
+                            value: result[0].raisedQuestion,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Responsible for complaint investigation': {
+                            value: result[0].responsibleConsideration,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Complaint status': {
+                            value: result[0].statusName,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+
+                        'Actions undertaken': {
+                            value: result[0].takeAction,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Deadline for addressing complaint': {
+                            value: result[0].lastDateAnswer,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Date of notification complainant': {
+                            value: result[0].dateNotifDeclarer,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Time taken to resolve complaint': {
+                            value: result[0].timeToCheckComplaint,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Assessment of quality of resolving complaint': {
+                            value: result[0].assessmentQualitySatisfactionComplaint,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Time of resolving': {
+                            value: result[0].timeOfSatisfaction,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+
+
+                    });
+
+
+                }
 
 
 
 
 
-                    delete result[0].nameCountry;
-                    delete result[0].categName;
-                    delete result[0].canalName;
-                    delete result[0].statusName;
+
+
+
                     delete result[0].dateInGo;
+                    delete result[0].canalName;
+                    delete result[0].nameCountry;
                     delete result[0].declarerFIO;
+                    delete result[0].categName;
                     delete result[0].raisedQuestion;
                     delete result[0].responsibleConsideration;
+                    delete result[0].statusName;
                     delete result[0].takeAction;
                     delete result[0].lastDateAnswer;
                     delete result[0].dateNotifDeclarer;
                     delete result[0].timeToCheckComplaint;
                     delete result[0].assessmentQualitySatisfactionComplaint;
+                    delete result[0].timeOfSatisfaction;
 
 
 
@@ -475,104 +817,214 @@ module.exports = {
 
 
 
-                Object.defineProperties(result[0], {
+
+                if (lang === "ru") {
 
 
-                    'Страна': {
-                    value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                    Object.defineProperties(result[0], {
 
 
-
-                    'Период': {
-                    value: result[0].nameQuarter,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-
-                    'Планирование бюджета, План': {
-                        value: result[0].BudgetBisbursementPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Планирование бюджета, Факт': {
-                        value: result[0].BudgetBisbursementFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Планирование бюджета, Комментарий': {
-                        value: result[0].BudgetBisbursementComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сервис, План': {
-                        value: result[0].ServicesPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сервис, Факт': {
-                        value: result[0].ServicesFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сервис, Комментарий': {
-                        value: result[0].ServicesComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
-                    ,
-                    'Кредитная линия, План': {
-                        value: result[0].CreditLinePlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Кредитная линия, Факт': {
-                        value: result[0].CreditLineFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Кредитная линия, Комментарий': {
-                        value: result[0].CreditLineComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Операционные расходы, План': {
-                        value: result[0].OperatingExpensesPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Операционные расходы, Факт': {
-                        value: result[0].OperatingExpensesFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Операционные расходы, Комментарий': {
-                        value: result[0].OperatingExpensesComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                        'Страна': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
 
+                        'Период': {
+                            value: result[0].nameQuarter,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
-                });
+
+                        'Планирование бюджета, План': {
+                            value: result[0].BudgetBisbursementPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Планирование бюджета, Факт': {
+                            value: result[0].BudgetBisbursementFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Планирование бюджета, Комментарий': {
+                            value: result[0].BudgetBisbursementComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Сервис, План': {
+                            value: result[0].ServicesPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Сервис, Факт': {
+                            value: result[0].ServicesFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Сервис, Комментарий': {
+                            value: result[0].ServicesComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+                        ,
+                        'Кредитная линия, План': {
+                            value: result[0].CreditLinePlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Кредитная линия, Факт': {
+                            value: result[0].CreditLineFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Кредитная линия, Комментарий': {
+                            value: result[0].CreditLineComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Операционные расходы, План': {
+                            value: result[0].OperatingExpensesPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Операционные расходы, Факт': {
+                            value: result[0].OperatingExpensesFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Операционные расходы, Комментарий': {
+                            value: result[0].OperatingExpensesComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+
+
+                    });
+
+                } else {
+
+
+                    Object.defineProperties(result[0], {
+
+
+                        'Country': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+                        'Period': {
+                            value: result[0].nameQuarter,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Budget planning, Plan': {
+                            value: result[0].BudgetBisbursementPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Budget planning, Fact': {
+                            value: result[0].BudgetBisbursementFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Budget planning, Comments': {
+                            value: result[0].BudgetBisbursementComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Service, Plan': {
+                            value: result[0].ServicesPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Service, Fact': {
+                            value: result[0].ServicesFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Service, Comments': {
+                            value: result[0].ServicesComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+                        ,
+                        'Credit line, Plan': {
+                            value: result[0].CreditLinePlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Credit line, Fact': {
+                            value: result[0].CreditLineFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Credit line, Comments': {
+                            value: result[0].CreditLineComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Operational costs, Plan': {
+                            value: result[0].OperatingExpensesPlan,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Operational costs, Fact': {
+                            value: result[0].OperatingExpensesFact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Operational costs, Comments': {
+                            value: result[0].OperatingExpensesComment,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+
+
+                    });
+
+
+                }
+
 
 
 
@@ -591,148 +1043,6 @@ module.exports = {
                     delete result[0].OperatingExpensesComment;
                     delete result[0].nameCountry;
                     delete result[0].nameQuarter;
-
-
-
-            }else if (idTable === "finansial_status") {
-
-
-
-
-                const col = dbConnect.getConnect().collection(idTable);
-
-
-                result = await col.find({}, {
-
-                    _id: 0,
-
-                    nameCountry: 1,
-
-                    BudgetBisbursementPlan: 1,
-                    BudgetBisbursementFact: 1,
-                    BudgetBisbursementComment: 1,
-                    ServicesPlan: 1,
-                    ServicesFact: 1,
-                    ServicesComment: 1,
-                    CreditLinePlan: 1,
-                    CreditLineFact: 1,
-                    CreditLineComment: 1,
-                    OperatingExpensesPlan: 1,
-                    OperatingExpensesFact: 1,
-                    OperatingExpensesComment: 1
-
-
-                }).toArray();
-
-
-
-
-                Object.defineProperties(result[0], {
-
-
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-                    'Планирование бюджета, План': {
-                        value: result[0].BudgetBisbursementPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Планирование бюджета, Факт': {
-                        value: result[0].BudgetBisbursementFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Планирование бюджета, Комментарий': {
-                        value: result[0].BudgetBisbursementComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сервис, План': {
-                        value: result[0].ServicesPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сервис, Факт': {
-                        value: result[0].ServicesFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сервис, Комментарий': {
-                        value: result[0].ServicesComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
-                    ,
-                    'Кредитная линия, План': {
-                        value: result[0].CreditLinePlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Кредитная линия, Факт': {
-                        value: result[0].CreditLineFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Кредитная линия, Комментарий': {
-                        value: result[0].CreditLineComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Операционные расходы, План': {
-                        value: result[0].OperatingExpensesPlan,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Операционные расходы, Факт': {
-                        value: result[0].OperatingExpensesFact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Операционные расходы, Комментарий': {
-                        value: result[0].OperatingExpensesComment,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-
-
-
-
-                });
-
-
-
-
-                delete result[0].BudgetBisbursementPlan;
-                delete result[0].BudgetBisbursementFact;
-                delete result[0].BudgetBisbursementComment;
-                delete result[0].ServicesPlan;
-                delete result[0].ServicesFact;
-                delete result[0].ServicesComment;
-                delete result[0].CreditLinePlan;
-                delete result[0].CreditLineFact;
-                delete result[0].CreditLineComment;
-                delete result[0].OperatingExpensesPlan;
-                delete result[0].OperatingExpensesFact;
-                delete result[0].OperatingExpensesComment;
-                delete result[0].nameCountry;
 
 
 
@@ -763,58 +1073,124 @@ module.exports = {
 
 
 
+                if (lang === "ru") {
 
-                Object.defineProperties(result[0], {
+                    Object.defineProperties(result[0], {
+                        'Сеть/ платформа': {
+                            value: result[0].platform_name,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
-
-                    'Страна': {
-                        value: result[0].nameCountry.join(","),
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-                    'Сеть/ платформа': {
-                        value: result[0].platform_name,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-                    'Участники': {
-                        value: result[0].platform_participants,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Цель': {
-                        value: result[0].platform_target,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Тема': {
-                        value: result[0].platform_subject,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Тип оказанной поддержки': {
-                        value: result[0].platform_typeHelp,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
-                    ,
-                    'Достигнутые результаты': {
-                        value: result[0].platform_results,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                        'Страна': {
+                            value: result[0].nameCountry.join(","),
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
-                });
+
+                        'Участники': {
+                            value: result[0].platform_participants,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Цель': {
+                            value: result[0].platform_target,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Тема': {
+                            value: result[0].platform_subject,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Тип оказанной поддержки': {
+                            value: result[0].platform_typeHelp,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+                        ,
+                        'Достигнутые результаты': {
+                            value: result[0].platform_results,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+
+
+                } else {
+
+
+
+                    Object.defineProperties(result[0], {
+                        'Network/ platform': {
+                            value: result[0].platform_name,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Country(es)': {
+                            value: result[0].nameCountry.join(","),
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+                        'Participants': {
+                            value: result[0].platform_participants,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Objective': {
+                            value: result[0].platform_target,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Topic': {
+                            value: result[0].platform_subject,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Type of provided assistance': {
+                            value: result[0].platform_typeHelp,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+                        ,
+                        'Results achived': {
+                            value: result[0].platform_results,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+
+
+
+                }
+
+
 
 
                     delete result[0].nameCountry;
@@ -851,54 +1227,113 @@ module.exports = {
 
 
 
-                Object.defineProperties(result[0], {
+                if (lang === "ru") {
+                    Object.defineProperties(result[0], {
+                        'Название программы': {
+                            value: result[0].programm,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Сфера/сектор': {
+                            value: result[0].sector,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Страна': {
+                            value: result[0].nameCountry.join(","),
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
-                    'Страна': {
-                        value: result[0].nameCountry.join(","),
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Название программы': {
-                        value: result[0].programm,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сфера/сектор': {
-                        value: result[0].sector,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Разработчики': {
-                        value: result[0].developers,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Реализующее агенство': {
-                        value: result[0].executorAgents,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Контакты': {
-                        value: result[0].executorAgentsContacts,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Разработчики': {
+                            value: result[0].developers,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Реализующее агенство': {
+                            value: result[0].executorAgents,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
-                    'Краткое описание использованного ноу-хау проекта': {
-                        value: result[0].projectDescription,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                        'Краткое описание использованного ноу-хау проекта': {
+                            value: result[0].projectDescription,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Контакты': {
+                            value: result[0].executorAgentsContacts,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
-                });
+
+                    });
+
+                } else {
+
+                    Object.defineProperties(result[0], {
+                        'Program': {
+                            value: result[0].programm,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Sphere/sector': {
+                            value: result[0].sector,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Country': {
+                            value: result[0].nameCountry.join(","),
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Developers': {
+                            value: result[0].developers,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Implementing agency': {
+                            value: result[0].executorAgents,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Brief description of project know-how used': {
+                            value: result[0].projectDescription,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Contacts': {
+                            value: result[0].executorAgentsContacts,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+
+                    });
+
+                }
+
 
 
                 delete result[0].programm;
@@ -939,54 +1374,112 @@ module.exports = {
 
 
 
-                Object.defineProperties(result[0], {
-
-                    'Тип инвестиций': {
-                        value: result[0].typeInvest,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Размер инвестиций': {
-                        value: result[0].sizeInvest,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Инвестор': {
-                        value: result[0].investor,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Сотрудничающие страны': {
-                        value: result[0].coloborationCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Исполнительный деятель с контактами': {
-                        value: result[0].executorWithContact,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Краткое описание совместной деятельности, приведшей к инвестициям': {
-                        value: result[0].descriptionInvest,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
-                    ,
-                    'Контактные данные реализующего агенства': {
-                        value: result[0].executorAgentsContacts,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                if (lang === "ru") {
 
 
-                });
+                    Object.defineProperties(result[0], {
+
+                        'Тип инвестиций': {
+                            value: result[0].typeInvest,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Размер инвестиций': {
+                            value: result[0].sizeInvest,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Инвестор': {
+                            value: result[0].investor,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Сотрудничающие страны': {
+                            value: result[0].coloborationCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Исполнительный деятель с контактами': {
+                            value: result[0].executorWithContact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Краткое описание совместной деятельности, приведшей к инвестициям': {
+                            value: result[0].descriptionInvest,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+                        ,
+                        'Контактные данные реализующего агенства': {
+                            value: result[0].executorAgentsContacts,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+
+                } else {
+
+                    Object.defineProperties(result[0], {
+
+                        'Investment type': {
+                            value: result[0].typeInvest,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Amount of investment': {
+                            value: result[0].sizeInvest,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Investor': {
+                            value: result[0].investor,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Cooperating countries': {
+                            value: result[0].coloborationCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Implementer of activity': {
+                            value: result[0].executorWithContact,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Brief description of joint activity leading to investments': {
+                            value: result[0].descriptionInvest,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+                        ,
+                        'Contacts': {
+                            value: result[0].executorAgentsContacts,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+                }
+
 
 
                 delete result[0].typeInvest;
@@ -1026,58 +1519,131 @@ module.exports = {
 
 
 
-                Object.defineProperties(result[0], {
+                if (lang === "ru") {
 
-                    'Проект/инициатива': {
-                        value: result[0].projectIniciativ,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                    Object.defineProperties(result[0], {
 
-                    'Объем финансирования': {
-                        value: result[0].amountFinance,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Источник финансирования': {
-                        value: result[0].sourceFinance,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Основное назначение': {
-                        value: result[0].mainDestination.join(","),
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Проект/инициатива': {
+                            value: result[0].projectIniciativ,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
-                    'Другое': {
-                        value: result[0].mobileOther,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Объем финансирования': {
+                            value: result[0].amountFinance,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Источник финансирования': {
+                            value: result[0].sourceFinance,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Исполнитель проекта': {
+                            value: result[0].executorProject,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
-                    'Исполнитель проекта': {
-                        value: result[0].executorProject,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
-                    ,
-                    'Контактные данные исполнителя': {
-                        value: result[0].contactExecutor,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                        'Контактные данные исполнителя': {
+                            value: result[0].contactExecutor,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Основное назначение': {
+                            value: result[0].mainDestination.join(","),
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Другое': {
+                            value: result[0].mobileOther,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
 
 
-                });
+
+
+
+
+
+                    });
+
+
+                } else {
+                    Object.defineProperties(result[0], {
+
+                        'Project/ initiative': {
+                            value: result[0].projectIniciativ,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Volume of funding': {
+                            value: result[0].amountFinance,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Source of funding': {
+                            value: result[0].sourceFinance,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Project implementer': {
+                            value: result[0].executorProject,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Implementer’s contacts': {
+                            value: result[0].contactExecutor,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Main': {
+                            value: result[0].mainDestination.join(","),
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Other': {
+                            value: result[0].mobileOther,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+
+
+
+
+
+                    });
+
+
+                }
+
 
 
                 delete result[0].projectIniciativ;
@@ -1115,31 +1681,64 @@ module.exports = {
 
 
 
-
-                Object.defineProperties(result[0], {
-
-                    'Страна': {
-                        value: result[0].nameCountry,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-
-                    'Год': {
-                        value: result[0].nameYear,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
-                    'Путь до Excel файла': {
-                        value: result[0].urlExcel,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+                if (lang === "ru") {
 
 
-                });
+                    Object.defineProperties(result[0], {
+
+                        'Страна': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Год': {
+                            value: result[0].nameYear,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'Путь до Excel файла': {
+                            value: result[0].urlExcel,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+                } else {
+
+                    Object.defineProperties(result[0], {
+
+                        'Country': {
+                            value: result[0].nameCountry,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+                        'Year': {
+                            value: result[0].nameYear,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+                        'View Excel files': {
+                            value: result[0].urlExcel,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+                }
+
+
 
 
                 delete result[0].nameCountry;
@@ -1173,44 +1772,92 @@ module.exports = {
                 }).toArray();
 
 
+                if (lang === "ru") {
+
+                    Object.defineProperties(result[0], {
 
 
-                Object.defineProperties(result[0], {
-                    'Тип периода': {
-                        value: result[0].typePeriod,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Страна': {
+                            value: result[0].country,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
-                    'Год': {
-                        value: result[0].year,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Тип периода': {
+                            value: result[0].typePeriod,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
-                    'Страна': {
-                        value: result[0].country,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    },
+                        'Год': {
+                            value: result[0].year,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
 
 
 
 
-                    'Дата создания': {
-                        value: result[0].createAt,
-                        writable: true,
-                        enumerable: true,
-                        configurable: true
-                    }
+
+                        'Дата создания': {
+                            value: result[0].createAt,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
 
 
-                });
+                    });
+
+
+
+                } else {
+                    Object.defineProperties(result[0], {
+
+
+                        'Country': {
+                            value: result[0].country,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Period type': {
+                            value: result[0].typePeriod,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Year': {
+                            value: result[0].year,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
+                        'Date of entry': {
+                            value: result[0].createAt,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        }
+
+
+                    });
+
+
+                }
+
+
 
 
                 delete result[0].country;
@@ -1224,7 +1871,7 @@ module.exports = {
 
 
 
-            console.log("\x1b[42m", result);
+
 
             return result;
 

@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('CreditsCtrl', function ($element, $scope, Addcredit, GetAllCoutrys, $mdToast, DelCredits, GetAllCredits, UpdCredits, GetCreditsFact, SendNewCreditsFact, $window) {
+angular.module('app').controller('CreditsCtrl', function ($element, $scope, Addcredit, GetAllCoutrys, $mdToast, DelCredits, GetAllCredits, UpdCredits, GetCreditsFact, SendNewCreditsFact, $window, $translate) {
 
 
 $scope.data = [];
@@ -333,7 +333,7 @@ $scope.createNewFact = function (event) {
         $scope.tableID = "credits";
         $scope.titleSheet = "Кредиты";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
 
 
 

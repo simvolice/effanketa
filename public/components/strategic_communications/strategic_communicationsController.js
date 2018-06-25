@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('StrategicCommunicationsCtrl', function ($window, $scope, $rootScope, $mdDialog, GetAllCoutrys, $mdToast, DelStrategic, GetStrategic, GetYearName) {
+angular.module('app').controller('StrategicCommunicationsCtrl', function ($translate, $window, $scope, $rootScope, $mdDialog, GetAllCoutrys, $mdToast, DelStrategic, GetStrategic, GetYearName) {
 
 
     $rootScope.data = [];
@@ -425,7 +425,7 @@ $scope.excel = function () {
         $scope.tableID = "strategic";
         $scope.titleSheet = "Стратегия по коммуникации";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet, '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
 
 
 

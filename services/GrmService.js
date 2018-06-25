@@ -51,10 +51,33 @@ module.exports = {
 
                 id: seq,
                 createAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) ),
-                nameCountry: nameCountry.name,
-                categName: categName.name,
+
+
+
+                dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
                 canalName: canalName.name,
+                nameCountry: nameCountry.name,
+                declarerFIO: objParams.declarerFIO,
+                categName: categName.name,
+                raisedQuestion: objParams.raisedQuestion,
+                responsibleConsideration: objParams.responsibleConsideration,
                 statusName: statusName.name,
+                takeAction: objParams.takeAction,
+                lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
+                dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
+                timeToCheckComplaint: objParams.timeToCheckComplaint,
+
+                assessmentQualitySatisfactionComplaint: Int32(objParams.assessmentQualitySatisfactionComplaint),
+
+                timeOfSatisfaction: "В срок",
+
+
+
+
+
+
+
+
                 colorForStatus: colorForStatus,
                 levelComplaint: levelComplaint.name,
 
@@ -62,25 +85,19 @@ module.exports = {
                 dateStartInvestegment: new Date( new Date(objParams.dateStartInvestegment).getTime() -  ( new Date(objParams.dateStartInvestegment).getTimezoneOffset() * 60000 ) ),
 
 
-                dateInGo: new Date( new Date(objParams.dateInGo).getTime() -  ( new Date(objParams.dateInGo).getTimezoneOffset() * 60000 ) ),
+
                 canalRequest: ObjectId(objParams.canalRequest),
                 levelComplaintId: ObjectId(objParams.levelComplaint),
                 country: ObjectId(objParams.country),
-                declarerFIO: objParams.declarerFIO,
+
                 categComplaint: ObjectId(objParams.categComplaint),
-                raisedQuestion: objParams.raisedQuestion,
-                responsibleConsideration: objParams.responsibleConsideration,
+
+
                 statusId: ObjectId(objParams.statusId),
-                takeAction: objParams.takeAction,
-                lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
-                dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
-                timeToCheckComplaint: objParams.timeToCheckComplaint,
 
 
 
-                assessmentQualitySatisfactionComplaint: Int32(objParams.assessmentQualitySatisfactionComplaint),
 
-                timeOfSatisfaction: "В срок"
 
 
             });
