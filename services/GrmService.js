@@ -318,6 +318,7 @@ module.exports = {
             let dateNow = new Date( new Date().getTime() - ( new Date().getTimezoneOffset() * 60000 ) );
 
             let timeOfSatisfaction = "";
+            let statusID = "";
 
             const resultForTimeSatisfaction = await colForTimeSatisfaction.findOne({_id: ObjectId(objParams.id), lastDateAnswer: {$lt: dateNow}});
 
@@ -344,6 +345,7 @@ module.exports = {
 
 
 
+
             const col = dbConnect.getConnect().collection('grm');
 
 
@@ -353,6 +355,21 @@ module.exports = {
             let statusName = await GrmStatusService.getStatusById(objParams.statusId);
             let colorForStatus = await setColor.setColorOnStatus(statusName.name);
             let levelComplaint = await GrmStatusService.getLevelById(objParams.levelComplaint);
+
+            statusID = objParams.statusId;
+
+            if (objParams.assessmentQualitySatisfactionComplaint !== 0) {
+
+
+                 statusID = await GrmStatusService.getStatusByName("Завершен")._id;
+
+
+                statusName.name = "Завершен";
+                colorForStatus = "rgba(0, 0, 0, 0.8)";
+
+            }
+
+
 
 
 
@@ -388,7 +405,7 @@ module.exports = {
                         categComplaint: ObjectId(objParams.categComplaint),
                         raisedQuestion: objParams.raisedQuestion,
                         responsibleConsideration: objParams.responsibleConsideration,
-                        statusId: ObjectId(objParams.statusId),
+                        statusId: ObjectId(statusID),
                         takeAction: objParams.takeAction,
                         lastDateAnswer: new Date( new Date(objParams.lastDateAnswer).getTime() -  ( new Date(objParams.lastDateAnswer).getTimezoneOffset() * 60000 ) ),
                         dateNotifDeclarer: new Date( new Date(objParams.dateNotifDeclarer).getTime() -  ( new Date(objParams.dateNotifDeclarer).getTimezoneOffset() * 60000 ) ),
@@ -416,6 +433,7 @@ module.exports = {
             return result;
 
         } catch (err){
+
 
 
             return err;
