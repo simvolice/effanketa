@@ -361,8 +361,9 @@ module.exports = {
             if (objParams.assessmentQualitySatisfactionComplaint !== 0) {
 
 
-                 statusID = await GrmStatusService.getStatusByName("Завершен")._id;
+                 statusID = await GrmStatusService.getStatusByName("Завершен");
 
+                 console.log("\x1b[42m", statusID);
 
                 statusName.name = "Завершен";
                 colorForStatus = "rgba(0, 0, 0, 0.8)";

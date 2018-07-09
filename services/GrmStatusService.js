@@ -487,9 +487,10 @@ module.exports = {
 
 
 
-            return result;
+            return result._id.toString();
 
         } catch (err){
+
 
 
             return err;
