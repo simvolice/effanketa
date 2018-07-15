@@ -366,6 +366,9 @@ module.exports = {
 
     },
 
+
+    
+
     getgrowpotencialNewVersion: async (objParams) => {
 
         if (objParams.country === 0) {
@@ -392,7 +395,7 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
+
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
@@ -405,25 +408,35 @@ module.exports = {
                     $facet: {
                         "categorizedByDatePeriodCountry": [{
 
-                            $match: {country: {$in: objParams.country}}
+                            $match: {
 
-                        },
+                                country: {$in: objParams.country},
 
-                            {
-                                $addFields:
+
+                                $and: [
+
                                     {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
 
-                                    }
-                            },
+                                        myDate: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                    },
+
+                                    {
+
+                                        myDate: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                    },
 
 
-                            {
+                                ],
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
+
+
 
                             }
+
+                        }
+
+
 
 
                         ],
@@ -431,25 +444,35 @@ module.exports = {
 
                         "countSatisfaction": [ {
 
-                            $match: {country: {$in: objParams.country}}
+                            $match: {
+
+
+                                country: {$in: objParams.country},
+
+
+                                $and: [
+
+                                    {
+
+                                        myDate: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                    },
+
+                                    {
+
+                                        myDate: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                    },
+
+
+                                ],
+
+
+
+
+                            }
 
                         },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
 
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
                             {
                                 $lookup:
@@ -484,25 +507,33 @@ module.exports = {
 
                         "countSatisfactionWomen": [ {
 
-                            $match: {country: {$in: objParams.country}}
+                            $match: {
+
+                                country: {$in: objParams.country},
+
+
+                                $and: [
+
+                                    {
+
+                                        myDate: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                    },
+
+                                    {
+
+                                        myDate: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                    },
+
+
+                                ],
+
+
+
+
+                            }
 
                         },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
                             {
                                 $lookup:
@@ -540,25 +571,29 @@ module.exports = {
 
                         "categorizedBySum": [ {
 
-                            $match: {country: {$in: objParams.country}}
+                            $match: {
+                                country: {$in: objParams.country},
+
+                                $and: [
+
+                                    {
+
+                                        myDate: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                    },
+
+                                    {
+
+                                        myDate: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                    },
+
+
+                                ],
+
+
+                            }
 
                         },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$myDate" },
-                                        month: { $month: "$myDate" },
-
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
                             {
                                 $group : {
                                     _id : null,
@@ -617,6 +652,10 @@ module.exports = {
 
 
     },
+
+
+
+
 
     getgrowpotencial: async (objParams) => {
 
@@ -1443,7 +1482,7 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
+
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
@@ -1452,35 +1491,29 @@ module.exports = {
 
                         {
 
-                            $match: {country: {$in: objParams.country}}
+                            $match: {
 
-                        },
+                                country: {$in: objParams.country},
 
-                            {
-                                $addFields:
+                                $and: [
+
                                     {
-                                        year: { $year: "$createAt" },
-                                        month: { $month: "$createAt" },
 
+                                        createAt: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                    },
+
+                                    {
+
+                                        createAt: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
                                     }
-                            },
 
 
-                            {
+                                ]
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
 
                             }
 
-
-
-
-
-
-
-
-
-
+                        }
 
 
 
@@ -1516,6 +1549,11 @@ module.exports = {
 
     },
 
+
+
+
+
+
     getreportgrm: async (objParams) => {
 
 
@@ -1544,8 +1582,14 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
+
+
+
+
             let period = await TypePeriod.getTypePeriodById(objParams.period);
+
+
+
 
 
             const result = await col.aggregate([
@@ -1560,25 +1604,44 @@ module.exports = {
 
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+
+
+
+                                    $and: [
+
+                                    {
+
+                                        createAt: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                    },
+
+                                    {
+
+                                        createAt: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                    },
+
+
+                                        ]
+
+
+
+
+
+                                    },
+
+
+
+
 
                              },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$createAt" },
-                                        month: { $month: "$createAt" },
-
-                                    }
-                            },
 
 
-                            {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
 
-                            },
 
                             {
                                 $count: "countAll"
@@ -1594,25 +1657,41 @@ module.exports = {
                         "categorizedByLowLevel": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
+
+
+
+                                    country: {$in: objParams.country},
+
+
+
+                                    $and: [
+
+                                        {
+
+                                            dateInGo: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateInGo: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ],
+
+
+
+
+
+
+                                },
+
+
 
                             },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateInGo" },
-                                        month: { $month: "$dateInGo" },
 
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
 
 
@@ -1635,25 +1714,37 @@ module.exports = {
                         "categorizedByInvestiginationStarted": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+
+
+                                    $and: [
+
+                                        {
+
+                                            dateStartInvestegment: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateStartInvestegment: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+
+                                }
+
+
+
 
                             },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateStartInvestegment" },
-                                        month: { $month: "$dateStartInvestegment" },
 
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
 
 
@@ -1670,25 +1761,37 @@ module.exports = {
                         "categorizedByInvestiginationCompleted": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
+
+
+                                    country: {$in: objParams.country},
+
+
+
+                                    $and: [
+
+                                        {
+
+                                            dateStartInvestegment: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateStartInvestegment: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+
+                                }
+
+
 
                             },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateStartInvestegment" },
-                                        month: { $month: "$dateStartInvestegment" },
 
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
 
                             {
@@ -1717,25 +1820,34 @@ module.exports = {
                         "categorizedByAccept": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
 
-                            },
+                                    country: {$in: objParams.country},
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateInGo" },
-                                        month: { $month: "$dateInGo" },
+                                    $and: [
+
+                                        {
+
+                                            dateInGo: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateInGo: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ]
 
                                     }
-                            },
 
 
-                            {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
 
                             },
+
+
 
                             {
                                 $lookup:
@@ -1769,25 +1881,36 @@ module.exports = {
                         "categorizedByComplete": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
 
-                            },
+                                    country: {$in: objParams.country},
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateInGo" },
-                                        month: { $month: "$dateInGo" },
+
+
+                                    $and: [
+
+                                        {
+
+                                            dateInGo: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateInGo: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
 
                                     }
+
+
+
+
                             },
 
 
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
                             {
                                 $lookup:
@@ -1822,25 +1945,37 @@ module.exports = {
                         "categorizedByType": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
 
-                            },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateInGo" },
-                                        month: { $month: "$dateInGo" },
+                                    country: {$in: objParams.country},
+
+
+                                    $and: [
+
+                                        {
+
+                                            dateInGo: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateInGo: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
 
                                     }
-                            },
 
 
-                            {
 
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+
 
                             },
+
+
 
 
 
@@ -1919,25 +2054,35 @@ module.exports = {
                         "categorizedBySatisfiedInPercent": [
                             {
 
-                                $match: {country: {$in: objParams.country}}
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+
+                                    $and: [
+
+                                        {
+
+                                            dateInGo: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            dateInGo: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+
+                                }
+
+
 
                             },
 
-                            {
-                                $addFields:
-                                    {
-                                        year: { $year: "$dateInGo" },
-                                        month: { $month: "$dateInGo" },
 
-                                    }
-                            },
-
-
-                            {
-
-                                $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                            },
 
                             {
 
@@ -1956,7 +2101,7 @@ module.exports = {
 
 
 
-                        ],
+                        ]
 
 
 
@@ -1967,7 +2112,7 @@ module.exports = {
 
 
                     }
-                },
+                }
 
 
 
@@ -1977,6 +2122,47 @@ module.exports = {
 
 
             ]).toArray();
+
+
+
+
+            if (result[0].categorizedBySatisfiedInPercent.length !== 0) {
+                if (Math.round(result[0].categorizedBySatisfiedInPercent[0].avg) === 1) {
+
+                    result[0].categorizedBySatisfiedInPercent[0].percent = "0%";
+
+                } else if(Math.round(result[0].categorizedBySatisfiedInPercent[0].avg) === 2){
+
+                    result[0].categorizedBySatisfiedInPercent[0].percent = "25%";
+
+
+                }else if(Math.round(result[0].categorizedBySatisfiedInPercent[0].avg) === 3){
+                    result[0].categorizedBySatisfiedInPercent[0].percent = "50%";
+
+
+                }else if(Math.round(result[0].categorizedBySatisfiedInPercent[0].avg) === 4){
+
+                    result[0].categorizedBySatisfiedInPercent[0].percent = "75%";
+
+                }else if(Math.round(result[0].categorizedBySatisfiedInPercent[0].avg) === 5){
+                    result[0].categorizedBySatisfiedInPercent[0].percent = "100%";
+
+
+                } else {
+
+                    result[0].categorizedBySatisfiedInPercent[0].percent = "0%";
+
+
+                }
+
+
+            } else {
+
+
+                result[0].categorizedBySatisfiedInPercent.push({percent : "0%"})
+
+            }
+
 
 
 
@@ -2007,6 +2193,22 @@ module.exports = {
 
     },
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     getreportfinansialstatus: async (objParams) => {
 
 
@@ -2035,7 +2237,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
@@ -2044,25 +2245,32 @@ module.exports = {
 
                 {
 
-                    $match: {country: {$in: objParams.country}}
+                    $match: {
+
+                        country: {$in: objParams.country},
+
+                        $and: [
+
+                            {
+
+                                createAt: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                            },
+
+                            {
+
+                                createAt: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                            },
+
+
+                        ],
+
+
+
+                    }
 
                 },
 
-                {
-                    $addFields:
-                        {
-                            year: { $year: "$createAt" },
-                            month: { $month: "$createAt" },
 
-                        }
-                },
-
-
-                {
-
-                    $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                },
 
 
 
@@ -2197,6 +2405,21 @@ module.exports = {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
     Это годовой NCU
      */
@@ -2231,7 +2454,7 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
+
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
@@ -2240,7 +2463,26 @@ module.exports = {
 
                 {
 
-                    $match: {country: {$in: objParams.country}}
+                    $match: {
+                        country: {$in: objParams.country},
+
+                        $and: [
+
+                            {
+
+                                createAt: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                            },
+
+                            {
+
+                                createAt: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                            },
+
+
+                        ],
+
+
+                    }
 
                 },
 
@@ -2254,11 +2496,6 @@ module.exports = {
                 },
 
 
-                {
-
-                    $match: {year: nameYear.codeName, month: {$in: period.codeName}}
-
-                },
 
 
 
@@ -2493,7 +2730,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
@@ -2502,19 +2738,28 @@ module.exports = {
 
 
 
-                {
-                    $addFields:
-                        {
-                            year: { $year: "$createAt" },
-                            month: { $month: "$createAt" },
 
-                        }
-                },
 
 
                 {
 
-                    $match: {year: nameYear.codeName, month: {$in: period.codeName}}
+                    $match: {
+
+                        $and: [
+
+                            {
+
+                                nameQuarter: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                            },
+
+                            {
+
+                                nameQuarter: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                            },
+
+
+                        ]
+                    }
 
                 },
 
@@ -2790,7 +3035,6 @@ module.exports = {
 
 
 
-            let nameYear = await NameYear.getYearById(objParams.yearname);
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
@@ -2799,19 +3043,30 @@ module.exports = {
 
 
 
-                {
-                    $addFields:
-                        {
-                            year: { $year: "$createAt" },
-                            month: { $month: "$createAt" },
-
-                        }
-                },
 
 
                 {
 
-                    $match: {year: nameYear.codeName, month: {$in: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}}
+                    $match: {
+
+                        $and: [
+
+                            {
+
+                                nameQuarter: {$gte: new Date(`01.02.${objParams.year}`)}
+                            },
+
+                            {
+
+                                nameQuarter: {$lte: new Date(`12.31.${objParams.year}`)}
+                            },
+
+
+                        ],
+
+
+
+                    }
 
                 },
 
@@ -2894,7 +3149,29 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2", month: {$in: period.codeName}}
+                                $match: {
+
+                                    nameCountry: "НКГ Таджикистана, Компонент 2",
+
+
+                                    $and: [
+
+                                        {
+
+                                            nameQuarter: {$gte: new Date(`01.02.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            nameQuarter: {$lte: new Date(`06.30.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+
+                                }
 
                             },
 
@@ -2918,7 +3195,26 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2", month: {$in: period.codeName}}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2",
+
+
+                                    $and: [
+
+                                        {
+
+                                            nameQuarter: {$gte: new Date(`01.02.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            nameQuarter: {$lte: new Date(`06.30.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+                                }
 
                             },
 
@@ -3009,7 +3305,28 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2", month: {$in: period.codeName}}
+                                $match: {
+
+
+                                    nameCountry: "НКГ Узбекистана, Компонент 2",
+
+                                    $and: [
+
+                                        {
+
+                                            nameQuarter: {$gte: new Date(`01.02.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            nameQuarter: {$lte: new Date(`06.30.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+                                }
 
                             },
 
@@ -3033,7 +3350,28 @@ module.exports = {
 
                             {
 
-                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2", month: {$in: period.codeName}}
+                                $match: {
+
+
+                                    nameCountry: "НКГ Узбекистана, Компонент 2",
+
+                                    $and: [
+
+                                        {
+
+                                            nameQuarter: {$gte: new Date(`01.02.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            nameQuarter: {$lte: new Date(`06.30.${objParams.year}`)}
+                                        },
+
+
+                                    ]
+
+
+                                }
 
                             },
 
@@ -3080,12 +3418,10 @@ module.exports = {
 
 
 
-
             return result;
 
 
         }catch(err) {
-
 
 
 
@@ -3151,7 +3487,7 @@ module.exports = {
                 overallNarrative: objParams.overallNarrative,
 
                 grmSourceInformation: objParams.grmSourceInformation,
-                satisfiedComplaintsInPercentage: Int32(objParams.satisfiedComplaintsInPercentage),
+                satisfiedComplaintsInPercentage: objParams.satisfiedComplaintsInPercentage,
                 projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                 projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
 
@@ -3520,7 +3856,7 @@ module.exports = {
                     comments: objParams.comments,
 
                     grmSourceInformation: objParams.grmSourceInformation,
-                    satisfiedComplaintsInPercentage: Int32(objParams.satisfiedComplaintsInPercentage),
+                    satisfiedComplaintsInPercentage: objParams.satisfiedComplaintsInPercentage,
                     projectRisksIssuesQuestion: objParams.projectRisksIssuesQuestion,
                     projectRisksPotentialRisksQuestion: objParams.projectRisksPotentialRisksQuestion,
 

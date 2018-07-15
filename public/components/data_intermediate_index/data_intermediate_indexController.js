@@ -261,9 +261,10 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
+                 let categByAllWomenAll_benificiar = entry.resultFromDb[0].categByAllWomen.length === 0 ? 0 : entry.resultFromDb[0].categByAllWomen[0].all_benificiar;
 
 
-                $scope.sumWomen = entry.resultFromDb[1][0].allEventSumWomen.length === 0 ? 0 : entry.resultFromDb[1][0].allEventSumWomen[0].all_countWomanEventCommon + entry.resultFromDb[0].categByAllWomen.length === 0 ? 0 : entry.resultFromDb[0].categByAllWomen[0].all_benificiar;
+                $scope.sumWomen = entry.resultFromDb[1][0].allEventSumWomen.length === 0 ? 0 : entry.resultFromDb[1][0].allEventSumWomen[0].all_countWomanEventCommon + categByAllWomenAll_benificiar;
 
 
                 $scope.data.percentSum = $scope.calculatePercent($scope.sumComponents, $scope.sumWomen);
@@ -416,8 +417,22 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
              if (entry.resultFromDb.length !== 0) {
 
-                 $scope.data.countGRM = $scope.calculatePercent(entry.resultFromDb[0].categorizedByAllCompletegrm.length === 0 ? 0 : entry.resultFromDb[0].categorizedByAllCompletegrm[0].all_completegrm, entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction.length === 0 ? 0 : entry.resultFromDb[0].categorizedByWithTimeOfSatisfaction[0].all_completegrmWithTimeOfSatisfaction);
-                 arrAllData.push({countGRM: $scope.data.countGRM});
+                 $scope.data.countGRM = entry.resultFromDb[0].categorizedByAllCompletegrmAVG[0].percent;
+                 $scope.data.countGRM_TJ = entry.resultFromDb[0].categorizedByAllCompletegrmAVG_TJ[0].percent;
+                 $scope.data.countGRM_UZ = entry.resultFromDb[0].categorizedByAllCompletegrmAVG_UZ[0].percent;
+
+
+
+
+
+                 arrAllData.push({
+
+                     countGRM: $scope.data.countGRM,
+                     countGRM_TJ: $scope.data.countGRM_TJ,
+                     countGRM_UZ: $scope.data.countGRM_UZ,
+
+
+                 });
 
 
              }
@@ -439,9 +454,10 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
     for (const itemYear of $scope.arrYear) {
+
+
         $scope.generateReport(itemYear);
         $scope.generateReportCountProgramm(itemYear);
-
         $scope.generateReportCountRegeonalInvest(itemYear);
         $scope.generateReportSumMobileAmount(itemYear);
         $scope.generateReportCountPlatform(itemYear);

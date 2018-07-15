@@ -32,7 +32,8 @@ module.exports = {
                 {
 
                 name: "Квартальный (1-вый квартал, янв-март)",
-                codeName: [1, 2, 3]
+                dateFrom: "01.02",
+                dateTo: "03.30"
 
                 },
 
@@ -41,7 +42,8 @@ module.exports = {
                 {
 
                     name: "Квартальный (2-ий квартал, апр-июнь)",
-                    codeName: [4, 5, 6]
+                    dateFrom: "04.02",
+                    dateTo: "06.30"
 
                 },
 
@@ -49,14 +51,16 @@ module.exports = {
                 {
 
                     name: "Квартальный (3-ий квартал, июль-сент)",
-                    codeName: [7, 8, 9]
+                    dateFrom: "07.02",
+                    dateTo: "09.30"
 
                 },
 
                 {
 
                     name: "Квартальный (4-ий квартал, окт-дек)",
-                    codeName: [10, 11, 12]
+                    dateFrom: "10.02",
+                    dateTo: "12.30"
 
                 },
 
@@ -67,8 +71,8 @@ module.exports = {
                 {
 
                     name: "Полугодовой (1-ое полугодие, янв-июнь)",
-                    codeName: [1, 2, 3, 4, 5, 6]
-
+                    dateFrom: "01.02",
+                    dateTo: "06.30"
                 },
 
 
@@ -76,7 +80,8 @@ module.exports = {
                 {
 
                     name: "Годовой (янв-дек)",
-                    codeName: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+                    dateFrom: "01.02",
+                    dateTo: "12.30"
 
                 }
                 ]

@@ -1838,7 +1838,7 @@ $scope.data = {
             if (obj.categorizedBySatisfiedInPercent.length !== 0) {
 
 
-                $scope.data.satisfiedComplaintsInPercentage = obj.categorizedBySatisfiedInPercent[0].avg;
+                $scope.data.satisfiedComplaintsInPercentage = obj.categorizedBySatisfiedInPercent[0].percent;
 
             }
 

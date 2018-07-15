@@ -1228,7 +1228,7 @@ module.exports = {
 
 
 
-                        "categorizedByAllCompletegrm": [
+                        "categorizedByAllCompletegrmAVG": [
 
 
                             {
@@ -1254,8 +1254,18 @@ module.exports = {
 
 
                             {
-                                $count : "all_completegrm"
+
+                                $group: {
+
+                                    _id: null,
+                                    avg: {$avg: "$assessmentQualitySatisfactionComplaint"}
+
+
+
+                                }
+
                             }
+
 
 
                         ],
@@ -1263,11 +1273,12 @@ module.exports = {
 
 
 
-                        "categorizedByWithTimeOfSatisfaction": [
+                        "categorizedByAllCompletegrmAVG_TJ": [
+
 
                             {
 
-                                $match: {}
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
 
                             },
 
@@ -1282,33 +1293,72 @@ module.exports = {
 
                             {
 
-                                $match: {
-
-                                    year: yearId,
-
-                                    timeOfSatisfaction: "В срок",
-
-
-                                    $or: [{assessmentQualitySatisfactionComplaint: 5}, {assessmentQualitySatisfactionComplaint: 4}]
-
-                                }
+                                $match: {year: yearId}
 
                             },
 
 
-
-
-
                             {
-                                $count : "all_completegrmWithTimeOfSatisfaction"
+
+                                $group: {
+
+                                    _id: null,
+                                    avg: {$avg: "$assessmentQualitySatisfactionComplaint"}
+
+
+
+                                }
+
                             }
+
+
 
                         ],
 
 
 
 
+                        "categorizedByAllCompletegrmAVG_UZ": [
 
+
+                            {
+
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: { $year: "$dateInGo" },
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: yearId}
+
+                            },
+
+
+                            {
+
+                                $group: {
+
+                                    _id: null,
+                                    avg: {$avg: "$assessmentQualitySatisfactionComplaint"}
+
+
+
+                                }
+
+                            }
+
+
+
+                        ],
 
 
 
@@ -1330,10 +1380,150 @@ module.exports = {
 
 
 
+
+            if (result[0].categorizedByAllCompletegrmAVG.length !== 0) {
+
+
+                if (Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 1) {
+
+                    result[0].categorizedByAllCompletegrmAVG[0].percent = 0;
+
+                } else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 2){
+
+                    result[0].categorizedByAllCompletegrmAVG[0].percent = 25;
+
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 3){
+                    result[0].categorizedByAllCompletegrmAVG[0].percent = 50;
+
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 4){
+
+                    result[0].categorizedByAllCompletegrmAVG[0].percent = 75;
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 5){
+                    result[0].categorizedByAllCompletegrmAVG[0].percent = 100;
+
+
+                } else {
+
+                    result[0].categorizedByAllCompletegrmAVG.percent = 0;
+
+
+                }
+
+
+            } else {
+
+
+
+                result[0].categorizedByAllCompletegrmAVG.push({percent : 0});
+
+
+
+            }
+
+
+
+
+            if (result[0].categorizedByAllCompletegrmAVG_TJ.length !== 0) {
+
+
+                if (Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 1) {
+
+                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 0;
+
+                } else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 2){
+
+                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 25;
+
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 3){
+                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 50;
+
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 4){
+
+                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 75;
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 5){
+                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 100;
+
+
+                } else {
+
+                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 0;
+
+
+                }
+
+
+
+            } else {
+
+                result[0].categorizedByAllCompletegrmAVG_TJ.push({percent : 0});
+
+            }
+
+
+
+
+
+
+            if (result[0].categorizedByAllCompletegrmAVG_UZ.length !== 0) {
+
+
+                if (Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 1) {
+
+                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 0;
+
+                } else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 2){
+
+                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 25;
+
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 3){
+                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 50;
+
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 4){
+
+                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 75;
+
+                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 5){
+                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 100;
+
+
+                } else {
+
+                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 0;
+
+
+                }
+
+
+            } else {
+
+
+                result[0].categorizedByAllCompletegrmAVG_UZ.push({percent : 0});
+
+            }
+
+
+
+
+
+
+
+
+
+
+
             return result;
 
 
         }catch(err) {
+
 
 
 

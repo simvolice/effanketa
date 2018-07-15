@@ -140,6 +140,7 @@ $scope.createNewFact = function (event) {
             NonDirectBeneficiariesHiredMale: "",
             NonDirectBeneficiariesHiredFemale: "",
             CreatePowerPlan: "",
+            createAt: new Date()
 
 
 
