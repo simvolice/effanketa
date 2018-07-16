@@ -382,8 +382,8 @@ function DialogControllerUpdMobileResurs($scope, data, GetAllCoutrys, UpdMobileR
 
 
         };
-        
-        
+
+
         $scope.exists = function (item) {
             return $scope.data.mainDestination.indexOf(item) > -1;
         };
@@ -832,7 +832,7 @@ function DialogControllerNewMobileResurs($scope, GetAllCoutrys, AddMobileResurs)
 
 
 
-   
+
 
         $scope.data = {
 
@@ -848,6 +848,12 @@ function DialogControllerNewMobileResurs($scope, GetAllCoutrys, AddMobileResurs)
 
 
         };
+
+
+    $scope.exists = function (item) {
+        return $scope.data.mainDestination.indexOf(item) > -1;
+    };
+
 
     $scope.pushToSelected = function (item) {
 
