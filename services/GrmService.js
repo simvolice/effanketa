@@ -320,11 +320,14 @@ module.exports = {
             let timeOfSatisfaction = "";
             let statusID = "";
 
-            const resultForTimeSatisfaction = await colForTimeSatisfaction.findOne({_id: ObjectId(objParams.id), lastDateAnswer: {$lt: dateNow}});
 
 
 
-            if (resultForTimeSatisfaction !== null){
+            const resultForTimeSatisfaction = await colForTimeSatisfaction.findOne({_id: ObjectId(objParams.id)});
+
+
+
+            if (resultForTimeSatisfaction.dateNotifDeclarer > resultForTimeSatisfaction.lastDateAnswer){
 
 
                 timeOfSatisfaction = "Просрочен";
@@ -363,7 +366,6 @@ module.exports = {
 
                  statusID = await GrmStatusService.getStatusByName("Завершен");
 
-                 console.log("\x1b[42m", statusID);
 
                 statusName.name = "Завершен";
                 colorForStatus = "rgba(0, 0, 0, 0.8)";

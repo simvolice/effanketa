@@ -232,7 +232,7 @@
                                 <md-input-container class="custom__select__margin">
                                     <label>{{ 'STATUS_COMPLAINT' | translate }}</label>
                                     <md-icon class="material-icons">place</md-icon>
-                                    <md-select ng-model="data.statusId">
+                                    <md-select ng-model="data.statusId" ng-disabled="true">
 
                                         <md-option ng-repeat="y in data.allStatus" ng-value="y._id">
                                             {{y.name}}
