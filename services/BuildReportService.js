@@ -367,7 +367,7 @@ module.exports = {
     },
 
 
-    
+
 
     getgrowpotencialNewVersion: async (objParams) => {
 
@@ -406,7 +406,9 @@ module.exports = {
 
                 {
                     $facet: {
-                        "categorizedByDatePeriodCountry": [{
+                        "categorizedByDatePeriodCountry": [
+
+                            {
 
                             $match: {
 
@@ -434,9 +436,30 @@ module.exports = {
 
                             }
 
-                        }
 
 
+
+                        },
+
+
+                            {
+                                $lookup:
+                                    {
+                                        from: "forms",
+                                        localField: "_id",
+                                        foreignField: "parentId",
+                                        as: "forms_docs"
+                                    }
+                            },
+                            { $unwind : "$forms_docs" },
+
+                            {
+                                $replaceRoot: { newRoot: "$forms_docs" }
+                            },
+
+                            {
+                                $count : "all_form"
+                            }
 
 
                         ],
@@ -492,12 +515,18 @@ module.exports = {
 
 
                             {
-                                $group : {
-                                    _id : null,
-                                    average: { $avg: "$ques12" }
+                                $match : {
+
+
+                                    ques12: { $gte: 3 }
 
 
                                 }
+                            },
+
+
+                            {
+                                $count : "all_countSatisfaction_yes"
                             }
 
 
@@ -551,17 +580,22 @@ module.exports = {
                             },
 
 
-                            {$match: {ques20: "Женский"}},
-
 
                             {
-                                $group : {
-                                    _id : null,
-                                    average: { $avg: "$ques12" }
+                                $match : {
+
+                                    ques20: "Женский",
+                                    ques12: { $gte: 3 }
 
 
                                 }
+                            },
+
+
+                            {
+                                $count : "all_countSatisfaction_women_yes"
                             }
+
 
 
                         ],
@@ -627,6 +661,7 @@ module.exports = {
 
 
 
+            console.log("\x1b[42m", result[0]);
 
 
             return result;

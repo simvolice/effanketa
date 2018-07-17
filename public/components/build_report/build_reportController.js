@@ -1760,6 +1760,8 @@ $scope.data = {
         for (let obj of entry.resultFromDb) {
             $scope.data.categorizedByDatePeriodCountry = obj.categorizedByDatePeriodCountry;
             $scope.data.categorizedBySum = obj.categorizedBySum;
+
+
             $scope.data.countSatisfaction = obj.countSatisfaction;
             $scope.data.countSatisfactionWomen = obj.countSatisfactionWomen;
 
@@ -1767,6 +1769,19 @@ $scope.data = {
         }
 
 
+       try {
+           $scope.data.countSatisfactionWomen = $scope.calculatePercent($scope.data.categorizedByDatePeriodCountry[0].all_form, $scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes);
+           $scope.data.countSatisfaction = $scope.calculatePercent($scope.data.categorizedByDatePeriodCountry[0].all_form, $scope.data.countSatisfaction[0].all_countSatisfaction_yes);
+
+
+
+
+        }catch (e) {
+
+           $scope.data.countSatisfaction = 0;
+           $scope.data.countSatisfactionWomen = 0;
+
+       }
 
 
     });
