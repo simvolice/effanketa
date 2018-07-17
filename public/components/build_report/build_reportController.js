@@ -1781,6 +1781,8 @@ $scope.data = {
            $scope.data.countSatisfaction = 0;
            $scope.data.countSatisfactionWomen = 0;
 
+
+
        }
 
 
