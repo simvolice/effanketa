@@ -30,13 +30,13 @@ html,
 table.md-table td.md-cell, table.md-table th.md-column {
 
     color: #000;
-    
+
 }
 
 table.md-table td.md-cell {
     color: #000;
     font-weight: 600;
-    
+
 }
 
 
@@ -547,7 +547,7 @@ ul:not(.browser-default) > li {
 
 
 .custom__input__width {
-    width: 50px;
+    width: 150px;
 }
 
 
