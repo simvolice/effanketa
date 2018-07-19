@@ -1013,6 +1013,28 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
             $scope.data.categorizedByBudgetBisbursementFactHalfYearUzbeck = obj.categorizedByBudgetBisbursementFactHalfYearUzbeck;
 
         }
+
+
+
+        try {
+            $scope.data.NCUTajikistan = entry.resultFromDb[0].PlanForNextPeriodTadzhik[0].totalPlan;
+       }catch (e) {
+            $scope.data.NCUTajikistan = 0;
+
+        }
+
+
+
+      try {
+          $scope.data.NCUUzbekistan = entry.resultFromDb[0].PlanForNextPeriodUzbek[0].totalPlan;
+
+      }catch (e) {
+          $scope.data.NCUUzbekistan = 0;
+      }
+
+
+
+
     });
 
 

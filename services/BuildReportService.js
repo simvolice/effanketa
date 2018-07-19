@@ -3067,6 +3067,7 @@ module.exports = {
 
 
             const col = dbConnect.getConnect().collection('finansial_status');
+            const buildReport = dbConnect.getConnect().collection('build_report');
 
 
 
@@ -3449,6 +3450,105 @@ module.exports = {
 
             ]).toArray();
 
+
+            const resultBuildReport = await buildReport.aggregate([
+
+
+
+
+
+
+
+
+
+
+                {
+                    $facet: {
+
+
+
+                        "PlanForNextPeriodTadzhik": [
+
+                            {
+
+                                $match: {country: "НКГ Таджикистана, Компонент 2"}
+
+                            },
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$plansNextHalfYearPeriod" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+
+
+
+
+
+
+                        "PlanForNextPeriodUzbek": [
+
+                            {
+
+                                $match: {country: "НКГ Узбекистана, Компонент 2"}
+
+                            },
+
+
+                            {
+                                $group: {
+                                    _id: null,
+
+                                    totalPlan: { $sum: "$plansNextHalfYearPeriod" }
+
+                                }
+                            }
+
+
+
+
+                        ],
+
+
+
+
+
+
+
+
+
+
+                    }
+                },
+
+
+
+
+
+
+
+
+
+            ]).toArray();
+
+
+
+
+
+
+           result[0].PlanForNextPeriodTadzhik = resultBuildReport[0].PlanForNextPeriodTadzhik;
+           result[0].PlanForNextPeriodUzbek = resultBuildReport[0].PlanForNextPeriodUzbek;
 
 
 
