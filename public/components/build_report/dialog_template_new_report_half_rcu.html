@@ -289,40 +289,45 @@
                                                 </p>
 
 
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>Risks
+                                                        </label>
+                                                        <textarea class="for__doc__word" ng-model="data.risks" rows="5"
+                                                                  md-select-on-focus></textarea>
 
-                                                <md-input-container class="md-block">
-                                                    <label>Risks
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.risks" rows="5" md-select-on-focus></textarea>
-
-                                                    <label class="hidden for__label__doc">{{data.risks}}</label>
-
-
-                                                </md-input-container>
-
-                                                <md-input-container class="md-block">
-                                                    <label>Lessons Learned
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.lessonsLearned" rows="5" md-select-on-focus></textarea>
-
-                                                    <label class="hidden for__label__doc">{{data.lessonsLearned}}</label>
+                                                        <label class="hidden for__label__doc">{{data.risks}}</label>
 
 
+                                                    </md-input-container>
+                                                </div>
 
-                                                </md-input-container>
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>Lessons Learned
+                                                        </label>
+                                                        <textarea class="for__doc__word" ng-model="data.lessonsLearned"
+                                                                  rows="5" md-select-on-focus></textarea>
+
+                                                        <label class="hidden for__label__doc">{{data.lessonsLearned}}</label>
 
 
-
-                                                <md-input-container class="md-block">
-                                                    <label>Recommendations
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.recommendations" rows="5" md-select-on-focus></textarea>
-
-                                                    <label class="hidden for__label__doc">{{data.recommendations}}</label>
+                                                    </md-input-container>
+                                                </div>
 
 
-                                                </md-input-container>
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>Recommendations
+                                                        </label>
+                                                        <textarea class="for__doc__word" ng-model="data.recommendations"
+                                                                  rows="5" md-select-on-focus></textarea>
 
+                                                        <label class="hidden for__label__doc">{{data.recommendations}}</label>
+
+
+                                                    </md-input-container>
+                                                </div>
 
 
 
@@ -351,7 +356,7 @@
                                                         .tg .tg-baqh{text-align:center;vertical-align:top}
                                                         .tg .tg-yw4l{vertical-align:top}
                                                     </style>
-                                                    <table class="tg table-striped">
+                                                    <table class="tg">
                                                         <tr>
                                                             <th class="tg-031e" rowspan="3"></th>
                                                             <th class="tg-031e" rowspan="3">Planned Budget [year]</th>
@@ -407,39 +412,48 @@
 
 
 
+                                                <div class="row">
 
-                                                <md-input-container class="md-block">
-                                                    <label>NCU (Tajikistan)
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.NCUTajikistan" rows="5" md-select-on-focus></textarea>
-
-                                                    <label class="hidden for__label__doc">{{data.NCUTajikistan}}</label>
+                                                    <md-input-container class="md-block">
+                                                        <label>NCU (Tajikistan)
+                                                        </label>
 
 
+                                                        <textarea class="for__doc__word" ng-model="data.NCUTajikistan" rows="5" md-select-on-focus></textarea>
 
-                                                </md-input-container>
-
-
-                                                <md-input-container class="md-block">
-                                                    <label>NCU (Uzbekistan)
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.NCUUzbekistan" rows="5" md-select-on-focus></textarea>
-
-                                                    <label class="hidden for__label__doc">{{data.NCUUzbekistan}}</label>
-
-                                                </md-input-container>
-
-
-                                                <md-input-container class="md-block">
-                                                    <label>RCU
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.rcu" rows="5" md-select-on-focus></textarea>
-
-                                                    <label class="hidden for__label__doc">{{data.rcu}}</label>
+                                                        <label class="for__label__doc hidden">{{data.NCUTajikistan}}</label>
 
 
 
-                                                </md-input-container>
+                                                    </md-input-container>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>NCU (Uzbekistan)
+                                                        </label>
+                                                        <textarea class="for__doc__word" ng-model="data.NCUUzbekistan"
+                                                                  rows="5" md-select-on-focus></textarea>
+
+                                                        <label class="for__label__doc hidden ">{{data.NCUUzbekistan}}</label>
+
+                                                    </md-input-container>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>RCU
+                                                        </label>
+                                                        <textarea class="for__doc__word" ng-model="data.rcu" rows="5"
+                                                                  md-select-on-focus></textarea>
+
+                                                        <label class="for__label__doc hidden ">{{data.rcu}}</label>
+
+
+                                                    </md-input-container>
+                                                </div>
 
 
                                                 <p>Please, specify the total amount of the budget (in USD) planned for the next half-year.
@@ -449,44 +463,47 @@
                                                 <h5>Planned budget for the next half-year:</h5>
 
 
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label style="margin-bottom: 20px">NCU (Tajikistan)</label>
+                                                        <textarea class="for__doc__word"
+                                                                  ng-model="data.nextHalfYearNCUTajikistan" rows="5"
+                                                                  md-select-on-focus></textarea>
+                                                        <label class="for__label__doc hidden ">{{data.nextHalfYearNCUTajikistan}}</label>
 
 
-
-                                                <md-input-container class="md-block">
-                                                    <label>NCU (Tajikistan)
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.nextHalfYearNCUTajikistan" rows="5" md-select-on-focus></textarea>
-                                                    <label class="hidden for__label__doc">{{data.nextHalfYearNCUTajikistan}}</label>
+                                                    </md-input-container>
+                                                </div>
 
 
-
-                                                </md-input-container>
-
-
-                                                <md-input-container class="md-block">
-                                                    <label>NCU (Uzbekistan)
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.nextHalfYearNCUUzbekistan" rows="5" md-select-on-focus></textarea>
-
-
-                                                    <label class="hidden for__label__doc">{{data.nextHalfYearNCUUzbekistan}}</label>
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>NCU (Uzbekistan)
+                                                        </label>
+                                                        <textarea class="for__doc__word"
+                                                                  ng-model="data.nextHalfYearNCUUzbekistan" rows="5"
+                                                                  md-select-on-focus></textarea>
 
 
-
-                                                </md-input-container>
-
-
-                                                <md-input-container class="md-block">
-                                                    <label>RCU
-                                                    </label>
-                                                    <textarea class="for__doc__word" ng-model="data.nextHalfYearrcu" rows="5" md-select-on-focus></textarea>
+                                                        <label class="for__label__doc hidden ">{{data.nextHalfYearNCUUzbekistan}}</label>
 
 
-                                                    <label class="hidden for__label__doc">{{data.nextHalfYearrcu}}</label>
+                                                    </md-input-container>
+                                                </div>
 
 
+                                                <div class="row">
+                                                    <md-input-container class="md-block">
+                                                        <label>RCU</label>
+                                                        <textarea class="for__doc__word" ng-model="data.nextHalfYearrcu"
+                                                                  rows="5" md-select-on-focus></textarea>
 
-                                                </md-input-container>
+
+                                                        <label class="for__label__doc hidden ">{{data.nextHalfYearrcu}}</label>
+
+
+                                                    </md-input-container>
+                                                </div>
 
 
                                                 <h5>6. Annexes</h5>

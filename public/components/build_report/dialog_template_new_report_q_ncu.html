@@ -201,7 +201,7 @@
                                                             .tg .tg-hgcj{font-weight:bold;text-align:center}
                                                             .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
                                                         </style>
-                                                        <table class="tg table-striped">
+                                                        <table class="tg">
                                                             <tr>
                                                                 <th class="tg-hgcj" colspan="2">Participants</th>
                                                                 <th class="tg-amwm" colspan="2">Facilitators</th>
@@ -405,7 +405,7 @@
                                                             .tg .tg-hgcj{font-weight:bold;text-align:center}
                                                             .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
                                                         </style>
-                                                        <table class="tg table-striped">
+                                                        <table class="tg">
                                                             <tr>
                                                                 <th class="tg-hgcj" style="width: 200px">Sorting/categorization of complaints (types of grievances)</th>
                                                                 <th class="tg-hgcj" style="width: 400px">Solution result</th>
@@ -419,7 +419,8 @@
 
 
 
-                                                                <td class="tg-0ord"><textarea ng-model="x.solutionResult" style="width: 100%" rows="5"></textarea> </td>
+                                                                <td class="tg-0ord for__doc__word"><textarea ng-model="x.solutionResult" style="width: 100%" rows="5"></textarea> </td>
+                                                                <td class="tg-0ord for__label__doc hidden"><label>{{x.solutionResult}}</label></td>
 
 
 
@@ -533,7 +534,7 @@
                                                 .tg .tg-hgcj{font-weight:bold;text-align:center}
                                                 .tg .tg-9hbo{font-weight:bold;vertical-align:top}
                                             </style>
-                                            <table class="tg table-striped">
+                                            <table class="tg">
                                                 <tr>
                                                     <th class="tg-yw4l" rowspan="2"></th>
                                                     <th class="tg-hgcj" colspan="3">Budget disbursement $</th>
@@ -553,7 +554,11 @@
                                                     <td class="tg-9hbo" ng-repeat="x in data.categorizedByServices">{{x.name}}</td>
                                                     <td class="tg-lqy6" ng-repeat="x in data.categorizedByServices">{{ x.totalPlan }}</td>
                                                     <td class="tg-lqy6" ng-repeat="x in data.categorizedByServices">{{ x.totalFact }}</td>
-                                                    <td class="tg-lqy6" ng-repeat="x in data.categorizedByServices"><textarea type="text" value="{{ x.comments }}" ng-model="x.comments" rows="3" style="width: 100%"></textarea></td>
+                                                    <td class="tg-lqy6 for__doc__word" ng-repeat="x in data.categorizedByServices"><textarea type="text" value="{{ x.comments }}" ng-model="x.comments" rows="3" style="width: 100%"></textarea></td>
+                                                    <td class="tg-lqy6 for__label__doc hidden" ng-repeat="x in data.categorizedByServices"><label>{{ x.comments }}</label></td>
+
+
+
                                                 </tr>
 
 
@@ -561,10 +566,12 @@
                                                     <td class="tg-9hbo" ng-repeat="y in data.categorizedByCreditLine">{{y.name}}</td>
                                                     <td class="tg-lqy6" ng-repeat="y in data.categorizedByCreditLine">{{ y.totalPlan }}</td>
                                                     <td class="tg-lqy6" ng-repeat="y in data.categorizedByCreditLine">{{ y.totalFact }}</td>
-                                                    <td class="tg-lqy6" ng-repeat="y in data.categorizedByCreditLine"><textarea
-                                                            type="text"
-                                                            value="{{ y.comments }}" ng-model="y.comments" rows="3" style="width: 100%"></textarea>
-                                                    </td>
+                                                    <td class="tg-lqy6 for__doc__word" ng-repeat="y in data.categorizedByCreditLine"><textarea type="text" value="{{ y.comments }}" ng-model="y.comments" rows="3" style="width: 100%"></textarea></td>
+                                                    <td class="tg-lqy6 for__label__doc hidden" ng-repeat="y in data.categorizedByCreditLine"><label>{{ y.comments }}</label></td>
+
+
+
+
                                                 </tr>
 
 
@@ -575,10 +582,12 @@
                                                         {{ z.totalPlan }}</td>
                                                     <td class="tg-lqy6" ng-repeat="z in data.categorizedByOperatingExpenses">
                                                         {{ z.totalFact }}</td>
-                                                    <td class="tg-lqy6" ng-repeat="z in data.categorizedByOperatingExpenses"><textarea
-                                                            type="text"
-                                                            value="{{ z.comments }}" ng-model="z.comments" rows="3" style="width: 100%"></textarea>
-                                                    </td>
+                                                    <td class="tg-lqy6 for__doc__word" ng-repeat="z in data.categorizedByOperatingExpenses"><textarea type="text" value="{{ z.comments }}" ng-model="z.comments" rows="3" style="width: 100%"></textarea></td>
+                                                    <td class="tg-lqy6 for__label__doc hidden" ng-repeat="z in data.categorizedByOperatingExpenses"><label>{{ z.comments }}</label></td>
+
+
+
+
                                                 </tr>
 
 
