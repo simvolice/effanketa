@@ -4296,6 +4296,10 @@ module.exports = {
                             {
                                 $group : {
                                     _id : null,
+                                    risks: { $push: "$risks"},
+                                    lessonsLearned: { $push: "$lessonsLearned"},
+                                    recommendations: { $push: "$recommendations"},
+                                    projectPerformanceComments: { $push: "$projectPerformanceComments"},
                                     plannedBudget: { $sum: "$plannedBudget" }
 
                                 }
@@ -4325,6 +4329,10 @@ module.exports = {
                             {
                                 $group : {
                                     _id : null,
+                                    risks: { $push: "$risks"},
+                                    lessonsLearned: { $push: "$lessonsLearned"},
+                                    recommendations: { $push: "$recommendations"},
+                                    projectPerformanceComments: { $push: "$projectPerformanceComments"},
                                     plannedBudget: { $sum: "$plannedBudget" }
 
                                 }

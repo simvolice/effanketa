@@ -603,19 +603,25 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
 
     GetTadjickUzbekNCUYear.get(function (result) {
 
-      if (result.resultFromDb[0].getUzbekNCUYear.length !== 0) {
 
-          $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
-
-
-      } else if (result.resultFromDb[0].getTadzhikNCUYear.length !== 0) {
-
-          $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
+        console.log(result.resultFromDb[0]);
 
 
-      }
+        $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
+        $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
 
 
+
+        $scope.data.risks = result.resultFromDb[0].getTadzhikNCUYear[0].risks[0];
+        $scope.data.lessonsLearned = result.resultFromDb[0].getTadzhikNCUYear[0].lessonsLearned[0];
+        $scope.data.recommendations = result.resultFromDb[0].getTadzhikNCUYear[0].recommendations[0];
+        $scope.data.projectPerformance = result.resultFromDb[0].getTadzhikNCUYear[0].projectPerformanceComments[0];
+
+
+        $scope.data.risks += "\n" + result.resultFromDb[0].getUzbekNCUYear[0].risks[0];
+        $scope.data.lessonsLearned +=  "\n" + result.resultFromDb[0].getUzbekNCUYear[0].lessonsLearned[0];
+        $scope.data.recommendations += "\n" + result.resultFromDb[0].getUzbekNCUYear[0].recommendations[0];
+        $scope.data.projectPerformance += "\n" + result.resultFromDb[0].getUzbekNCUYear[0].projectPerformanceComments[0];
 
 
     });
