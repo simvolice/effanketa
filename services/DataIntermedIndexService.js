@@ -1061,7 +1061,7 @@ module.exports = {
 
                                     _id: null,
 
-                                    all_gaproject: {$sum: "$CreatePowerPlan"}
+                                    all_gaproject: {$sum: "$power_ha"}
 
 
                                 }
@@ -1103,7 +1103,7 @@ module.exports = {
 
                                     _id: null,
 
-                                    all_gaproject: {$sum: "$CreatePowerPlan"}
+                                    all_gaproject: {$sum: "$power_ha"}
 
 
                                 }
@@ -1144,7 +1144,7 @@ module.exports = {
 
                                     _id: null,
 
-                                    all_gaproject: {$sum: "$CreatePowerPlan"}
+                                    all_gaproject: {$sum: "$power_ha"}
 
 
                                 }
