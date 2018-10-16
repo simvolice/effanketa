@@ -55,6 +55,7 @@ module.exports = {
               CreatePowerPlan: Double(objParams.CreatePowerPlan),
               CreatePowerFact: Double(objParams.CreatePowerFact),
               power_ha: Double(objParams.power_ha),
+              power_other: Double(objParams.power_other),
 
               nameFactCategcredits: nameFact.name,
 
@@ -300,6 +301,7 @@ module.exports = {
                       CreatePowerPlan: Double(objParams.CreatePowerPlan),
                       CreatePowerFact: Double(objParams.CreatePowerFact),
                       power_ha: Double(objParams.power_ha),
+                      power_other: Double(objParams.power_other),
 
 
                       creditsFactSelect: ObjectId(objParams.creditsFactSelect),
