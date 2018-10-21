@@ -217,38 +217,20 @@ router.post('/sendformforemail', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/addpublicform', async (req, res, next) =>{
 
-
-    let resultEmail = await FormService.getFormByParentIdAndEmail(req.body.data);
-
-
-    if (resultEmail === null) {
-
-        let result = await FormService.addForm(req.body.data);
+    let result = await FormService.addForm(req.body.data);
 
 
 
 
-        if (result.hasOwnProperty("result")) {
+    if (result.hasOwnProperty("result")) {
 
-            res.json({"code": 0});
-
-        } else {
-
-            res.json({"code": 1});
-
-        }
+        res.json({"code": 0});
 
     } else {
-
 
         res.json({"code": 1});
 
     }
-
-
-
-
-
 
 
 
