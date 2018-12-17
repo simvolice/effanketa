@@ -672,3 +672,8 @@ md-datepicker.custom__datepicker__report__criteriy > div.md-datepicker-input-con
 .custom__data__index {
     color: grey; font-size: 12px
 }
+
+
+.md-chips-custom>md-chips>md-chips-wrap>div>div>input {
+    width: 500px;
+}
