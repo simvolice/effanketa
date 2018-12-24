@@ -228,33 +228,79 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
-
-                    _id: 0,
-                    nameCountry: 1,
-                    nameFactCategcredits: 1,
-
-                    commonAmountInDollors : 1,
-                    commonAmountInNatCurrency : 1,
+                result = await col.aggregate([
 
 
-                    DirectBeneficiariesAll : 1,
-                    DirectBeneficiariesMale : 1,
-                    DirectBeneficiariesFemale : 1,
-                    NonDirectBeneficiariesMemberFamilyAll : 1,
-                    NonDirectBeneficiariesMemberFamilyMale : 1,
-                    NonDirectBeneficiariesMemberFamilyFemale : 1,
-
-                    CreatePowerPlan : 1,
-                    CreatePowerFact: 1,
-
-                    power_ha: 1
+                    { $match: {}},
 
 
+                    {$project: {
+
+
+                            _id: 0,
+
+
+                            nameFactCategcredits: 1,
+                            nameCountry: 1,
+
+
+                            commonAmountInDollors : 1,
+                            commonAmountInNatCurrency : 1,
+
+
+                            DirectBeneficiariesAll : 1,
+                            DirectBeneficiariesMale : 1,
+                            DirectBeneficiariesFemale : 1,
+                            NonDirectBeneficiariesMemberFamilyAll : 1,
+                            NonDirectBeneficiariesMemberFamilyMale : 1,
+                            NonDirectBeneficiariesMemberFamilyFemale : 1,
 
 
 
-                }).toArray();
+                            power_ha: 1,
+                            power_other: 1,
+
+
+
+
+                        }},
+
+
+
+                    {$project: {
+
+
+
+                            nameFactCategcredits: "$nameFactCategcredits",
+                            nameCountry: "$nameCountry",
+
+                            commonAmountInDollors : "$commonAmountInDollors",
+                            commonAmountInNatCurrency : "$commonAmountInNatCurrency",
+
+
+                            DirectBeneficiariesAll : "$DirectBeneficiariesAll",
+                            DirectBeneficiariesMale : "$DirectBeneficiariesMale",
+                            DirectBeneficiariesFemale : "$DirectBeneficiariesFemale",
+                            NonDirectBeneficiariesMemberFamilyAll : "$NonDirectBeneficiariesMemberFamilyAll",
+                            NonDirectBeneficiariesMemberFamilyMale : "$NonDirectBeneficiariesMemberFamilyMale",
+                            NonDirectBeneficiariesMemberFamilyFemale : "$NonDirectBeneficiariesMemberFamilyFemale",
+
+
+
+                            power_ha: "$power_ha",
+                            power_other: "$power_other",
+
+
+
+
+
+                        }},
+
+
+
+                ]).toArray();
+
+
 
 
 
@@ -341,26 +387,20 @@ module.exports = {
 
 
 
-                        'Создаваемые мощности/Ожидаемый эффект, Га': {
-                            value: result[0].CreatePowerPlan,
-                            writable: true,
-                            enumerable: true,
-                            configurable: true
-                        },
-                        'Создаваемые мощности/Ожидаемый эффект, Другое': {
-                            value: result[0].CreatePowerFact,
-                            writable: true,
-                            enumerable: true,
-                            configurable: true
-                        },
-
-
-                        'Мощности (охват га)': {
+                        'Мощности (охват га), Га': {
                             value: result[0].power_ha,
                             writable: true,
                             enumerable: true,
                             configurable: true
                         },
+                        'Мощности (охват га), Другое': {
+                            value: result[0].power_other,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
 
 
 
@@ -451,25 +491,20 @@ module.exports = {
 
 
 
-                        'Among all direct beneficiaries, men': {
-                            value: result[0].CreatePowerPlan,
-                            writable: true,
-                            enumerable: true,
-                            configurable: true
-                        },
-                        'Among all direct beneficiaries, women': {
-                            value: result[0].CreatePowerFact,
-                            writable: true,
-                            enumerable: true,
-                            configurable: true
-                        },
-
-                        'Powers (in HA)': {
+                        'Powers (in HA), HA': {
                             value: result[0].power_ha,
                             writable: true,
                             enumerable: true,
                             configurable: true
                         },
+                        'Powers (in HA), other': {
+                            value: result[0].power_other,
+                            writable: true,
+                            enumerable: true,
+                            configurable: true
+                        },
+
+
 
                     });
 
@@ -478,7 +513,7 @@ module.exports = {
                 }
 
 
-
+                delete result[0].nameFactCategcredits;
 
                delete result[0].nameCountry;
 
@@ -494,8 +529,11 @@ module.exports = {
 
                delete result[0].CreatePowerPlan;
                delete result[0].CreatePowerFact;
-               delete result[0].nameFactCategcredits;
+
                delete result[0].power_ha;
+               delete result[0].power_other;
+
+
 
 
 
@@ -1868,7 +1906,6 @@ module.exports = {
 
 
             }
-
 
 
 

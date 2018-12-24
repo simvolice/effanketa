@@ -6,8 +6,8 @@
 
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
-const Int32 = require('mongodb').Int32;
 const Double = require('mongodb').Double;
+
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
 const ItemForFactInCredits = require('../services/ItemForFactInCredits');
@@ -41,15 +41,15 @@ module.exports = {
               nameCountry: nameCountry.name,
               categcredits: ObjectId(objParams.categcredits),
 
-              countsubproject: Int32(objParams.countsubproject),
-              commonAmountInDollors: Int32(objParams.commonAmountInDollors),
-              commonAmountInNatCurrency: Int32(objParams.commonAmountInNatCurrency),
-              DirectBeneficiariesAll: Int32(objParams.DirectBeneficiariesAll),
-              DirectBeneficiariesMale: Int32(objParams.DirectBeneficiariesMale),
-              DirectBeneficiariesFemale: Int32(objParams.DirectBeneficiariesFemale),
-              NonDirectBeneficiariesMemberFamilyAll: Int32(objParams.NonDirectBeneficiariesMemberFamilyAll),
-              NonDirectBeneficiariesMemberFamilyMale: Int32(objParams.NonDirectBeneficiariesMemberFamilyMale),
-              NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
+              countsubproject: Double(objParams.countsubproject),
+              commonAmountInDollors: Double(objParams.commonAmountInDollors),
+              commonAmountInNatCurrency: Double(objParams.commonAmountInNatCurrency),
+              DirectBeneficiariesAll: Double(objParams.DirectBeneficiariesAll),
+              DirectBeneficiariesMale: Double(objParams.DirectBeneficiariesMale),
+              DirectBeneficiariesFemale: Double(objParams.DirectBeneficiariesFemale),
+              NonDirectBeneficiariesMemberFamilyAll: Double(objParams.NonDirectBeneficiariesMemberFamilyAll),
+              NonDirectBeneficiariesMemberFamilyMale: Double(objParams.NonDirectBeneficiariesMemberFamilyMale),
+              NonDirectBeneficiariesMemberFamilyFemale: Double(objParams.NonDirectBeneficiariesMemberFamilyFemale),
 
 
               CreatePowerPlan: Double(objParams.CreatePowerPlan),
@@ -285,15 +285,15 @@ module.exports = {
                       categcredits: ObjectId(objParams.categcredits),
                       nameFactCategcredits: nameFact.name,
                       nameCountry: nameCountry.name,
-                      countsubproject: Int32(objParams.countsubproject),
-                      commonAmountInDollors: Int32(objParams.commonAmountInDollors),
-                      commonAmountInNatCurrency: Int32(objParams.commonAmountInNatCurrency),
-                      DirectBeneficiariesAll: Int32(objParams.DirectBeneficiariesAll),
-                      DirectBeneficiariesMale: Int32(objParams.DirectBeneficiariesMale),
-                      DirectBeneficiariesFemale: Int32(objParams.DirectBeneficiariesFemale),
-                      NonDirectBeneficiariesMemberFamilyAll: Int32(objParams.NonDirectBeneficiariesMemberFamilyAll),
-                      NonDirectBeneficiariesMemberFamilyMale: Int32(objParams.NonDirectBeneficiariesMemberFamilyMale),
-                      NonDirectBeneficiariesMemberFamilyFemale: Int32(objParams.NonDirectBeneficiariesMemberFamilyFemale),
+                      countsubproject: Double(objParams.countsubproject),
+                      commonAmountInDollors: Double(objParams.commonAmountInDollors),
+                      commonAmountInNatCurrency: Double(objParams.commonAmountInNatCurrency),
+                      DirectBeneficiariesAll: Double(objParams.DirectBeneficiariesAll),
+                      DirectBeneficiariesMale: Double(objParams.DirectBeneficiariesMale),
+                      DirectBeneficiariesFemale: Double(objParams.DirectBeneficiariesFemale),
+                      NonDirectBeneficiariesMemberFamilyAll: Double(objParams.NonDirectBeneficiariesMemberFamilyAll),
+                      NonDirectBeneficiariesMemberFamilyMale: Double(objParams.NonDirectBeneficiariesMemberFamilyMale),
+                      NonDirectBeneficiariesMemberFamilyFemale: Double(objParams.NonDirectBeneficiariesMemberFamilyFemale),
 
 
 

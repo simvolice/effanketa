@@ -7,7 +7,7 @@
 
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
-const Int32 = require('mongodb').Int32;
+const Double = require('mongodb').Double;
 const Timestamp = require('mongodb').Timestamp;
 
 
@@ -3615,8 +3615,8 @@ module.exports = {
                 grm: objParams.grm,
                 finstatus: objParams.finstatus,
 
-                plansNextPeriod: Int32(objParams.plansNextPeriod),
-                plansNextHalfYearPeriod: Int32(objParams.plansNextHalfYearPeriod),
+                plansNextPeriod: Double(objParams.plansNextPeriod),
+                plansNextHalfYearPeriod: Double(objParams.plansNextHalfYearPeriod),
 
 
                 overallNarrative: objParams.overallNarrative,
@@ -3689,7 +3689,7 @@ module.exports = {
                 risks: objParams.risks,
                 lessonsLearned: objParams.lessonsLearned,
                 recommendations: objParams.recommendations,
-                plannedBudget: Int32(objParams.plannedBudget),
+                plannedBudget: Double(objParams.plannedBudget),
 
 
                 finstatus: objParams.finstatus,
@@ -3981,8 +3981,8 @@ module.exports = {
                     finstatus: objParams.finstatus,
 
 
-                    plansNextPeriod: Int32(objParams.plansNextPeriod),
-                    plansNextHalfYearPeriod: Int32(objParams.plansNextHalfYearPeriod),
+                    plansNextPeriod: Double(objParams.plansNextPeriod),
+                    plansNextHalfYearPeriod: Double(objParams.plansNextHalfYearPeriod),
 
 
 
@@ -4057,7 +4057,7 @@ module.exports = {
                     risks: objParams.risks,
                     lessonsLearned: objParams.lessonsLearned,
                     recommendations: objParams.recommendations,
-                    plannedBudget: Int32(objParams.plannedBudget)
+                    plannedBudget: Double(objParams.plannedBudget)
 
                 }
 
