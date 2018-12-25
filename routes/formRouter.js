@@ -197,7 +197,7 @@ router.post('/sendformforemail', checkSeesionToken, async (req, res, next) =>{
                 nameEvent: req.body.data.nameEvent,
                 dateEvent: formatter.format(new Date(req.body.data.dateOfEvent)),
                 nameCountry: req.body.data.nameCountry,
-                url: `${req.protocol}://${req.get('host')}/?#!/publicform?${urlToPublicForm}`
+                url: `${process.env.HOSTNAME}/?#!/publicform?${urlToPublicForm}`
             }
 
 

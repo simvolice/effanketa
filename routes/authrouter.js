@@ -204,7 +204,7 @@ router.post('/register', checkSeesionToken, async (req, res, next) =>{
       context: {
           login: fields.email,
           pass: pass,
-          url: req.protocol + '://' + req.get('host')
+          url: process.env.HOSTNAME
       }
 
   };
@@ -400,7 +400,7 @@ router.post('/recoverypass', checkSeesionToken, async (req, res, next) =>{
             context: {
                 login: result.email,
                 pass: pass,
-                url: req.protocol + '://' + req.get('host')
+                url: process.env.HOSTNAME
             }
 
         };
