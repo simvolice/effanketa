@@ -659,11 +659,6 @@ module.exports = {
 
 
 
-
-
-            console.log("\x1b[42m", result[0]);
-
-
             return result;
 
 
@@ -2275,6 +2270,7 @@ module.exports = {
             let period = await TypePeriod.getTypePeriodById(objParams.period);
 
 
+
             const result = await col.aggregate([
 
 
@@ -2288,12 +2284,12 @@ module.exports = {
 
                             {
 
-                                createAt: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                nameQuarter: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
                             },
 
                             {
 
-                                createAt: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                nameQuarter: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
                             },
 
 
@@ -2414,10 +2410,12 @@ module.exports = {
 
 
 
+
             return result;
 
 
         }catch(err) {
+
 
 
 

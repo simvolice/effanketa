@@ -309,6 +309,7 @@
                                                     <th class="tg-amwm" colspan="3">Direct borrowers and their family members (for both, private and legal entity borrowers)</th>
                                                     <th class="tg-amwm" colspan="3">Direct beneficiaries – hired workers (for both, private and legal entity borrowers)</th>
                                                     <th class="tg-amwm" colspan="2">Among all direct beneficiaries</th>
+                                                    <th class="tg-amwm" colspan="2">Expected effect</th>
                                                 </tr>
                                                 <tr>
                                                     <td class="tg-e3zv">$</td>
@@ -321,6 +322,8 @@
                                                     <td class="tg-amwm">Women</td>
                                                     <td class="tg-amwm">Men</td>
                                                     <td class="tg-amwm">Women</td>
+                                                    <td class="tg-amwm">HA</td>
+                                                    <td class="tg-amwm">Other</td>
                                                 </tr>
                                                 <tr ng-repeat="x in data.creditsTable">
 
@@ -349,6 +352,9 @@
                                                       <td class="tg-0ord">{{ x.CreatePowerPlan }}</td>
                                                       <td class="tg-0ord">{{ x.CreatePowerFact }}</td>
 
+
+                                                    <td class="tg-0ord">{{ x.power_ha }}</td>
+                                                    <td class="tg-0ord">{{ x.power_other}}</td>
 
                                                 </tr>
                                             </table>
