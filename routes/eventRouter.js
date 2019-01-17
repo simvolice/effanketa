@@ -194,7 +194,6 @@ router.post('/formfromexcel', async (req, res, next) =>{
 
 
 
-
             let objParam = {
 
 
@@ -202,7 +201,7 @@ router.post('/formfromexcel', async (req, res, next) =>{
                 myDate: eventOne.myDate,
                 nameCountry: eventOne.nameCountry,
                 nameEvent: eventOne.nameEvent,
-                email: oneItemExcel["Адрес электронной почты"],
+                email: oneItemExcel["Адрес электронной почты"] === undefined ? "" : oneItemExcel["Адрес электронной почты"],
 
 
 
