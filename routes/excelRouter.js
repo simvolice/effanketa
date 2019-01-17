@@ -8,6 +8,8 @@ let XLSX = require('xlsx');
 let AllTableService = require('../services/AllTableService');
 const jsonwebtoken = require('jsonwebtoken');
 const AuthService = require('../services/Auth');
+const formatter = new Intl.DateTimeFormat("ru");
+const slugify = require('slugify');
 
 
 function createDataForSheetJS(data) {
@@ -50,6 +52,14 @@ function get_file(req, res, type, data, titleSheet) {
     let wb = make_book(data, titleSheet);
 
 
+    let titleDoc = slugify(titleSheet + "_" +formatter.format(new Date()), {
+        replacement: '_',    // replace spaces with replacement
+        remove: null,        // regex to remove characters
+        lower: true          // result in lower case
+    });
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + titleDoc + ".xlsx");
+    res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
     res.status(200).send(XLSX.write(wb, {type:'buffer', bookType:type}));
 }
