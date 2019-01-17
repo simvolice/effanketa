@@ -248,7 +248,7 @@ angular.module('app').controller('FinansialStatusCtrl', function ($translate, $s
         $scope.tableID = "finansial_status";
         $scope.titleSheet = "Финансовый статус";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use() + "&sessionToken=" + localStorage.getItem('sessionToken'), '_blank');
 
 
 

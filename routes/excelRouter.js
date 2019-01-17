@@ -6,7 +6,8 @@ const router = express.Router();
 
 let XLSX = require('xlsx');
 let AllTableService = require('../services/AllTableService');
-
+const jsonwebtoken = require('jsonwebtoken');
+const AuthService = require('../services/Auth');
 
 
 function createDataForSheetJS(data) {
@@ -60,7 +61,12 @@ function get_file(req, res, type, data, titleSheet) {
 router.get('/generateexcel.xlsx', async (req, res, next) =>{
 
 
-    let allDataFromTable = await AllTableService.getAllData(req.query.data, req.query.lang);
+    let userId= jsonwebtoken.verify(req.query.sessionToken, process.env.SECRETJSONWEBTOKEN);
+    let result = await AuthService.checkUserById(userId);
+
+
+
+    let allDataFromTable = await AllTableService.getAllData(req.query.data, req.query.lang, result.country);
 
     get_file(req, res, "xlsx", allDataFromTable, req.query.titleSheet);
 

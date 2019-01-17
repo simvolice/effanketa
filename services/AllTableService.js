@@ -11,7 +11,7 @@ const ObjectId = require('mongodb').ObjectId;
 module.exports = {
 
 
-    getAllData: async (idTable, lang) => {
+    getAllData: async (idTable, lang, country) => {
 
         try {
 
@@ -23,7 +23,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
                     nameCountry: 1,
@@ -231,7 +231,7 @@ module.exports = {
                 result = await col.aggregate([
 
 
-                    { $match: {}},
+                    { $match: {country: country}},
 
 
                     {$project: {
@@ -545,7 +545,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -829,7 +829,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -1092,7 +1092,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -1249,7 +1249,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -1391,7 +1391,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -1536,7 +1536,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -1702,7 +1702,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 
@@ -1793,7 +1793,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({}, {
+                result = await col.find({country: country}, {
 
                     _id: 0,
 

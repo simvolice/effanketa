@@ -138,7 +138,7 @@ angular.module('app').controller('GrmCtrl', function ($translate, $scope, $rootS
         $scope.tableID = "grm";
         $scope.titleSheet = "Механизм рассмотрения жалоб и отзывов";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use() + "&sessionToken=" + localStorage.getItem('sessionToken'), '_blank');
 
 
 

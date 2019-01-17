@@ -1019,15 +1019,10 @@ function DialogControllerForNewForm($scope, data, AddForm) {
 
     $scope.excel = function () {
 
-
-
         $scope.tableID = "events";
         $scope.titleSheet = "Наращивание потенциала";
 
-        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use(), '_blank');
-
-
-
+        $window.open('/generateexcel.xlsx?data=' + $scope.tableID + "&titleSheet=" + $scope.titleSheet + "&lang=" + $translate.use() + "&sessionToken=" + localStorage.getItem('sessionToken'), '_blank');
 
     };
 
