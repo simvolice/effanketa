@@ -57,13 +57,6 @@ module.exports = {
 
             return await AuthService.getAllUsers();
 
-            //Здесь ловим 2 Админа
-        } else if (result.role.toString() === AdminRole[1]._id.toString()) {
-
-
-
-            return await AuthService.getUsersForAdmin2(result.country.toString());
-
 
         } else {
 

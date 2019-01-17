@@ -28,7 +28,7 @@ angular.module('app').controller('AdminCtrl', function ($scope, $rootScope, $htt
 
             $mdToast.show(
                 $mdToast.simple()
-                    .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                    .textContent('У Вас не достаточно прав, для просмотра данных.')
                     .position('bottom left')
                     .hideDelay(6000)
             );
