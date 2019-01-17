@@ -23,10 +23,37 @@ const XLSX = require('xlsx');
 router.post('/addevent', checkSeesionToken, async (req, res, next) =>{
 
 
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let urlImg = null;
 
 
 
-    let result =  await EventService.addEvent(req.body.data);
+    if (files.length !== 0) {
+
+        files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
+
+
+        urlImg = "uploads/" + path.basename(files[0].path);
+
+
+
+    } else {
+
+
+        urlImg = "";
+
+
+    }
+
+
+
+    let copyFields = JSON.parse(fields.data);
+
+    copyFields["urlFile"] = urlImg;
+
+
+    let result =  await EventService.addEvent(copyFields);
 
 
 
@@ -95,7 +122,43 @@ router.post('/getevent', checkSeesionToken, async (req, res, next) =>{
 
 router.post('/updevent', checkSeesionToken, async (req, res, next) =>{
 
-    let result =  await EventService.updEvent(req.body.data);
+
+
+    const {files, fields} = await Busboy(req);
+    let pathForWrite = path.join(__dirname, "../public/uploads/");
+    let urlImg = null;
+
+    let copyFields = JSON.parse(fields.data);
+
+    if (files.length !== 0) {
+
+        files[0].pipe(fs.createWriteStream(pathForWrite + path.basename(files[0].path)));
+
+
+        urlImg = "uploads/" + path.basename(files[0].path);
+
+
+
+    } else {
+
+
+        urlImg = copyFields.urlFile;
+
+
+    }
+
+
+
+
+
+    copyFields["urlFile"] = urlImg;
+
+
+
+
+
+
+    let result =  await EventService.updEvent(copyFields);
 
 
 

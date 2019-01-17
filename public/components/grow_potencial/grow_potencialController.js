@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('Grow_potencialCtrl', function ($translate, $scope, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce, $window) {
+angular.module('app').controller('Grow_potencialCtrl', function ($http, $translate, $scope, DelEvent, GetEvent, $mdToast, $state, $rootScope, $timeout, $mdDialog, GetForm, DelForm, GetMainPage, $sce, $window) {
 
     GetMainPage.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
 
@@ -577,6 +577,7 @@ function DialogControllerUpdateEvent(GetAllEventSubStatuses, $scope, data, GetAl
         common_women_persent: data.common_women_persent,
         countPeopleEventCommon: data.countPeopleEventCommon,
         countWomanEventCommon: data.countWomanEventCommon,
+        urlFile: data.urlFile,
 
         countFacilatatorEventCommon: data.countFacilatatorEventCommon,
         countFacilatatorWomanEventCommon: data.countFacilatatorWomanEventCommon,
@@ -614,41 +615,67 @@ function DialogControllerUpdateEvent(GetAllEventSubStatuses, $scope, data, GetAl
     });
 
 
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
+
     $scope.addEvent = function () {
 
 
-        UpdEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
+        formdata.append('data', JSON.stringify($scope.data));
 
 
-            if (result.code === 0) {
+        var request = {
+            method: 'POST',
+            url: '/updevent',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
 
 
+
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
 
                 $mdDialog.hide();
+                GetEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
+
+
+                    $rootScope.data = result.resultFromDb;
+
+
+                });
 
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
 
 
-            }
-
-
-
-        });
 
 
     };
@@ -749,15 +776,41 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
     });
 
 
+    var formdata = new FormData();
+    $scope.getTheFiles = function ($files) {
+        angular.forEach($files, function (value, key) {
+            formdata.append(key, value);
+        });
+    };
 
 
     $scope.addEvent = function () {
 
 
-        AddEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(result) {
+        formdata.append('data', JSON.stringify($scope.data));
 
 
-            if (result.code === 0) {
+        var request = {
+            method: 'POST',
+            url: '/addevent',
+            data: formdata,
+            headers: {
+                'Content-Type': undefined,
+                'tokenCSRF' : localStorage.getItem('tokenCSRF'),
+                'sessionToken' : localStorage.getItem('sessionToken')
+            }
+        };
+
+
+
+
+        $http(request)
+            .then(function successCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
+
+                $mdDialog.hide();
+
 
 
 
@@ -769,31 +822,30 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
 
                 });
 
-                $mdDialog.hide();
+
 
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась УСПЕШНО.')
-                        .position('bottom left')
+                        .textContent('Вы успешно загрузили объект.')
+                        .position('left bottom')
                         .hideDelay(3000)
                 );
 
 
-            } else {
 
+
+
+            }, function errorCallback(response) {
+                formdata = new FormData();
+                document.getElementById("file").value = null;
                 $mdToast.show(
                     $mdToast.simple()
-                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
-                        .position('bottom left')
-                        .hideDelay(6000)
+                        .textContent('Операция закончилась не удачно, попробуйте изменить данные.')
+                        .position('left bottom')
+                        .hideDelay(3000)
                 );
+            });
 
-
-            }
-
-
-
-        });
 
 
     };

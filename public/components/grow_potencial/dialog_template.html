@@ -117,6 +117,22 @@
                                     </md-input-container>
 
 
+                                    <div class="input-group" ng-show="data.urlFile">
+										<span class="input-group-addon">
+											<i>{{ 'ATTACHE_FILE' | translate }}</i>
+										</span>
+                                        <a href="{{data.urlFile}}" target="_blank">{{data.urlFile}}</a>
+                                    </div>
+
+                                    <div class="input-group">
+										<span class="input-group-addon">
+											<i>{{ 'SPRAVKA' | translate }}</i>
+										</span>
+                                        <input ng-files="getTheFiles($files)" id="file" type="file" class="form-control" accept="image/*"/>
+                                    </div>
+
+
+
 
 
                                 </div>

@@ -225,6 +225,7 @@ module.exports = {
                 nameTypeEvent: nameTypeEvent.name,
                 subTypeEvent: ObjectId(objParams.subTypeEvent),
                 nameSubTypeEvent: nameSubTypeEvent.name,
+                urlFile: objParams.urlFile,
 
                 common_ok_persent: Int32(objParams.common_ok_persent),
                 common_women_persent: Int32(objParams.common_women_persent),
@@ -421,7 +422,7 @@ module.exports = {
 
                         common_ok_persent: Int32(objParams.common_ok_persent),
                         common_women_persent: Int32(objParams.common_women_persent),
-
+                        urlFile: objParams.urlFile,
                         countPeopleEventCommon: objParams.countPeopleEventCommon,
                         countWomanEventCommon: objParams.countWomanEventCommon,
                         countFacilatatorEventCommon: objParams.countFacilatatorEventCommon,
