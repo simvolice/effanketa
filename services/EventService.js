@@ -5,6 +5,7 @@
 
 const dbConnect = require('../utils/dbConnect');
 const ObjectId = require('mongodb').ObjectId;
+const Int32 = require('mongodb').Int32;
 const CounterService = require('../services/CounterService');
 const CountryService = require('../services/CountryService');
 
@@ -225,6 +226,9 @@ module.exports = {
                 subTypeEvent: ObjectId(objParams.subTypeEvent),
                 nameSubTypeEvent: nameSubTypeEvent.name,
 
+                common_ok_persent: Int32(objParams.common_ok_persent),
+                common_women_persent: Int32(objParams.common_women_persent),
+
                 countPeopleEventCommon: objParams.countPeopleEventCommon,
                 countWomanEventCommon: objParams.countWomanEventCommon,
 
@@ -415,6 +419,8 @@ module.exports = {
                         subTypeEvent: ObjectId(objParams.subTypeEvent),
                         nameSubTypeEvent: nameSubTypeEvent.name,
 
+                        common_ok_persent: Int32(objParams.common_ok_persent),
+                        common_women_persent: Int32(objParams.common_women_persent),
 
                         countPeopleEventCommon: objParams.countPeopleEventCommon,
                         countWomanEventCommon: objParams.countWomanEventCommon,

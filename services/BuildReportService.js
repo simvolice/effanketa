@@ -770,6 +770,95 @@ module.exports = {
                         ],
 
 
+
+                        "countCommonOk": [
+
+                            {
+
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+                                    $and: [
+
+                                        {
+
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
+
+                                        {
+
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
+
+
+                                    ],
+
+
+                                },
+
+
+                            },
+
+
+
+                            {
+                                $group:
+                                    {
+                                        _id: null,
+
+                                        avg: { $avg: "$common_ok_persent" }
+                                    }
+                            }
+
+
+                        ],
+
+
+                        "countCommonOkWomen": [
+
+                            {
+
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+                                    $and: [
+
+                                        {
+
+                                            myDate: {$gte: new Date(objParams.dateFrom)}
+                                        },
+
+                                        {
+
+                                            myDate: {$lte: new Date(objParams.dateTo)}
+                                        },
+
+
+                                    ],
+
+
+                                },
+
+
+                            },
+
+
+
+                            {
+                                $group:
+                                    {
+                                        _id: null,
+
+                                        avg: { $avg: "$common_women_persent" }
+                                    }
+                            }
+
+
+                        ],
+
+
                         "countSatisfaction": [
 
                             {

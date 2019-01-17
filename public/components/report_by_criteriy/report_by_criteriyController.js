@@ -95,6 +95,9 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 $scope.data.countForms = obj.countForms;
                 $scope.data.allEvents = obj.allEvents;
 
+                $scope.data.countCommonOk = obj.countCommonOk;
+                $scope.data.countCommonOkWomen = obj.countCommonOkWomen;
+
 
 
 
@@ -119,16 +122,14 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
-
-
                let chartAverage = bb.generate({
 
                     bindto: '#chartCommon',
                     data: {
 
                         columns: [
-                            ['Общая удовлетворенность участников', $scope.data.countSatisfaction.length === 0 ? 0 : $scope.data.countSatisfaction[0].countAll],
-                            ['Не удовлетворены участием', $scope.data.countNoSatisfaction.length === 0 ? 0 : $scope.data.countNoSatisfaction[0].countAll]
+                            ['Общая удовлетворенность участников', $scope.data.countSatisfaction.length === 0 ? $scope.data.countCommonOk[0].avg.toFixed(0) : $scope.data.countSatisfaction[0].countAll],
+                            ['Не удовлетворены участием', $scope.data.countNoSatisfaction.length === 0 ? 100 - $scope.data.countCommonOk[0].avg.toFixed(0) : $scope.data.countNoSatisfaction[0].countAll]
 
 
                         ],
@@ -161,8 +162,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 data: {
 
                     columns: [
-                        ['Общая удовлетворенность мероприятиями среди женщин', $scope.data.countSatisfactionWomen.length === 0 ? 0 : $scope.data.countSatisfactionWomen[0].countAll],
-                        ['Общая не удовлетворенность мероприятиями среди женщин', $scope.data.countNoSatisfactionWomen.length === 0 ? 0 : $scope.data.countNoSatisfactionWomen[0].countAll]
+                        ['Общая удовлетворенность мероприятиями среди женщин', $scope.data.countSatisfactionWomen.length === 0 ? $scope.data.countCommonOkWomen[0].avg.toFixed(0) : $scope.data.countSatisfactionWomen[0].countAll],
+                        ['Общая не удовлетворенность мероприятиями среди женщин', $scope.data.countNoSatisfactionWomen.length === 0 ? 100 - $scope.data.countCommonOkWomen[0].avg.toFixed(0) : $scope.data.countNoSatisfactionWomen[0].countAll]
 
 
                     ],

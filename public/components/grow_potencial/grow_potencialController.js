@@ -573,6 +573,8 @@ function DialogControllerUpdateEvent(GetAllEventSubStatuses, $scope, data, GetAl
         typeEvent: data.typeEvent,
         subTypeEvent: data.subTypeEvent,
 
+        common_ok_persent: data.common_ok_persent,
+        common_women_persent: data.common_women_persent,
         countPeopleEventCommon: data.countPeopleEventCommon,
         countWomanEventCommon: data.countWomanEventCommon,
 
@@ -700,6 +702,8 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
         nameEvent: "",
         typeEvent: "",
         subTypeEvent: "",
+        common_ok_persent: 0,
+        common_women_persent: 0,
 
         countPeopleEventCommon: "",
         countWomanEventCommon: "",
