@@ -47,6 +47,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
       })
 
 
+      .state('creditfact', {
+          url: '/creditfact',
+          templateUrl: 'components/creditFact/creditFactView.html',
+
+
+      })
+
       .state('grow_potencial', {
           url: '/grow_potencial',
           templateUrl: 'components/grow_potencial/grow_potencialView.html',

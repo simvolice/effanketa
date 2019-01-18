@@ -131,6 +131,44 @@ module.exports = {
 
     },
 
+    delCreditsFact: async (id) => {
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('credits_fact_item');
+
+
+
+
+            const result = await col.deleteOne({_id: ObjectId(id)});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    },
 
 
     getAllCredits: async ()=> {

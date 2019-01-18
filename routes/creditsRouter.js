@@ -146,6 +146,35 @@ router.post('/newcreditsfact', checkSeesionToken, async (req, res, next) =>{
 
 
 
+router.post('/delcreditsfact', checkSeesionToken, async (req, res, next) =>{
+
+
+
+
+
+    let result =  await CreditsService.delCreditsFact(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+
+
+
+
+
+});
+
 
 
 

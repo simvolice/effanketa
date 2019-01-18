@@ -1,4 +1,7 @@
 {
+  "NAME_CREDITS_FACT": "Наименование",
+  "CATEG_CREDITS_FACT": "Справочник. Категория кредитов",
+  "DATE_CREATE_FINANSE": "Дата финансирования",
   "ATTACHE_FILE": "Прикрепленный файл",
   "SPRAVKA": "Справка",
   "COMMON_OK": "Общая удовлетворенность",

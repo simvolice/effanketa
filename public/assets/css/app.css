@@ -661,7 +661,7 @@ table.md-table:not(.md-row-select) td.md-cell:nth-child(n+2):nth-last-child(n+2)
 
 .custom__select__credit__table {
 
-    width: 100px;
+    width: 200px;
 }
 
 md-datepicker.custom__datepicker__report__criteriy > div.md-datepicker-input-container > input {
@@ -676,4 +676,10 @@ md-datepicker.custom__datepicker__report__criteriy > div.md-datepicker-input-con
 
 .md-chips-custom>md-chips>md-chips-wrap>div>div>input {
     width: 500px;
+}
+
+md-toast {
+
+    position: fixed;
+    margin-left: 100px;
 }

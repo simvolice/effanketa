@@ -40,7 +40,10 @@ module.exports = {
                     "\t\t\t\t\t<ul class=\"drawer-dropdown-menu\">\n" +
                     "\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></li>\n" +
-                    "\n" +
+
+                        "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/creditfact\">{{ 'CATEG_CREDITS_FACT' | translate }}</a></li>\n" +
+
+                        "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
                     "\n" +

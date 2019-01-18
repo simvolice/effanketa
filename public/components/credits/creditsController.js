@@ -91,11 +91,17 @@ $scope.createNewFact = function (event) {
 
             $scope.data = result.resultFromDb;
 
+
+
             for (let item of $scope.data) {
 
                 item.createAt = new Date(item.createAt);
 
             }
+
+
+            $scope.data.sort(function(a,b){return a.createAt.getTime() - b.createAt.getTime()});
+
 
         } else {
 
@@ -127,19 +133,24 @@ $scope.createNewFact = function (event) {
 
 
             categcredits: "",
-            countsubproject: "",
-            commonAmountInDollors: "",
-            commonAmountInNatCurrency: "",
-            DirectBeneficiariesAll: "",
-            DirectBeneficiariesMale: "",
-            DirectBeneficiariesFemale: "",
-            NonDirectBeneficiariesMemberFamilyAll: "",
-            NonDirectBeneficiariesMemberFamilyMale: "",
-            NonDirectBeneficiariesMemberFamilyFemale: "",
-            NonDirectBeneficiariesHiredAll: "",
-            NonDirectBeneficiariesHiredMale: "",
-            NonDirectBeneficiariesHiredFemale: "",
-            CreatePowerPlan: "",
+            countsubproject: 0,
+            commonAmountInDollors: 0,
+            commonAmountInNatCurrency: 0,
+            DirectBeneficiariesAll: 0,
+            DirectBeneficiariesMale: 0,
+            DirectBeneficiariesFemale: 0,
+            NonDirectBeneficiariesMemberFamilyAll: 0,
+            NonDirectBeneficiariesMemberFamilyMale: 0,
+            NonDirectBeneficiariesMemberFamilyFemale: 0,
+            NonDirectBeneficiariesHiredAll: 0,
+            NonDirectBeneficiariesHiredMale: 0,
+            NonDirectBeneficiariesHiredFemale: 0,
+            CreatePowerPlan: 0,
+
+            CreatePowerFact: 0,
+            power_ha: 0,
+            power_other: 0,
+
             createAt: new Date()
 
 
@@ -169,7 +180,7 @@ $scope.createNewFact = function (event) {
 
 
 
-        $scope.data.push(tempObj);
+        $scope.data.unshift(tempObj);
 
 
     };
@@ -192,8 +203,12 @@ $scope.createNewFact = function (event) {
                 if (result.code === 0) {
 
 
+
                     $scope.data[$scope.data.length - 1]._id = result.resultFromDb._id;
                     $scope.data[$scope.data.length - 1].id = result.resultFromDb.id;
+
+
+                    $scope.data.sort(function(a,b){return a.createAt.getTime() - b.createAt.getTime()});
 
                     $mdToast.show(
                         $mdToast.simple()
