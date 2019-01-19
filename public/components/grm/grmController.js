@@ -24,6 +24,8 @@ angular.module('app').controller('GrmCtrl', function ($translate, $scope, $rootS
 
 
 
+            $rootScope.data.sort(function(a,b){return new Date(a.dateInGo).getTime() - new Date(b.dateInGo).getTime()});
+
 
         } else {
 
@@ -302,6 +304,7 @@ function DialogControllerUpd($scope, data, Getalllevelcomplaint, InsertNewCanalR
 
                         $rootScope.data = result.resultFromDb;
 
+                        $rootScope.data.sort(function(a,b){return new Date(a.dateInGo).getTime() - new Date(b.dateInGo).getTime()});
 
 
 
@@ -547,6 +550,7 @@ function DialogController($scope, InsertNewCategGRM, InsertNewCanalRequest, Geta
 
 
                         $rootScope.data = result.resultFromDb;
+                        $rootScope.data.sort(function(a,b){return new Date(a.dateInGo).getTime() - new Date(b.dateInGo).getTime()});
 
 
 
