@@ -364,7 +364,6 @@ angular.module('app').controller('Grow_potencialCtrl', function ($http, $transla
 function DialogControllerUpdateForm($scope, data, UpdForm, index, GetOneForm) {
 
 
-    console.log(data);
 
     $scope.data = {
 

@@ -54,6 +54,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+      .state('categgrm', {
+          url: '/categgrm',
+          templateUrl: 'components/categGRM/categGRMView.html',
+
+
+      })
+
       .state('grow_potencial', {
           url: '/grow_potencial',
           templateUrl: 'components/grow_potencial/grow_potencialView.html',

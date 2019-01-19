@@ -42,6 +42,7 @@ module.exports = {
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/adminedit\">{{ 'ADMIN_LIST' | translate }}</a></li>\n" +
 
                         "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/creditfact\">{{ 'CATEG_CREDITS_FACT' | translate }}</a></li>\n" +
+                        "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/categgrm\">{{ 'CATEG_GRM' | translate }}</a></li>\n" +
 
                         "\n" +
                     "\n" +

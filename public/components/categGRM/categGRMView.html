@@ -1,0 +1,128 @@
+<div class="row" ng-controller="categGRMCtrl">
+
+    <div class="col-md-12">
+
+
+
+
+        <md-content layout="column" flex class="custom__md-content__categ">
+
+
+
+
+            <md-card>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="title text-center" style="text-transform: uppercase">{{ 'CATEG_GRM' | translate }}</h3>
+
+                    </div>
+
+                </div>
+
+            </md-card>
+
+
+
+            <md-card>
+
+
+                <div class="row" style="margin-left: 0;margin-top: 10px;">
+
+
+                    <div class="col-md-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <label style="color: black">{{ 'SEARCH' | translate }}</label>
+                            <input type="search" ng-model="search">
+                        </md-input-container>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="row" style="margin-left: 5px;margin-right: 5px;">
+                    <div class="col-md-12 table-responsive">
+
+
+                        <style type="text/css">
+                            .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                            .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg .tg-hgcj{font-weight:bold;text-align:center; vertical-align:middle}
+                            .tg .tg-baqh{text-align:center;vertical-align:middle}
+                            .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:middle}
+
+
+                        </style>
+                        <table class="tg table-striped">
+                            <tr>
+                                <th class="tg-hgcj">№</th>
+                                <th class="tg-hgcj">{{ 'NAME_CREDITS_FACT' | translate }}</th>
+                                <th class="tg-amwm">{{ 'DELETE' | translate }}</th>
+                            </tr>
+
+
+                            <tbody>
+
+
+                            <tr ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                <td class="tg-baqh">{{$index+1}}</td>
+
+                                <td class="tg-baqh">{{data.name}}</td>
+
+
+                                <td class="tg-baqh"><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+
+
+                            </tr>
+
+
+
+                            </tbody>
+
+
+                        </table>
+
+
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+            </md-card>
+
+
+</md-content>
+
+
+
+
+
+
+
+    </div>
+
+
+</div>

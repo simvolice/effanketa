@@ -565,7 +565,6 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
     $scope.excel = function () {
 
 
-       console.log(JSON.stringify($scope.dataForOneEvent));
 
     };
 

@@ -514,7 +514,6 @@ function DialogController($scope, InsertNewCategGRM, InsertNewCanalRequest, Geta
         for (let obj of $scope.data.allLevelComplaint) {
             if (obj._id === data) {
                if(obj.name === "Сложная"){
-                    console.log($scope.data.dateInGo.getTime());
 
                    $scope.data.lastDateAnswer = new Date($scope.data.dateInGo.getTime() + sixTyDay);
 

@@ -187,4 +187,40 @@ router.post('/insertnewcateggrm', checkSeesionToken, async (req, res, next) =>{
 
 });
 
+
+
+
+
+router.post('/delcateggrm', checkSeesionToken, async (req, res, next) =>{
+
+
+
+
+
+    let result =  await GrmStatusService.delСategGrm(req.body.data);
+
+
+
+
+    if (result.hasOwnProperty("result")) {
+
+        res.json({"code": 0});
+
+    } else {
+
+        res.json({"code": 1});
+
+    }
+
+
+
+
+
+
+
+});
+
+
+
+
 module.exports = router;

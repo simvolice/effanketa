@@ -715,6 +715,45 @@ module.exports = {
     },
 
 
+    delСategGrm: async (id) => {
+
+
+
+        try {
+
+
+            const col = dbConnect.getConnect().collection('grm_categ');
+
+
+
+
+            const result = await col.deleteOne({_id: ObjectId(id)});
+
+
+
+
+
+            return result;
+
+        } catch (err){
+
+
+            return err;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    },
+
 
 
 

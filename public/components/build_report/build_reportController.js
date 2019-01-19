@@ -604,7 +604,6 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
     GetTadjickUzbekNCUYear.get(function (result) {
 
 
-        console.log(result.resultFromDb[0]);
 
 
         $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
