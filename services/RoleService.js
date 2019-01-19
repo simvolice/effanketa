@@ -139,7 +139,7 @@ module.exports = {
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/credits\">{{ 'CREDITS' | translate }}</a></li>\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/grm\">{{ 'GRM' | translate }}</a></li>\n" +
                     "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/finansial_status\">{{ 'FINANSIAL_STATUS' | translate }}</a></li>\n" +
-
+                        "\t\t\t\t\t\t<li><a class=\"drawer-dropdown-menu-item\" href=\"?#!/main_score_program\">{{ 'MAIN_SCORE_PROGRAM' | translate }}</a></li>\n" +
                     "\n" +
                     "\n" +
                     "\t\t\t\t\t</ul>\n" +
