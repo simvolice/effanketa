@@ -9,6 +9,7 @@ angular.module('app').controller('GrmCtrl', function ($translate, $scope, $rootS
 
 
     $rootScope.data = [];
+    $rootScope.dataArrUpd = [];
 
     GetAllGrm.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function (result) {
 
@@ -26,6 +27,23 @@ angular.module('app').controller('GrmCtrl', function ($translate, $scope, $rootS
 
             $rootScope.data.sort(function(a,b){return new Date(a.dateInGo).getTime() - new Date(b.dateInGo).getTime()});
 
+
+            $rootScope.dataArrUpd = {
+
+                allCanalRequestStatus: $rootScope.data[0].allCanalRequestStatus,
+                allCountrys: $rootScope.data[0].allCountrys,
+                allCategComplaint: $rootScope.data[0].allCategComplaint,
+                allStatus: $rootScope.data[0].allStatus,
+
+
+            };
+
+            for (const dataItem of $rootScope.data) {
+                delete dataItem.allCanalRequestStatus;
+                delete dataItem.allCountrys;
+                delete dataItem.allCategComplaint;
+                delete dataItem.allStatus;
+            }
 
         } else {
 
@@ -161,15 +179,15 @@ function DialogControllerUpd($scope, data, Getalllevelcomplaint, InsertNewCanalR
 
 
         id: data._id,
-        allCanalRequestStatus: data.allCanalRequestStatus,
-        allCategComplaint: data.allCategComplaint,
+        allCanalRequestStatus: $rootScope.dataArrUpd.allCanalRequestStatus,
+        allCategComplaint: $rootScope.dataArrUpd.allCategComplaint,
 
 
 
 
 
-        allCountrys: data.allCountrys,
-        allStatus: data.allStatus,
+        allCountrys: $rootScope.dataArrUpd.allCountrys,
+        allStatus: $rootScope.dataArrUpd.allStatus,
 
 
 
@@ -306,6 +324,13 @@ function DialogControllerUpd($scope, data, Getalllevelcomplaint, InsertNewCanalR
 
                         $rootScope.data.sort(function(a,b){return new Date(a.dateInGo).getTime() - new Date(b.dateInGo).getTime()});
 
+
+                        for (const dataItem of $rootScope.data) {
+                            delete dataItem.allCanalRequestStatus;
+                            delete dataItem.allCountrys;
+                            delete dataItem.allCategComplaint;
+                            delete dataItem.allStatus;
+                        }
 
 
                     } else {
@@ -552,6 +577,13 @@ function DialogController($scope, InsertNewCategGRM, InsertNewCanalRequest, Geta
                         $rootScope.data.sort(function(a,b){return new Date(a.dateInGo).getTime() - new Date(b.dateInGo).getTime()});
 
 
+
+                        for (const dataItem of $rootScope.data) {
+                            delete dataItem.allCanalRequestStatus;
+                            delete dataItem.allCountrys;
+                            delete dataItem.allCategComplaint;
+                            delete dataItem.allStatus;
+                        }
 
 
                     } else {
