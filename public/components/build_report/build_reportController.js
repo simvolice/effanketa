@@ -1840,10 +1840,8 @@ $scope.data = {
     GetReportCredits.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: data}, function(entry) {
 
 
+
         $scope.data.creditsTable = entry.resultFromDb;
-
-
-
 
 
     });

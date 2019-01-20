@@ -1729,7 +1729,28 @@ module.exports = {
 
                             }
 
-                        }
+                        },
+
+
+                {
+                    $group : {
+                        _id : "$nameFactCategcredits",
+                        countsubproject: { $sum: "$countsubproject" },
+                        commonAmountInDollors: { $sum: "$commonAmountInDollors" },
+                        commonAmountInNatCurrency: { $sum: "$commonAmountInNatCurrency" },
+                        DirectBeneficiariesAll: { $sum: "$DirectBeneficiariesAll" },
+                        DirectBeneficiariesMale: { $sum: "$DirectBeneficiariesMale" },
+                        DirectBeneficiariesFemale: { $sum: "$DirectBeneficiariesFemale" },
+                        NonDirectBeneficiariesMemberFamilyAll: { $sum: "$NonDirectBeneficiariesMemberFamilyAll" },
+                        NonDirectBeneficiariesMemberFamilyMale: { $sum: "$NonDirectBeneficiariesMemberFamilyMale" },
+                        NonDirectBeneficiariesMemberFamilyFemale: { $sum: "$NonDirectBeneficiariesMemberFamilyFemale" },
+                        CreatePowerPlan: { $sum: "$CreatePowerPlan" },
+                        CreatePowerFact: { $sum: "$CreatePowerFact" },
+                        power_ha: { $sum: "$power_ha" },
+                        power_other: { $sum: "$power_other" },
+
+                    }
+                }
 
 
 
