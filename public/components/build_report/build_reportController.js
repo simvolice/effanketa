@@ -1785,8 +1785,12 @@ $scope.data = {
 
 
         for (let obj of entry.resultFromDb) {
+
+
             $scope.data.categorizedByDatePeriodCountry = obj.categorizedByDatePeriodCountry;
             $scope.data.categorizedBySum = obj.categorizedBySum;
+            $scope.data.countCommonOk = obj.countCommonOk;
+            $scope.data.countCommonOkWomen = obj.countCommonOkWomen;
 
 
             $scope.data.countSatisfaction = obj.countSatisfaction;
@@ -1797,16 +1801,32 @@ $scope.data = {
 
 
        try {
-           $scope.data.countSatisfactionWomen = $scope.calculatePercent($scope.data.categorizedByDatePeriodCountry[0].all_form, $scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes);
-           $scope.data.countSatisfaction = $scope.calculatePercent($scope.data.categorizedByDatePeriodCountry[0].all_form, $scope.data.countSatisfaction[0].all_countSatisfaction_yes);
+
+            const persentTable = {
+
+                1: 20,
+                2: 40,
+                3: 60,
+                4: 80,
+                5: 100
+
+
+            };
+
+
+
+           $scope.data.countSatisfactionWomen = persentTable[$scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes];
+           $scope.data.countSatisfaction = persentTable[$scope.data.countSatisfaction[0].all_countSatisfaction_yes];
 
 
 
 
         }catch (e) {
 
-           $scope.data.countSatisfaction = 0;
-           $scope.data.countSatisfactionWomen = 0;
+
+
+           $scope.data.countSatisfaction = $scope.data.countCommonOk[0].avg;
+           $scope.data.countSatisfactionWomen = $scope.data.countCommonOkWomen[0].avg;
 
 
 

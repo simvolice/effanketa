@@ -465,7 +465,8 @@ module.exports = {
                         ],
 
 
-                        "countSatisfaction": [ {
+                        "countSatisfaction": [
+                            {
 
                             $match: {
 
@@ -515,26 +516,28 @@ module.exports = {
 
 
                             {
-                                $match : {
-
-
-                                    ques12: { $gte: 3 }
-
-
-                                }
+                                $match : {}
                             },
 
 
                             {
-                                $count : "all_countSatisfaction_yes"
+                                $group : {
+                                    _id: null,
+                                    all_countSatisfaction_yes: {$avg: "$ques12"}
+
+
+                                }
                             }
+
+
 
 
                         ],
 
 
 
-                        "countSatisfactionWomen": [ {
+                        "countSatisfactionWomen": [
+                            {
 
                             $match: {
 
@@ -584,8 +587,7 @@ module.exports = {
                             {
                                 $match : {
 
-                                    ques20: "Женский",
-                                    ques12: { $gte: 3 }
+                                    ques20: "Женский"
 
 
                                 }
@@ -593,7 +595,12 @@ module.exports = {
 
 
                             {
-                                $count : "all_countSatisfaction_women_yes"
+                                $group : {
+                                    _id: null,
+                                    all_countSatisfaction_women_yes: {$avg: "$ques12"}
+
+
+                                }
                             }
 
 
@@ -602,8 +609,98 @@ module.exports = {
 
 
 
+                        "countCommonOk": [
 
-                        "categorizedBySum": [ {
+                            {
+
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+                                    $and: [
+
+                                        {
+
+                                            myDate: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            myDate: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+
+                                    ],
+
+
+                                },
+
+
+                            },
+
+
+
+                            {
+                                $group:
+                                    {
+                                        _id: null,
+
+                                        avg: { $avg: "$common_ok_persent" }
+                                    }
+                            }
+
+                        ],
+
+
+                        "countCommonOkWomen": [
+
+                            {
+
+                                $match: {
+
+                                    country: {$in: objParams.country},
+
+                                    $and: [
+
+                                        {
+
+                                            myDate: {$gte: new Date(`${period.dateFrom}.${objParams.year}`)}
+                                        },
+
+                                        {
+
+                                            myDate: {$lte: new Date(`${period.dateTo}.${objParams.year}`)}
+                                        },
+
+                                    ],
+
+
+                                },
+
+
+                            },
+
+
+
+                            {
+                                $group:
+                                    {
+                                        _id: null,
+
+                                        avg: { $avg: "$common_women_persent" }
+                                    }
+                            }
+
+
+                        ],
+
+
+
+
+
+                        "categorizedBySum": [
+
+                            {
 
                             $match: {
                                 country: {$in: objParams.country},
