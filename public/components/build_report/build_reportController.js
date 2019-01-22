@@ -1428,7 +1428,7 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
         }
 
 
-        $scope.data.categorizedByBalanceYear[0].totalBalance.toFixed(2);
+        $scope.data.categorizedByBalanceYear[0].totalBalance = $scope.data.categorizedByBalanceYear[0].totalBalance.toFixed(2);
     });
 
 
