@@ -519,7 +519,7 @@ function DialogControllerUpdReportYearRCU($state, $scope, data, UpdReportYearRCU
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -726,7 +726,7 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -850,7 +850,7 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -1168,7 +1168,7 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -1350,7 +1350,7 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -1528,7 +1528,7 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -1653,7 +1653,7 @@ function DialogControllerUpdReportQNCU($scope, data, UpdReport) {
 
             if (entry.code === 0) {
 
-                $window.open('/generatedocx', '_blank');
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
             } else {
 
@@ -2011,7 +2011,7 @@ $scope.data = {
 
            if (entry.code === 0) {
 
-               $window.open('/generatedocx', '_blank');
+               $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
            } else {
 

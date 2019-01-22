@@ -17,6 +17,8 @@ const fs = require('fs');
 const querystring = require('querystring');
 const JSZip = require('jszip');
 const Docxtemplater = require('docxtemplater');
+const slugify = require('slugify');
+
 
 
 router.post('/gettypeperiod', checkSeesionToken, async (req, res, next) => {
@@ -525,7 +527,14 @@ router.get('/generatedocx', async (req, res, next) =>{
     let buf = doc.getZip()
         .generate({type: 'nodebuffer'});
 
-    res.setHeader('Content-disposition', 'attachment; filename=' + "test" + ".docx");
+
+    let titleDoc = slugify(req.query.country + "_" + req.query.typePeriod + "_" + req.query.year, {
+        replacement: '_',    // replace spaces with replacement
+        remove: null,        // regex to remove characters
+        lower: true          // result in lower case
+    });
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + titleDoc + ".docx");
     res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
 
     res.status(200).send(buf);
