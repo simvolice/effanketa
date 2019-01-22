@@ -4,7 +4,7 @@
 
 
 
-angular.module('app').controller('BuildReportCtrl', function ($translate, $window, $timeout, $scope, $mdDialog, GetAllCoutrys, GetTypePeriod, $mdToast, GetYearName, GetReport, $rootScope, DelReport) {
+angular.module('app').controller('BuildReportCtrl', function (GenerateDocxReport, $translate, $window, $timeout, $scope, $mdDialog, GetAllCoutrys, GetTypePeriod, $mdToast, GetYearName, GetReport, $rootScope, DelReport) {
 
     $rootScope.data = [];
 
@@ -515,22 +515,26 @@ function DialogControllerUpdReportYearRCU($state, $scope, data, UpdReportYearRCU
     $scope.toDocx = function () {
 
 
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+            if (entry.code === 0) {
 
+                $window.open('/generatedocx', '_blank');
 
+            } else {
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.country + ", " + data.typePeriod);
-        $mdDialog.hide();
-
+            }
+        });
 
     };
+
 
     $scope.closeDialog = function () {
 
@@ -714,21 +718,26 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
     $scope.toDocx = function () {
 
 
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+            if (entry.code === 0) {
 
+                $window.open('/generatedocx', '_blank');
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+            } else {
 
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.nameCountry + ", " + data.periodName);
-
-        $mdDialog.hide();
+            }
+        });
 
     };
+
 
 
     $scope.print = function () {
@@ -833,21 +842,26 @@ function DialogControllerUpdReportHalfYearRCU($scope, data, UpdReportHalfYearRCU
     $scope.toDocx = function () {
 
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+            if (entry.code === 0) {
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+                $window.open('/generatedocx', '_blank');
 
+            } else {
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.country + ", " + data.typePeriod);
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-        $mdDialog.hide();
-
+            }
+        });
 
     };
+
 
 
 
@@ -1145,20 +1159,23 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
     $scope.toDocx = function () {
 
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+            if (entry.code === 0) {
 
+                $window.open('/generatedocx', '_blank');
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+            } else {
 
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.nameCountry + ", " + data.periodName);
-
-
-        $mdDialog.hide();
+            }
+        });
 
     };
 
@@ -1324,19 +1341,23 @@ function DialogControllerUpdReportYearNCU($scope, data, UpdReportYearNCU, GetRep
     $scope.toDocx = function () {
 
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+            if (entry.code === 0) {
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+                $window.open('/generatedocx', '_blank');
 
+            } else {
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.country + ", " + data.typePeriod);
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-
-        $mdDialog.hide();
+            }
+        });
 
     };
 
@@ -1495,20 +1516,23 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
 
     $scope.toDocx = function () {
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+            if (entry.code === 0) {
 
+                $window.open('/generatedocx', '_blank');
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+            } else {
 
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.nameCountry + ", " + data.periodName);
-
-
-        $mdDialog.hide();
+            }
+        });
 
     };
 
@@ -1617,20 +1641,23 @@ function DialogControllerUpdReportQNCU($scope, data, UpdReport) {
     $scope.toDocx = function () {
 
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+            if (entry.code === 0) {
 
+                $window.open('/generatedocx', '_blank');
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+            } else {
 
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.country + ", " + data.typePeriod);
-
-
-        $mdDialog.hide();
+            }
+        });
 
 
     };
@@ -1859,11 +1886,17 @@ $scope.data = {
 
 
 
+            } else {
+
+                $scope.data.categorizedByAllComplaints = 0;
             }
 
             if (obj.categorizedByInvestiginationStarted.length !== 0) {
 
                 $scope.data.categorizedByInvestiginationStarted = obj.categorizedByInvestiginationStarted[0].countAll;
+
+            } else {
+                $scope.data.categorizedByInvestiginationStarted = 0;
 
             }
 
@@ -1873,12 +1906,19 @@ $scope.data = {
                 $scope.data.categorizedByInvestiginationCompleted = obj.categorizedByInvestiginationCompleted[0].countAll;
 
 
+            } else {
+
+                $scope.data.categorizedByInvestiginationCompleted = 0;
             }
 
 
             if (obj.categorizedByLowLevel.length !== 0){
 
                 $scope.data.categorizedByLowLevel = obj.categorizedByLowLevel[0].countAll;
+
+            } else {
+
+                $scope.data.categorizedByLowLevel = 0;
 
             }
 
@@ -1891,6 +1931,10 @@ $scope.data = {
 
              $scope.data.categorizedByType = obj.categorizedByType;
 
+            } else {
+
+                $scope.data.categorizedByType = [];
+
             }
 
 
@@ -1901,6 +1945,9 @@ $scope.data = {
 
 
                 $scope.data.satisfiedComplaintsInPercentage = obj.categorizedBySatisfiedInPercent[0].percent;
+
+            } else {
+                $scope.data.satisfiedComplaintsInPercentage = 0;
 
             }
 
@@ -1949,21 +1996,26 @@ $scope.data = {
 
     $scope.toDocx = function () {
 
-        $(".for__label__doc").removeClass("hidden");
-        $(".for__doc__word").remove();
-        $(".for__icon__remove__in__doc").remove();
 
 
 
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+           if (entry.code === 0) {
 
-        var content = '<!DOCTYPE html>' + $("#printableArea").html();
+               $window.open('/generatedocx', '_blank');
 
+           } else {
 
-        var converted = htmlDocx.asBlob(content);
-        saveAs(converted, data.nameCountry + ", " + data.periodName);
+               $mdToast.show(
+                   $mdToast.simple()
+                       .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                       .position('bottom left')
+                       .hideDelay(6000)
+               );
 
-        $mdDialog.hide();
+           }
+        });
 
     };
 

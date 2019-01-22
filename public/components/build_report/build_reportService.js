@@ -113,3 +113,6 @@ angular.module('app').factory("GetReportFinansialStatusForYearRCU", function($re
 angular.module('app').factory("GetReportFinansialStatusForHalfYearRCU", function($resource) {
     return $resource("/getreportfinansialstatusforhalfyearrcu");
 });
+angular.module('app').factory("GenerateDocxReport", function($resource) {
+    return $resource("/generatedocx");
+});

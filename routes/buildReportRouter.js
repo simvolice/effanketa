@@ -14,6 +14,11 @@ const BuildReportService = require('../services/BuildReportService');
 const path = require('path');
 const fs = require('fs');
 
+const querystring = require('querystring');
+const JSZip = require('jszip');
+const Docxtemplater = require('docxtemplater');
+
+
 router.post('/gettypeperiod', checkSeesionToken, async (req, res, next) => {
 
     let result = await TypePeriod.getAll();
@@ -427,6 +432,110 @@ router.post('/getreportfinansialstatusforhalfyearrcu', checkSeesionToken, async 
     res.json({"code": "ok", "resultFromDb": result});
 
 });
+
+
+let doc = {};
+router.post('/generatedocx', checkSeesionToken, async (req, res, next) =>{
+
+
+    let pathToTemplateDocx = "";
+
+
+
+    if (req.body.data.typePeriod.includes("Годовой") && req.body.data.country.includes("НКГ")) {
+
+        pathToTemplateDocx = "year_ncu_report.docx";
+
+    } else if (req.body.data.typePeriod.includes("Полугодовой") && req.body.data.country.includes("НКГ")) {
+
+        pathToTemplateDocx = "q_report.docx";
+
+
+
+
+
+    } else if (req.body.data.typePeriod.includes("Квартальный") && req.body.data.country.includes("НКГ")) {
+
+        pathToTemplateDocx = "q_report.docx";
+
+
+
+
+
+
+    }else if (req.body.data.typePeriod.includes("Годовой") && req.body.data.country.includes("РКГ")) {
+
+
+        pathToTemplateDocx = "year_rcu_report.docx";
+
+
+
+
+    } else if (req.body.data.typePeriod.includes("Полугодовой") && req.body.data.country.includes("РКГ")) {
+
+
+        pathToTemplateDocx = "half_year_rcu.docx";
+
+
+
+    }
+
+
+
+
+//Load the docx file as a binary
+    let content = fs
+        .readFileSync(path.resolve("public/assets/docTemplate", pathToTemplateDocx), 'binary');
+
+    let zip = new JSZip(content);
+    doc = new Docxtemplater();
+
+    doc.loadZip(zip);
+
+//set the templateVariables
+    doc.setData(req.body.data);
+
+    try {
+        // render the document (replace all occurences of {first_name} by John, {last_name} by Doe, ...)
+        doc.render();
+        res.json({code: 0});
+    }
+    catch (error) {
+        let e = {
+            message: error.message,
+            name: error.name,
+            stack: error.stack,
+            properties: error.properties,
+        };
+        console.log(JSON.stringify({error: e}));
+        // The error thrown here contains additional information when logged with JSON.stringify (it contains a property object).
+
+        res.json({code: 1});
+    }
+
+
+
+
+});
+
+
+router.get('/generatedocx', async (req, res, next) =>{
+
+
+    let buf = doc.getZip()
+        .generate({type: 'nodebuffer'});
+
+    res.setHeader('Content-disposition', 'attachment; filename=' + "test" + ".docx");
+    res.setHeader('Content-type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+
+    res.status(200).send(buf);
+
+});
+
+
+
+
+
 
 module.exports = router;
 
