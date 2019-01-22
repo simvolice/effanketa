@@ -602,6 +602,10 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
 
 
         }
+
+        $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(2);
+        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(2);
+
     });
 
 
