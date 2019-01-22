@@ -603,8 +603,8 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
 
         }
 
-        $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(2);
-        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(2);
+        $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(1);
+        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(1);
 
     });
 
@@ -1037,8 +1037,8 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
         }
 
-        $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(2);
-        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(2);
+        $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(1);
+        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(1);
 
         try {
             $scope.data.NCUTajikistan = entry.resultFromDb[0].PlanForNextPeriodTadzhik[0].totalPlan;
@@ -1433,7 +1433,7 @@ function DialogControllerNewReportYearNCU($scope, data, GetReportFinansialStatus
         }
 
 
-        $scope.data.categorizedByBalanceYear[0].totalBalance = $scope.data.categorizedByBalanceYear[0].totalBalance.toFixed(2);
+        $scope.data.categorizedByBalanceYear[0].totalBalance = $scope.data.categorizedByBalanceYear[0].totalBalance.toFixed(1);
     });
 
 
