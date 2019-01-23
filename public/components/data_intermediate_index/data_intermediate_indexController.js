@@ -144,7 +144,15 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
             if (entry.resultFromDb[0].getAllGoodTestResult.length === 0) {
-                $scope.data.allFormPercent = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0);
+
+                if (entry.resultFromDb[0].countCommonOk[0].avg === null) {
+                    $scope.data.allFormPercent = 0;
+                } else {
+
+                    $scope.data.allFormPercent = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0);
+
+                }
+
 
 
             } else {
