@@ -117,4 +117,28 @@ router.post('/getreportsumgenderevent', checkSeesionToken, async (req, res, next
 
 });
 
+
+router.post('/insertnewval', checkSeesionToken, async (req, res, next) =>{
+    await DataIntermedIndexService.insertNewVal(req.body.data);
+
+
+    res.json({"code": 0});
+
+
+
+
+});
+
+
+router.get('/getnewval', async (req, res, next) =>{
+    let result = await DataIntermedIndexService.getNewval();
+
+
+    res.json({"code": 0, resultFromDb: result[0]});
+
+
+
+
+});
+
 module.exports = router;

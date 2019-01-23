@@ -11,7 +11,7 @@
 const dbConnect = require('../utils/dbConnect');
 
 
-
+const Int32 = require('mongodb').Int32;
 
 module.exports = {
 
@@ -84,25 +84,19 @@ module.exports = {
 
 
                                 {
-                                    $match : {
+                                    $match : {}
+                                },
 
 
-                                        $or: [
-
-
-                                            {"ques12": 5},
-
-                                            {"ques12": 4}
-
-                                        ]
+                                {
+                                    $group : {
+                                        _id: null,
+                                        all_countSatisfaction_yes: {$avg: "$ques12"}
 
 
                                     }
-                                },
-
-                                {
-                                    $count : "countAll"
                                 }
+
 
 
 
@@ -110,9 +104,7 @@ module.exports = {
 
                             ],
 
-
-                            "getAllCount":  [
-
+                            "countCommonOk": [
 
                                 {
 
@@ -131,36 +123,22 @@ module.exports = {
 
                                 {
 
-                                    $match: {year: yearId}
+                                    $match: {year: yearId, nameTypeEvent: "Обучающий"}
 
                                 },
 
+
+
                                 {
-                                    $lookup:
+                                    $group:
                                         {
-                                            from: "forms",
-                                            localField: "_id",
-                                            foreignField: "parentId",
-                                            as: "forms_docs"
+                                            _id: null,
+
+                                            avg: { $avg: "$common_ok_persent" }
                                         }
-                                },
-                                { $unwind : "$forms_docs" },
-
-                                {
-                                    $replaceRoot: { newRoot: "$forms_docs" }
-                                },
-
-
-
-                                {
-                                    $count : "countAll"
                                 }
 
-
-
-
-                            ]
-
+                            ],
 
 
                         }
@@ -1540,6 +1518,98 @@ module.exports = {
 
 
 
+
+
+    },
+
+
+    insertNewVal: async (data) => {
+
+
+
+        try {
+
+
+
+
+
+            const col = dbConnect.getConnect().collection('matrix_values');
+
+
+
+            const result = await col.insertOne({
+
+
+                ipr112016: Int32(data.ipr112016),
+                ipr112017: Int32(data.ipr112017),
+                ipr112018: Int32(data.ipr112018),
+                ipr112019: Int32(data.ipr112019),
+                ipr112020: Int32(data.ipr112020),
+                ipr112021: Int32(data.ipr112021),
+                ipr122016: Int32(data.ipr122016),
+                ipr122017: Int32(data.ipr122017),
+                ipr122018: Int32(data.ipr122018),
+                ipr122019: Int32(data.ipr122019),
+                ipr122020: Int32(data.ipr122020),
+                ipr122021: Int32(data.ipr122021)
+
+
+            });
+
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+    },
+
+    getNewval: async () => {
+
+
+
+        try {
+
+
+
+
+
+            const col = dbConnect.getConnect().collection('matrix_values');
+
+
+
+            const result = await col.find().toArray();
+
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
 
 
     },

@@ -55,3 +55,13 @@ angular.module('app').factory("GetReportCountCompleteGRM", function($resource) {
 angular.module('app').factory("GetReportSumGenderEvent", function($resource) {
     return $resource("/getreportsumgenderevent");
 });
+
+
+
+angular.module('app').factory("InsertNewVal", function($resource) {
+    return $resource("/insertnewval");
+});
+
+angular.module('app').factory("GetNewVal", function($resource) {
+    return $resource("/getnewval");
+});

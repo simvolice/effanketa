@@ -49,7 +49,7 @@
 
 
                         <md-button class="md-raised md-primary" ng-click="print()">{{ 'PRINT' | translate }}</md-button>
-                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'CREATE_EXCEL' | translate }}</md-button>
+                        <md-button class="md-raised md-primary" ng-click="excel()">{{ 'CREATE_DOCX' | translate }}</md-button>
 
                     </div>
 
@@ -123,7 +123,12 @@
                                 <td class="tg-hgcj" colspan="8">Project Development Objective Indicators<br>Индикаторы цели (ИЦ)</td>
                             </tr>
                             <tr>
-                                <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
+
+                                <td class="tg-yw4l">
+
+                                    <!--<a href="#" target="_blank">Help</a><br>-->
+
+                                    Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
@@ -168,34 +173,46 @@
                             <tr>
                                 <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br><input class="custom__four__digits" value="{{data.ipr112016}}" type="text" ng-model="data.ipr112016" ng-keyup='createNewVal($event)'
+                                                                                                          ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br><input class="custom__four__digits" value="{{data.ipr112017}}" type="text" ng-model="data.ipr112017" ng-keyup='createNewVal($event)'
+                                                                                                          ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br><input class="custom__four__digits" value="{{data.ipr112018}}" type="text" ng-model="data.ipr112018" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br><input class="custom__four__digits" value="{{data.ipr112019}}" type="text" ng-model="data.ipr112019" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br><input class="custom__four__digits" value="{{data.ipr112020}}" type="text" ng-model="data.ipr112020" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br><input class="custom__four__digits" value="{{data.ipr112021}}" type="text" ng-model="data.ipr112021" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
                             </tr>
                             <tr>
                                 <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br><input class="custom__four__digits" value="{{data.ipr122016}}" type="text" ng-model="data.ipr122016" ng-keyup='createNewVal($event)'
+                                                                                                         ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br><input class="custom__four__digits" value="{{data.ipr122017}}" type="text" ng-model="data.ipr122017" ng-keyup='createNewVal($event)'
+                                                                                                         ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span><br><input class="custom__four__digits" value="{{data.ipr122018}}" type="text" ng-model="data.ipr122018" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span><br><input class="custom__four__digits" value="{{data.ipr122019}}" type="text" ng-model="data.ipr122019" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span><br><input class="custom__four__digits" value="{{data.ipr122020}}" type="text" ng-model="data.ipr122020" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span><br><input class="custom__four__digits" value="{{data.ipr122021}}" type="text" ng-model="data.ipr122021" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
                             </tr>
 
 
                             <tr>
                                 <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}</td>
                             </tr>
 
 
@@ -351,9 +368,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                    <br>{{arrAllSumGAProject[0][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[0][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}
 
 
 
@@ -361,9 +378,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                    <br>{{arrAllSumGAProject[1][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[1][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}
 
 
 
@@ -371,9 +388,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">7 000</span>
 
 
-                                    <br>{{arrAllSumGAProject[2][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[2][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}
 
 
 
@@ -382,18 +399,18 @@
 
 
 
-                                    <br>{{arrAllSumGAProject[3][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[3][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}
 
 
                                 </td>
                                 <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
 
 
-                                    <br>{{arrAllSumGAProject[4][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[4][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}
 
 
 
@@ -401,9 +418,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
 
 
-                                    <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}
 
 
 
@@ -534,7 +551,12 @@
                                     <td class="tg-hgcj" colspan="8">Project Development Objective Indicators<br>Индикаторы цели (ИЦ)</td>
                                 </tr>
                                 <tr>
-                                    <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
+
+                                    <td class="tg-yw4l">
+
+                                        <!--<a href="#" target="_blank">Help</a><br>-->
+
+                                        Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
@@ -579,34 +601,46 @@
                                 <tr>
                                     <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br><input class="custom__four__digits" value="{{data.ipr112016}}" type="text" ng-model="data.ipr112016" ng-keyup='createNewVal($event)'
+                                                                                                              ng-keydown="$event.stopPropagation($event)">%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0%</span><br><input class="custom__four__digits" value="{{data.ipr112017}}" type="text" ng-model="data.ipr112017" ng-keyup='createNewVal($event)'
+                                                                                                              ng-keydown="$event.stopPropagation($event)">%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span><br><input class="custom__four__digits" value="{{data.ipr112018}}" type="text" ng-model="data.ipr112018" ng-keyup='createNewVal($event)'
+                                                                                                               ng-keydown="$event.stopPropagation($event)">%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">42%</span><br><input class="custom__four__digits" value="{{data.ipr112019}}" type="text" ng-model="data.ipr112019" ng-keyup='createNewVal($event)'
+                                                                                                               ng-keydown="$event.stopPropagation($event)">%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span><br><input class="custom__four__digits" value="{{data.ipr112020}}" type="text" ng-model="data.ipr112020" ng-keyup='createNewVal($event)'
+                                                                                                               ng-keydown="$event.stopPropagation($event)">%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">75%</span><br><input class="custom__four__digits" value="{{data.ipr112021}}" type="text" ng-model="data.ipr112021" ng-keyup='createNewVal($event)'
+                                                                                                               ng-keydown="$event.stopPropagation($event)">%</td>
                                 </tr>
                                 <tr>
                                     <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br><input class="custom__four__digits" value="{{data.ipr122016}}" type="text" ng-model="data.ipr122016" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br><input class="custom__four__digits" value="{{data.ipr122017}}" type="text" ng-model="data.ipr122017" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">4 000</span><br><input class="custom__four__digits" value="{{data.ipr122018}}" type="text" ng-model="data.ipr122018" ng-keyup='createNewVal($event)'
+                                                                                                                 ng-keydown="$event.stopPropagation($event)"></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">4 000</span><br><input class="custom__four__digits" value="{{data.ipr122019}}" type="text" ng-model="data.ipr122019" ng-keyup='createNewVal($event)'
+                                                                                                                 ng-keydown="$event.stopPropagation($event)"></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 000</span><br><input class="custom__four__digits" value="{{data.ipr122020}}" type="text" ng-model="data.ipr122020" ng-keyup='createNewVal($event)'
+                                                                                                                 ng-keydown="$event.stopPropagation($event)"></td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">9 000</span><br><input class="custom__four__digits" value="{{data.ipr122021}}" type="text" ng-model="data.ipr122021" ng-keyup='createNewVal($event)'
+                                                                                                                 ng-keydown="$event.stopPropagation($event)"></td>
                                 </tr>
 
 
                                 <tr>
                                     <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}</td>
                                 </tr>
 
 
@@ -762,9 +796,9 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                        <br>{{arrAllSumGAProject[0][0].areaGAProject}}Га
-                                        <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}Га
-                                        <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}Га
+                                        <br>{{arrAllSumGAProject[0][0].areaGAProject}}
+                                        <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}
+                                        <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}
 
 
 
@@ -772,9 +806,9 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                        <br>{{arrAllSumGAProject[1][0].areaGAProject}}Га
-                                        <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}Га
-                                        <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}Га
+                                        <br>{{arrAllSumGAProject[1][0].areaGAProject}}
+                                        <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}
+                                        <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}
 
 
 
@@ -782,9 +816,9 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">7 000</span>
 
 
-                                        <br>{{arrAllSumGAProject[2][0].areaGAProject}}Га
-                                        <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}Га
-                                        <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}Га
+                                        <br>{{arrAllSumGAProject[2][0].areaGAProject}}
+                                        <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}
+                                        <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}
 
 
 
@@ -793,18 +827,18 @@
 
 
 
-                                        <br>{{arrAllSumGAProject[3][0].areaGAProject}}Га
-                                        <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}Га
-                                        <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}Га
+                                        <br>{{arrAllSumGAProject[3][0].areaGAProject}}
+                                        <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}
+                                        <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}
 
 
                                     </td>
                                     <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
 
 
-                                        <br>{{arrAllSumGAProject[4][0].areaGAProject}}Га
-                                        <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}Га
-                                        <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+                                        <br>{{arrAllSumGAProject[4][0].areaGAProject}}
+                                        <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}
+                                        <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}
 
 
 
@@ -812,9 +846,9 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
 
 
-                                        <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}Га
-                                        <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}Га
-                                        <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+                                        <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}
+                                        <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}
+                                        <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}
 
 
 
@@ -968,7 +1002,12 @@
                                 <td class="tg-hgcj" colspan="8">Project Development Objective Indicators<br>Индикаторы цели (ИЦ)</td>
                             </tr>
                             <tr>
-                                <td class="tg-yw4l">Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
+
+                                <td class="tg-yw4l">
+
+                                    <!--<a href="#" target="_blank">Help</a><br>-->
+
+                                    Proportion of users reporting <br>satisfaction with Climate <br>Knowledge Services provided <br>by Program (Percentage)<br><br>ИЦ 1. Процент пользователей,<br>удовлетворенных услугами программы,<br>по предоставлению знаний <br>в области изменения климата (в<br>процентах)</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
@@ -1013,34 +1052,46 @@
                             <tr>
                                 <td class="tg-yw4l">User Perception of Quality of <br>(Information<br>Technology) <br>Public Services (%)<br> (Percentage) - (Core)<br><br><br>ИПР 1.1 Восприятие пользователей <br>услуг, предоставляемых в <br>том<br>числе с использованием <br>ИТ (в процентах)</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0%</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[0][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br>{{arrAllForms[1][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br><input class="custom__four__digits" value="{{data.ipr112016}}" type="text" ng-model="data.ipr112016" ng-keyup='createNewVal($event)'
+                                                                                                          ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0%</span><br><input class="custom__four__digits" value="{{data.ipr112017}}" type="text" ng-model="data.ipr112017" ng-keyup='createNewVal($event)'
+                                                                                                          ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br><input class="custom__four__digits" value="{{data.ipr112018}}" type="text" ng-model="data.ipr112018" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">42%</span><br><input class="custom__four__digits" value="{{data.ipr112019}}" type="text" ng-model="data.ipr112019" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br><input class="custom__four__digits" value="{{data.ipr112020}}" type="text" ng-model="data.ipr112020" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">75%</span><br><input class="custom__four__digits" value="{{data.ipr112021}}" type="text" ng-model="data.ipr112021" ng-keyup='createNewVal($event)'
+                                                                                                           ng-keydown="$event.stopPropagation($event)">%</td>
                             </tr>
                             <tr>
                                 <td class="tg-yw4l">Total number of transactions <br>of the main public<br>service <br>targeted by the project <br>(Number - Sub-Type: Supplemental) - (Core)<br><br>ИПР 1.2 Общее число <br>транзакций основных услуг проекта</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br><input class="custom__four__digits" value="{{data.ipr122016}}" type="text" ng-model="data.ipr122016" ng-keyup='createNewVal($event)'
+                                                                                                         ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br><input class="custom__four__digits" value="{{data.ipr122017}}" type="text" ng-model="data.ipr122017" ng-keyup='createNewVal($event)'
+                                                                                                         ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span><br><input class="custom__four__digits" value="{{data.ipr122018}}" type="text" ng-model="data.ipr122018" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">4 000</span><br><input class="custom__four__digits" value="{{data.ipr122019}}" type="text" ng-model="data.ipr122019" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span><br><input class="custom__four__digits" value="{{data.ipr122020}}" type="text" ng-model="data.ipr122020" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
+                                <td class="tg-lqy6"><span class="custom__data__index">9 000</span><br><input class="custom__four__digits" value="{{data.ipr122021}}" type="text" ng-model="data.ipr122021" ng-keyup='createNewVal($event)'
+                                                                                                             ng-keydown="$event.stopPropagation($event)"></td>
                             </tr>
 
 
                             <tr>
                                 <td class="tg-yw4l">Number of multi-country climate <br>coordination networks<br>supported <br>under program, enabling intra-governmental, <br>sectoral, NGO, etc.<br>cooperation (Number)<br><br>ИПР 1.3 Число поддержанных проектом <br>сетей/ платформ по<br>координации,<br>в области климата, объединяющих <br>несколько стран и предоставляющих <br>возможности<br>меж-правительственного, <br>меж-секторного сотрудничества, <br>сотрудничество с НПО и<br>пр. (кол-во)</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span></td>
-                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">0</span><br>{{arrAllCountPlatform[0][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[1][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">1</span><br>{{arrAllCountPlatform[2][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">2</span><br>{{arrAllCountPlatform[3][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[4][0].countPlatform}}</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">3</span><br>{{arrAllCountPlatform[0][0].countPlatform + arrAllCountPlatform[1][0].countPlatform + arrAllCountPlatform[2][0].countPlatform + arrAllCountPlatform[3][0].countPlatform + arrAllCountPlatform[4][0].countPlatform}}</td>
                             </tr>
 
 
@@ -1196,9 +1247,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                    <br>{{arrAllSumGAProject[0][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[0][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz}}
 
 
 
@@ -1206,9 +1257,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">0</span>
 
 
-                                    <br>{{arrAllSumGAProject[1][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[1][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[1][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[1][2].areaGAProjectUz}}
 
 
 
@@ -1216,9 +1267,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">7 000</span>
 
 
-                                    <br>{{arrAllSumGAProject[2][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[2][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[2][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[2][2].areaGAProjectUz}}
 
 
 
@@ -1227,18 +1278,18 @@
 
 
 
-                                    <br>{{arrAllSumGAProject[3][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[3][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[3][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[3][2].areaGAProjectUz}}
 
 
                                 </td>
                                 <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
 
 
-                                    <br>{{arrAllSumGAProject[4][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[4][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[4][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[4][2].areaGAProjectUz}}
 
 
 
@@ -1246,9 +1297,9 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">9 200</span>
 
 
-                                    <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}Га
-                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}Га
-                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}Га
+                                    <br>{{arrAllSumGAProject[0][0].areaGAProject + arrAllSumGAProject[1][0].areaGAProject + arrAllSumGAProject[2][0].areaGAProject + arrAllSumGAProject[3][0].areaGAProject + arrAllSumGAProject[4][0].areaGAProject}}
+                                    <br>Tj - {{arrAllSumGAProject[0][1].areaGAProjectTj + arrAllSumGAProject[1][1].areaGAProjectTj + arrAllSumGAProject[2][1].areaGAProjectTj + arrAllSumGAProject[3][1].areaGAProjectTj + arrAllSumGAProject[4][1].areaGAProjectTj}}
+                                    <br>Uz - {{arrAllSumGAProject[0][2].areaGAProjectUz + arrAllSumGAProject[1][2].areaGAProjectUz + arrAllSumGAProject[2][2].areaGAProjectUz + arrAllSumGAProject[3][2].areaGAProjectUz + arrAllSumGAProject[4][2].areaGAProjectUz}}
 
 
 
@@ -1344,6 +1395,7 @@
                             </tr>
 
                             </tbody>
+
 
 
                         </table>

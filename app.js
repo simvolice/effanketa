@@ -24,6 +24,7 @@ const GrmStatusService = require('./services/GrmStatusService');
 const TypePeriod = require('./services/TypePeriod');
 const NameYear = require('./services/NameYear');
 const EventService = require('./services/EventService');
+const DataIntermedIndexService = require('./services/DataIntermedIndexService');
 
 
 const fsExtra = require('fs-extra');
@@ -101,6 +102,8 @@ async function initApp() {
     await EventService.initialSubStatus();
 
     await AuthService.createUserSuperRoot(process.env.HASHADMIN);
+
+   await dbConnect.getConnect().createCollection("matrix_values", {capped: true, max: 1, size: 100000});
 
 
 }

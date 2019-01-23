@@ -4,13 +4,74 @@
 
 
 
-angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout, GetReportSumGenderEvent, $scope, $window, GetYearName, GetReportAllForms, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
+angular.module('app').controller('DataIntermediateIndexCtrl', function (GenerateDocxReport, GetNewVal, InsertNewVal, $timeout, GetReportSumGenderEvent, $scope, $window, GetYearName, GetReportAllForms, GetReportCountProgramm, $mdToast, GetReportCountRegeonalInvest, GetReportSumMobileAmount, GetReportCountPlatform, GetReportCountBenificiarProject, GetReportSumGAProject, GetReportCountCompleteGRM) {
 
 
 
-    $scope.data = {};
+    $scope.data = {
+
+        country: "матрица",
+        typePeriod: "РЕЗУЛЬТАТОВ",
+        year: "И ИХ МОНИТОРИНГА"
+
+    };
 
 
+    GetNewVal.get(function(entry) {
+
+
+
+
+        if (entry.hasOwnProperty("resultFromDb")) {
+            $scope.data.ipr112016 = entry.resultFromDb.ipr112016;
+            $scope.data.ipr112017 = entry.resultFromDb.ipr112017;
+            $scope.data.ipr112018 = entry.resultFromDb.ipr112018;
+            $scope.data.ipr112019 = entry.resultFromDb.ipr112019;
+            $scope.data.ipr112020 = entry.resultFromDb.ipr112020;
+            $scope.data.ipr112021 = entry.resultFromDb.ipr112021;
+            $scope.data.ipr122016 = entry.resultFromDb.ipr122016;
+            $scope.data.ipr122017 = entry.resultFromDb.ipr122017;
+            $scope.data.ipr122018 = entry.resultFromDb.ipr122018;
+            $scope.data.ipr122019 = entry.resultFromDb.ipr122019;
+            $scope.data.ipr122020 = entry.resultFromDb.ipr122020;
+            $scope.data.ipr122021 = entry.resultFromDb.ipr122021;
+        } else {
+            $scope.data.ipr112016 = 0;
+            $scope.data.ipr112017 = 0;
+            $scope.data.ipr112018 = 0;
+            $scope.data.ipr112019 = 0;
+            $scope.data.ipr112020 = 0;
+            $scope.data.ipr112021 = 0;
+            $scope.data.ipr122016 = 0;
+            $scope.data.ipr122017 = 0;
+            $scope.data.ipr122018 = 0;
+            $scope.data.ipr122019 = 0;
+            $scope.data.ipr122020 = 0;
+            $scope.data.ipr122021 = 0;
+
+        }
+
+    });
+
+
+
+    $scope.createNewVal = function (event) {
+        if(event.keyCode === 13) {
+
+            InsertNewVal.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
+
+
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась УСПЕШНО.')
+                        .position('bottom left')
+                        .hideDelay(3000)
+                );
+
+            });
+
+        }
+    };
 
     $scope.arrAllForms = [];
     $scope.arrAllCountProgramm = [];
@@ -27,6 +88,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
+    $scope.objResult = {};
 
 
 
@@ -53,24 +115,58 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
     };
 
+    let summVal = 0;
 
     $scope.generateReport = function (yearname) {
 
 
         let arrAllData = [];
 
+
         GetReportAllForms.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
 
+            const persentTable = {
+
+                0: 0,
+                1: 20,
+                2: 40,
+                3: 60,
+                4: 80,
+                5: 100
 
 
-            let numberBase = entry.resultFromDb[0].getAllCount.length === 0 ? 0 : entry.resultFromDb[0].getAllCount[0].countAll;
-            let value = entry.resultFromDb[0].getAllGoodTestResult.length === 0 ? 0 : entry.resultFromDb[0].getAllGoodTestResult[0].countAll;
-
-            $scope.data.allFormPercent = $scope.calculatePercent(numberBase, value);
+            };
 
 
-            arrAllData.push({allFormPercent: $scope.data.allFormPercent});
+
+
+
+
+            if (entry.resultFromDb[0].getAllGoodTestResult.length === 0) {
+                $scope.data.allFormPercent = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0);
+
+
+            } else {
+
+                $scope.data.allFormPercent = persentTable[entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes];
+
+            }
+
+
+            summVal += parseInt($scope.data.allFormPercent);
+            arrAllData.push({allFormPercent: parseInt($scope.data.allFormPercent)});
+
+
+            if (yearname === 2021) {
+
+                $scope.objResult["allFormPercent" + yearname] = summVal;
+
+            } else {
+
+                $scope.objResult["allFormPercent" + yearname] = parseInt($scope.data.allFormPercent);
+
+            }
 
 
 
@@ -82,6 +178,8 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
     };
+
+    let summValcountProgramm = 0;
 
     $scope.generateReportCountProgramm = function (yearname) {
 
@@ -96,10 +194,18 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
                   $scope.data.countProgramm = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_programm;
 
 
-
+              summValcountProgramm += $scope.data.countProgramm;
                 arrAllData.push({countProgramm: $scope.data.countProgramm});
 
+              if (yearname === 2021) {
 
+                  $scope.objResult["countProgramm" + yearname] = summValcountProgramm;
+
+              } else {
+
+                  $scope.objResult["countProgramm" + yearname] = $scope.data.countProgramm;
+
+              }
 
 
 
@@ -114,7 +220,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
     };
 
-
+    let summValfinInvest = 0;
     $scope.generateReportCountRegeonalInvest = function (yearname) {
 
 
@@ -133,8 +239,20 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
                    $scope.data.finInvest = entry.resultFromDb.length === 0 ? 0 : entry.resultFromDb[0].all_invest;
 
 
-                  arrAllData.push({finInvest: $scope.data.finInvest});
+                   summValfinInvest += $scope.data.finInvest;
 
+                   arrAllData.push({finInvest: $scope.data.finInvest});
+
+
+             if (yearname === 2021) {
+
+                 $scope.objResult["finInvest" + yearname] = summValfinInvest;
+
+             } else {
+
+                 $scope.objResult["finInvest" + yearname] = $scope.data.finInvest;
+
+             }
 
 
 
@@ -152,7 +270,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
-
+    let summValmobileResurs = 0;
 
     $scope.generateReportSumMobileAmount = function (yearname) {
 
@@ -174,8 +292,17 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
                  arrAllData.push({mobileResurs: Number.parseFloat($scope.data.mobileResurs)});
 
+              summValmobileResurs += $scope.data.mobileResurs;
 
+              if (yearname === 2021) {
 
+                  $scope.objResult["mobileResurs" + yearname] = summValmobileResurs;
+
+              } else {
+
+                  $scope.objResult["mobileResurs" + yearname] = $scope.data.mobileResurs;
+
+              }
 
 
 
@@ -194,7 +321,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
-
+    let summValcountPlatform = 0;
     $scope.generateReportCountPlatform = function (yearname) {
 
 
@@ -212,9 +339,17 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
                   arrAllData.push({countPlatform: $scope.data.countPlatform});
 
+              summValcountPlatform += $scope.data.countPlatform;
 
+              if (yearname === 2021) {
 
+                  $scope.objResult["countPlatform" + yearname] = summValcountPlatform;
 
+              } else {
+
+                  $scope.objResult["countPlatform" + yearname] = $scope.data.countPlatform;
+
+              }
 
           });
 
@@ -227,6 +362,16 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
     };
 
 
+   let summValsumComponents = 0;
+   let summValcountComponent1 = 0;
+   let summValcountComponent2 = 0;
+   let summValcountBenificiarProjectTj = 0;
+   let summValcountBenificiarProjectUz = 0;
+   let summValpercentSum = 0;
+   let summValpercentC1 = 0;
+   let summValpercentC2 = 0;
+   let summValTjPercentWomen = 0;
+   let summValUzPercentWomen = 0;
 
     $scope.generateReportCountBenificiarProject = function (yearname) {
 
@@ -280,6 +425,18 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
+
+                summValsumComponents += $scope.sumComponents;
+                summValcountComponent1 += $scope.data.countComponent1;
+                summValcountComponent2 += $scope.data.countComponent2;
+                summValcountBenificiarProjectTj += $scope.data.countBenificiarProjectTj;
+                summValcountBenificiarProjectUz += $scope.data.countBenificiarProjectUz;
+                summValpercentSum += $scope.data.percentSum;
+                summValpercentC1 += $scope.data.percentC1;
+                summValpercentC2 += $scope.data.percentC2;
+                summValTjPercentWomen += $scope.data.TjPercentWomen;
+                summValUzPercentWomen += $scope.data.UzPercentWomen;
+
                 arrAllData.push({sumComponents: $scope.sumComponents});
                 arrAllData.push({countComponent1: $scope.data.countComponent1});
                 arrAllData.push({countComponent2: $scope.data.countComponent2});
@@ -295,6 +452,38 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
+
+                if (yearname === 2021) {
+
+
+                    $scope.objResult["sumComponents" + yearname] = summValsumComponents;
+                    $scope.objResult["countComponent1" + yearname] = summValcountComponent1;
+                    $scope.objResult["countComponent2" + yearname] = summValcountComponent2;
+                    $scope.objResult["countBenificiarProjectTj" + yearname] = summValcountBenificiarProjectTj;
+                    $scope.objResult["countBenificiarProjectUz" + yearname] = summValcountBenificiarProjectUz;
+                    $scope.objResult["percentSum" + yearname] = summValpercentSum;
+                    $scope.objResult["percentC1" + yearname] = summValpercentC1;
+                    $scope.objResult["percentC2" + yearname] = summValpercentC2;
+                    $scope.objResult["TjPercentWomen" + yearname] = summValTjPercentWomen;
+                    $scope.objResult["UzPercentWomen" + yearname] = summValUzPercentWomen;
+
+
+
+
+                } else {
+
+                    $scope.objResult["sumComponents" + yearname] = $scope.sumComponents;
+                    $scope.objResult["countComponent1" + yearname] = $scope.data.countComponent1;
+                    $scope.objResult["countComponent2" + yearname] = $scope.data.countComponent2;
+                    $scope.objResult["countBenificiarProjectTj" + yearname] = $scope.data.countBenificiarProjectTj;
+                    $scope.objResult["countBenificiarProjectUz" + yearname] = $scope.data.countBenificiarProjectUz;
+                    $scope.objResult["percentSum" + yearname] = $scope.data.percentSum;
+                    $scope.objResult["percentC1" + yearname] = $scope.data.percentC1;
+                    $scope.objResult["percentC2" + yearname] = $scope.data.percentC2;
+                    $scope.objResult["TjPercentWomen" + yearname] = $scope.data.TjPercentWomen;
+                    $scope.objResult["UzPercentWomen" + yearname] = $scope.data.UzPercentWomen;
+
+                }
 
 
 
@@ -316,6 +505,10 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
+
+    let summValareaGAProject = 0;
+    let summValareaGAProjectTj = 0;
+    let summValareaGAProjectUz = 0;
 
     $scope.generateReportSumGAProject = function (yearname) {
 
@@ -341,6 +534,26 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
                   arrAllData.push({areaGAProjectUz: $scope.data.areaGAProjectUz});
 
 
+                  summValareaGAProject += $scope.data.areaGAProject;
+                  summValareaGAProjectTj += $scope.data.areaGAProjectTj;
+                  summValareaGAProjectUz += $scope.data.areaGAProjectUz;
+
+                  if (yearname === 2021) {
+
+                      $scope.objResult["areaGAProject" + yearname] = summValareaGAProject;
+                      $scope.objResult["areaGAProjectTj" + yearname] = summValareaGAProjectTj;
+                      $scope.objResult["areaGAProjectUz" + yearname] = summValareaGAProjectUz;
+
+                  } else {
+
+                      $scope.objResult["areaGAProject" + yearname] = $scope.data.areaGAProject;
+                      $scope.objResult["areaGAProjectTj" + yearname] = $scope.data.areaGAProjectTj;
+                      $scope.objResult["areaGAProjectUz" + yearname] = $scope.data.areaGAProjectUz;
+
+                  }
+
+
+
               }
 
 
@@ -357,7 +570,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
 
-
+    let summValsumgenderevent = 0;
 
     $scope.generateReportSumGenderEvent = function (yearname) {
 
@@ -381,7 +594,17 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
                   arrAllData.push({sumgenderevent: $scope.data.sumgenderevent});
 
+              summValsumgenderevent += $scope.data.sumgenderevent;
 
+              if (yearname === 2021) {
+
+                  $scope.objResult["sumgenderevent" + yearname] = summValsumgenderevent;
+
+              } else {
+
+                  $scope.objResult["sumgenderevent" + yearname] = $scope.data.sumgenderevent;
+
+              }
 
 
 
@@ -400,7 +623,9 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
     };
 
 
-
+    let summValcountGRM = 0;
+    let summValcountGRM_TJ = 0;
+    let summValcountGRM_UZ = 0;
 
     $scope.generateReportCountCompleteGRM = function (yearname) {
 
@@ -433,6 +658,27 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
 
 
                  });
+
+
+                 summValcountGRM += $scope.data.countGRM;
+                 summValcountGRM_TJ += $scope.data.countGRM_TJ;
+                 summValcountGRM_UZ += $scope.data.countGRM_UZ;
+
+
+
+                 if (yearname === 2021) {
+
+                     $scope.objResult["countGRM" + yearname] = summValcountGRM;
+                     $scope.objResult["countGRM_TJ" + yearname] = summValcountGRM_TJ;
+                     $scope.objResult["countGRM_UZ" + yearname] = summValcountGRM_UZ;
+
+                 } else {
+
+                     $scope.objResult["countGRM" + yearname] = $scope.data.countGRM;
+                     $scope.objResult["countGRM_TJ" + yearname] = $scope.data.countGRM_TJ;
+                     $scope.objResult["countGRM_UZ" + yearname] = $scope.data.countGRM_UZ;
+
+                 }
 
 
              }
@@ -485,41 +731,27 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function ($timeout
     $scope.excel = function () {
 
 
-        let sheetName = "Матрица результатов";
-        let fileName = "Матрица результатов и их мониторинга.xlsx";
 
 
+        $scope.data = {...$scope.data, ...$scope.objResult};
 
+        GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 
+            if (entry.code === 0) {
 
+                $window.open('/generatedocx?' + "country=" + $scope.data.country + "&typePeriod=" + $scope.data.typePeriod + "&year=" + $scope.data.year, '_blank');
 
-        var allHtmlTable = document.getElementById('printmatrix');
-        var workbook = XLSX.utils.table_to_book(allHtmlTable);
+            } else {
 
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent('Операция закончилась НЕУДАЧНО. Измените данные для ввода.')
+                        .position('bottom left')
+                        .hideDelay(6000)
+                );
 
-        workbook["SheetNames"][0] = sheetName;
-        workbook.Sheets[sheetName] = workbook.Sheets["Sheet1"];
-        delete workbook.Sheets["Sheet1"];
-
-
-
-
-        var wopts = {bookType: 'xlsx', bookSST: false, type: 'binary'};
-
-        var wbout = XLSX.write(workbook, wopts);
-
-        function s2ab(s) {
-            var buf = new ArrayBuffer(s.length);
-            var view = new Uint8Array(buf);
-            for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
-            return buf;
-        }
-
-        /* the saveAs call downloads a file on the local machine */
-        saveAs(new Blob([s2ab(wbout)], {type: "application/octet-stream"}), fileName);
-
-
-
+            }
+        });
 
 
     };

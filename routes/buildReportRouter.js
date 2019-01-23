@@ -480,6 +480,21 @@ router.post('/generatedocx', checkSeesionToken, async (req, res, next) =>{
 
 
 
+    } else if (req.body.data.typePeriod.includes("Полугодовой") && req.body.data.country.includes("РКГ")) {
+
+
+        pathToTemplateDocx = "half_year_rcu.docx";
+
+
+
+    } else if (req.body.data.typePeriod.includes("РЕЗУЛЬТАТОВ") && req.body.data.country.includes("матрица")) {
+
+
+
+        pathToTemplateDocx = "matrix_report.docx";
+
+
+
     }
 
 
