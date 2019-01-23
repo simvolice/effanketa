@@ -142,14 +142,21 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
-
             if (entry.resultFromDb[0].getAllGoodTestResult.length === 0) {
 
-                if (entry.resultFromDb[0].countCommonOk[0].avg === null) {
-                    $scope.data.allFormPercent = 0;
-                } else {
+
+
+
+                if (entry.resultFromDb[0].countCommonOk.length !== 0) {
+
+
+
 
                     $scope.data.allFormPercent = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0);
+
+
+                } else {
+                    $scope.data.allFormPercent = 0;
 
                 }
 
@@ -157,7 +164,9 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
             } else {
 
-                $scope.data.allFormPercent = persentTable[entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes];
+
+
+                $scope.data.allFormPercent = persentTable[entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes.toFixed(0)];
 
             }
 
