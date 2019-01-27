@@ -3820,7 +3820,7 @@ module.exports = {
                 grm: objParams.grm,
                 finstatus: objParams.finstatus,
 
-                plansNextPeriod: Double(objParams.plansNextPeriod),
+                plansNextPeriod: objParams.plansNextPeriod,
                 plansNextHalfYearPeriod: Double(objParams.plansNextHalfYearPeriod),
 
 
@@ -4186,7 +4186,7 @@ module.exports = {
                     finstatus: objParams.finstatus,
 
 
-                    plansNextPeriod: Double(objParams.plansNextPeriod),
+                    plansNextPeriod: objParams.plansNextPeriod,
                     plansNextHalfYearPeriod: Double(objParams.plansNextHalfYearPeriod),
 
 
