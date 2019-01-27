@@ -115,7 +115,10 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
     };
 
-    let summVal = 0;
+
+    $scope.average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+
+    $scope.summVal = [];
 
     $scope.generateReport = function (yearname) {
 
@@ -171,13 +174,14 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
             }
 
 
-            summVal += parseInt($scope.data.allFormPercent);
+
             arrAllData.push({allFormPercent: parseInt($scope.data.allFormPercent)});
+            $scope.summVal.push(parseInt($scope.data.allFormPercent));
 
 
             if (yearname === 2021) {
 
-                $scope.objResult["allFormPercent" + yearname] = summVal;
+                $scope.objResult["allFormPercent" + yearname] = $scope.average($scope.summVal).toFixed(0);
 
             } else {
 
@@ -195,6 +199,10 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
     };
+
+
+
+
 
     let summValcountProgramm = 0;
 
@@ -379,16 +387,16 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
     };
 
 
-   let summValsumComponents = 0;
-   let summValcountComponent1 = 0;
-   let summValcountComponent2 = 0;
-   let summValcountBenificiarProjectTj = 0;
-   let summValcountBenificiarProjectUz = 0;
-   let summValpercentSum = 0;
-   let summValpercentC1 = 0;
-   let summValpercentC2 = 0;
-   let summValTjPercentWomen = 0;
-   let summValUzPercentWomen = 0;
+   $scope.summValsumComponents = [];
+   $scope.summValcountComponent1 = [];
+   $scope.summValcountComponent2 = [];
+   $scope.summValcountBenificiarProjectTj = [];
+   $scope.summValcountBenificiarProjectUz = [];
+   $scope.summValpercentSum = [];
+   $scope.summValpercentC1 = [];
+   $scope.summValpercentC2 = [];
+   $scope.summValTjPercentWomen = [];
+   $scope.summValUzPercentWomen = [];
 
     $scope.generateReportCountBenificiarProject = function (yearname) {
 
@@ -443,16 +451,16 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
-                summValsumComponents += $scope.sumComponents;
-                summValcountComponent1 += $scope.data.countComponent1;
-                summValcountComponent2 += $scope.data.countComponent2;
-                summValcountBenificiarProjectTj += $scope.data.countBenificiarProjectTj;
-                summValcountBenificiarProjectUz += $scope.data.countBenificiarProjectUz;
-                summValpercentSum += $scope.data.percentSum;
-                summValpercentC1 += $scope.data.percentC1;
-                summValpercentC2 += $scope.data.percentC2;
-                summValTjPercentWomen += $scope.data.TjPercentWomen;
-                summValUzPercentWomen += $scope.data.UzPercentWomen;
+                $scope.summValsumComponents.push($scope.sumComponents);
+                $scope.summValcountComponent1.push($scope.data.countComponent1);
+                $scope.summValcountComponent2.push($scope.data.countComponent2);
+                $scope.summValcountBenificiarProjectTj.push($scope.data.countBenificiarProjectTj);
+                $scope.summValcountBenificiarProjectUz.push($scope.data.countBenificiarProjectUz);
+                $scope.summValpercentSum.push($scope.data.percentSum);
+                $scope.summValpercentC1.push($scope.data.percentC1);
+                $scope.summValpercentC2.push($scope.data.percentC2);
+                $scope.summValTjPercentWomen.push($scope.data.TjPercentWomen);
+                $scope.summValUzPercentWomen.push($scope.data.UzPercentWomen);
 
                 arrAllData.push({sumComponents: $scope.sumComponents});
                 arrAllData.push({countComponent1: $scope.data.countComponent1});
@@ -473,16 +481,16 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                 if (yearname === 2021) {
 
 
-                    $scope.objResult["sumComponents" + yearname] = summValsumComponents;
-                    $scope.objResult["countComponent1" + yearname] = summValcountComponent1;
-                    $scope.objResult["countComponent2" + yearname] = summValcountComponent2;
-                    $scope.objResult["countBenificiarProjectTj" + yearname] = summValcountBenificiarProjectTj;
-                    $scope.objResult["countBenificiarProjectUz" + yearname] = summValcountBenificiarProjectUz;
-                    $scope.objResult["percentSum" + yearname] = summValpercentSum;
-                    $scope.objResult["percentC1" + yearname] = summValpercentC1;
-                    $scope.objResult["percentC2" + yearname] = summValpercentC2;
-                    $scope.objResult["TjPercentWomen" + yearname] = summValTjPercentWomen;
-                    $scope.objResult["UzPercentWomen" + yearname] = summValUzPercentWomen;
+                    $scope.objResult["sumComponents" + yearname] = $scope.average($scope.summValsumComponents).toFixed(0);
+                    $scope.objResult["countComponent1" + yearname] = $scope.average($scope.summValcountComponent1).toFixed(0);
+                    $scope.objResult["countComponent2" + yearname] = $scope.average($scope.summValcountComponent2).toFixed(0);
+                    $scope.objResult["countBenificiarProjectTj" + yearname] = $scope.average($scope.summValcountBenificiarProjectTj).toFixed(0);
+                    $scope.objResult["countBenificiarProjectUz" + yearname] = $scope.average($scope.summValcountBenificiarProjectUz).toFixed(0);
+                    $scope.objResult["percentSum" + yearname] = $scope.average($scope.summValpercentSum).toFixed(0);
+                    $scope.objResult["percentC1" + yearname] = $scope.average($scope.summValpercentC1).toFixed(0);
+                    $scope.objResult["percentC2" + yearname] = $scope.average($scope.summValpercentC2).toFixed(0);
+                    $scope.objResult["TjPercentWomen" + yearname] = $scope.average($scope.summValTjPercentWomen).toFixed(0);
+                    $scope.objResult["UzPercentWomen" + yearname] = $scope.average($scope.summValUzPercentWomen).toFixed(0);
 
 
 
@@ -640,9 +648,9 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
     };
 
 
-    let summValcountGRM = 0;
-    let summValcountGRM_TJ = 0;
-    let summValcountGRM_UZ = 0;
+    $scope.summValcountGRM = [];
+    $scope.summValcountGRM_TJ = [];
+    $scope.summValcountGRM_UZ = [];
 
     $scope.generateReportCountCompleteGRM = function (yearname) {
 
@@ -677,17 +685,17 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                  });
 
 
-                 summValcountGRM += $scope.data.countGRM;
-                 summValcountGRM_TJ += $scope.data.countGRM_TJ;
-                 summValcountGRM_UZ += $scope.data.countGRM_UZ;
+                 $scope.summValcountGRM.push($scope.data.countGRM);
+                 $scope.summValcountGRM_TJ.push($scope.data.countGRM_TJ);
+                 $scope.summValcountGRM_UZ.push($scope.data.countGRM_UZ);
 
 
 
                  if (yearname === 2021) {
 
-                     $scope.objResult["countGRM" + yearname] = summValcountGRM;
-                     $scope.objResult["countGRM_TJ" + yearname] = summValcountGRM_TJ;
-                     $scope.objResult["countGRM_UZ" + yearname] = summValcountGRM_UZ;
+                     $scope.objResult["countGRM" + yearname] = $scope.average($scope.summValcountGRM).toFixed(0);
+                     $scope.objResult["countGRM_TJ" + yearname] = $scope.average($scope.summValcountGRM_TJ).toFixed(0);
+                     $scope.objResult["countGRM_UZ" + yearname] = $scope.average($scope.summValcountGRM_UZ).toFixed(0);
 
                  } else {
 
@@ -734,6 +742,33 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
+    $timeout(function () {
+
+        $scope.arrAllFormsResult = $scope.average($scope.summVal).toFixed(0);
+
+
+
+        $scope.summValsumComponentsResult = $scope.average($scope.summValsumComponents).toFixed(0);
+        $scope.summValcountComponent1Result = $scope.average($scope.summValcountComponent1).toFixed(0);
+        $scope.summValcountComponent2Result = $scope.average($scope.summValcountComponent2).toFixed(0);
+        $scope.summValcountBenificiarProjectTjResult = $scope.average($scope.summValcountBenificiarProjectTj).toFixed(0);
+        $scope.summValcountBenificiarProjectUzResult = $scope.average($scope.summValcountBenificiarProjectUz).toFixed(0);
+        $scope.summValpercentSumResult = $scope.average($scope.summValpercentSum).toFixed(0);
+        $scope.summValpercentC1Result = $scope.average($scope.summValpercentC1).toFixed(0);
+        $scope.summValpercentC2Result = $scope.average($scope.summValpercentC2).toFixed(0);
+        $scope.summValTjPercentWomenResult = $scope.average($scope.summValTjPercentWomen).toFixed(0);
+        $scope.summValUzPercentWomenResult = $scope.average($scope.summValUzPercentWomen).toFixed(0);
+
+
+
+
+        $scope.summValcountGRMResult = $scope.average($scope.summValcountGRM).toFixed(0);
+        $scope.summValcountGRM_TJResult = $scope.average($scope.summValcountGRM_TJ).toFixed(0);
+        $scope.summValcountGRM_UZResult = $scope.average($scope.summValcountGRM_UZ).toFixed(0);
+
+        }, 1000);
+
+
     $scope.print = function () {
         $("#printmatrix").css("visibility", "visible");
         $("#printmatrix").print();
@@ -751,6 +786,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
         $scope.data = {...$scope.data, ...$scope.objResult};
+
 
         GenerateDocxReport.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: $scope.data}, function(entry) {
 

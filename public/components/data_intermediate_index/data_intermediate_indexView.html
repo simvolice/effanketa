@@ -135,7 +135,7 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllFormsResult}}%</td>
                             </tr>
                             <tr>
 
@@ -410,11 +410,11 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">35%</span>
 
 
-                                    <br>{{arrAllCountBenificiarProject[0][5].percentSum + arrAllCountBenificiarProject[1][5].percentSum + arrAllCountBenificiarProject[2][5].percentSum + arrAllCountBenificiarProject[3][5].percentSum + arrAllCountBenificiarProject[4][5].percentSum}}
-                                    <br>C1 - {{arrAllCountBenificiarProject[0][6].percentC1 + arrAllCountBenificiarProject[1][6].percentC1 + arrAllCountBenificiarProject[2][6].percentC1 + arrAllCountBenificiarProject[3][6].percentC1 + arrAllCountBenificiarProject[4][6].percentC1}}
-                                    <br>C2 - {{arrAllCountBenificiarProject[0][7].percentC2 + arrAllCountBenificiarProject[1][7].percentC2 + arrAllCountBenificiarProject[2][7].percentC2 + arrAllCountBenificiarProject[3][7].percentC2 + arrAllCountBenificiarProject[4][7].percentC2}}
-                                    <br>Tj - {{arrAllCountBenificiarProject[0][8].TjPercentWomen + arrAllCountBenificiarProject[1][8].TjPercentWomen + arrAllCountBenificiarProject[2][8].TjPercentWomen + arrAllCountBenificiarProject[3][8].TjPercentWomen + arrAllCountBenificiarProject[4][8].TjPercentWomen}}
-                                    <br>Uz - {{arrAllCountBenificiarProject[0][9].UzPercentWomen + arrAllCountBenificiarProject[1][9].UzPercentWomen + arrAllCountBenificiarProject[2][9].UzPercentWomen + arrAllCountBenificiarProject[3][9].UzPercentWomen + arrAllCountBenificiarProject[4][9].UzPercentWomen}}
+                                    <br>{{summValpercentSumResult}}
+                                    <br>C1 - {{summValpercentC1Result}}
+                                    <br>C2 - {{summValpercentC2Result}}
+                                    <br>Tj - {{summValTjPercentWomenResult}}
+                                    <br>Uz - {{summValUzPercentWomenResult}}
 
 
 
@@ -581,10 +581,10 @@
 
 
 
-                                    <br>C1 - {{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%
-                                    <br>C2 - {{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%
-                                    <br>Tj - {{arrAllCountCompleteGRM[0][0].countGRM_TJ + arrAllCountCompleteGRM[1][0].countGRM_TJ + arrAllCountCompleteGRM[2][0].countGRM_TJ + arrAllCountCompleteGRM[3][0].countGRM_TJ + arrAllCountCompleteGRM[4][0].countGRM_TJ}}%
-                                    <br>Uz - {{arrAllCountCompleteGRM[0][0].countGRM_UZ + arrAllCountCompleteGRM[1][0].countGRM_UZ + arrAllCountCompleteGRM[2][0].countGRM_UZ + arrAllCountCompleteGRM[3][0].countGRM_UZ + arrAllCountCompleteGRM[4][0].countGRM_UZ}}%
+                                    <br>C1 - {{summValcountGRMResult}}%
+                                    <br>C2 - {{summValcountGRMResult}}%
+                                    <br>Tj - {{summValcountGRM_TJResult}}%
+                                    <br>Uz - {{summValcountGRM_UZResult}}%
 
 
 
@@ -644,7 +644,7 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
                                     <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
-                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
+                                    <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllFormsResult}}%</td>
                                 </tr>
                                 <tr>
 
@@ -919,11 +919,11 @@
                                     <td class="tg-lqy6"><span class="custom__data__index">35%</span>
 
 
-                                        <br>{{arrAllCountBenificiarProject[0][5].percentSum + arrAllCountBenificiarProject[1][5].percentSum + arrAllCountBenificiarProject[2][5].percentSum + arrAllCountBenificiarProject[3][5].percentSum + arrAllCountBenificiarProject[4][5].percentSum}}
-                                        <br>C1 - {{arrAllCountBenificiarProject[0][6].percentC1 + arrAllCountBenificiarProject[1][6].percentC1 + arrAllCountBenificiarProject[2][6].percentC1 + arrAllCountBenificiarProject[3][6].percentC1 + arrAllCountBenificiarProject[4][6].percentC1}}
-                                        <br>C2 - {{arrAllCountBenificiarProject[0][7].percentC2 + arrAllCountBenificiarProject[1][7].percentC2 + arrAllCountBenificiarProject[2][7].percentC2 + arrAllCountBenificiarProject[3][7].percentC2 + arrAllCountBenificiarProject[4][7].percentC2}}
-                                        <br>Tj - {{arrAllCountBenificiarProject[0][8].TjPercentWomen + arrAllCountBenificiarProject[1][8].TjPercentWomen + arrAllCountBenificiarProject[2][8].TjPercentWomen + arrAllCountBenificiarProject[3][8].TjPercentWomen + arrAllCountBenificiarProject[4][8].TjPercentWomen}}
-                                        <br>Uz - {{arrAllCountBenificiarProject[0][9].UzPercentWomen + arrAllCountBenificiarProject[1][9].UzPercentWomen + arrAllCountBenificiarProject[2][9].UzPercentWomen + arrAllCountBenificiarProject[3][9].UzPercentWomen + arrAllCountBenificiarProject[4][9].UzPercentWomen}}
+                                        <br>{{summValpercentSumResult}}
+                                        <br>C1 - {{summValpercentC1Result}}
+                                        <br>C2 - {{summValpercentC2Result}}
+                                        <br>Tj - {{summValTjPercentWomenResult}}
+                                        <br>Uz - {{summValUzPercentWomenResult}}
 
 
 
@@ -1090,10 +1090,10 @@
 
 
 
-                                        <br>C1 - {{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%
-                                        <br>C2 - {{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%
-                                        <br>Tj - {{arrAllCountCompleteGRM[0][0].countGRM_TJ + arrAllCountCompleteGRM[1][0].countGRM_TJ + arrAllCountCompleteGRM[2][0].countGRM_TJ + arrAllCountCompleteGRM[3][0].countGRM_TJ + arrAllCountCompleteGRM[4][0].countGRM_TJ}}%
-                                        <br>Uz - {{arrAllCountCompleteGRM[0][0].countGRM_UZ + arrAllCountCompleteGRM[1][0].countGRM_UZ + arrAllCountCompleteGRM[2][0].countGRM_UZ + arrAllCountCompleteGRM[3][0].countGRM_UZ + arrAllCountCompleteGRM[4][0].countGRM_UZ}}%
+                                        <br>C1 - {{summValcountGRMResult}}%
+                                        <br>C2 - {{summValcountGRMResult}}%
+                                        <br>Tj - {{summValcountGRM_TJResult}}%
+                                        <br>Uz - {{summValcountGRM_UZResult}}%
 
 
 
@@ -1177,7 +1177,7 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[2][0].allFormPercent}}%</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">30%</span><br>{{arrAllForms[3][0].allFormPercent}}%</td>
                                 <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[4][0].allFormPercent}}%</td>
-                                <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllForms[0][0].allFormPercent + arrAllForms[1][0].allFormPercent + arrAllForms[2][0].allFormPercent + arrAllForms[3][0].allFormPercent + arrAllForms[4][0].allFormPercent}}%</td>
+                                <td class="tg-lqy6"><span class="custom__data__index">60%</span><br>{{arrAllFormsResult}}%</td>
                             </tr>
                             <tr>
 
@@ -1452,11 +1452,11 @@
                                 <td class="tg-lqy6"><span class="custom__data__index">35%</span>
 
 
-                                    <br>{{arrAllCountBenificiarProject[0][5].percentSum + arrAllCountBenificiarProject[1][5].percentSum + arrAllCountBenificiarProject[2][5].percentSum + arrAllCountBenificiarProject[3][5].percentSum + arrAllCountBenificiarProject[4][5].percentSum}}
-                                    <br>C1 - {{arrAllCountBenificiarProject[0][6].percentC1 + arrAllCountBenificiarProject[1][6].percentC1 + arrAllCountBenificiarProject[2][6].percentC1 + arrAllCountBenificiarProject[3][6].percentC1 + arrAllCountBenificiarProject[4][6].percentC1}}
-                                    <br>C2 - {{arrAllCountBenificiarProject[0][7].percentC2 + arrAllCountBenificiarProject[1][7].percentC2 + arrAllCountBenificiarProject[2][7].percentC2 + arrAllCountBenificiarProject[3][7].percentC2 + arrAllCountBenificiarProject[4][7].percentC2}}
-                                    <br>Tj - {{arrAllCountBenificiarProject[0][8].TjPercentWomen + arrAllCountBenificiarProject[1][8].TjPercentWomen + arrAllCountBenificiarProject[2][8].TjPercentWomen + arrAllCountBenificiarProject[3][8].TjPercentWomen + arrAllCountBenificiarProject[4][8].TjPercentWomen}}
-                                    <br>Uz - {{arrAllCountBenificiarProject[0][9].UzPercentWomen + arrAllCountBenificiarProject[1][9].UzPercentWomen + arrAllCountBenificiarProject[2][9].UzPercentWomen + arrAllCountBenificiarProject[3][9].UzPercentWomen + arrAllCountBenificiarProject[4][9].UzPercentWomen}}
+                                    <br>{{summValpercentSumResult}}
+                                    <br>C1 - {{summValpercentC1Result}}
+                                    <br>C2 - {{summValpercentC2Result}}
+                                    <br>Tj - {{summValTjPercentWomenResult}}
+                                    <br>Uz - {{summValUzPercentWomenResult}}
 
 
 
@@ -1623,10 +1623,10 @@
 
 
 
-                                    <br>C1 - {{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%
-                                    <br>C2 - {{arrAllCountCompleteGRM[0][0].countGRM + arrAllCountCompleteGRM[1][0].countGRM + arrAllCountCompleteGRM[2][0].countGRM + arrAllCountCompleteGRM[3][0].countGRM + arrAllCountCompleteGRM[4][0].countGRM}}%
-                                    <br>Tj - {{arrAllCountCompleteGRM[0][0].countGRM_TJ + arrAllCountCompleteGRM[1][0].countGRM_TJ + arrAllCountCompleteGRM[2][0].countGRM_TJ + arrAllCountCompleteGRM[3][0].countGRM_TJ + arrAllCountCompleteGRM[4][0].countGRM_TJ}}%
-                                    <br>Uz - {{arrAllCountCompleteGRM[0][0].countGRM_UZ + arrAllCountCompleteGRM[1][0].countGRM_UZ + arrAllCountCompleteGRM[2][0].countGRM_UZ + arrAllCountCompleteGRM[3][0].countGRM_UZ + arrAllCountCompleteGRM[4][0].countGRM_UZ}}%
+                                    <br>C1 - {{summValcountGRMResult}}%
+                                    <br>C2 - {{summValcountGRMResult}}%
+                                    <br>Tj - {{summValcountGRM_TJResult}}%
+                                    <br>Uz - {{summValcountGRM_UZResult}}%
 
 
 
@@ -1639,6 +1639,7 @@
                             </tr>
 
                             </tbody>
+
 
 
 
