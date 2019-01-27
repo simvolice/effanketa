@@ -603,8 +603,8 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
 
         }
 
-        $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(1);
-        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(1);
+        $scope.data.categorizedByBalanceYearTadzhik[0] = $scope.data.categorizedByBalanceYearTadzhik.length === 0 ? {totalBalance: 0} : {totalBalance: $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(1)};
+        $scope.data.categorizedByBalanceYearUzbeck[0] = $scope.data.categorizedByBalanceYearUzbeck.length === 0 ? {totalBalance: 0} : {totalBalance: $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(1)};
 
     });
 
@@ -614,12 +614,13 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
 
 
 
-        $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
-        $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
+
+        $scope.data.NCUTajikistan = result.resultFromDb[0].getTadzhikNCUYear.length === 0 ? 0 : result.resultFromDb[0].getTadzhikNCUYear[0].plannedBudget;
+        $scope.data.NCUUzbekistan = result.resultFromDb[0].getUzbekNCUYear.length === 0 ? 0 : result.resultFromDb[0].getUzbekNCUYear[0].plannedBudget;
 
 
 
-        $scope.data.risks = result.resultFromDb[0].getTadzhikNCUYear[0].risks[0];
+       /* $scope.data.risks = result.resultFromDb[0].getTadzhikNCUYear[0].risks[0];
         $scope.data.lessonsLearned = result.resultFromDb[0].getTadzhikNCUYear[0].lessonsLearned[0];
         $scope.data.recommendations = result.resultFromDb[0].getTadzhikNCUYear[0].recommendations[0];
         $scope.data.projectPerformance = result.resultFromDb[0].getTadzhikNCUYear[0].projectPerformanceComments[0];
@@ -629,7 +630,7 @@ function DialogControllerNewReportYearRCU($state, $scope, data, GetReportFinansi
         $scope.data.lessonsLearned +=  "\n" + result.resultFromDb[0].getUzbekNCUYear[0].lessonsLearned[0];
         $scope.data.recommendations += "\n" + result.resultFromDb[0].getUzbekNCUYear[0].recommendations[0];
         $scope.data.projectPerformance += "\n" + result.resultFromDb[0].getUzbekNCUYear[0].projectPerformanceComments[0];
-
+*/
 
     });
 
@@ -1037,23 +1038,31 @@ function DialogControllerNewReportHalfYearRCU($scope, data, GetReportFinansialSt
 
         }
 
+
+
         $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance = $scope.data.categorizedByBalanceYearTadzhik[0].totalBalance.toFixed(1);
-        $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance = $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(1);
+        $scope.data.categorizedByBalanceYearUzbeck[0] = $scope.data.categorizedByBalanceYearUzbeck.length === 0 ? {totalBalance: 0} : {totalBalance: $scope.data.categorizedByBalanceYearUzbeck[0].totalBalance.toFixed(1)};
 
         try {
-            $scope.data.NCUTajikistan = entry.resultFromDb[0].PlanForNextPeriodTadzhik[0].totalPlan;
+
+
+            $scope.data.NCUTajikistan = entry.resultFromDb[0].PlanForNextPeriodTadzhik[0].plansNextPeriod;
+            $scope.data.nextHalfYearNCUTajikistan = entry.resultFromDb[0].PlanForNextPeriodTadzhik[0].plansNextHalfYearPeriod;
        }catch (e) {
-            $scope.data.NCUTajikistan = 0;
+            $scope.data.NCUTajikistan = "";
+            $scope.data.nextHalfYearNCUTajikistan = 0;
 
         }
 
 
 
       try {
-          $scope.data.NCUUzbekistan = entry.resultFromDb[0].PlanForNextPeriodUzbek[0].totalPlan;
+          $scope.data.NCUUzbekistan = entry.resultFromDb[0].PlanForNextPeriodUzbek[0].plansNextPeriod;
+          $scope.data.nextHalfYearNCUUzbekistan = entry.resultFromDb[0].PlanForNextPeriodUzbek[0].plansNextHalfYearPeriod;
 
       }catch (e) {
-          $scope.data.NCUUzbekistan = 0;
+          $scope.data.NCUUzbekistan = "";
+          $scope.data.nextHalfYearNCUUzbekistan = 0;
       }
 
 

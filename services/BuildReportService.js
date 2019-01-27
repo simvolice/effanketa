@@ -3676,16 +3676,17 @@ module.exports = {
 
                             {
 
-                                $match: {country: "НКГ Таджикистана, Компонент 2"}
+                                $match: {country: "НКГ Таджикистана, Компонент 2", typePeriod: "Полугодовой (1-ое полугодие, янв-июнь)"}
 
                             },
 
 
                             {
-                                $group: {
-                                    _id: null,
+                                $project: {
+                                    _id: 0,
 
-                                    totalPlan: { $sum: "$plansNextHalfYearPeriod" }
+                                    plansNextPeriod: 1,
+                                    plansNextHalfYearPeriod: 1
 
                                 }
                             }
@@ -3706,20 +3707,20 @@ module.exports = {
 
                             {
 
-                                $match: {country: "НКГ Узбекистана, Компонент 2"}
+                                $match: {country: "НКГ Узбекистана, Компонент 2", typePeriod: "Полугодовой (1-ое полугодие, янв-июнь)"}
 
                             },
 
 
                             {
-                                $group: {
-                                    _id: null,
+                                $project: {
+                                    _id: 0,
 
-                                    totalPlan: { $sum: "$plansNextHalfYearPeriod" }
+                                    plansNextPeriod: 1,
+                                    plansNextHalfYearPeriod: 1
 
                                 }
                             }
-
 
 
 
@@ -3894,7 +3895,7 @@ module.exports = {
                 risks: objParams.risks,
                 lessonsLearned: objParams.lessonsLearned,
                 recommendations: objParams.recommendations,
-                plannedBudget: Double(objParams.plannedBudget),
+                plannedBudget: objParams.plannedBudget,
 
 
                 finstatus: objParams.finstatus,
@@ -4262,7 +4263,7 @@ module.exports = {
                     risks: objParams.risks,
                     lessonsLearned: objParams.lessonsLearned,
                     recommendations: objParams.recommendations,
-                    plannedBudget: Double(objParams.plannedBudget)
+                    plannedBudget: objParams.plannedBudget
 
                 }
 
@@ -4499,13 +4500,10 @@ module.exports = {
 
 
                             {
-                                $group : {
-                                    _id : null,
-                                    risks: { $push: "$risks"},
-                                    lessonsLearned: { $push: "$lessonsLearned"},
-                                    recommendations: { $push: "$recommendations"},
-                                    projectPerformanceComments: { $push: "$projectPerformanceComments"},
-                                    plannedBudget: { $sum: "$plannedBudget" }
+                                $project : {
+                                    _id : 0,
+
+                                    plannedBudget: 1
 
                                 }
                             }
@@ -4532,16 +4530,14 @@ module.exports = {
 
 
                             {
-                                $group : {
-                                    _id : null,
-                                    risks: { $push: "$risks"},
-                                    lessonsLearned: { $push: "$lessonsLearned"},
-                                    recommendations: { $push: "$recommendations"},
-                                    projectPerformanceComments: { $push: "$projectPerformanceComments"},
-                                    plannedBudget: { $sum: "$plannedBudget" }
+                                $project : {
+                                    _id : 0,
+
+                                    plannedBudget: 1
 
                                 }
                             }
+
 
 
 
