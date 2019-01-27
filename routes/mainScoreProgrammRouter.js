@@ -39,7 +39,7 @@ router.post('/addplatform', checkSeesionToken, async (req, res, next) =>{
 router.post('/getplatform', checkSeesionToken, async (req, res, next) =>{
 
 
-    let result = await checkRole.forPlatform(req.body.sessionToken);
+    let result = await MainScoreProgramService.getAll();
 
 
     if (result === false){
@@ -137,7 +137,7 @@ router.post('/addproject', checkSeesionToken, async (req, res, next) =>{
 router.post('/getproject', checkSeesionToken, async (req, res, next) =>{
 
 
-    let result = await checkRole.forProject(req.body.sessionToken);
+    let result = await MainScoreProgramService.getAllProject();
 
 
     if (result === false){
@@ -228,7 +228,7 @@ router.post('/addregionalinvest', checkSeesionToken, async (req, res, next) =>{
 router.post('/getregionalinvest', checkSeesionToken, async (req, res, next) =>{
 
 
-    let result = await checkRole.forRegionalInvest(req.body.sessionToken);
+    let result = await MainScoreProgramService.getAllRegionalInvest();
 
 
     if (result === false){
@@ -319,7 +319,7 @@ router.post('/addmobileresurs', checkSeesionToken, async (req, res, next) =>{
 router.post('/getmobileresurs', checkSeesionToken, async (req, res, next) =>{
 
 
-    let result = await checkRole.forMobileResurs(req.body.sessionToken);
+    let result = await MainScoreProgramService.getAllMobileResurs();
 
 
     if (result === false){
