@@ -1850,8 +1850,8 @@ $scope.data = {
 
 
 
-           $scope.data.countSatisfactionWomen = persentTable[$scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes];
-           $scope.data.countSatisfaction = persentTable[$scope.data.countSatisfaction[0].all_countSatisfaction_yes];
+           $scope.data.countSatisfactionWomen = persentTable[$scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes.toFixed(0)];
+           $scope.data.countSatisfaction = persentTable[$scope.data.countSatisfaction[0].all_countSatisfaction_yes.toFixed(0)];
 
 
 
