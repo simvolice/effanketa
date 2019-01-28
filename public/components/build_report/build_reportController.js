@@ -1759,9 +1759,10 @@ function DialogControllerUpdReportQNCU($scope, data, UpdReport) {
 }
 
 
-function DialogControllerNewReportQ($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
+    function DialogControllerNewReportQ($scope, data, GetGrowPotencial, GetReportCredits, GetReportGrm, GetReportFinansialStatus, AddNewReport, GetGrowPotencialNewVersion) {
 
+        $scope.average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
 
     /*
     Процент одного числа от другого
@@ -1848,6 +1849,7 @@ $scope.data = {
 
             const persentTable = {
 
+                0: 0,
                 1: 20,
                 2: 40,
                 3: 60,
@@ -1858,19 +1860,30 @@ $scope.data = {
             };
 
 
+            let avgByFormsWomen = persentTable[$scope.data.countSatisfactionWomen.length === 0 ? 0 : $scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes.toFixed(0)];
+            let avgByFormsAll = persentTable[$scope.data.countSatisfaction.length === 0 ? 0 : $scope.data.countSatisfaction[0].all_countSatisfaction_yes.toFixed(0)];
 
-           $scope.data.countSatisfactionWomen = persentTable[$scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes.toFixed(0)];
-           $scope.data.countSatisfaction = persentTable[$scope.data.countSatisfaction[0].all_countSatisfaction_yes.toFixed(0)];
+
+
+            let arrAvgAll = [];
+            let arrAvgAllWomen = [];
+
+
+            arrAvgAll.push(avgByFormsAll);
+            arrAvgAll.push($scope.data.countCommonOk[0].avg);
+            arrAvgAllWomen.push(avgByFormsWomen);
+            arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+
+
+
+           $scope.data.countSatisfactionWomen = $scope.average(arrAvgAllWomen).toFixed(0);
+           $scope.data.countSatisfaction = $scope.average(arrAvgAll).toFixed(0);
 
 
 
 
         }catch (e) {
-
-
-
-           $scope.data.countSatisfaction = $scope.data.countCommonOk[0].avg;
-           $scope.data.countSatisfactionWomen = $scope.data.countCommonOkWomen[0].avg;
 
 
 

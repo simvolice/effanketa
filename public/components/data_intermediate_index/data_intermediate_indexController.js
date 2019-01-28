@@ -144,36 +144,19 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
-
-            if (entry.resultFromDb[0].getAllGoodTestResult.length === 0) {
-
-
+            let avgByForms = persentTable[entry.resultFromDb[0].getAllGoodTestResult.length === 0 ? 0 : entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes.toFixed(0)];
+            let avgByCustom = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : parseInt(entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0));
 
 
-                if (entry.resultFromDb[0].countCommonOk.length !== 0) {
+           let arrAvgResult = [];
 
-
-
-
-                    $scope.data.allFormPercent = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0);
-
-
-                } else {
-                    $scope.data.allFormPercent = 0;
-
-                }
+           arrAvgResult.push(avgByForms);
+           arrAvgResult.push(avgByCustom);
 
 
 
-            } else {
 
-
-
-                $scope.data.allFormPercent = persentTable[entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes.toFixed(0)];
-
-            }
-
-
+            $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
 
             arrAllData.push({allFormPercent: parseInt($scope.data.allFormPercent)});
             $scope.summVal.push(parseInt($scope.data.allFormPercent));
