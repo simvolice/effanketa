@@ -697,7 +697,8 @@ module.exports = {
 
                             {
 
-                                $match: {}
+                                $match: {nameCountry: "РКГ, Региональный компонент 1"}
+
 
                             },
 
@@ -722,7 +723,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$DirectBeneficiariesAll"}
+                                    all_benificiar: {$sum: "CreatePowerPlan"}
 
 
                                 }
@@ -763,7 +764,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$DirectBeneficiariesAll"}
+                                    all_benificiar: {$sum: "$CreatePowerPlan"}
 
 
                                 }
@@ -802,7 +803,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$DirectBeneficiariesAll"}
+                                    all_benificiar: {$sum: "$CreatePowerPlan"}
 
 
                                 }
@@ -822,7 +823,8 @@ module.exports = {
 
                             {
 
-                                $match: {}
+                                $match: {nameCountry: "РКГ, Региональный компонент 1"}
+
 
                             },
 
@@ -847,7 +849,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$DirectBeneficiariesFemale"}
+                                    all_benificiar: {$sum: "$CreatePowerFact"}
 
 
                                 }
@@ -888,7 +890,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$DirectBeneficiariesFemale"}
+                                    all_benificiar: {$sum: "$CreatePowerFact"}
 
 
                                 }
@@ -927,7 +929,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$DirectBeneficiariesFemale"}
+                                    all_benificiar: {$sum: "$CreatePowerFact"}
 
 
                                 }
