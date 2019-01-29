@@ -227,8 +227,8 @@ module.exports = {
                 nameSubTypeEvent: nameSubTypeEvent.name,
                 urlFile: objParams.urlFile,
 
-                common_ok_persent: Int32(objParams.common_ok_persent),
-                common_women_persent: Int32(objParams.common_women_persent),
+                common_ok_persent: objParams.common_ok_persent === null || objParams.common_ok_persent === "" ? null : Int32(objParams.common_ok_persent),
+                common_women_persent: objParams.common_women_persent === null || objParams.common_women_persent === "" ? null : Int32(objParams.common_women_persent),
 
                 countPeopleEventCommon: objParams.countPeopleEventCommon,
                 countWomanEventCommon: objParams.countWomanEventCommon,
@@ -420,8 +420,8 @@ module.exports = {
                         subTypeEvent: ObjectId(objParams.subTypeEvent),
                         nameSubTypeEvent: nameSubTypeEvent.name,
 
-                        common_ok_persent: Int32(objParams.common_ok_persent),
-                        common_women_persent: Int32(objParams.common_women_persent),
+                        common_ok_persent: objParams.common_ok_persent === null || objParams.common_ok_persent === "" ? null : Int32(objParams.common_ok_persent),
+                        common_women_persent: objParams.common_women_persent === null || objParams.common_women_persent === "" ? null : Int32(objParams.common_women_persent),
                         urlFile: objParams.urlFile,
                         countPeopleEventCommon: objParams.countPeopleEventCommon,
                         countWomanEventCommon: objParams.countWomanEventCommon,

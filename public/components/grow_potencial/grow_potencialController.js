@@ -728,8 +728,8 @@ function DialogController($scope, AddEvent, GetAllCoutrys, $mdToast, GetAllEvent
         nameEvent: "",
         typeEvent: "",
         subTypeEvent: "",
-        common_ok_persent: 0,
-        common_women_persent: 0,
+        common_ok_persent: null,
+        common_women_persent: null,
 
         countPeopleEventCommon: "",
         countWomanEventCommon: "",
