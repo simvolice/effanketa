@@ -116,7 +116,22 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
     };
 
 
-    $scope.average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+    $scope.average = arr => {
+
+
+        if (arr.length === 0) {
+
+            return 0;
+        } else {
+
+            return arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+        }
+
+
+    };
+
+
+
 
     $scope.summVal = [];
 
@@ -726,6 +741,55 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
     $timeout(function () {
+
+
+        $scope.summVal = $scope.summVal.filter(function (item) {
+
+            return item !== 0;
+
+        });
+
+
+        $scope.summValsumComponents = $scope.summValsumComponents.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountComponent1 = $scope.summValcountComponent1.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountComponent2 = $scope.summValcountComponent2.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountBenificiarProjectTj = $scope.summValcountBenificiarProjectTj.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountBenificiarProjectUz = $scope.summValcountBenificiarProjectUz.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValpercentSum = $scope.summValpercentSum.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValpercentC1 = $scope.summValpercentC1.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValpercentC2 = $scope.summValpercentC2.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValTjPercentWomen = $scope.summValTjPercentWomen.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValUzPercentWomen = $scope.summValUzPercentWomen.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountGRM = $scope.summValcountGRM.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountGRM_TJ = $scope.summValcountGRM_TJ.filter(function (item) {
+            return item !== 0;
+        });
+        $scope.summValcountGRM_UZ = $scope.summValcountGRM_UZ.filter(function (item) {
+            return item !== 0;
+        });
+
 
 
 
