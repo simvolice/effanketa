@@ -150,8 +150,15 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
            let arrAvgResult = [];
 
-           arrAvgResult.push(avgByForms);
-           arrAvgResult.push(avgByCustom);
+
+           if (avgByForms === 0) {
+               arrAvgResult.push(avgByCustom);
+           } else {
+               arrAvgResult.push(avgByForms);
+               arrAvgResult.push(avgByCustom);
+
+           }
+
 
 
 
@@ -726,6 +733,8 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
     $timeout(function () {
+
+
 
         $scope.arrAllFormsResult = $scope.average($scope.summVal).toFixed(0);
 

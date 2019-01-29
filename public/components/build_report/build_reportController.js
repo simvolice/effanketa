@@ -1865,20 +1865,40 @@ $scope.data = {
 
 
 
-            let arrAvgAll = [];
-            let arrAvgAllWomen = [];
 
 
-            arrAvgAll.push(avgByFormsAll);
-            arrAvgAll.push($scope.data.countCommonOk[0].avg);
-            arrAvgAllWomen.push(avgByFormsWomen);
-            arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+                let arrAvgAll = [];
+                let arrAvgAllWomen = [];
 
 
 
+                if (avgByFormsAll === 0) {
+                    arrAvgAll.push($scope.data.countCommonOk[0].avg);
+                } else {
 
-           $scope.data.countSatisfactionWomen = $scope.average(arrAvgAllWomen).toFixed(0);
-           $scope.data.countSatisfaction = $scope.average(arrAvgAll).toFixed(0);
+                    arrAvgAll.push(avgByFormsAll);
+                    arrAvgAll.push($scope.data.countCommonOk[0].avg);
+                }
+
+                if (avgByFormsWomen === 0) {
+                    arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+                } else {
+
+                    arrAvgAllWomen.push(avgByFormsWomen);
+                    arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+                }
+
+
+
+
+
+                $scope.data.countSatisfactionWomen = $scope.average(arrAvgAllWomen).toFixed(0);
+                $scope.data.countSatisfaction = $scope.average(arrAvgAll).toFixed(0);
+
+
+
 
 
 
