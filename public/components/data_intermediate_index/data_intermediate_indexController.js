@@ -681,6 +681,8 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
+
+
          GetReportCountCompleteGRM.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
 
