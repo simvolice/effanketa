@@ -1765,12 +1765,12 @@ function DialogControllerUpdReportQNCU($scope, data, UpdReport) {
         $scope.average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
 
     /*
-    Процент одного числа от другого
+    Процент от базовой шкалы в 5
      */
-    $scope.calculatePercent = function (numAllComplaint, numComplaintWithYes) {
+    $scope.calculatePercent = function (numAllComplaint) {
 
-        let result = numComplaintWithYes * 100 / numAllComplaint;
-        return result.toFixed(0);
+        let result = numAllComplaint * 100 / 5;
+        return parseInt(result.toFixed(0));
     };
 
 $scope.data = {
@@ -1847,22 +1847,11 @@ $scope.data = {
 
        try {
 
-            const persentTable = {
-
-                0: 0,
-                1: 20,
-                2: 40,
-                3: 60,
-                4: 80,
-                5: 100
 
 
-            };
 
-
-            let avgByFormsWomen = persentTable[$scope.data.countSatisfactionWomen.length === 0 ? 0 : $scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes.toFixed(0)];
-            let avgByFormsAll = persentTable[$scope.data.countSatisfaction.length === 0 ? 0 : $scope.data.countSatisfaction[0].all_countSatisfaction_yes.toFixed(0)];
-
+            let avgByFormsWomen = $scope.calculatePercent($scope.data.countSatisfactionWomen.length === 0 ? 0 : $scope.data.countSatisfactionWomen[0].all_countSatisfaction_women_yes);
+            let avgByFormsAll = $scope.calculatePercent($scope.data.countSatisfaction.length === 0 ? 0 : $scope.data.countSatisfaction[0].all_countSatisfaction_yes);
 
 
 
@@ -1872,23 +1861,33 @@ $scope.data = {
 
 
 
-                if (avgByFormsAll === 0) {
-                    arrAvgAll.push($scope.data.countCommonOk[0].avg);
-                } else {
 
-                    arrAvgAll.push(avgByFormsAll);
-                    arrAvgAll.push($scope.data.countCommonOk[0].avg);
-                }
+           arrAvgAll.push(avgByFormsAll);
+           arrAvgAll.push($scope.data.countCommonOk[0].avg);
 
-                if (avgByFormsWomen === 0) {
-                    arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
 
-                } else {
 
-                    arrAvgAllWomen.push(avgByFormsWomen);
-                    arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+           if (arrAvgAll.indexOf(0) !== -1) {
 
-                }
+               arrAvgAll.splice(arrAvgAll.indexOf(0), 1);
+           }
+
+
+
+
+
+           arrAvgAllWomen.push(avgByFormsWomen);
+           arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+
+           if (arrAvgAllWomen.indexOf(0) !== -1) {
+
+               arrAvgAllWomen.splice(arrAvgAllWomen.indexOf(0), 1);
+           }
+
+
+
+
 
 
 

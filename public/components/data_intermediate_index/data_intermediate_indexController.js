@@ -129,35 +129,28 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
         GetReportAllForms.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken'), data: yearname}, function(entry) {
 
 
-            const persentTable = {
-
-                0: 0,
-                1: 20,
-                2: 40,
-                3: 60,
-                4: 80,
-                5: 100
-
-
-            };
 
 
 
 
-            let avgByForms = persentTable[entry.resultFromDb[0].getAllGoodTestResult.length === 0 ? 0 : entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes.toFixed(0)];
+
+            let avgByForms = $scope.calculatePercent(5 ,entry.resultFromDb[0].getAllGoodTestResult.length === 0 ? 0 : entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes);
             let avgByCustom = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : parseInt(entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0));
 
 
            let arrAvgResult = [];
 
+            arrAvgResult.push(avgByForms);
+            arrAvgResult.push(avgByCustom);
 
-           if (avgByForms === 0) {
-               arrAvgResult.push(avgByCustom);
-           } else {
-               arrAvgResult.push(avgByForms);
-               arrAvgResult.push(avgByCustom);
+            if (arrAvgResult.indexOf(0) !== -1) {
 
-           }
+                arrAvgResult.splice(arrAvgResult.indexOf(0), 1);
+            }
+
+
+
+
 
 
 
