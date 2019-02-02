@@ -1856,6 +1856,7 @@ $scope.data = {
 
 
 
+
                 let arrAvgAll = [];
                 let arrAvgAllWomen = [];
 
@@ -1863,7 +1864,11 @@ $scope.data = {
 
 
            arrAvgAll.push(avgByFormsAll);
-           arrAvgAll.push($scope.data.countCommonOk[0].avg);
+
+           if ($scope.data.countCommonOk[0].avg !== null) {
+               arrAvgAll.push($scope.data.countCommonOk[0].avg);
+
+           }
 
 
 
@@ -1876,14 +1881,23 @@ $scope.data = {
 
 
 
+
+
+
            arrAvgAllWomen.push(avgByFormsWomen);
-           arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+           if ($scope.data.countCommonOkWomen[0].avg !== null) {
+               arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+           }
+
 
 
            if (arrAvgAllWomen.indexOf(0) !== -1) {
 
                arrAvgAllWomen.splice(arrAvgAllWomen.indexOf(0), 1);
            }
+
 
 
 
