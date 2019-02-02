@@ -1857,6 +1857,7 @@ $scope.data = {
 
 
 
+
                 let arrAvgAll = [];
                 let arrAvgAllWomen = [];
 

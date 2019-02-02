@@ -6,6 +6,10 @@
 
 angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope, GetYearName, GetTypePeriod, GetAllCoutrys, $mdToast, GetGrowPotencial, GetReportForEvent, $window) {
 
+
+    $scope.average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+
+
     /*
    Поиск 100 процентов
     */
@@ -20,7 +24,7 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
             let result = value * 100 / numberBase;
-            return result.toFixed(1);
+            return parseInt(result.toFixed(0));
 
         }
 
@@ -86,6 +90,9 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 $scope.data.categorizedBySum = obj.categorizedBySum;
                 $scope.data.categorizedByLearningEvent = obj.categorizedByLearningEvent;
                 $scope.data.categorizedByGenderEvent = obj.categorizedByGenderEvent;
+
+
+
                 $scope.data.countSatisfaction = obj.countSatisfaction;
                 $scope.data.countNoSatisfaction = obj.countNoSatisfaction;
                 $scope.data.countSatisfactionCommonAll = obj.countSatisfactionCommonAll;
@@ -120,16 +127,75 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
 
 
+            let avgByFormsWomen = $scope.calculatePercent(5, $scope.data.countSatisfactionWomen.length === 0 ? 0 : $scope.data.countSatisfactionWomen[0].countAll);
+            let avgByFormsAll = $scope.calculatePercent(5, $scope.data.countSatisfaction.length === 0 ? 0 : $scope.data.countSatisfaction[0].countAll);
 
 
-               let chartAverage = bb.generate({
+
+
+
+
+            let arrAvgAll = [];
+            let arrAvgAllWomen = [];
+
+
+
+
+            arrAvgAll.push(avgByFormsAll);
+
+            if ($scope.data.countCommonOk[0].avg !== null) {
+                arrAvgAll.push($scope.data.countCommonOk[0].avg);
+
+            }
+
+
+
+            if (arrAvgAll.indexOf(0) !== -1) {
+
+                arrAvgAll.splice(arrAvgAll.indexOf(0), 1);
+            }
+
+
+
+
+
+
+
+
+            arrAvgAllWomen.push(avgByFormsWomen);
+
+            if ($scope.data.countCommonOkWomen[0].avg !== null) {
+                arrAvgAllWomen.push($scope.data.countCommonOkWomen[0].avg);
+
+            }
+
+
+
+            if (arrAvgAllWomen.indexOf(0) !== -1) {
+
+                arrAvgAllWomen.splice(arrAvgAllWomen.indexOf(0), 1);
+            }
+
+
+
+
+
+
+            $scope.data.countSatisfactionWomen = $scope.average(arrAvgAllWomen).toFixed(0);
+            $scope.data.countSatisfaction = $scope.average(arrAvgAll).toFixed(0);
+
+
+
+
+
+            let chartAverage = bb.generate({
 
                     bindto: '#chartCommon',
                     data: {
 
                         columns: [
-                            ['Общая удовлетворенность участников', $scope.data.countSatisfaction.length === 0 ? $scope.data.countCommonOk[0].avg.toFixed(0) : $scope.data.countSatisfaction[0].countAll],
-                            ['Не удовлетворены участием', $scope.data.countNoSatisfaction.length === 0 ? 100 - $scope.data.countCommonOk[0].avg.toFixed(0) : $scope.data.countNoSatisfaction[0].countAll]
+                            ['Общая удовлетворенность участников', $scope.data.countSatisfaction],
+                            ['Не удовлетворены участием', 100 - $scope.data.countSatisfaction]
 
 
                         ],
@@ -139,10 +205,14 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
 
                     },
 
+
+
                     tooltip: {
                         format: {
 
                             value: function (value, ratio, id) {
+
+
 
                                 return value;
                             }
@@ -162,8 +232,8 @@ angular.module('app').controller('Report_by_criteriyAppCtrl', function ( $scope,
                 data: {
 
                     columns: [
-                        ['Общая удовлетворенность мероприятиями среди женщин', $scope.data.countSatisfactionWomen.length === 0 ? $scope.data.countCommonOkWomen[0].avg.toFixed(0) : $scope.data.countSatisfactionWomen[0].countAll],
-                        ['Общая не удовлетворенность мероприятиями среди женщин', $scope.data.countNoSatisfactionWomen.length === 0 ? 100 - $scope.data.countCommonOkWomen[0].avg.toFixed(0) : $scope.data.countNoSatisfactionWomen[0].countAll]
+                        ['Общая удовлетворенность мероприятиями среди женщин', $scope.data.countSatisfactionWomen],
+                        ['Общая не удовлетворенность мероприятиями среди женщин', 100 - $scope.data.countSatisfactionWomen]
 
 
                     ],

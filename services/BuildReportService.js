@@ -1005,18 +1005,19 @@ module.exports = {
 
 
                             {
-                                $match : {
-
-                                    $or: [{ques12: 5},
-                                        {ques12: 4}
-                                    ]
-
-                                }
+                                $match : {}
                             },
 
 
 
-                            {$count: "countAll"}
+                            {
+                                $group:
+                                    {
+                                        _id: null,
+
+                                        countAll: { $avg: "$ques12" }
+                                    }
+                            }
 
 
                         ],
@@ -1142,19 +1143,17 @@ module.exports = {
                             {$match: {ques20: "Женский"}},
 
 
+
+
+
                             {
-                                $match : {
+                                $group:
+                                    {
+                                        _id: null,
 
-                                    $or: [{ques12: 5},
-                                        {ques12: 4}
-                                    ]
-
-                                }
-                            },
-
-
-
-                            {$count: "countAll"}
+                                        countAll: { $avg: "$ques12" }
+                                    }
+                            }
 
 
 
