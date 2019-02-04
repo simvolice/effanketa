@@ -16,6 +16,9 @@ module.exports = {
         try {
 
 
+
+
+
             let result = [];
 
             if (idTable === "events") {
@@ -1092,7 +1095,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({country: country}, {
+                result = await col.find({}, {
 
                     _id: 0,
 
@@ -1108,6 +1111,8 @@ module.exports = {
 
 
                 }).toArray();
+
+
 
 
 
@@ -1249,7 +1254,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({country: country}, {
+                result = await col.find({}, {
 
                     _id: 0,
 
@@ -1391,7 +1396,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({country: country}, {
+                result = await col.find({}, {
 
                     _id: 0,
 
@@ -1536,7 +1541,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({country: country}, {
+                result = await col.find({}, {
 
                     _id: 0,
 
@@ -1793,7 +1798,7 @@ module.exports = {
                 const col = dbConnect.getConnect().collection(idTable);
 
 
-                result = await col.find({country: country}, {
+                result = await col.find({idcountry: country}, {
 
                     _id: 0,
 
@@ -1808,6 +1813,8 @@ module.exports = {
 
 
                 }).toArray();
+
+
 
 
                 if (lang === "ru") {
