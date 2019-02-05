@@ -59,17 +59,22 @@
                     <div class="col-md-12 table-responsive">
 
 
+
                         <style type="text/css">
+                            .white-bg {background: white;}
                             .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
                             .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-                            .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                            .tg th{background: white; font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
                             .tg .tg-e3zv{font-weight:bold}
                             .tg .tg-baqh{text-align:center;vertical-align:middle}
                             .tg .tg-hgcj{font-weight:bold;text-align:center}
                             .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
                             .tg .tg-9hbo{font-weight:bold;vertical-align:top}
                         </style>
-                        <table class="tg table-striped">
+                        <table class="tg" style="position: relative; z-index: 9999;">
+
+                            <thead class="tb-header">
+
                             <tr>
                                 <th class="tg-hgcj" rowspan="2">№</th>
                                 <th class="tg-hgcj" rowspan="2">{{ 'CATEG_CREDITS' | translate }}</th>
@@ -97,30 +102,34 @@
                                 <th class="tg-e3zv" rowspan="2">{{ 'DELETE' | translate }}</th>
                             </tr>
                             <tr>
-                                <td class="tg-amwm">$</td>
-                                <td class="tg-amwm">{{ 'NACCURRENCY' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'ALL' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'ALL' | translate }}</td>
+                                <td class="tg-amwm white-bg">$</td>
+                                <td class="tg-amwm white-bg">{{ 'NACCURRENCY' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'MAN' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'WOMAN' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'ALL' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'MAN' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'WOMAN' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'ALL' | translate }}</td>
 
-                                <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'MAN' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'WOMAN' | translate }}</td>
 
 
-                                <td class="tg-hgcj">{{ 'HA' | translate }}</td>
-                                <td class="tg-hgcj">{{ 'OTHER' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'HA' | translate }}</td>
+                                <td class="tg-hgcj white-bg">{{ 'OTHER' | translate }}</td>
                             </tr>
 
 
 
+                            </thead>
 
 
-                            <tbody>
 
-                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
+
+
+                            <tbody style="visibility: collapse">
+
+                            <tr class="tg-baqh" ng-repeat="data in dataCopy | filter:search">
 
 
 
@@ -245,6 +254,205 @@
 
 
                         </table>
+
+
+
+
+                            <style type="text/css">
+                                .tg  {border-collapse:collapse;border-spacing:0; width: 100%}
+                                .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                                .tg .tg-e3zv{font-weight:bold}
+                                .tg .tg-baqh{text-align:center;vertical-align:middle}
+                                .tg .tg-hgcj{font-weight:bold;text-align:center}
+                                .tg .tg-amwm{font-weight:bold;text-align:center;vertical-align:top}
+                                .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+                            </style>
+                            <table class="tg">
+
+                                <thead style="visibility: collapse">
+
+                                <tr>
+                                    <th class="tg-hgcj" rowspan="2">№</th>
+                                    <th class="tg-hgcj" rowspan="2">{{ 'CATEG_CREDITS' | translate }}</th>
+                                    <th class="tg-hgcj" rowspan="2">{{ 'COUNT_SUBPROJECT' | translate }}</th>
+                                    <th class="tg-hgcj" rowspan="2">{{ 'COUNTRY' | translate }}</th>
+                                    <th class="tg-hgcj" colspan="2">{{ 'OVERALL_VOLUME' | translate }}</th>
+
+
+                                    <th class="tg-hgcj" colspan="3">{{ 'DIRECT_BENEFICIARIES' | translate }}</th>
+
+
+
+                                    <th class="tg-hgcj" colspan="3">{{ 'DIRECT_BENEFICIARIES_WORKERS' | translate }}</th>
+
+
+
+                                    <th class="tg-hgcj" colspan="2">{{ 'GENERATED_CAPACITIES' | translate }}</th>
+                                    <th class="tg-hgcj" colspan="2">{{ 'POWER_HA' | translate }}</th>
+
+
+
+
+                                    <th class="tg-hgcj" rowspan="2">{{ 'DATE_CREATE_FINANSE' | translate }}</th>
+                                    <th class="tg-hgcj" rowspan="2">{{ 'SAVE' | translate }}</th>
+                                    <th class="tg-e3zv" rowspan="2">{{ 'DELETE' | translate }}</th>
+                                </tr>
+                                <tr>
+                                    <td class="tg-amwm">$</td>
+                                    <td class="tg-amwm">{{ 'NACCURRENCY' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'ALL' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'ALL' | translate }}</td>
+
+                                    <td class="tg-hgcj">{{ 'MAN' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'WOMAN' | translate }}</td>
+
+
+                                    <td class="tg-hgcj">{{ 'HA' | translate }}</td>
+                                    <td class="tg-hgcj">{{ 'OTHER' | translate }}</td>
+                                </tr>
+
+
+
+                                </thead>
+
+
+
+
+
+                                <tbody>
+
+                                <tr class="tg-baqh" ng-repeat="data in data | filter:search">
+
+
+
+
+
+                                    <td>{{$index+1}}</td>
+
+
+
+
+
+
+                                    <td>
+
+
+                                        <md-select class="custom__select__credit__table" ng-model="data.categcredits"
+                                                   md-on-close="clearSearchTerm()"
+                                                   data-md-container-class="selectdemoSelectHeader"
+                                        >
+                                            <md-select-header class="demo-select-header">
+                                                <input ng-model="dataCtrl.newFact"
+                                                       ng-keyup='createNewFact($event)'
+                                                       ng-keydown="$event.stopPropagation($event)"
+                                                       type="text"
+                                                       placeholder="{{ 'TYPE_HERE' | translate }}"
+                                                       class="demo-header-searchbox md-text">
+                                            </md-select-header>
+                                            <md-optgroup>
+                                                <md-option ng-value="fact._id" ng-repeat="fact in data.allCreditsFact">{{fact.name}}</md-option>
+                                            </md-optgroup>
+                                        </md-select>
+
+
+
+                                    </td>
+
+
+
+
+                                    <td><input class="custom__dual__digits" type="text" value="{{data.countsubproject}}" ng-model="data.countsubproject"></td>
+
+
+                                    <td>
+
+                                        <select class="custom__select__credit__table" ng-model="data.country" ng-options="y._id as y.name for y in data.allCountrys">
+                                        </select>
+
+                                    </td>
+
+
+
+                                    <td><input type="text" class="custom__threeteen__digits" value="{{data.commonAmountInDollors}}" ng-model="data.commonAmountInDollors"></td>
+
+
+                                    <td><input type="text" class="custom__threeteen__digits" value="{{data.commonAmountInNatCurrency}}" ng-model="data.commonAmountInNatCurrency"></td>
+
+
+
+
+
+                                    <td><input class="custom__four__digits" type="text" value="{{data.DirectBeneficiariesMale}}" ng-model="data.DirectBeneficiariesMale"></td>
+
+
+                                    <td><input class="custom__four__digits" type="text" value="{{data.DirectBeneficiariesFemale}}" ng-model="data.DirectBeneficiariesFemale" ng-keyup="sumMaleFemale(data, $event)"></td>
+
+                                    <td><input class="custom__four__digits" type="text" value="{{data.DirectBeneficiariesAll}}" ng-model="data.DirectBeneficiariesAll" disabled></td>
+
+
+
+
+
+
+
+
+                                    <td><input class="custom__three__digits" type="text" value="{{data.NonDirectBeneficiariesMemberFamilyMale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyMale"></td>
+
+
+
+                                    <td><input class="custom__three__digits" type="text" value="{{data.NonDirectBeneficiariesMemberFamilyFemale}}" ng-model="data.NonDirectBeneficiariesMemberFamilyFemale"></td>
+
+                                    <td><input class="custom__three__digits" type="text" value="{{data.NonDirectBeneficiariesMemberFamilyAll}}" ng-model="data.NonDirectBeneficiariesMemberFamilyAll"></td>
+
+
+
+
+
+
+
+
+
+
+
+                                    <td><input class="custom__three__digits" type="text" value="{{data.CreatePowerPlan}}" ng-model="data.CreatePowerPlan"></td>
+                                    <td><input class="custom__three__digits" type="text" value="{{data.CreatePowerFact}}" ng-model="data.CreatePowerFact"></td>
+                                    <td><input class="custom__three__digits" type="text" value="{{data.power_ha}}" ng-model="data.power_ha"></td>
+                                    <td><input class="custom__three__digits" type="text" value="{{data.power_other}}" ng-model="data.power_other"></td>
+
+
+
+
+                                    <td><md-datepicker ng-model="data.createAt" md-open-on-focus></md-datepicker></td>
+
+
+
+
+
+
+                                    <td><i class="material-icons" ng-click="saveBtn(data)">done_all</i></td>
+
+
+
+                                    <td><i class="material-icons" ng-click="delete(data._id, $index)">delete</i></td>
+
+
+                                </tr>
+
+
+
+                                </tbody>
+
+
+
+
+                            </table>
+
+
 
 
                     </div>

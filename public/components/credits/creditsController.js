@@ -7,7 +7,22 @@
 angular.module('app').controller('CreditsCtrl', function ($element, $scope, Addcredit, GetAllCoutrys, $mdToast, DelCredits, GetAllCredits, UpdCredits, GetCreditsFact, SendNewCreditsFact, $window, $translate) {
 
 
+
+
+    window.onscroll = function() {
+        var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (scrolled > 300) {
+            $(".tb-header").css("transform", `translateY(${(scrolled - window.innerHeight) + 291}px)`);
+        } else {
+
+            $(".tb-header").css("transform", `translateY(0px)`);
+
+
+        }
+    };
 $scope.data = [];
+    $scope.dataCopy = [];
 
 $scope.dataCtrl = {};
 
@@ -101,6 +116,7 @@ $scope.createNewFact = function (event) {
 
 
             $scope.data.sort(function(a,b){return a.createAt.getTime() - b.createAt.getTime()});
+            $scope.dataCopy[0] = $scope.data[0];
 
 
         } else {
