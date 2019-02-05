@@ -9,11 +9,15 @@ angular.module('app').controller('CreditsCtrl', function ($element, $scope, Addc
 
 
 
+
+
     window.onscroll = function() {
         var scrolled = window.pageYOffset || document.documentElement.scrollTop;
 
+        let constHeight = window.innerHeight - 331;
+
         if (scrolled > 300) {
-            $(".tb-header").css("transform", `translateY(${(scrolled - window.innerHeight) + 291}px)`);
+            $(".tb-header").css("transform", `translateY(${(scrolled - window.innerHeight) + constHeight}px)`);
         } else {
 
             $(".tb-header").css("transform", `translateY(0px)`);
