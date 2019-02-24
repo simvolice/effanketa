@@ -483,6 +483,8 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
+
+
             if (entry.resultFromDb.length !== 0) {
 
 
@@ -743,6 +745,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
     };
 
 
+    $scope.summValcountGRMC1 = [];
     $scope.summValcountGRM = [];
     $scope.summValcountGRM_TJ = [];
     $scope.summValcountGRM_UZ = [];
@@ -764,16 +767,39 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
              if (entry.resultFromDb.length !== 0) {
 
-                 $scope.data.countGRM = entry.resultFromDb[0].categorizedByAllCompletegrmAVG[0].percent;
+                 $scope.data.countGRMC1 = entry.resultFromDb[0].categorizedByAllCompletegrmAVG[0].percent;
                  $scope.data.countGRM_TJ = entry.resultFromDb[0].categorizedByAllCompletegrmAVG_TJ[0].percent;
                  $scope.data.countGRM_UZ = entry.resultFromDb[0].categorizedByAllCompletegrmAVG_UZ[0].percent;
 
+
+                 $scope.arrC2 = [];
+
+
+                 if ($scope.data.countGRM_TJ === 0) {
+                     $scope.arrC2.push($scope.data.countGRM_UZ);
+                 } else {
+
+                     $scope.arrC2.push($scope.data.countGRM_TJ);
+
+                 }
+
+                 if ($scope.data.countGRM_UZ === 0) {
+                     $scope.arrC2.push($scope.data.countGRM_TJ);
+                 } else {
+
+                     $scope.arrC2.push($scope.data.countGRM_UZ);
+                 }
+
+
+
+                 $scope.data.countGRM = $scope.average($scope.arrC2);
 
 
 
 
                  arrAllData.push({
 
+                     countGRMC1: $scope.data.countGRMC1,
                      countGRM: $scope.data.countGRM,
                      countGRM_TJ: $scope.data.countGRM_TJ,
                      countGRM_UZ: $scope.data.countGRM_UZ,
@@ -782,6 +808,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                  });
 
 
+                 $scope.summValcountGRMC1.push($scope.data.countGRMC1);
                  $scope.summValcountGRM.push($scope.data.countGRM);
                  $scope.summValcountGRM_TJ.push($scope.data.countGRM_TJ);
                  $scope.summValcountGRM_UZ.push($scope.data.countGRM_UZ);
@@ -790,12 +817,14 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
                  if (yearname === 2021) {
 
+                     $scope.objResult["countGRMC1" + yearname] = $scope.average($scope.summValcountGRMC1).toFixed(0);
                      $scope.objResult["countGRM" + yearname] = $scope.average($scope.summValcountGRM).toFixed(0);
                      $scope.objResult["countGRM_TJ" + yearname] = $scope.average($scope.summValcountGRM_TJ).toFixed(0);
                      $scope.objResult["countGRM_UZ" + yearname] = $scope.average($scope.summValcountGRM_UZ).toFixed(0);
 
                  } else {
 
+                     $scope.objResult["countGRMC1" + yearname] = $scope.data.countGRMC1;
                      $scope.objResult["countGRM" + yearname] = $scope.data.countGRM;
                      $scope.objResult["countGRM_TJ" + yearname] = $scope.data.countGRM_TJ;
                      $scope.objResult["countGRM_UZ" + yearname] = $scope.data.countGRM_UZ;
@@ -912,11 +941,12 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
+        $scope.summValcountGRMC1Result = $scope.average($scope.summValcountGRMC1).toFixed(0);
         $scope.summValcountGRMResult = $scope.average($scope.summValcountGRM).toFixed(0);
         $scope.summValcountGRM_TJResult = $scope.average($scope.summValcountGRM_TJ).toFixed(0);
         $scope.summValcountGRM_UZResult = $scope.average($scope.summValcountGRM_UZ).toFixed(0);
 
-        }, 1000);
+        }, 2000);
 
 
     $scope.print = function () {

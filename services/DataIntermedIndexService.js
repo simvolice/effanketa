@@ -13,6 +13,25 @@ const dbConnect = require('../utils/dbConnect');
 
 const Int32 = require('mongodb').Int32;
 
+
+function calculatePercent(numberBase, value) {
+
+
+    if (value === 0) {
+
+        return 0;
+
+    } else {
+
+        let result = value * 100 / numberBase;
+        return Number.parseInt(result.toFixed(0));
+
+    }
+
+
+};
+
+
 module.exports = {
 
     getAllForm: async (yearId) => {
@@ -1213,7 +1232,7 @@ module.exports = {
 
                             {
 
-                                $match: {}
+                                $match: {nameCountry: "РКГ, Региональный компонент 1"}
 
                             },
 
@@ -1364,33 +1383,9 @@ module.exports = {
             if (result[0].categorizedByAllCompletegrmAVG.length !== 0) {
 
 
-                if (Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 1) {
 
-                    result[0].categorizedByAllCompletegrmAVG[0].percent = 0;
+                    result[0].categorizedByAllCompletegrmAVG[0].percent = calculatePercent(5, result[0].categorizedByAllCompletegrmAVG[0].avg);
 
-                } else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 2){
-
-                    result[0].categorizedByAllCompletegrmAVG[0].percent = 25;
-
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 3){
-                    result[0].categorizedByAllCompletegrmAVG[0].percent = 50;
-
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 4){
-
-                    result[0].categorizedByAllCompletegrmAVG[0].percent = 75;
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG[0].avg) === 5){
-                    result[0].categorizedByAllCompletegrmAVG[0].percent = 100;
-
-
-                } else {
-
-                    result[0].categorizedByAllCompletegrmAVG.percent = 0;
-
-
-                }
 
 
             } else {
@@ -1409,33 +1404,8 @@ module.exports = {
             if (result[0].categorizedByAllCompletegrmAVG_TJ.length !== 0) {
 
 
-                if (Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 1) {
+                result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = calculatePercent(5, result[0].categorizedByAllCompletegrmAVG_TJ[0].avg);
 
-                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 0;
-
-                } else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 2){
-
-                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 25;
-
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 3){
-                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 50;
-
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 4){
-
-                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 75;
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_TJ[0].avg) === 5){
-                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 100;
-
-
-                } else {
-
-                    result[0].categorizedByAllCompletegrmAVG_TJ[0].percent = 0;
-
-
-                }
 
 
 
@@ -1452,34 +1422,8 @@ module.exports = {
 
             if (result[0].categorizedByAllCompletegrmAVG_UZ.length !== 0) {
 
+                result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = calculatePercent(5, result[0].categorizedByAllCompletegrmAVG_UZ[0].avg);
 
-                if (Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 1) {
-
-                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 0;
-
-                } else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 2){
-
-                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 25;
-
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 3){
-                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 50;
-
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 4){
-
-                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 75;
-
-                }else if(Math.round(result[0].categorizedByAllCompletegrmAVG_UZ[0].avg) === 5){
-                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 100;
-
-
-                } else {
-
-                    result[0].categorizedByAllCompletegrmAVG_UZ[0].percent = 0;
-
-
-                }
 
 
             } else {
