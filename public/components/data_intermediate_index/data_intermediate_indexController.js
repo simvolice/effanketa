@@ -177,7 +177,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
                 } else {
 
-                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112016) / 2;
+                    $scope.data.allFormPercent = (parseInt($scope.average(arrAvgResult).toFixed(0)) + parseInt($scope.data.ipr112016)) / 2;
 
                 }
 
@@ -189,7 +189,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
                 } else {
 
-                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112017) / 2;
+                    $scope.data.allFormPercent = (parseInt($scope.average(arrAvgResult).toFixed(0)) + parseInt($scope.data.ipr112017)) / 2;
 
                 }
 
@@ -201,7 +201,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
                 } else {
 
-                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112018) / 2;
+                    $scope.data.allFormPercent = (parseInt($scope.average(arrAvgResult).toFixed(0)) + parseInt($scope.data.ipr112018)) / 2;
 
                 }
 
@@ -230,7 +230,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
                 } else {
 
-                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112020) / 2;
+                    $scope.data.allFormPercent = (parseInt($scope.average(arrAvgResult).toFixed(0)) + parseInt($scope.data.ipr112020)) / 2;
 
                 }
 
