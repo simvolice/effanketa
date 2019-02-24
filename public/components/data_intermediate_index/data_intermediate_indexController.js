@@ -908,6 +908,11 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
         $scope.summValUzPercentWomen = $scope.summValUzPercentWomen.filter(function (item) {
             return item !== 0;
         });
+
+
+        $scope.summValcountGRMC1 = $scope.summValcountGRMC1.filter(function (item) {
+            return item !== 0;
+        });
         $scope.summValcountGRM = $scope.summValcountGRM.filter(function (item) {
             return item !== 0;
         });
