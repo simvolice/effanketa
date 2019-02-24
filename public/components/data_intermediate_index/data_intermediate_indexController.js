@@ -169,10 +169,84 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
+            if (yearname === 2016) {
 
-            $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
+
+                if ($scope.data.ipr112016 === 0) {
+                    $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
+
+                } else {
+
+                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112016) / 2;
+
+                }
+
+
+            } else if (yearname === 2017){
+
+                if ($scope.data.ipr112017 === 0) {
+                    $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
+
+                } else {
+
+                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112017) / 2;
+
+                }
+
+
+            } else if (yearname === 2018) {
+
+                if ($scope.data.ipr112018 === 0) {
+                    $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
+
+                } else {
+
+                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112018) / 2;
+
+                }
+
+
+            } else if (yearname === 2019) {
+
+
+                if ($scope.data.ipr112019 === 0) {
+                    $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
+
+                } else {
+
+
+
+                    $scope.data.allFormPercent = (parseInt($scope.average(arrAvgResult).toFixed(0)) + parseInt($scope.data.ipr112019)) / 2;
+
+                }
+
+
+            } else if (yearname === 2020) {
+
+
+                if ($scope.data.ipr112020 === 0) {
+
+                    $scope.data.allFormPercent = $scope.average(arrAvgResult).toFixed(0);
+
+                } else {
+
+                    $scope.data.allFormPercent = ($scope.average(arrAvgResult).toFixed(0) + $scope.data.ipr112020) / 2;
+
+                }
+
+
+
+            }
+
+
+
+
+
 
             arrAllData.push({allFormPercent: parseInt($scope.data.allFormPercent)});
+
+
+
             $scope.summVal.push(parseInt($scope.data.allFormPercent));
 
 
