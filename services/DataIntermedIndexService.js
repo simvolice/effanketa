@@ -622,14 +622,88 @@ module.exports = {
 
                             {
 
-                                $match: {}
+                                $match: {nameCountry: "РКГ, Региональный компонент 1"}
 
                             },
 
                             {
                                 $addFields:
                                     {
-                                        year: {$year: "$createAt"},
+                                        year: {$year: "$myDate"},
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: yearId, nameTypeEvent: "Обучающий"}
+
+                            },
+
+
+                            {
+                                $group: {
+
+                                    _id: null,
+                                    all_countPeopleEventCommon: {$sum: "$countPeopleEventCommon"}
+
+
+                                }
+                            }
+
+
+                        ],
+
+
+                        allEventSumPeopleUZ: [
+
+                            {
+
+                                $match: {nameCountry: "НКГ Узбекистана, Компонент 2"}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: {$year: "$myDate"},
+
+                                    }
+                            },
+
+
+                            {
+
+                                $match: {year: yearId, nameTypeEvent: "Обучающий"}
+
+                            },
+
+
+                            {
+                                $group: {
+
+                                    _id: null,
+                                    all_countPeopleEventCommon: {$sum: "$countPeopleEventCommon"}
+
+
+                                }
+                            }
+
+
+                        ],
+                        allEventSumPeopleTJ: [
+
+                            {
+
+                                $match: {nameCountry: "НКГ Таджикистана, Компонент 2"}
+
+                            },
+
+                            {
+                                $addFields:
+                                    {
+                                        year: {$year: "$myDate"},
 
                                     }
                             },
@@ -667,7 +741,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: {$year: "$createAt"},
+                                        year: {$year: "$myDate"},
 
                                     }
                             },
@@ -979,7 +1053,8 @@ module.exports = {
 
 
 
-            result.push(resultEvents);
+            result.push(...resultEvents);
+
 
 
             return result;

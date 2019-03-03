@@ -149,7 +149,21 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
             let avgByForms = $scope.calculatePercent(5 ,entry.resultFromDb[0].getAllGoodTestResult.length === 0 ? 0 : entry.resultFromDb[0].getAllGoodTestResult[0].all_countSatisfaction_yes);
-            let avgByCustom = entry.resultFromDb[0].countCommonOk.length === 0 ? 0 : parseInt(entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0));
+
+            let avgByCustom = 0;
+            if (entry.resultFromDb[0].countCommonOk.length !== 0) {
+
+                if (entry.resultFromDb[0].countCommonOk[0].avg !== null) {
+
+                   avgByCustom = parseInt(entry.resultFromDb[0].countCommonOk[0].avg.toFixed(0));
+
+                }
+
+            } else {
+
+                avgByCustom = 0;
+            }
+
 
 
            let arrAvgResult = [];
@@ -468,6 +482,11 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
    $scope.summValpercentC2 = [];
    $scope.summValTjPercentWomen = [];
    $scope.summValUzPercentWomen = [];
+   $scope.summValcountBenificiarProjectUzIPR14 = [];
+   $scope.summValcountBenificiarProjectTjIPR14 = [];
+   $scope.summValcountsummC2PR14 = [];
+   $scope.summValcountsummC1PR14 = [];
+   $scope.summValcountsummC1C2PR14 = [];
 
     $scope.generateReportCountBenificiarProject = function (yearname) {
 
@@ -498,6 +517,13 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
+                $scope.data.countBenificiarProjectUzIPR14 = entry.resultFromDb[1].allEventSumPeopleUZ.length === 0 ? 0 : entry.resultFromDb[1].allEventSumPeopleUZ[0].all_countPeopleEventCommon;
+                $scope.data.countBenificiarProjectTjIPR14 = entry.resultFromDb[1].allEventSumPeopleTJ.length === 0 ? 0 : entry.resultFromDb[1].allEventSumPeopleTJ[0].all_countPeopleEventCommon;
+                $scope.data.summC2PR14 = $scope.data.countBenificiarProjectTjIPR14 + $scope.data.countBenificiarProjectUzIPR14;
+                $scope.data.summC1PR14 = entry.resultFromDb[1].allEventSumPeople.length === 0 ? 0 : entry.resultFromDb[1].allEventSumPeople[0].all_countPeopleEventCommon;
+                $scope.data.summC1C2PR14 = $scope.data.summC2PR14 + $scope.data.summC1PR14;
+
+
 
 
                 $scope.sumComponents = $scope.data.countComponent1 + $scope.data.countComponent2;
@@ -507,7 +533,7 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                  let categByAllWomenAll_benificiar = entry.resultFromDb[0].categByAllWomen.length === 0 ? 0 : entry.resultFromDb[0].categByAllWomen[0].all_benificiar;
 
 
-                $scope.sumWomen = entry.resultFromDb[1][0].allEventSumWomen.length === 0 ? 0 : entry.resultFromDb[1][0].allEventSumWomen[0].all_countWomanEventCommon + categByAllWomenAll_benificiar;
+                $scope.sumWomen = entry.resultFromDb[1].allEventSumWomen.length === 0 ? 0 : entry.resultFromDb[1].allEventSumWomen[0].all_countWomanEventCommon + categByAllWomenAll_benificiar;
 
 
 
@@ -558,12 +584,19 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                 $scope.summValpercentC2.push(parseInt($scope.data.percentC2));
                 $scope.summValTjPercentWomen.push(parseInt($scope.data.TjPercentWomen));
                 $scope.summValUzPercentWomen.push(parseInt($scope.data.UzPercentWomen));
+                $scope.summValcountBenificiarProjectUzIPR14.push(parseInt($scope.data.countBenificiarProjectUzIPR14));
+                $scope.summValcountBenificiarProjectTjIPR14.push(parseInt($scope.data.countBenificiarProjectTjIPR14));
+                $scope.summValcountsummC2PR14.push(parseInt($scope.data.summC2PR14));
+                $scope.summValcountsummC1PR14.push(parseInt($scope.data.summC1PR14));
+                $scope.summValcountsummC1C2PR14.push(parseInt($scope.data.summC1C2PR14));
 
                 arrAllData.push({sumComponents: $scope.sumComponents});
                 arrAllData.push({countComponent1: $scope.data.countComponent1});
                 arrAllData.push({countComponent2: $scope.data.countComponent2});
                 arrAllData.push({countBenificiarProjectTj: $scope.data.countBenificiarProjectTj});
                 arrAllData.push({countBenificiarProjectUz: $scope.data.countBenificiarProjectUz});
+                arrAllData.push({countBenificiarProjectUzIPR14: $scope.data.countBenificiarProjectUzIPR14});
+                arrAllData.push({countBenificiarProjectTjIPR14: $scope.data.countBenificiarProjectTjIPR14});
 
 
                 arrAllData.push({percentSum: $scope.data.percentSum});
@@ -571,6 +604,9 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                 arrAllData.push({percentC2: $scope.data.percentC2});
                 arrAllData.push({TjPercentWomen: $scope.data.TjPercentWomen});
                 arrAllData.push({UzPercentWomen: $scope.data.UzPercentWomen});
+                arrAllData.push({summC2PR14: $scope.data.summC2PR14});
+                arrAllData.push({summC1PR14: $scope.data.summC1PR14});
+                arrAllData.push({summC1C2PR14: $scope.data.summC1C2PR14});
 
 
 
@@ -588,6 +624,11 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                     $scope.objResult["percentC2" + yearname] = $scope.average($scope.summValpercentC2).toFixed(0);
                     $scope.objResult["TjPercentWomen" + yearname] = $scope.average($scope.summValTjPercentWomen).toFixed(0);
                     $scope.objResult["UzPercentWomen" + yearname] = $scope.average($scope.summValUzPercentWomen).toFixed(0);
+                    $scope.objResult["countBenificiarProjectUzIPR14" + yearname] = $scope.average($scope.summValcountBenificiarProjectUzIPR14).toFixed(0);
+                    $scope.objResult["countBenificiarProjectTjIPR14" + yearname] = $scope.average($scope.summValcountBenificiarProjectTjIPR14).toFixed(0);
+                    $scope.objResult["summC2PR14" + yearname] = $scope.average($scope.summValcountsummC2PR14).toFixed(0);
+                    $scope.objResult["summC1PR14" + yearname] = $scope.average($scope.summValcountsummC1PR14).toFixed(0);
+                    $scope.objResult["summC1C2PR14" + yearname] = $scope.average($scope.summValcountsummC1C2PR14).toFixed(0);
 
 
 
@@ -604,6 +645,11 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
                     $scope.objResult["percentC2" + yearname] = $scope.data.percentC2;
                     $scope.objResult["TjPercentWomen" + yearname] = $scope.data.TjPercentWomen;
                     $scope.objResult["UzPercentWomen" + yearname] = $scope.data.UzPercentWomen;
+                    $scope.objResult["countBenificiarProjectUzIPR14" + yearname] = $scope.data.countBenificiarProjectUzIPR14;
+                    $scope.objResult["countBenificiarProjectTjIPR14" + yearname] = $scope.data.countBenificiarProjectTjIPR14;
+                    $scope.objResult["summC2PR14" + yearname] = $scope.data.summC2PR14;
+                    $scope.objResult["summC1PR14" + yearname] = $scope.data.summC1PR14;
+                    $scope.objResult["summC1C2PR14" + yearname] = $scope.data.summC1C2PR14;
 
                 }
 
@@ -923,8 +969,29 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
             return item !== 0;
         });
 
+        $scope.summValcountBenificiarProjectUzIPR14 = $scope.summValcountBenificiarProjectUzIPR14.filter(function (item) {
+            return item !== 0;
+        });
+
+        $scope.summValcountBenificiarProjectTjIPR14 = $scope.summValcountBenificiarProjectTjIPR14.filter(function (item) {
+            return item !== 0;
+        });
+
+        $scope.summValcountsummC2PR14 = $scope.summValcountsummC2PR14.filter(function (item) {
+            return item !== 0;
+        });
 
 
+        $scope.summValcountsummC1PR14 = $scope.summValcountsummC1PR14.filter(function (item) {
+            return item !== 0;
+        });
+
+
+
+
+        $scope.summValcountsummC1C2PR14 = $scope.summValcountsummC1C2PR14.filter(function (item) {
+            return item !== 0;
+        });
 
         $scope.arrAllFormsResult = $scope.average($scope.summVal).toFixed(0);
 
@@ -935,6 +1002,11 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
         $scope.summValcountComponent2Result = $scope.average($scope.summValcountComponent2).toFixed(0);
         $scope.summValcountBenificiarProjectTjResult = $scope.average($scope.summValcountBenificiarProjectTj).toFixed(0);
         $scope.summValcountBenificiarProjectUzResult = $scope.average($scope.summValcountBenificiarProjectUz).toFixed(0);
+        $scope.summValcountBenificiarProjectUzIPR14Result = $scope.average($scope.summValcountBenificiarProjectUzIPR14).toFixed(0);
+        $scope.summValcountBenificiarProjectTjIPR14Result = $scope.average($scope.summValcountBenificiarProjectTjIPR14).toFixed(0);
+        $scope.summValcountsummC2PR14Result = $scope.average($scope.summValcountsummC2PR14).toFixed(0);
+        $scope.summValcountsummC1PR14Result = $scope.average($scope.summValcountsummC1PR14).toFixed(0);
+        $scope.summValcountsummC1C2PR14Result = $scope.average($scope.summValcountsummC1C2PR14).toFixed(0);
 
 
         $scope.summValpercentSumResult = $scope.average($scope.summValpercentSum).toFixed(0);
@@ -950,6 +1022,9 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
         $scope.summValcountGRMResult = $scope.average($scope.summValcountGRM).toFixed(0);
         $scope.summValcountGRM_TJResult = $scope.average($scope.summValcountGRM_TJ).toFixed(0);
         $scope.summValcountGRM_UZResult = $scope.average($scope.summValcountGRM_UZ).toFixed(0);
+
+
+
 
         }, 2000);
 
