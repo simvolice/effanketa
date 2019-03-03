@@ -816,7 +816,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "CreatePowerPlan"}
+                                    all_benificiar: {$sum: "$CreatePowerPlan"}
 
 
                                 }
