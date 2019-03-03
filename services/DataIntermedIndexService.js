@@ -604,7 +604,7 @@ module.exports = {
         try {
 
 
-            const col = dbConnect.getConnect().collection('credits');
+            const col = dbConnect.getConnect().collection('events');
             const colEvents = dbConnect.getConnect().collection('events');
 
 
@@ -798,7 +798,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$myDate" },
 
                                     }
                             },
@@ -816,7 +816,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$CreatePowerPlan"}
+                                    all_benificiar: {$sum: "$countPeopleEventCommon"}
 
 
                                 }
@@ -839,7 +839,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$myDate" },
 
                                     }
                             },
@@ -857,7 +857,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$CreatePowerPlan"}
+                                    all_benificiar: {$sum: "$countPeopleEventCommon"}
 
 
                                 }
@@ -878,7 +878,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$myDate" },
 
                                     }
                             },
@@ -896,7 +896,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$CreatePowerPlan"}
+                                    all_benificiar: {$sum: "$countPeopleEventCommon"}
 
 
                                 }
@@ -924,7 +924,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$myDate" },
 
                                     }
                             },
@@ -942,7 +942,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$CreatePowerFact"}
+                                    all_benificiar: {$sum: "$countWomanEventCommon"}
 
 
                                 }
@@ -965,7 +965,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$myDate" },
 
                                     }
                             },
@@ -983,7 +983,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$CreatePowerFact"}
+                                    all_benificiar: {$sum: "$countWomanEventCommon"}
 
 
                                 }
@@ -1004,7 +1004,7 @@ module.exports = {
                             {
                                 $addFields:
                                     {
-                                        year: { $year: "$createAt" },
+                                        year: { $year: "$myDate" },
 
                                     }
                             },
@@ -1022,7 +1022,7 @@ module.exports = {
                                 $group : {
 
                                     _id: null,
-                                    all_benificiar: {$sum: "$CreatePowerFact"}
+                                    all_benificiar: {$sum: "$countWomanEventCommon"}
 
 
                                 }

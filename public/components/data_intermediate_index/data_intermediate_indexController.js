@@ -539,18 +539,19 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
 
 
-                $scope.data.countC1All = parseInt($scope.data.countComponent1) + parseInt(entry.resultFromDb[0].categByAllWomen.length === 0 ? 0 : entry.resultFromDb[0].categByAllWomen[0].all_benificiar);
+                $scope.data.countC1All = parseInt($scope.data.countComponent1);
 
                 $scope.data.percentC1 = $scope.calculatePercent($scope.data.countC1All, entry.resultFromDb[0].categByAllWomen.length === 0 ? 0 : entry.resultFromDb[0].categByAllWomen[0].all_benificiar);
 
-                $scope.data.countTjAll = parseInt($scope.data.countBenificiarProjectTj) + parseInt(entry.resultFromDb[0].categByTjWomen.length === 0 ? 0 : entry.resultFromDb[0].categByTjWomen[0].all_benificiar);
-                $scope.data.countUzAll = parseInt($scope.data.countBenificiarProjectUz) + parseInt(entry.resultFromDb[0].categByUzWomen.length === 0 ? 0 : entry.resultFromDb[0].categByUzWomen[0].all_benificiar);
+                $scope.data.countTjAll = parseInt($scope.data.countBenificiarProjectTj);
+                $scope.data.countUzAll = parseInt($scope.data.countBenificiarProjectUz);
 
 
                 $scope.data.avgAllCountry = [];
                 $scope.data.avgAllComponents = [];
 
                 $scope.data.TjPercentWomen = $scope.calculatePercent($scope.data.countTjAll, entry.resultFromDb[0].categByTjWomen.length === 0 ? 0 : entry.resultFromDb[0].categByTjWomen[0].all_benificiar);
+
 
 
 
