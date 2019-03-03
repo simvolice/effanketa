@@ -45,7 +45,19 @@ angular.module('app').controller('Grow_potencialCtrl', function ($http, $transla
     GetEvent.save({tokenCSRF: localStorage.getItem('tokenCSRF'), sessionToken: localStorage.getItem('sessionToken')}, function(result) {
 
 
+        result.resultFromDb.sort(function(a,b){
+
+
+                return new Date(a.myDate).getTime() - new Date(b.myDate).getTime();
+
+
+        });
+
+
         $rootScope.data = result.resultFromDb;
+
+
+
 
 
     });

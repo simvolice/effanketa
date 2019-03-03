@@ -129,6 +129,14 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
 
     };
 
+    $scope.add = (a, b) =>
+        a + b;
+
+
+
+
+
+
 
 
 
@@ -1003,11 +1011,11 @@ angular.module('app').controller('DataIntermediateIndexCtrl', function (Generate
         $scope.summValcountComponent2Result = $scope.average($scope.summValcountComponent2).toFixed(0);
         $scope.summValcountBenificiarProjectTjResult = $scope.average($scope.summValcountBenificiarProjectTj).toFixed(0);
         $scope.summValcountBenificiarProjectUzResult = $scope.average($scope.summValcountBenificiarProjectUz).toFixed(0);
-        $scope.summValcountBenificiarProjectUzIPR14Result = $scope.average($scope.summValcountBenificiarProjectUzIPR14).toFixed(0);
-        $scope.summValcountBenificiarProjectTjIPR14Result = $scope.average($scope.summValcountBenificiarProjectTjIPR14).toFixed(0);
-        $scope.summValcountsummC2PR14Result = $scope.average($scope.summValcountsummC2PR14).toFixed(0);
-        $scope.summValcountsummC1PR14Result = $scope.average($scope.summValcountsummC1PR14).toFixed(0);
-        $scope.summValcountsummC1C2PR14Result = $scope.average($scope.summValcountsummC1C2PR14).toFixed(0);
+        $scope.summValcountBenificiarProjectUzIPR14Result = $scope.summValcountBenificiarProjectUzIPR14.reduce($scope.add);
+        $scope.summValcountBenificiarProjectTjIPR14Result = $scope.summValcountBenificiarProjectTjIPR14.reduce($scope.add);
+        $scope.summValcountsummC2PR14Result = $scope.summValcountsummC2PR14.reduce($scope.add);
+        $scope.summValcountsummC1PR14Result = $scope.summValcountsummC1PR14.reduce($scope.add);
+        $scope.summValcountsummC1C2PR14Result = $scope.summValcountsummC1C2PR14.reduce($scope.add);
 
 
         $scope.summValpercentSumResult = $scope.average($scope.summValpercentSum).toFixed(0);
