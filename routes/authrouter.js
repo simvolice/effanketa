@@ -117,9 +117,6 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
-
-
-
     let result = await AuthService.login(req.body.email);
 
 
@@ -128,10 +125,7 @@ router.post('/auth', async (req, res, next) =>{
     if (validator.checkProps(result) && bcrypt.compareSync(req.body.pass, result.pass)) {
 
 
-
-
-
-      res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), process.env.SECRETJSONWEBTOKEN), "fio": result.fio});
+        res.json({"code": 0, "sessionToken": jsonwebtoken.sign(result._id.toString(), process.env.SECRETJSONWEBTOKEN), "fio": result.fio});
 
 
     }else {
@@ -144,19 +138,49 @@ router.post('/auth', async (req, res, next) =>{
 
 
 
+});
 
 
 
 
+router.post('/sendpasschange', async (req, res, next) =>{
+
+    let SeesionToken = req.body.sessionToken || req.get('sessionToken') || req.query.sessionToken;
+
+    let userId= jsonwebtoken.verify(SeesionToken, process.env.SECRETJSONWEBTOKEN);
+
+    let result = await AuthService.checkUserById(userId);
+
+
+    if (req.body.hasOwnProperty("pass")) {
+        if (req.body.pass.length !== 0) {
+            const hash = bcrypt.hashSync(req.body.pass, 10);
 
 
 
+            await AuthService.updPass(result._id, hash);
 
+            res.json({code: 0});
 
+        } else {
+
+            res.json({code: 1});
+
+        }
+    } else {
+        res.json({code: 1});
+
+    }
 
 
 
 });
+
+
+
+
+
+
 
 
 

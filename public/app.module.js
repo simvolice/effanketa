@@ -155,6 +155,9 @@ app.controller('MainCtrl', function ($scope, $state, $timeout, $translate, $root
 
     this.exitClk = function () {
 
+
+        localStorage.setItem("sessionTokenChangePass", localStorage.getItem('sessionToken'));
+
         localStorage.removeItem('tokenCSRF');
         localStorage.removeItem('sessionToken');
         localStorage.removeItem('fio');

@@ -262,6 +262,55 @@ module.exports = {
 
     },
 
+    updPass: async (id, hash) => {
+
+        try {
+
+
+
+            const col = dbConnect.getConnect().collection('users');
+
+
+
+
+            const result = await col.updateOne({_id: ObjectId(id)} ,
+
+
+                { $set: {
+
+
+                        pass: hash,
+
+
+
+
+
+                        updateAt: new Date( new Date().getTime() -  ( new Date().getTimezoneOffset() * 60000 ) )}
+
+
+
+
+                });
+
+
+
+
+
+            return result;
+
+
+        }catch(err) {
+
+
+
+
+            return err;
+
+
+        }
+
+
+    },
 
     delUser: async (objParam) => {
 

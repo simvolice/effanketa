@@ -28,7 +28,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
       })
 
+      .state('passchange', {
+          url: '/passchange',
+          templateUrl: 'components/passChange/passChangeView.html',
 
+
+      })
       .state('main', {
           url: '/main',
           templateUrl: 'components/main/mainView.html',
