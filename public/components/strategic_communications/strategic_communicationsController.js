@@ -27,6 +27,7 @@ angular.module('app').controller('StrategicCommunicationsCtrl', function ($trans
                 $rootScope.data = result.resultFromDb;
 
 
+
             } else {
 
                 $mdToast.show(
@@ -433,7 +434,25 @@ $scope.excel = function () {
 };
 
 
+    $scope.exclude = ['allCountrys', "_id", "createAt"];
 
 
+}).filter('excludeFilter', function(){
+    return function(data, search, exclude){
+        if(!search)
+            return data;
+        return data.filter(function(x){
+
+            for(var prop in x)
+                if(exclude.indexOf(prop) == -1){
+                    var value = x[prop];
+                    if(value.indexOf && value.indexOf(search) != -1)
+                        return true;
+                    if(!value.indexOf && value == search)
+                        return true;
+                }
+            return false;
+        });
+    }
 });
 

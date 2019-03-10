@@ -115,8 +115,12 @@ $scope.createNewFact = function (event) {
             for (let item of $scope.data) {
 
                 item.createAt = new Date(item.createAt);
+                item.nameDate = new Date(item.createAt).toLocaleDateString();
 
             }
+
+
+
 
 
             $scope.data.sort(function(a,b){return a.createAt.getTime() - b.createAt.getTime()});
@@ -383,7 +387,25 @@ $scope.createNewFact = function (event) {
 
 
 
+    $scope.exclude = ['allCountrys', "allCreditsFact", "categcredits", "country", "createAt", "_id", "id"];
 
 
+}).filter('excludeFilter', function(){
+    return function(data, search, exclude){
+        if(!search)
+            return data;
+        return data.filter(function(x){
+
+            for(var prop in x)
+                if(exclude.indexOf(prop) == -1){
+                    var value = x[prop];
+                    if(value.indexOf && value.indexOf(search) != -1)
+                        return true;
+                    if(!value.indexOf && value == search)
+                        return true;
+                }
+            return false;
+        });
+    }
 });
 

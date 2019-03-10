@@ -70,6 +70,11 @@ angular.module('app').controller('BuildReportCtrl', function (GenerateDocxReport
         $rootScope.data = entry.resultFromDb;
 
 
+        for (let item of $rootScope.data) {
+
+            delete item.createAt;
+        }
+
 
     });
 

@@ -39,11 +39,18 @@ angular.module('app').controller('GrmCtrl', function ($translate, $scope, $rootS
             };
 
             for (const dataItem of $rootScope.data) {
+
+
+                dataItem.dateInGo = new Date(dataItem.dateInGo).toLocaleDateString();
+                dataItem.lastDateAnswer = new Date(dataItem.lastDateAnswer).toLocaleDateString();
+                dataItem.dateNotifDeclarer = new Date(dataItem.dateNotifDeclarer).toLocaleDateString();
+
                 delete dataItem.allCanalRequestStatus;
                 delete dataItem.allCountrys;
                 delete dataItem.allCategComplaint;
                 delete dataItem.allStatus;
             }
+
 
         } else {
 

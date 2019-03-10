@@ -90,7 +90,7 @@
                             <tbody>
 
 
-                            <tr ng-repeat="data in data | filter:search">
+                            <tr ng-repeat="data in data | excludeFilter : search : exclude">
 
 
 

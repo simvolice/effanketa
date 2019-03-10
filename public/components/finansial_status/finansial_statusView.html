@@ -106,7 +106,7 @@
 
 
 
-                            <tr class="tg-baqh" ng-repeat="data in data | filter:search">
+                            <tr class="tg-baqh" ng-repeat="data in data | excludeFilter : search : exclude">
 
 
 

@@ -54,9 +54,14 @@ angular.module('app').controller('Grow_potencialCtrl', function ($http, $transla
         });
 
 
+
+
         $rootScope.data = result.resultFromDb;
 
+        for (let item of $rootScope.data) {
 
+            item.nameDate = new Date(item.myDate).toLocaleDateString();
+        }
 
 
 
@@ -1192,6 +1197,9 @@ function DialogControllerForNewForm($scope, data, AddForm) {
 
 
     }
+
+
+
 
 
 });

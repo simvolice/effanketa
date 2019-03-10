@@ -24,6 +24,30 @@ angular.module('app').controller('AdminCtrl', function ($scope, $rootScope, $htt
             $rootScope.data = result.resultFromDb;
 
 
+
+            for (let item of $rootScope.data) {
+
+                item.nameDate = new Date(item.createAt).toLocaleDateString();
+
+            }
+            for (let item of $rootScope.data) {
+
+
+                for (const allCountrysItem of item.allCountrys) {
+
+
+                    if (allCountrysItem._id === item.country) {
+
+                        item.nameCountry = allCountrysItem.name;
+
+                    }
+                }
+
+
+            }
+
+
+
         } else {
 
             $mdToast.show(
@@ -480,6 +504,24 @@ function DialogControllerUpd(data, $scope, GetAllCoutrys, GetAllRoles, $http, $m
 
 
 
+    $scope.exclude = ['allCountrys', "allRoles", "country", "createAt", "role", "updateAt", "urlImg", "_id", "id"];
 
 
+}).filter('excludeFilter', function(){
+    return function(data, search, exclude){
+        if(!search)
+            return data;
+        return data.filter(function(x){
+
+            for(var prop in x)
+                if(exclude.indexOf(prop) == -1){
+                    var value = x[prop];
+                    if(value.indexOf && value.indexOf(search) != -1)
+                        return true;
+                    if(!value.indexOf && value == search)
+                        return true;
+                }
+            return false;
+        });
+    }
 });

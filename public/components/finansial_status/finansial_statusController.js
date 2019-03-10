@@ -23,7 +23,12 @@ angular.module('app').controller('FinansialStatusCtrl', function ($translate, $s
 
             for (let item of $scope.data) {
                 item.nameQuarter = new Date(item.nameQuarter);
+                item.nameQuarterForSearch = new Date(item.nameQuarter).toLocaleDateString();
             }
+
+
+
+
 
 
         } else {
@@ -258,7 +263,25 @@ angular.module('app').controller('FinansialStatusCtrl', function ($translate, $s
 
 
 
+    $scope.exclude = ['allCountrys', "nameQuarter", "createAt", "lastModified", "country", "_id", "id"];
 
+}).filter('excludeFilter', function(){
+    return function(data, search, exclude){
+        if(!search)
+            return data;
+        return data.filter(function(x){
 
+            for(var prop in x)
+                if(exclude.indexOf(prop) == -1){
+                    var value = x[prop];
+                    if(value.indexOf && value.indexOf(search) != -1)
+                        return true;
+                    if(!value.indexOf && value == search)
+                        return true;
+                }
+            return false;
+        });
+    }
 });
+
 
